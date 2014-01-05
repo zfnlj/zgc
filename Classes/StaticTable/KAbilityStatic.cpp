@@ -90,6 +90,11 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
 	case what_heal:
 	case what_immune:
 	case what_draw_card:
+	case what_rush:
+	case what_hide:
+	case what_dist:
+	case what_guide:
+	case what_bless_hp:
 		tp = ability_good;
 		break;
     default:

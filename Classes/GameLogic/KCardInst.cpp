@@ -186,7 +186,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 				m_attr.setReady(1);
 			}
 			m_attr.updateBufList();
-			onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
+			if(!FindBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 		}
 		break;
 	case enum_slot_secret:
