@@ -1,0 +1,87 @@
+#ifndef _KBATTLEGUY_H_
+#define _KBATTLEGUY_H_
+
+#include "KBattleDeck.h"
+#include "KCardInst.h"
+#include "System/Memory/KStepObjectPool.h"
+#include <list>
+#include "../Facade/FBattleGuy.h"
+#include "KCardInst.h"
+#include "KBattleGuyAttr.h"
+class KBattleCtrlBase;
+class KMemoryStream;
+class KBattleGuy : public System::Memory::KPortableStepPool<KBattleGuy,128>
+{
+public:
+	 KBattleGuy();
+	 
+
+	 static KBattleGuy* Alloc()
+	 {
+		 return System::Memory::KPortableStepPool<KBattleGuy,128>::Alloc();
+	 }
+	 static void Free(KBattleGuy* p)
+	 {
+		 System::Memory::KPortableStepPool<KBattleGuy,128>::Free(p);
+	 }
+	 virtual void free(){ Free(this);}
+
+	 static KBattleGuy* create(void);
+	 bool init(void);
+	 virtual void onBattleInit(bool bFirst,int deckId,bool bSelectCard=true);
+	 bool IsPlayTimeOut();
+	 void SetPlayTimeOut();
+	 void onTurnBegin(KBattleCtrlBase*,bool bFirstTurn);
+	 virtual void onPlayCard(float dt,bool bOK);
+
+	 int  QuerySlotCardNum();
+	 int GetCurRes(){ return m_attr.getCurRes();}
+	 int GetMaxRes(){ return m_attr.getMaxRes();}
+	 KBattleDeck& GetDeck(){ return m_Deck;}
+	 void UseRes(int val);
+	 FBattleGuy* GetFacade(){ return &m_FacadeObj;}
+
+	 virtual void SelectHandCard(){}
+	 KCardInstList* QueryCardSet(int);
+	 void onGameEnd();
+	 bool IsSelectHandCard(){ return m_bSelectHandCard;}
+	 bool IsFirstHand(){ return m_bFirstHand;}
+	 UINT64 GetGuyId(){ return m_guyId;}
+	 void SetGuyId(UINT64 id){ m_guyId = id;}
+	 void AddRes(int val);
+	 virtual void update(float dt);
+	 void Clear();
+	 void DoSelectBeginCard(KCardInstList* arr);
+	 void QueryResInfo(char* buf);
+	 void QueryActiveHandCards(KCardInstList* arr);
+	 void QueryActiveFightCards(KCardInstList* arr);
+	 void QueryActiveDefendCards(KCardInstList* arr);
+	 void SetBattleCtrl(KBattleCtrlBase* ctrl){ m_battleCtrl = ctrl;}
+	 KBattleCtrlBase* GetBattleCtrl(){ return m_battleCtrl;}
+
+	 size_t serialize(KMemoryStream* so);
+	 BOOL deserialize(KMemoryStream* si);
+	 size_t serializeDirty(KMemoryStream* so);
+	 BOOL deserializeDirty(KMemoryStream* si);
+
+	 bool DoGuyAbility(KAbilityStatic* pAbility);
+	 int calcHurtVal(int val);
+	 int calcHealVal(int val);
+
+	 void onCardEnterCtrl(KCardInst* card);
+	 void onCardLeaveCtrl(KCardInst* card);
+protected:
+	float m_TurnPlayTime;
+	UINT64 m_guyId;
+	bool m_bSelectHandCard;
+	bool m_bFirstHand;//先手
+	KBattleDeck m_Deck; //牌管理
+	FBattleGuy m_FacadeObj;
+	KBattleCtrlBase* m_battleCtrl;
+	KBattleGuyAttr m_attr;
+	KCardAbilityList m_bufList;
+friend class KClientBattleCtrl;
+};
+
+typedef std::list<KBattleGuy*> KBattleGuyList;
+#endif // __HELLOWORLD_SCENE_H__

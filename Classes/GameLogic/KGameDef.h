@@ -1,0 +1,76 @@
+#ifndef __KGAMEDEF_H__
+#define __KGAMEDEF_H__
+
+#define MAX_ACTION_TARGET_NUM 12
+
+#define IMPLEMENT_SINGLETON(__classname ) \
+	template<> __classname* Singleton<__classname>::mSingleton = 0; \
+	__classname& __classname::getSingleton(void) \
+{ \
+	if(NULL == mSingleton)\
+	{\
+	mSingleton = new __classname;\
+	}\
+	return (*mSingleton);\
+}\
+
+#define MAX_GAME_PLAY_CARD 31
+
+class KCardInst;
+class KAbilityStatic;
+struct strCardDuelResult{   //卡片对打的结果
+	KCardInst* _atker;	  //进攻方
+	KCardInst* _defender;//防御方
+	int _val1; //进攻方受到伤害
+	int _val2; //防御方受到伤害
+};
+
+struct strSummonCardResult{
+	KCardInst* _src;
+	KCardInst* _des;
+};
+struct strReplaceCardResult{
+	KCardInst* _src;
+	KCardInst* _des;
+};
+
+struct strCardAbilityResult{   //卡片对打的结果
+	strCardAbilityResult();
+	int  _src;	  //进攻方
+	int _destArr[MAX_ACTION_TARGET_NUM];
+	int _destValArr[MAX_ACTION_TARGET_NUM];
+	void SetDestVal(int dest,int val);
+	void init(int src,KAbilityStatic* ability);
+	KAbilityStatic* _pAbility;
+};
+
+struct strCardModifyBufResult{   //卡片增减buf
+	KCardInst* _card;	  //目标卡片，
+	KAbilityStatic* _pBuf;//buf
+};
+
+/**
+ * 任务增删消息
+ */
+struct KQuestChangeParam
+{
+	enum E_CHANGE
+	{
+		REMOVE = 0,		// 删除
+		ADD = 1,		// 增加
+	};
+
+	enum E_TYPE
+	{
+		ACCEPTED = 0,			// 已接受过的任务,主线
+		CAN_ACCEPT = 1,			// 未接受但可接受的
+		ACCEPTED_ZHIXIAN = 2,	// 已接受过的任务,支线
+		ACCEPTED_OTHER = 3,		// 已接受过的任务,除了主线和支线
+	};
+
+	int change;			// 增删类型
+	int type;			// 任务已接或者可接,主线或支线
+	int qid;			// 任务id
+};
+
+#endif // __HELLOWORLD_SCENE_H__
