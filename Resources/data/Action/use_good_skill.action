@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action unique="" ex="" exDelay="" class="null">
+  <affect_body>
+  		<affector class="layer" createtime="0" fVal="99" life="0.6" />
+      <affector class="indicate" createtime="0" slot="screen_center" fVal="800" obj="anim/indicate_green_bar.png" life="4.0" />
+  </affect_body>
+</action>

@@ -1,0 +1,3 @@
+ID	NameID	Level	Flags	Quality	DisplayID	Icon	ItemType	ItemMaterial	ItemWeight	Price	Bind	AliveType	AliveTime	WGroup1	WProb1	SkillID	CostType	Effect1Param1	Effect1Param2	Effect1Param3	ConditionID	CParam1	MaxKeep	Stacks	MaxUseTime	VanishType
+1001	1001	1	0	3	0	GUI\shop\gloves.png	0	0	0	10	0	0	0	0	0	0	2	0	0	0	0	0	0	99	0	0
+1002	1002	1	0	3	0	GUI\shop\gloves.png	0	0	0	10	0	0	0	0	0	0	2	0	0	0	0	0	0	99	0	0

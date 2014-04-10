@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="hit">
+  <affect_body>
+     	<affector class="shakex" createtime="0" fVal="10" life="1" />
+    
+		    	<affector class="hit" createtime="1" obj="hp_add" life="0.2" />
+		    	<affector class="visible" createtime="1.1" iVal="1" obj="hp_add" life="0.001" />
+		    	<affector class="fadein" createtime="1.0" fVal="1.8" obj="hp_add" life="0.001" /> 
+		     	<affector class="fadeout" createtime="2.6" fVal="0.4" obj="hp_add" life="0.001" />
+			   	<affector class="visible" createtime="3.2" iVal="0" obj="hp_add" life="0.001" />
+			<affector class="update" createtime="3.2"  life="0.001" />   	
+	  	<affector class="moveback" createtime="3.2" life="0.001" />
+  </affect_body>
+</action>
+
+		

@@ -1,0 +1,3 @@
+ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail
+10001	齐桓公	1	2	0	30	0	绝对防御	绝对防御:抵抗一次伤害
+10002	太子丹	1	2	0	30	0	治疗术	治疗术：治疗2点生命值

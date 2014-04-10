@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="hit">
+  <affect_body>
+     	<affector class="shakex" createtime="0" fVal="10" life="1" />
+			<affector class="update" createtime="1"  life="0.001" />   	
+  </affect_body>
+</action>
+
+		

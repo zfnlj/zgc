@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action class="null">
+  <affect_body>
+     <affector class="fadeout" createtime="0" fVal="0.6" obj="photo" life="1" /> 
+     <affector class="delwidget" createtime="0.5" obj="photo" life="0.001" />
+  </affect_body>
+</action>
+
+		

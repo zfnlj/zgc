@@ -1,0 +1,13 @@
+File
+armature/gen_circle.json
+armature/strong.json
+armature/absolute_def.json
+armature/toSheep.json
+armature/curse.json
+armature/guider.json
+armature/heal_area.json
+armature/curse_dead.json
+armature/atk_equ_hp.json
+armature/clear_buf.json
+armature/ctrlcard.json
+armature/kill.json

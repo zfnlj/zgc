@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action class="move">
+  <affect_body>
+     <affector class="move" slot="card_pos" createtime="0.1" fVal="800" life="0.4" />
+  </affect_body>
+</action>
+
+		

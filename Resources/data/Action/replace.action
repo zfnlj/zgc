@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="class_cast">
+  <affect_body>
+  	<affector class="replace" createtime="0.5" fVal="0" life="0.6" />
+  </affect_body>
+</action>
+
+		

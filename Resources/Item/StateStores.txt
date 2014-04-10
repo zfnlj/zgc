@@ -1,0 +1,3 @@
+ID	StoreID	LabelID	ItemID	PriceType1	T1Param1	T1Param2	LimitSaleCount	CanBuyScript	CanSeeScript
+1	1	1	10001	0	10	1	99	0	0
+2	1	1	10002	0	10	1	99	0	0

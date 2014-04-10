@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action unique="1" ex="equal_hit" exDelay="1.6" class="null">
+  <affect_body>
+  	 <affector class="missile" createtime="0" fVal="400" obj="missile_fly" life="4.0" />
+     <affector class="eff" createtime="1.2" obj="ExplodingRing" life="0.8" />
+  </affect_body>
+</action>

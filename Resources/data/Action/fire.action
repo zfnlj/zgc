@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action unique="1" ex="fire" exDelay="1.6" class="null">
+  <affect_body>
+     <affector class="eff" slot="card_bottom" createtime="0" iVal="50" obj="fire_wall" life="-1" />
+  </affect_body>
+</action>

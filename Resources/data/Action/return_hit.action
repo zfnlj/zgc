@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="null">
+  <affect_body>
+        	<affector class="hit" createtime="0" obj="hp_add" life="0.2" />
+					<affector class="draw" createtime="1.2"  life="0.001" />   	
+  </affect_body>
+</action>
+
+		

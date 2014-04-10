@@ -1,0 +1,2 @@
+QuestID	Level	NpcID	Nationality	MinLevelLimit	MaxLevelLimit
+10001	1	1	1	1	50
