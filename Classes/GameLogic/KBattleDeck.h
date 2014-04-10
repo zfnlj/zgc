@@ -65,6 +65,7 @@ public:
 	int GetRndEmptyFightSlot();
 	bool IsEmptyFightSlot(int pos);
 	void RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slot,KCardStatic::CardDef cardDef=KCardStatic::card_null);
+	void GenHandCard(int id);
 private:
 	KCardInstList m_HeroCardSet;
 	KCardInstList	m_HandCardSet;	// ÷≈∆

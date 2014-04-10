@@ -47,6 +47,8 @@ private:
 	void CopyHand(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	void CopyFight(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	void SummonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
+
+	void onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card);
 };
 
 

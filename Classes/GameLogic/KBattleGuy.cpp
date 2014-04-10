@@ -209,10 +209,18 @@ bool KBattleGuy::DoGuyAbility(KAbilityStatic* pAbility)
 {
 	if(!pAbility) return false;
 	if(pAbility->GetWhich()!=KAbilityStatic::which_owner) return false;
-	if(pAbility->GetWhat()==KAbilityStatic::what_remove_buf){
+	switch(pAbility->GetWhat()){
+	case KAbilityStatic::what_get_card:
+		{
+			m_Deck.GenHandCard(pAbility->GetVal());
+		}
+		break;
+	case KAbilityStatic::what_remove_buf:
 		KSkillAssist::_removeBuf(m_bufList,pAbility->GetVal());
-	}else{
+		break;
+	default:
 		m_bufList.push_back(pAbility);
+		break;
 	}
 	return true;
 }
@@ -235,4 +243,14 @@ int KBattleGuy::calcHealVal(int val)
 	}else{
 		return val;
 	}
+}
+
+int KBattleGuy::calcMpCost(int val)
+{
+	KCardAbilityList::iterator it = m_bufList.begin();
+	while(it != m_bufList.end()){
+		if((*it)->GetWhat()== KAbilityStatic::what_mp_cost) val += (*it)->GetVal();
+		it++;
+	}
+	return val;
 }

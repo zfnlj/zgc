@@ -279,6 +279,15 @@ void KBattleDeck::CreateCloneCard(KCardInstList& lst,KCardInstList& newLst,KCard
 	}
 }
 
+void KBattleDeck::GenHandCard(int id)
+{
+	KCardInstList tmpList;
+	KCardInst* card = CreateCard(id,KCardInst::enum_slot_hand);
+	tmpList.push_back(card);
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DRAWCARD,(unsigned long long)&tmpList,
+													(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
+}
+
 int KBattleDeck::DrawCard(int n,KCardInst::CardSlot slot)
 {
 	int ret = 0;

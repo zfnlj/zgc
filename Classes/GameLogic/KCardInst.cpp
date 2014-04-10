@@ -444,3 +444,13 @@ int KCardInst::GetAtk()
 		return m_pST->GetAtk() + m_attr.getAddAtk();
 	} 
 }
+
+int KCardInst::GetRealCost()
+{
+	if(GetType()==KCardStatic::card_skill)
+	{
+		return m_Owner->calcMpCost(GetCost());
+	}else{
+		return GetCost();
+	}
+}

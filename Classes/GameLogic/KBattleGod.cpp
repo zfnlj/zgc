@@ -293,7 +293,6 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 	}else if(pAbility->GetWhat()==KAbilityStatic::what_summon){
 		SummonCard(ctrl,pSrc,pAbility);
 		return true;
-	}else if(pAbility->GetWhat()==KAbilityStatic::what_sp_rate){
 	}
 	bool ret = false;
 	strCardAbilityResult result;
@@ -417,7 +416,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 
 bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pSrc,KCardInst* pDes)
 {
-	if(pSrc->GetCost()>guy->GetCurRes()) return false;
+	if(pSrc->GetRealCost()>guy->GetCurRes()) return false;
 
     
 	KCardAbilityList abilityLst;
@@ -430,9 +429,19 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 		KAbilityStatic* pAbility = *it;
 		DoCardAbility(ctrl,pAbility,pSrc,pDes);
 	}
-	guy->UseRes(pSrc->GetCost());
+	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
+	onUseSkillCardEvt(ctrl,guy,pSrc);
 	return true;
+}
+
+void KBattleGod::onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card)
+{
+	KCardInstList* lst = guy->GetDeck().QueryCardSet(KCardInst::enum_slot_fight);
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it)
+	{
+		DoCardAbilityOnWhen(ctrl,*it,KAbilityStatic::when_use_skill);
+	}
 }
 
 bool KBattleGod::DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pCard)

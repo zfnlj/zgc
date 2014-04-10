@@ -67,7 +67,8 @@ public:
 	 bool DoGuyAbility(KAbilityStatic* pAbility);
 	 int calcHurtVal(int val);
 	 int calcHealVal(int val);
-
+	 int calcMpCost(int val);
+	 //evt
 	 void onCardEnterCtrl(KCardInst* card);
 	 void onCardLeaveCtrl(KCardInst* card);
 protected:
