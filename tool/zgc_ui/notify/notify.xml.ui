@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>E:\cocos2d-x-2.2\samples\Cpp\WuXin\tool\zgc_ui\notify\notify.xml.ui</filePath>
+  <Version>1.1.0.0</Version>
+  <Name>notify</Name>
+  <ProjectDir>E:\cocos2d-x-2.2\samples\Cpp\WuXin\tool\zgc_ui\notify</ProjectDir>
+  <JsonFileName>notify.json</JsonFileName>
+  <Resources>E:\cocos2d-x-2.2\samples\Cpp\WuXin\tool\zgc_ui\notify\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2\samples\Cpp\WuXin\tool\zgc_ui\notify\Json</JsonFolder>
+  <JsonList>
+    <string>notify_1.json</string>
+  </JsonList>
+  <imageFileList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>notify_1.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>1024</Width>
+    <Height>768</Height>
+  </CanvasSize>
+</UIProject>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\genCard\genCard.xml.ui</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>genCard</Name>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\genCard</ProjectDir>
+  <JsonFileName>genCard.json</JsonFileName>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\genCard\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\genCard\Json</JsonFolder>
+  <JsonList>
+    <string>select_1.json</string>
+  </JsonList>
+  <imageFileList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>select_1.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>1024</Width>
+    <Height>768</Height>
+  </CanvasSize>
+</UIProject>
