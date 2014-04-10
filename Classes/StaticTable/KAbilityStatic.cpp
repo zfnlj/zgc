@@ -54,8 +54,8 @@ bool KAbilityStatic::IsGood()
     case what_hp_add:
             ret = (m_val>0);
             break;
+	case what_stun:
 	case what_damage:
-	case what_deform:
 		ret = false;
 		break;
 	case what_heal:
@@ -109,6 +109,8 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_heal;
 	}else if(strcmp(str,"WHAT_ATK_ADD")==0){
 		m_what = what_atk_add;
+	}else if(strcmp(str,"WHAT_STUN")==0){
+		m_what = what_stun;
 	}else if(strcmp(str,"WHAT_HP_ADD")==0){
 		m_what = what_hp_add;
 	}else if(strcmp(str,"WHAT_HP_DOUBLE")==0){
@@ -117,8 +119,6 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_hp_set;
 	}else if(strcmp(str,"WHAT_IMMUNE")==0){
 		m_what = what_immune;
-	}else if(strcmp(str,"WHAT_DEFORM")==0){
-		m_what = what_deform;
 	}else if(strcmp(str,"WHAT_RES_ADD")==0){
 		m_what = what_res_add;
 	}else if(strcmp(str,"WHAT_DRAW_CARD")==0){
