@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>d:\My Documents\toSheep\toSheep.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>toSheep</Name>
+  <ProjectDir>d:\My Documents\toSheep</ProjectDir>
+  <JsonFileName>toSheep.json</JsonFileName>
+  <Resources>d:\My Documents\toSheep\Resources</Resources>
+  <JsonFolder>d:\My Documents\toSheep\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>false</bBatchImage>
+</AnimationProject>
