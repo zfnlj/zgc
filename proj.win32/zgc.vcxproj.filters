@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\GameRoot.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Classes\KAction\KAction.cpp">
+      <Filter>KAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KActionMgr.cpp">
+      <Filter>KAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\K3DActionParam.cpp">
+      <Filter>KAction</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Facade\FBattleGuy.cpp">
+      <Filter>Facade</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KAbilityStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleAI.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleDeck.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleGod.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KCardInst.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KCardActor.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KMessageHub\KBattleMsgHub.cpp">
+      <Filter>KMessageHub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KClientGateListener.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.cpp">
+      <Filter>commonLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KAppData.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KMessageHub\KMsgHub.cpp">
+      <Filter>KMessageHub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KOnHitMgr.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketToString.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KSocketDefine.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\KStreamWrapper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KUserData.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\OgreDataStream.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\PlayerGuide.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KFightAreaPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KIndicatePanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KSelectBeginCardPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KResPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_ChatC.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_ChC.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_LC.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_SC.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_WC.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\StaticData.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CommonLogic\KLoginMsgDealer.cpp">
+      <Filter>commonLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KMessageHub\KLoginMsgHub.cpp">
+      <Filter>KMessageHub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KMessageHub\KGatewayMsgHub.cpp">
+      <Filter>KMessageHub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CommonLogic\KGatewayMsgDealer.cpp">
+      <Filter>commonLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\CommonLogic\KMsgDelegateBase.cpp">
+      <Filter>commonLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KPacketGate_Gw.cpp">
+      <Filter>KNet\Hub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleGuy.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\AdvExecutor.cpp">
+      <Filter>KAction\executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KAffectorAdvExecutor.cpp">
+      <Filter>KAction\executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KAffectorVectExecutor.cpp">
+      <Filter>KAction\executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\ParallelExecutorContainer.cpp">
+      <Filter>KAction\executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KActionStaticMgr.cpp">
+      <Filter>KAction\static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KAffectorStatic.cpp">
+      <Filter>KAction\static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KAction\KSoundStatic.cpp">
+      <Filter>KAction\static</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\KClientTabfileLoader.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KNetMsgFacade.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KNet\KSocketFacade.cpp">
+      <Filter>KNet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleCtrlBase.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KClientBattleCtrl.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KCardAttr.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KBattleGuyAttr.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KActor.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KClientQuestSession.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KPlayerQuestManager.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestCustomEvent.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestGroup.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestManager.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestNew.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestParamParser.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestTarget.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestTimer.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\FQuest.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldObject\KCharacter.cpp">
+      <Filter>game\WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldObject\KPlayer.cpp">
+      <Filter>game\WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldObject\KWorldObj.cpp">
+      <Filter>game\WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KBag.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KBagManager.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Block\KBlock.cpp">
+      <Filter>Block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Block\KBlockBox.cpp">
+      <Filter>Block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Block\KBlockBoxManager.cpp">
+      <Filter>Block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Block\KBlockGroup.cpp">
+      <Filter>Block</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WorldObject\KMainPlayer.cpp">
+      <Filter>game\WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Business\KBusinessManager.cpp">
+      <Filter>game\Business</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Store\KStoreManager.cpp">
+      <Filter>game\Store</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite\sqlite3.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\VirtualService.cpp" />
+    <ClCompile Include="..\Classes\Store\KStoreCreate.cpp">
+      <Filter>game\Store</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KItemCreate.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KItem.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KShopPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite\KSqlite.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite\KUserSql.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite\KUserQuestSql.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\KPlayerRecordAssist.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientLogic\KToLua.cpp">
+      <Filter>ClientLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ClientLogic\KZGThread.cpp">
+      <Filter>ClientLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KUseItemManager.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KUseItem.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KUseItemParamParser.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Item\KUseItemAttrs.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\KCommonObj.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\KMessageHub\KWorldMsgHub.cpp">
+      <Filter>KMessageHub</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KMyStorePanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KDeckDefStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EventSystem\KEventSystem.cpp">
+      <Filter>game\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EventSystem\KEventEntity.cpp">
+      <Filter>game\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EventSystem\KEventRegistry.cpp">
+      <Filter>game\EventSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KMyQuestPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestOperation.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Quest\KQuestData_S_i.cpp">
+      <Filter>game\Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KBattleFieldStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KGameResultPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\common\KVirtualServerAssist.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KGameStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KRankStaticMgr.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KJsonDictMgr.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KUIAssist.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\ProgressBar.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\MainMenuScene.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\StartScene.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KCardLayoutStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\GameRoot.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Classes\KAction\KAction.h">
+      <Filter>KAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KActionElemBase.h">
+      <Filter>KAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KActionMgr.h">
+      <Filter>KAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\K3DActionParam.h">
+      <Filter>KAction</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Facade\FBattleGuy.h">
+      <Filter>Facade</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KAbilityStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleAI.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleDeck.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleGod.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KCardInst.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KCardActor.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KMessageHub\KBattleMsgHub.h">
+      <Filter>KMessageHub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KClientGateListener.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inc\KBusinessDefine.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.h">
+      <Filter>commonLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KAppData.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KGameDef.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inc\KLogicMsg.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonLogic\KMsgDelegate.h">
+      <Filter>commonLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KMessageHub\KMsgHub.h">
+      <Filter>KMessageHub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KOnHitMgr.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketToString.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KSocketDefine.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KStreamWrapper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inc\KTypeDef.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KUserData.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\OgreDataStream.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\PlayerGuide.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\ProgressProtocol.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KFightAreaPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KIndicatePanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KSelectBeginCardPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KResPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacket.h">
+      <Filter>KNet\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacket_Segment_Define.h">
+      <Filter>KNet\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacketGate.h">
+      <Filter>KNet\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_ChatC.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_ChC.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_LC.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_SC.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_WC.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\StaticData.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonLogic\KLoginMsgDealer.h">
+      <Filter>commonLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KMessageHub\KLoginMsgHub.h">
+      <Filter>KMessageHub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KMessageHub\KGatewayMsgHub.h">
+      <Filter>KMessageHub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonLogic\KGatewayMsgDealer.h">
+      <Filter>commonLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\CommonLogic\KMsgDelegateBase.h">
+      <Filter>commonLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KPacketGate_Gw.h">
+      <Filter>KNet\Hub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleGuy.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\AdvExecutor.h">
+      <Filter>KAction\executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KAffectorAdvExecutor.h">
+      <Filter>KAction\executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KAffectorVectExecutor.h">
+      <Filter>KAction\executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\ParallelExecutorContainer.h">
+      <Filter>KAction\executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KActionStaticMgr.h">
+      <Filter>KAction\static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KAffectorStatic.h">
+      <Filter>KAction\static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KAction\KSoundStatic.h">
+      <Filter>KAction\static</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KClientTabfileLoader.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KNetMsgFacade.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KNet\KSocketFacade.h">
+      <Filter>KNet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleCtrlBase.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KClientBattleCtrl.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KCardAttr.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KBattleGuyAttr.h">
+      <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KActor.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KClientQuestSession.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KPlayerQuestManager.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestCustomEvent.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestGroup.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestManager.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestNew.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestParamParser.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestTarget.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestTimer.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Inc\KLuaWrap.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestDef.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\FQuest.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldObject\KCharacter.h">
+      <Filter>game\WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldObject\KPlayer.h">
+      <Filter>game\WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldObject\KWorldObj.h">
+      <Filter>game\WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KBag.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KBagManager.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Block\IBlock.h">
+      <Filter>Block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Block\KBlock.h">
+      <Filter>Block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Block\KBlockBox.h">
+      <Filter>Block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Block\KBlockBoxManager.h">
+      <Filter>Block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Block\KBlockGroup.h">
+      <Filter>Block</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WorldObject\KMainPlayer.h">
+      <Filter>game\WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Business\KBusinessManager.h">
+      <Filter>game\Business</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Store\KStoreManager.h">
+      <Filter>game\Store</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\sqlite3.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\sqlite3ext.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\VirtualService.h" />
+    <ClInclude Include="..\Classes\Store\KStoreCreate.h">
+      <Filter>game\Store</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KItemCreate.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KItem.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KShopPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\KSqlite.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\KUserSql.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\KUserQuestSql.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KPlayerRecordAssist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientLogic\KToLua.h">
+      <Filter>ClientLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ClientLogic\KZGThread.h">
+      <Filter>ClientLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KUseItemManager.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KUseItem.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KUseItemParamParser.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KUseItemAttrs.h">
+      <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KCommonObj.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\KMessageHub\KWorldMsgHub.h">
+      <Filter>KMessageHub</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KGenCardPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KMyStorePanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KDeckDefStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EventSystem\KEventSystem.h">
+      <Filter>game\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EventSystem\keventholder.h">
+      <Filter>game\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EventSystem\KEventDefine.h">
+      <Filter>game\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EventSystem\KEventEntity.h">
+      <Filter>game\EventSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KMyQuestPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestOperation.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Quest\KQuestData_S_i.h">
+      <Filter>game\Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KBattleFieldStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KGameResultPanel.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KVirtualServerAssist.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KGameStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KRankStaticMgr.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KJsonDictMgr.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KUIAssist.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\ProgressBar.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\BattleFieldScene.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\MainMenuScene.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\StartScene.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KCardLayoutStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="KAction">
+      <UniqueIdentifier>{37554fdd-f5e7-4c0e-a3df-5ea23f68839b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{1ba7cf9d-8218-41cb-b250-9feae666678b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Facade">
+      <UniqueIdentifier>{3d8139d7-0b2c-43ab-9540-a12840794739}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inc">
+      <UniqueIdentifier>{b38475da-f1aa-4e7e-b752-286a7a4f02dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="staticTable">
+      <UniqueIdentifier>{cf127425-b7c5-498e-9918-aef830c577bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic">
+      <UniqueIdentifier>{4d61fd5f-6ff1-48eb-a556-666ed1e54efd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KMessageHub">
+      <UniqueIdentifier>{d0380f27-44c3-4bec-b002-cf6af7bea3bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KNet">
+      <UniqueIdentifier>{2f16ba0a-6143-4767-b23e-34b0d3a742e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="commonLogic">
+      <UniqueIdentifier>{ea5e1445-eb56-446b-8bd0-7f33cf725176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{d7cee7eb-2d7f-46b8-866d-cf3f81231220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Panel">
+      <UniqueIdentifier>{9b7d9b62-3745-43d9-9b5c-f820f594f89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KNet\PacketGate">
+      <UniqueIdentifier>{137c0931-b988-43f0-91a5-e24c2afbb0db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KNet\Hub">
+      <UniqueIdentifier>{6d3a3114-1532-4823-a510-0cbcb1247e1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KAction\executor">
+      <UniqueIdentifier>{4319ce63-1219-4c59-9d8d-a50d27ff3a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="KAction\static">
+      <UniqueIdentifier>{88782430-75dc-4612-9a03-b33b5ef23b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Block">
+      <UniqueIdentifier>{221cdb1e-1b75-49f3-b6a0-9fce1ade72b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sqlite">
+      <UniqueIdentifier>{132d661d-ce8c-408c-aecc-ae8377ab247f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{d59db034-5f97-4d4e-8139-39d0f0170e0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Business">
+      <UniqueIdentifier>{ab0b7109-429c-4866-9873-a951546cec3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Item">
+      <UniqueIdentifier>{d762cbfe-a5cf-4763-99de-6d8722abcc2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Quest">
+      <UniqueIdentifier>{75ce07fd-bc38-46a7-a71e-a98fbe00c4aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\Store">
+      <UniqueIdentifier>{a1a13971-678c-4e17-b055-3fe9eec1026f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\WorldObject">
+      <UniqueIdentifier>{77689890-8a75-4a56-802a-203645e6ced6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ClientLogic">
+      <UniqueIdentifier>{6e14b4ca-98a4-4d5e-a7de-3954074721d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\EventSystem">
+      <UniqueIdentifier>{a51b352c-8021-4ba2-9133-86e358451fcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\assist">
+      <UniqueIdentifier>{a9c553bc-3c7e-4c5d-82f8-c48b7f7372cc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

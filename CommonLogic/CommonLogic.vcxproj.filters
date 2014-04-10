@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Configure">
+      <UniqueIdentifier>{59ef6713-b757-41ea-a4b7-d953e4cf0387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inc">
+      <UniqueIdentifier>{c79b3258-30bb-4477-975a-4baf4980265b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inc\PacketGate">
+      <UniqueIdentifier>{a04d4fec-01bf-44f4-9fd0-cea43dc41f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Socket">
+      <UniqueIdentifier>{4e9eb839-bf2b-4603-b57f-1b7306e657a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommonSession">
+      <UniqueIdentifier>{a93a78e8-020b-4c29-83c8-ea9705814bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{4ad09be4-25e7-47d4-8ba9-1a8e5123f8c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectFactory">
+      <UniqueIdentifier>{9315678e-31ef-4a6c-9429-886553ca2ac7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TabConfigDefine">
+      <UniqueIdentifier>{17e78cf1-497b-4298-bd63-a910df02e432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WorldObject">
+      <UniqueIdentifier>{d0be3531-ed53-452c-928a-b76aa73b0d21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StringManager">
+      <UniqueIdentifier>{a7aee0b3-fed3-4a79-a454-858849cb4ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{910e1f08-6327-46c9-82d4-af6a23891b30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quest">
+      <UniqueIdentifier>{ca7ddc84-73f5-4178-9817-3e54fa53030f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Business">
+      <UniqueIdentifier>{03c406df-c808-4f4e-9e8b-6b3cb1af4b7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Store">
+      <UniqueIdentifier>{fb415c72-223b-4b11-b516-19f09e930bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StaticTable">
+      <UniqueIdentifier>{662e4ff8-c007-4a1a-aef6-d3b21b97bb05}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Configure\KCoordinateTable.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Configure\KGatewaySetting.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Configure\KRuntimeCfg.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Configure\KServerAreaSettings.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Configure\KServerSetting.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Configure\KServerTabfileLoader.cpp">
+      <Filter>Configure</Filter>
+    </ClCompile>
+    <ClCompile Include="Socket\JgVirtualSocket.cpp">
+      <Filter>Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="CommSession\KCommonSession.cpp">
+      <Filter>CommonSession</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer\KLogicTimer.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFactory\KObjectFactory.cpp">
+      <Filter>ObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\KAttrDefines.cpp">
+      <Filter>WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\KCharacterAttr.cpp">
+      <Filter>WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldObject\KObjectState.cpp">
+      <Filter>WorldObject</Filter>
+    </ClCompile>
+    <ClCompile Include="StringManager\KConstStringManager.cpp">
+      <Filter>StringManager</Filter>
+    </ClCompile>
+    <ClCompile Include="StringManager\KStringManager.cpp">
+      <Filter>StringManager</Filter>
+    </ClCompile>
+    <ClCompile Include="KAttrParser.cpp" />
+    <ClCompile Include="KGlobalFunction.cpp" />
+    <ClCompile Include="KTaskSchedule.cpp" />
+    <ClCompile Include="Item\KDropGroupStaticData.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="KMoney.cpp" />
+    <ClCompile Include="CommSession\KStreamSession.cpp">
+      <Filter>CommonSession</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest\KQuestArray.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest\KQuestAttrs.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest\KQuestCommon.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest\KQuestPersist.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Quest\KQuestSession.cpp">
+      <Filter>Quest</Filter>
+    </ClCompile>
+    <ClCompile Include="Store\KStoreProduct.cpp">
+      <Filter>Store</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticTable\IStaticTabFile.cpp">
+      <Filter>StaticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticTable\KStaticTabFileManager.cpp">
+      <Filter>StaticTable</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Configure\KCoordinateTable.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="Configure\KGatewaySetting.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="Configure\KRuntimeCfg.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="Configure\KServerAreaSettings.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="Configure\KServerSetting.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="Configure\KServerTabfileLoader.h">
+      <Filter>Configure</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\GlobalErrorCode.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\KCommonDefine.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\KCommonStruct.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\use_system.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\c_chr_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\c_game_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\c_login_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\chr_world_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\common_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\d_da_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\da_world_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\game_da_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\game_world_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\gateway_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\packet_segment.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\uworld_world_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Inc\PacketGate\world_passport_packet.h">
+      <Filter>Inc\PacketGate</Filter>
+    </ClInclude>
+    <ClInclude Include="Socket\JgVirtualSocket.h">
+      <Filter>Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="CommSession\KCommonSession.h">
+      <Filter>CommonSession</Filter>
+    </ClInclude>
+    <ClInclude Include="CommSession\persist_player_sessions.h">
+      <Filter>CommonSession</Filter>
+    </ClInclude>
+    <ClInclude Include="CommSession\tmp_player_sessions.h">
+      <Filter>CommonSession</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer\KLogicTimer.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory\KIdFactory.h">
+      <Filter>ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFactory\KObjectFactory.h">
+      <Filter>ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="TabConfigDefine\Config1GroupMgrTemplate.h">
+      <Filter>TabConfigDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="TabConfigDefine\Config1KeyMgrTemplate.h">
+      <Filter>TabConfigDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="TabConfigDefine\Config2KeyMgrTemplate.h">
+      <Filter>TabConfigDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="TabConfigDefine\ConfigListMgrTemplate.h">
+      <Filter>TabConfigDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\IAttrSet.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\ICharacter.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\IKPlayer.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KAttrDefines.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KAttrSetCombo.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KCharacterAttr.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KNickName.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KObjectState.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldObject\KStateDefine.h">
+      <Filter>WorldObject</Filter>
+    </ClInclude>
+    <ClInclude Include="StringManager\KConstStringManager.h">
+      <Filter>StringManager</Filter>
+    </ClInclude>
+    <ClInclude Include="StringManager\KMsgTanslate.h">
+      <Filter>StringManager</Filter>
+    </ClInclude>
+    <ClInclude Include="StringManager\KStringManager.h">
+      <Filter>StringManager</Filter>
+    </ClInclude>
+    <ClInclude Include="KAttrParser.h" />
+    <ClInclude Include="KDBDataStruct.h" />
+    <ClInclude Include="KGlobalFunction.h" />
+    <ClInclude Include="KPacketGateTmpl.h" />
+    <ClInclude Include="KTaskSchedule.h" />
+    <ClInclude Include="Item\KDropGroupStaticData.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\KItemDef.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item\KStruct_Item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="KMoney.h" />
+    <ClInclude Include="CommSession\KStreamSession.h">
+      <Filter>CommonSession</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest\KQuestArray.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest\KQuestAttrs.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest\KQuestCommon.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest\KQuestPersist.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Quest\KQuestSession.h">
+      <Filter>Quest</Filter>
+    </ClInclude>
+    <ClInclude Include="Store\KStoreDef.h">
+      <Filter>Store</Filter>
+    </ClInclude>
+    <ClInclude Include="Store\KStoreProduct.h">
+      <Filter>Store</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticTable\IStaticTabFile.h">
+      <Filter>StaticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticTable\KStaticTabFileManager.h">
+      <Filter>StaticTable</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1A9D82E6-1DBD-4335-A34F-BC73B321DA56}</ProjectGuid>
+    <RootNamespace>CommonLogic</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\Lib\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\Inc;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(AURORALIB_ZGC_DIR);$(AURORALIB_ZGC_DIR)\Inc;..\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CommSession\KStreamSession.cpp" />
+    <ClCompile Include="Configure\KCoordinateTable.cpp" />
+    <ClCompile Include="Configure\KGatewaySetting.cpp" />
+    <ClCompile Include="Configure\KRuntimeCfg.cpp" />
+    <ClCompile Include="Configure\KServerAreaSettings.cpp" />
+    <ClCompile Include="Configure\KServerSetting.cpp" />
+    <ClCompile Include="Configure\KServerTabfileLoader.cpp" />
+    <ClCompile Include="Item\KDropGroupStaticData.cpp" />
+    <ClCompile Include="KMoney.cpp" />
+    <ClCompile Include="Quest\KQuestArray.cpp" />
+    <ClCompile Include="Quest\KQuestAttrs.cpp" />
+    <ClCompile Include="Quest\KQuestCommon.cpp" />
+    <ClCompile Include="Quest\KQuestPersist.cpp" />
+    <ClCompile Include="Quest\KQuestSession.cpp" />
+    <ClCompile Include="Socket\JgVirtualSocket.cpp" />
+    <ClCompile Include="CommSession\KCommonSession.cpp" />
+    <ClCompile Include="StaticTable\IStaticTabFile.cpp" />
+    <ClCompile Include="StaticTable\KStaticTabFileManager.cpp" />
+    <ClCompile Include="Store\KStoreProduct.cpp" />
+    <ClCompile Include="Timer\KLogicTimer.cpp" />
+    <ClCompile Include="ObjectFactory\KObjectFactory.cpp" />
+    <ClCompile Include="WorldObject\KAttrDefines.cpp" />
+    <ClCompile Include="WorldObject\KCharacterAttr.cpp" />
+    <ClCompile Include="WorldObject\KObjectState.cpp" />
+    <ClCompile Include="StringManager\KConstStringManager.cpp" />
+    <ClCompile Include="StringManager\KStringManager.cpp" />
+    <ClCompile Include="KAttrParser.cpp" />
+    <ClCompile Include="KGlobalFunction.cpp" />
+    <ClCompile Include="KTaskSchedule.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommSession\KStreamSession.h" />
+    <ClInclude Include="Configure\KCoordinateTable.h" />
+    <ClInclude Include="Configure\KGatewaySetting.h" />
+    <ClInclude Include="Configure\KRuntimeCfg.h" />
+    <ClInclude Include="Configure\KServerAreaSettings.h" />
+    <ClInclude Include="Configure\KServerSetting.h" />
+    <ClInclude Include="Configure\KServerTabfileLoader.h" />
+    <ClInclude Include="..\Inc\GlobalErrorCode.h" />
+    <ClInclude Include="..\Inc\KCommonDefine.h" />
+    <ClInclude Include="..\Inc\KCommonStruct.h" />
+    <ClInclude Include="..\Inc\use_system.h" />
+    <ClInclude Include="..\Inc\PacketGate\c_chr_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\c_game_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\c_login_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\chr_world_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\common_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\d_da_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\da_world_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\game_da_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\game_world_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\gateway_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\packet_segment.h" />
+    <ClInclude Include="..\Inc\PacketGate\uworld_world_packet.h" />
+    <ClInclude Include="..\Inc\PacketGate\world_passport_packet.h" />
+    <ClInclude Include="Item\KDropGroupStaticData.h" />
+    <ClInclude Include="Item\KItemDef.h" />
+    <ClInclude Include="Item\KStruct_Item.h" />
+    <ClInclude Include="KMoney.h" />
+    <ClInclude Include="Quest\KQuestArray.h" />
+    <ClInclude Include="Quest\KQuestAttrs.h" />
+    <ClInclude Include="Quest\KQuestCommon.h" />
+    <ClInclude Include="Quest\KQuestPersist.h" />
+    <ClInclude Include="Quest\KQuestSession.h" />
+    <ClInclude Include="Socket\JgVirtualSocket.h" />
+    <ClInclude Include="CommSession\KCommonSession.h" />
+    <ClInclude Include="CommSession\persist_player_sessions.h" />
+    <ClInclude Include="CommSession\tmp_player_sessions.h" />
+    <ClInclude Include="StaticTable\IStaticTabFile.h" />
+    <ClInclude Include="StaticTable\KStaticTabFileManager.h" />
+    <ClInclude Include="Store\KStoreDef.h" />
+    <ClInclude Include="Store\KStoreProduct.h" />
+    <ClInclude Include="Timer\KLogicTimer.h" />
+    <ClInclude Include="ObjectFactory\KIdFactory.h" />
+    <ClInclude Include="ObjectFactory\KObjectFactory.h" />
+    <ClInclude Include="TabConfigDefine\Config1GroupMgrTemplate.h" />
+    <ClInclude Include="TabConfigDefine\Config1KeyMgrTemplate.h" />
+    <ClInclude Include="TabConfigDefine\Config2KeyMgrTemplate.h" />
+    <ClInclude Include="TabConfigDefine\ConfigListMgrTemplate.h" />
+    <ClInclude Include="WorldObject\IAttrSet.h" />
+    <ClInclude Include="WorldObject\ICharacter.h" />
+    <ClInclude Include="WorldObject\IKPlayer.h" />
+    <ClInclude Include="WorldObject\KAttrDefines.h" />
+    <ClInclude Include="WorldObject\KAttrSetCombo.h" />
+    <ClInclude Include="WorldObject\KCharacterAttr.h" />
+    <ClInclude Include="WorldObject\KNickName.h" />
+    <ClInclude Include="WorldObject\KObjectState.h" />
+    <ClInclude Include="WorldObject\KStateDefine.h" />
+    <ClInclude Include="StringManager\KConstStringManager.h" />
+    <ClInclude Include="StringManager\KMsgTanslate.h" />
+    <ClInclude Include="StringManager\KStringManager.h" />
+    <ClInclude Include="KAttrParser.h" />
+    <ClInclude Include="KDBDataStruct.h" />
+    <ClInclude Include="KGlobalFunction.h" />
+    <ClInclude Include="KPacketGateTmpl.h" />
+    <ClInclude Include="KTaskSchedule.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

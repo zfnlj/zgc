@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FBB2C3AA-FF02-4854-945F-A6C6F66CC983}</ProjectGuid>
+    <RootNamespace>zgcwin32</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '10.0'">v100</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '10.0'">v100</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0'">v110</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '11.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v110_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+    <EmbedManifest>false</EmbedManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\cocos2dx;$(ProjectDir)..\..\..\..\cocos2dx\include;$(ProjectDir)..\..\..\..\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\..\cocos2dx\platform\win32;$(ProjectDir)..\..\..\..\cocos2dx\platform\third_party\win32\OGLES;..\Classes;..\Classes\System;..\;$(ProjectDir)..\..\..\..\extensions;$(ProjectDir)..\..\..\..\extensions\CocoStudio\GUI\System;..\Inc;..\CommonLogic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE_SELECT_;_USE_COCOS2DX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>system.lib;SockServer.lib;opengl32.lib;glew32.lib;libcocos2d.lib;libExtensions.lib;CommonLogic.lib;lua.lib;libCocosDenshion.lib;pthreadVCE2.lib;libchipmunk.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);../Lib/Debug</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\..\cocos2dx;$(ProjectDir)..\..\..\..\cocos2dx\include;$(ProjectDir)..\..\..\..\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\..\cocos2dx\platform\win32;$(ProjectDir)..\..\..\..\cocos2dx\platform\third_party\win32\OGLES;..\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;libcocos2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Block\KBlock.cpp" />
+    <ClCompile Include="..\Classes\Block\KBlockBox.cpp" />
+    <ClCompile Include="..\Classes\Block\KBlockBoxManager.cpp" />
+    <ClCompile Include="..\Classes\Block\KBlockGroup.cpp" />
+    <ClCompile Include="..\Classes\Business\KBusinessManager.cpp" />
+    <ClCompile Include="..\Classes\ClientLogic\KToLua.cpp" />
+    <ClCompile Include="..\Classes\ClientLogic\KZGThread.cpp" />
+    <ClCompile Include="..\Classes\CommonLogic\KGatewayMsgDealer.cpp" />
+    <ClCompile Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.cpp" />
+    <ClCompile Include="..\Classes\CommonLogic\KLoginMsgDealer.cpp" />
+    <ClCompile Include="..\Classes\CommonLogic\KMsgDelegateBase.cpp" />
+    <ClCompile Include="..\Classes\common\KClientTabfileLoader.cpp" />
+    <ClCompile Include="..\Classes\common\KCommonObj.cpp" />
+    <ClCompile Include="..\Classes\common\KPlayerRecordAssist.cpp" />
+    <ClCompile Include="..\Classes\common\KStreamWrapper.cpp" />
+    <ClCompile Include="..\Classes\common\KVirtualServerAssist.cpp" />
+    <ClCompile Include="..\Classes\common\OgreDataStream.cpp" />
+    <ClCompile Include="..\Classes\EventSystem\KEventEntity.cpp" />
+    <ClCompile Include="..\Classes\EventSystem\KEventRegistry.cpp" />
+    <ClCompile Include="..\Classes\EventSystem\KEventSystem.cpp" />
+    <ClCompile Include="..\Classes\Facade\FBattleGuy.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleAI.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleCtrlBase.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleDeck.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleGod.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleGuy.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KBattleGuyAttr.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KCardAttr.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KCardInst.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KClientBattleCtrl.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp" />
+    <ClCompile Include="..\Classes\GameRoot.cpp" />
+    <ClCompile Include="..\Classes\Item\KBag.cpp" />
+    <ClCompile Include="..\Classes\Item\KBagManager.cpp" />
+    <ClCompile Include="..\Classes\Item\KItem.cpp" />
+    <ClCompile Include="..\Classes\Item\KItemCreate.cpp" />
+    <ClCompile Include="..\Classes\Item\KUseItem.cpp" />
+    <ClCompile Include="..\Classes\Item\KUseItemAttrs.cpp" />
+    <ClCompile Include="..\Classes\Item\KUseItemManager.cpp" />
+    <ClCompile Include="..\Classes\Item\KUseItemParamParser.cpp" />
+    <ClCompile Include="..\Classes\KAction\AdvExecutor.cpp" />
+    <ClCompile Include="..\Classes\KAction\K3DActionParam.cpp" />
+    <ClCompile Include="..\Classes\KAction\KAction.cpp" />
+    <ClCompile Include="..\Classes\KAction\KActionMgr.cpp" />
+    <ClCompile Include="..\Classes\KAction\KActionStaticMgr.cpp" />
+    <ClCompile Include="..\Classes\KAction\KAffectorAdvExecutor.cpp" />
+    <ClCompile Include="..\Classes\KAction\KAffectorStatic.cpp" />
+    <ClCompile Include="..\Classes\KAction\KAffectorVectExecutor.cpp" />
+    <ClCompile Include="..\Classes\KAction\KSoundStatic.cpp" />
+    <ClCompile Include="..\Classes\KAction\ParallelExecutorContainer.cpp" />
+    <ClCompile Include="..\Classes\KMessageHub\KBattleMsgHub.cpp" />
+    <ClCompile Include="..\Classes\KMessageHub\KGatewayMsgHub.cpp" />
+    <ClCompile Include="..\Classes\KMessageHub\KLoginMsgHub.cpp" />
+    <ClCompile Include="..\Classes\KMessageHub\KMsgHub.cpp" />
+    <ClCompile Include="..\Classes\KMessageHub\KWorldMsgHub.cpp" />
+    <ClCompile Include="..\Classes\KNet\KAppData.cpp" />
+    <ClCompile Include="..\Classes\KNet\KClientGateListener.cpp" />
+    <ClCompile Include="..\Classes\KNet\KNetMsgFacade.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_ChatC.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_ChC.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_Gw.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_LC.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_SC.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketGate_WC.cpp" />
+    <ClCompile Include="..\Classes\KNet\KPacketToString.cpp" />
+    <ClCompile Include="..\Classes\KNet\KSocketDefine.cpp" />
+    <ClCompile Include="..\Classes\KNet\KSocketFacade.cpp" />
+    <ClCompile Include="..\Classes\KNet\KUserData.cpp" />
+    <ClCompile Include="..\Classes\Quest\FQuest.cpp" />
+    <ClCompile Include="..\Classes\Quest\KClientQuestSession.cpp" />
+    <ClCompile Include="..\Classes\Quest\KPlayerQuestManager.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestCustomEvent.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestData_S_i.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestGroup.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestManager.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestNew.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestOperation.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestParamParser.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestTarget.cpp" />
+    <ClCompile Include="..\Classes\Quest\KQuestTimer.cpp" />
+    <ClCompile Include="..\Classes\sqlite\KSqlite.cpp" />
+    <ClCompile Include="..\Classes\sqlite\KUserQuestSql.cpp" />
+    <ClCompile Include="..\Classes\sqlite\KUserSql.cpp" />
+    <ClCompile Include="..\Classes\sqlite\sqlite3.c" />
+    <ClCompile Include="..\Classes\StaticTable\KAbilityStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KCardLayoutStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KGameStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KDeckDefStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KBattleFieldStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KRankStaticMgr.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\StaticData.cpp" />
+    <ClCompile Include="..\Classes\Store\KStoreCreate.cpp" />
+    <ClCompile Include="..\Classes\Store\KStoreManager.cpp" />
+    <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp" />
+    <ClCompile Include="..\Classes\UI\KActor.cpp" />
+    <ClCompile Include="..\Classes\UI\KCardActor.cpp" />
+    <ClCompile Include="..\Classes\UI\KFightAreaPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KGameResultPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KIndicatePanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KJsonDictMgr.cpp" />
+    <ClCompile Include="..\Classes\UI\KMyQuestPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KMyStorePanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KOnHitMgr.cpp" />
+    <ClCompile Include="..\Classes\UI\KResPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KSelectBeginCardPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KShopPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KUIAssist.cpp" />
+    <ClCompile Include="..\Classes\UI\MainMenuScene.cpp" />
+    <ClCompile Include="..\Classes\UI\PlayerGuide.cpp" />
+    <ClCompile Include="..\Classes\UI\ProgressBar.cpp" />
+    <ClCompile Include="..\Classes\UI\StartScene.cpp" />
+    <ClCompile Include="..\Classes\VirtualService.cpp" />
+    <ClCompile Include="..\Classes\WorldObject\KCharacter.cpp" />
+    <ClCompile Include="..\Classes\WorldObject\KMainPlayer.cpp" />
+    <ClCompile Include="..\Classes\WorldObject\KPlayer.cpp" />
+    <ClCompile Include="..\Classes\WorldObject\KWorldObj.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\AppMacros.h" />
+    <ClInclude Include="..\Classes\Block\IBlock.h" />
+    <ClInclude Include="..\Classes\Block\KBlock.h" />
+    <ClInclude Include="..\Classes\Block\KBlockBox.h" />
+    <ClInclude Include="..\Classes\Block\KBlockBoxManager.h" />
+    <ClInclude Include="..\Classes\Block\KBlockGroup.h" />
+    <ClInclude Include="..\Classes\Business\KBusinessManager.h" />
+    <ClInclude Include="..\Classes\ClientLogic\KToLua.h" />
+    <ClInclude Include="..\Classes\ClientLogic\KZGThread.h" />
+    <ClInclude Include="..\Classes\CommonLogic\KGatewayMsgDealer.h" />
+    <ClInclude Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.h" />
+    <ClInclude Include="..\Classes\CommonLogic\KLoginMsgDealer.h" />
+    <ClInclude Include="..\Classes\CommonLogic\KMsgDelegate.h" />
+    <ClInclude Include="..\Classes\CommonLogic\KMsgDelegateBase.h" />
+    <ClInclude Include="..\Classes\common\KClientTabfileLoader.h" />
+    <ClInclude Include="..\Classes\common\KCommonObj.h" />
+    <ClInclude Include="..\Classes\common\KPlayerRecordAssist.h" />
+    <ClInclude Include="..\Classes\common\KStreamWrapper.h" />
+    <ClInclude Include="..\Classes\common\KVirtualServerAssist.h" />
+    <ClInclude Include="..\Classes\common\OgreDataStream.h" />
+    <ClInclude Include="..\Classes\EventSystem\KEventDefine.h" />
+    <ClInclude Include="..\Classes\EventSystem\KEventEntity.h" />
+    <ClInclude Include="..\Classes\EventSystem\keventholder.h" />
+    <ClInclude Include="..\Classes\EventSystem\KEventSystem.h" />
+    <ClInclude Include="..\Classes\Facade\FBattleGuy.h" />
+    <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h" />
+    <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleAI.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleCtrlBase.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleDeck.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleGod.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleGuy.h" />
+    <ClInclude Include="..\Classes\GameLogic\KBattleGuyAttr.h" />
+    <ClInclude Include="..\Classes\GameLogic\KCardAttr.h" />
+    <ClInclude Include="..\Classes\GameLogic\KCardInst.h" />
+    <ClInclude Include="..\Classes\GameLogic\KClientBattleCtrl.h" />
+    <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h" />
+    <ClInclude Include="..\Classes\GameLogic\KGameDef.h" />
+    <ClInclude Include="..\Classes\GameRoot.h" />
+    <ClInclude Include="..\Classes\Inc\KBusinessDefine.h" />
+    <ClInclude Include="..\Classes\Inc\KLogicMsg.h" />
+    <ClInclude Include="..\Classes\Inc\KLuaWrap.h" />
+    <ClInclude Include="..\Classes\Inc\KTypeDef.h" />
+    <ClInclude Include="..\Classes\Item\KBag.h" />
+    <ClInclude Include="..\Classes\Item\KBagManager.h" />
+    <ClInclude Include="..\Classes\Item\KItem.h" />
+    <ClInclude Include="..\Classes\Item\KItemCreate.h" />
+    <ClInclude Include="..\Classes\Item\KUseItem.h" />
+    <ClInclude Include="..\Classes\Item\KUseItemAttrs.h" />
+    <ClInclude Include="..\Classes\Item\KUseItemManager.h" />
+    <ClInclude Include="..\Classes\Item\KUseItemParamParser.h" />
+    <ClInclude Include="..\Classes\KAction\AdvExecutor.h" />
+    <ClInclude Include="..\Classes\KAction\K3DActionParam.h" />
+    <ClInclude Include="..\Classes\KAction\KAction.h" />
+    <ClInclude Include="..\Classes\KAction\KActionElemBase.h" />
+    <ClInclude Include="..\Classes\KAction\KActionMgr.h" />
+    <ClInclude Include="..\Classes\KAction\KActionStaticMgr.h" />
+    <ClInclude Include="..\Classes\KAction\KAffectorAdvExecutor.h" />
+    <ClInclude Include="..\Classes\KAction\KAffectorStatic.h" />
+    <ClInclude Include="..\Classes\KAction\KAffectorVectExecutor.h" />
+    <ClInclude Include="..\Classes\KAction\KSoundStatic.h" />
+    <ClInclude Include="..\Classes\KAction\ParallelExecutorContainer.h" />
+    <ClInclude Include="..\Classes\KMessageHub\KBattleMsgHub.h" />
+    <ClInclude Include="..\Classes\KMessageHub\KGatewayMsgHub.h" />
+    <ClInclude Include="..\Classes\KMessageHub\KLoginMsgHub.h" />
+    <ClInclude Include="..\Classes\KMessageHub\KMsgHub.h" />
+    <ClInclude Include="..\Classes\KMessageHub\KWorldMsgHub.h" />
+    <ClInclude Include="..\Classes\KNet\KAppData.h" />
+    <ClInclude Include="..\Classes\KNet\KClientGateListener.h" />
+    <ClInclude Include="..\Classes\KNet\KNetMsgFacade.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_ChatC.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_ChC.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_Gw.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_LC.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_SC.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketGate_WC.h" />
+    <ClInclude Include="..\Classes\KNet\KPacketToString.h" />
+    <ClInclude Include="..\Classes\KNet\KSocketDefine.h" />
+    <ClInclude Include="..\Classes\KNet\KSocketFacade.h" />
+    <ClInclude Include="..\Classes\KNet\KUserData.h" />
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacket.h" />
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacketGate.h" />
+    <ClInclude Include="..\Classes\KNet\PacketGate\KPacket_Segment_Define.h" />
+    <ClInclude Include="..\Classes\Quest\FQuest.h" />
+    <ClInclude Include="..\Classes\Quest\KClientQuestSession.h" />
+    <ClInclude Include="..\Classes\Quest\KPlayerQuestManager.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestCustomEvent.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestData_S_i.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestDef.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestGroup.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestManager.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestNew.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestOperation.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestParamParser.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestTarget.h" />
+    <ClInclude Include="..\Classes\Quest\KQuestTimer.h" />
+    <ClInclude Include="..\Classes\sqlite\KSqlite.h" />
+    <ClInclude Include="..\Classes\sqlite\KUserQuestSql.h" />
+    <ClInclude Include="..\Classes\sqlite\KUserSql.h" />
+    <ClInclude Include="..\Classes\sqlite\sqlite3.h" />
+    <ClInclude Include="..\Classes\sqlite\sqlite3ext.h" />
+    <ClInclude Include="..\Classes\StaticTable\KAbilityStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KCardLayoutStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KGameStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KDeckDefStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KBattleFieldStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KRankStaticMgr.h" />
+    <ClInclude Include="..\Classes\StaticTable\StaticData.h" />
+    <ClInclude Include="..\Classes\Store\KStoreCreate.h" />
+    <ClInclude Include="..\Classes\Store\KStoreManager.h" />
+    <ClInclude Include="..\Classes\UI\BattleFieldScene.h" />
+    <ClInclude Include="..\Classes\UI\KActor.h" />
+    <ClInclude Include="..\Classes\UI\KCardActor.h" />
+    <ClInclude Include="..\Classes\UI\KFightAreaPanel.h" />
+    <ClInclude Include="..\Classes\UI\KGameResultPanel.h" />
+    <ClInclude Include="..\Classes\UI\KGenCardPanel.h" />
+    <ClInclude Include="..\Classes\UI\KIndicatePanel.h" />
+    <ClInclude Include="..\Classes\UI\KJsonDictMgr.h" />
+    <ClInclude Include="..\Classes\UI\KMyQuestPanel.h" />
+    <ClInclude Include="..\Classes\UI\KMyStorePanel.h" />
+    <ClInclude Include="..\Classes\UI\KOnHitMgr.h" />
+    <ClInclude Include="..\Classes\UI\KResPanel.h" />
+    <ClInclude Include="..\Classes\UI\KSelectBeginCardPanel.h" />
+    <ClInclude Include="..\Classes\UI\KShopPanel.h" />
+    <ClInclude Include="..\Classes\UI\KUIAssist.h" />
+    <ClInclude Include="..\Classes\UI\MainMenuScene.h" />
+    <ClInclude Include="..\Classes\UI\PlayerGuide.h" />
+    <ClInclude Include="..\Classes\UI\ProgressBar.h" />
+    <ClInclude Include="..\Classes\UI\ProgressProtocol.h" />
+    <ClInclude Include="..\Classes\UI\StartScene.h" />
+    <ClInclude Include="..\Classes\VirtualService.h" />
+    <ClInclude Include="..\Classes\WorldObject\KCharacter.h" />
+    <ClInclude Include="..\Classes\WorldObject\KMainPlayer.h" />
+    <ClInclude Include="..\Classes\WorldObject\KPlayer.h" />
+    <ClInclude Include="..\Classes\WorldObject\KWorldObj.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\cocos2dx\proj.win32\cocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\CocosDenshion\proj.win32\CocosDenshion.vcxproj">
+      <Project>{f8edd7fa-9a51-4e80-baeb-860825d2eac6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
