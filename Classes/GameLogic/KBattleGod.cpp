@@ -274,7 +274,7 @@ void KBattleGod::SummonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic
 
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
-	if(pSrc->GetOwner()->DoGuyAbility(pAbility)) return true;
+	if(pSrc->GetOwner()->DoGuyAbility(pSrc,pAbility)) return true;
 	if(pDes && pDes->HasBuf(pAbility)) return false;
 
 	if(pAbility->GetWhat()==KAbilityStatic::what_res_add){
@@ -424,6 +424,8 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 
 	pSrc->m_attr.setSlot(KCardInst::enum_slot_fight);
 	
+	onUseSkillCardEvt(ctrl,guy,pSrc);
+
 	for(KCardAbilityList::iterator it=abilityLst.begin();it!=abilityLst.end();++it){
 		strCardAbilityResult result;
 		KAbilityStatic* pAbility = *it;
@@ -431,7 +433,7 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
-	onUseSkillCardEvt(ctrl,guy,pSrc);
+	
 	return true;
 }
 

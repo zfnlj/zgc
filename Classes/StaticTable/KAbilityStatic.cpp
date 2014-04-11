@@ -137,8 +137,6 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_sp_rate;
 	}else if(strcmp(str,"WHAT_MP_COST")==0){
 		m_what = what_mp_cost;
-	}else if(strcmp(str,"WHAT_REMOVE_BUF")==0){
-		m_what = what_remove_buf;
 	}else if(strcmp(str,"WHAT_ATK_EQU_HP")==0){
 		m_what = what_atk_equ_hp;
 	}else if(strcmp(str,"WHAT_COPY_HAND")==0){

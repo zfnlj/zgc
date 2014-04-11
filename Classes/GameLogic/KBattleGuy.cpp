@@ -196,16 +196,16 @@ void KBattleGuy::AddRes(int val)
 void KBattleGuy::onCardLeaveCtrl(KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_dead);
-	DoGuyAbility(pAbility);
+	DoGuyAbility(card,pAbility);
 }
 
 void KBattleGuy::onCardEnterCtrl(KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
-	DoGuyAbility(pAbility);
+	DoGuyAbility(card,pAbility);
 }
 
-bool KBattleGuy::DoGuyAbility(KAbilityStatic* pAbility)
+bool KBattleGuy::DoGuyAbility(KCardInst* pSrc,KAbilityStatic* pAbility)
 {
 	if(!pAbility) return false;
 	if(pAbility->GetWhich()!=KAbilityStatic::which_owner) return false;
@@ -215,14 +215,17 @@ bool KBattleGuy::DoGuyAbility(KAbilityStatic* pAbility)
 			m_Deck.GenHandCard(pAbility->GetVal());
 		}
 		break;
-	case KAbilityStatic::what_remove_buf:
-		KSkillAssist::_removeBuf(m_bufList,pAbility->GetVal());
-		break;
 	default:
 		m_bufList.push_back(pAbility);
 		break;
 	}
+	if(!pAbility->BufIconEmpty()) pSrc->AddBuf(pAbility);
 	return true;
+}
+
+void KBattleGuy::RemoveGuyAbility(KAbilityStatic* pAbility)
+{
+	KSkillAssist::_removeBuf(m_bufList,pAbility->GetId());
 }
 
 int KBattleGuy::calcHurtVal(int val)

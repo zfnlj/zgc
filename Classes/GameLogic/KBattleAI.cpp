@@ -46,8 +46,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	if(m_thinkElapsed<5)
 		return;
 	m_thinkElapsed = 0;
-	if(UseSkillCard())
-		return;
+	//if(UseSkillCard())
+	//	return;
 	if(HandCardToField())
 		return;
 	//if(UseHeroSkill())

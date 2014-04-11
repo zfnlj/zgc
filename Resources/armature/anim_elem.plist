@@ -20,7 +20,7 @@
             <key>aixin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{132,2},{128,128}}</string>
+                <string>{{2,132},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>anim_curse_dead.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{428,228},{64,64}}</string>
+                <string>{{442,400},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>anim_guider.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,132},{128,128}}</string>
+                <string>{{132,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,11 +72,11 @@
             <key>anim_heal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{392,2},{114,128}}</string>
+                <string>{{2,392},{114,128}}</string>
                 <key>offset</key>
                 <string>{-7,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{114,128}}</string>
                 <key>sourceSize</key>
@@ -85,7 +85,7 @@
             <key>anim_sheep.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{342,254},{104,84}}</string>
+                <string>{{368,132},{104,84}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>buf_abs_def.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{368,132},{32,32}}</string>
+                <string>{{452,336},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>buf_atk_equ_hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{462,328},{32,32}}</string>
+                <string>{{454,132},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -147,10 +147,23 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
+            <key>buf_cost_reduce.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{452,370},{28,30}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{1,1},{28,30}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
             <key>buf_dead_atk.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{462,294},{32,32}}</string>
+                <string>{{454,200},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>buf_gold_shield.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{368,166},{32,32}}</string>
+                <string>{{452,302},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +189,7 @@
             <key>buf_golden_word.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{368,200},{32,32}}</string>
+                <string>{{452,268},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>buf_guider.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{428,328},{32,32}}</string>
+                <string>{{454,166},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +215,7 @@
             <key>buf_strong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{428,294},{32,32}}</string>
+                <string>{{454,234},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,14 +225,27 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
+            <key>cost_reduce.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{342,254},{108,120}}</string>
+                <key>offset</key>
+                <string>{-2,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{8,3},{108,120}}</string>
+                <key>sourceSize</key>
+                <string>{128,128}</string>
+            </dict>
             <key>dead_add_atk.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,392},{114,128}}</string>
+                <string>{{392,2},{114,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{7,0},{114,128}}</string>
                 <key>sourceSize</key>
@@ -228,7 +254,7 @@
             <key>gen_rotate.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{128,128}}</string>
+                <string>{{262,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +293,7 @@
             <key>magic_pain_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{262,2},{128,128}}</string>
+                <string>{{2,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +306,7 @@
             <key>quest3blue.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{428,132},{68,94}}</string>
+                <string>{{372,376},{68,94}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -313,7 +339,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f07f96b9cd7642cd50688782f42bd72e$</string>
+            <string>$TexturePacker:SmartUpdate:8e76c332b349f745adf77c0b56985c2f$</string>
             <key>textureFileName</key>
             <string>anim_elem.png</string>
         </dict>

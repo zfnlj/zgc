@@ -292,11 +292,20 @@ void KCardInst::AddBuf(KAbilityStatic* pBuf)
 
 void KCardInst::DelBuf(KAbilityStatic* pBuf)
 {
+	
 	m_attr.DelBuf(pBuf);
 }
 
 void KCardInst::ClearBuf()
 {
+	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
+		KAbilityStatic* pBuf = *it;
+		if(pBuf->GetWhich()==KAbilityStatic::which_owner){
+			m_Owner->RemoveGuyAbility(pBuf);
+		}
+		it++;
+	}
 	m_attr.clearBuf();
 }
 
@@ -317,6 +326,7 @@ KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_When when)
 
 void KCardInst::onCard2Tomb()
 {
+	ClearBuf();
 	m_attr.setSlot(KCardInst::enum_slot_tomb);
 }
 

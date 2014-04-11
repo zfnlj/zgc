@@ -51,7 +51,6 @@ public:
 		what_return,
 		what_kill,
 		what_guide,
-		what_remove_buf,
 		what_sp_rate,
 		what_atk_equ_hp,
 		what_copy_hand,

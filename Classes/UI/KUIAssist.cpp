@@ -271,7 +271,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 {
 	int idx = ((int)pInst->GetType())*10 + pInst->GetST()->GetRank();
 	KCardLayoutStatic* pLayout = KGameStaticMgr::getSingleton().GetCardLayout(idx);
-	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(11);
+	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pInst->GetType())*10 + 1);
 	UIWidget* ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/card_elem.json");
 
 	UILayout* widgetBg =(UILayout*)ui->getChildByName("bg");

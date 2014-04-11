@@ -11,3 +11,4 @@ armature/atk_equ_hp.json
 armature/clear_buf.json
 armature/ctrlcard.json
 armature/kill.json
+armature/cost_reduce.json
