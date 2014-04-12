@@ -125,7 +125,7 @@ void KCardActor::init(KCardInst* pInst)
 		m_bBack = true;
 	}else{
 		m_ui = KUIAssist::_createCardLayout(pInst,false);
-		UpdateCardAttr(m_ui);
+		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
 	}
@@ -176,7 +176,14 @@ void KCardActor::UpdateCardAttr()
 	if(m_bigPhoto) UpdateCardAttr(m_bigPhoto);
 	if(m_ui) UpdateCardAttr(m_ui);
 }
-void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui)
+void KCardActor::UpdateCardBuf()
+{
+	if(m_ui){
+		KUIAssist::_updateBufIcon(m_ui,m_card);
+	}
+}
+
+void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit)
 {
 	if(!ui) return;
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
@@ -186,7 +193,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui)
 		
 		char info[64]={0};
 		sprintf(info,"%d",m_card->GetHp());
-		if(strcmp(info,labelHp->getStringValue())!=0){
+		if(!bInit && strcmp(info,labelHp->getStringValue())!=0){
 			float oldScale = labelHp->getScale();
 			CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
 			labelHp->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
@@ -194,7 +201,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui)
 		labelHp->setStringValue(info);
 
 		sprintf(info,"%d",m_card->GetAtk());
-		if(strcmp(info,labelAtk->getStringValue())!=0){
+		if(!bInit && strcmp(info,labelAtk->getStringValue())!=0){
 			float oldScale = labelAtk->getScale();
 			CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
 			labelAtk->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
@@ -204,7 +211,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui)
 		labelHp->setVisible(false);
 		labelAtk->setVisible(false);
 	}
-    KUIAssist::_updateBufIcon(ui,m_card);
+
 }
 
 void KCardActor::MoveBack(float speed)

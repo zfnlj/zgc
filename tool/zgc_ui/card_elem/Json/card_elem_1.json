@@ -45,8 +45,8 @@
           "rotation": 0,
           "scaleX": 0.75,
           "scaleY": 0.75,
-          "sizePercentX": 0.853333354,
-          "sizePercentY": 0.6213592,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
           "sizeType": 0,
           "tag": 14,
           "touchAble": false,
@@ -61,7 +61,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -98,8 +98,8 @@
           "rotation": 0,
           "scaleX": 0.75,
           "scaleY": 0.75,
-          "sizePercentX": 0.853333354,
-          "sizePercentY": 0.6213592,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
           "sizeType": 0,
           "tag": 14,
           "touchAble": false,
@@ -114,7 +114,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -151,8 +151,8 @@
           "rotation": 0,
           "scaleX": 0.75,
           "scaleY": 0.75,
-          "sizePercentX": 0.853333354,
-          "sizePercentY": 0.6213592,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
           "sizeType": 0,
           "tag": 14,
           "touchAble": false,
@@ -167,7 +167,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -204,8 +204,8 @@
           "rotation": 0,
           "scaleX": 0.75,
           "scaleY": 0.75,
-          "sizePercentX": 0.853333354,
-          "sizePercentY": 0.6213592,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
           "sizeType": 0,
           "tag": 14,
           "touchAble": false,
@@ -220,7 +220,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -674,7 +674,7 @@
           "tag": 13,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
+          "visible": false,
           "width": 80,
           "x": 75,
           "y": 80,
@@ -684,7 +684,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -727,7 +727,7 @@
           "tag": 12,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
+          "visible": false,
           "width": 80,
           "x": 75,
           "y": 103,
@@ -737,7 +737,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -780,7 +780,7 @@
           "tag": 13,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
+          "visible": false,
           "width": 80,
           "x": 74,
           "y": 1,
@@ -790,7 +790,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },
@@ -827,8 +827,8 @@
           "rotation": 0,
           "scaleX": 0.75,
           "scaleY": 0.75,
-          "sizePercentX": 0.853333354,
-          "sizePercentY": 0.6213592,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
           "sizeType": 0,
           "tag": 14,
           "touchAble": false,
@@ -843,7 +843,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "C:\\Program Files\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
+            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/image.png",
             "plistFile": null,
             "resourceType": 2
           },

@@ -50,10 +50,8 @@ void KActor::Remove(const char* obj)
 
 void KActor::setZOrder(const char* obj,int val)
 {
-	CCNode* node = GetCNode(obj);
-	if(node){
-		node->setZOrder(val);
-	}
+	UIWidget* widget = GetWidget(obj);
+	if(widget) widget->setZOrder(val);
 }
 
 void KActor::ShowEff(CCParticleSystem* emitter,CCPoint* pt)

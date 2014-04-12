@@ -132,7 +132,7 @@ void KBattleGuy::Clear()
 
 void KBattleGuy::QueryResInfo(char* buf)
 {
-	sprintf(buf,"%d",m_attr.getCurRes());
+	sprintf(buf,"%d/%d",m_attr.getCurRes(),m_attr.getMaxRes());
 }
 
 void KBattleGuy::QueryActiveHandCards(KCardInstList* lst)

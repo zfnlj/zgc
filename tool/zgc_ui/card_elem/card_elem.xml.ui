@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\card_elem\card_elem.xml.ui</filePath>
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\card_elem\card_elem.xml.ui</filePath>
   <Version>1.2.0.1</Version>
   <Name>card_elem</Name>
-  <ProjectDir>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\card_elem</ProjectDir>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\card_elem</ProjectDir>
   <JsonFileName>card_elem.json</JsonFileName>
-  <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\card_elem\Resources</Resources>
-  <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zg\tool\zgc_ui\card_elem\Json</JsonFolder>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\card_elem\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\card_elem\Json</JsonFolder>
   <JsonList>
     <string>card_elem_1.json</string>
   </JsonList>

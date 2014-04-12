@@ -16,6 +16,8 @@ public:
 	void UpdateRes();
 private:
 	cocos2d::extension::UILayer* m_layer;
+	CCLabelBMFont* m_myResFont;
+	CCLabelBMFont* m_yourResFont;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

@@ -11,6 +11,23 @@
 
 using namespace System::File;
 
+KCardStatic::CardRace getCardRace(const char* str)
+{
+	if(strcmp(str,"gold")==0){
+		return KCardStatic::race_gold;
+	}else if(strcmp(str,"tree")==0){
+		return KCardStatic::race_tree;
+	}else if(strcmp(str,"water")==0){
+		return KCardStatic::race_water;
+	}else if(strcmp(str,"fire")==0){
+		return KCardStatic::race_fire;
+	}else if(strcmp(str,"mud")==0){
+		return KCardStatic::race_mud;
+	}else{
+		return KCardStatic::race_null;
+	}
+}
+
 void KCardStatic::SetID(int val)
 {
 	m_Id = val;
@@ -264,6 +281,8 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 		fileReader->GetString("Desc", "", pCard->m_Desc, MAX_CARD_DESC_LEN);
 		fileReader->GetString("Detail", "", pCard->m_Detail, MAX_CARD_DETAIL_LEN);
 
+		fileReader->GetString("Race", "", buf, MAX_CARD_NAME);
+		pCard->m_Race = getCardRace(buf);
 		fileReader->GetString("Show", "", buf, MAX_CARD_NAME);
 		if(strlen(buf)>2) strcpy(pCard->m_Show,buf);
 		m_cardMap[id] = pCard;

@@ -19,6 +19,7 @@ public:
 	cocos2d::extension::UIWidget* GetUI();
 	void Remove(const char* obj);
 	virtual void UpdateCardAttr(){}
+	virtual void UpdateCardBuf(){}
 	void Move(const char* obj,const char* slot,float speed);
 	virtual void MoveBack(float speed){}//“∆∂Øªÿ≤€Œª
 	virtual CCAction* FadeIn(const char* obj,float val);

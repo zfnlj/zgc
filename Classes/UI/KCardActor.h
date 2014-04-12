@@ -22,7 +22,7 @@ public:
     virtual void update(float dt);
 	cocos2d::extension::UIWidget* GetUI();
 	virtual void UpdateCardAttr();
-	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*);
+	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bInit=false);
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual void MoveBack(float speed);//“∆∂Øªÿ≤€Œª
 	virtual void ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
@@ -41,6 +41,7 @@ public:
 	bool IsActive();
     virtual KCardInst* GetCard(){ return m_card;}
 	virtual void SummonSelf();
+	virtual void UpdateCardBuf();
 private:
 	void init(KCardInst*);
 	bool DoSelectBeginCard(CCObject* sender);

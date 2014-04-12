@@ -13,3 +13,9 @@
 /tool/zgc_ui/card_elem/Resources/card_elem_PList.Dir
 
 /proj.win32/Debug.win32
+/tool/zgc_ui/battle/Backup
+/tool/zgc_ui/battle/Export
+/tool/zgc_ui/battle/Resources/battle_elem_PList.Dir
+/tool/zgc_ui/battle/Resources/card_elem_PList.Dir
+/tool/zgc_ui/battle/Resources/ui_elem_PList.Dir
+/tool/zgc_ui/card_elem/Backup

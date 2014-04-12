@@ -27,6 +27,15 @@ public:
 		card_equip,  //×°±¸
         card_secret,
 	};
+	enum CardRace{
+		race_null,
+		race_gold,
+		race_tree,
+		race_water,
+		race_fire,
+		race_mud,
+	};
+
 	KCardStatic(){}
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
@@ -37,6 +46,7 @@ public:
 	int GetCost(){return m_Cost;}
 	int GetDef(){ return m_Def;}
 	int GetRank(){ return m_Rank;}
+	int GetRace(){ return m_Race;}
 	CardDef GetType(){ return m_type;}
 	char* GetName(){ return m_Name;}
 	char* GetDesc(){ return m_Desc;}
@@ -50,6 +60,7 @@ private:
 	int m_Cost;
 	int m_Def;
 	int m_Rank;
+	CardRace m_Race;
 	char m_Name[MAX_CARD_NAME];
 	char m_Desc[MAX_CARD_DESC_LEN];
 	char m_Detail[MAX_CARD_DETAIL_LEN];

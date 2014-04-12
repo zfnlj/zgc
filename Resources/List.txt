@@ -1,4 +1,5 @@
 png	plist	anim	frame	interval
+GUI/battle_elem.png	GUI/battle_elem.plist	0	0	0
 GUI/card_elem.png	GUI/card_elem.plist	0	0	0
 GUI/ui_elem.png	GUI/ui_elem.plist	0	0	0
 GUI/title.png	GUI/title.plist	0	0	0
