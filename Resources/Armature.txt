@@ -12,3 +12,4 @@ armature/clear_buf.json
 armature/ctrlcard.json
 armature/kill.json
 armature/cost_reduce.json
+armature/burn_buf.json

@@ -39,7 +39,7 @@ private:
 	bool DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pSrc,KCardInst* pDes);
     bool DoUseSecretCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pSrc);
 	
-	void PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,KCardInst* pCard2);
+	void PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2);
 	void SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int v1,int v2);
 	void SendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	void AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility);

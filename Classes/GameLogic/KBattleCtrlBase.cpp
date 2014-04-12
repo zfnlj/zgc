@@ -597,3 +597,9 @@ void KBattleCtrlBase::onCardSwitchOwner(KCardInst* pSrc,KCardInst* pDes)
 	newOwner->onCardEnterCtrl(pDes);
 	oldOwner->onCardLeaveCtrl(pDes);
 }
+
+FBattleGuy* KBattleCtrlBase::GetCurPlayer()
+{
+	if(!m_CurPlayGuy) return NULL;
+	return m_CurPlayGuy->GetFacade();
+}

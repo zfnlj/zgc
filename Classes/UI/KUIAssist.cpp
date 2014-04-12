@@ -430,3 +430,11 @@ void KUIAssist::_soldierShow(KCardInst* card)
 	if(!actor) return;
 	actor->GetActionMgr().PlayAction(pST->GetShow());
 }
+
+void KUIAssist::_updateCardListBuf(KCardInstList* lst)
+{
+	for(KCardInstList::iterator it=lst->begin();it!=lst->end();++it){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		if(actor) actor->UpdateCardBuf();
+	}
+}

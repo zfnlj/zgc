@@ -107,7 +107,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 
 	pSrc->m_attr.setReady(0);
 	SendDuelResult(ctrl,pSrc,pDes,v2,v1);
-	PostCardDuel(ctrl,pSrc,pDes);
+	PostCardDuel(ctrl,pSrc,v2,pDes,v1);
 	return ret;
 }
 
@@ -126,18 +126,28 @@ void KBattleGod::SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst*
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DUELRESULT,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
 }
 
-void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,KCardInst* pCard2)
+void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2)
 {
-	if(pCard1&& pCard1->GetHp()<=0){
+	if(pCard1 && pCard2){
+		KAbilityStatic* pAbility = pCard1->FindBuf(KAbilityStatic::when_do_damage);
+		if(pAbility && !pCard2->IsDead() && val2<0){
+			DoCardAbility(ctrl,pAbility,pCard1,pCard2);
+		}
+		pAbility = pCard2->FindBuf(KAbilityStatic::when_do_damage);
+		if(pAbility && !pCard1->IsDead() && val1<0){
+			DoCardAbility(ctrl,pAbility,pCard2,pCard1);
+		}
+	}
+	if(pCard1&& pCard1->IsDead()){
 		ctrl->onCard2Tomb(pCard1);
 	}
-	if(pCard2&&pCard2->GetHp()<=0){
+	if(pCard2&&pCard2->IsDead()){
 		ctrl->onCard2Tomb(pCard2);
 	}
-	if(pCard1&& pCard1->GetHp()<=0){
+	if(pCard1&& pCard1->IsDead()){
 		DoCardAbilityOnWhen(ctrl,pCard1,KAbilityStatic::when_dead);
 	}
-	if(pCard2&&pCard2->GetHp()<=0){
+	if(pCard2&&pCard2->IsDead()){
 		DoCardAbilityOnWhen(ctrl,pCard2,KAbilityStatic::when_dead);
 	}
 }
@@ -157,6 +167,7 @@ bool KBattleGod::ProcHeroCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	strCardAbilityResult result;
 	
+	
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pSrc->GetCardId()*10);
 	if(!pAbility){
 		CCAssert(false , "Not Hero ability!");
@@ -166,7 +177,7 @@ bool KBattleGod::ProcHeroCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 		CCAssert(false , "Hero's skill isn't ready!");
 		return false;
 	}
-	if(pPlayer->GetCurRes()<pSrc->GetCost()){
+	if(pPlayer->GetCurRes()<pSrc->GetRealCost()){
 		CCAssert(false , "Need more res!");
 		return false;
 	}
@@ -174,7 +185,7 @@ bool KBattleGod::ProcHeroCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 		return false;
 	}
 	DoCardAbility(ctrl,pAbility,pSrc,pDes);
-	pPlayer->UseRes(pSrc->GetCost());
+	pPlayer->UseRes(pSrc->GetRealCost());
 	pSrc->m_attr.setReady(0);
 	return true;
 }
@@ -329,7 +340,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		{
 			int val = guy->calcHurtVal(pAbility->GetVal());
 			val = pDes->Heal(-val);
-			PostCardDuel(ctrl,pDes,NULL);
+			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s:%d do damage:%d to:%s:%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),val,pDes->GetST()->GetName(),pDes->GetRealId());
 		}

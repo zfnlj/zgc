@@ -19,6 +19,7 @@ public:
 		when_soldier_dead,
 		when_atked,
 		when_use_skill,
+		when_do_damage,
 		when_null,
 	};
 	enum Enum_Which{
@@ -61,6 +62,7 @@ public:
 		what_control,
 		what_get_card,
 		what_mp_cost,
+		what_buf,
 		
 	};
     virtual bool init();

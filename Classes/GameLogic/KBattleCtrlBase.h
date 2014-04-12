@@ -77,6 +77,7 @@ public:
 	KCardInstList* GetCardSet(KCardInst* card);
 	FBattleGuy* GetOtherPlayer();
 	FBattleGuy* GetMainPlayer();
+	FBattleGuy* GetCurPlayer();
 	void* GetWorld(){ return m_world;}
 	bool IsServerSide();
 	bool IsSelectCard(){ return m_bSelectCard;}

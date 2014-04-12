@@ -188,7 +188,9 @@ void BattleFieldScene::onTurnBegin()
 		pBut->setBright(false);
 		m_actor.GetActionMgr().PlayAction("your_turn_begin");
 	}
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCurPlayer();
 	m_resPanel.UpdateRes();
+	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
 }
 
 void BattleFieldScene::RunTest(CCObject* sender)

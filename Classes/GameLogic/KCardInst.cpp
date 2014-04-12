@@ -160,11 +160,22 @@ void KCardInst::EnterFightField(int pos)
 
 void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 {
-	if(FindBuf(KAbilityStatic::what_stun)) return;
-	CardSlot slot = GetSlot();
-	if(slot==KCardInst::enum_slot_fight ||
-		slot==KCardInst::enum_slot_hero){
-		m_attr.setReady(1);
+	if(!FindBuf(KAbilityStatic::what_stun)){
+		CardSlot slot = GetSlot();
+		if(slot==KCardInst::enum_slot_fight ||
+			slot==KCardInst::enum_slot_hero){
+				m_attr.setReady(1);
+		}
+	} 
+	
+	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
+		KAbilityStatic* pBuf = *it;
+		if(!pBuf->IsLoop()){
+			it = m_attr.m_bufList.erase(it);
+		}else{
+			it++;
+		}
 	}
 	onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 }
@@ -459,10 +470,15 @@ int KCardInst::GetAtk()
 
 int KCardInst::GetRealCost()
 {
-	if(GetType()==KCardStatic::card_skill)
+	if(GetType()==KCardStatic::card_skill|| GetType()==KCardStatic::card_hero)
 	{
 		return m_Owner->calcMpCost(GetCost());
 	}else{
 		return GetCost();
 	}
+}
+
+bool KCardInst::IsDead()
+{
+	return GetHp()<=0;
 }

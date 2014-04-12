@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,22004,20002,31025,30007,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,22002,20002,31025,30007,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -419,7 +419,7 @@ void KBattleDeck::QueryActiveHandCards(KCardInstList* lst,int curRes)
 			}
 		}
 		
-		if(pCard->GetCost()<=curRes) lst->push_back(pCard);
+		if(pCard->GetRealCost()<=curRes) lst->push_back(pCard);
 	}
 }
 

@@ -50,6 +50,7 @@ public:
 	void onTurnBegin(KBattleCtrlBase*);     //回合开始
 	void OnTurnEnd();       //回合结束
 	void onCard2Tomb();
+	bool IsDead();
 	int GetHp();
 	void AddHp(int val);
 	int Heal(int val);

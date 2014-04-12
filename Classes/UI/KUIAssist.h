@@ -42,6 +42,7 @@ public:
 	static CCPoint _getScreenCenter();
 	static void _soldierShow(KCardInst* card);
     static void _updateBufIcon(UIWidget* widget , KCardInst* card);
+	static void _updateCardListBuf(KCardInstList* lst);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

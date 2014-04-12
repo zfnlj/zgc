@@ -31,7 +31,7 @@ void KResPanel::UpdateRes()
 		m_myResFont->setAnchorPoint(ccp(0.50f,0.50f));
 		UIWidget* resPanel = m_layer->getWidgetByName("my_res");
 		m_myResFont->setPosition(ccp(0,-6));
-		m_myResFont->setScale(0.9f);
+		m_myResFont->setScale(0.8f);
 		resPanel->addCCNode(m_myResFont);
 	}else{
 		m_myResFont->setString(msg);
@@ -44,7 +44,7 @@ void KResPanel::UpdateRes()
 		m_yourResFont->setAnchorPoint(ccp(0.50f,0.50f));
 		UIWidget* resPanel = m_layer->getWidgetByName("your_res");
 		m_yourResFont->setPosition(ccp(0,-6));
-		m_yourResFont->setScale(0.9f);
+		m_yourResFont->setScale(0.8f);
 		resPanel->addCCNode(m_yourResFont);
 	}else{
 		m_yourResFont->setString(msg);

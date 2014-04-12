@@ -28,6 +28,8 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_soldier_dead;
 	}else if(strcmp(str,"WHEN_ATKED")==0){
 		m_when = when_atked;
+	}else if(strcmp(str,"WHEN_DO_DAMAGE")==0){
+		m_when = when_do_damage;
 	}else if(strcmp(str,"WHEN_DAMAGED")==0){
 		m_when = when_damaged;
 	}else if(strcmp(str,"WHEN_USE_SKILL")==0){
@@ -153,6 +155,8 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_control;
 	}else if(strcmp(str,"WHAT_GET_CARD")==0){
 		m_what = what_get_card;
+	}else if(strcmp(str,"WHAT_BUF")==0){
+		m_what = what_buf;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
