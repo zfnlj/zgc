@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,22002,20006,31001,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,21007,20006,32006,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -574,6 +574,21 @@ KCardInst* KBattleDeck::GetSecret()
 {
     if(m_SecretCardSet.empty()) return NULL;
     return (KCardInst*)m_SecretCardSet.front();
+}
+
+int KBattleDeck::GetEmptyFightSlotNum()
+{
+	int count = 0;
+	bool posFlag[MAX_FIGHT_POS_NUM];
+	memset(posFlag,0,sizeof(posFlag));
+	for(KCardInstList::iterator it=m_FightCardSet.begin();it!=m_FightCardSet.end();++it){
+		KCardInst* card = *it;
+		posFlag[card->m_attr.getPos()]= true;
+	}
+	for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
+		if(posFlag[i]==false) count++;
+	}
+	return count;
 }
 
 int KBattleDeck::GetEmptyFightSlot()

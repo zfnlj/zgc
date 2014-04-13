@@ -76,6 +76,7 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pA
 	case KAbilityStatic::which_u:
 		break;
 	case KAbilityStatic::which_owner:
+	case KAbilityStatic::which_null:
 		break;
 	default:
 		ASSERT(false);

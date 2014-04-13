@@ -276,11 +276,16 @@ void KBattleGod::DrawCard(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 
 void KBattleGod::SummonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
 {
-	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	strSummonCardResult result;
-	result._src = pSrc;
-	result._des = pPlayer->GetDeck().SummonCard(pAbility->GetVal());
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SUMMONCARD,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
+	KBattleGuy* pPlayer = pSrc->GetOwner();
+	strCardAbilityResult result;
+	result.init(pSrc->GetRealId(),pAbility);
+	int emptySlotNum = pPlayer->GetDeck().GetEmptyFightSlotNum();
+	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
+	for(int i=0;i<num;i++){
+		int id = pPlayer->GetDeck().SummonCard(pAbility->GetVal())->GetRealId();
+		result.SetDestVal(id,0);
+	}
+	SendAbilityResult(ctrl,result);
 }
 
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)

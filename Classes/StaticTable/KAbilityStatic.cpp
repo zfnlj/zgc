@@ -98,6 +98,8 @@ void KAbilityStatic::SetWhich(const char* str)
 		m_which = which_u;
 	}else if(strcmp(str,"WHICH_OWNER")==0){
 		m_which = which_owner;
+	}else if(strcmp(str,"WHICH_NULL")==0){
+		m_which = which_null;
 	}else{
 		CCLog("Set Which isn't match!");
 	}

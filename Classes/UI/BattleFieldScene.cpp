@@ -17,7 +17,7 @@
 #include "KOnHitMgr.h"
 #include "../KNet/KUserData.h"
 #include "../KNet/KSocketFacade.h"
-
+#include "KJsonDictMgr.h"
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -123,7 +123,7 @@ cocos2d::extension::UILayer* BattleFieldScene::GetUILayer()
 {
 	if(!m_ui){
 		m_ui =cocos2d::extension::UILayer::create();
-		UIWidget* widgetBattle = GUIReader::shareReader()->widgetFromJsonFile("GUI/battle.json");
+		UIWidget* widgetBattle = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/battle.json");
 		m_ui->addWidget(widgetBattle);
 		m_actor.init(widgetBattle);
 		m_indicatePanel.init(m_ui);
@@ -242,7 +242,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 	if(src){
 		KCardInst* card = src->GetCard();
 		if(src->getBack()){
-			src->UpdateUI();
+			KUIAssist::_updateCard(card);
 		}
 		src->GetActionMgr().PlayAction(&param1);
 	}

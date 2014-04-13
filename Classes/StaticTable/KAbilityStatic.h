@@ -35,6 +35,7 @@ public:
 		which_u,
 		which_owner,
 		which_all,
+		which_null,
 	};
 	enum Enum_What{
 		what_damage,

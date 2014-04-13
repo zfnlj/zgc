@@ -29,3 +29,7 @@
 /tool/studio/clear_buf/Backup
 /tool/studio/clear_buf/Export
 /tool/studio/clear_buf/Resources/anim_elem_PList.Dir
+/tool/zgc_ui/card_elem/Export
+/tool/zgc_ui/select/Export
+/tool/zgc_ui/select/Resources/ui_elem_PList.Dir
+/tool/zgc_ui/select/Backup

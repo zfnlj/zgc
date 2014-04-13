@@ -1074,9 +1074,9 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "GUI/image.png",
-                "plistFile": null,
-                "resourceType": 0
+                "path": "card_back_mini.png",
+                "plistFile": "card_elem.plist",
+                "resourceType": 1
               },
               "scale9Enable": false,
               "scale9Height": 165,
@@ -1127,7 +1127,7 @@
               "capInsetsY": 0,
               "fileName": null,
               "fileNameData": {
-                "path": "card_back_normal.png",
+                "path": "card_back_mini.png",
                 "plistFile": "card_elem.plist",
                 "resourceType": 1
               },
@@ -1859,12 +1859,12 @@
           "colorR": 255,
           "flipX": false,
           "flipY": false,
-          "height": 80,
+          "height": 43,
           "ignoreSize": true,
           "layoutParameter": null,
           "opacity": 255,
           "positionPercentX": 0.490234375,
-          "positionPercentY": 0.676658,
+          "positionPercentY": 0.67578125,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -1875,8 +1875,8 @@
           "tag": 37,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
-          "width": 80,
+          "visible": false,
+          "width": 38,
           "x": 502,
           "y": 519,
           "capInsetsHeight": 0,
@@ -1885,13 +1885,13 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "GUI/image.png",
-            "plistFile": null,
-            "resourceType": 0
+            "path": "atk_icon.png",
+            "plistFile": "card_elem.plist",
+            "resourceType": 1
           },
           "scale9Enable": false,
-          "scale9Height": 80,
-          "scale9Width": 80
+          "scale9Height": 43,
+          "scale9Width": 38
         }
       },
       {
@@ -1912,12 +1912,12 @@
           "colorR": 255,
           "flipX": false,
           "flipY": false,
-          "height": 80,
+          "height": 43,
           "ignoreSize": true,
           "layoutParameter": null,
           "opacity": 255,
           "positionPercentX": 0.4873047,
-          "positionPercentY": 0.388897568,
+          "positionPercentY": 0.388020843,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -1928,8 +1928,8 @@
           "tag": 38,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
-          "width": 80,
+          "visible": false,
+          "width": 38,
           "x": 499,
           "y": 298,
           "capInsetsHeight": 0,
@@ -1938,13 +1938,13 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "GUI/image.png",
-            "plistFile": null,
-            "resourceType": 0
+            "path": "atk_icon.png",
+            "plistFile": "card_elem.plist",
+            "resourceType": 1
           },
           "scale9Enable": false,
-          "scale9Height": 80,
-          "scale9Width": 80
+          "scale9Height": 43,
+          "scale9Width": 38
         }
       },
       {
@@ -1965,12 +1965,12 @@
           "colorR": 255,
           "flipX": false,
           "flipY": false,
-          "height": 80,
+          "height": 43,
           "ignoreSize": true,
           "layoutParameter": null,
           "opacity": 255,
           "positionPercentX": 0.48828125,
-          "positionPercentY": 0.5399392,
+          "positionPercentY": 0.5390625,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -1981,8 +1981,8 @@
           "tag": 39,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
-          "width": 80,
+          "visible": false,
+          "width": 38,
           "x": 500,
           "y": 414,
           "capInsetsHeight": 0,
@@ -1991,13 +1991,13 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "GUI/image.png",
-            "plistFile": null,
-            "resourceType": 0
+            "path": "atk_icon.png",
+            "plistFile": "card_elem.plist",
+            "resourceType": 1
           },
           "scale9Enable": false,
-          "scale9Height": 80,
-          "scale9Width": 80
+          "scale9Height": 43,
+          "scale9Width": 38
         }
       },
       {
@@ -2018,12 +2018,12 @@
           "colorR": 255,
           "flipX": false,
           "flipY": false,
-          "height": 80,
+          "height": 43,
           "ignoreSize": true,
           "layoutParameter": null,
           "opacity": 255,
           "positionPercentX": 0.493164063,
-          "positionPercentY": 0.788637161,
+          "positionPercentY": 0.787760437,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -2034,8 +2034,8 @@
           "tag": 40,
           "touchAble": false,
           "useMergedTexture": false,
-          "visible": true,
-          "width": 80,
+          "visible": false,
+          "width": 38,
           "x": 505,
           "y": 605,
           "capInsetsHeight": 0,
@@ -2044,13 +2044,13 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "GUI/image.png",
-            "plistFile": null,
-            "resourceType": 0
+            "path": "atk_icon.png",
+            "plistFile": "card_elem.plist",
+            "resourceType": 1
           },
           "scale9Enable": false,
-          "scale9Height": 80,
-          "scale9Width": 80
+          "scale9Height": 43,
+          "scale9Width": 38
         }
       }
     ],

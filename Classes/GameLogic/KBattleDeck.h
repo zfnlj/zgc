@@ -62,6 +62,7 @@ public:
 	void SetCurDeckDB(int* cardStore,int* cardDeck);
 	void RemoveCard(KCardInst* card);
     int GetEmptyFightSlot();
+	int GetEmptyFightSlotNum();
 	int GetRndEmptyFightSlot();
 	bool IsEmptyFightSlot(int pos);
 	void RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slot,KCardStatic::CardDef cardDef=KCardStatic::card_null);

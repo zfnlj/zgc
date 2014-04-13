@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="cast">
-  <affect_body> 
-  	<affector class="action" obj="summon_show" tarFlag="1" pre="0" createtime="0" iVal="0" life="1.0" />
-  </affect_body>
-</action>
-
-		

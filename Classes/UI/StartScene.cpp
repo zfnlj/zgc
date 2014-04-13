@@ -14,6 +14,7 @@
 #include "platform/CCFileUtils.h"
 #include "ccMacros.h"
 #include "KUIAssist.h"
+#include "KJsonDictMgr.h"
 //#include "PersonalAudioEngine.h"
 
 USING_NS_CC;
@@ -83,6 +84,8 @@ void StartScene::cacheInit()
 {
 	//KUIAssist::_loadAnimationData("GUI/active_green","active_green",31,0.3);
 	//KUIAssist::_loadAnimationData("GUI/active_red","active_red",31,0.3);
+	KJsonDictMgr::getSingleton().GetJsonDict("GUI/battle.json");
+
 	LoadArmature();
 
 	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("List.txt");
