@@ -154,7 +154,7 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 
 bool KBattleGod::DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when)
 {
-	KAbilityStatic* pAbility = card->FindBuf(when);
+	KAbilityStatic* pAbility = (when==KAbilityStatic::when_enter)? card->FindAbility(when) :card->FindBuf(when);
 	if(pAbility){
 		return DoCardAbility(ctrl,pAbility,card);
 	}else{
@@ -490,7 +490,7 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
     }
 	guy->UseRes(pCard->GetCost());
 	guy->GetDeck().Hand2Fight(pCard,pos);
-	KAbilityStatic* pAbility = pCard->FindBuf(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = pCard->FindAbility(KAbilityStatic::when_enter);
 	bool doAbilityOk = false;
 	if(pAbility){
 		if(pDes){

@@ -38,7 +38,8 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 		KCardActor* cardActor = (KCardActor*)card->getActor();
 		cardActor->GetUI()->setZOrder(50+_getIndexOfCard(lst,card));
 		return base->getWorldPosition();
-	}else if(card->GetSlot()==KCardInst::enum_slot_fight){
+	}else if(card->GetSlot()==KCardInst::enum_slot_fight||
+			card->GetSlot()==KCardInst::enum_slot_hero){
         return base->getWorldPosition();;
     }
 	float realWidth = base->getSize().width*base->getScale();

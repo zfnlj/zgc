@@ -330,12 +330,17 @@ KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_What what)
 
 KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_When when)
 {
-	KCardAbilityList abilityList;
-	KGameStaticMgr::getSingleton().GetAbilityList(getCardId(),abilityList,when);
-	if(!abilityList.empty()) return *(abilityList.begin());
+	//KCardAbilityList abilityList;
+	//KGameStaticMgr::getSingleton().GetAbilityList(getCardId(),abilityList,when);
+	//if(!abilityList.empty()) return *(abilityList.begin());
 
 	KCardAbilityList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
+		KAbilityStatic* pAbility = *it;
+		if(pAbility->GetWhat()==KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetVal());
+			if(pBuf && pBuf->GetWhen()==when) return pBuf;
+		}
 		if((*it)->GetWhen()== when) return *it;
 		it++;
 	}

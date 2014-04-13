@@ -167,16 +167,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 				m_attr.setReady(1);
 		}
 	} 
-	
-	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
-	while(it != m_attr.m_bufList.end()){
-		KAbilityStatic* pBuf = *it;
-		if(!pBuf->IsLoop()){
-			it = m_attr.m_bufList.erase(it);
-		}else{
-			it++;
-		}
-	}
+	m_attr.updateBufList();
 	onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 }
 
@@ -187,7 +178,6 @@ void KCardInst::OnTurnEnd()
 		slot!=KCardInst::enum_slot_hero){
 			return;
 	}
-	m_attr.updateBufList();
 }
 
 void KCardInst::HpDouble()
@@ -328,6 +318,14 @@ bool KCardInst::HasBuf(KAbilityStatic* pBuf)
 KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_What what)
 {
 	return m_attr.FindBuf(what);
+}
+
+KAbilityStatic* KCardInst::FindAbility(KAbilityStatic::Enum_When when)
+{
+	KCardAbilityList abilityList;
+	KGameStaticMgr::getSingleton().GetAbilityList(GetCardId(),abilityList,when);
+	if(abilityList.empty()) return NULL;
+	return *(abilityList.begin());
 }
 
 KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_When when)
