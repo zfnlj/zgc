@@ -51,7 +51,6 @@ public:
 		what_replace,
 		what_return,
 		what_kill,
-		what_guide,
 		what_sp_rate,
 		what_atk_equ_hp,
 		what_copy_hand,
@@ -63,6 +62,9 @@ public:
 		what_get_card,
 		what_mp_cost,
 		what_buf,
+		what_hide,
+		what_dist,
+		what_guide,
 		
 	};
     virtual bool init();

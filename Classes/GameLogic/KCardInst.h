@@ -46,6 +46,7 @@ public:
 //	CC_SYNTHESIZE(CardSlot,m_slot,Slot);
 //	CC_SYNTHESIZE(bool,m_bReady,Ready);//是否就绪，回合开始时战斗牌进入就绪，执行一次攻击或施法，结束就绪
 	void EnterFightField(int pos); //进入战斗区
+	void onSwitchFightField(int pos);
 	void EnterSecretField();
 	void onTurnBegin(KBattleCtrlBase*);     //回合开始
 	void OnTurnEnd();       //回合结束
@@ -60,10 +61,6 @@ public:
 	void HpDouble();
 	KCardStatic* GetST(){ return m_pST;} //牌的静态信息
 	KCardStatic::CardDef GetType(){ return m_pST->GetType();}
-	bool IsGuider(); //护卫
-	bool IsDist();	 //远程
-	bool IsRush();	 //疾行,
-	bool IsHide();	 //迷踪,
 	bool IsActiveDefend();
 	void AddBuf(KAbilityStatic* pBuf);
 	void AddBuf(int id);
@@ -71,7 +68,7 @@ public:
 	void ClearBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
-	KAbilityStatic* FindAbility(KAbilityStatic::Enum_When when);
+	KAbilityStatic* FindStaticAbility(KAbilityStatic::Enum_When when);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
 	KAbilityStatic* GetSecretAbility();

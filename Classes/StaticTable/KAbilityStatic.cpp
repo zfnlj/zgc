@@ -157,6 +157,10 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_get_card;
 	}else if(strcmp(str,"WHAT_BUF")==0){
 		m_what = what_buf;
+	}else if(strcmp(str,"WHAT_HIDE")==0){
+		m_what = what_hide;
+	}else if(strcmp(str,"WHAT_DIST")==0){
+		m_what = what_dist;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}

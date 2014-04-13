@@ -69,7 +69,7 @@ bool KBattleAI::SoldierToAttack()
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardInst* pCard = *it;
 		if(!pCard->m_attr.getReady()) continue;
-		if(pCard->IsDist()){
+		if(pCard->FindBuf(KAbilityStatic::what_dist)){
 			pSelectCard = pCard;
 			break;
 		}

@@ -4,7 +4,7 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "clear_buf",
+      "name": "anim_hide",
       "bone_data": [
         {
           "name": "Layer1",
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "magic_pain_06.png",
+              "name": "anim_hide.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,11 +41,11 @@
   ],
   "animation_data": [
     {
-      "name": "clear_buf",
+      "name": "anim_hide",
       "mov_data": [
         {
           "name": "Animation1",
-          "dr": 46,
+          "dr": 41,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -61,8 +61,8 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
-                  "cX": 0.2,
-                  "cY": 0.2,
+                  "cX": 0.1,
+                  "cY": 1.0,
                   "kX": 0.0,
                   "kY": 0.0,
                   "fi": 0,
@@ -80,15 +80,15 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
-                  "cX": 0.8,
-                  "cY": 0.8,
-                  "kX": 3.14159274,
-                  "kY": -3.14159274,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
                   "fi": 20,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 175,
+                    "a": 255,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -99,11 +99,11 @@
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0,
-                  "cX": 1.6,
-                  "cY": 1.6,
-                  "kX": 9.424778,
-                  "kY": -9.424778,
-                  "fi": 45,
+                  "cX": 4.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 40,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
@@ -122,9 +122,9 @@
   ],
   "texture_data": [
     {
-      "name": "magic_pain_06",
-      "width": 128.0,
-      "height": 128.0,
+      "name": "anim_hide",
+      "width": 62.0,
+      "height": 56.0,
       "pX": 0.5,
       "pY": 0.5,
       "plistFile": "anim_elem.plist"

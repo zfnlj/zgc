@@ -144,17 +144,23 @@ void KCardInst::EnterSecretField()
 	m_attr.setSlot(KCardInst::enum_slot_secret);
 }
 
+void KCardInst::onSwitchFightField(int pos)
+{
+	m_attr.setPos(pos);
+	m_attr.setSlot(KCardInst::enum_slot_fight);
+}
+
 void KCardInst::EnterFightField(int pos)
 {
     m_attr.setPos(pos);
     m_attr.setSlot(KCardInst::enum_slot_fight);
-	if(IsRush()){
-		m_attr.setReady(1);
-	}else{
-		m_attr.setReady(0);
-	}
-	if(IsGuider()){
-		AddBuf(10001);
+	m_attr.setReady(0);
+	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
+	if(pAttr){
+		if(pAttr->IsRush()) m_attr.setReady(1);
+		if(pAttr->IsGuide()) AddBuf(10001);
+		if(pAttr->IsHide()) AddBuf(10002);
+		if(pAttr->IsDist()) AddBuf(10003);
 	}
 }
 
@@ -252,34 +258,6 @@ int KCardInst::GetHp()
 	return m_attr.getCurHp();
 }
 
-bool KCardInst::IsGuider()
-{
-	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
-	if(pAttr && pAttr->IsGuide()) return true;
-	return false;
-}
-
-bool KCardInst::IsDist()
-{
-	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
-	if(pAttr && pAttr->IsDist()) return true;
-	return false;
-}
-
-bool KCardInst::IsRush()
-{
-	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
-	if(pAttr && pAttr->IsRush()) return true;
-	return false;
-}
-
-bool KCardInst::IsHide()
-{
-	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
-	if(pAttr && pAttr->IsHide()) return true;
-	return false;
-}
-
 void KCardInst::AddBuf(int id)
 {
 	KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(id);
@@ -320,7 +298,7 @@ KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_What what)
 	return m_attr.FindBuf(what);
 }
 
-KAbilityStatic* KCardInst::FindAbility(KAbilityStatic::Enum_When when)
+KAbilityStatic* KCardInst::FindStaticAbility(KAbilityStatic::Enum_When when)
 {
 	KCardAbilityList abilityList;
 	KGameStaticMgr::getSingleton().GetAbilityList(GetCardId(),abilityList,when);
@@ -393,7 +371,7 @@ bool KCardInst::IsActiveDefend()
 	switch(GetType()){
 	case KCardStatic::card_soldier:
 		{
-			if(IsHide()) return false;	
+			if(FindBuf(KAbilityStatic::what_hide)) return false;	
 		}
 		break;
 	case KCardStatic::card_hero:

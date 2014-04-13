@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,22002,20003,31025,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,22002,20006,31025,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -132,7 +132,7 @@ void KBattleDeck::GetDefenderSet(KCardInstList* lst)
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		KCardInst* pCard = *it;
-		if(!pCard->IsHide()){
+		if(!pCard->FindBuf(KAbilityStatic::what_hide)){
 			lst->push_back(pCard);
 		}
 	}
@@ -142,7 +142,7 @@ void KBattleDeck::FindFightingGuider(KCardInstList* lst)
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		KCardInst* pCard = *it;
-		if(pCard->IsGuider()){
+		if(pCard->FindBuf(KAbilityStatic::what_guide)){
 			lst->push_back(pCard);
 		}
 	}
@@ -446,7 +446,7 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 	if(pAtk->GetType()==KCardStatic::card_soldier){
 		for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
 			KCardInst* pCard = *it;
-			if(pCard->IsGuider()) lstGuider.push_back(pCard);
+			if(pCard->FindBuf(KAbilityStatic::what_guide)) lstGuider.push_back(pCard);
 			if(pCard->IsActiveDefend()) lstDefender.push_back(pCard);
 		}
 
