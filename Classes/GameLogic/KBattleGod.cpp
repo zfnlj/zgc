@@ -421,6 +421,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		}
 		break;
     default:
+		result->SetDestVal(pDes->GetRealId(),0);
         break;
 	}
 }
@@ -437,10 +438,16 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	
 	onUseSkillCardEvt(ctrl,guy,pSrc);
 
+	bool ret=false;
 	for(KCardAbilityList::iterator it=abilityLst.begin();it!=abilityLst.end();++it){
 		strCardAbilityResult result;
 		KAbilityStatic* pAbility = *it;
-		DoCardAbility(ctrl,pAbility,pSrc,pDes);
+		if(DoCardAbility(ctrl,pAbility,pSrc,pDes)) ret =true;
+	}
+	if(!ret){
+		strCardAbilityResult result;
+		result.init(pSrc->GetRealId(),*abilityLst.begin());
+		SendAbilityResult(ctrl,result);
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);

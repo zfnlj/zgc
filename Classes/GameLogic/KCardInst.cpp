@@ -387,7 +387,7 @@ bool KCardInst::IsActiveDefend()
 
 bool KCardInst::IsTargetLess(KAbilityStatic::Enum_When when)
 {
-	KAbilityStatic* pAbility = FindBuf(when);
+	KAbilityStatic* pAbility = FindStaticAbility(when);
 	if(!pAbility) return false;
 	if(pAbility->IsArea()) return true;
 	if(pAbility->GetWhich()==KAbilityStatic::which_i ||

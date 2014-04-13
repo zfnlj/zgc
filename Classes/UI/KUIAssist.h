@@ -43,6 +43,7 @@ public:
 	static void _soldierShow(KCardInst* card);
     static void _updateBufIcon(UIWidget* widget , KCardInst* card);
 	static void _updateCardListBuf(KCardInstList* lst);
+	static bool _queryScreenPos(const char* name,cocos2d::CCPoint& pt);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

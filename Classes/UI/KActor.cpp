@@ -141,9 +141,8 @@ UIWidget* KActor::GetWidget(const char* obj)
 
 CCPoint KActor::GetDestPosition(K3DActionParam* param,const char* obj,int index)
 {
-	if(strcmp(obj,"screen_center")==0){
-		return KUIAssist::_getScreenCenter();
-	}else if(strcmp(obj,"dest")==0){
+	CCPoint pt;
+	if(strcmp(obj,"dest")==0){
 		KActor* actor =  (KActor*)KUIAssist::_getCardActor(param->_desArr[index]);
 		return actor->GetUI()->getPosition();
 	}else{

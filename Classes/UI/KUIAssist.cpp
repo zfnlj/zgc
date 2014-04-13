@@ -27,6 +27,14 @@ BattleFieldScene* KUIAssist::_getBattleFieldScene()
 	return NULL;
 }
 
+bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
+{
+	UIWidget* obj = MainLayer()->getWidgetByName(name);
+	if(!obj) return false;
+	pt = obj->getWorldPosition();
+	return true;
+}
+
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);

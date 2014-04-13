@@ -14,3 +14,4 @@ armature/kill.json
 armature/cost_reduce.json
 armature/burn_buf.json
 armature/anim_hide.json
+armature/burned_buf.json
