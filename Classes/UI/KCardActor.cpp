@@ -167,7 +167,7 @@ void KCardActor::DoSelect(CCObject* sender)
 	// 只有源才播放选中的火焰
 	if (GameRoot::getSingleton().BattleCtrl().GetCurSelSrc() == m_card->GetRealId())
 	{
-		m_ActionMgr.PlayAction("fire");
+		//m_ActionMgr.PlayAction("fire");
 	}	
 }
 

@@ -36,6 +36,11 @@ void KFightAreaPanel::init(cocos2d::extension::UILayer* layer)
 		m_ActiveSprites[i]->setAnchorPoint(ccp(0.5,0.5));
 		CC_SAFE_RETAIN(m_ActiveSprites[i]);
 	}
+	UIWidget* pClickArea = UIHelper::seekWidgetByName(layer->getRootWidget(),"fight_area_click");
+	if(pClickArea){
+		pClickArea->setTag(-1);
+		pClickArea->addPushDownEvent(this, coco_pushselector(KFightAreaPanel::onClickFightArea));
+	}
 }
 
 void KFightAreaPanel::Show()

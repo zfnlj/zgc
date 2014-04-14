@@ -253,12 +253,15 @@ float KAffectorActionExecutor::Breathe(float frameTime)
 			if(pStatic->GetTarFlag()==KAffectorActionStatic::tar_src){
 				KUIAssist::_createAffectAction(param->SrcID(),pStatic->GetObj(),param,m_action,pStatic->GetIntVal());
 			}else{
+				bool bFound = false;
 				for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
 					int actorId = param->GetDesId(i);
 					if(actorId==0) break;
                     if(!IsTargetFlagMatch(actorId)) continue;;
+					bFound = true;
 					KUIAssist::_createAffectAction(actorId,pStatic->GetObj(),param,m_action,pStatic->GetIntVal());
 				}
+				if(!bFound) m_action->AddFinishedAction(pStatic->GetIntVal());
 			}
 			LimitAlive(0.1f);
 			PlayOver();
@@ -277,7 +280,9 @@ KAffectorIndicateExecutor::KAffectorIndicateExecutor():m_bar(NULL)
 
 KAffectorIndicateExecutor::~KAffectorIndicateExecutor()
 {
+
 	if(m_bar){
+		m_bar->stopAllActions();
 		m_bar->removeFromParent();
 	}
 	m_bar = NULL;
@@ -285,7 +290,7 @@ KAffectorIndicateExecutor::~KAffectorIndicateExecutor()
 
 void KAffectorIndicateExecutor::callbackMissileReach()
 {
-	LimitAlive(0.6f);
+	LimitAlive(0.5f);
 	//KOnHitMgr::getSingleton().OnMissileOnHit(m_param->BulletID());
 }
 void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
