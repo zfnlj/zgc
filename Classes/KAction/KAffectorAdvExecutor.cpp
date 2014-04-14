@@ -1,7 +1,6 @@
 #include "KAffectorAdvExecutor.h"
 #include "../UI/KCardActor.h"
 #include <math.h>
-#include "../UI/KOnHitMgr.h"
 #include "../UI/KUIAssist.h"
 #include "GameRoot.h"
 KAffectorExecutor::KAffectorExecutor()
@@ -190,7 +189,6 @@ void KAffectorMissileExecutor::callbackMissileReach()
 {
 	StopEmitter();
 	LimitAlive(0.1f);
-	//KOnHitMgr::getSingleton().OnMissileOnHit(m_param->BulletID());
 }
 void KAffectorMissileExecutor::OnPlay(K3DActionParam* param)
 {
@@ -291,7 +289,6 @@ KAffectorIndicateExecutor::~KAffectorIndicateExecutor()
 void KAffectorIndicateExecutor::callbackMissileReach()
 {
 	LimitAlive(0.5f);
-	//KOnHitMgr::getSingleton().OnMissileOnHit(m_param->BulletID());
 }
 void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
 {

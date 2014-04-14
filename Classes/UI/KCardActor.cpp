@@ -9,6 +9,7 @@
 #include "BattleFieldScene.h"
 #include "KUIAssist.h"
 #include "KJsonDictMgr.h"
+#include "KClickCardMgr.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -128,6 +129,7 @@ void KCardActor::init(KCardInst* pInst)
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
+		m_ui->addReleaseEvent(this, coco_releaseselector(KCardActor::ReleaseSelect));
 	}
 	m_ActiveRedSprite = KUIAssist::CreateAnimationSprite("active_red");
 	CC_SAFE_RETAIN(m_ActiveRedSprite);
@@ -145,8 +147,14 @@ bool KCardActor::DoSelectBeginCard(CCObject* sender)
 	return true;
 }
 
+void KCardActor::ReleaseSelect(CCObject* sender)
+{
+	KClickCardMgr::getSingleton().onReleaseCard(this);
+}
+
 void KCardActor::DoSelect(CCObject* sender)
 {
+	KClickCardMgr::getSingleton().onClickCard(this);
 	if(DoSelectBeginCard(sender)) return;
 
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
@@ -168,6 +176,7 @@ void KCardActor::DoSelect(CCObject* sender)
 	if (GameRoot::getSingleton().BattleCtrl().GetCurSelSrc() == m_card->GetRealId())
 	{
 		//m_ActionMgr.PlayAction("fire");
+	
 	}	
 }
 
@@ -299,4 +308,22 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 void KCardActor::SummonSelf()
 {
 	KUIAssist::_showCard(m_card);
+}
+
+void KCardActor::OnSelectShow()
+{
+	if(m_card->GetSlot()==KCardInst::enum_slot_hand){
+		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
+		pt.y +=20;
+		Move("",pt,100);
+	}
+	
+}
+
+void KCardActor::OnUnSelectShow()
+{
+	if(m_card->GetSlot()==KCardInst::enum_slot_hand){
+		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
+		Move("",pt,100);
+	}
 }

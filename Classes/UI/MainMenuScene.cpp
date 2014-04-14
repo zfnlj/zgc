@@ -14,7 +14,6 @@
 #include "KUIAssist.h"
 #include "GameRoot.h"
 #include "MainMenuScene.h"
-#include "KOnHitMgr.h"
 #include "../KNet/KUserData.h"
 #include "../KNet/KSocketFacade.h"
 #include "BattleFieldScene.h"

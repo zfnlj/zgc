@@ -21,6 +21,7 @@ public:
 	virtual void UpdateCardAttr(){}
 	virtual void UpdateCardBuf(){}
 	void Move(const char* obj,const char* slot,float speed);
+	void Move(const char* obj,CCPoint& destPt,float fSpeed);
 	virtual void MoveBack(float speed){}//“∆∂Øªÿ≤€Œª
 	virtual CCAction* FadeIn(const char* obj,float val);
 	virtual CCAction* FadeOut(const char* obj,float val);

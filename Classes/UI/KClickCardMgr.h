@@ -13,22 +13,18 @@
 
 #include "System/KType.h"
 #include "System/Singleton.h"
-#include "../KAction/K3DActionParam.h"
 
-#define MAX_On_HIT_NUM 20
-struct K3DActionParam;
+class KCardActor;
 
-class KActionMgr;
-
-
-class KOnHitMgr : public Singleton<KOnHitMgr>
+class KClickCardMgr : public Singleton<KClickCardMgr>
 {
-	K3DActionParam m_onHitArr[MAX_On_HIT_NUM];
 public:
-	KOnHitMgr();
-	~KOnHitMgr();
+	KClickCardMgr();
+	~KClickCardMgr();
 	void init();
-	static KOnHitMgr& getSingleton(void);
-	bool AddOnHitMissile(K3DActionParam*); //增加子弹命中消息，如不在m_atkList中，则返回false
-	void OnMissileOnHit(int id);
+	static KClickCardMgr& getSingleton(void);
+	void onClickCard(KCardActor*);
+	void onReleaseCard(KCardActor*);
+private:
+	KCardActor* m_curActor;
 };

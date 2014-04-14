@@ -55,9 +55,6 @@
     <ClCompile Include="..\Classes\KMessageHub\KMsgHub.cpp">
       <Filter>KMessageHub</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KOnHitMgr.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\KNet\KPacketToString.cpp">
       <Filter>KNet</Filter>
     </ClCompile>
@@ -359,6 +356,9 @@
     <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\KClickCardMgr.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -430,9 +430,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\KMessageHub\KMsgHub.h">
       <Filter>KMessageHub</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KOnHitMgr.h">
-      <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\KNet\KPacketToString.h">
       <Filter>KNet</Filter>
@@ -761,6 +758,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KCardLayoutStatic.h">
       <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KClickCardMgr.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

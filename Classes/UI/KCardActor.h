@@ -28,6 +28,9 @@ public:
 	virtual void ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	void DoSelect(CCObject* sender);
+	void ReleaseSelect(CCObject* sender);
+	void OnSelectShow();
+	void OnUnSelectShow();
 	CC_SYNTHESIZE(bool,m_bBack,Back);
 	void UpdateUI();
 	cocos2d::extension::UIWidget* GetBigCard();

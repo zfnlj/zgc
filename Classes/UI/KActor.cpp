@@ -336,3 +336,25 @@ CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,
 	return emitter;
 }
 
+void KActor::Move(const char* obj,CCPoint& pt,float fSpeed)
+{
+	CCNode* node = GetCNode(obj);
+	CCPoint vTmp = pt - node->getPosition();
+
+	float fDistance = vTmp.getLength();
+	float fTime = fDistance / fSpeed;
+	if(fTime<0.2f) fTime = 0.2f;
+
+	ccBezierConfig bezier;
+	bezier.controlPoint_1 = vTmp*0.05f + node->getPosition();
+	bezier.controlPoint_2 = vTmp*0.95f + node->getPosition();
+	bezier.endPosition = pt;
+
+	//	CCActionInterval*  ActionInter = CCBezierTo::create(fTime, bezier);
+
+	CCActionInterval*  ActionInter = CCSequence::create(
+		CCBezierTo::create(fTime, bezier),
+		CCCallFuncN::create(this, callfuncN_selector(KActor::MoveReached)), 
+		NULL);
+	node->runAction( ActionInter);	
+}

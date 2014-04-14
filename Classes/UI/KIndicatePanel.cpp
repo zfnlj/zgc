@@ -109,10 +109,13 @@ void KIndicatePanel::OnSelectCard(KCardActor* actor)
 	
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("big_photo");
 	if(m_selActor){
+		m_selActor->OnUnSelectShow();
 		//m_selActor->GetActionMgr().PlayAction("photo_fadeout");
 		//m_selActor->GetActionMgr().LimitAlive("fire");
+
 	}
 	if(actor){
+		actor->OnSelectShow();
 		//actor->GetActionMgr().PlayAction("photo_fadein");
 	}
 	m_selActor = actor;
