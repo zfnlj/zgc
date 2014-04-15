@@ -327,12 +327,19 @@ void KActor::RemoveSprite(CCSprite* sprite,const char* obj)
 
 CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,float scale)
 {
-	CCPoint destPt = GetDestPosition(NULL,slot,0);
+	
 	CCParticleSystem* emitter = KParticleCacheMgr::getSingleton().CreateParticle(obj);
 	if(!emitter) return NULL;
 	emitter->setScale(scale);
-	emitter->setPosition(destPt);
-	KUIAssist::MainLayer()->addChild(emitter,zOrder);
+	//UIWidget* widget = UIHelper::seekWidgetByName(m_ui, slot);
+	//if(widget){
+	//	widget->getRenderer()->addChild(emitter,zOrder);
+	//}else{
+		CCPoint destPt = GetDestPosition(NULL,slot,0);
+		emitter->setPosition(destPt);
+		KUIAssist::MainLayer()->addChild(emitter,zOrder);
+	//}
+	
 	return emitter;
 }
 

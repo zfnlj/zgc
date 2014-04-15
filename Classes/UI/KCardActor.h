@@ -53,6 +53,7 @@ private:
 	K3DActionParam m_tombAction;
 	CCSprite* m_ActiveRedSprite;
 	CCSprite* m_ActiveGreenSprite;
+	int m_curSlot;
 	
 };
 

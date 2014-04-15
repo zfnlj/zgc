@@ -42,6 +42,7 @@ public:
 	int GetRealCost();
 	int GetAtk(); //攻击力
 	CardSlot GetSlot(){ return (CardSlot)m_attr.getSlot();}
+	int GetOldSlot(){ return m_attr.getOldSlot();}
 //	
 //	CC_SYNTHESIZE(CardSlot,m_slot,Slot);
 //	CC_SYNTHESIZE(bool,m_bReady,Ready);//是否就绪，回合开始时战斗牌进入就绪，执行一次攻击或施法，结束就绪

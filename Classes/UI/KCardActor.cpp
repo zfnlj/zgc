@@ -162,7 +162,7 @@ void KCardActor::DoSelect(CCObject* sender)
 	//return;
 
 	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();	
-	layer->OnSelectCard(this);
+	//layer->OnSelectSrcCard(this);
 	if(!IsActive()){
 		if(!GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
 			GameRoot::getSingleton().getBattleScene()->onClickBackground(NULL);
@@ -175,6 +175,7 @@ void KCardActor::DoSelect(CCObject* sender)
 	// 只有源才播放选中的火焰
 	if (GameRoot::getSingleton().BattleCtrl().GetCurSelSrc() == m_card->GetRealId())
 	{
+		layer->OnSelectSrcCard(this);
 		//m_ActionMgr.PlayAction("fire");
 	
 	}	
@@ -230,6 +231,11 @@ void KCardActor::MoveBack(float speed)
 	case KCardInst::enum_slot_tomb:
 		{
 			param.init("go_tomb");
+			if(m_card->GetType()==KCardStatic::card_skill){
+				FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(m_card);
+				KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+				KUIAssist::_moveCardSet(lst,"card_move");
+			}
 		}
 		break;
 	default:
@@ -239,6 +245,7 @@ void KCardActor::MoveBack(float speed)
 		break;
 	}
 	m_ActionMgr.CacheImediateAction(param);
+	
 }
 
 void KCardActor::DrawCard()
@@ -312,7 +319,8 @@ void KCardActor::SummonSelf()
 
 void KCardActor::OnSelectShow()
 {
-	if(m_card->GetSlot()==KCardInst::enum_slot_hand){
+	if(m_card->GetSlot()==KCardInst::enum_slot_hand ||
+		m_card->GetSlot()==KCardInst::enum_slot_hero){
 		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
 		pt.y +=20;
 		Move("",pt,100);
@@ -322,7 +330,8 @@ void KCardActor::OnSelectShow()
 
 void KCardActor::OnUnSelectShow()
 {
-	if(m_card->GetSlot()==KCardInst::enum_slot_hand){
+	if(m_card->GetSlot()==KCardInst::enum_slot_hand||
+		m_card->GetSlot()==KCardInst::enum_slot_hero){
 		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
 		Move("",pt,100);
 	}

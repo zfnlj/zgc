@@ -347,3 +347,8 @@ KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_When when)
 	return NULL;
 }
 
+void KCardAttr::setSlot(int slot)
+{ 
+	setAttrValue(ca_oldSlot,getSlot());
+	setAttrValue(ca_slot,slot);
+}

@@ -15,7 +15,8 @@ public:
 
 	void init(cocos2d::extension::UILayer* layer);
 	void Update(float );
-	void OnSelectCard(KCardActor*);
+	void OnSelectSrcCard(KCardActor*);
+	void OnSelectCardOK();
 private:
 	void ActiveArr(KCardInstList* arr,bool bGreen);
 	void DeactiveActor(KCardInstList* actived);

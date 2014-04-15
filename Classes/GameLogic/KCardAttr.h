@@ -26,6 +26,7 @@ public:
 		ca_ready,
 		ca_slot,
         ca_pos,
+		ca_oldSlot,
 		ca_1End
 	};
 
@@ -40,6 +41,7 @@ public:
 		READY		= BIT(6),
 		SLOT		= BIT(7),
         POS         = BIT(8),
+		OLDSLOT		= BIT(9),
 	};
 
 private:
@@ -93,8 +95,9 @@ public: // IAttrSet
     
     int getPos(){ return getAttrValue(ca_pos);}
     void setPos(int pos){setAttrValue(ca_pos, pos);}
-	void setSlot(int slot){ setAttrValue(ca_slot,slot);}
+	void setSlot(int slot);
 	int getSlot(){ return getAttrValue(ca_slot);}
+	int getOldSlot(){ return getAttrValue(ca_oldSlot);}
 	void setMaxHp(int val){setAttrValue(ca_max_hp,val);}
 	int getMaxHp(){ return getAttrValue(ca_max_hp);}
 	void setCurHp(int val){ setAttrValue(ca_cur_hp,val);}

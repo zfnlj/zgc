@@ -165,7 +165,7 @@ void BattleFieldScene::InitTest()
 void BattleFieldScene::onClickBackground(CCObject* sender)
 {
 	GameRoot::getSingleton().BattleCtrl().GetCurOp().Empty();
-	m_indicatePanel.OnSelectCard(NULL);
+	m_indicatePanel.OnSelectSrcCard(NULL);
 	m_indicatePanel.Update(0.0f);
 }
 
@@ -215,7 +215,7 @@ void BattleFieldScene::DoEndTurn(CCObject* sender)
 	}else{
 		KSocketFacade::DoEndTurn();
 	}
-	m_indicatePanel.OnSelectCard(NULL);
+	m_indicatePanel.OnSelectSrcCard(NULL);
 }
 
 void BattleFieldScene::FreshAllCard()
@@ -245,7 +245,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 		}
 		src->GetActionMgr().PlayAction(&param1);
 	}
-	m_indicatePanel.OnSelectCard(NULL);
+	m_indicatePanel.OnSelectCardOK();
 }
 
 void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
@@ -262,7 +262,7 @@ void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 	param.SetDestVal(result->_defender->GetRealId(),result->_val2);
 	m_actor.GetActionMgr().PlayAction(&param);
 
-	m_indicatePanel.OnSelectCard(NULL);
+	m_indicatePanel.OnSelectCardOK();
 }
 
 void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
@@ -309,14 +309,19 @@ void BattleFieldScene::DeactiveMyFightArea()
 void BattleFieldScene::onCardMove(KCardInst* pCard)
 {
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(pCard);
-	KCardInstList* lst = guy->QueryCardSet(pCard->GetSlot());
+	
+	int oldSlot = pCard->GetOldSlot();
 	KCardActor* actor = (KCardActor*)pCard->getActor();
 	if(actor->getBack()&& !GameRoot::getSingleton().BattleCtrl().IsShowBack(pCard)){
 		actor->UpdateUI();
 		m_ui->addWidget(actor->GetUI());
 	}
-	KUIAssist::_moveCardSet(lst,"card_move");
-	KUIAssist::_soldierShow(pCard);
+	if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
+		KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+		KUIAssist::_moveCardSet(lst,"card_move");
+	}
+	actor->GetActionMgr().PlayAction("card_move");
+	KUIAssist::_soldierShow(pCard); // soldier enter fight movie.
 }
 
 void BattleFieldScene::onUseRes()
@@ -324,9 +329,14 @@ void BattleFieldScene::onUseRes()
 	m_resPanel.UpdateRes();
 }
 
-void BattleFieldScene::OnSelectCard(KCardActor* actor)
+void BattleFieldScene::OnSelectSrcCard(KCardActor* actor)
 {
-	m_indicatePanel.OnSelectCard((actor));
+	m_indicatePanel.OnSelectSrcCard((actor));
+}
+
+void BattleFieldScene::OnSelectCardOK()
+{
+	m_indicatePanel.OnSelectCardOK();
 }
 
 void BattleFieldScene::onSummonCard(strSummonCardResult* result)
@@ -337,7 +347,7 @@ void BattleFieldScene::onSummonCard(strSummonCardResult* result)
 	param.init("summon");
 	param.SetDestVal(result->_des->GetRealId(),0);
 	actor->GetActionMgr().PlayAction(&param);
-	m_indicatePanel.OnSelectCard(NULL);
+	OnSelectCardOK();
 }
 
 void BattleFieldScene::onSecret2Tomb(KCardInst* pCard)

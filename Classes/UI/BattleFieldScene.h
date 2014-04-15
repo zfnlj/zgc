@@ -57,11 +57,12 @@ public:
 	void onUseRes();
 
 	void onGameEnd();
-	void OnSelectCard(KCardActor*);
+	void OnSelectSrcCard(KCardActor*);
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();
 
+	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
 private:

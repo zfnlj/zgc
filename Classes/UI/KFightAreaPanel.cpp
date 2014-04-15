@@ -84,7 +84,6 @@ void KFightAreaPanel::onClickFightArea(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
 	int index = pBut->getTag();
-	GameRoot::getSingleton().getBattleScene()->IndicatePanel().OnSelectCard(NULL);
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
 	KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
 	if(!pSrc) return;

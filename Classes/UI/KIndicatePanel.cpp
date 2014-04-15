@@ -103,7 +103,12 @@ void KIndicatePanel::ActiveArr(KCardInstList* lst,bool bGreen)
 	}
 }
 
-void KIndicatePanel::OnSelectCard(KCardActor* actor)
+void KIndicatePanel::OnSelectCardOK()
+{
+	m_selActor = NULL;
+}
+
+void KIndicatePanel::OnSelectSrcCard(KCardActor* actor)
 {
 	if(m_selActor==actor) return;
 	
@@ -112,7 +117,6 @@ void KIndicatePanel::OnSelectCard(KCardActor* actor)
 		m_selActor->OnUnSelectShow();
 		//m_selActor->GetActionMgr().PlayAction("photo_fadeout");
 		//m_selActor->GetActionMgr().LimitAlive("fire");
-
 	}
 	if(actor){
 		actor->OnSelectShow();
