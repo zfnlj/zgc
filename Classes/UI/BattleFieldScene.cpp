@@ -17,6 +17,8 @@
 #include "../KNet/KUserData.h"
 #include "../KNet/KSocketFacade.h"
 #include "KJsonDictMgr.h"
+#include "KClickCardMgr.h"
+
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -65,7 +67,8 @@ bool BattleFieldScene::init()
     {
         return false;
     }
-    
+	registerWithTouchDispatcher();
+
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 

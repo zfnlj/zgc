@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "UI/BattleFieldScene.h"
-
+#include "KTouchDispatcher.h"
 #include "GameRoot.h"
 #include "UI/StartScene.h"
 
@@ -17,6 +17,10 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
+	KTouchDispatcher* pTouchDispatcher = new KTouchDispatcher();
+	pTouchDispatcher->init();
+	pDirector->setTouchDispatcher(pTouchDispatcher);
+
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
@@ -30,6 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 	CCScene *pScene = StartScene::create();
 
+	
 	// run
 	pDirector->runWithScene(pScene);
 

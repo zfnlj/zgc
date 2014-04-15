@@ -96,6 +96,12 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_fadein:
 		if(GetActor()) GetActor()->FadeIn(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal());
 		break;
+	case Affector_fadeinBigCard:
+		if(GetActor()) GetActor()->fadeInBigCard(m_AffectorStatic->GetObj(),mSurviveTime);
+		break;
+	case Affector_fadeoutBigCard:
+		if(GetActor()) GetActor()->fadeOutBigCard(mSurviveTime);
+		break;
 	case Affector_addwidget:
 		if(GetActor()) GetActor()->AddWidget(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot());
 		break;

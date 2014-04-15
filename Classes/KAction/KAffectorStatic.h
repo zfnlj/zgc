@@ -45,6 +45,8 @@ enum AffectorType
 	Affector_action,
 	Affector_draw,
 	Affector_indicate,
+	Affector_fadeinBigCard,
+	Affector_fadeoutBigCard,
 };
 
 

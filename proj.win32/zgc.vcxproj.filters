@@ -359,6 +359,7 @@
     <ClCompile Include="..\Classes\UI\KClickCardMgr.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\KTouchDispatcher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -762,6 +763,7 @@
     <ClInclude Include="..\Classes\UI\KClickCardMgr.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\KTouchDispatcher.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">

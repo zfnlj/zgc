@@ -1,9 +1,6 @@
 #include "KClickCardMgr.h"
 #include "KCardActor.h"
-
-
-#define MAX_ONHIT_MSG   100
-#define MAX_SKILL_ONHIT_MSG 120
+#include "../GameLogic/KCardInst.h"
 
 template<> KClickCardMgr* Singleton<KClickCardMgr>::mSingleton = 0;
 
@@ -31,14 +28,23 @@ void KClickCardMgr::init()
 
 void KClickCardMgr::onClickCard(KCardActor* actor)
 {
-	static int click_count=0;
-	click_count++;
+	if(m_curActor==actor) return;
+	if(m_curActor && actor){
+		K3DActionParam param1;
+		param1.init("bigCard_switch");
+		param1._srcID = m_curActor->GetCard()->GetRealId();
+		param1.SetDestVal(actor->GetCard()->GetRealId(),0);
+		actor->GetActionMgr().PlayAction(&param1);
+	}else{
+		actor->GetActionMgr().PlayAction("bigCard_show");
+	}
 	m_curActor = actor;
 }
 
-void KClickCardMgr::onReleaseCard(KCardActor* actor)
+void KClickCardMgr::onTouchEnd()
 {
-	if(m_curActor==actor){
-		int kk=0;
-	}
+	/*if(m_curActor){
+		m_curActor->GetActionMgr().PlayAction("bigCard_hide");
+		m_curActor = NULL;
+	}*/
 }

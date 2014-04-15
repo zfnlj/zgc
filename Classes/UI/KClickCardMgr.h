@@ -24,7 +24,7 @@ public:
 	void init();
 	static KClickCardMgr& getSingleton(void);
 	void onClickCard(KCardActor*);
-	void onReleaseCard(KCardActor*);
+	void onTouchEnd();
 private:
 	KCardActor* m_curActor;
 };

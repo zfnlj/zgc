@@ -54,6 +54,8 @@ public:
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	virtual KCardInst* GetCard(){ return NULL;}
+	virtual void fadeInBigCard(const char* slot,float elapsed){}
+	virtual void fadeOutBigCard(float elapsed){}
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;

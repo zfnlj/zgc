@@ -28,7 +28,7 @@ public:
 	virtual void ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	void DoSelect(CCObject* sender);
-	void ReleaseSelect(CCObject* sender);
+	void onMoveEvent(CCObject* sender);
 	void OnSelectShow();
 	void OnUnSelectShow();
 	CC_SYNTHESIZE(bool,m_bBack,Back);
@@ -45,6 +45,10 @@ public:
     virtual KCardInst* GetCard(){ return m_card;}
 	virtual void SummonSelf();
 	virtual void UpdateCardBuf();
+
+	virtual void fadeInBigCard(const char* slot,float elapsed);
+	virtual void fadeOutBigCard(float elapsed);
+	void RemoveSceneBigCard();
 private:
 	void init(KCardInst*);
 	bool DoSelectBeginCard(CCObject* sender);

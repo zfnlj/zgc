@@ -129,7 +129,7 @@ void KCardActor::init(KCardInst* pInst)
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
-		m_ui->addReleaseEvent(this, coco_releaseselector(KCardActor::ReleaseSelect));
+		m_ui->addMoveEvent(this, coco_moveselector(KCardActor::onMoveEvent));
 	}
 	m_ActiveRedSprite = KUIAssist::CreateAnimationSprite("active_red");
 	CC_SAFE_RETAIN(m_ActiveRedSprite);
@@ -147,11 +147,10 @@ bool KCardActor::DoSelectBeginCard(CCObject* sender)
 	return true;
 }
 
-void KCardActor::ReleaseSelect(CCObject* sender)
+void KCardActor::onMoveEvent(CCObject* sender)
 {
-	KClickCardMgr::getSingleton().onReleaseCard(this);
+	int kk=0;
 }
-
 void KCardActor::DoSelect(CCObject* sender)
 {
 	KClickCardMgr::getSingleton().onClickCard(this);
@@ -165,8 +164,9 @@ void KCardActor::DoSelect(CCObject* sender)
 	//layer->OnSelectSrcCard(this);
 	if(!IsActive()){
 		if(!GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
+			int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
 			GameRoot::getSingleton().getBattleScene()->onClickBackground(NULL);
-			DoSelect(sender);
+			if(srcID != m_card->GetRealId()) DoSelect(sender);
 		}
 		return;
 	}
@@ -335,4 +335,31 @@ void KCardActor::OnUnSelectShow()
 		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
 		Move("",pt,100);
 	}
+}
+
+void KCardActor::fadeInBigCard(const char* slot,float elapsed)
+{
+	cocos2d::extension::UIWidget* bigCard = GetBigCard();
+	if(!bigCard->getParent()) KUIAssist::MainLayer()->addWidget(bigCard);
+	bigCard->setScaleX(0.1f);
+	bigCard->setScaleY(1.0f);
+	CCActionInterval*  actionTo = CCScaleTo::create(elapsed, 1.0f, 1.0f);
+	bigCard->runAction( CCSequence::create(actionTo, NULL, NULL));
+
+	CCPoint pt = GetDestPosition(NULL,slot,0);
+	bigCard->setPosition(pt);
+}
+
+void KCardActor::fadeOutBigCard(float elapsed)
+{
+	cocos2d::extension::UIWidget* bigCard = GetBigCard();
+	CCActionInterval*  actionTo = CCScaleTo::create(elapsed, 0.1f, 1.0f);
+	CCCallFunc * funcall= CCCallFunc::create(this, callfunc_selector(KCardActor::RemoveSceneBigCard));
+	bigCard->runAction( CCSequence::create(actionTo, funcall, NULL));
+}
+
+void KCardActor::RemoveSceneBigCard()
+{
+	cocos2d::extension::UIWidget* bigCard = GetBigCard();
+	bigCard->removeFromParent();
 }
