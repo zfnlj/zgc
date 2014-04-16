@@ -3,9 +3,7 @@ GUI/battle_elem.png	GUI/battle_elem.plist	0	0	0
 GUI/card_elem.png	GUI/card_elem.plist	0	0	0
 GUI/ui_elem.png	GUI/ui_elem.plist	0	0	0
 GUI/title.png	GUI/title.plist	0	0	0
-anim/active_red.png	anim/active_red.plist	active_red	31	0.2
-anim/active_green.png	anim/active_green.plist	active_green	31	0.2
+anim/active_red.png	anim/active_red.plist	active_red	19	0.2
+anim/active_green.png	anim/active_green.plist	active_green	19	0.2
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0
-armature/anim_elem2.png	armature/anim_elem2.plist	0	0	0
-

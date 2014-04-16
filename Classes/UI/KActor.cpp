@@ -350,7 +350,7 @@ void KActor::Move(const char* obj,CCPoint& pt,float fSpeed)
 
 	float fDistance = vTmp.getLength();
 	float fTime = fDistance / fSpeed;
-	if(fTime<0.2f) fTime = 0.2f;
+	if(fTime<0.1f) fTime = 0.1f;
 
 	ccBezierConfig bezier;
 	bezier.controlPoint_1 = vTmp*0.05f + node->getPosition();

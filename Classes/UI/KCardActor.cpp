@@ -51,7 +51,7 @@ void KCardActor::ActiveGreen()
 	if(!m_ActiveGreenSprite->getParent()) m_ui->addRenderer(m_ActiveGreenSprite,100);
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
 	m_ActiveGreenSprite->setPosition(pt);
-	m_ActiveGreenSprite->setScale(1.25f);
+	m_ActiveGreenSprite->setScale(1.02f);
 	m_ui->removeRenderer(m_ActiveRedSprite,false);
 }
 
@@ -60,7 +60,7 @@ void KCardActor::ActiveRed()
 	if(!m_ActiveRedSprite->getParent()) m_ui->addRenderer(m_ActiveRedSprite,100);
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
 	m_ActiveRedSprite->setPosition(pt);
-	m_ActiveRedSprite->setScale(1.25f);
+	m_ActiveRedSprite->setScale(1.02f);
 	m_ui->removeRenderer(m_ActiveGreenSprite,false);
 }
 
@@ -166,7 +166,11 @@ void KCardActor::DoSelect(CCObject* sender)
 		if(!GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
 			int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
 			GameRoot::getSingleton().getBattleScene()->onClickBackground(NULL);
-			if(srcID != m_card->GetRealId()) DoSelect(sender);
+			if(srcID != m_card->GetRealId()){
+				GameRoot::getSingleton().BattleCtrl().DoSelectCard(m_card);
+				layer->OnSelectSrcCard(this);
+				//DoSelect(sender);
+			}
 		}
 		return;
 	}
@@ -323,7 +327,7 @@ void KCardActor::OnSelectShow()
 		m_card->GetSlot()==KCardInst::enum_slot_hero){
 		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
 		pt.y +=20;
-		Move("",pt,100);
+		Move("",pt,200);
 	}
 	
 }
@@ -333,7 +337,7 @@ void KCardActor::OnUnSelectShow()
 	if(m_card->GetSlot()==KCardInst::enum_slot_hand||
 		m_card->GetSlot()==KCardInst::enum_slot_hero){
 		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
-		Move("",pt,100);
+		Move("",pt,200);
 	}
 }
 

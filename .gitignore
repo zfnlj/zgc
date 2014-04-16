@@ -33,3 +33,6 @@
 /tool/zgc_ui/select/Export
 /tool/zgc_ui/select/Resources/ui_elem_PList.Dir
 /tool/zgc_ui/select/Backup
+/tool/studio/secret_enter/Export
+/tool/studio/secret_enter/Backup
+/tool/studio/secret_enter/Resources/ui_elem_PList.Dir

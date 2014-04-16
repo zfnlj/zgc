@@ -248,7 +248,16 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 			KUIAssist::_updateCard(card);
 		}
 		src->GetActionMgr().PlayAction(&param1);
+
+		int oldSlot = card->GetOldSlot();
+		if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
+			FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
+			KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+			KUIAssist::_moveCardSet(lst,"card_move");
+		}
+
 	}
+	
 	m_indicatePanel.OnSelectCardOK();
 }
 
@@ -370,4 +379,9 @@ void BattleFieldScene::onUseSecretCard(KCardInst* card)
 {
 	KCardActor* actor = (KCardActor*)card->getActor();
 	actor->GetActionMgr().PlayAction("secret_use");
+
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
+	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+	KUIAssist::_moveCardSet(lst,"card_move");
+
 }

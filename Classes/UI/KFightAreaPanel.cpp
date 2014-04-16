@@ -33,6 +33,7 @@ void KFightAreaPanel::init(cocos2d::extension::UILayer* layer)
 		pBut->addPushDownEvent(this, coco_pushselector(KFightAreaPanel::onClickFightArea));
 		m_ActiveSprites[i] = KUIAssist::CreateAnimationSprite("active_green");
 		m_ActiveSprites[i]->setPosition(pBut->getWorldPosition());
+		m_ActiveSprites[i]->setScale(0.8f);
 		m_ActiveSprites[i]->setAnchorPoint(ccp(0.5,0.5));
 		CC_SAFE_RETAIN(m_ActiveSprites[i]);
 	}
