@@ -73,10 +73,10 @@ void KNetMsgFacade::onCard2Tomb(int realId)
 
 void KNetMsgFacade::onBattleSummonCard(int src,int des)
 {
-	strSummonCardResult result;
+	/*strSummonCardResult result;
 	result._src = GameRoot::getSingleton().BattleCtrl().GetCard(src);
 	result._des = GameRoot::getSingleton().BattleCtrl().GetCard(des);
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SUMMONCARD,(unsigned long long)&result,0);
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SUMMONCARD,(unsigned long long)&result,0);*/
 }
 
 void KNetMsgFacade::onStoreAddProduct(const void* pData,int len)

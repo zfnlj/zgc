@@ -364,3 +364,35 @@ void KCardActor::RemoveSceneBigCard()
 	cocos2d::extension::UIWidget* bigCard = GetBigCard();
 	bigCard->removeFromParent();
 }
+
+void KCardActor::addWidget(const char* obj)
+{
+	UIWidget* widget = NULL;
+	
+	if(strcmp(obj,"bigcard")==0){
+		widget = GetBigCard();	
+	}
+	else if(strcmp(obj,"card")==0){
+		widget = m_ui;
+	}
+	if(widget) KUIAssist::MainLayer()->addWidget(widget);
+}
+
+void KCardActor::delWidget(const char* obj)
+{
+	UIWidget* widget = NULL;
+	if(strcmp(obj,"bigcard")==0){
+		widget = GetBigCard();	
+	}
+	else if(strcmp(obj,"card")==0){
+		widget = m_ui;
+	}
+	if(widget) KUIAssist::MainLayer()->removeWidget(widget);
+}
+
+void KCardActor::updateSecret()
+{
+	KCardInstList* cardLst = m_card->GetOwner()->QueryCardSet(KCardInst::enum_slot_secret);
+	bool bMy  = GameRoot::getSingleton().BattleCtrl().GetMainPlayer()== m_card->GetOwner()->GetFacade();
+	KUIAssist::_updateSecretIcon(bMy,cardLst);
+}

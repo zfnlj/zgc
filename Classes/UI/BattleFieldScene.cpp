@@ -366,3 +366,8 @@ void BattleFieldScene::onGameEnd()
 	m_gameResultPanel.ShowPanel(result,KGameResultPanel::enum_panel_game);
 }
 
+void BattleFieldScene::onUseSecretCard(KCardInst* card)
+{
+	KCardActor* actor = (KCardActor*)card->getActor();
+	actor->GetActionMgr().PlayAction("secret_use");
+}

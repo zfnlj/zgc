@@ -849,19 +849,6 @@
                 <key>sourceSize</key>
                 <string>{70,39}</string>
             </dict>
-            <key>t_60003.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{127,29},{106,29}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{5,2},{106,29}}</string>
-                <key>sourceSize</key>
-                <string>{116,33}</string>
-            </dict>
             <key>t_60004.png</key>
             <dict>
                 <key>frame</key>
@@ -875,6 +862,19 @@
                 <key>sourceSize</key>
                 <string>{134,40}</string>
             </dict>
+            <key>t_62001.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{127,29},{106,29}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{5,2},{106,29}}</string>
+                <key>sourceSize</key>
+                <string>{116,33}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -885,7 +885,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:dec43b421cb166a0f23e730191f79db0$</string>
+            <string>$TexturePacker:SmartUpdate:1e5c2334c6a710e2c37a4e6faf7e8ac1$</string>
             <key>textureFileName</key>
             <string>title.png</string>
         </dict>

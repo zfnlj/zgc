@@ -49,6 +49,7 @@ public:
 		what_res_add,
 		what_draw_card,
 		what_summon,
+		what_summon_guider,
 		what_replace,
 		what_return,
 		what_kill,

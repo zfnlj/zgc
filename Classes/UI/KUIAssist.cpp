@@ -289,8 +289,8 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	UIImageView* widgetMask =(UIImageView*)ui->getChildByName("card_mask");
 	if(widgetMask) widgetMask->loadTexture(pLayout->GetMask(),UI_TEX_TYPE_PLIST);
 	
+	char sz[24];
 	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("title");
-	char sz[16];
 	sprintf(sz,"t_%d.png",pInst->GetCardId());
 	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
 
@@ -404,6 +404,25 @@ KCardActor* KUIAssist::_getCardActor(int realId)
 	 KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
 	 if(!card) return NULL;
 	 return (KCardActor*)card->getActor();
+}
+
+void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
+{
+	UIWidget* panel = MainLayer()->getRootWidget();
+
+	for(int i=0;i<MAX_SECRET_POS_NUM;i++){
+		UIWidget* widget = GetIndexWidget(panel,(bMy)?"my_secret_slot":"your_secret_slot",i);
+		if(widget) widget->setVisible(false);
+	}
+	for(KCardInstList::iterator it=lst->begin();it!=lst->end();++it){
+		KCardInst* card = *it;
+		const char* widgetName = card->GetBasePosName(bMy);
+		UIWidget* widget = UIHelper::seekWidgetByName(panel,widgetName);
+		if(widget){
+			widget->setTag(card->GetRealId());
+			widget->setVisible(true);
+		}
+	}
 }
 
 void KUIAssist::_updateBufIcon(UIWidget* panel , KCardInst* card)

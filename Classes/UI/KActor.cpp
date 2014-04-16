@@ -167,7 +167,7 @@ CCAction* KActor::Scale(const char* obj,float val,float elapse)
 		node->setScale(val);
 		return NULL;
 	}else{
-		CCActionInterval*  actionBy = CCScaleBy::create(elapse, val/oldScale, val/oldScale);
+		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, val);
 		node->runAction( CCSequence::create(actionBy, NULL, NULL));
 		return actionBy;
 	}

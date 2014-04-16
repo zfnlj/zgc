@@ -99,8 +99,17 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_fadeinBigCard:
 		if(GetActor()) GetActor()->fadeInBigCard(m_AffectorStatic->GetSlot(),mSurviveTime);
 		break;
+	case Affector_updateSecret:
+		if(GetActor()) GetActor()->updateSecret();
+		break;
 	case Affector_fadeoutBigCard:
 		if(GetActor()) GetActor()->fadeOutBigCard(mSurviveTime);
+		break;
+	case Affector_addWidget:
+		if(GetActor()) GetActor()->addWidget(m_AffectorStatic->GetObj());
+		break;
+	case Affector_delWidget:
+		if(GetActor()) GetActor()->delWidget(m_AffectorStatic->GetObj());
 		break;
 	case Affector_addwidget:
 		if(GetActor()) GetActor()->AddWidget(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot());

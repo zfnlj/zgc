@@ -47,6 +47,9 @@ enum AffectorType
 	Affector_indicate,
 	Affector_fadeinBigCard,
 	Affector_fadeoutBigCard,
+	Affector_addWidget,
+	Affector_delWidget,
+	Affector_updateSecret,
 };
 
 

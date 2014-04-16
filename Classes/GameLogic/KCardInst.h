@@ -48,7 +48,7 @@ public:
 //	CC_SYNTHESIZE(bool,m_bReady,Ready);//是否就绪，回合开始时战斗牌进入就绪，执行一次攻击或施法，结束就绪
 	void EnterFightField(int pos); //进入战斗区
 	void onSwitchFightField(int pos);
-	void EnterSecretField();
+	void EnterSecretField(int pos);
 	void onTurnBegin(KBattleCtrlBase*);     //回合开始
 	void OnTurnEnd();       //回合结束
 	void onCard2Tomb();

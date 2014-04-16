@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,21007,20006,32011,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,21007,20006,62001,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -183,13 +183,11 @@ void KBattleDeck::Fight2Hand(KCardInst* card)
 	//KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,card->GetRealId(),(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
-void KBattleDeck::Hand2Secret(KCardInst* card)
+void KBattleDeck::Hand2Secret(KCardInst* card,int pos)
 {
-	card->EnterSecretField();
+	card->EnterSecretField(pos);
 	updateCardSlot(card);
-
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,card->GetRealId(),(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
-
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_USE_SECRET,card->GetRealId(),(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
 void KBattleDeck::Hand2Fight(KCardInst* pCard)
@@ -645,4 +643,19 @@ void KBattleDeck::RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slo
 {
 	KCardInstList* src = QueryCardSet(slot);
 	_rndPickCard(*src,lst,num,cardDef);
+}
+
+int KBattleDeck::GetEmptySecretSlot()
+{
+    bool posFlag[MAX_SECRET_POS_NUM];
+    memset(posFlag,0,sizeof(posFlag));
+    for(KCardInstList::iterator it=m_SecretCardSet.begin();it!=m_SecretCardSet.end();++it){
+		KCardInst* card = *it;
+        posFlag[card->m_attr.getPos()]= true;
+	}
+    for(int i=0;i<MAX_SECRET_POS_NUM;i++){
+        if(posFlag[i]==false) return i;
+    }
+    return -1;
+    
 }

@@ -129,6 +129,8 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_draw_card;
 	}else if(strcmp(str,"WHAT_SUMMON")==0){
 		m_what = what_summon;
+	}else if(strcmp(str,"WHAT_SUMMON_GUIDER")==0){
+		m_what = what_summon_guider;
 	}else if(strcmp(str,"WHAT_REPLACE")==0){
 		m_what = what_replace;
 	}else if(strcmp(str,"WHAT_RETURN")==0){

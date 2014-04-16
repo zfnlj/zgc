@@ -56,6 +56,9 @@ public:
 	virtual KCardInst* GetCard(){ return NULL;}
 	virtual void fadeInBigCard(const char* slot,float elapsed){}
 	virtual void fadeOutBigCard(float elapsed){}
+	virtual void addWidget(const char* obj){}
+	virtual void delWidget(const char* obj){}
+	virtual void updateSecret(){}
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;

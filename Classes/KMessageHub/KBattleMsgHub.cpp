@@ -182,3 +182,13 @@ void KBattleMsgHub::GameEnd(unsigned long long Param1, unsigned long long Param2
 	KWorldFacade::onGameEnd((KBattleGuy*)Param1,(KWorld*)Param2);
 #endif
 }
+
+void KBattleMsgHub::UseSecret(unsigned long long Param1, unsigned long long Param2)
+{
+#ifdef _USE_COCOS2DX
+	KCardInst* pCard = GameRoot::getSingleton().BattleCtrl().GetCard(Param1);
+	GameRoot::getSingleton().getBattleScene()->onUseSecretCard(pCard);
+#else
+	
+#endif
+}

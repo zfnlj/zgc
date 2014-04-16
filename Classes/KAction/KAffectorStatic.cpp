@@ -133,10 +133,14 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_action;
 	}else if ( strcmp(szName,"fadeinBigCard") == 0 ){
 		eType = Affector_fadeinBigCard;
-	}
-	else if ( strcmp(szName,"fadeoutBigCard") == 0 ){
+	}else if ( strcmp(szName,"fadeoutBigCard") == 0 ){
 		eType = Affector_fadeoutBigCard;
-
+	}else if ( strcmp(szName,"addWidget") == 0 ){
+		eType = Affector_addWidget;
+	}else if ( strcmp(szName,"delWidget") == 0 ){
+		eType = Affector_delWidget;
+	}else if ( strcmp(szName,"updateSecret") == 0 ){
+		eType = Affector_updateSecret;
 	}else if ( strcmp(szName,"null") == 0 ){
 		eType = Affector_null;
 	}

@@ -5,6 +5,7 @@
 #include "KGameDef.h"
 
 #define MAX_FIGHT_POS_NUM 5
+#define MAX_SECRET_POS_NUM 3
 
 class KCardInst;
 class KBattleGuy;
@@ -36,7 +37,7 @@ public:
 	bool AddCard(KCardInstList* list, KCardInst*);
 	void Hand2Fight(KCardInst* pCard);
 	void Hand2Fight(KCardInst* pCard,int pos);
-	void Hand2Secret(KCardInst* card);
+	void Hand2Secret(KCardInst* card,int pos);
 	void Hand2Tomb(KCardInst* pCard);
 	void Fight2Hand(KCardInst* card);
 	KCardInst* SummonCard(int id);
@@ -65,13 +66,14 @@ public:
 	int GetEmptyFightSlotNum();
 	int GetRndEmptyFightSlot();
 	bool IsEmptyFightSlot(int pos);
+	int GetEmptySecretSlot();
 	void RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slot,KCardStatic::CardDef cardDef=KCardStatic::card_null);
 	void GenHandCard(int id);
 private:
 	KCardInstList m_HeroCardSet;
-	KCardInstList	m_HandCardSet;	//手牌
-	KCardInstList	m_FightCardSet;	//场上牌
-	KCardInstList	m_EquipCardSet; //装备牌
+	KCardInstList m_HandCardSet;	//手牌
+	KCardInstList m_FightCardSet;	//场上牌
+	KCardInstList m_EquipCardSet; //装备牌
 	KCardInstList m_SlotCardSet;  //卡槽牌
 	KCardInstList m_TombCardSet;  //坟场牌
     KCardInstList m_SecretCardSet;

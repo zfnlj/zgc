@@ -139,8 +139,9 @@ void KCardInst::releaseActor()
 
 #endif
 
-void KCardInst::EnterSecretField()
+void KCardInst::EnterSecretField(int pos)
 {
+	m_attr.setPos(pos);
 	m_attr.setSlot(KCardInst::enum_slot_secret);
 }
 
@@ -357,8 +358,11 @@ const char* KCardInst::GetBasePosName(bool bMy)
 		return (bMy)? "my_slot_base":"your_slot_base";
 		break;
     case KCardInst::enum_slot_secret:
-            return (bMy)? "my_slot_base":"your_slot_base";
-            break;
+		{
+			sprintf(sz,"%s_%d",(bMy)? "my_secret_slot":"your_secret_slot",m_attr.getPos());
+		}
+		return sz;
+        break;
 	default:
 		ASSERT(false);//CCAssert(false , "TBD!");
 		break;

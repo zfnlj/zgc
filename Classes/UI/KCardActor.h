@@ -49,6 +49,9 @@ public:
 	virtual void fadeInBigCard(const char* slot,float elapsed);
 	virtual void fadeOutBigCard(float elapsed);
 	void RemoveSceneBigCard();
+	virtual void addWidget(const char* obj);
+	virtual void delWidget(const char* obj);
+	virtual void updateSecret();
 private:
 	void init(KCardInst*);
 	bool DoSelectBeginCard(CCObject* sender);

@@ -47,7 +47,7 @@ bool KBattleGod::ProcHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 		ret = DoUseSkillCard(ctrl,pPlayer,pSrc,pDes);
 		break;
     case KCardStatic::card_secret:
-        ret = DoUseSecretCard(ctrl,pPlayer,pSrc);
+        ret = DoCardToSecretField(ctrl,pPlayer,pSrc);
         break;
     default:
             break;
@@ -471,6 +471,11 @@ void KBattleGod::onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardIn
 
 bool KBattleGod::DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pCard)
 {
+	int pos = guy->GetDeck().GetEmptySecretSlot();
+	if(pos<0){
+		CCAssert(false , "secret set is full!");
+		return false;
+	}
 	if(!pCard){
 		CCAssert(false , "Not found Card!");
 		return false;
@@ -480,7 +485,7 @@ bool KBattleGod::DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCard
 		return false;
 	}
 	guy->UseRes(pCard->GetCost());
-	guy->GetDeck().Hand2Secret(pCard);
+	guy->GetDeck().Hand2Secret(pCard,pos);
 	return true;
 }
 
@@ -516,10 +521,4 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty())
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());
 	return true;
-}
-
-bool KBattleGod::DoUseSecretCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pSrc)
-{
-    if(guy->GetDeck().GetSecret()) return false;
-    return DoCardToSecretField(ctrl,guy,pSrc);
 }
