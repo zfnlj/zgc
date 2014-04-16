@@ -340,6 +340,7 @@ void KCardActor::OnUnSelectShow()
 void KCardActor::fadeInBigCard(const char* slot,float elapsed)
 {
 	cocos2d::extension::UIWidget* bigCard = GetBigCard();
+	bigCard->setZOrder(100);
 	if(!bigCard->getParent()) KUIAssist::MainLayer()->addWidget(bigCard);
 	bigCard->setScaleX(0.1f);
 	bigCard->setScaleY(1.0f);

@@ -25,6 +25,9 @@ public:
 	static KClickCardMgr& getSingleton(void);
 	void onClickCard(KCardActor*);
 	void onTouchEnd();
+	void update(float dt);
 private:
 	KCardActor* m_curActor;
+	bool m_bTouchEnd;
+	float m_CardElapsed;
 };

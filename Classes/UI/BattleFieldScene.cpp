@@ -42,6 +42,7 @@ void BattleFieldScene::update(float dt)
 	m_actor.update(dt);
 	m_myFightAreaPanel.update(dt);
 	m_indicatePanel.Update(dt);
+	KClickCardMgr::getSingleton().update(dt);
 }
 
 CCPoint BattleFieldScene::GetCenterPos()

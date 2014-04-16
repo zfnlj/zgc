@@ -24,10 +24,13 @@ KClickCardMgr::~KClickCardMgr()
 void KClickCardMgr::init()
 {
 	m_curActor = NULL;
+	m_CardElapsed = 0.0f;
 }
 
 void KClickCardMgr::onClickCard(KCardActor* actor)
 {
+	m_CardElapsed = 0;
+	m_bTouchEnd = false;
 	if(m_curActor==actor) return;
 	if(m_curActor && actor){
 		K3DActionParam param1;
@@ -39,12 +42,23 @@ void KClickCardMgr::onClickCard(KCardActor* actor)
 		actor->GetActionMgr().PlayAction("bigCard_show");
 	}
 	m_curActor = actor;
+	
 }
 
 void KClickCardMgr::onTouchEnd()
 {
+	m_bTouchEnd = true;
 	/*if(m_curActor){
 		m_curActor->GetActionMgr().PlayAction("bigCard_hide");
 		m_curActor = NULL;
 	}*/
+}
+
+void KClickCardMgr::update(float dt)
+{
+	if(m_bTouchEnd) m_CardElapsed+= dt;
+	if(m_CardElapsed>3 && m_curActor){
+		m_curActor->GetActionMgr().PlayAction("bigCard_hide");
+		m_curActor = NULL;
+	}
 }
