@@ -27,6 +27,7 @@ public:
 	void onTouchEnd();
 	void update(float dt);
 private:
+	KCardActor* m_cacheActor;
 	KCardActor* m_curActor;
 	bool m_bTouchEnd;
 	float m_CardElapsed;

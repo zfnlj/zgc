@@ -180,7 +180,6 @@ CCAction* KActor::Scale(const char* obj,float val,float elapse)
 {
 	CCNode* node = GetCNode(obj);
 	if(!node) return NULL;
-	float oldScale = node->getScale();
 	if(elapse<0.01){
 		node->setScale(val);
 		return NULL;

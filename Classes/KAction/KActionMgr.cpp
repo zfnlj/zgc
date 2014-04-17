@@ -49,7 +49,9 @@ void KActionMgr::breathe(float deltaTime)
 {
 	CCObject* pObj = NULL;
 	CCArray delArr;
-	CCARRAY_FOREACH(&m_ActionArr, pObj){ //同时只能执行一个有class的Action
+	CCArray breatheArr;
+	breatheArr.initWithArray(&m_ActionArr);
+	CCARRAY_FOREACH(&breatheArr, pObj){ //同时只能执行一个有class的Action
 		KAction* pAction = (KAction*)pObj;
 		pAction->breathe(deltaTime);
 		if (!pAction->IsPlay()) delArr.addObject(pAction);

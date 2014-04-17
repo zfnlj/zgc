@@ -65,7 +65,7 @@ public:
 	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
-	
+	KActor& GetActor(){ return m_actor;}
 private:
 	CCLabelTTF* m_InfoLabel;
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action class="cast">
+  <affect_body> 
+    <affector class="action" obj="summon_tar_show" tarFlag="1" pre="0" createtime="0" iVal="1" life="30" />
+  	<affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="1" createtime="0" iVal="2" life="30" />
+  	<affector class="action" obj="summon_tar_show2" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
+  	<affector class="moveback" createtime="3" life="0.001" />
+  </affect_body>
+</action>
+
+		

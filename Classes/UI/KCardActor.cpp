@@ -267,7 +267,10 @@ void KCardActor::MoveReached(CCObject* sender)
 
 cocos2d::extension::UIWidget* KCardActor::GetWidget(const char* obj)
 {
-	if(strcmp(obj,"photo")==0){
+
+	if(strcmp(obj,"card")==0){
+		return m_ui;
+	}else if(strcmp(obj,"bigcard")==0){
 		return GetBigCard();
 	}else{
 		return KActor::GetWidget(obj);
@@ -326,7 +329,10 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 
 void KCardActor::SummonSelf()
 {
+	int slot = m_card->GetSlot();
+	m_card->m_attr.setSlot(KCardInst::enum_slot_fight);
 	KUIAssist::_showCard(m_card);
+	m_card->m_attr.setSlot(slot);
 }
 
 void KCardActor::OnSelectShow()
@@ -357,6 +363,7 @@ void KCardActor::addWidget(const char* obj,int z)
 		widget = GetBigCard();	
 	}
 	else if(strcmp(obj,"card")==0){
+		UpdateUI();
 		widget = m_ui;
 	}
 	if(widget) {
