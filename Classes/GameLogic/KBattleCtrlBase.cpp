@@ -448,8 +448,7 @@ bool KBattleCtrlBase::IsMyTurn()
 bool KBattleCtrlBase::IsMyCard(KCardInst* obj)
 {
 	if(!m_pMainPlayer) return false;
-	KCardInst* pCard = (KCardInst*)obj;
-	return (m_pMainPlayer->GetDeck().GetCard(pCard->GetRealId())!=NULL);
+	return (m_pMainPlayer==obj->GetOwner());
 }
 
 bool KBattleCtrlBase::IsShowBack(KCardInst* card)

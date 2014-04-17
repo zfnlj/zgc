@@ -19,7 +19,6 @@ public:
 	virtual void SelectCardOK(unsigned long long Param1, unsigned long long Param2);
 	virtual void AbilityResult(unsigned long long Param1, unsigned long long Param2);
 	virtual void Card2Tomb(unsigned long long Param1, unsigned long long Param2);
-	virtual void Secret2Tomb(unsigned long long Param1, unsigned long long Param2);
 	virtual void BattleDirty(unsigned long long Param1, unsigned long long Param2);
 	virtual void BattleOpDone(unsigned long long Param1, unsigned long long Param2);
 	virtual void SummonCard(unsigned long long Param1, unsigned long long Param2);

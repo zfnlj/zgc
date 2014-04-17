@@ -53,7 +53,6 @@ public:
 	void onTurnBegin();
 	void onDrawCard(KCardInstList* cardList,bool bInit=true);
 	void onCardMove(KCardInst* pCard);
-	void onSecret2Tomb(KCardInst* pCard);
 	void onUseSecretCard(KCardInst* card);
 	void onUseRes();
 

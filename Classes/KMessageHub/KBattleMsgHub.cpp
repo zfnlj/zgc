@@ -94,15 +94,6 @@ void KBattleMsgHub::CardMove(unsigned long long Param1, unsigned long long Param
 #endif
 }
 
-void KBattleMsgHub::Secret2Tomb(unsigned long long Param1, unsigned long long Param2)
-{
-#ifdef _USE_COCOS2DX
-	GameRoot::getSingleton().getBattleScene()->onSecret2Tomb((KCardInst*)Param1);
-#else
-	
-#endif
-}
-
 void KBattleMsgHub::Card2Tomb(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX

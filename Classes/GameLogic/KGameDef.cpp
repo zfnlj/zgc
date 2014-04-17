@@ -7,8 +7,9 @@ strCardAbilityResult::strCardAbilityResult()
 	memset(this,0,sizeof(strCardAbilityResult));
 }
 
-void strCardAbilityResult::init(int src,KAbilityStatic* ability)
+void strCardAbilityResult::init(int actor,int src,KAbilityStatic* ability)
 {
+	_actor = actor;
 	_src = src;
 	_pAbility = ability;
 }

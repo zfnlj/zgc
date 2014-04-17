@@ -91,8 +91,9 @@ void KCardActor::UpdateUI()
 	cocos2d::extension::UIWidget* oldUI = m_ui;
 	init(m_card);
 	m_ui->setPosition(oldUI->getPosition());
-	CC_SAFE_RELEASE(oldUI);
 	if(oldUI->getParent()) oldUI->removeFromParent();
+	CC_SAFE_RELEASE(oldUI);
+	
 }
 
 cocos2d::extension::UIWidget* KCardActor::GetBigCard()
@@ -311,9 +312,16 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 	if(strcmp(slot,"card_pos")==0){
 		return KUIAssist::_queryCardPos(NULL,m_card);
 
-	}else{
-		return KActor::GetDestPosition(param,slot,index);
+	}else if(strcmp(slot,"secret_show")==0){
+		if(GameRoot::getSingleton().BattleCtrl().IsMyCard(m_card)){
+			UIWidget* widget = GetWidget("my_secret_show");
+			if(widget) return widget->getWorldPosition();
+		}else{
+			UIWidget* widget = GetWidget("your_secret_show");
+			if(widget) return widget->getWorldPosition();
+		}
 	}
+	return KActor::GetDestPosition(param,slot,index);
 }
 
 void KCardActor::SummonSelf()
@@ -341,35 +349,7 @@ void KCardActor::OnUnSelectShow()
 	}
 }
 
-void KCardActor::fadeInBigCard(const char* slot,float elapsed)
-{
-	cocos2d::extension::UIWidget* bigCard = GetBigCard();
-	bigCard->setZOrder(100);
-	if(!bigCard->getParent()) KUIAssist::MainLayer()->addWidget(bigCard);
-	bigCard->setScaleX(0.1f);
-	bigCard->setScaleY(1.0f);
-	CCActionInterval*  actionTo = CCScaleTo::create(elapsed, 1.0f, 1.0f);
-	bigCard->runAction( CCSequence::create(actionTo, NULL, NULL));
-
-	CCPoint pt = GetDestPosition(NULL,slot,0);
-	bigCard->setPosition(pt);
-}
-
-void KCardActor::fadeOutBigCard(float elapsed)
-{
-	cocos2d::extension::UIWidget* bigCard = GetBigCard();
-	CCActionInterval*  actionTo = CCScaleTo::create(elapsed, 0.1f, 1.0f);
-	CCCallFunc * funcall= CCCallFunc::create(this, callfunc_selector(KCardActor::RemoveSceneBigCard));
-	bigCard->runAction( CCSequence::create(actionTo, funcall, NULL));
-}
-
-void KCardActor::RemoveSceneBigCard()
-{
-	cocos2d::extension::UIWidget* bigCard = GetBigCard();
-	bigCard->removeFromParent();
-}
-
-void KCardActor::addWidget(const char* obj)
+void KCardActor::addWidget(const char* obj,int z)
 {
 	UIWidget* widget = NULL;
 	
@@ -379,7 +359,22 @@ void KCardActor::addWidget(const char* obj)
 	else if(strcmp(obj,"card")==0){
 		widget = m_ui;
 	}
-	if(widget) KUIAssist::MainLayer()->addWidget(widget);
+	if(widget) {
+		widget->setZOrder(z);
+		KUIAssist::MainLayer()->addWidget(widget);
+	}
+}
+
+CCNode* KCardActor::GetCNode(const char* obj)
+{
+	if(strcmp(obj,"bigcard")==0){
+		return GetBigCard()->getRenderer();
+	}
+	else if(strcmp(obj,"card")==0){
+		return m_ui->getRenderer();
+	}else{
+		return  KActor::GetCNode(obj);
+	}
 }
 
 void KCardActor::delWidget(const char* obj)

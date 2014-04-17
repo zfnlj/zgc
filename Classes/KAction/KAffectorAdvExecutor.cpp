@@ -96,17 +96,11 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_fadein:
 		if(GetActor()) GetActor()->FadeIn(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal());
 		break;
-	case Affector_fadeinBigCard:
-		if(GetActor()) GetActor()->fadeInBigCard(m_AffectorStatic->GetSlot(),mSurviveTime);
-		break;
 	case Affector_updateSecret:
 		if(GetActor()) GetActor()->updateSecret();
 		break;
-	case Affector_fadeoutBigCard:
-		if(GetActor()) GetActor()->fadeOutBigCard(mSurviveTime);
-		break;
 	case Affector_addWidget:
-		if(GetActor()) GetActor()->addWidget(m_AffectorStatic->GetObj());
+		if(GetActor()) GetActor()->addWidget(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
 		break;
 	case Affector_delWidget:
 		if(GetActor()) GetActor()->delWidget(m_AffectorStatic->GetObj());
@@ -125,6 +119,9 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_scale:
 		if(GetActor()) GetActor()->Scale(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),mSurviveTime);
+		break;
+	case Affector_scaleX:
+		if(GetActor()) GetActor()->ScaleX(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),mSurviveTime);
 		break;
 	case Affector_eff:
 		if(GetActor()) m_emitter = GetActor()->CreateEff(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetIntVal(),m_AffectorStatic->GetFloatVal());
@@ -183,6 +180,9 @@ void KAffectorExecutor::LimitAlive(float val)
 		break; 
 	case Affector_scale:
 		if(GetActor()) GetActor()->Scale(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),0);
+		break;
+	case Affector_scaleX:
+		if(GetActor()) GetActor()->ScaleX(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),0);
 		break;
     default:
         break;

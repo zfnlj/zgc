@@ -5,6 +5,8 @@
 #include "../KBattleGuy.h"
 #include "../../StaticTable/KAbilityStatic.h"
 #include "../../common/KCommonObj.h"
+#include "../KDynamicWorld.h"
+#include "../../Inc/KLogicMsg.h"
 
 namespace KSkillAssist
 {
@@ -118,6 +120,22 @@ void _rndFillProc(KAbilityStatic* pAbility,KCardInstList* lst)
 
 	
 }
+KCardInst* _findActiveSecret(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When when )
+{
+	KBattleGuy* pDefGuy = pDes->GetOwner();
+	KCardInstList* secretList = pDefGuy->GetDeck().QueryCardSet(KCardInst::enum_slot_secret);
+	KCardInst* pSelectSecret = NULL;
+	for(KCardInstList::iterator it = secretList->begin();it!=secretList->end();++it){
+		KCardInst* pSecret = *it;
+		if(_checkSecretAbility(pSrc,pDes,pSecret,when)){
+			if(!pSelectSecret || 
+				pSelectSecret->GetHp()< pSecret->GetHp()){
+				pSelectSecret = pSecret;
+			}
+		}
+	}
+	return pSelectSecret;
+}
 
 bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbilityStatic::Enum_When when )
 {
@@ -129,6 +147,11 @@ bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbi
 		case KAbilityStatic::which_myhero:
 			{
 				return (pDes->GetType()==KCardStatic::card_hero);
+			}
+			break;
+		case KAbilityStatic::which_mysoldier:
+			{
+				return (pDes->GetType()==KCardStatic::card_soldier);
 			}
 			break;
 		default:
@@ -159,6 +182,86 @@ KAbilityStatic* _findBuf(KCardAbilityList& list,KAbilityStatic::Enum_What what)
 		it++;
 	}
 	return NULL;
+}
+
+bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,KCardInst** pDes)
+{
+	bool ret = false;
+	KAbilityStatic* pSecretAbility = pSecret->GetSecretAbility();
+	switch(pSecretAbility->GetWhat()){
+	case KAbilityStatic::what_summon_guider:
+		{
+			int id = _summonCard(ctrl,pSecret,pSecretAbility,*pSrc);
+			if(id>0){
+				KCardInst* pNewDes = pSecret->GetOwner()->GetDeck().GetCard(id);
+				*pDes = pNewDes;
+			}
+		}
+		break;
+	}
+	pSecret->GetOwner()->GetDeck().onCard2Tomb(pSecret);
+	return ret;
+}
+
+
+int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInst* pActor)
+{
+	int id = 0;
+	KBattleGuy* pPlayer = pSrc->GetOwner();
+	strCardAbilityResult result;
+	if(pActor){
+		result.init(pActor->GetRealId(),pSrc->GetRealId(),pAbility);
+	}else{
+		result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+	}
+	int emptySlotNum = pPlayer->GetDeck().GetEmptyFightSlotNum();
+	if(emptySlotNum<0) return 0;
+	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
+	for(int i=0;i<num;i++){
+		id = pPlayer->GetDeck().SummonCard(pAbility->GetVal())->GetRealId();
+		result.SetDestVal(id,0);
+	}
+	_sendAbilityResult(ctrl,result);
+	return id;
+}
+
+void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result)
+{
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_ABILITYRESULT,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
+}
+
+void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
+{
+	KBattleGuy* pPlayer = ctrl->GetCurGuy();
+	KBattleGuy* pDef = ctrl->GetDefGuy();
+	KCardInstList lst,newLst;
+	pDef->GetDeck().RndPickCard(lst,pAbility->GetVal(),KCardInst::enum_slot_hand);
+	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_hand);
+
+	strCardAbilityResult result;
+	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
+		result.SetDestVal((*it)->GetRealId(),0);
+	}
+	_sendAbilityResult(ctrl,result);
+}
+
+void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
+{
+	KBattleGuy* pPlayer = ctrl->GetCurGuy();
+	KBattleGuy* pDef = ctrl->GetDefGuy();
+	KCardInstList lst,newLst;
+	pDef->GetDeck().RndPickCard(lst,1,KCardInst::enum_slot_slot,KCardStatic::card_soldier);
+	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_fight);
+
+	strCardAbilityResult result;
+	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
+		result.SetDestVal((*it)->GetRealId(),0);
+		KCardInst* card = ctrl->GetCard((*it)->GetRealId());
+		pPlayer->GetDeck().Hand2Fight(card);
+	}
+	_sendAbilityResult(ctrl,result);
 }
 
 }

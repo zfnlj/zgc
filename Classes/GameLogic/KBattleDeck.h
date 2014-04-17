@@ -25,7 +25,6 @@ public:
 	void CreateCloneCard(KCardInstList& lst,KCardInstList& newLst,KCardInst::CardSlot slot);
 	KCardInst* CreateCard(int id,KCardInst::CardSlot slot);
 	KCardInst* GetHero(){ return (KCardInst*)m_HeroCardSet.front();}
-    KCardInst* GetSecret();
 	KCardInst* GetCard(int id);
 	KCardInst* GetCard(KCardInstList* arr,int id);
 	KCardInst* GetHandCard(int id) { return GetCard(&m_HandCardSet,id);}
@@ -44,7 +43,6 @@ public:
 
 	void FindFightingGuider(KCardInstList*);
 	void onCard2Tomb(KCardInst* card);
-	void onSecret2Tomb(KCardInst* card);
 	void PickCard(KCardInstList* arr,KCardInst::CardSlot slot,KCardInst* skip);
 	void onSelectHandCardOK(KCardInstList* lst);
 	void UpdateActor(float dt);

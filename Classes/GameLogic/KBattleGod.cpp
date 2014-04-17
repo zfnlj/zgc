@@ -61,18 +61,11 @@ bool KBattleGod::ProcEquipCard(KCardInst* pSrc,KCardInst* pDes)
 	return ret;
 }
 
-bool KBattleGod::ProcSecretCardAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When when )
+bool KBattleGod::ProcSecretCardAbility(KBattleCtrlBase* ctrl,KCardInst** pSrc,KCardInst** pDes,KAbilityStatic::Enum_When when )
 {
-    KBattleGuy* pDefGuy = ctrl->GetDefGuy();
-    KCardInst* pSecret = pDefGuy->GetDeck().GetSecret();
-	if(!KSkillAssist::_checkSecretAbility(pSrc,pDes,pSecret,when)) return false;
-
-	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pSecret->GetSecretAbility());
-	DoCardAbility2Des(ctrl,pSecret->GetSecretAbility(),pSecret,pSrc,&result);
-	SendAbilityResult(ctrl,result);
-	pDefGuy->GetDeck().onSecret2Tomb(pSecret);
-	return true;
+    KCardInst* pSecret = KSkillAssist::_findActiveSecret(ctrl,*pSrc,*pDes,when );
+	if(!pSecret) return false;
+	return KSkillAssist::_doSecretAbility(ctrl,pSecret,pSrc,pDes);
 }
 
 
@@ -95,7 +88,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 			return false;
 		}
 	}
-	if(ProcSecretCardAbility(ctrl, pSrc, pDes,KAbilityStatic::when_atked)) return true;
+	if(ProcSecretCardAbility(ctrl, &pSrc, &pDes,KAbilityStatic::when_atked)) return true;
     
 	bool ret = false;
 	int atkSrc = pSrc->GetAtk();
@@ -111,10 +104,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	return ret;
 }
 
-void KBattleGod::SendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result)
-{
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_ABILITYRESULT,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
-}
+
 
 void KBattleGod::SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int v1,int v2)
 {
@@ -233,60 +223,13 @@ void KBattleGod::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_UPDATEINFO,0,(unsigned long long)ctrl->GetWorld());
 }
 
-void KBattleGod::CopyFight(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
-{
-	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	KBattleGuy* pDef = ctrl->GetDefGuy();
-	KCardInstList lst,newLst;
-	pDef->GetDeck().RndPickCard(lst,1,KCardInst::enum_slot_slot,KCardStatic::card_soldier);
-	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_fight);
-
-	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pAbility);
-	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
-		result.SetDestVal((*it)->GetRealId(),0);
-		KCardInst* card = ctrl->GetCard((*it)->GetRealId());
-		pPlayer->GetDeck().Hand2Fight(card);
-	}
-	SendAbilityResult(ctrl,result);
-
-}
-
-void KBattleGod::CopyHand(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
-{
-	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	KBattleGuy* pDef = ctrl->GetDefGuy();
-	KCardInstList lst,newLst;
-	pDef->GetDeck().RndPickCard(lst,pAbility->GetVal(),KCardInst::enum_slot_hand);
-	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_hand);
-
-	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pAbility);
-	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
-		result.SetDestVal((*it)->GetRealId(),0);
-	}
-	SendAbilityResult(ctrl,result);
-}
-
 void KBattleGod::DrawCard(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 {
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	pPlayer->GetDeck().DrawCard(pAbility->GetVal());
 }
 
-void KBattleGod::SummonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
-{
-	KBattleGuy* pPlayer = pSrc->GetOwner();
-	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pAbility);
-	int emptySlotNum = pPlayer->GetDeck().GetEmptyFightSlotNum();
-	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
-	for(int i=0;i<num;i++){
-		int id = pPlayer->GetDeck().SummonCard(pAbility->GetVal())->GetRealId();
-		result.SetDestVal(id,0);
-	}
-	SendAbilityResult(ctrl,result);
-}
+
 
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
@@ -297,22 +240,22 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		AddRes(ctrl,pAbility);
 		return true;
 	}else if(pAbility->GetWhat()==KAbilityStatic::what_copy_hand){
-		CopyHand(ctrl,pSrc,pAbility);
+		KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility);
 		return true;
 	}else if(pAbility->GetWhat()==KAbilityStatic::what_copy_fight){
 		if(pSrc->GetOwner()->GetDeck().GetEmptyFightSlot()<0) return false;
-		CopyFight(ctrl,pSrc,pAbility);
+		KSkillAssist::_copyFightSoldier(ctrl,pSrc,pAbility);
 		return true;
 	}else if(pAbility->GetWhat()==KAbilityStatic::what_draw_card){
 		DrawCard(ctrl,pAbility);
 		return true;
 	}else if(pAbility->GetWhat()==KAbilityStatic::what_summon){
-		SummonCard(ctrl,pSrc,pAbility);
+		KSkillAssist::_summonCard(ctrl,pSrc,pAbility);
 		return true;
 	}
 	bool ret = false;
 	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pAbility);
+	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
 	if(!pAbility->IsArea()&&pDes){
 		KCardInstList lst;
 		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
@@ -331,7 +274,7 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
 		}
 	}
-	if(ret) SendAbilityResult(ctrl,result);
+	if(ret) KSkillAssist::_sendAbilityResult(ctrl,result);
 	return ret;
 }
 
@@ -451,8 +394,8 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 	if(!ret){
 		strCardAbilityResult result;
-		result.init(pSrc->GetRealId(),*abilityLst.begin());
-		SendAbilityResult(ctrl,result);
+		result.init(pSrc->GetRealId(),pSrc->GetRealId(),*abilityLst.begin());
+		KSkillAssist::_sendAbilityResult(ctrl,result);
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);

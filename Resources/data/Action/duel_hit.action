@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="hit">
+<action class="null">
   <affect_body>
   	    
    	<affector class="hit" createtime="" slot="card_center" fVal="0.4" iVal="0" life="0.2" />

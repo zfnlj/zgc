@@ -87,6 +87,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_layer;
 	}else if ( strcmp(szName,"scale") == 0 ){
 		eType = Affector_scale;
+	}else if ( strcmp(szName,"scaleX") == 0 ){
+		eType = Affector_scaleX;
 	}else if ( strcmp(szName,"visible") == 0 ){
 		eType = Affector_visible;
 	}else if ( strcmp(szName,"fadein") == 0 ){
@@ -131,10 +133,6 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_draw;
 	}else if ( strcmp(szName,"action") == 0 ){
 		eType = Affector_action;
-	}else if ( strcmp(szName,"fadeinBigCard") == 0 ){
-		eType = Affector_fadeinBigCard;
-	}else if ( strcmp(szName,"fadeoutBigCard") == 0 ){
-		eType = Affector_fadeoutBigCard;
 	}else if ( strcmp(szName,"addWidget") == 0 ){
 		eType = Affector_addWidget;
 	}else if ( strcmp(szName,"delWidget") == 0 ){

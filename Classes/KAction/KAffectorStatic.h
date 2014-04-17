@@ -22,6 +22,7 @@ enum AffectorType
 	Affector_null = 0,
 	Affector_layer, //改层
 	Affector_scale, //缩放
+	Affector_scaleX, //缩放
 	Affector_visible, //缩放
 	Affector_fadein,
 	Affector_createSprite,
@@ -45,8 +46,6 @@ enum AffectorType
 	Affector_action,
 	Affector_draw,
 	Affector_indicate,
-	Affector_fadeinBigCard,
-	Affector_fadeoutBigCard,
 	Affector_addWidget,
 	Affector_delWidget,
 	Affector_updateSecret,

@@ -35,18 +35,16 @@ private:
 	bool ProcEquipCard(KCardInst* pSrc,KCardInst* pDes);
 	bool ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes);
 	bool ProcHeroCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes);
-    bool ProcSecretCardAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When);
+    bool ProcSecretCardAbility(KBattleCtrlBase* ctrl,KCardInst** pSrc,KCardInst** pDes,KAbilityStatic::Enum_When);
 	bool DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pSrc,KCardInst* pDes);
 	
 	void PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2);
 	void SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int v1,int v2);
-	void SendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	void AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility);
 	void DrawCard(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility);
-	void CopyHand(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
-	void CopyFight(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
-	void SummonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
-
+	
+	
+	
 	void onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card);
 };
 

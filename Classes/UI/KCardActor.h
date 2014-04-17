@@ -46,12 +46,10 @@ public:
 	virtual void SummonSelf();
 	virtual void UpdateCardBuf();
 
-	virtual void fadeInBigCard(const char* slot,float elapsed);
-	virtual void fadeOutBigCard(float elapsed);
-	void RemoveSceneBigCard();
-	virtual void addWidget(const char* obj);
+	virtual void addWidget(const char* obj,int zOrder);
 	virtual void delWidget(const char* obj);
 	virtual void updateSecret();
+	virtual CCNode* GetCNode(const char* obj);
 private:
 	void init(KCardInst*);
 	bool DoSelectBeginCard(CCObject* sender);

@@ -167,15 +167,28 @@ void KCardInst::EnterFightField(int pos)
 
 void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 {
-	if(!FindBuf(KAbilityStatic::what_stun)){
-		CardSlot slot = GetSlot();
-		if(slot==KCardInst::enum_slot_fight ||
-			slot==KCardInst::enum_slot_hero){
-				m_attr.setReady(1);
+	switch(GetSlot()){
+	case enum_slot_fight:
+		{
+			if(!FindBuf(KAbilityStatic::what_stun)){
+				CardSlot slot = GetSlot();
+				if(slot==KCardInst::enum_slot_fight ||
+					slot==KCardInst::enum_slot_hero){
+					m_attr.setReady(1);
+				}
+			}
+			m_attr.updateBufList();
+			onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 		}
+		break;
+	case enum_slot_secret:
+		{
+			AddHp(1);
+		}
+		break;
+	default:
+		break;
 	} 
-	m_attr.updateBufList();
-	onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 }
 
 void KCardInst::OnTurnEnd()

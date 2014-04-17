@@ -88,6 +88,10 @@ void KActor::Move(const char* obj,const char* slot,float fSpeed)
 {
 	CCPoint pt = GetDestPosition(NULL,slot,0);
 	CCNode* node = GetCNode(obj);
+	if(fSpeed>=9999.0f){
+		node->setPosition(pt);
+		return;
+	}
 	CCPoint vTmp = pt - node->getPosition();
 
 	fSpeed = fSpeed>0.00001f?fSpeed:1.f;
@@ -155,6 +159,20 @@ void KActor::SetVisible(const char* obj,bool flag)
 	CCNode* node = GetCNode(obj);
 	if(node){
 		node->setVisible(flag);
+	}
+}
+
+CCAction* KActor::ScaleX(const char* obj,float val,float elapse)
+{
+	CCNode* node = GetCNode(obj);
+	if(!node) return NULL;
+	if(elapse<0.01){
+		node->setScaleX(val);
+		return NULL;
+	}else{
+		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, node->getScaleY());
+		node->runAction( CCSequence::create(actionBy, NULL, NULL));
+		return actionBy;
 	}
 }
 

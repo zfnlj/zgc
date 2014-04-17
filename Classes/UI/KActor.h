@@ -26,6 +26,7 @@ public:
 	virtual CCAction* FadeIn(const char* obj,float val);
 	virtual CCAction* FadeOut(const char* obj,float val);
 	virtual CCAction* Scale(const char* obj,float val,float elapse);
+	virtual CCAction* ScaleX(const char* obj,float val,float elapse);
 	CCSprite* CreateSprite(const char* obj,const char* slot,float scale,int order);
 	void Shake(const char* obj,float valX,float valY,float elapse);
 	void Filp(const char* obj,float elapse);
@@ -41,7 +42,7 @@ public:
 	void AddWidget(const char* obj,const char* slot);
 	void DelWidget(const char* obj);
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
-	CCNode* GetCNode(const char* obj);
+	virtual CCNode* GetCNode(const char* obj);
 	virtual void MoveReached(CCObject* sender){}
 	virtual void SummonCard(int);
 	virtual void SummonSelf(){}
@@ -54,9 +55,7 @@ public:
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	virtual KCardInst* GetCard(){ return NULL;}
-	virtual void fadeInBigCard(const char* slot,float elapsed){}
-	virtual void fadeOutBigCard(float elapsed){}
-	virtual void addWidget(const char* obj){}
+	virtual void addWidget(const char* obj,int zOrder){}
 	virtual void delWidget(const char* obj){}
 	virtual void updateSecret(){}
 protected:

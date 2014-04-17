@@ -124,10 +124,10 @@ bool KBattleAI::UseHeroSkill()
 
 bool KBattleAI::UseSecretCard()
 {
-    KCardInst* pSecret = m_Deck.GetSecret();
-    if(pSecret) return false;
-    KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
-    
+	int pos = m_Deck.GetEmptySecretSlot();
+	if(pos<0) return false;
+
+	KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){
 		KCardInst* pCard = *it;
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;

@@ -25,7 +25,6 @@ void KLogicModuleMsgDealer::RegisterAllMsg()
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_SELECTCARD_OK, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::SelectCardOK);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_ABILITYRESULT, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::AbilityResult);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_CARD2TOMB, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::Card2Tomb);
-	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_SECRET2TOMB, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::Secret2Tomb);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_DECKINIT, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::DeckInit);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_USE_SECRET, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::UseSecret);
 	

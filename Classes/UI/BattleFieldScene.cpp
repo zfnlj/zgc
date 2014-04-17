@@ -241,7 +241,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 	param1.Copy(result);
 
 	if(result->_pAbility->ActionIsEmpty()) return;
-	KCardActor* src = KUIAssist::_getCardActor(result->_src);
+	KCardActor* src = KUIAssist::_getCardActor(result->_actor);
 	if(src){
 		KCardInst* card = src->GetCard();
 		if(src->getBack()){
@@ -255,7 +255,6 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 			KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 			KUIAssist::_moveCardSet(lst,"card_move");
 		}
-
 	}
 	
 	m_indicatePanel.OnSelectCardOK();
@@ -266,14 +265,11 @@ void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 	KCardActor* atk = (KCardActor*)result->_atker->getActor();
 	KCardActor* def = (KCardActor*)result->_defender->getActor();
 
-	CCPoint pt1 = atk->GetUI()->getPosition();
-	CCPoint pt2 = def->GetUI()->getPosition();
-
 	K3DActionParam param;
 	param.init("duel");
 	param.SetSrcVal(result->_atker->GetRealId(),result->_val1);
 	param.SetDestVal(result->_defender->GetRealId(),result->_val2);
-	m_actor.GetActionMgr().PlayAction(&param);
+	atk->GetActionMgr().PlayAction(&param);
 
 	m_indicatePanel.OnSelectCardOK();
 }
@@ -361,12 +357,6 @@ void BattleFieldScene::onSummonCard(strSummonCardResult* result)
 	param.SetDestVal(result->_des->GetRealId(),0);
 	actor->GetActionMgr().PlayAction(&param);
 	OnSelectCardOK();
-}
-
-void BattleFieldScene::onSecret2Tomb(KCardInst* pCard)
-{
-	KCardActor* actor = KCardActor::create(pCard);
-	actor->GetActionMgr().PlayAction("move_back");
 }
 
 void BattleFieldScene::onGameEnd()

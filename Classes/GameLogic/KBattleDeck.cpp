@@ -115,8 +115,9 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		(*it)->onTurnBegin(ctrl);
 	}
-    KCardInst* pSecret = GetSecret();
-    if(pSecret) onSecret2Tomb(pSecret);
+	for(KCardInstList::iterator it = m_SecretCardSet.begin();it!=m_SecretCardSet.end();it++){
+		(*it)->onTurnBegin(ctrl);
+	}
 	GetHero()->onTurnBegin(ctrl);
 }
 
@@ -160,12 +161,6 @@ void KBattleDeck::Clear()
 	_clearCardList(&m_SlotCardSet);
 	_clearCardList(&m_TombCardSet);
     _clearCardList(&m_SecretCardSet);
-}
-
-void KBattleDeck::onSecret2Tomb(KCardInst* card)
-{
-	onCard2Tomb(card);
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SECRET2TOMB,(unsigned long long)card,(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
 void KBattleDeck::onCard2Tomb(KCardInst* card)
@@ -566,12 +561,6 @@ BOOL KBattleDeck::deserializeDirty(KMemoryStream* si)
 		}
 	}
 	return TRUE;
-}
-
-KCardInst* KBattleDeck::GetSecret()
-{
-    if(m_SecretCardSet.empty()) return NULL;
-    return (KCardInst*)m_SecretCardSet.front();
 }
 
 int KBattleDeck::GetEmptyFightSlotNum()

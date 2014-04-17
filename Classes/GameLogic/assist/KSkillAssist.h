@@ -5,6 +5,7 @@
 
 class KAbilityStatic;
 class KBattleCtrlBase;
+struct strCardAbilityResult;
 namespace KSkillAssist
 {
 
@@ -13,6 +14,12 @@ namespace KSkillAssist
 	bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbilityStatic::Enum_When);
 	void _removeBuf(KCardAbilityList& list,int id);
 	KAbilityStatic* _findBuf(KCardAbilityList& list,KAbilityStatic::Enum_What what);
+	KCardInst* _findActiveSecret(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When when );
+	bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,KCardInst** pDes);
+	int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInst* pActor=NULL);
+	void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
+	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
+	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

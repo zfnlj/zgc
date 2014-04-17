@@ -37,10 +37,11 @@ struct strReplaceCardResult{
 struct strCardAbilityResult{   //卡片对打的结果
 	strCardAbilityResult();
 	int  _src;	  //进攻方
+	int _actor;
 	int _destArr[MAX_ACTION_TARGET_NUM];
 	int _destValArr[MAX_ACTION_TARGET_NUM];
 	void SetDestVal(int dest,int val);
-	void init(int src,KAbilityStatic* ability);
+	void init(int actor,int src,KAbilityStatic* ability);
 	KAbilityStatic* _pAbility;
 };
 

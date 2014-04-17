@@ -86,6 +86,7 @@ void KUIAssist::_updateCard(KCardInst* card)
 	cardActor->UpdateUI();
 	if(!cardActor->GetUI()->getParent()) mainLayer->addWidget(cardActor->GetUI());
 }
+
 void KUIAssist::_showCard(KCardInst* card)
 {
 	cocos2d::extension::UILayer* mainLayer = GameRoot::getSingleton().getBattleScene()->GetLayer();
@@ -94,9 +95,11 @@ void KUIAssist::_showCard(KCardInst* card)
 	actor->GetUI()->setPosition(pt);
 	if(!actor->GetUI()->getParent()) mainLayer->addWidget(actor->GetUI());
 
+	
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
 	KCardInstList* lst = guy->QueryCardSet(card->GetSlot());
 	KUIAssist::_moveCardSet(lst,"card_move");
+	
 }
 
 void KUIAssist::_showCardSet(const char* basePos,KCardInstList* lst)
@@ -403,7 +406,7 @@ KCardActor* KUIAssist::_getCardActor(int realId)
 {
 	 KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
 	 if(!card) return NULL;
-	 return (KCardActor*)card->getActor();
+	 return KCardActor::create(card);
 }
 
 void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
