@@ -5,7 +5,7 @@
 #include "KGameDef.h"
 
 #define MAX_FIGHT_POS_NUM 5
-#define MAX_SECRET_POS_NUM 3
+#define MAX_SECRET_POS_NUM 2
 
 class KCardInst;
 class KBattleGuy;

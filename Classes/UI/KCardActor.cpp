@@ -314,15 +314,10 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 {
 	if(strcmp(slot,"card_pos")==0){
 		return KUIAssist::_queryCardPos(NULL,m_card);
-
+	}else if(strcmp(slot,"secret_pos")==0){
+		return KUIAssist::_querySecretPos(m_card);
 	}else if(strcmp(slot,"secret_show")==0){
-		if(GameRoot::getSingleton().BattleCtrl().IsMyCard(m_card)){
-			UIWidget* widget = GetWidget("my_secret_show");
-			if(widget) return widget->getWorldPosition();
-		}else{
-			UIWidget* widget = GetWidget("your_secret_show");
-			if(widget) return widget->getWorldPosition();
-		}
+		return KUIAssist::_querySecretShowPos(m_card);
 	}
 	return KActor::GetDestPosition(param,slot,index);
 }

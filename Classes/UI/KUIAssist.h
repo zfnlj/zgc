@@ -45,6 +45,8 @@ public:
 	static void _updateSecretIcon(bool bMy,KCardInstList* lst);
 	static void _updateCardListBuf(KCardInstList* lst);
 	static bool _queryScreenPos(const char* name,cocos2d::CCPoint& pt);
+	static cocos2d::CCPoint _querySecretPos(KCardInst* card);
+	static cocos2d::CCPoint _querySecretShowPos(KCardInst* card);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

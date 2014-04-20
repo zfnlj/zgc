@@ -35,6 +35,25 @@ bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
 	return true;
 }
 
+cocos2d::CCPoint KUIAssist::_querySecretShowPos(KCardInst* card)
+{
+	if(GameRoot::getSingleton().BattleCtrl().IsMyCard(card)){
+		UIWidget* widget = MainLayer()->getWidgetByName("my_secret_show");
+		if(widget) return widget->getWorldPosition();
+	}else{
+		UIWidget* widget = MainLayer()->getWidgetByName("your_secret_show");
+		if(widget) return widget->getWorldPosition();
+	}
+	return CCPoint(-500,-500);
+}
+
+cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
+{
+	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
+	const char* sz = card->GetBasePosName(bMy);
+	UIWidget* obj =  MainLayer()->getWidgetByName(sz);
+	return obj->getWorldPosition();
+}
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
@@ -429,6 +448,7 @@ void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
 		const char* widgetName = card->GetBasePosName(bMy);
 		UIWidget* widget = UIHelper::seekWidgetByName(panel,widgetName);
 		if(widget){
+			if(bMy) widget->addPushDownEvent(card->getActor(), coco_pushselector(KCardActor::DoSelect));
 			widget->setTag(card->GetRealId());
 			widget->setVisible(true);
 		}
