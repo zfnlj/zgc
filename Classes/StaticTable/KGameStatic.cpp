@@ -40,6 +40,7 @@ bool KCardStatic::init()
 	memset(m_Desc,0,sizeof(m_Desc));
 	memset(m_Detail,0,sizeof(m_Detail));
 	memset(m_Show,0,sizeof(m_Show));
+	memset(m_Photo,0,sizeof(m_Photo));
 	return true;
 }
 
@@ -285,6 +286,8 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 		pCard->m_Race = getCardRace(buf);
 		fileReader->GetString("Show", "", buf, MAX_CARD_NAME);
 		if(strlen(buf)>2) strcpy(pCard->m_Show,buf);
+		fileReader->GetString("Photo", "", buf, MAX_CARD_NAME);
+		if(strlen(buf)>2) strcpy(pCard->m_Photo,buf);
 		m_cardMap[id] = pCard;
 	}
 

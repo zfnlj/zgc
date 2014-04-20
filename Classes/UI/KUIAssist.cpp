@@ -289,13 +289,17 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pInst->GetType())*10 + 0);
 	UIWidget* ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/card_elem.json");
 
-	UILayout* widgetBg =(UILayout*)ui->getChildByName("bg");
-	if(widgetBg) widgetBg->setBackGroundImage(pLayout->GetBg(),UI_TEX_TYPE_PLIST);
+	char sz[24];
+	UIImageView* widgetBg =(UIImageView*)ui->getChildByName("background");
+	sprintf(sz,"pic_%d.jpg",pInst->GetCardId());
+	if(widgetBg && strlen(pInst->GetST()->GetPhoto())>0){
+		widgetBg->loadTexture(pInst->GetST()->GetPhoto(),UI_TEX_TYPE_PLIST);
+	}
 
 	UIImageView* widgetMask =(UIImageView*)ui->getChildByName("card_mask");
 	if(widgetMask) widgetMask->loadTexture(pLayout->GetMask(),UI_TEX_TYPE_PLIST);
 	
-	char sz[24];
+	
 	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("title");
 	sprintf(sz,"t_%d.png",pInst->GetCardId());
 	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);

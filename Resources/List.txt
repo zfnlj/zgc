@@ -7,3 +7,4 @@ anim/active_red.png	anim/active_red.plist	active_red	19	0.2
 anim/active_green.png	anim/active_green.plist	active_green	19	0.2
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0
+GUI/photo_elem1.png	GUI/photo_elem1.plist	0	0	0

@@ -52,6 +52,7 @@ public:
 	char* GetDesc(){ return m_Desc;}
 	char* GetDetail(){ return m_Detail;}
 	const char* GetShow(){ return m_Show;}
+	const char* GetPhoto(){ return m_Photo;}
 	static KCardStatic* create();
 private:
 	int m_Id;
@@ -65,6 +66,7 @@ private:
 	char m_Desc[MAX_CARD_DESC_LEN];
 	char m_Detail[MAX_CARD_DETAIL_LEN];
 	char m_Show[MAX_CARD_NAME];
+	char m_Photo[MAX_CARD_NAME];
 	CardDef m_type;
 	friend class KGameStaticMgr;
 };

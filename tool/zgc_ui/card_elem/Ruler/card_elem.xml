@@ -4,4 +4,8 @@
     <Project>card_elem_1</Project>
     <GuidesList />
   </GuidesProject>
+  <GuidesProject>
+    <Project>card_elem</Project>
+    <GuidesList />
+  </GuidesProject>
 </ArrayOfGuidesProject>
