@@ -105,73 +105,80 @@ void KAbilityStatic::SetWhich(const char* str)
 	}
 }
 
-void KAbilityStatic::SetWhat(const char* str)
+KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 {
+	Enum_What what = what_null;
 	if(strcmp(str,"WHAT_DAMAGE")==0){
-		m_what = what_damage;
+		what = what_damage;
 	}else if(strcmp(str,"WHAT_HEAL")==0){
-		m_what = what_heal;
+		what = what_heal;
 	}else if(strcmp(str,"WHAT_ATK_ADD")==0){
-		m_what = what_atk_add;
+		what = what_atk_add;
 	}else if(strcmp(str,"WHAT_STUN")==0){
-		m_what = what_stun;
+		what = what_stun;
 	}else if(strcmp(str,"WHAT_HP_ADD")==0){
-		m_what = what_hp_add;
+		what = what_hp_add;
 	}else if(strcmp(str,"WHAT_HP_DOUBLE")==0){
-		m_what = what_hp_double;
+		what = what_hp_double;
 	}else if(strcmp(str,"WHAT_HP_SET")==0){
-		m_what = what_hp_set;
+		what = what_hp_set;
 	}else if(strcmp(str,"WHAT_IMMUNE")==0){
-		m_what = what_immune;
+		what = what_immune;
 	}else if(strcmp(str,"WHAT_RES_ADD")==0){
-		m_what = what_res_add;
+		what = what_res_add;
 	}else if(strcmp(str,"WHAT_DRAW_CARD")==0){
-		m_what = what_draw_card;
+		what = what_draw_card;
 	}else if(strcmp(str,"WHAT_SUMMON")==0){
-		m_what = what_summon;
+		what = what_summon;
 	}else if(strcmp(str,"WHAT_SUMMON_GUIDER")==0){
-		m_what = what_summon_guider;
+		what = what_summon_guider;
 	}else if(strcmp(str,"WHAT_REPLACE")==0){
-		m_what = what_replace;
+		what = what_replace;
 	}else if(strcmp(str,"WHAT_RETURN")==0){
-		m_what = what_return;
+		what = what_return;
 	}else if(strcmp(str,"WHAT_KILL")==0){
-		m_what = what_kill;
+		what = what_kill;
 	}else if(strcmp(str,"WHAT_GUIDE")==0){
-		m_what = what_guide;
+		what = what_guide;
 	}else if(strcmp(str,"WHAT_SP_RATE")==0){
-		m_what = what_sp_rate;
+		what = what_sp_rate;
 	}else if(strcmp(str,"WHAT_MP_COST")==0){
-		m_what = what_mp_cost;
+		what = what_mp_cost;
 	}else if(strcmp(str,"WHAT_ATK_EQU_HP")==0){
-		m_what = what_atk_equ_hp;
+		what = what_atk_equ_hp;
 	}else if(strcmp(str,"WHAT_COPY_HAND")==0){
-		m_what = what_copy_hand;
+		what = what_copy_hand;
 	}else if(strcmp(str,"WHAT_COPY_FIGHT")==0){
-		m_what = what_copy_fight;
+		what = what_copy_fight;
 	}else if(strcmp(str,"WHAT_KILL_ATK_LE")==0){
-		m_what = what_kill_atk_le;
+		what = what_kill_atk_le;
 	}else if(strcmp(str,"WHAT_KILL_ATK_HE")==0){
-		m_what = what_kill_atk_he;
+		what = what_kill_atk_he;
 	}else if(strcmp(str,"WHAT_CLEAR_BUF")==0){
-		m_what = what_clear_buf;
+		what = what_clear_buf;
 	}else if(strcmp(str,"WHAT_CONTROL")==0){
-		m_what = what_control;
+		what = what_control;
 	}else if(strcmp(str,"WHAT_GET_CARD")==0){
-		m_what = what_get_card;
+		what = what_get_card;
 	}else if(strcmp(str,"WHAT_BUF")==0){
-		m_what = what_buf;
+		what = what_buf;
 	}else if(strcmp(str,"WHAT_HIDE")==0){
-		m_what = what_hide;
+		what = what_hide;
 	}else if(strcmp(str,"WHAT_DIST")==0){
-		m_what = what_dist;
+		what = what_dist;
 	}else if(strcmp(str,"WHAT_RUSH")==0){
-		m_what = what_rush;
+		what = what_rush;
 	}else if(strcmp(str,"WHAT_DAMAGE_ATKADD")==0){
-		m_what = what_damage_atkadd;
+		what = what_damage_atkadd;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
+	return what;
+}
+
+void KAbilityStatic::SetWhat(const char* str)
+{
+	m_what = Str2What(str);
 }
 
 void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
@@ -181,7 +188,10 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetString("WHEN", "", buf, MAX_CARD_NAME);
 	SetWhen(buf);
 	fileReader->GetString("WHICH", "", buf, MAX_CARD_NAME);
-	SetWhich(buf);
+
+	fileReader->GetString("Condition", "", buf, MAX_CARD_NAME);
+	m_cond.ParseString(buf);
+
 	fileReader->GetString("WHAT", "", buf, MAX_CARD_NAME);
 	SetWhat(buf);
 	fileReader->GetInteger("VAL", 0, (int*)&m_val);

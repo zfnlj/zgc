@@ -360,6 +360,9 @@
       <Filter>UI</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\KTouchDispatcher.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KConditionStruct.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -764,6 +767,9 @@
       <Filter>UI</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\KTouchDispatcher.h" />
+    <ClInclude Include="..\Classes\StaticTable\KConditionStruct.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">

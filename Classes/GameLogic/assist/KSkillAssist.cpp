@@ -281,4 +281,20 @@ void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAb
 	_sendAbilityResult(ctrl,result);
 }
 
+bool _IsMatch(KConditionDef& con,KCardInst* card)
+{
+	switch(con.GetCond()){
+	case KConditionDef::con_atk_he:
+		return card->GetAtk() >= con.GetVal();
+		break;
+	case KConditionDef::con_atk_le:
+		return card->GetAtk() <= con.GetVal();
+		break;
+	case KConditionDef::con_exist_buf:
+		return (card->FindBuf((KAbilityStatic::Enum_What)con.GetVal())!=NULL);
+		break;
+	}
+	return true;
+}
+
 }

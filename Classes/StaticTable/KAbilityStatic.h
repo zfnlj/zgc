@@ -5,6 +5,7 @@
 #include "System/Collections/KMapByVector.h"
 #include <list>
 #include <System/File/KTabfileLoader.h>
+#include "KConditionStruct.h"
 
 class KAbilityStatic
 {
@@ -74,6 +75,7 @@ public:
 		what_dist,
 		what_guide,
 		what_rush,
+		what_null,
 		
 	};
     virtual bool init();
@@ -99,6 +101,7 @@ public:
 	bool BufIconEmpty(){ return strlen(m_bufIcon)<2;}
 	bool ToSelfEnable(){ return m_mySelf>0;}
 	void Init(System::File::KTabFile2* fileReader);
+	static Enum_What Str2What(const char* str);
 private:
 	int m_AbilityId;
 	Enum_When m_when;
@@ -113,6 +116,7 @@ private:
 	int m_mySelf;//是否对自己起效
 	char m_Action[64];
 	char m_bufIcon[32];
+	KConditionDef m_cond;
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KAbilityStatic*> KAbilityMap;

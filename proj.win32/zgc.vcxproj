@@ -211,6 +211,7 @@
     <ClCompile Include="..\Classes\sqlite\sqlite3.c" />
     <ClCompile Include="..\Classes\StaticTable\KAbilityStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KCardLayoutStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KConditionStruct.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KGameStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KDeckDefStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KBattleFieldStatic.cpp" />
@@ -350,6 +351,7 @@
     <ClInclude Include="..\Classes\sqlite\sqlite3ext.h" />
     <ClInclude Include="..\Classes\StaticTable\KAbilityStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KCardLayoutStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KConditionStruct.h" />
     <ClInclude Include="..\Classes\StaticTable\KGameStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KDeckDefStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KBattleFieldStatic.h" />

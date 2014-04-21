@@ -2,6 +2,7 @@
 #define _KSKILLASSIST_H
 
 #include "../KCardInst.h"
+#include "../StaticTable/KConditionStruct.h"
 
 class KAbilityStatic;
 class KBattleCtrlBase;
@@ -20,6 +21,7 @@ namespace KSkillAssist
 	void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
+	bool _IsMatch(KConditionDef& con,KCardInst* card);
 }
 
 #endif // __HELLOWORLD_SCENE_H__
