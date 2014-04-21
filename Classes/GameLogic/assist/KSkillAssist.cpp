@@ -11,6 +11,23 @@
 namespace KSkillAssist
 {
 
+void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)
+{
+	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();
+	switch(pAbility->GetAbilityType()){
+	case KAbilityStatic::ability_good:
+		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstMy,true);
+		break;
+	case KAbilityStatic::ability_bad:
+		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstYour);
+		break;
+	default:
+		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstMy,true);
+		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstYour);
+		break;
+	}
+}
+
 void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy)
 {
 	KBattleDeck& MyDeck = ctrl->GetCurGuy()->GetDeck();

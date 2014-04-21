@@ -325,6 +325,13 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			result->SetDestVal(pDes->GetRealId(),pAbility->GetVal());
 		}
 		break;
+	case KAbilityStatic::what_damage_atkadd:
+		{
+			pDes->Heal(-pAbility->GetVal());
+			pDes->AddAtk(pAbility->GetVal2());
+			result->SetDestVal(pDes->GetRealId(),0);
+		}
+		break;
 	case KAbilityStatic::what_clear_buf:
 		{
 			pDes->ClearBuf();

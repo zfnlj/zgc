@@ -355,6 +355,19 @@
                 <key>sourceSize</key>
                 <string>{54,30}</string>
             </dict>
+            <key>t_23001.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{271,294},{48,24}}</string>
+                <key>offset</key>
+                <string>{-1,1}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{3,2},{48,24}}</string>
+                <key>sourceSize</key>
+                <string>{56,30}</string>
+            </dict>
             <key>t_30001.png</key>
             <dict>
                 <key>frame</key>
@@ -885,7 +898,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1e5c2334c6a710e2c37a4e6faf7e8ac1$</string>
+            <string>$TexturePacker:SmartUpdate:165faf7f7615571c43b71e324c1e36d4$</string>
             <key>textureFileName</key>
             <string>title.png</string>
         </dict>

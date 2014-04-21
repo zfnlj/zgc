@@ -316,7 +316,7 @@ void KBattleCtrlBase::OpSetSlot(int slot)
 	m_CurOp._slot = slot;
 	KCardInst* card = GetCurSrcCard();
 	if(!card) return;
-	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = card->FindStaticAbility(KAbilityStatic::when_enter);
 	KCardInstList arrGreen,arrRed;
 	QueryEnterFightTarget(card,&arrGreen,&arrRed);
 	int n = arrGreen.size()+arrRed.size();
@@ -346,10 +346,9 @@ bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrG
 	if(card->GetType()!=KCardStatic::card_soldier) return false;
 	if(card->GetSlot()!=KCardInst::enum_slot_hand) return false;
 	if(m_CurOp._slot<0) return false;
-	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = card->FindStaticAbility(KAbilityStatic::when_enter);
 	if(!pAbility) return false;
-	KCardInstList* lst = (pAbility->IsGood())? arrGreen: arrRed;
-	KSkillAssist::_fillAbilityTarget(this,card,pAbility,lst);
+	KSkillAssist::_fillAbilityTarget(this,card,pAbility,arrGreen,arrRed);
 	return true;
 }
 
@@ -362,8 +361,7 @@ void KBattleCtrlBase::QuerySkillTarget(KCardInst* skill,KCardInstList* arrGreen,
 	KGameStaticMgr::getSingleton().GetAbilityList(skill->GetCardId(),abilityList);
 	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
 		KAbilityStatic* pAbility = *it;
-		KCardInstList* lst = (pAbility->IsGood())? arrGreen: arrRed;
-		KSkillAssist::_fillAbilityTarget(this,skill,pAbility,lst);
+		KSkillAssist::_fillAbilityTarget(this,skill,pAbility,arrGreen,arrRed);
 	}
 }
 

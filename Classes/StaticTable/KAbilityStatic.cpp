@@ -46,30 +46,30 @@ KAbilityStatic* KAbilityStatic::create()
 	return pAbility;
 }
 
-bool KAbilityStatic::IsGood()
+
+KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
 {
-	bool ret = true;
+	Enum_AblityType tp = ability_neutral;
 	switch(m_what){
     case what_res_add:
     case what_atk_add:
 	case what_hp_double:
     case what_hp_add:
-            ret = (m_val>0);
+            tp = (m_val>0)?ability_good:ability_bad;
             break;
 	case what_stun:
 	case what_damage:
-		ret = false;
+		tp = ability_bad;
 		break;
 	case what_heal:
 	case what_immune:
 	case what_draw_card:
-		ret = true;
+		tp = ability_good;
 		break;
     default:
-        ret = false;
         break;
 	}
-	return ret;
+	return tp;
 }
 
 void KAbilityStatic::SetWhich(const char* str)
@@ -165,6 +165,10 @@ void KAbilityStatic::SetWhat(const char* str)
 		m_what = what_hide;
 	}else if(strcmp(str,"WHAT_DIST")==0){
 		m_what = what_dist;
+	}else if(strcmp(str,"WHAT_RUSH")==0){
+		m_what = what_rush;
+	}else if(strcmp(str,"WHAT_DAMAGE_ATKADD")==0){
+		m_what = what_damage_atkadd;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
@@ -181,6 +185,7 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetString("WHAT", "", buf, MAX_CARD_NAME);
 	SetWhat(buf);
 	fileReader->GetInteger("VAL", 0, (int*)&m_val);
+	fileReader->GetInteger("VAL2", 0, (int*)&m_val2);
 	fileReader->GetInteger("LOOP", 0, (int*)&m_loop);
 	fileReader->GetInteger("AREA", 0, (int*)&m_area);
 	fileReader->GetInteger("MAX", 0, (int*)&m_max);

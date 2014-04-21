@@ -8,7 +8,7 @@ class KBattleCtrlBase;
 struct strCardAbilityResult;
 namespace KSkillAssist
 {
-
+	void _fillAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour);
 	void _fillAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy=false /*只取我方的*/);
 	void _rndFillProc(KAbilityStatic* pAbility,KCardInstList* lst);
 	bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbilityStatic::Enum_When);

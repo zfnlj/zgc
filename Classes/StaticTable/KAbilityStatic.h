@@ -9,6 +9,11 @@
 class KAbilityStatic
 {
 public:
+	enum Enum_AblityType{
+		ability_good,
+		ability_bad,
+		ability_neutral,
+	};
 	enum Enum_When{
 		when_enter,
 		when_use,
@@ -40,6 +45,7 @@ public:
 	enum Enum_What{
 		what_damage,
 		what_heal,
+		what_damage_atkadd,
 		what_atk_add,
 		what_stun,
 		what_hp_add,
@@ -67,6 +73,7 @@ public:
 		what_hide,
 		what_dist,
 		what_guide,
+		what_rush,
 		
 	};
     virtual bool init();
@@ -79,10 +86,11 @@ public:
 	Enum_Which GetWhich(){ return m_which;}
 	bool IsArea() { return m_area>0;}
 	int GetVal(){ return m_val;}
+	int GetVal2(){ return m_val2;}
 	int GetMax(){ return m_max;}
 	int GetId(){ return m_AbilityId;}
 	int IsLoop(){ return m_loop==0;}
-	bool IsGood();//гавц
+	Enum_AblityType GetAbilityType();
 	bool IsRnd(){ return m_rnd>0;}
 	int GetRnd(){ return m_rnd;}
 	const char* GetAction(){ return m_Action;}
@@ -97,6 +105,7 @@ private:
 	Enum_Which m_which;
 	Enum_What m_what;
 	int m_val;
+	int m_val2;
 	int m_loop;
 	int m_max;
 	int m_area;
