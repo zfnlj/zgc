@@ -89,7 +89,7 @@ public:
 	bool InitBattleField(const char* m_FileName);
 	bool InitRank(const char* m_FileName);
 	KCardStatic* GetCard(int id);
-	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_null);
+	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
 	KAttrStatic* GetAttr(int id);
 	KDeckDefStatic* GetDeckDef(int id);

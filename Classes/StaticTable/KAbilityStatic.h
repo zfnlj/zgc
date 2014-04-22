@@ -31,8 +31,9 @@ public:
 		when_atked,
 		when_use_skill,
 		when_do_damage,
+		when_heal,
 		when_ever,
-		when_null,
+		when_all,
 	};
 	enum Enum_Which{
 		which_mysoldier,
@@ -81,6 +82,7 @@ public:
 		what_rush,
 		what_can_rush,
 		what_hurted,
+		what_bless_hp,
 		what_null,
 		
 	};

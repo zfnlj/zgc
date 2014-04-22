@@ -326,7 +326,7 @@ void KGameStaticMgr::GetAbilityList(int id,KCardAbilityList& lst,KAbilityStatic:
 		int abilityId = id*10+i;
 		KAbilityMap::iterator it  = m_abilityMap.find(abilityId);
 		if(it==m_abilityMap.end()) return;
-		if(when==KAbilityStatic::when_null ||it->second->GetWhen()==when) lst.push_back(it->second);
+		if(when==KAbilityStatic::when_all ||it->second->GetWhen()==when) lst.push_back(it->second);
 	}
 }
 

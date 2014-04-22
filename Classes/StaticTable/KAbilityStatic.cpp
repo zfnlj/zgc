@@ -36,8 +36,13 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_use_skill;
 	}else if(strcmp(str,"WHEN_EVER")==0){
 		m_when = when_ever;
+	}else if(strcmp(str,"WHEN_ALL")==0){
+		m_when = when_all;
+	}else if(strcmp(str,"WHEN_HEAL")==0){
+		m_when = when_heal;
 	}else{
-		CCLog("Set When isn't match!");
+		CCAssert(false , "Set When isn't match!");
+		//CCLog("Set When isn't match!");
 	}
 }
 
@@ -103,7 +108,8 @@ void KAbilityStatic::SetWhich(const char* str)
 	}else if(strcmp(str,"WHICH_NULL")==0){
 		m_which = which_null;
 	}else{
-		CCLog("Set Which isn't match!");
+		//CCLog("Set Which isn't match!");
+		CCAssert(false , "Set Which isn't match!");
 	}
 }
 
@@ -172,6 +178,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_damage_atkadd;
 	}else if(strcmp(str,"WHAT_HURTED")==0){
 		what = what_hurted;
+	}else if(strcmp(str,"WHAT_BLESS_HP")==0){
+		what = what_bless_hp;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
@@ -190,6 +198,7 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetString("WHEN", "", buf, MAX_CARD_NAME);
 	SetWhen(buf);
 	fileReader->GetString("WHICH", "", buf, MAX_CARD_NAME);
+	SetWhich(buf);
 
 	fileReader->GetString("Condition", "", buf, MAX_CARD_NAME);
 	m_cond.ParseString(buf);
