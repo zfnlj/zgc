@@ -219,14 +219,14 @@ void KBattleGod::OnTurnEnd()
 void KBattleGod::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 {
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	pPlayer->AddRes(pAbility->GetVal());
+	pPlayer->AddRes(pAbility->GetNormalVal());
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_UPDATEINFO,0,(unsigned long long)ctrl->GetWorld());
 }
 
 void KBattleGod::DrawCard(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 {
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	pPlayer->GetDeck().DrawCard(pAbility->GetVal());
+	pPlayer->GetDeck().DrawCard( KSkillAssist::_calcAbilityVal(pPlayer,pAbility));
 }
 
 
@@ -286,7 +286,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 		{
-			int val = guy->calcHurtVal(pAbility->GetVal());
+			int val = guy->calcHurtVal(pAbility->GetNormalVal());
 			val = pDes->Heal(-val);
 			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
@@ -295,7 +295,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_heal:
 		{
-			int val = guy->calcHealVal(pAbility->GetVal());
+			int val = guy->calcHealVal(pAbility->GetNormalVal());
 			val = pDes->Heal(val);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s do heal:%d to:%s",pSrc->GetST()->GetName(),val,pDes->GetST()->GetName());
@@ -309,7 +309,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_replace:
 		{
-			pDes->ReplaceST(pAbility->GetVal());
+			pDes->ReplaceST(pAbility->GetNormalVal());
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
@@ -321,37 +321,30 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_atk_add:
 		{
-			pDes->AddAtk(pAbility->GetVal());
-			result->SetDestVal(pDes->GetRealId(),pAbility->GetVal());
+			pDes->AddAtk(pAbility->GetNormalVal());
+			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;
 	case KAbilityStatic::what_damage_atkadd:
 		{
-			pDes->Heal(-pAbility->GetVal());
+			pDes->Heal(-pAbility->GetNormalVal());
 			pDes->AddAtk(pAbility->GetVal2());
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
-	case KAbilityStatic::what_clear_buf:
+	case KAbilityStatic::what_dispel_buf:
 		{
-			pDes->ClearBuf();
+			pDes->DispleBuf();
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
 	case KAbilityStatic::what_hp_set:
 		{
-			pDes->HpSet(pAbility->GetVal());
-			result->SetDestVal(pDes->GetRealId(),pAbility->GetVal());
-		}
-		break;
-	case KAbilityStatic::what_guide:
-		{
-			//TBD
+			pDes->HpSet(pAbility->GetNormalVal());
+			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;
 	case KAbilityStatic::what_kill:
-	case KAbilityStatic::what_kill_atk_le:
-	case KAbilityStatic::what_kill_atk_he:
 		{
 			ctrl->onCard2Tomb(pDes);
 			result->SetDestVal(pDes->GetRealId(),0);
@@ -365,13 +358,19 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_hp_add:
 		{
-			pDes->AddHp(pAbility->GetVal());
-			result->SetDestVal(pDes->GetRealId(),pAbility->GetVal());
+			pDes->AddHp(pAbility->GetNormalVal());
+			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;
 	case KAbilityStatic::what_control:
 		{
 			ctrl->onCardSwitchOwner(pSrc,pDes);
+			result->SetDestVal(pDes->GetRealId(),0);
+		}
+		break;
+	case KAbilityStatic::what_rush:
+		{
+			pDes->DoRush();
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;

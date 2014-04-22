@@ -240,7 +240,7 @@ int KBattleAI::CalcTotalDamage(KAbilityStatic* pAbility,KCardInstList& lst,int& 
 	int totalDamage = 0;
 	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 		KCardInst* pCard = *it;
-		int val = (pCard->GetHp()>pAbility->GetVal())? pAbility->GetVal():pCard->GetHp();
+		int val = (pCard->GetHp()>pAbility->GetNormalVal())? pAbility->GetNormalVal():pCard->GetHp();
 		if(pAbility->IsArea()){
 			totalDamage += val;
 		}else{
@@ -258,7 +258,7 @@ int KBattleAI::CalcTotalHeal(KAbilityStatic* pAbility,KCardInstList& lst,int& ta
 	int totalHeal = 0;
 	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 		KCardInst* pCard = *it;
-		int val = ( pCard->GetLostHp()> pAbility->GetVal())? pAbility->GetVal(): pCard->GetLostHp();
+		int val = ( pCard->GetLostHp()> pAbility->GetNormalVal())? pAbility->GetNormalVal(): pCard->GetLostHp();
 		if(pAbility->IsArea()){
 			totalHeal += val;
 		}else{

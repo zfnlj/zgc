@@ -67,6 +67,7 @@ public:
 	int GetEmptySecretSlot();
 	void RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slot,KCardStatic::CardDef cardDef=KCardStatic::card_null);
 	void GenHandCard(int id);
+	int GetHurtedSoldierNum();
 private:
 	KCardInstList m_HeroCardSet;
 	KCardInstList m_HandCardSet;	// ÷≈∆

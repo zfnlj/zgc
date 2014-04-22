@@ -6,7 +6,7 @@
 
 bool KAbilityStatic::init()
 {
-	m_AbilityId = m_loop = m_val = m_max = m_area = 0;
+	m_AbilityId = m_loop = m_val2 = m_max = m_area = 0;
 	memset(m_Action,0,sizeof(m_Action));
 	memset(m_bufIcon,0,sizeof(m_bufIcon));
 	return true;
@@ -34,6 +34,8 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_damaged;
 	}else if(strcmp(str,"WHEN_USE_SKILL")==0){
 		m_when = when_use_skill;
+	}else if(strcmp(str,"WHEN_EVER")==0){
+		m_when = when_ever;
 	}else{
 		CCLog("Set When isn't match!");
 	}
@@ -55,7 +57,7 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
     case what_atk_add:
 	case what_hp_double:
     case what_hp_add:
-            tp = (m_val>0)?ability_good:ability_bad;
+            tp = (m_val._val>0)?ability_good:ability_bad;
             break;
 	case what_stun:
 	case what_damage:
@@ -150,12 +152,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_copy_hand;
 	}else if(strcmp(str,"WHAT_COPY_FIGHT")==0){
 		what = what_copy_fight;
-	}else if(strcmp(str,"WHAT_KILL_ATK_LE")==0){
-		what = what_kill_atk_le;
-	}else if(strcmp(str,"WHAT_KILL_ATK_HE")==0){
-		what = what_kill_atk_he;
 	}else if(strcmp(str,"WHAT_CLEAR_BUF")==0){
-		what = what_clear_buf;
+		what = what_dispel_buf;
 	}else if(strcmp(str,"WHAT_CONTROL")==0){
 		what = what_control;
 	}else if(strcmp(str,"WHAT_GET_CARD")==0){
@@ -168,8 +166,12 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_dist;
 	}else if(strcmp(str,"WHAT_RUSH")==0){
 		what = what_rush;
+	}else if(strcmp(str,"WHAT_CAN_RUSH")==0){
+		what = what_can_rush;
 	}else if(strcmp(str,"WHAT_DAMAGE_ATKADD")==0){
 		what = what_damage_atkadd;
+	}else if(strcmp(str,"WHAT_HURTED")==0){
+		what = what_hurted;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
@@ -194,7 +196,8 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 
 	fileReader->GetString("WHAT", "", buf, MAX_CARD_NAME);
 	SetWhat(buf);
-	fileReader->GetInteger("VAL", 0, (int*)&m_val);
+	fileReader->GetString("VAL", "", buf, MAX_CARD_NAME);
+	m_val.ParseString(buf);
 	fileReader->GetInteger("VAL2", 0, (int*)&m_val2);
 	fileReader->GetInteger("LOOP", 0, (int*)&m_loop);
 	fileReader->GetInteger("AREA", 0, (int*)&m_area);

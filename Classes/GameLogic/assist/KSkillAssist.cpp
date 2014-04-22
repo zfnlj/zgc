@@ -105,11 +105,7 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pA
 	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){
 		KCardInst* card = *it;
 		if(card->HasBuf(pAbility)) continue; //same buf only one..
-		if(pAbility->GetWhat()==KAbilityStatic::what_kill_atk_le){
-			if(pAbility->GetVal()<card->GetAtk()) continue;
-		}else if(pAbility->GetWhat()==KAbilityStatic::what_kill_atk_he){
-			if(card->GetAtk()<pAbility->GetVal()) continue;
-		}
+		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);
 	}
 }
@@ -235,7 +231,7 @@ int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,K
 	if(emptySlotNum<0) return 0;
 	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
 	for(int i=0;i<num;i++){
-		id = pPlayer->GetDeck().SummonCard(pAbility->GetVal())->GetRealId();
+		id = pPlayer->GetDeck().SummonCard(_calcAbilityVal(NULL,pAbility))->GetRealId();
 		result.SetDestVal(id,0);
 	}
 	_sendAbilityResult(ctrl,result);
@@ -252,7 +248,7 @@ void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbilit
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	KBattleGuy* pDef = ctrl->GetDefGuy();
 	KCardInstList lst,newLst;
-	pDef->GetDeck().RndPickCard(lst,pAbility->GetVal(),KCardInst::enum_slot_hand);
+	pDef->GetDeck().RndPickCard(lst,pAbility->GetNormalVal(),KCardInst::enum_slot_hand);
 	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_hand);
 
 	strCardAbilityResult result;
@@ -281,20 +277,35 @@ void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAb
 	_sendAbilityResult(ctrl,result);
 }
 
-bool _IsMatch(KConditionDef& con,KCardInst* card)
+bool _IsMatch(KConditionDef& condDef,KCardInst* card)
 {
-	switch(con.GetCond()){
+	switch(condDef.GetCond()){
 	case KConditionDef::con_atk_he:
-		return card->GetAtk() >= con.GetVal();
+		return card->GetAtk() >= condDef.GetVal();
 		break;
 	case KConditionDef::con_atk_le:
-		return card->GetAtk() <= con.GetVal();
+		return card->GetAtk() <= condDef.GetVal();
 		break;
 	case KConditionDef::con_exist_buf:
-		return (card->FindBuf((KAbilityStatic::Enum_What)con.GetVal())!=NULL);
+		return (card->FindBuf((KAbilityStatic::Enum_What)condDef.GetVal())!=NULL);
 		break;
 	}
 	return true;
+}
+
+int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility)
+{
+	int ret =0;
+	KValDef& valDef = pAbility->GetVal();
+	switch(valDef.GetDef()){
+	case KValDef::val_my_hurted_soldier:
+		ret = guy->GetDeck().GetHurtedSoldierNum();
+		break;
+	default:
+		ret = valDef.GetVal();
+		break;
+	}
+	return ret;
 }
 
 }

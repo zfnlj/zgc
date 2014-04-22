@@ -7,6 +7,11 @@
 #include <System/File/KTabfileLoader.h>
 #include "KConditionStruct.h"
 
+#define BUF_GUIDE_ID 10001
+#define BUF_HIDE_ID 10002
+#define BUF_DIST_ID 10003
+#define BUF_CAN_RUSH_ID 10004
+#define BUF_HURTED_ID 10005
 class KAbilityStatic
 {
 public:
@@ -26,6 +31,7 @@ public:
 		when_atked,
 		when_use_skill,
 		when_do_damage,
+		when_ever,
 		when_null,
 	};
 	enum Enum_Which{
@@ -64,9 +70,7 @@ public:
 		what_atk_equ_hp,
 		what_copy_hand,
 		what_copy_fight,
-		what_kill_atk_le,
-		what_kill_atk_he,
-		what_clear_buf,
+		what_dispel_buf,
 		what_control,
 		what_get_card,
 		what_mp_cost,
@@ -75,6 +79,8 @@ public:
 		what_dist,
 		what_guide,
 		what_rush,
+		what_can_rush,
+		what_hurted,
 		what_null,
 		
 	};
@@ -87,7 +93,7 @@ public:
 	Enum_When GetWhen(){ return m_when;}
 	Enum_Which GetWhich(){ return m_which;}
 	bool IsArea() { return m_area>0;}
-	int GetVal(){ return m_val;}
+	//int GetVal(){ return m_val;}
 	int GetVal2(){ return m_val2;}
 	int GetMax(){ return m_max;}
 	int GetId(){ return m_AbilityId;}
@@ -102,12 +108,14 @@ public:
 	bool ToSelfEnable(){ return m_mySelf>0;}
 	void Init(System::File::KTabFile2* fileReader);
 	static Enum_What Str2What(const char* str);
+	KConditionDef& GetCond(){ return m_cond;}
+	KValDef& GetVal(){ return m_val;}
+	int GetNormalVal(){ return m_val._val;}
 private:
 	int m_AbilityId;
 	Enum_When m_when;
 	Enum_Which m_which;
 	Enum_What m_what;
-	int m_val;
 	int m_val2;
 	int m_loop;
 	int m_max;
@@ -117,6 +125,7 @@ private:
 	char m_Action[64];
 	char m_bufIcon[32];
 	KConditionDef m_cond;
+	KValDef m_val;
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KAbilityStatic*> KAbilityMap;

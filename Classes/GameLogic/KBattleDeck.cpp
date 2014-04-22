@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,23001,21003,62001,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,23001,23003,62001,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -647,4 +647,14 @@ int KBattleDeck::GetEmptySecretSlot()
     }
     return -1;
     
+}
+
+int KBattleDeck::GetHurtedSoldierNum()
+{
+	int count=0;
+	for(KCardInstList::iterator it=m_FightCardSet.begin();it!=m_FightCardSet.end();++it){
+		KCardInst* card = *it;
+		if(card->FindBuf(KAbilityStatic::what_hurted)) count++;
+	}
+	return count;
 }

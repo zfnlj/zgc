@@ -157,12 +157,17 @@ void KCardInst::EnterFightField(int pos)
     m_attr.setSlot(KCardInst::enum_slot_fight);
 	m_attr.setReady(0);
 	KAttrStatic* pAttr = KGameStaticMgr::getSingleton().GetAttr(m_pST->GetID());
+	bool rushed = false;
 	if(pAttr){
-		if(pAttr->IsRush()) m_attr.setReady(1);
-		if(pAttr->IsGuide()) AddBuf(10001);
-		if(pAttr->IsHide()) AddBuf(10002);
-		if(pAttr->IsDist()) AddBuf(10003);
+		if(pAttr->IsRush()){
+			m_attr.setReady(1);
+			rushed = true;
+		}
+		if(pAttr->IsGuide()) AddBuf(BUF_GUIDE_ID);
+		if(pAttr->IsHide()) AddBuf(BUF_HIDE_ID);
+		if(pAttr->IsDist()) AddBuf(BUF_DIST_ID);
 	}
+	if(!rushed) AddBuf(BUF_CAN_RUSH_ID);
 }
 
 void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
@@ -242,6 +247,7 @@ int KCardInst::Heal(int val)
 	m_attr.setCurHp(hp);
 	if(ret<0){
 		OnAbility(KAbilityStatic::when_damaged);
+		AddBuf(BUF_HURTED_ID);
 	}
 	return ret;
 }
@@ -258,7 +264,7 @@ void KCardInst::OnAbility(KAbilityStatic::Enum_When when)
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_atk_add:
 		{
-			int atk = m_attr.getAddAtk() + pAbility->GetVal();
+			int atk = m_attr.getAddAtk() + pAbility->GetNormalVal();
 			m_attr.setAddAtk(atk);
 		}
 		break;
@@ -287,6 +293,20 @@ void KCardInst::DelBuf(KAbilityStatic* pBuf)
 {
 	
 	m_attr.DelBuf(pBuf);
+}
+
+void KCardInst::DispleBuf()
+{
+	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
+		KAbilityStatic* pBuf = *it;
+		if(pBuf->GetWhen()==KAbilityStatic::when_ever){
+			it++;
+		}else{
+			if(pBuf->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(pBuf);
+			it = m_attr.m_bufList.erase(it);
+		}
+	}
 }
 
 void KCardInst::ClearBuf()
@@ -474,4 +494,11 @@ int KCardInst::GetRealCost()
 bool KCardInst::IsDead()
 {
 	return GetHp()<=0;
+}
+
+void KCardInst::DoRush()
+{
+	if(!FindBuf(KAbilityStatic::what_can_rush)) return;
+	m_attr.DelBuf(KAbilityStatic::what_can_rush);
+	m_attr.setReady(1);
 }

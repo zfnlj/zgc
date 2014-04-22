@@ -18,4 +18,16 @@ struct KConditionDef{
 	con_def GetCond(){ return _condition;}
 };
 
+struct KValDef{
+	enum val_def{
+		val_normal,
+		val_my_hurted_soldier,
+	};
+	KValDef():_def(val_normal),_val(0){}
+	void ParseString(const char* str);
+	val_def GetDef(){ return _def;}
+	int GetVal(){ return _val;}
+	val_def _def;
+	int _val;
+};
 #endif // __HELLOWORLD_SCENE_H__

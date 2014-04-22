@@ -60,6 +60,7 @@ public:
 	int GetLostHp(){ return m_attr.getMaxHp()-m_attr.getCurHp();}
 	void AddAtk(int val);
 	void HpDouble();
+	void DoRush();
 	KCardStatic* GetST(){ return m_pST;} //ÅÆµÄ¾²Ì¬ÐÅÏ¢
 	KCardStatic::CardDef GetType(){ return m_pST->GetType();}
 	bool IsActiveDefend();
@@ -67,6 +68,7 @@ public:
 	void AddBuf(int id);
 	void DelBuf(KAbilityStatic* pBuf);
 	void ClearBuf();
+	void DispleBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
 	KAbilityStatic* FindStaticAbility(KAbilityStatic::Enum_When when);

@@ -23,3 +23,14 @@ void KConditionDef::ParseString(const char* str)
 		_val = KAbilityStatic::Str2What(ss[1]);
 	}
 }
+
+
+void KValDef::ParseString(const char* str)
+{
+	if(strcmp(str,"MyHurtedSoldier")==0){
+		_def = val_my_hurted_soldier;
+	}else{
+		_def = val_normal;
+		_val = atoi(str);
+	}
+}

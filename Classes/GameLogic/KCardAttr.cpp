@@ -281,6 +281,19 @@ void KCardAttr::clearBit()
 	mUpdateMask=0;
 }
 
+void KCardAttr::DelBuf(KAbilityStatic::Enum_What what)
+{
+	updateMask(KCardAttr::BUF);
+	KCardAbilityList::iterator it = m_bufList.begin();
+	while(it != m_bufList.end()){
+		if((*it)->GetWhat() == what){
+			it = m_bufList.erase(it);
+		}else{
+			it++;
+		}
+	}
+}
+
 void KCardAttr::DelBuf(KAbilityStatic* pBuf)
 {
 	updateMask(KCardAttr::BUF);
@@ -338,7 +351,7 @@ KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_When when)
 	while(it != m_bufList.end()){
 		KAbilityStatic* pAbility = *it;
 		if(pAbility->GetWhat()==KAbilityStatic::what_buf){
-			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetVal());
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(pBuf && pBuf->GetWhen()==when) return pBuf;
 		}
 		if((*it)->GetWhen()== when) return *it;

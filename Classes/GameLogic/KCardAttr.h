@@ -85,6 +85,7 @@ public: // IAttrSet
 	bool readPacket(KMemoryStream* msg,bool first=false);
 	void updateBufList();
 	void DelBuf(KAbilityStatic* pBuf);
+	void DelBuf(KAbilityStatic::Enum_What what);
 	void AddBuf(KAbilityStatic* pBuf);
 	bool HasBuf(KAbilityStatic* pBuf);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);

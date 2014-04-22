@@ -212,7 +212,7 @@ bool KBattleGuy::DoGuyAbility(KCardInst* pSrc,KAbilityStatic* pAbility)
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_get_card:
 		{
-			m_Deck.GenHandCard(pAbility->GetVal());
+			m_Deck.GenHandCard(pAbility->GetNormalVal());
 		}
 		break;
 	default:
@@ -232,7 +232,7 @@ int KBattleGuy::calcHurtVal(int val)
 {
 	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_bufList,KAbilityStatic::what_sp_rate);
 	if(pBuf){
-		return val*pBuf->GetVal();
+		return val*pBuf->GetNormalVal();
 	}else{
 		return val;
 	}
@@ -242,7 +242,7 @@ int KBattleGuy::calcHealVal(int val)
 {
 	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_bufList,KAbilityStatic::what_sp_rate);
 	if(pBuf){
-		return val*pBuf->GetVal();
+		return val*pBuf->GetNormalVal();
 	}else{
 		return val;
 	}
@@ -252,7 +252,7 @@ int KBattleGuy::calcMpCost(int val)
 {
 	KCardAbilityList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		if((*it)->GetWhat()== KAbilityStatic::what_mp_cost) val += (*it)->GetVal();
+		if((*it)->GetWhat()== KAbilityStatic::what_mp_cost) val += (*it)->GetNormalVal();
 		it++;
 	}
 	return val;

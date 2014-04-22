@@ -22,6 +22,7 @@ namespace KSkillAssist
 	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
+	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
 }
 
 #endif // __HELLOWORLD_SCENE_H__
