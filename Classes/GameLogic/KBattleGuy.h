@@ -49,6 +49,7 @@ public:
 	 UINT64 GetGuyId(){ return m_guyId;}
 	 void SetGuyId(UINT64 id){ m_guyId = id;}
 	 void AddRes(int val);
+	 void AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility);
 	 virtual void update(float dt);
 	 void Clear();
 	 void DoSelectBeginCard(KCardInstList* arr);
@@ -64,14 +65,14 @@ public:
 	 size_t serializeDirty(KMemoryStream* so);
 	 BOOL deserializeDirty(KMemoryStream* si);
 
-	 bool DoGuyAbility(KCardInst* pSrc,KAbilityStatic* pAbility);
+	 bool DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
 	 void RemoveGuyAbility(KAbilityStatic* pAbility);
 	 int calcHurtVal(int val);
 	 int calcHealVal(int val);
 	 int calcMpCost(int val);
 	 //evt
-	 void onCardEnterCtrl(KCardInst* card);
-	 void onCardLeaveCtrl(KCardInst* card);
+	 void onCardEnterCtrl(KBattleCtrlBase*,KCardInst* card);
+	 void onCardLeaveCtrl(KBattleCtrlBase*,KCardInst* card);
 protected:
 	float m_TurnPlayTime;
 	UINT64 m_guyId;

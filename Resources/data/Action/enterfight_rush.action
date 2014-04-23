@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="cast">
+  <affect_body> 
+   	<affector class="move" slot="card_pos" createtime="0.0" fVal="800" life="0.4" />
+  	<affector class="action" obj="rush_show" tarFlag="1" pre="0" createtime="0.6" iVal="1" life="1.0" />
+  </affect_body>
+</action>
+
+		

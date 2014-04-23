@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,23001,23003,62001,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,23001,23003,33005,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -281,7 +281,7 @@ void KBattleDeck::GenHandCard(int id)
 													(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
-int KBattleDeck::DrawCard(int n,KCardInst::CardSlot slot)
+int KBattleDeck::DrawCard(int n,KCardInst::CardSlot slot,strCardAbilityResult* result)
 {
 	int ret = 0;
 	KCardInstList tmpList;
@@ -294,10 +294,11 @@ int KBattleDeck::DrawCard(int n,KCardInst::CardSlot slot)
 		m_HandCardSet.push_back(card);
 		card->m_attr.setSlot(slot);
 		tmpList.push_back(card);
+		if(result) result->SetDestVal(card->GetRealId(),0);
 		n--;
 		ret++;
 	}
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DRAWCARD,(unsigned long long)&tmpList,
+	if(!result) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DRAWCARD,(unsigned long long)&tmpList,
 													(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 	return ret;
 }

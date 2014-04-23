@@ -135,10 +135,10 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 		ctrl->onCard2Tomb(pCard2);
 	}
 	if(pCard1&& pCard1->IsDead()){
-		DoCardAbilityOnWhen(ctrl,pCard1,KAbilityStatic::when_dead);
+		onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
 	}
 	if(pCard2&&pCard2->IsDead()){
-		DoCardAbilityOnWhen(ctrl,pCard2,KAbilityStatic::when_dead);
+		onBattleEvt(battle_evt_duel_dead,ctrl,pCard1,pCard2);
 	}
 }
 
@@ -216,43 +216,11 @@ void KBattleGod::OnTurnEnd()
 {
 }
 
-void KBattleGod::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
-{
-	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	pPlayer->AddRes(pAbility->GetNormalVal());
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_UPDATEINFO,0,(unsigned long long)ctrl->GetWorld());
-}
-
-void KBattleGod::DrawCard(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
-{
-	KBattleGuy* pPlayer = ctrl->GetCurGuy();
-	pPlayer->GetDeck().DrawCard( KSkillAssist::_calcAbilityVal(pPlayer,pAbility));
-}
-
-
-
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
-	if(pSrc->GetOwner()->DoGuyAbility(pSrc,pAbility)) return true;
+	if(pAbility->GetWhich()==KAbilityStatic::which_owner) return pSrc->GetOwner()->DoGuyAbility(ctrl,pSrc,pAbility);
 	if(pDes && pDes->HasBuf(pAbility)) return false;
 
-	if(pAbility->GetWhat()==KAbilityStatic::what_res_add){
-		AddRes(ctrl,pAbility);
-		return true;
-	}else if(pAbility->GetWhat()==KAbilityStatic::what_copy_hand){
-		KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility);
-		return true;
-	}else if(pAbility->GetWhat()==KAbilityStatic::what_copy_fight){
-		if(pSrc->GetOwner()->GetDeck().GetEmptyFightSlot()<0) return false;
-		KSkillAssist::_copyFightSoldier(ctrl,pSrc,pAbility);
-		return true;
-	}else if(pAbility->GetWhat()==KAbilityStatic::what_draw_card){
-		DrawCard(ctrl,pAbility);
-		return true;
-	}else if(pAbility->GetWhat()==KAbilityStatic::what_summon){
-		KSkillAssist::_summonCard(ctrl,pSrc,pAbility);
-		return true;
-	}
 	bool ret = false;
 	strCardAbilityResult result;
 	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
@@ -269,8 +237,12 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
 		KSkillAssist::_rndFillProc(pAbility,&lst);
 
-		ret = (lst.size()>0)?true:false;
-		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
+		int maxNum = (pAbility->IsArea())? 99:pAbility->GetMax();
+		if(lst.size()<maxNum) maxNum = lst.size();
+		ret = (maxNum>0)?true:false;
+		int n=0;
+		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it,n++){
+			if(n==maxNum) break;
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
 		}
 	}
@@ -390,7 +362,9 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 
 	pSrc->m_attr.setSlot(KCardInst::enum_slot_fight);
 	
-	onUseSkillCardEvt(ctrl,guy,pSrc);
+	onBattleEvt(battle_evt_use_skill,ctrl,pSrc,pDes);
+
+	if(ProcSecretCardAbility(ctrl, &pSrc, &pDes,KAbilityStatic::when_use_skill)) return true;
 
 	bool ret=false;
 	for(KCardAbilityList::iterator it=abilityLst.begin();it!=abilityLst.end();++it){
@@ -470,4 +444,21 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty())
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());
 	return true;
+}
+
+
+void KBattleGod::onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
+{
+	switch(evt){
+	case battle_evt_duel_dead:
+		{
+			DoCardAbilityOnWhen(ctrl,pDes,KAbilityStatic::when_dead);
+		}
+		break;
+	case battle_evt_use_skill:
+		{
+			onUseSkillCardEvt(ctrl,pSrc->GetOwner(),pSrc);
+		}
+		break;
+	}
 }

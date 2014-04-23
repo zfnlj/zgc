@@ -591,8 +591,8 @@ void KBattleCtrlBase::onCardSwitchOwner(KCardInst* pSrc,KCardInst* pDes)
 	pDes->onSwitchFightField(slot);
 	oldOwner->GetDeck().RemoveCard(pDes);
 	newOwner->GetDeck().updateCardSlot(pDes);
-	newOwner->onCardEnterCtrl(pDes);
-	oldOwner->onCardLeaveCtrl(pDes);
+	newOwner->onCardEnterCtrl(this,pDes);
+	oldOwner->onCardLeaveCtrl(this,pDes);
 }
 
 FBattleGuy* KBattleCtrlBase::GetCurPlayer()

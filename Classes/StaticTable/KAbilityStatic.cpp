@@ -200,7 +200,7 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetString("WHICH", "", buf, MAX_CARD_NAME);
 	SetWhich(buf);
 
-	fileReader->GetString("Condition", "", buf, MAX_CARD_NAME);
+	fileReader->GetString("Condition", "", buf, 63);
 	m_cond.ParseString(buf);
 
 	fileReader->GetString("WHAT", "", buf, MAX_CARD_NAME);

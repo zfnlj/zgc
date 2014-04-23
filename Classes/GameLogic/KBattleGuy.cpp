@@ -193,26 +193,62 @@ void KBattleGuy::AddRes(int val)
 	m_attr.setCurRes(m_attr.getCurRes()+val);
 }
 
-void KBattleGuy::onCardLeaveCtrl(KCardInst* card)
+void KBattleGuy::onCardLeaveCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_dead);
-	DoGuyAbility(card,pAbility);
+	DoGuyAbility(ctrl,card,pAbility);
 }
 
-void KBattleGuy::onCardEnterCtrl(KCardInst* card)
+void KBattleGuy::onCardEnterCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
-	DoGuyAbility(card,pAbility);
+	DoGuyAbility(ctrl,card,pAbility);
 }
 
-bool KBattleGuy::DoGuyAbility(KCardInst* pSrc,KAbilityStatic* pAbility)
+void KBattleGuy::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
+{
+	AddRes(pAbility->GetNormalVal());
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_UPDATEINFO,0,(unsigned long long)ctrl->GetWorld());
+}
+
+bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
 {
 	if(!pAbility) return false;
 	if(pAbility->GetWhich()!=KAbilityStatic::which_owner) return false;
 	switch(pAbility->GetWhat()){
+	case KAbilityStatic::what_summon:
+		{
+			KSkillAssist::_summonCard(ctrl,pSrc,pAbility);
+		}
+		break;
+	case KAbilityStatic::what_copy_fight:
+		{
+			if(pSrc->GetOwner()->GetDeck().GetEmptyFightSlot()<0) return false;
+			KSkillAssist::_copyFightSoldier(ctrl,pSrc,pAbility);
+		}
+		break;
 	case KAbilityStatic::what_get_card:
 		{
 			m_Deck.GenHandCard(pAbility->GetNormalVal());
+		}
+		break;
+	case KAbilityStatic::what_copy_hand:
+		{
+			KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility);
+		}
+		break;
+	case KAbilityStatic::what_res_add:
+		{
+			AddRes(ctrl,pAbility);
+		}
+		break;
+	case KAbilityStatic::what_draw_card:
+		{
+			strCardAbilityResult result;
+			result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+
+			m_Deck.DrawCard( KSkillAssist::_calcAbilityVal(this,pAbility),KCardInst::enum_slot_hand,&result);
+			KSkillAssist::_sendAbilityResult(ctrl,result);
 		}
 		break;
 	default:
