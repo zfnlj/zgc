@@ -47,7 +47,7 @@ void KCardAttr::init(int realId,KCardStatic* st)
 void KCardAttr::clone(KCardAttr* attr)
 {
 	m_bufList.clear();
-	KCardAbilityList::iterator it = attr->m_bufList.begin();
+	KCardBufferList::iterator it = attr->m_bufList.begin();
 	while(it != attr->m_bufList.end()){
 		m_bufList.push_back(*it);
 		it++;
@@ -64,8 +64,10 @@ void KCardAttr::clone(KCardAttr* attr)
 
 void KCardAttr::updateBufList()
 {
-	for(KCardAbilityList::iterator it= m_bufList.begin();it!=m_bufList.end();){
-		if(!(*it)->IsLoop()){
+	for(KCardBufferList::iterator it= m_bufList.begin();it!=m_bufList.end();){
+		KCardBuffer& buf = *it;
+		buf._loop++;
+		if(buf.IsLoopOver()){
 			it = m_bufList.erase(it);
 			this->updateMask(KCardAttr::BUF);
 		}else{
@@ -186,9 +188,11 @@ bool KCardAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear)
 		int n = m_bufList.size();
 		if(!msg->WriteInt(n))
 			return false;
-		KCardAbilityList::iterator it = m_bufList.begin();
+		KCardBufferList::iterator it = m_bufList.begin();
 		while(it != m_bufList.end()){
-			msg->WriteInt((*it)->GetId());
+			KCardBuffer& buf = *it;
+			msg->WriteInt(buf._pST->GetId());
+			msg->WriteInt(buf._loop);
 			it++;
 		}
 	}
@@ -246,14 +250,16 @@ bool KCardAttr::readPacket( KMemoryStream* msg ,bool first)
 	if(mask&KCardAttr::BUF)
 	{
 		int n;
+		int loop;
 		msg->ReadInt(n);
+		msg->ReadInt(loop);
 		m_bufList.clear();
 		for(int i=0;i<n;i++){
 			int bufId;
 			if(!msg->ReadInt(bufId))
 				return FALSE;
 			KAbilityStatic* buf = KGameStaticMgr::getSingleton().GetAbilityOnId(bufId);
-			AddBuf(buf);
+			AddBuf(buf,loop);
 		}
 	}
 	return true;
@@ -284,9 +290,11 @@ void KCardAttr::clearBit()
 void KCardAttr::DelBuf(KAbilityStatic::Enum_What what)
 {
 	updateMask(KCardAttr::BUF);
-	KCardAbilityList::iterator it = m_bufList.begin();
+	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		if((*it)->GetWhat() == what){
+		KCardBuffer& buf = *it;
+
+		if(buf._pST->GetWhat() == what){
 			it = m_bufList.erase(it);
 		}else{
 			it++;
@@ -297,9 +305,10 @@ void KCardAttr::DelBuf(KAbilityStatic::Enum_What what)
 void KCardAttr::DelBuf(KAbilityStatic* pBuf)
 {
 	updateMask(KCardAttr::BUF);
-	KCardAbilityList::iterator it = m_bufList.begin();
+	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		if(*it == pBuf){
+		KCardBuffer& buf = *it;
+		if(buf._pST == pBuf){
 			m_bufList.erase(it);
 			return;
 		}
@@ -307,11 +316,11 @@ void KCardAttr::DelBuf(KAbilityStatic* pBuf)
 	}
 }
 
-void KCardAttr::AddBuf(KAbilityStatic* pBuf)
+void KCardAttr::AddBuf(KAbilityStatic* pBuf,int loopNum)
 {
 	if(!pBuf) return;
 	if(HasBuf(pBuf)) return;
-	m_bufList.push_back(pBuf);
+	m_bufList.push_back(KCardBuffer(pBuf,loopNum));
 	updateMask(KCardAttr::BUF);
 }
 
@@ -323,9 +332,10 @@ void KCardAttr::clearBuf()
 
 bool KCardAttr::HasBuf(KAbilityStatic* pBuf)
 {
-	KCardAbilityList::iterator it = m_bufList.begin();
+	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		if(*it == pBuf) return true;
+		KCardBuffer& buf = *it;
+		if(buf._pST == pBuf) return true;
 		it++;
 	}
 	return false;
@@ -333,9 +343,10 @@ bool KCardAttr::HasBuf(KAbilityStatic* pBuf)
 
 KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_What what)
 {
-	KCardAbilityList::iterator it = m_bufList.begin();
+	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		if((*it)->GetWhat()== what) return *it;
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetWhat()== what) return buf._pST;
 		it++;
 	}
 	return NULL;
@@ -343,18 +354,18 @@ KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_What what)
 
 KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_When when)
 {
-	//KCardAbilityList abilityList;
+	//KCardBufferList abilityList;
 	//KGameStaticMgr::getSingleton().GetAbilityList(getCardId(),abilityList,when);
 	//if(!abilityList.empty()) return *(abilityList.begin());
 
-	KCardAbilityList::iterator it = m_bufList.begin();
+	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
-		KAbilityStatic* pAbility = *it;
+		KAbilityStatic* pAbility = (*it)._pST;
 		if(pAbility->GetWhat()==KAbilityStatic::what_buf){
 			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(pBuf && pBuf->GetWhen()==when) return pBuf;
 		}
-		if((*it)->GetWhen()== when) return *it;
+		if(pAbility->GetWhen()== when) return pAbility;
 		it++;
 	}
 	return NULL;

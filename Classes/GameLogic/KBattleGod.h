@@ -10,11 +10,6 @@ class KBattleGuy;
 class KCardInst;
 class KAbilityStatic;
 
-enum Battle_evt{
-	battle_evt_duel_dead,
-	battle_evt_use_skill,
-
-};
 class KBattleGod : public Singleton<KBattleGod>
 {
 public:
@@ -34,7 +29,6 @@ public:
 	bool DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when);
 	void DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,strCardAbilityResult* result);
 
-	void onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes);
 private:
 	KBattleGuy* m_TurnPlayer;
 
@@ -47,10 +41,6 @@ private:
 	
 	void PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2);
 	void SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int v1,int v2);
-	
-	
-	
-	void onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card);
 };
 
 

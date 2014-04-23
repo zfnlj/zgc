@@ -363,6 +363,9 @@
     <ClCompile Include="..\Classes\StaticTable\KConditionStruct.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KBattleEventAssist.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -769,6 +772,9 @@
     <ClInclude Include="..\Classes\KTouchDispatcher.h" />
     <ClInclude Include="..\Classes\StaticTable\KConditionStruct.h">
       <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KBattleEventAssist.h">
+      <Filter>GameLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

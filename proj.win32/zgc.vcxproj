@@ -142,6 +142,7 @@
     <ClCompile Include="..\Classes\EventSystem\KEventRegistry.cpp" />
     <ClCompile Include="..\Classes\EventSystem\KEventSystem.cpp" />
     <ClCompile Include="..\Classes\Facade\FBattleGuy.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\assist\KBattleEventAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KBattleAI.cpp" />
@@ -272,6 +273,7 @@
     <ClInclude Include="..\Classes\EventSystem\keventholder.h" />
     <ClInclude Include="..\Classes\EventSystem\KEventSystem.h" />
     <ClInclude Include="..\Classes\Facade\FBattleGuy.h" />
+    <ClInclude Include="..\Classes\GameLogic\assist\KBattleEventAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\KBattleAI.h" />

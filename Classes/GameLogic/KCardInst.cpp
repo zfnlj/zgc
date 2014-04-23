@@ -198,11 +198,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 
 void KCardInst::OnTurnEnd()
 {
-	CardSlot slot = GetSlot();
-	if(slot!=KCardInst::enum_slot_fight &&
-		slot!=KCardInst::enum_slot_hero){
-			return;
-	}
+	m_attr.updateBufList();
 }
 
 void KCardInst::HpDouble()
@@ -243,6 +239,10 @@ int KCardInst::Heal(int val)
 	hp += val;
 	if(hp > m_attr.getMaxHp()) hp = m_attr.getMaxHp();
 	if(hp<0) hp = 0;
+	KAbilityStatic* pBlessHp = FindBuf(KAbilityStatic::what_bless_hp);
+	if(pBlessHp){
+		if(hp < pBlessHp->GetNormalVal()) hp = pBlessHp->GetNormalVal();
+	}
 	int ret = hp - m_attr.getCurHp();
 	m_attr.setCurHp(hp);
 	if(ret<0){
@@ -281,12 +281,12 @@ int KCardInst::GetHp()
 void KCardInst::AddBuf(int id)
 {
 	KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(id);
-	if(pBuf) m_attr.AddBuf(pBuf);
+	if(pBuf) m_attr.AddBuf(pBuf,0);
 }
 
 void KCardInst::AddBuf(KAbilityStatic* pBuf)
 {
-	m_attr.AddBuf(pBuf);
+	m_attr.AddBuf(pBuf,0);
 }
 
 void KCardInst::DelBuf(KAbilityStatic* pBuf)
@@ -297,13 +297,13 @@ void KCardInst::DelBuf(KAbilityStatic* pBuf)
 
 void KCardInst::DispleBuf()
 {
-	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	KCardBufferList::iterator it = m_attr.m_bufList.begin();
 	while(it != m_attr.m_bufList.end()){
-		KAbilityStatic* pBuf = *it;
-		if(pBuf->GetWhen()==KAbilityStatic::when_ever){
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetWhen()==KAbilityStatic::when_ever){
 			it++;
 		}else{
-			if(pBuf->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(pBuf);
+			if(buf._pST->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(buf._pST);
 			it = m_attr.m_bufList.erase(it);
 		}
 	}
@@ -311,9 +311,9 @@ void KCardInst::DispleBuf()
 
 void KCardInst::ClearBuf()
 {
-	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	KCardBufferList::iterator it = m_attr.m_bufList.begin();
 	while(it != m_attr.m_bufList.end()){
-		KAbilityStatic* pBuf = *it;
+		KAbilityStatic* pBuf = (*it)._pST;
 		if(pBuf->GetWhich()==KAbilityStatic::which_owner){
 			m_Owner->RemoveGuyAbility(pBuf);
 		}

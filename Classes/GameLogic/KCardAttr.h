@@ -11,6 +11,24 @@
 #include <System/Misc/KStream.h>
 
 class KCardStatic;
+
+struct KCardBuffer{
+	KAbilityStatic* _pST;
+	int _loop;
+	KCardBuffer(KAbilityStatic* pST,int loopNum){
+		_pST = pST;
+		_loop = loopNum;
+	}
+	bool IsLoopOver(){
+		if(_pST->IsLoop()) return false;
+		return (_loop <_pST->LoopNum());
+	}
+	bool IsLoop(){ return _pST->IsLoop();}
+	KAbilityStatic* GetAbility(){ return _pST;}
+};
+
+typedef std::list<KCardBuffer> KCardBufferList;
+
 class KCardAttr : public IAttrSet
 {
 public:
@@ -52,7 +70,7 @@ public:
 	AttrSet m_attrs;
 	DWORD m_deadTime;
 	DWORD m_lastAttackTime;
-	KCardAbilityList m_bufList;
+	KCardBufferList m_bufList;
 private:
 	void updateMask(DWORD v);
 	void updateUnMask(DWORD v);
@@ -86,7 +104,7 @@ public: // IAttrSet
 	void updateBufList();
 	void DelBuf(KAbilityStatic* pBuf);
 	void DelBuf(KAbilityStatic::Enum_What what);
-	void AddBuf(KAbilityStatic* pBuf);
+	void AddBuf(KAbilityStatic* pBuf,int loopNum);
 	bool HasBuf(KAbilityStatic* pBuf);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);

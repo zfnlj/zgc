@@ -458,12 +458,12 @@ void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
 void KUIAssist::_updateBufIcon(UIWidget* panel , KCardInst* card)
 {
     //MAX_BUF_SLOT_NUM;
-    KCardAbilityList& bufList = card->m_attr.m_bufList;
-    KCardAbilityList::iterator it = bufList.begin();
+    KCardBufferList& bufList = card->m_attr.m_bufList;
+    KCardBufferList::iterator it = bufList.begin();
     int pos = 0;
 	while(it != bufList.end()){
         if(pos==MAX_BUF_SLOT_NUM) break;
-		KAbilityStatic* pAbility = *it;
+		KAbilityStatic* pAbility = (*it)._pST;
         UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(panel,"buf_slot",pos);
         if(widgetSlot){
             widgetSlot->loadTexture(pAbility->GetBufIcon(),UI_TEX_TYPE_PLIST);

@@ -115,9 +115,6 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		(*it)->onTurnBegin(ctrl);
 	}
-	for(KCardInstList::iterator it = m_SecretCardSet.begin();it!=m_SecretCardSet.end();it++){
-		(*it)->onTurnBegin(ctrl);
-	}
 	GetHero()->onTurnBegin(ctrl);
 }
 

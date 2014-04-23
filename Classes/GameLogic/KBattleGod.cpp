@@ -11,7 +11,7 @@
 #include "../StaticTable/KAbilityStatic.h"
 #include "assist/KSkillAssist.h"
 #include "../Inc/KTypeDef.h"
-
+#include "assist/KBattleEventAssist.h"
 
 
 template<> KBattleGod* Singleton<KBattleGod>::mSingleton = 0;
@@ -135,10 +135,10 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 		ctrl->onCard2Tomb(pCard2);
 	}
 	if(pCard1&& pCard1->IsDead()){
-		onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
+		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
 	}
 	if(pCard2&&pCard2->IsDead()){
-		onBattleEvt(battle_evt_duel_dead,ctrl,pCard1,pCard2);
+		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard1,pCard2);
 	}
 }
 
@@ -362,7 +362,7 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 
 	pSrc->m_attr.setSlot(KCardInst::enum_slot_fight);
 	
-	onBattleEvt(battle_evt_use_skill,ctrl,pSrc,pDes);
+	KBattleEvtAssist::_onBattleEvt(battle_evt_use_skill,ctrl,pSrc,pDes);
 
 	if(ProcSecretCardAbility(ctrl, &pSrc, &pDes,KAbilityStatic::when_use_skill)) return true;
 
@@ -381,15 +381,6 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	ctrl->onCard2Tomb(pSrc);
 	
 	return true;
-}
-
-void KBattleGod::onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card)
-{
-	KCardInstList* lst = guy->GetDeck().QueryCardSet(KCardInst::enum_slot_fight);
-	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it)
-	{
-		DoCardAbilityOnWhen(ctrl,*it,KAbilityStatic::when_use_skill);
-	}
 }
 
 bool KBattleGod::DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pCard)
@@ -447,18 +438,3 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 }
 
 
-void KBattleGod::onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
-{
-	switch(evt){
-	case battle_evt_duel_dead:
-		{
-			DoCardAbilityOnWhen(ctrl,pDes,KAbilityStatic::when_dead);
-		}
-		break;
-	case battle_evt_use_skill:
-		{
-			onUseSkillCardEvt(ctrl,pSrc->GetOwner(),pSrc);
-		}
-		break;
-	}
-}

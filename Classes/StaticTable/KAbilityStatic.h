@@ -99,7 +99,8 @@ public:
 	int GetVal2(){ return m_val2;}
 	int GetMax(){ return m_max;}
 	int GetId(){ return m_AbilityId;}
-	int IsLoop(){ return m_loop==0;}
+	bool IsLoop(){ return m_loop==0;}
+	int LoopNum(){ return m_loop;}
 	Enum_AblityType GetAbilityType();
 	bool IsRnd(){ return m_rnd>0;}
 	int GetRnd(){ return m_rnd;}

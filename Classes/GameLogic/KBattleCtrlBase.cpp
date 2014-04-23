@@ -420,11 +420,7 @@ KBattleDeck* KBattleCtrlBase::GetCardDeck(KCardInst* card)
 
 FBattleGuy* KBattleCtrlBase::GetCardOwner(KCardInst* card)
 {
-
-	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
-		if((*it)->GetDeck().GetCard(card->GetRealId())!=NULL) return (*it)->GetFacade();
-	}
-	return NULL;
+	return card->GetOwner()->GetFacade();
 }
 
 
