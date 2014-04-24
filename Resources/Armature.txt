@@ -17,3 +17,4 @@ armature/anim_hide.json
 armature/burned_buf.json
 armature/secret_enter.json
 armature/to_rush.json
+armature/damage_atkadd.json
