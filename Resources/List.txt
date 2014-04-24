@@ -5,6 +5,7 @@ GUI/ui_elem.png	GUI/ui_elem.plist	0	0	0
 GUI/title.png	GUI/title.plist	0	0	0
 anim/active_red.png	anim/active_red.plist	active_red	19	0.2
 anim/active_green.png	anim/active_green.plist	active_green	19	0.2
+anim/dragon_light.png	anim/dragon_light.plist	dragon_light	18	0.13
 anim/god_kill.png	anim/god_kill.plist	god_kill	15	0.13
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0

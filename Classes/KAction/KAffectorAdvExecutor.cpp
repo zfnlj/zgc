@@ -62,7 +62,8 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		if(GetActor()) GetActor()->SummonSelf();
 		break;
 	case Affector_anim:
-		if(GetActor()) m_sprite = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetIntVal());
+		if(GetActor()) m_sprite = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
+															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
 		break;;
 	case Affector_replace:
 		if(GetActor()) GetActor()->ShowCard(m_param->GetDesId(0));
