@@ -39,7 +39,7 @@ bool KBattleGod::ProcHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	CCLog("ProcHandCard=%s",pSrc->GetST()->GetName());
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	bool ret = false;
-	switch(pSrc->GetType()){
+	switch(pSrc->GetKind()){
 	case KCardStatic::card_soldier:
 		ret = DoCardToFightField(ctrl,pPlayer,pSrc,pDes,pos);
 		break;
@@ -93,8 +93,8 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	bool ret = false;
 	int atkSrc = pSrc->GetAtk();
 	int atkDes = pDes->GetAtk();
-	int v2 = (pSrc->FindBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(-atkDes);
-	int v1 = pDes->Heal(-atkSrc);
+	int v2 = (pSrc->FindBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(pDes,-atkDes);
+	int v1 = pDes->Heal(pSrc,-atkSrc);
 	CCLog("ProcCardDuel=%s:%d,HP:%d->%d, VS %s:%d,HP:%d->%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),pSrc->GetHp()-v2,pSrc->GetHp(),
 													pDes->GetST()->GetName(),pDes->GetRealId(),pDes->GetHp()-v1,pDes->GetHp());
 
@@ -118,16 +118,15 @@ void KBattleGod::SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst*
 
 void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2)
 {
-	if(pCard1 && pCard2){
-		KAbilityStatic* pAbility = pCard1->FindBuf(KAbilityStatic::when_do_damage);
-		if(pAbility && !pCard2->IsDead() && val2<0){
-			DoCardAbility(ctrl,pAbility,pCard1,pCard2);
+	/*if(pCard1 && pCard2){
+		if(!pCard2->IsDead() && val2<0){
+			KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_hurted,ctrl,pCard1,pCard2);
 		}
 		pAbility = pCard2->FindBuf(KAbilityStatic::when_do_damage);
 		if(pAbility && !pCard1->IsDead() && val1<0){
 			DoCardAbility(ctrl,pAbility,pCard2,pCard1);
 		}
-	}
+	}*/
 	if(pCard1&& pCard1->IsDead()){
 		ctrl->onCard2Tomb(pCard1);
 	}
@@ -259,7 +258,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_damage:
 		{
 			int val = guy->calcHurtVal(pAbility->GetNormalVal());
-			val = pDes->Heal(-val);
+			val = pDes->Heal(pSrc,-val);
 			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s:%d do damage:%d to:%s:%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),val,pDes->GetST()->GetName(),pDes->GetRealId());
@@ -268,7 +267,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_heal:
 		{
 			int val = guy->calcHealVal(pAbility->GetNormalVal());
-			val = pDes->Heal(val);
+			val = pDes->Heal(pSrc,val);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s do heal:%d to:%s",pSrc->GetST()->GetName(),val,pDes->GetST()->GetName());
 		}
@@ -299,7 +298,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_damage_atkadd:
 		{
-			pDes->Heal(-pAbility->GetNormalVal());
+			pDes->Heal(pSrc,-pAbility->GetNormalVal());
 			pDes->AddAtk(pAbility->GetVal2());
 			result->SetDestVal(pDes->GetRealId(),0);
 		}

@@ -90,7 +90,7 @@ void KFightAreaPanel::onClickFightArea(CCObject* sender)
 	if(!pSrc) return;
 
 	if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
-		switch(pSrc->GetType()){
+		switch(pSrc->GetKind()){
 		case KCardStatic::card_soldier:
 		case KCardStatic::card_secret:
 			GameRoot::getSingleton().BattleCtrl().OpSetSlot(index);

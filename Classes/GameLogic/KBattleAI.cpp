@@ -131,7 +131,7 @@ bool KBattleAI::UseSecretCard()
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){
 		KCardInst* pCard = *it;
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;
-		if(pCard->GetType()!=KCardStatic::card_secret) continue;
+		if(!pCard->IsKindOf(KCardStatic::card_secret)) continue;
         m_battleCtrl->DoPlayerOpOK(pCard->GetRealId(),0,0);
         return true;
 	}
@@ -146,7 +146,7 @@ bool KBattleAI::UseSkillCard()
 		KCardInst* pCard = *it;
 		int target = 0;
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;
-		if(pCard->GetType()!=KCardStatic::card_skill) continue;
+		if(!pCard->IsKindOf(KCardStatic::card_skill)) continue;
 		if(IsUseSkillGood(pCard,target)){
 			m_battleCtrl->DoPlayerOpOK(pCard->GetRealId(),target,0);
 			return true;
@@ -282,7 +282,7 @@ bool KBattleAI::HandCardToField()
 	for(KCardInstList::iterator it = pHandList->begin();it!=pHandList->end();++it){
 		KCardInst* pCard = *it;
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;
-		if(pCard->GetType()!=KCardStatic::card_soldier) continue;
+		if(!pCard->IsKindOf(KCardStatic::card_soldier)) continue;
 		if(pSelectCard && pSelectCard->GetCost()>=pCard->GetCost()) continue;
 
 		pSelectCard = pCard;

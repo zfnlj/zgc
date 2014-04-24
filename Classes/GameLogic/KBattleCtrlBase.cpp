@@ -343,7 +343,7 @@ void KBattleCtrlBase::DoEndTurn()
 
 bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrGreen,KCardInstList* arrRed)
 {
-	if(card->GetType()!=KCardStatic::card_soldier) return false;
+	if(!card->IsKindOf(KCardStatic::card_soldier)) return false;
 	if(card->GetSlot()!=KCardInst::enum_slot_hand) return false;
 	if(m_CurOp._slot<0) return false;
 	KAbilityStatic* pAbility = card->FindStaticAbility(KAbilityStatic::when_enter);
@@ -354,8 +354,8 @@ bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrG
 
 void KBattleCtrlBase::QuerySkillTarget(KCardInst* skill,KCardInstList* arrGreen,KCardInstList* arrRed)
 {
-	if(skill->GetType()!=KCardStatic::card_skill &&
-		skill->GetType()!=KCardStatic::card_hero)
+	if(!skill->IsKindOf(KCardStatic::card_skill) &&
+		!skill->IsKindOf(KCardStatic::card_hero))
 		return;
 	KCardAbilityList abilityList;
 	KGameStaticMgr::getSingleton().GetAbilityList(skill->GetCardId(),abilityList);
@@ -533,7 +533,7 @@ bool KBattleCtrlBase::IsServerSide()
 
 void KBattleCtrlBase::onSoldier2TombMsg(KCardInst* card)
 {
-	if(card->GetType()!=KCardStatic::card_soldier) return;
+	if(!card->IsKindOf(KCardStatic::card_soldier)) return;
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		KBattleGuy* guy = *it;
 		KCardInstList* fightSlot = guy->GetDeck().QueryCardSet(KCardInst::enum_slot_fight);

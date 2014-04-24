@@ -11,6 +11,39 @@
 namespace KSkillAssist
 {
 
+void _fillActiveCardOnWhen(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when,KCardInstList* lst)
+{
+	KBattleDeck& MyDeck = pCard->GetOwner()->GetDeck();
+	
+	KCardInstList tmpLst;
+	MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,NULL);
+	tmpLst.push_back(MyDeck.GetHero());
+	for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
+	{
+		KCardInst* card = *it;
+		KAbilityStatic* pAbility = card->FindBuf(when);
+		if(!pAbility) continue;
+		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
+		bool bOk = false;
+		switch(pAbility->GetWhich()){
+		case KAbilityStatic::which_my:
+			bOk = true;
+			break;
+		case KAbilityStatic::which_mysoldier:
+		case KAbilityStatic::which_soldier:
+			bOk = pCard->IsKindOf(KCardStatic::card_soldier);
+			break;
+		case KAbilityStatic::which_myhero:
+		case KAbilityStatic::which_hero:
+			bOk = pCard->IsKindOf(KCardStatic::card_hero);
+			break;
+		default:
+			break;
+		}
+		if(bOk) lst->push_back(card);
+	}
+}
+
 void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)
 {
 	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();
@@ -159,12 +192,12 @@ bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbi
 	switch(pSecretAbility->GetWhich()){
 		case KAbilityStatic::which_myhero:
 			{
-				return (pDes->GetType()==KCardStatic::card_hero);
+				return pDes->IsKindOf(KCardStatic::card_hero);
 			}
 			break;
 		case KAbilityStatic::which_mysoldier:
 			{
-				return (pDes->GetType()==KCardStatic::card_soldier);
+				return pDes->IsKindOf(KCardStatic::card_soldier);
 			}
 			break;
 		default:

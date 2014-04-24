@@ -303,9 +303,9 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 
 UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 {
-	int idx = ((int)pInst->GetType())*10 + pInst->GetST()->GetRace();
+	int idx = ((int)pInst->GetKind())*10 + pInst->GetST()->GetRace();
 	KCardLayoutStatic* pLayout = KGameStaticMgr::getSingleton().GetCardLayout(idx);
-	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pInst->GetType())*10 + 0);
+	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pInst->GetKind())*10 + 0);
 	UIWidget* ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/card_elem.json");
 
 	char sz[24];
@@ -480,7 +480,7 @@ void KUIAssist::_updateBufIcon(UIWidget* panel , KCardInst* card)
 
 void KUIAssist::_soldierShow(KCardInst* card)
 {
-	if(card->GetType()!=KCardStatic::card_soldier) return;
+	if(!card->IsKindOf(KCardStatic::card_soldier)) return;
 	if(card->GetSlot()!=KCardInst::enum_slot_fight) return;
 	KCardStatic* pST = card->GetST();
 	if(strlen(pST->GetShow())<2) return;

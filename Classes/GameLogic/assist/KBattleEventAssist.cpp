@@ -16,7 +16,7 @@ namespace KBattleEvtAssist
 				_onUseSkillCardEvt(ctrl,pSrc->GetOwner(),pSrc);
 			}
 			break;
-		case battle_evt_soldier_hurted:
+		case battle_evt_hurted:
 			{
 
 			}

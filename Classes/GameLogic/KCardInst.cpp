@@ -3,7 +3,7 @@
 #include "../StaticTable/KGameStatic.h"
 #include "KBattleGod.h"
 #include "System/Misc/KStream.h"
-
+#include "assist/KBattleEventAssist.h"
 void _removeFromCardList(KCardInstList& lst,KCardInst* card)
 {
 	KCardInstList::iterator it = _findCardIt(&lst,card);
@@ -15,7 +15,7 @@ void _rndPickCard(KCardInstList& src,KCardInstList& des,int num,KCardStatic::Car
 	KCardInstList tmpLst;
 	for(KCardInstList::iterator it=src.begin();it!=src.end();it++){
 		if(cardDef==KCardStatic::card_null ||
-			(*it)->GetType()==cardDef)
+			(*it)->IsKindOf(cardDef))
 			tmpLst.push_back(*it);
 	}
 
@@ -228,7 +228,7 @@ void KCardInst::AddHp(int val)
 	m_attr.setMaxHp(m_attr.getMaxHp()+val);
 }
 
-int KCardInst::Heal(int val)
+int KCardInst::Heal(KCardInst* pSrc,int val)
 {
 	KAbilityStatic* pEmmune = FindBuf(KAbilityStatic::what_immune);
 	if(val < 0 && pEmmune){ //有免疫buf ，优先使用buf.
@@ -246,7 +246,8 @@ int KCardInst::Heal(int val)
 	int ret = hp - m_attr.getCurHp();
 	m_attr.setCurHp(hp);
 	if(ret<0){
-		OnAbility(KAbilityStatic::when_damaged);
+		KBattleEvtAssist::_onBattleEvt(battle_evt_hurted,m_Owner->GetBattleCtrl(),pSrc,this);
+		//OnAbility(KAbilityStatic::when_damaged);
 		AddBuf(BUF_HURTED_ID);
 	}
 	return ret;
@@ -405,7 +406,7 @@ const char* KCardInst::GetBasePosName(bool bMy)
 
 bool KCardInst::IsActiveDefend()
 {
-	switch(GetType()){
+	switch(GetKind()){
 	case KCardStatic::card_soldier:
 		{
 			if(FindBuf(KAbilityStatic::what_hide)) return false;	
@@ -483,7 +484,7 @@ int KCardInst::GetAtk()
 
 int KCardInst::GetRealCost()
 {
-	if(GetType()==KCardStatic::card_skill|| GetType()==KCardStatic::card_hero)
+	if(GetKind()==KCardStatic::card_skill|| GetKind()==KCardStatic::card_hero)
 	{
 		return m_Owner->calcMpCost(GetCost());
 	}else{

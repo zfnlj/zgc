@@ -203,8 +203,8 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit)
 	if(!ui) return;
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
 	UILabelAtlas* labelAtk = (UILabelAtlas*)ui->getChildByName("atk");
-	if(m_card->GetType()==KCardStatic::card_hero||
-		m_card->GetType()==KCardStatic::card_soldier){
+	if(m_card->IsKindOf(KCardStatic::card_hero)||
+		m_card->IsKindOf(KCardStatic::card_soldier)){
 		
 		char info[64]={0};
 		sprintf(info,"%d",m_card->GetHp());
@@ -236,7 +236,7 @@ void KCardActor::MoveBack(float speed)
 	case KCardInst::enum_slot_tomb:
 		{
 			param.init("go_tomb");
-			if(m_card->GetType()==KCardStatic::card_skill){
+			if(m_card->IsKindOf(KCardStatic::card_skill)){
 				FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(m_card);
 				KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 				KUIAssist::_moveCardSet(lst,"card_move");

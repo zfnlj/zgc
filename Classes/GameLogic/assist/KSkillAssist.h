@@ -23,6 +23,7 @@ namespace KSkillAssist
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
 	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
+	void _fillActiveCardOnWhen(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when,KCardInstList* lst);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

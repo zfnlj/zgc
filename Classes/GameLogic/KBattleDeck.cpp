@@ -434,7 +434,7 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 
 	KCardInstList lstGuider;
 	KCardInstList lstDefender;
-	if(pAtk->GetType()==KCardStatic::card_soldier){
+	if(pAtk->IsKindOf(KCardStatic::card_soldier)){
 		for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
 			KCardInst* pCard = *it;
 			if(pCard->FindBuf(KAbilityStatic::what_guide)) lstGuider.push_back(pCard);

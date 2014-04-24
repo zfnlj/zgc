@@ -55,14 +55,15 @@ public:
 	bool IsDead();
 	int GetHp();
 	void AddHp(int val);
-	int Heal(int val);
+	int Heal(KCardInst* pSrc,int val);
 	void HpSet(int val);
 	int GetLostHp(){ return m_attr.getMaxHp()-m_attr.getCurHp();}
 	void AddAtk(int val);
 	void HpDouble();
 	void DoRush();
 	KCardStatic* GetST(){ return m_pST;} //ÅÆµÄ¾²Ì¬ÐÅÏ¢
-	KCardStatic::CardDef GetType(){ return m_pST->GetType();}
+	KCardStatic::CardDef GetKind(){ return m_pST->GetType();}
+	bool IsKindOf(KCardStatic::CardDef def) { return  (m_pST->GetType()==def);}
 	bool IsActiveDefend();
 	void AddBuf(KAbilityStatic* pBuf);
 	void AddBuf(int id);

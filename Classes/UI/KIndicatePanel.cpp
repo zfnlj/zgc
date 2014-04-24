@@ -49,7 +49,7 @@ void KIndicatePanel::Update(float dt)
 			if(!pSrc) break;
 			if(GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed)) break;
 			GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
-			switch(pSrc->GetType()){
+			switch(pSrc->GetKind()){
 			case KCardStatic::card_soldier:
 				if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 					bShowMyFightArea = true;
