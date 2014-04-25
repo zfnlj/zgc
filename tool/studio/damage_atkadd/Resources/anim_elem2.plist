@@ -7,7 +7,7 @@
             <key>firewall.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,68},{64,64}}</string>
+                <string>{{2,2},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,11 +20,11 @@
             <key>hp_bless.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,134},{62,64}}</string>
+                <string>{{2,68},{62,64}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{2,0},{62,64}}</string>
                 <key>sourceSize</key>
@@ -33,7 +33,7 @@
             <key>jiasu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,2},{56,32}}</string>
+                <string>{{68,68},{56,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,29 +43,16 @@
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
-            <key>skull_001.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,2},{64,64}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{64,64}}</string>
-                <key>sourceSize</key>
-                <string>{64,64}</string>
-            </dict>
             <key>zhongdubuff.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,36},{64,52}}</string>
+                <string>{{68,2},{64,56}}</string>
                 <key>offset</key>
-                <string>{0,3}</string>
+                <string>{0,4}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,3},{64,52}}</string>
+                <string>{{0,0},{64,56}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -79,7 +66,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:63a5c540dd331e1f7d03e36f8c159abb$</string>
+            <string>$TexturePacker:SmartUpdate:d87aa675bf5a80ab2e85a796c0dd7cc6$</string>
             <key>textureFileName</key>
             <string>anim_elem2.png</string>
         </dict>

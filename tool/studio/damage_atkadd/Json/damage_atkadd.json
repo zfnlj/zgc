@@ -4,13 +4,13 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "kill",
+      "name": "damage_atkadd",
       "bone_data": [
         {
-          "name": "Layer4",
+          "name": "Layer1",
           "parent": "",
-          "x": 29.5,
-          "y": -59.32666015625,
+          "x": 0.0,
+          "y": 0.0,
           "z": 1,
           "cX": 1.0,
           "cY": 1.0,
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "skull_001.png",
+              "name": "zhongdubuff.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,11 +41,11 @@
   ],
   "animation_data": [
     {
-      "name": "kill",
+      "name": "damage_atkadd",
       "mov_data": [
         {
           "name": "Animation1",
-          "dr": 39,
+          "dr": 46,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -53,23 +53,23 @@
           "sc": 0.5,
           "mov_bone_data": [
             {
-              "name": "Layer4",
+              "name": "Layer1",
               "dl": 0.0,
               "frame_data": [
                 {
                   "dI": 0,
-                  "x": -1.0,
-                  "y": 0.0,
+                  "x": 0.0,
+                  "y": -50.0,
                   "z": 0,
-                  "cX": 0.4,
-                  "cY": 0.4,
+                  "cX": 0.5,
+                  "cY": 0.5,
                   "kX": 0.0,
                   "kY": 0.0,
                   "fi": 0,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 50,
+                    "a": 10,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -77,18 +77,18 @@
                 },
                 {
                   "dI": 0,
-                  "x": -61.0,
-                  "y": 36.0,
+                  "x": -19.0,
+                  "y": -18.0,
                   "z": 0,
-                  "cX": 0.6,
-                  "cY": 0.6,
+                  "cX": 0.8,
+                  "cY": 0.8,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 10,
+                  "fi": 8,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 160,
+                    "a": 120,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -96,18 +96,18 @@
                 },
                 {
                   "dI": 0,
-                  "x": 4.0,
-                  "y": 77.0,
+                  "x": 22.0,
+                  "y": 9.0,
                   "z": 0,
-                  "cX": 1.2,
-                  "cY": 1.2,
+                  "cX": 1.4,
+                  "cY": 1.4,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 20,
+                  "fi": 17,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 220,
+                    "a": 180,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -115,14 +115,14 @@
                 },
                 {
                   "dI": 0,
-                  "x": -58.0,
-                  "y": 101.0,
+                  "x": -1.0,
+                  "y": 28.0,
                   "z": 0,
                   "cX": 2.0,
                   "cY": 2.0,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 28,
+                  "fi": 26,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
@@ -134,33 +134,14 @@
                 },
                 {
                   "dI": 0,
-                  "x": -7.0,
-                  "y": 114.0,
+                  "x": -1.0,
+                  "y": 28.0,
                   "z": 0,
                   "cX": 3.0,
                   "cY": 3.0,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 37,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "color": {
-                    "a": 44,
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  }
-                },
-                {
-                  "dI": 0,
-                  "x": -7.0,
-                  "y": 114.0,
-                  "z": 0,
-                  "cX": 3.0,
-                  "cY": 3.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 38,
+                  "fi": 45,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
@@ -179,9 +160,9 @@
   ],
   "texture_data": [
     {
-      "name": "skull_001",
+      "name": "zhongdubuff",
       "width": 64.0,
-      "height": 64.0,
+      "height": 56.0,
       "pX": 0.5,
       "pY": 0.5,
       "plistFile": "anim_elem2.plist"

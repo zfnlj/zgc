@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\damage_atkadd\damage_atkadd.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>damage_atkadd</Name>
+  <ProjectDir>D:\My Documents\damage_atkadd</ProjectDir>
+  <JsonFileName>damage_atkadd.json</JsonFileName>
+  <Resources>D:\My Documents\damage_atkadd\Resources</Resources>
+  <JsonFolder>D:\My Documents\damage_atkadd\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem2.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>false</bBatchImage>
+</AnimationProject>
