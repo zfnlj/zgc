@@ -3,7 +3,7 @@
 
 #include "../KCardInst.h"
 #include "../StaticTable/KConditionStruct.h"
-
+#include "KBattleEventAssist.h"
 class KAbilityStatic;
 class KBattleCtrlBase;
 struct strCardAbilityResult;
@@ -23,7 +23,7 @@ namespace KSkillAssist
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
 	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
-	void _fillActiveCardOnWhen(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when,KCardInstList* lst);
+	void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

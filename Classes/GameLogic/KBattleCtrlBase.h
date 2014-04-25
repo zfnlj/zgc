@@ -3,7 +3,7 @@
 
 #include "System/Singleton.h"
 #include "KBattleGuy.h"
-
+#include "assist/KBattleEventAssist.h"
 class KBattleGuy;
 class KCardInst;
 class KQuestNew;
@@ -52,6 +52,7 @@ public:
 	BattleOp& GetCurOp(){ return m_CurOp;}
 	void DoSelectHandCard(UINT64 guyId,int n);
 	KBattleGuy* GetGuy(UINT64 id);
+	KBattleGuy* GetOtherGuy(UINT64 id);
 	KBattleGuyList* GetGuyList(){ return &m_BattleGuyList;}
 	void DoSelectBeginCard(KBattleGuy* guy,KCardInstList* arr);
 	BattleState GetBattleState(){return m_state;}
@@ -92,6 +93,8 @@ public:
 	bool m_bNetReady;
 	void AddDramaElapsed(float val){ m_waitDramaElapsed+=val;}
 	bool IsWaitDrama(){ return m_waitDramaElapsed>0.0f;}
+	void AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_When when);
+	void DoCardEvtList(KCardInst* actor);
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;
@@ -121,6 +124,7 @@ protected:
 	bool m_bFirstTurn;
 	bool m_bDirty;
 	float m_waitDramaElapsed;
+	KDoCardWhenAbilityList m_cardWhenList;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

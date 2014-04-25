@@ -1,27 +1,30 @@
 #include "KBattleEventAssist.h"
 #include "../KBattleGod.h"
+#include "KSkillAssist.h"
 
 namespace KBattleEvtAssist
 {
 	void _onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
 	{
+		KAbilityStatic::Enum_When when;
 		switch(evt){
 		case battle_evt_duel_dead:
 			{
-				KBattleGod::getSingleton().DoCardAbilityOnWhen(ctrl,pDes,KAbilityStatic::when_dead);
+				if(pDes->FindBuf(KAbilityStatic::when_dead)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_dead);
+				when = KAbilityStatic::when_soldier_dead;
 			}
 			break;
 		case battle_evt_use_skill:
-			{
-				_onUseSkillCardEvt(ctrl,pSrc->GetOwner(),pSrc);
-			}
+			when = KAbilityStatic::when_use_skill;
 			break;
 		case battle_evt_hurted:
-			{
-
-			}
+			when = KAbilityStatic::when_damaged;
+			break;
+		default:
+			return;
 			break;
 		}
+		KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,when);
 	}
 
 	void _onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card)

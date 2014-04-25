@@ -11,7 +11,7 @@
 namespace KSkillAssist
 {
 
-void _fillActiveCardOnWhen(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when,KCardInstList* lst)
+void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when)
 {
 	KBattleDeck& MyDeck = pCard->GetOwner()->GetDeck();
 	
@@ -24,24 +24,23 @@ void _fillActiveCardOnWhen(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic
 		KAbilityStatic* pAbility = card->FindBuf(when);
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
-		bool bOk = false;
-		switch(pAbility->GetWhich()){
-		case KAbilityStatic::which_my:
-			bOk = true;
-			break;
-		case KAbilityStatic::which_mysoldier:
-		case KAbilityStatic::which_soldier:
-			bOk = pCard->IsKindOf(KCardStatic::card_soldier);
-			break;
-		case KAbilityStatic::which_myhero:
-		case KAbilityStatic::which_hero:
-			bOk = pCard->IsKindOf(KCardStatic::card_hero);
-			break;
-		default:
-			break;
-		}
-		if(bOk) lst->push_back(card);
+
+		ctrl->AddCardEvtAbility(card,when);
 	}
+
+	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pCard->GetOwner()->GetGuyId())->GetDeck();
+	YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,NULL);
+	tmpLst.push_back(YourDeck.GetHero());
+	
+	for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
+	{
+		KCardInst* card = *it;
+		KAbilityStatic* pAbility = card->FindBuf(when);
+		if(!pAbility) continue;
+		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
+		ctrl->AddCardEvtAbility(card,when);
+	}
+
 }
 
 void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)

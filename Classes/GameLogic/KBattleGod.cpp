@@ -206,6 +206,7 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
         default:
             break;
 		}
+		ctrl->DoCardEvtList(pSrc);
 		op->Empty();
 	}
 	return ret;

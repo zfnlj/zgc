@@ -135,6 +135,13 @@ void KBattleCtrlBase::DoSelectHandCard(UINT64 guyId,int n)
 	guy->GetDeck().DrawCard(n,KCardInst::enum_slot_select);
 }
 
+KBattleGuy* KBattleCtrlBase::GetOtherGuy(UINT64 id)
+{
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		if((*it)->GetGuyId()!=id) return *it;
+	}
+	return NULL;
+}
 KBattleGuy* KBattleCtrlBase::GetGuy(UINT64 id)
 {
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
@@ -595,4 +602,18 @@ FBattleGuy* KBattleCtrlBase::GetCurPlayer()
 {
 	if(!m_CurPlayGuy) return NULL;
 	return m_CurPlayGuy->GetFacade();
+}
+
+void KBattleCtrlBase::AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_When when)
+{
+	m_cardWhenList.push_back(strDoCardWhenAbility(card,when));
+}
+
+void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
+{
+	for(KDoCardWhenAbilityList::iterator it=m_cardWhenList.begin();it!=m_cardWhenList.end();++it){
+		strDoCardWhenAbility& cardWhen = *it;
+	}
+
+	m_cardWhenList.clear();
 }
