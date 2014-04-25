@@ -7,13 +7,13 @@
             <key>atk_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{124,986},{32,41}}</string>
+                <string>{{956,87},{38,43}}</string>
                 <key>offset</key>
-                <string>{2,1}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{5,0},{32,41}}</string>
+                <string>{{0,0},{38,43}}</string>
                 <key>sourceSize</key>
                 <string>{38,43}</string>
             </dict>
@@ -371,28 +371,28 @@
             <key>cost_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1001},{17,30}}</string>
+                <string>{{163,986},{28,32}}</string>
                 <key>offset</key>
-                <string>{1,0}</string>
+                <string>{-1,1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{5,5},{17,30}}</string>
+                <string>{{5,3},{28,32}}</string>
                 <key>sourceSize</key>
-                <string>{25,40}</string>
+                <string>{40,40}</string>
             </dict>
             <key>hp_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{167,986},{26,37}}</string>
+                <string>{{124,986},{32,37}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-2,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{26,37}}</string>
+                <string>{{0,0},{32,37}}</string>
                 <key>sourceSize</key>
-                <string>{26,37}</string>
+                <string>{36,37}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -404,7 +404,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cc18a705b9d75a045a6d07146d0e08f2$</string>
+            <string>$TexturePacker:SmartUpdate:885bf0599c000ccba092b90560879882$</string>
             <key>textureFileName</key>
             <string>card_elem.png</string>
         </dict>

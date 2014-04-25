@@ -322,6 +322,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("title");
 	sprintf(sz,"t_%d.png",pInst->GetCardId());
 	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
+	widgetTitle->setScale(0.9);
 
 	UIWidget* widgetIconCost = ui->getChildByName("icon_cost");
 	if(widgetIconCost) widgetIconCost->setVisible(pLayout->IsShowCost());
