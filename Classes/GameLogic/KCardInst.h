@@ -72,7 +72,6 @@ public:
 	void DispleBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
-	KAbilityStatic* FindStaticAbility(KAbilityStatic::Enum_When when);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
 	KAbilityStatic* GetSecretAbility();

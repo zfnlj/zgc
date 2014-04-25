@@ -20,12 +20,21 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 	tmpLst.push_back(MyDeck.GetHero());
 	for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
 	{
+		KAbilityStatic::Enum_When realWhen = when;
 		KCardInst* card = *it;
 		KAbilityStatic* pAbility = card->FindBuf(when);
+		if(!pAbility){
+			if(realWhen==KAbilityStatic::when_soldier_dead||
+				realWhen==KAbilityStatic::when_soldier_hurted||
+				realWhen==KAbilityStatic::when_hero_hurted)
+			{
+				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
+				pAbility = card->FindBuf(realWhen);
+			}
+		}
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
-
-		ctrl->AddCardEvtAbility(card,when);
+		ctrl->AddCardEvtAbility(card,realWhen);
 	}
 
 	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pCard->GetOwner()->GetGuyId())->GetDeck();
@@ -338,6 +347,14 @@ int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility)
 		break;
 	}
 	return ret;
+}
+
+KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when)
+{
+	KCardAbilityList abilityList;
+	KGameStaticMgr::getSingleton().GetAbilityList(cardId,abilityList,when);
+	if(abilityList.empty()) return NULL;
+	return *(abilityList.begin());
 }
 
 }

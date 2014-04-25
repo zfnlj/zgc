@@ -18,7 +18,8 @@ namespace KBattleEvtAssist
 			when = KAbilityStatic::when_use_skill;
 			break;
 		case battle_evt_hurted:
-			when = KAbilityStatic::when_damaged;
+			if(pDes->FindBuf(KAbilityStatic::when_damaged)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_damaged);
+			when = pDes->IsKindOf(KCardStatic::card_soldier)?KAbilityStatic::when_soldier_hurted:KAbilityStatic::when_hero_hurted;
 			break;
 		default:
 			return;

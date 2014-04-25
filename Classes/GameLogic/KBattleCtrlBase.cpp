@@ -21,6 +21,7 @@ bool KBattleCtrlBase::init(void* w)
 	m_bNetReady = false;
 	m_pBattleQuest = NULL;
 	m_waitDramaElapsed = 0;
+	m_evtActor = 0;
 	return true;
 }
 
@@ -237,6 +238,7 @@ KBattleGuy* KBattleCtrlBase::GetDefGuy()
 
 void KBattleCtrlBase::PlayCard(float dt)
 {
+	m_evtActor = m_CurOp._src;
 	bool ret =KBattleGod::getSingleton().OnPlayCard(this,&m_CurOp);
 	m_CurPlayGuy->onPlayCard(dt,ret);
 	if(m_CurPlayGuy->IsPlayTimeOut()&&!IsGameEnd()){
@@ -323,7 +325,7 @@ void KBattleCtrlBase::OpSetSlot(int slot)
 	m_CurOp._slot = slot;
 	KCardInst* card = GetCurSrcCard();
 	if(!card) return;
-	KAbilityStatic* pAbility = card->FindStaticAbility(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 	KCardInstList arrGreen,arrRed;
 	QueryEnterFightTarget(card,&arrGreen,&arrRed);
 	int n = arrGreen.size()+arrRed.size();
@@ -353,7 +355,7 @@ bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrG
 	if(!card->IsKindOf(KCardStatic::card_soldier)) return false;
 	if(card->GetSlot()!=KCardInst::enum_slot_hand) return false;
 	if(m_CurOp._slot<0) return false;
-	KAbilityStatic* pAbility = card->FindStaticAbility(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 	if(!pAbility) return false;
 	KSkillAssist::_fillAbilityTarget(this,card,pAbility,arrGreen,arrRed);
 	return true;
@@ -613,6 +615,7 @@ void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
 {
 	for(KDoCardWhenAbilityList::iterator it=m_cardWhenList.begin();it!=m_cardWhenList.end();++it){
 		strDoCardWhenAbility& cardWhen = *it;
+		KBattleGod::getSingleton().DoCardAbilityOnWhen(this,cardWhen._card,cardWhen._when,m_evtActor);
 	}
 
 	m_cardWhenList.clear();

@@ -40,6 +40,18 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_all;
 	}else if(strcmp(str,"WHEN_HEAL")==0){
 		m_when = when_heal;
+	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
+		m_when = when_soldier_dead;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_DEAD")==0){
+		m_when = when_mysoldier_dead;
+	}else if(strcmp(str,"WHEN_SOLDIER_HURTED")==0){
+		m_when = when_soldier_hurted;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_HURTED")==0){
+		m_when = when_mysoldier_hurted;
+	}else if(strcmp(str,"WHEN_HERO_HURTED")==0){
+		m_when = when_hero_hurted;
+	}else if(strcmp(str,"WHEN_MYHERO_HURTED")==0){
+		m_when = when_myhero_hurted;
 	}else{
 		CCAssert(false , "Set When isn't match!");
 		//CCLog("Set When isn't match!");
@@ -195,17 +207,17 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 {
 	fileReader->GetInteger("ID", 0, (int*)&m_AbilityId);
 	char buf[64] = {0};
-	fileReader->GetString("WHEN", "", buf, MAX_CARD_NAME);
+	fileReader->GetString("WHEN", "", buf, 63);
 	SetWhen(buf);
-	fileReader->GetString("WHICH", "", buf, MAX_CARD_NAME);
+	fileReader->GetString("WHICH", "", buf, 63);
 	SetWhich(buf);
 
 	fileReader->GetString("Condition", "", buf, 63);
 	m_cond.ParseString(buf);
 
-	fileReader->GetString("WHAT", "", buf, MAX_CARD_NAME);
+	fileReader->GetString("WHAT", "", buf, 63);
 	SetWhat(buf);
-	fileReader->GetString("VAL", "", buf, MAX_CARD_NAME);
+	fileReader->GetString("VAL", "", buf, 63);
 	m_val.ParseString(buf);
 	fileReader->GetInteger("VAL2", 0, (int*)&m_val2);
 	fileReader->GetInteger("LOOP", 0, (int*)&m_loop);

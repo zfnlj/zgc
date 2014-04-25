@@ -459,9 +459,14 @@ void KUIAssist::_updateBufIcon(UIWidget* panel , KCardInst* card)
 {
     //MAX_BUF_SLOT_NUM;
     KCardBufferList& bufList = card->m_attr.m_bufList;
-    KCardBufferList::iterator it = bufList.begin();
+	KCardBufferList iconBufList;
+	for(KCardBufferList::iterator it=bufList.begin();it!=bufList.end();++it){
+		KAbilityStatic* pAbility = (*it)._pST;
+		if(!pAbility->BufIconEmpty()) iconBufList.push_back(*it);
+	}
+    KCardBufferList::iterator it = iconBufList.begin();
     int pos = 0;
-	while(it != bufList.end()){
+	while(it != iconBufList.end()){
         if(pos==MAX_BUF_SLOT_NUM) break;
 		KAbilityStatic* pAbility = (*it)._pST;
         UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(panel,"buf_slot",pos);

@@ -289,7 +289,7 @@ bool KBattleAI::HandCardToField()
 	}
 
 	if(pSelectCard){
-		KAbilityStatic* pAbility = pSelectCard->FindStaticAbility(KAbilityStatic::when_enter);
+		KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pSelectCard->GetCardId(),KAbilityStatic::when_enter);
 		int dest = 0;
 		if(pAbility&& !pAbility->IsArea()){
 			KCardInstList lst;

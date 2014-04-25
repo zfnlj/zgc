@@ -125,6 +125,7 @@ protected:
 	bool m_bDirty;
 	float m_waitDramaElapsed;
 	KDoCardWhenAbilityList m_cardWhenList;
+	int m_evtActor;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

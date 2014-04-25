@@ -141,11 +141,11 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 	}
 }
 
-bool KBattleGod::DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when)
+bool KBattleGod::DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when,int actor)
 {
-	KAbilityStatic* pAbility = (when==KAbilityStatic::when_enter)? card->FindStaticAbility(when) :card->FindBuf(when);
+	KAbilityStatic* pAbility = (when==KAbilityStatic::when_enter)? KSkillAssist::_findStaticAbility(card->GetCardId(),when) :card->FindBuf(when);
 	if(pAbility){
-		return DoCardAbility(ctrl,pAbility,card);
+		return DoCardAbility(ctrl,pAbility,card,NULL,actor);
 	}else{
 		return false;
 	}
@@ -216,14 +216,16 @@ void KBattleGod::OnTurnEnd()
 {
 }
 
-bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
+bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,int actor)
 {
 	if(pAbility->GetWhich()==KAbilityStatic::which_owner) return pSrc->GetOwner()->DoGuyAbility(ctrl,pSrc,pAbility);
 	if(pDes && pDes->HasBuf(pAbility)) return false;
 
 	bool ret = false;
+	if(actor==0) actor=pSrc->GetRealId();
 	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+
+	result.init(actor,pSrc->GetRealId(),pAbility);
 	if(!pAbility->IsArea()&&pDes){
 		KCardInstList lst;
 		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
@@ -421,7 +423,7 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
     }
 	guy->UseRes(pCard->GetCost());
 	guy->GetDeck().Hand2Fight(pCard,pos);
-	KAbilityStatic* pAbility = pCard->FindStaticAbility(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pCard->GetCardId(),KAbilityStatic::when_enter);
 	bool doAbilityOk = false;
 	if(pAbility){
 		if(pDes){

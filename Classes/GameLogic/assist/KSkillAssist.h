@@ -24,6 +24,7 @@ namespace KSkillAssist
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
 	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
 	void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when);
+	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -4,6 +4,8 @@
 #include "KBattleGod.h"
 #include "System/Misc/KStream.h"
 #include "assist/KBattleEventAssist.h"
+#include "assist/KSkillAssist.h"
+
 void _removeFromCardList(KCardInstList& lst,KCardInst* card)
 {
 	KCardInstList::iterator it = _findCardIt(&lst,card);
@@ -333,14 +335,6 @@ KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_What what)
 	return m_attr.FindBuf(what);
 }
 
-KAbilityStatic* KCardInst::FindStaticAbility(KAbilityStatic::Enum_When when)
-{
-	KCardAbilityList abilityList;
-	KGameStaticMgr::getSingleton().GetAbilityList(GetCardId(),abilityList,when);
-	if(abilityList.empty()) return NULL;
-	return *(abilityList.begin());
-}
-
 KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_When when)
 {
 	return m_attr.FindBuf(when);
@@ -425,7 +419,7 @@ bool KCardInst::IsActiveDefend()
 
 bool KCardInst::IsTargetLess(KAbilityStatic::Enum_When when)
 {
-	KAbilityStatic* pAbility = FindStaticAbility(when);
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(GetCardId(),when);
 	if(!pAbility) return false;
 	if(pAbility->IsArea()) return true;
 	if(pAbility->GetWhich()==KAbilityStatic::which_i ||
