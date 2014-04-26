@@ -11,7 +11,7 @@
 #include "KBattleFieldStatic.h"
 #include "KCardLayoutStatic.h"
 
-#define MAX_CARD_NAME 20
+#define MAX_CARD_NAME 24
 #define MAX_CARD_DESC_LEN 128
 #define MAX_CARD_DETAIL_LEN 256
 

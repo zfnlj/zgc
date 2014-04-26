@@ -246,7 +246,7 @@ bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,
 	switch(pSecretAbility->GetWhat()){
 	case KAbilityStatic::what_summon_guider:
 		{
-			int id = _summonCard(ctrl,pSecret,pSecretAbility,*pSrc);
+			int id = _summonCard(ctrl,pSecret,pSecretAbility,(*pSrc)->GetRealId());
 			if(id>0){
 				KCardInst* pNewDes = pSecret->GetOwner()->GetDeck().GetCard(id);
 				*pDes = pNewDes;
@@ -258,17 +258,24 @@ bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,
 	return ret;
 }
 
-
-int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInst* pActor)
+void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
 {
+	if(actor==0) actor = pSrc->GetRealId();
+	KCardInst* card  = deck->CreateCard(pAbility->GetNormalVal(),KCardInst::enum_slot_hand);
+	strCardAbilityResult result;
+	result.init(actor,pSrc->GetRealId(),pAbility);
+	result.SetDestVal(card->GetRealId(),0);
+	_sendAbilityResult(ctrl,result);
+}
+
+int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
+{
+	if(actor==0) actor = pSrc->GetRealId();
 	int id = 0;
 	KBattleGuy* pPlayer = pSrc->GetOwner();
 	strCardAbilityResult result;
-	if(pActor){
-		result.init(pActor->GetRealId(),pSrc->GetRealId(),pAbility);
-	}else{
-		result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
-	}
+	result.init(actor,pSrc->GetRealId(),pAbility);
+
 	int emptySlotNum = pPlayer->GetDeck().GetEmptyFightSlotNum();
 	if(emptySlotNum<0) return 0;
 	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
@@ -285,8 +292,9 @@ void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_ABILITYRESULT,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
 }
 
-void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
+void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
 {
+	if(actor==0) actor = pSrc->GetRealId();
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	KBattleGuy* pDef = ctrl->GetDefGuy();
 	KCardInstList lst,newLst;
@@ -294,15 +302,16 @@ void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbilit
 	pPlayer->GetDeck().CreateCloneCard(lst,newLst,KCardInst::enum_slot_hand);
 
 	strCardAbilityResult result;
-	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+	result.init(actor,pSrc->GetRealId(),pAbility);
 	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
 		result.SetDestVal((*it)->GetRealId(),0);
 	}
 	_sendAbilityResult(ctrl,result);
 }
 
-void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
+void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
 {
+	if(actor==0) actor = pSrc->GetRealId();
 	KBattleGuy* pPlayer = ctrl->GetCurGuy();
 	KBattleGuy* pDef = ctrl->GetDefGuy();
 	KCardInstList lst,newLst;

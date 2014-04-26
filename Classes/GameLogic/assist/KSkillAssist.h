@@ -6,6 +6,7 @@
 #include "KBattleEventAssist.h"
 class KAbilityStatic;
 class KBattleCtrlBase;
+class KBattleDeck;
 struct strCardAbilityResult;
 namespace KSkillAssist
 {
@@ -17,14 +18,15 @@ namespace KSkillAssist
 	KAbilityStatic* _findBuf(KCardAbilityList& list,KAbilityStatic::Enum_What what);
 	KCardInst* _findActiveSecret(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When when );
 	bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,KCardInst** pDes);
-	int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInst* pActor=NULL);
-	void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
-	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
+	int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
+	void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
+	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
 	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
 	void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when);
 	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when);
+	void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

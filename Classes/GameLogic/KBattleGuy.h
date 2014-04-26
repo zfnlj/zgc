@@ -65,7 +65,7 @@ public:
 	 size_t serializeDirty(KMemoryStream* so);
 	 BOOL deserializeDirty(KMemoryStream* si);
 
-	 bool DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility);
+	 bool DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	 void RemoveGuyAbility(KAbilityStatic* pAbility);
 	 int calcHurtVal(int val);
 	 int calcHealVal(int val);

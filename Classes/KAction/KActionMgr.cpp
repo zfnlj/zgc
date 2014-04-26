@@ -140,7 +140,7 @@ bool KActionMgr::MergeCastAction(KActionStatic* pST,K3DActionParam* p)
 	CCObject* pObj = NULL;
 	CCARRAY_FOREACH(&m_ActionArr, pObj){
 		KAction* pAction = (KAction*)pObj;
-		if(pAction->GetStatic()==pST){
+		if(pAction->GetParam()->SrcID()== p->SrcID() && pAction->GetStatic()==pST){
 			for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
 				if(p->_desArr[i]==0) break;
 				pAction->GetParam()->SetDestVal(p->_desArr[i],p->_desValArr[i]);

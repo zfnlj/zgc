@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\quest_i\quest_i.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>quest_i</Name>
+  <ProjectDir>D:\My Documents\quest_i</ProjectDir>
+  <JsonFileName>quest_i.json</JsonFileName>
+  <Resources>D:\My Documents\quest_i\Resources</Resources>
+  <JsonFolder>D:\My Documents\quest_i\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem2.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>false</bBatchImage>
+</AnimationProject>

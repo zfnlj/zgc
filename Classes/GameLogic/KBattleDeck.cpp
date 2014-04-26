@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,22002,22003,33005,31022,30007,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,23004,22001,33005,31022,30007,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -267,15 +267,6 @@ void KBattleDeck::CreateCloneCard(KCardInstList& lst,KCardInstList& newLst,KCard
 		KCardInst* cloneCard = CreateCard((*it)->GetCardId(),slot);
 		newLst.push_back(cloneCard);
 	}
-}
-
-void KBattleDeck::GenHandCard(int id)
-{
-	KCardInstList tmpList;
-	KCardInst* card = CreateCard(id,KCardInst::enum_slot_hand);
-	tmpList.push_back(card);
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DRAWCARD,(unsigned long long)&tmpList,
-													(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
 int KBattleDeck::DrawCard(int n,KCardInst::CardSlot slot,strCardAbilityResult* result)

@@ -196,13 +196,13 @@ void KBattleGuy::AddRes(int val)
 void KBattleGuy::onCardLeaveCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_dead);
-	DoGuyAbility(ctrl,card,pAbility);
+	DoGuyAbility(ctrl,card,pAbility,0);
 }
 
 void KBattleGuy::onCardEnterCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
 	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
-	DoGuyAbility(ctrl,card,pAbility);
+	DoGuyAbility(ctrl,card,pAbility,0);
 }
 
 void KBattleGuy::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
@@ -211,30 +211,31 @@ void KBattleGuy::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_UPDATEINFO,0,(unsigned long long)ctrl->GetWorld());
 }
 
-bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility)
+bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
 {
+	if(actor==0) actor = pSrc->GetRealId();
 	if(!pAbility) return false;
 	if(pAbility->GetWhich()!=KAbilityStatic::which_owner) return false;
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_summon:
 		{
-			KSkillAssist::_summonCard(ctrl,pSrc,pAbility);
+			KSkillAssist::_summonCard(ctrl,pSrc,pAbility,actor);
 		}
 		break;
 	case KAbilityStatic::what_copy_fight:
 		{
 			if(pSrc->GetOwner()->GetDeck().GetEmptyFightSlot()<0) return false;
-			KSkillAssist::_copyFightSoldier(ctrl,pSrc,pAbility);
+			KSkillAssist::_copyFightSoldier(ctrl,pSrc,pAbility,actor);
 		}
 		break;
 	case KAbilityStatic::what_get_card:
 		{
-			m_Deck.GenHandCard(pAbility->GetNormalVal());
+			KSkillAssist::_abilityGenCard(ctrl,&m_Deck,pSrc,pAbility,actor);
 		}
 		break;
 	case KAbilityStatic::what_copy_hand:
 		{
-			KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility);
+			KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility,actor);
 		}
 		break;
 	case KAbilityStatic::what_res_add:
@@ -245,7 +246,7 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 	case KAbilityStatic::what_draw_card:
 		{
 			strCardAbilityResult result;
-			result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
+			result.init(actor,pSrc->GetRealId(),pAbility);
 
 			m_Deck.DrawCard( KSkillAssist::_calcAbilityVal(this,pAbility),KCardInst::enum_slot_hand,&result);
 			KSkillAssist::_sendAbilityResult(ctrl,result);

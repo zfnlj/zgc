@@ -21,3 +21,5 @@ armature/damage_atkadd.json
 armature/angry_buf.json
 armature/absorb.json
 armature/courage_buf.json
+armature/yinu.json
+armature/quest_i.json
