@@ -249,31 +249,15 @@ int KCardInst::Heal(KCardInst* pSrc,int val)
 	m_attr.setCurHp(hp);
 	if(ret<0){
 		KBattleEvtAssist::_onBattleEvt(battle_evt_hurted,m_Owner->GetBattleCtrl(),pSrc,this);
-		//OnAbility(KAbilityStatic::when_damaged);
 		AddBuf(BUF_HURTED_ID);
 	}
+
 	return ret;
 }
 
 void KCardInst::AddAtk(int val)
 {
 	m_attr.setAddAtk(m_attr.getAddAtk()+val);
-}
-
-void KCardInst::OnAbility(KAbilityStatic::Enum_When when)
-{
-	KAbilityStatic* pAbility = FindBuf(when);
-	if(!pAbility) return;
-	switch(pAbility->GetWhat()){
-	case KAbilityStatic::what_atk_add:
-		{
-			int atk = m_attr.getAddAtk() + pAbility->GetNormalVal();
-			m_attr.setAddAtk(atk);
-		}
-		break;
-    default:
-        break;
-	}
 }
 
 int KCardInst::GetHp()

@@ -24,7 +24,6 @@ namespace KBattleEvtAssist
 {
 	void _onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes);
 
-	void _onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card);
 }
 
 #endif // 

@@ -44,6 +44,11 @@ void KBattleMsgHub::TurnBegin(unsigned long long Param1, unsigned long long Para
 
 void KBattleMsgHub::TurnEnd(unsigned long long Param1, unsigned long long Param2)
 {
+#ifdef _USE_COCOS2DX
+	GameRoot::getSingleton().getBattleScene()->onTurnEnd();
+#else
+	//TBD
+#endif
 }
 
 void KBattleMsgHub::DrawCard(unsigned long long Param1, unsigned long long Param2)

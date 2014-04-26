@@ -4,13 +4,13 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "angry_buf",
+      "name": "absorb",
       "bone_data": [
         {
           "name": "Layer1",
           "parent": "",
-          "x": 0.0,
-          "y": -0.32666015625,
+          "x": -1.0,
+          "y": 0.0,
           "z": 1,
           "cX": 1.0,
           "cY": 1.0,
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "buf_angry.png",
+              "name": "glowaion03.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,12 +41,12 @@
   ],
   "animation_data": [
     {
-      "name": "angry_buf",
+      "name": "absorb",
       "mov_data": [
         {
           "name": "Animation1",
-          "dr": 41,
-          "lp": false,
+          "dr": 31,
+          "lp": true,
           "to": 0,
           "drTW": 0,
           "twE": 0,
@@ -59,17 +59,17 @@
                 {
                   "dI": 0,
                   "x": 0.0,
-                  "y": 1.0,
+                  "y": 0.0,
                   "z": 0,
-                  "cX": 0.5,
-                  "cY": 0.5,
+                  "cX": 1.5,
+                  "cY": 1.5,
                   "kX": 0.0,
                   "kY": 0.0,
                   "fi": 0,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 0,
+                    "a": 60,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -78,74 +78,17 @@
                 {
                   "dI": 0,
                   "x": 0.0,
-                  "y": 1.0,
-                  "z": 0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 10,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "color": {
-                    "a": 255,
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  }
-                },
-                {
-                  "dI": 0,
-                  "x": 0.0,
-                  "y": 1.0,
-                  "z": 0,
-                  "cX": 1.0,
-                  "cY": 1.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 12,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "color": {
-                    "a": 255,
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  }
-                },
-                {
-                  "dI": 0,
-                  "x": 0.0,
-                  "y": 1.0,
-                  "z": 0,
-                  "cX": 4.0,
-                  "cY": 4.0,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 25,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "color": {
-                    "a": 100,
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  }
-                },
-                {
-                  "dI": 0,
-                  "x": 63.0,
                   "y": 0.0,
                   "z": 0,
-                  "cX": 0.5,
-                  "cY": 0.5,
+                  "cX": 0.1,
+                  "cY": 0.1,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 40,
+                  "fi": 30,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
-                    "a": 20,
+                    "a": 255,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -160,9 +103,9 @@
   ],
   "texture_data": [
     {
-      "name": "buf_angry",
-      "width": 64.0,
-      "height": 64.0,
+      "name": "glowaion03",
+      "width": 126.0,
+      "height": 124.0,
       "pX": 0.5,
       "pY": 0.5,
       "plistFile": "anim_elem2.plist"

@@ -196,6 +196,12 @@ void BattleFieldScene::onTurnBegin()
 	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
 }
 
+void BattleFieldScene::onTurnEnd()
+{
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCurPlayer();
+	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
+}
+
 void BattleFieldScene::RunTest(CCObject* sender)
 {
 	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();

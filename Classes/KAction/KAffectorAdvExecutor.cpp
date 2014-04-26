@@ -77,7 +77,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 			GetActor()->UpdateCardBuf();
 		}
 		break;
-	case Affector_draw:
+	case Affector_drawCard:
 		if(GetActor()) GetActor()->DrawCard();
 		break;
 	case Affector_hit:

@@ -257,6 +257,7 @@ void KBattleCtrlBase::TurnEnd()
 	m_CurPlayGuy->GetDeck().OnTurnEnd();
 	KBattleGod::getSingleton().OnTurnEnd();
 	StateJump(battle_select_turnplayer);
+	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNEND,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 }
 
 void KBattleCtrlBase::GameEnd()
@@ -322,15 +323,22 @@ void KBattleCtrlBase::DoSelectCard(KCardInst* card)
 
 void KBattleCtrlBase::OpSetSlot(int slot)
 {
-	m_CurOp._slot = slot;
 	KCardInst* card = GetCurSrcCard();
 	if(!card) return;
-	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
-	KCardInstList arrGreen,arrRed;
-	QueryEnterFightTarget(card,&arrGreen,&arrRed);
-	int n = arrGreen.size()+arrRed.size();
+	KAbilityStatic* pAbility = NULL;
+	int n=0;
+	if(m_CurOp._slot<0){
+		m_CurOp._slot = slot;
+		pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
+		KCardInstList arrGreen,arrRed;
+		QueryEnterFightTarget(card,&arrGreen,&arrRed);
+		n = arrGreen.size()+arrRed.size();
+	}
+	
+	
 	
 	if(!pAbility ||    //check if need to select target....
+		pAbility->GetWhich()==KAbilityStatic::which_i||
 		pAbility->IsArea() ||
 		n<=1)
 	{

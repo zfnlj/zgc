@@ -129,8 +129,6 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_anim;
 	}else if ( strcmp(szName,"replace") == 0 ){
 		eType = Affector_replace;
-	}else if ( strcmp(szName,"draw") == 0 ){
-		eType = Affector_draw;
 	}else if ( strcmp(szName,"action") == 0 ){
 		eType = Affector_action;
 	}else if ( strcmp(szName,"addWidget") == 0 ){
@@ -141,6 +139,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_updateSecret;
 	}else if ( strcmp(szName,"null") == 0 ){
 		eType = Affector_null;
+	}else if ( strcmp(szName,"drawCard") == 0 ){
+		eType = Affector_drawCard;
 	}
 	return eType;
 }

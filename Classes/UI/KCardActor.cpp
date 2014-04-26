@@ -259,7 +259,7 @@ void KCardActor::DrawCard()
 	KCardInstList lst;
 	lst.push_back(m_card);
 
-	GameRoot::getSingleton().getBattleScene()->onDrawCard(&lst,false);
+	GameRoot::getSingleton().getBattleScene()->onDrawCard(&lst,true);
 }
 void KCardActor::MoveReached(CCObject* sender)
 {

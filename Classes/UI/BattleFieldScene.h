@@ -51,6 +51,7 @@ public:
 	void onUseAbilityResult(strCardAbilityResult* result);
 	void onSelectCardOK(FBattleGuy* guy);
 	void onTurnBegin();
+	void onTurnEnd();
 	void onDrawCard(KCardInstList* cardList,bool bInit=true);
 	void onCardMove(KCardInst* pCard);
 	void onUseSecretCard(KCardInst* card);

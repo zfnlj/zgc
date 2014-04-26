@@ -33,26 +33,13 @@
             <key>hp_bless.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,134},{62,64}}</string>
+                <string>{{68,134},{62,64}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
                 <string>{{2,0},{62,64}}</string>
-                <key>sourceSize</key>
-                <string>{64,64}</string>
-            </dict>
-            <key>jiagongjibuff.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{68,128},{60,64}}</string>
-                <key>offset</key>
-                <string>{2,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{4,0},{60,64}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -118,7 +105,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8ec7fecf55ae15451868fe6066ed0fac$</string>
+            <string>$TexturePacker:SmartUpdate:dfc88825db046d90390020c31034c063$</string>
             <key>textureFileName</key>
             <string>anim_elem2.png</string>
         </dict>

@@ -118,15 +118,17 @@ void KBattleGod::SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst*
 
 void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2)
 {
-	/*if(pCard1 && pCard2){
-		if(!pCard2->IsDead() && val2<0){
-			KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_hurted,ctrl,pCard1,pCard2);
-		}
-		pAbility = pCard2->FindBuf(KAbilityStatic::when_do_damage);
+	if(pCard1 && pCard2){
+		KAbilityStatic* pAbility = pCard2->FindBuf(KAbilityStatic::when_do_damage);
 		if(pAbility && !pCard1->IsDead() && val1<0){
 			DoCardAbility(ctrl,pAbility,pCard2,pCard1);
 		}
-	}*/
+		pAbility = pCard1->FindBuf(KAbilityStatic::when_do_damage);
+		if(pAbility && !pCard2->IsDead() && val2<0){
+			DoCardAbility(ctrl,pAbility,pCard1,pCard2);
+		}
+
+	}
 	if(pCard1&& pCard1->IsDead()){
 		ctrl->onCard2Tomb(pCard1);
 	}
@@ -226,15 +228,8 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 	strCardAbilityResult result;
 
 	result.init(actor,pSrc->GetRealId(),pAbility);
-	if(!pAbility->IsArea()&&pDes){
-		KCardInstList lst;
-		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
-		int pos = _getIndexOfCard(&lst,pDes);
-		if(pos>=0){
-			DoCardAbility2Des(ctrl,pAbility,pSrc,pDes,&result);
-			ret =true;
-		}
-	}else{
+	if(pAbility->IsArea() ||
+		pAbility->IsTargetSure()){
 		KCardInstList lst;
 		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
 		KSkillAssist::_rndFillProc(pAbility,&lst);
@@ -246,6 +241,14 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it,n++){
 			if(n==maxNum) break;
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
+		}
+	}else if(pDes){
+		KCardInstList lst;
+		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
+		int pos = _getIndexOfCard(&lst,pDes);
+		if(pos>=0){
+			DoCardAbility2Des(ctrl,pAbility,pSrc,pDes,&result);
+			ret =true;
 		}
 	}
 	if(ret) KSkillAssist::_sendAbilityResult(ctrl,result);
@@ -296,6 +299,13 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_atk_add:
 		{
 			pDes->AddAtk(pAbility->GetNormalVal());
+			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
+		}
+		break;
+	case KAbilityStatic::what_angry:
+		{
+			pDes->AddAtk(pAbility->GetNormalVal());
+			pDes->m_attr.DelBuf(pAbility->GetVal2());
 			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;

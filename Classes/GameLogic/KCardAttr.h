@@ -21,7 +21,7 @@ struct KCardBuffer{
 	}
 	bool IsLoopOver(){
 		if(_pST->IsLoop()) return false;
-		return (_loop <_pST->LoopNum());
+		return (_loop >=_pST->LoopNum());
 	}
 	bool IsLoop(){ return _pST->IsLoop();}
 	KAbilityStatic* GetAbility(){ return _pST;}
@@ -102,6 +102,7 @@ public: // IAttrSet
 
 	bool readPacket(KMemoryStream* msg,bool first=false);
 	void updateBufList();
+	void DelBuf(int id);
 	void DelBuf(KAbilityStatic* pBuf);
 	void DelBuf(KAbilityStatic::Enum_What what);
 	void AddBuf(KAbilityStatic* pBuf,int loopNum);

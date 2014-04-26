@@ -302,6 +302,20 @@ void KCardAttr::DelBuf(KAbilityStatic::Enum_What what)
 	}
 }
 
+void KCardAttr::DelBuf(int id)
+{
+	updateMask(KCardAttr::BUF);
+	KCardBufferList::iterator it = m_bufList.begin();
+	while(it != m_bufList.end()){
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetId() == id){
+			m_bufList.erase(it);
+			return;
+		}
+		it++;
+	}
+}
+
 void KCardAttr::DelBuf(KAbilityStatic* pBuf)
 {
 	updateMask(KCardAttr::BUF);

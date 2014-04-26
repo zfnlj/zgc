@@ -46,7 +46,7 @@
         {
           "name": "Animation1",
           "dr": 46,
-          "lp": true,
+          "lp": false,
           "to": 0,
           "drTW": 0,
           "twE": 0,

@@ -4,7 +4,7 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "angry_buf",
+      "name": "courage_buf",
       "bone_data": [
         {
           "name": "Layer1",
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "buf_angry.png",
+              "name": "jiagongjibuff.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,7 +41,7 @@
   ],
   "animation_data": [
     {
-      "name": "angry_buf",
+      "name": "courage_buf",
       "mov_data": [
         {
           "name": "Animation1",
@@ -160,7 +160,7 @@
   ],
   "texture_data": [
     {
-      "name": "buf_angry",
+      "name": "courage_angry",
       "width": 64.0,
       "height": 64.0,
       "pX": 0.5,

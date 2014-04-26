@@ -25,15 +25,6 @@ namespace KBattleEvtAssist
 			return;
 			break;
 		}
-		KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,when);
-	}
-
-	void _onUseSkillCardEvt(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card)
-	{
-		KCardInstList* lst = guy->GetDeck().QueryCardSet(KCardInst::enum_slot_fight);
-		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it)
-		{
-			KBattleGod::getSingleton().DoCardAbilityOnWhen(ctrl,*it,KAbilityStatic::when_use_skill);
-		}
+		KSkillAssist::_fillCtrlCardEvt(ctrl,(pDes)?pDes:pSrc,when);
 	}
 }

@@ -22,10 +22,10 @@ ID	Name	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 21008	医者	2	2	1	water	0	0	0	0
 22001	兵法家-孙膑	7	5	7	fire	0	每当你施放一个法术时，将一张“炎龙吐息”置入手牌	0	0
 22002	火灵	4	3	6	fire	0	点燃任何受到火灵伤害的勇士。	burn_ability_show	0
-22003	谦逊的谋士	1	1	3	fire	0	当你施放一个法术时，获得+1的攻击力。	0	pic_22003.jpg
+22003	谦逊的谋士	1	1	3	fire	0	当你施放一个法术时，获得+1的攻击力。	cost_reduce_show	pic_22003.jpg
 22004	苏秦	2	3	2	fire	节能	使你的法术值消耗减少1。	cost_reduce_show	pic_22004.jpg
 23001	冷酷的监军	2	2	2	gold	0	对一名勇士造成1点伤害，并使其获得+2攻击。	0	pic_23001.jpg
-23002	胡服骑	4	4	3	gold	突袭	突袭	0	0
+23002	胡服骑	4	4	3	gold	突袭	突袭	rush_show	0
 23003	少年蒙恬	3	2	3	gold	0	进场：其他随从获得冲锋效果。	0	pic_23003.jpg
-23004	勇猛的先锋官	3	2	4	gold	0	当一名我方勇士受到伤害时，获得+1攻击。	angry_show	0
-23005	屠夫-白起	8	4	9	gold	突袭	突袭，激怒：+6攻击力。	0	0
+23004	勇猛的先锋官	3	2	4	gold	0	当一名我方勇士受到伤害时，获得+1攻击。	courage_show	0
+23005	屠夫-白起	8	4	9	gold	突袭	突袭，激怒：+6攻击力。	courage_show	0

@@ -19,3 +19,5 @@ armature/secret_enter.json
 armature/to_rush.json
 armature/damage_atkadd.json
 armature/angry_buf.json
+armature/absorb.json
+armature/courage_buf.json

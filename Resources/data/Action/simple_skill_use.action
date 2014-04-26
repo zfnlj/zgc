@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action class="null">
   <affect_body>
   	
   	<affector class="scaleX" obj="card" createtime="0" fVal="0.1"  life="0.01" />
-  	<affector class="scaleX" obj="card" createtime="0" fVal="1"  life="0.4" />
+  	<affector class="scaleX" obj="card" createtime="0" fVal="0.8"  life="0.4" />
  
   	<affector class="moveback" createtime="1.6" life="0.001" />
   </affect_body>

@@ -24,13 +24,14 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 		KCardInst* card = *it;
 		KAbilityStatic* pAbility = card->FindBuf(when);
 		if(!pAbility){
-			if(realWhen==KAbilityStatic::when_soldier_dead||
-				realWhen==KAbilityStatic::when_soldier_hurted||
-				realWhen==KAbilityStatic::when_hero_hurted)
-			{
+			if(when==KAbilityStatic::when_soldier_dead||
+				when==KAbilityStatic::when_soldier_hurted||
+				when==KAbilityStatic::when_hero_hurted){
 				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
-				pAbility = card->FindBuf(realWhen);
+			}else if(when==KAbilityStatic::when_use_skill){
+				realWhen = KAbilityStatic::when_i_use_skill;
 			}
+			pAbility = card->FindBuf(realWhen);
 		}
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
@@ -176,7 +177,7 @@ void _rndFillProc(KAbilityStatic* pAbility,KCardInstList* lst)
 }
 KCardInst* _findActiveSecret(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic::Enum_When when )
 {
-	KBattleGuy* pDefGuy = pDes->GetOwner();
+	KBattleGuy* pDefGuy = ctrl->GetDefGuy();
 	KCardInstList* secretList = pDefGuy->GetDeck().QueryCardSet(KCardInst::enum_slot_secret);
 	KCardInst* pSelectSecret = NULL;
 	for(KCardInstList::iterator it = secretList->begin();it!=secretList->end();++it){

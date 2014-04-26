@@ -34,6 +34,8 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_damaged;
 	}else if(strcmp(str,"WHEN_USE_SKILL")==0){
 		m_when = when_use_skill;
+	}else if(strcmp(str,"WHEN_I_USE_SKILL")==0){
+		m_when = when_i_use_skill;
 	}else if(strcmp(str,"WHEN_EVER")==0){
 		m_when = when_ever;
 	}else if(strcmp(str,"WHEN_ALL")==0){
@@ -72,6 +74,7 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
 	switch(m_what){
     case what_res_add:
     case what_atk_add:
+	case what_angry:
 	case what_hp_double:
     case what_hp_add:
             tp = (m_val._val>0)?ability_good:ability_bad;
@@ -89,6 +92,11 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
         break;
 	}
 	return tp;
+}
+
+bool KAbilityStatic::IsTargetSure()
+{
+	return (m_which==which_i || m_which==which_myhero || m_which==which_yourhero);
 }
 
 void KAbilityStatic::SetWhich(const char* str)
@@ -134,6 +142,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_heal;
 	}else if(strcmp(str,"WHAT_ATK_ADD")==0){
 		what = what_atk_add;
+	}else if(strcmp(str,"WHAT_ANGRY")==0){
+		what = what_angry;
 	}else if(strcmp(str,"WHAT_STUN")==0){
 		what = what_stun;
 	}else if(strcmp(str,"WHAT_HP_ADD")==0){

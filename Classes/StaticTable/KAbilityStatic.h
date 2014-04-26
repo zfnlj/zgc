@@ -35,6 +35,7 @@ public:
 		when_myhero_hurted,
 		when_atked,
 		when_use_skill,
+		when_i_use_skill,
 		when_do_damage,
 		when_heal,
 		when_ever,
@@ -88,6 +89,7 @@ public:
 		what_can_rush,
 		what_hurted,
 		what_bless_hp,
+		what_angry,
 		what_null,
 		
 	};
@@ -119,6 +121,7 @@ public:
 	KConditionDef& GetCond(){ return m_cond;}
 	KValDef& GetVal(){ return m_val;}
 	int GetNormalVal(){ return m_val._val;}
+	bool IsTargetSure();
 private:
 	int m_AbilityId;
 	Enum_When m_when;

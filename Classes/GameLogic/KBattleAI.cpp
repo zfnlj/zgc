@@ -46,8 +46,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	if(m_thinkElapsed<5)
 		return;
 	m_thinkElapsed = 0;
-	//if(UseSkillCard())
-	//	return;
+	/*if(UseSkillCard())
+		return;*/
 	if(HandCardToField())
 		return;
 	//if(UseHeroSkill())
@@ -169,6 +169,11 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 			int val1 = CalcTotalDamage(pAbility,lst,target);
 			int val2 = CalcTotalDamage(pAbility,lstMy,target);
 			return (val1 -2*val2) >= pCard->GetCost(); //¶ÔµÐ·½ÉËº¦´ó
+		}
+		break;
+	case KAbilityStatic::what_draw_card:
+		{
+			return KSkillAssist::_calcAbilityVal(this,pAbility)>0;
 		}
 		break;
 	case KAbilityStatic::what_control:

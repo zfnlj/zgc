@@ -75,7 +75,6 @@ public:
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
 	KAbilityStatic* GetSecretAbility();
-	void OnAbility(KAbilityStatic::Enum_When when);
 	void ReplaceST(int id);
 	const char* GetBasePosName(bool bMy);
 	bool IsRangeAbility(KAbilityStatic::Enum_When when);

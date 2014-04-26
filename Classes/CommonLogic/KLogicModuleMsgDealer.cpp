@@ -16,6 +16,7 @@ KLogicModuleMsgDealer::~KLogicModuleMsgDealer()
 void KLogicModuleMsgDealer::RegisterAllMsg()
 {
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_TURNBEGIN, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::TurnBegin);
+	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_TURNEND, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::TurnEnd);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_INIT, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::BattleInit);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_DRAWCARD, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::DrawCard);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_DUELRESULT, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::CardDuelResult);
