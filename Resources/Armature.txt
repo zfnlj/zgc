@@ -22,4 +22,4 @@ armature/angry_buf.json
 armature/absorb.json
 armature/courage_buf.json
 armature/yinu.json
-armature/quest_i.json
+armature/sp_rate.json

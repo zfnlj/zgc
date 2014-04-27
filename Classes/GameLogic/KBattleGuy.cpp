@@ -195,13 +195,17 @@ void KBattleGuy::AddRes(int val)
 
 void KBattleGuy::onCardLeaveCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
-	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_dead);
-	DoGuyAbility(ctrl,card,pAbility,0);
+	KCardBufferList::iterator it =card->m_attr.m_bufList.begin();
+	while(it != card->m_attr.m_bufList.end()){
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetWhich()==KAbilityStatic::which_owner) RemoveGuyAbility(buf._pST);
+		it++;
+	}
 }
 
 void KBattleGuy::onCardEnterCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
-	KAbilityStatic* pAbility = card->FindBuf(KAbilityStatic::when_enter);
+	KAbilityStatic* pAbility =KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 	DoGuyAbility(ctrl,card,pAbility,0);
 }
 
