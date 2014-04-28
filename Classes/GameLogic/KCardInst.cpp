@@ -27,6 +27,7 @@ void _rndPickCard(KCardInstList& src,KCardInstList& des,int num,KCardStatic::Car
 		for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();it++,pos++){
 			if(nRand==pos){
 				des.push_back(*it);
+				tmpLst.erase(it);
 				break;
 			}
 		}
@@ -179,10 +180,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 		{
 			if(!FindBuf(KAbilityStatic::what_stun)){
 				CardSlot slot = GetSlot();
-				if(slot==KCardInst::enum_slot_fight ||
-					slot==KCardInst::enum_slot_hero){
-					m_attr.setReady(1);
-				}
+				m_attr.setReady(1);
 			}
 			m_attr.updateBufList();
 			onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
@@ -212,9 +210,9 @@ void KCardInst::HpDouble()
 
 void KCardInst::ReturnHand()
 {
-	m_attr.clearBuf();
-	m_attr.setReady(0);
-	m_attr.setCurHp(m_attr.getMaxHp());
+	ClearBuf();
+	int realId = m_attr.getRealID();
+	m_attr.init(realId,m_pST);
 	m_attr.setSlot(KCardInst::enum_slot_hand);
 }
 
@@ -250,6 +248,8 @@ int KCardInst::Heal(KCardInst* pSrc,int val)
 	if(ret<0){
 		KBattleEvtAssist::_onBattleEvt(battle_evt_hurted,m_Owner->GetBattleCtrl(),pSrc,this);
 		AddBuf(BUF_HURTED_ID);
+	}else if(ret>0){
+		KBattleEvtAssist::_onBattleEvt(battle_evt_healed,m_Owner->GetBattleCtrl(),pSrc,this);
 	}
 
 	return ret;
@@ -340,8 +340,9 @@ void KCardInst::onCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When wh
 
 void KCardInst::ReplaceST(int id)
 {
-	m_attr.setCardId(id);
+	int realId = m_attr.getRealID();
 	m_pST = KGameStaticMgr::getSingleton().GetCard(id);
+	m_attr.init(realId,m_pST);
 }
 
 const char* KCardInst::GetBasePosName(bool bMy)
@@ -408,7 +409,9 @@ bool KCardInst::IsTargetLess(KAbilityStatic::Enum_When when)
 	if(pAbility->IsArea()) return true;
 	if(pAbility->GetWhich()==KAbilityStatic::which_i ||
 		pAbility->GetWhich()==KAbilityStatic::which_u||
-		pAbility->GetWhich()==KAbilityStatic::which_owner)
+		pAbility->GetWhich()==KAbilityStatic::which_owner||
+		pAbility->GetWhich()==KAbilityStatic::which_myhero||
+		pAbility->GetWhich()==KAbilityStatic::which_yourhero)
 		return true;
 	return false;
 }
