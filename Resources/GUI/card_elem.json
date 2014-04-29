@@ -423,7 +423,7 @@
           "touchAble": false,
           "useMergedTexture": false,
           "visible": true,
-          "width": 26,
+          "width": 36,
           "x": 128,
           "y": 22,
           "capInsetsHeight": 0,
@@ -438,7 +438,7 @@
           },
           "scale9Enable": false,
           "scale9Height": 37,
-          "scale9Width": 26
+          "scale9Width": 36
         }
       },
       {
@@ -678,7 +678,7 @@
           "touchAble": false,
           "useMergedTexture": false,
           "visible": true,
-          "width": 25,
+          "width": 40,
           "x": 11,
           "y": 192,
           "capInsetsHeight": 0,
@@ -693,7 +693,7 @@
           },
           "scale9Enable": false,
           "scale9Height": 40,
-          "scale9Width": 25
+          "scale9Width": 40
         }
       },
       {
@@ -903,6 +903,59 @@
           "scale9Enable": false,
           "scale9Height": 80,
           "scale9Width": 80
+        }
+      },
+      {
+        "classname": "ImageView",
+        "name": null,
+        "children": [],
+        "options": {
+          "__type": "ComGUIImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
+          "classname": "ImageView",
+          "name": "stone_pos",
+          "ZOrder": 1,
+          "actiontag": 194,
+          "anchorPointX": 0.5,
+          "anchorPointY": 0.5,
+          "classType": null,
+          "colorB": 255,
+          "colorG": 255,
+          "colorR": 255,
+          "flipX": false,
+          "flipY": false,
+          "height": 10,
+          "ignoreSize": true,
+          "layoutParameter": null,
+          "opacity": 255,
+          "positionPercentX": 0.499411672,
+          "positionPercentY": 0.969145,
+          "positionType": 1,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "sizePercentX": 0.533333361,
+          "sizePercentY": 0.3883495,
+          "sizeType": 0,
+          "tag": 20,
+          "touchAble": false,
+          "useMergedTexture": false,
+          "visible": true,
+          "width": 10,
+          "x": 74,
+          "y": 199,
+          "capInsetsHeight": 0,
+          "capInsetsWidth": 0,
+          "capInsetsX": 0,
+          "capInsetsY": 0,
+          "fileName": null,
+          "fileNameData": {
+            "path": "stone_1.png",
+            "plistFile": "card_elem.plist",
+            "resourceType": 1
+          },
+          "scale9Enable": false,
+          "scale9Height": 10,
+          "scale9Width": 10
         }
       }
     ],

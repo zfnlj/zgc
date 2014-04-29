@@ -23,3 +23,6 @@ armature/absorb.json
 armature/courage_buf.json
 armature/yinu.json
 armature/sp_rate.json
+armature/quest_i.json
+armature/rush.json
+armature/heal_ability.json

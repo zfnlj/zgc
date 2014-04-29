@@ -191,6 +191,11 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 			AddHp(1);
 		}
 		break;
+	case enum_slot_hero:
+		{
+			m_attr.setReady(1);
+		}
+		break;
 	default:
 		break;
 	} 

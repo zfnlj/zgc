@@ -278,7 +278,7 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 		fileReader->GetInteger("Def", 0, (int*)&pCard->m_Def);
 		fileReader->GetInteger("Cost", 0, (int*)&pCard->m_Cost);
 		fileReader->GetInteger("Hp", 0, (int*)&pCard->m_Hp);
-		fileReader->GetInteger("Rank", 0, (int*)&pCard->m_Rank);
+		fileReader->GetInteger("Rank", 1, (int*)&pCard->m_Rank);
 		fileReader->GetString("Desc", "", pCard->m_Desc, MAX_CARD_DESC_LEN);
 		fileReader->GetString("Detail", "", pCard->m_Detail, MAX_CARD_DETAIL_LEN);
 

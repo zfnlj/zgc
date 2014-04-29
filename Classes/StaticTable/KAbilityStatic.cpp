@@ -40,8 +40,8 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_ever;
 	}else if(strcmp(str,"WHEN_ALL")==0){
 		m_when = when_all;
-	}else if(strcmp(str,"WHEN_HEAL")==0){
-		m_when = when_heal;
+	}else if(strcmp(str,"WHEN_HEALED")==0){
+		m_when = when_healed;
 	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
 		m_when = when_soldier_dead;
 	}else if(strcmp(str,"WHEN_MYSOLDIER_DEAD")==0){
@@ -50,6 +50,10 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_soldier_hurted;
 	}else if(strcmp(str,"WHEN_MYSOLDIER_HURTED")==0){
 		m_when = when_mysoldier_hurted;
+	}else if(strcmp(str,"WHEN_SOLDIER_HEALED")==0){
+		m_when = when_soldier_healed;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_HEALED")==0){
+		m_when = when_mysoldier_healed;
 	}else if(strcmp(str,"WHEN_HERO_HURTED")==0){
 		m_when = when_hero_hurted;
 	}else if(strcmp(str,"WHEN_MYHERO_HURTED")==0){

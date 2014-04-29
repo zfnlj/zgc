@@ -26,10 +26,10 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 		if(!pAbility){
 			if(when==KAbilityStatic::when_soldier_dead||
 				when==KAbilityStatic::when_soldier_hurted||
-				when==KAbilityStatic::when_hero_hurted){
+				when==KAbilityStatic::when_hero_hurted||
+				when==KAbilityStatic::when_soldier_healed||
+				when==KAbilityStatic::when_use_skill){
 				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
-			}else if(when==KAbilityStatic::when_use_skill){
-				realWhen = KAbilityStatic::when_i_use_skill;
 			}
 			pAbility = card->FindBuf(realWhen);
 		}

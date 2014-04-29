@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\rush\rush.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>rush</Name>
+  <ProjectDir>D:\My Documents\rush</ProjectDir>
+  <JsonFileName>rush.json</JsonFileName>
+  <Resources>D:\My Documents\rush\Resources</Resources>
+  <JsonFolder>D:\My Documents\rush\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem2.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>
