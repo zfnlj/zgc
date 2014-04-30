@@ -98,7 +98,6 @@ void KBattleCtrlBase::onCard2Tomb(KCardInst* card)
 	if(guy){
 		guy->GetImp()->GetDeck().onCard2Tomb(card);
 	}
-	onSoldier2TombMsg(card);
 }
 
 
@@ -234,6 +233,15 @@ KBattleGuy* KBattleCtrlBase::GetDefGuy()
 		return *it;
 	}
 	return NULL;
+}
+
+int KBattleCtrlBase::GetFighterNum()
+{
+	int ret = 0;
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		ret += (*it)->GetFighterNum();
+	}
+	return ret;
 }
 
 void KBattleCtrlBase::PlayCard(float dt)
@@ -546,18 +554,6 @@ void KBattleCtrlBase::onNetClose()
 bool KBattleCtrlBase::IsServerSide()
 { 
 	return (m_world!=NULL||!m_bNetReady);
-}
-
-void KBattleCtrlBase::onSoldier2TombMsg(KCardInst* card)
-{
-	if(!card->IsKindOf(KCardStatic::card_soldier)) return;
-	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
-		KBattleGuy* guy = *it;
-		KCardInstList* fightSlot = guy->GetDeck().QueryCardSet(KCardInst::enum_slot_fight);
-		for(KCardInstList::iterator itor = fightSlot->begin();itor!=fightSlot->end();++itor){
-			(*itor)->onCardAbility(this,KAbilityStatic::when_soldier_dead);
-		}
-	}
 }
 
 void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)

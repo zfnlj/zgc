@@ -12,7 +12,7 @@ namespace KSkillAssist
 {
 	void _fillAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour);
 	void _fillAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy=false /*只取我方的*/);
-	void _rndFillProc(KAbilityStatic* pAbility,KCardInstList* lst);
+	void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst);
 	bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbilityStatic::Enum_When);
 	void _removeBuf(KCardAbilityList& list,int id);
 	KAbilityStatic* _findBuf(KCardAbilityList& list,KAbilityStatic::Enum_What what);
@@ -23,7 +23,7 @@ namespace KSkillAssist
 	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);
-	int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility);
+	int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef);
 	void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when);
 	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when);
 	void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action unique="1" ex="heal_hit" exDelay="1.6" class="null">
-  <affect_body>
-     <affector class="update" createtime="2.2"  life="0.001" />  
-  </affect_body>
-</action>

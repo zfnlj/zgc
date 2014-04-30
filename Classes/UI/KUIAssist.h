@@ -8,6 +8,7 @@ class BattleFieldScene;
 class KCardInst;
 class KAction;
 class KCardActor;
+class FBattleGuy;
 struct K3DActionParam;
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -47,6 +48,7 @@ public:
 	static bool _queryScreenPos(const char* name,cocos2d::CCPoint& pt);
 	static cocos2d::CCPoint _querySecretPos(KCardInst* card);
 	static cocos2d::CCPoint _querySecretShowPos(KCardInst* card);
+	static void _resortHandCardSet(FBattleGuy* guy);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

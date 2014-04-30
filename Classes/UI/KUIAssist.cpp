@@ -507,3 +507,14 @@ void KUIAssist::_updateCardListBuf(KCardInstList* lst)
 		if(actor) actor->UpdateCardBuf();
 	}
 }
+
+void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
+{
+	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+	KCardInstList tmpLst;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
+	}
+	KUIAssist::_moveCardSet(&tmpLst,"card_move");
+}

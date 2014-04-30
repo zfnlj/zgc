@@ -345,6 +345,7 @@ void KCardInst::onCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When wh
 
 void KCardInst::ReplaceST(int id)
 {
+	ClearBuf();
 	int realId = m_attr.getRealID();
 	m_pST = KGameStaticMgr::getSingleton().GetCard(id);
 	m_attr.init(realId,m_pST);

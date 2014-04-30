@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="null">
+  <affect_body>
+  		<affector class="addWidget" obj="bigcard" createtime="0.4" iVal="120" life="0.1" />
+  		<affector class="move" obj="bigcard" slot="big_photo" createtime="0.4"  fVal="10000" life="0.01" />
+  		<affector class="scaleX" obj="bigcard" createtime="0.4" fVal="0.1"  life="0.01" />
+  		<affector class="scaleX" obj="bigcard" createtime="0.4" fVal="1"  life="0.4" />
+  		
+  </affect_body>
+</action>
+
+		

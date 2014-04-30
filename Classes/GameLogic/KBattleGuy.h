@@ -46,6 +46,7 @@ public:
 	 void onGameEnd();
 	 bool IsSelectHandCard(){ return m_bSelectHandCard;}
 	 bool IsFirstHand(){ return m_bFirstHand;}
+	 int GetFighterNum();
 	 UINT64 GetGuyId(){ return m_guyId;}
 	 void SetGuyId(UINT64 id){ m_guyId = id;}
 	 void AddRes(int val);

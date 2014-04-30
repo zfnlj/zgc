@@ -232,15 +232,10 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		pAbility->IsTargetSure()){
 		KCardInstList lst;
 		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
-		KSkillAssist::_rndFillProc(pAbility,&lst);
-
-		int maxNum = (pAbility->IsArea())? 99:pAbility->GetMax();
-		if(lst.size()<maxNum) maxNum = lst.size();
-		ret = (maxNum>0)?true:false;
-		int n=0;
-		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it,n++){
-			if(n==maxNum) break;
+		KSkillAssist::_rndFillProc(ctrl,pSrc,pAbility,&lst);
+		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
+			ret = true;
 		}
 	}else if(pDes){
 		KCardInstList lst;

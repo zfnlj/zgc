@@ -21,10 +21,11 @@ struct KConditionDef{
 struct KValDef{
 	enum val_def{
 		val_normal,
-		val_my_hurted_soldier,
+		val_my_hurted_soldierNum,
+		val_soldierNum,
 	};
 	KValDef():_def(val_normal),_val(0){}
-	void ParseString(const char* str);
+	void ParseString(char* str);
 	val_def GetDef(){ return _def;}
 	int GetVal(){ return _val;}
 	val_def _def;

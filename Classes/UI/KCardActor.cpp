@@ -123,6 +123,9 @@ void KCardActor::init(KCardInst* pInst)
 	pInst->retainActor(this);
 
 	if(GameRoot::getSingleton().BattleCtrl().IsShowBack(pInst)){ //对方手牌，不显示牌信息
+		if(pInst->GetCardId()!=30006){
+			int jj=0;
+		}
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardBack.json");
 		m_bBack = true;
 	}else{
@@ -137,6 +140,7 @@ void KCardActor::init(KCardInst* pInst)
 	m_ActiveGreenSprite = KUIAssist::CreateAnimationSprite("active_green");
 	CC_SAFE_RETAIN(m_ActiveGreenSprite);
 	CC_SAFE_RETAIN(m_ui);
+	m_ui->setPosition(ccp(-500.0f,-500.0f));
 	KActor::init(m_ui);
 }
 
@@ -238,9 +242,14 @@ void KCardActor::MoveBack(float speed)
 			param.init("go_tomb");
 			if(m_card->IsKindOf(KCardStatic::card_skill)){
 				FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(m_card);
-				KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-				KUIAssist::_moveCardSet(lst,"card_move");
+				KUIAssist::_resortHandCardSet(guy);
 			}
+		}
+		break;
+	case KCardInst::enum_slot_hand:
+		{
+			GameRoot::getSingleton().getBattleScene()->onFighterBackHand(m_card);
+			return;
 		}
 		break;
 	default:

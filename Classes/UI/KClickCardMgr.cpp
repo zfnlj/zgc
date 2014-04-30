@@ -46,6 +46,7 @@ void KClickCardMgr::onClickCard(KCardActor* actor)
 		param1._srcID = m_curActor->GetCard()->GetRealId();
 		param1.SetDestVal(actor->GetCard()->GetRealId(),0);
 		mainActor.GetActionMgr().PlayAction(&param1);
+		mainActor.GetActionMgr().breathe(0.01);
 	}else{
 		actor->GetActionMgr().PlayAction("bigCard_show");
 	}
@@ -71,6 +72,18 @@ void KClickCardMgr::update(float dt)
 	}
 	if(m_bTouchEnd) m_CardElapsed+= dt;
 	if(m_CardElapsed>3 && m_curActor){
+		m_curActor->GetActionMgr().PlayAction("bigCard_hide");
+		m_curActor = NULL;
+	}
+}
+
+void KClickCardMgr::HideBigCard()
+{
+	
+	if(m_curActor){
+		KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
+		mainActor.GetActionMgr().LimitAlive("bigCard_switch");
+		m_curActor->GetActionMgr().LimitAlive("bigCard_show");
 		m_curActor->GetActionMgr().PlayAction("bigCard_hide");
 		m_curActor = NULL;
 	}

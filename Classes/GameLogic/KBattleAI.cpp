@@ -46,8 +46,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	if(m_thinkElapsed<5)
 		return;
 	m_thinkElapsed = 0;
-	/*if(UseSkillCard())
-		return;*/
+	if(UseSkillCard())
+		return;
 	if(HandCardToField())
 		return;
 	//if(UseHeroSkill())
@@ -173,7 +173,7 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 		break;
 	case KAbilityStatic::what_draw_card:
 		{
-			return KSkillAssist::_calcAbilityVal(this,pAbility)>0;
+			return KSkillAssist::_calcValDef(m_battleCtrl,this,pAbility->GetVal())>0;
 		}
 		break;
 	case KAbilityStatic::what_control:

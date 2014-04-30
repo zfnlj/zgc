@@ -26,6 +26,7 @@ public:
 	void onClickCard(KCardActor*);
 	void onTouchEnd();
 	void update(float dt);
+	void HideBigCard();
 private:
 	KCardActor* m_cacheActor;
 	KCardActor* m_curActor;

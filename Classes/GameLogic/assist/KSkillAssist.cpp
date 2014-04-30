@@ -152,15 +152,12 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pA
 	}
 }
 
-void _rndFillProc(KAbilityStatic* pAbility,KCardInstList* lst)
+void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst)
 {
-	if(!pAbility->IsRnd()) return;
-	if(pAbility->GetWhat()!= KAbilityStatic::what_kill &&
-		pAbility->GetWhat()!= KAbilityStatic::what_heal) return;
+	int maxNum = KSkillAssist::_calcValDef(ctrl,pSrc->GetOwner(),pAbility->GetMax());
 
-
-	int pickNum = (pAbility->GetRnd()>lst->size())? lst->size():pAbility->GetRnd();
-	if(pickNum==lst->size()) pickNum--;
+	int pickNum = (maxNum>lst->size())? lst->size():maxNum;
+	if(pickNum==lst->size()) return ;
 
 	while(lst->size()>pickNum){
 		int nRand = g_rnd.GetRandom(0,lst->size());
@@ -278,9 +275,9 @@ int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,i
 
 	int emptySlotNum = pPlayer->GetDeck().GetEmptyFightSlotNum();
 	if(emptySlotNum<0) return 0;
-	int num = (pAbility->GetMax()>emptySlotNum)? emptySlotNum:pAbility->GetMax();
+	int num = (pAbility->GetMaxNormalVal()>emptySlotNum)? emptySlotNum:pAbility->GetMaxNormalVal();
 	for(int i=0;i<num;i++){
-		id = pPlayer->GetDeck().SummonCard(_calcAbilityVal(NULL,pAbility))->GetRealId();
+		id = pPlayer->GetDeck().SummonCard(pAbility->GetNormalVal())->GetRealId();
 		result.SetDestVal(id,0);
 	}
 	_sendAbilityResult(ctrl,result);
@@ -344,13 +341,15 @@ bool _IsMatch(KConditionDef& condDef,KCardInst* card)
 	return true;
 }
 
-int _calcAbilityVal(KBattleGuy* guy,KAbilityStatic* pAbility)
+int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef)
 {
 	int ret =0;
-	KValDef& valDef = pAbility->GetVal();
 	switch(valDef.GetDef()){
-	case KValDef::val_my_hurted_soldier:
+	case KValDef::val_my_hurted_soldierNum:
 		ret = guy->GetDeck().GetHurtedSoldierNum();
+		break;
+	case KValDef::val_soldierNum:
+		ret = ctrl->GetFighterNum() + valDef._val;
 		break;
 	default:
 		ret = valDef.GetVal();

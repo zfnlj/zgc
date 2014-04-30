@@ -180,6 +180,7 @@ void BattleFieldScene::onSelectCardOK(FBattleGuy* guy)
 
 void BattleFieldScene::onTurnBegin()
 {
+
 	UIButton* pBut = (UIButton*)m_ui->getWidgetByName("turn_end");
 	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
 		pBut->setTouchEnabled(true);
@@ -198,6 +199,7 @@ void BattleFieldScene::onTurnBegin()
 
 void BattleFieldScene::onTurnEnd()
 {
+	KClickCardMgr::getSingleton().HideBigCard();
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCurPlayer();
 	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
 }
@@ -243,6 +245,7 @@ void BattleFieldScene::FreshAllCard()
 
 void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 {
+	KClickCardMgr::getSingleton().HideBigCard();
 	K3DActionParam param1;
 	param1.Copy(result);
 
@@ -258,8 +261,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 		int oldSlot = card->GetOldSlot();
 		if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
 			FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
-			KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-			KUIAssist::_moveCardSet(lst,"card_move");
+			KUIAssist::_resortHandCardSet(guy);
 		}
 	}
 	
@@ -268,6 +270,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 
 void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 {
+	KClickCardMgr::getSingleton().HideBigCard();
 	KCardActor* atk = (KCardActor*)result->_atker->getActor();
 	KCardActor* def = (KCardActor*)result->_defender->getActor();
 
@@ -278,6 +281,17 @@ void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 	atk->GetActionMgr().PlayAction(&param);
 
 	m_indicatePanel.OnSelectCardOK();
+}
+
+void BattleFieldScene::onFighterBackHand(KCardInst* pCard)
+{
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(pCard);
+	KCardActor* actor = (KCardActor*)pCard->getActor();
+	if(GameRoot::getSingleton().BattleCtrl().IsShowBack(pCard)){
+		actor->UpdateUI();
+		m_ui->addWidget(actor->GetUI());
+	}
+	KUIAssist::_resortHandCardSet(guy);
 }
 
 void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
@@ -332,8 +346,7 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 		m_ui->addWidget(actor->GetUI());
 	}
 	if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
-		KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-		KUIAssist::_moveCardSet(lst,"card_move");
+		KUIAssist::_resortHandCardSet(guy);
 	}
 	actor->GetActionMgr().PlayAction("card_move");
 	KUIAssist::_soldierShow(pCard); // soldier enter fight movie.
@@ -377,7 +390,5 @@ void BattleFieldScene::onUseSecretCard(KCardInst* card)
 	actor->GetActionMgr().PlayAction("secret_use");
 
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
-	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-	KUIAssist::_moveCardSet(lst,"card_move");
-
+	KUIAssist::_resortHandCardSet(guy);
 }

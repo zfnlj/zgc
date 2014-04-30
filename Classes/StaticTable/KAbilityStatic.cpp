@@ -6,7 +6,7 @@
 
 bool KAbilityStatic::init()
 {
-	m_AbilityId = m_loop = m_val2 = m_max = m_area = 0;
+	m_AbilityId = m_loop = m_val2 = m_area = 0;
 	memset(m_Action,0,sizeof(m_Action));
 	memset(m_bufIcon,0,sizeof(m_bufIcon));
 	return true;
@@ -236,8 +236,9 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetInteger("VAL2", 0, (int*)&m_val2);
 	fileReader->GetInteger("LOOP", 0, (int*)&m_loop);
 	fileReader->GetInteger("AREA", 0, (int*)&m_area);
-	fileReader->GetInteger("MAX", 0, (int*)&m_max);
-	fileReader->GetInteger("RND", 0, (int*)&m_rnd);
+	fileReader->GetString("MAX", "", buf, 63);
+	m_max.ParseString(buf);
+
 	fileReader->GetInteger("MYSELF", 1, (int*)&m_mySelf);
 	fileReader->GetString("Action", "", m_Action, 63);
 	fileReader->GetString("BUF_ICON", "", m_bufIcon, 32);

@@ -25,10 +25,17 @@ void KConditionDef::ParseString(const char* str)
 }
 
 
-void KValDef::ParseString(const char* str)
+void KValDef::ParseString(char* str)
 {
-	if(strcmp(str,"MyHurtedSoldier")==0){
-		_def = val_my_hurted_soldier;
+	char* ss[64];
+	int ns = split(str, ";", ss, 64);
+	if(ns==2){
+		_val = atoi(ss[1]);
+	}
+	if(strcmp(ss[0],"MyHurtedSoldier")==0){
+		_def = val_my_hurted_soldierNum;
+	}else if(strcmp(ss[0],"SoldierNum")==0){
+		_def = val_soldierNum;
 	}else{
 		_def = val_normal;
 		_val = atoi(str);

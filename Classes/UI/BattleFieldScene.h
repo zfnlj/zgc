@@ -54,6 +54,7 @@ public:
 	void onTurnEnd();
 	void onDrawCard(KCardInstList* cardList,bool bInit=true);
 	void onCardMove(KCardInst* pCard);
+	void onFighterBackHand(KCardInst* card);
 	void onUseSecretCard(KCardInst* card);
 	void onUseRes();
 

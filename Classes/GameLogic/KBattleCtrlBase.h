@@ -95,6 +95,7 @@ public:
 	bool IsWaitDrama(){ return m_waitDramaElapsed>0.0f;}
 	void AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_When when);
 	void DoCardEvtList(KCardInst* actor);
+	int GetFighterNum();
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;
@@ -117,7 +118,6 @@ protected:
 		m_state = newState;
 		m_bDirty = true;
 	}
-	void onSoldier2TombMsg(KCardInst* card);
 	KBattleGuyList m_BattleGuyList;
 	KBattleGuy* m_CurPlayGuy;
 	KBattleGuy* m_pMainPlayer;

@@ -18,6 +18,7 @@ KFightAreaPanel::KFightAreaPanel()
 KFightAreaPanel::~KFightAreaPanel()
 {
 	for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
+		m_ActiveSprites[i]->removeFromParent();
 		CC_SAFE_RELEASE(m_ActiveSprites[i]);
 	}
 }
@@ -32,9 +33,10 @@ void KFightAreaPanel::init(cocos2d::extension::UILayer* layer)
 		pBut->setTag(i);
 		pBut->addPushDownEvent(this, coco_pushselector(KFightAreaPanel::onClickFightArea));
 		m_ActiveSprites[i] = KUIAssist::CreateAnimationSprite("active_green");
-		m_ActiveSprites[i]->setPosition(pBut->getWorldPosition());
+		//m_ActiveSprites[i]->setPosition(pBut->getWorldPosition());
 		m_ActiveSprites[i]->setScale(0.8f);
 		m_ActiveSprites[i]->setAnchorPoint(ccp(0.5,0.5));
+		pBut->addRenderer(m_ActiveSprites[i],1);
 		CC_SAFE_RETAIN(m_ActiveSprites[i]);
 	}
 	UIWidget* pClickArea = UIHelper::seekWidgetByName(layer->getRootWidget(),"fight_area_click");
@@ -60,9 +62,11 @@ void KFightAreaPanel::Hide()
 void KFightAreaPanel::ActiveSlot(int pos,bool flag)
 {
 	if(flag){
-		if(!m_ActiveSprites[pos]->getParent()) m_layer->addChild(m_ActiveSprites[pos],100);
+		m_ActiveSprites[pos]->setVisible(true);
+		//if(!m_ActiveSprites[pos]->getParent()) m_layer->addChild(m_ActiveSprites[pos],1);
 	}else{
-		m_ActiveSprites[pos]->removeFromParentAndCleanup(false);
+		m_ActiveSprites[pos]->setVisible(false);
+		//m_ActiveSprites[pos]->removeFromParentAndCleanup(false);
 	}
 }
 

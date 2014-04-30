@@ -69,13 +69,14 @@ void KBattleGuy::DoSelectBeginCard(KCardInstList* lst)
 
 void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
-	if(!bFirstTurn){
-		m_Deck.DrawCard(1);
-	}
+	
 	m_TurnPlayTime = 0;
 	m_attr.setMaxRes(m_attr.getMaxRes()+1);
 	m_attr.setCurRes(m_attr.getMaxRes());
 	m_Deck.onTurnBegin(ctrl);
+	if(!bFirstTurn){
+		m_Deck.DrawCard(1);
+	}
 }
 
 
@@ -252,7 +253,7 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 			strCardAbilityResult result;
 			result.init(actor,pSrc->GetRealId(),pAbility);
 
-			m_Deck.DrawCard( KSkillAssist::_calcAbilityVal(this,pAbility),KCardInst::enum_slot_hand,&result);
+			m_Deck.DrawCard( KSkillAssist::_calcValDef(ctrl,this,pAbility->GetVal()),KCardInst::enum_slot_hand,&result);
 			KSkillAssist::_sendAbilityResult(ctrl,result);
 		}
 		break;
@@ -297,4 +298,10 @@ int KBattleGuy::calcMpCost(int val)
 		it++;
 	}
 	return val;
+}
+
+int KBattleGuy::GetFighterNum()
+{
+	KCardInstList* fighterLst = m_Deck.QueryCardSet(KCardInst::enum_slot_fight);
+	return fighterLst->size();
 }

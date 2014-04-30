@@ -107,13 +107,12 @@ public:
 	bool IsArea() { return m_area>0;}
 	//int GetVal(){ return m_val;}
 	int GetVal2(){ return m_val2;}
-	int GetMax(){ return m_max;}
+	KValDef& GetMax(){ return m_max;}
+	int GetMaxNormalVal(){ return m_max._val;}
 	int GetId(){ return m_AbilityId;}
 	bool IsLoop(){ return m_loop==0;}
 	int LoopNum(){ return m_loop;}
 	Enum_AblityType GetAbilityType();
-	bool IsRnd(){ return m_rnd>0;}
-	int GetRnd(){ return m_rnd;}
 	const char* GetAction(){ return m_Action;}
 	const char* GetBufIcon(){ return m_bufIcon;}
 	bool ActionIsEmpty(){ return strlen(m_Action)<2;}
@@ -132,9 +131,8 @@ private:
 	Enum_What m_what;
 	int m_val2;
 	int m_loop;
-	int m_max;
+	KValDef m_max;
 	int m_area;
-	int m_rnd;
 	int m_mySelf;//是否对自己起效
 	char m_Action[64];
 	char m_bufIcon[32];
