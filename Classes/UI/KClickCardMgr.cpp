@@ -47,7 +47,7 @@ void KClickCardMgr::onClickCard(KCardActor* actor)
 		param1._srcID = m_curActor->GetCard()->GetRealId();
 		param1.SetDestVal(actor->GetCard()->GetRealId(),0);
 		mainActor.GetActionMgr().PlayAction(&param1);
-		mainActor.GetActionMgr().breathe(0.01);
+		mainActor.GetActionMgr().breathe(0.01f);
 	}else{
 		actor->GetActionMgr().PlayAction("bigCard_show");
 	}

@@ -101,6 +101,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	pSrc->m_attr.setReady(0);
 	SendDuelResult(ctrl,pSrc,pDes,v2,v1);
 	PostCardDuel(ctrl,pSrc,v2,pDes,v1);
+	ctrl->AddDramaElapsed(4.0f);
 	return ret;
 }
 
@@ -382,7 +383,7 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
-	
+	ctrl->AddDramaElapsed(4.0f);
 	return true;
 }
 
@@ -403,6 +404,7 @@ bool KBattleGod::DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCard
 	}
 	guy->UseRes(pCard->GetCost());
 	guy->GetDeck().Hand2Secret(pCard,pos);
+	ctrl->AddDramaElapsed(3.0f);
 	return true;
 }
 
@@ -424,6 +426,7 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
     }
 	guy->UseRes(pCard->GetCost());
 	guy->GetDeck().Hand2Fight(pCard,pos);
+	
 	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pCard->GetCardId(),KAbilityStatic::when_enter);
 	bool doAbilityOk = false;
 	if(pAbility){
@@ -435,8 +438,12 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 		}
 	}
 	
-	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty())
+	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty()){
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());
+		ctrl->AddDramaElapsed(2.0f);
+	}else{
+		ctrl->AddDramaElapsed(4.0f);
+	}
 	return true;
 }
 

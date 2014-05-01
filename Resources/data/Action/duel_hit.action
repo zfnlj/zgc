@@ -9,7 +9,7 @@
     <affector class="fadeout" obj="hit_text" fVal="0.5" createtime="1" life="0.5" />
     <affector class="fadeout" obj="hit_panle.png" fVal="0.5" createtime="1" life="0.5" />
     	
-	  <affector class="update" createtime="2.2"  life="0.001" /> 
+	  <affector class="updateHit" createtime="2.2"  life="0.001" /> 
 	  <affector class="moveback" createtime="2.2" fVal="800" life="0.001" />
   </affect_body>
 </action>

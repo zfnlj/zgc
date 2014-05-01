@@ -21,7 +21,6 @@ bool KBattleCtrlBase::init(void* w)
 	m_bNetReady = false;
 	m_pBattleQuest = NULL;
 	m_waitDramaElapsed = 0;
-	m_evtActor = 0;
 	return true;
 }
 
@@ -246,7 +245,6 @@ int KBattleCtrlBase::GetFighterNum()
 
 void KBattleCtrlBase::PlayCard(float dt)
 {
-	m_evtActor = m_CurOp._src;
 	bool ret =KBattleGod::getSingleton().OnPlayCard(this,&m_CurOp);
 	m_CurPlayGuy->onPlayCard(dt,ret);
 	if(m_CurPlayGuy->IsPlayTimeOut()&&!IsGameEnd()){
@@ -620,7 +618,8 @@ void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
 	for(KDoCardWhenAbilityList::iterator it=m_cardWhenList.begin();it!=m_cardWhenList.end();++it){
 		strDoCardWhenAbility& cardWhen = *it;
 		KAbilityStatic* pAbility =  KSkillAssist::_findStaticAbility(cardWhen._card->GetCardId(),cardWhen._when);
-		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,m_evtActor);
+		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,actor->GetRealId());
+		AddDramaElapsed(4.0f);
 	}
 
 	m_cardWhenList.clear();

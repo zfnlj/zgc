@@ -127,7 +127,7 @@ void KCardActor::init(KCardInst* pInst)
 			int jj=0;
 		}
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardBack.json");
-		m_ui->setScale(0.8);
+		m_ui->setScale(0.8f);
 		m_bBack = true;
 	}else{
 		m_ui = KUIAssist::_createCardLayout(pInst,false);
@@ -203,7 +203,7 @@ void KCardActor::UpdateCardBuf()
 	}
 }
 
-void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit)
+void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit,K3DActionParam* hitParam)
 {
 	if(!ui) return;
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
@@ -212,7 +212,13 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit)
 		m_card->IsKindOf(KCardStatic::card_soldier)){
 		
 		char info[64]={0};
-		sprintf(info,"%d",m_card->GetHp());
+		if(hitParam){
+			int val = hitParam->GetVal(m_card->GetRealId());
+			int oldHp = atoi(labelHp->getStringValue());
+			sprintf(info,"%d",oldHp + val);
+		}else{
+			sprintf(info,"%d",m_card->GetHp());
+		}
 		if(!bInit && strcmp(info,labelHp->getStringValue())!=0){
 			float oldScale = labelHp->getScale();
 			CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
@@ -291,7 +297,6 @@ void KCardActor::initTombAction(K3DActionParam* param)
 {
 	m_tombAction.clone(param);
 }
-
 
 void KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood)
 {

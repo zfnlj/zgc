@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\kingkong_word\kingkong_word.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>kingkong_word</Name>
+  <ProjectDir>D:\My Documents\kingkong_word</ProjectDir>
+  <JsonFileName>kingkong_word.json</JsonFileName>
+  <Resources>D:\My Documents\kingkong_word\Resources</Resources>
+  <JsonFolder>D:\My Documents\kingkong_word\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>

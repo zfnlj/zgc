@@ -45,6 +45,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	m_thinkElapsed += dt;
 	if(m_thinkElapsed<5)
 		return;
+	if(m_battleCtrl->IsWaitDrama())
+		return;
 	m_thinkElapsed = 0;
 	if(UseSkillCard())
 		return;

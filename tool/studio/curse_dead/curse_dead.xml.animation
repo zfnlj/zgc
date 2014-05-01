@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>D:\My Documents\curse_dead\curse_dead.xml.animation</filePath>
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\studio\curse_dead\curse_dead.xml.animation</filePath>
   <Version>1.2.0.1</Version>
   <Name>curse_dead</Name>
-  <ProjectDir>D:\My Documents\curse_dead</ProjectDir>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\studio\curse_dead</ProjectDir>
   <JsonFileName>curse_dead.json</JsonFileName>
-  <Resources>D:\My Documents\curse_dead\Resources</Resources>
-  <JsonFolder>D:\My Documents\curse_dead\Json</JsonFolder>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\studio\curse_dead\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\studio\curse_dead\Json</JsonFolder>
   <JsonList />
   <ResourceFileList>
     <string>anim_elem.plist</string>

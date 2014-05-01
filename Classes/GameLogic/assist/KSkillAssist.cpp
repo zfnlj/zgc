@@ -156,10 +156,10 @@ void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility
 {
 	int maxNum = KSkillAssist::_calcValDef(ctrl,pSrc->GetOwner(),pAbility->GetMax());
 
-	int pickNum = (maxNum>lst->size())? lst->size():maxNum;
+	int pickNum = (maxNum>(int)lst->size())? lst->size():maxNum;
 	if(pickNum==lst->size()) return ;
 
-	while(lst->size()>pickNum){
+	while((int)lst->size()>pickNum){
 		int nRand = g_rnd.GetRandom(0,lst->size());
 		int pos=0;
 		for(KCardInstList::iterator it=lst->begin();it!=lst->end();it++,pos++){

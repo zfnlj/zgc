@@ -119,6 +119,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_indicate;
 	}else if ( strcmp(szName,"update") == 0 ){
 		eType = Affector_update;
+	}else if ( strcmp(szName,"updateHit") == 0 ){
+		eType = Affector_updateHit;
 	}else if ( strcmp(szName,"hit") == 0 ){
 		eType = Affector_hit;
 	}else if ( strcmp(szName,"summon") == 0 ){

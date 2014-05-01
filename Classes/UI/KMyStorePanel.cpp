@@ -115,7 +115,7 @@ void KMyStorePanel::pagePrev()
 void KMyStorePanel::pageNext()
 {
 	int beginPos = m_curPage*MAX_SLOT_NUM;
-	if(beginPos>=m_filterCardVect.size()) return;
+	if(beginPos>=(int)m_filterCardVect.size()) return;
 	m_curPage++;
 	updateCardPanel();
 }

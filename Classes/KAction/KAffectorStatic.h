@@ -35,6 +35,7 @@ enum AffectorType
 	Affector_move, //移动
 	Affector_moveback, //移回
 	Affector_update, //更新
+	Affector_updateHit, //更新
 	Affector_hit, //更新
 	Affector_bright,
 	Affector_eff, //移动

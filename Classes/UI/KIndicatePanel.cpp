@@ -41,7 +41,9 @@ void KIndicatePanel::Update(float dt)
 		break;
 	case KBattleCtrlBase::battle_play:
 		{
-			if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()|| KAction::GetTotalClassActionNum()>0)
+			if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()|| 
+				KAction::GetTotalClassActionNum()>0 ||
+				GameRoot::getSingleton().BattleCtrl().IsWaitDrama())
 				break;
 			pMainPlayer->QueryActiveHandCards(&curActiveGreen);
 			pMainPlayer->QueryActiveFightCards(&curActiveGreen);

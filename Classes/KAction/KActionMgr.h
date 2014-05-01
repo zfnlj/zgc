@@ -17,6 +17,21 @@
 #define  MAX_CACHE_ACTION 10
 struct K3DActionParam;
 class KActor;
+
+struct KActionParamQueue{
+	K3DActionParam _param[MAX_CACHE_ACTION];
+	int _head;
+	int _tail;
+	KActionParamQueue():_head(0),_tail(0)
+	{}
+	bool IsEmpty(){ return _head==_tail;}
+	K3DActionParam* firstParam();
+	void consumeParam();
+	K3DActionParam* findParam(const char* name);
+	void cache(K3DActionParam& param);
+	void cacheImediate(K3DActionParam& param);
+};
+
 class KActionMgr
 {
 public:
@@ -37,20 +52,16 @@ public:
 	void		Init(KActor* actor);
 	void        onDestory(void);
 	CCArray m_ActionArr;
-	void	CacheAction(K3DActionParam&);
 	void	CacheImediateAction(K3DActionParam& param);
 	KActor* GetActor(){ return m_Actor;}
 protected:
 	
 	KActor* m_Actor;
-	K3DActionParam m_cacheAction[MAX_CACHE_ACTION];
-	K3DActionParam m_slotAction;//到达slot才触发的Action
-	int m_cacheHead;
-	int m_cacheTail;
+	KActionParamQueue m_cacheAction;
+	KActionParamQueue m_slotAction;//到达slot才触发的Action
 	std::string m_debugInfo;
 private:
 	bool MergeCastAction(KActionStatic* pST,K3DActionParam* p);
-	bool pickCacheActionParam(K3DActionParam& param);
 	void PlayCacheAction();
 	void PlaySlotAction();
 	bool FoundClassAction();

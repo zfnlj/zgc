@@ -7,6 +7,52 @@
 
 using  namespace Ogre;
 
+K3DActionParam* KActionParamQueue::firstParam()
+{
+	if(_head==_tail) return NULL;
+	return &_param[_head];
+}
+
+void KActionParamQueue::consumeParam()
+{
+	if(_head==_tail) return;
+	_head++;
+	if(_head==MAX_CACHE_ACTION) _head=0;
+}
+
+K3DActionParam* KActionParamQueue::findParam(const char* name)
+{
+	for(int i=0;i<MAX_CACHE_ACTION;i++){
+		if(strcmp(_param[i]._name,name)==0) return &_param[i];
+	}
+	return NULL;
+}
+
+void KActionParamQueue::cache(K3DActionParam& param)
+{
+	int slot = _tail;
+	_tail++;
+	if(_tail==MAX_CACHE_ACTION) _tail=0;
+	CCAssert( _tail!=_head,"Action Cache is full!");
+	if(_tail==_head) return;
+
+	K3DActionParam* pSlot = &_param[slot];
+	pSlot->clone(&param);
+
+}
+
+void KActionParamQueue::cacheImediate(K3DActionParam& param)
+{
+	int slot = _head;
+	slot--;
+	if(slot <0) slot = MAX_CACHE_ACTION-1;
+	CCAssert( _tail!=slot,"Action Cache is full!");
+	K3DActionParam* pSlot = &_param[slot];
+	pSlot->clone(&param);
+	_head = slot;
+}
+
+
 KActionMgr::KActionMgr()
 {
 }
@@ -20,29 +66,19 @@ KActionMgr::~KActionMgr()
 
 void KActionMgr::Init(KActor* actor)
 {
-	m_slotAction.init();
 	m_Actor = actor;
-	m_cacheHead = m_cacheTail = 0;
 }
 
-bool KActionMgr::pickCacheActionParam(K3DActionParam& param)
-{
-	if(m_cacheHead==m_cacheTail) return false;
-	param.clone(&m_cacheAction[m_cacheHead]);
-	m_cacheHead++;
-	if(m_cacheHead==MAX_CACHE_ACTION) m_cacheHead=0;
-	return true;
-}
 void KActionMgr::PlayCacheAction()
 {
-	if(m_cacheHead==m_cacheTail) return;
 	if(FoundClassAction()) return;
 
-	K3DActionParam& param = m_cacheAction[m_cacheHead];
-	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param._name);
-	createAction(&m_cacheAction[m_cacheHead],0);
-	m_cacheHead++;
-	if(m_cacheHead==MAX_CACHE_ACTION) m_cacheHead=0;
+	K3DActionParam* param = m_cacheAction.firstParam();
+	if(!param) return;
+
+	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
+	createAction(param,0);
+	m_cacheAction.consumeParam();
 }
 
 void KActionMgr::breathe(float deltaTime)
@@ -86,24 +122,31 @@ K3DActionParam* KActionMgr::FindActionParam(const char* name)
 {
 	KAction* pAction = FindAction(name);
 	if(pAction) return pAction->GetParam();
-	for(int i=0;i<MAX_CACHE_ACTION;i++){
-		if(strcmp(m_cacheAction[i]._name,name)==0) return &m_cacheAction[i];
-	}
-	return NULL;
+
+	return m_cacheAction.findParam(name);
 }																														 
 
 void KActionMgr::PlaySlotAction()
 {
+	if(FoundClassAction()) return;
 	if(m_slotAction.IsEmpty()) return;
-	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(m_slotAction._name);
+
+	K3DActionParam* param = m_slotAction.firstParam();
+	if(!param) return;
+
+	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
 	if(!pST) return;
-	KCardInst* card = m_Actor->GetCard();
+
+	KCardActor* actor = KUIAssist::_getCardActor(param->_srcID);
+	if(!actor) actor = (KCardActor*)m_Actor;
+
+	KCardInst* card = actor->GetCard();
 	if(!card) return;
 	if((int)card->GetSlot()!= pST->GetSlot()) return;
 	cocos2d::CCPoint pt = KUIAssist::_queryCardPos(NULL,card);
-	if(m_Actor->GetUI()->getPosition().getDistance(pt) >2) return;
-	createAction(&m_slotAction,0);
-	m_slotAction.init();
+	if(actor->GetUI()->getPosition().getDistance(pt) >2) return;
+	createAction(param,0);
+	m_slotAction.consumeParam();
 }
 
 KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³É¶¯×÷									 
@@ -118,7 +161,7 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 	}
 	KCardInst* card = m_Actor->GetCard();
 	if(pST->GetSlot()>0){
-		m_slotAction.clone(param);
+		m_slotAction.cache(*param);
 		return NULL;
 	}
 	if(MergeCastAction(pST,param)) return NULL;
@@ -126,7 +169,7 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 
 	if( (pST->GetClass()!=KActionStatic::class_null&& FoundClassAction())||
 		bCached){
-		CacheAction(*param);
+		m_cacheAction.cache(*param);
 		return NULL;
 	}else{
 		return createAction(param,key);
@@ -153,26 +196,7 @@ bool KActionMgr::MergeCastAction(KActionStatic* pST,K3DActionParam* p)
 
 void KActionMgr::CacheImediateAction(K3DActionParam& param)
 {
-	int slot = m_cacheHead;
-	slot--;
-	if(slot <0) slot = MAX_CACHE_ACTION-1;
-	CCAssert( m_cacheTail!=slot,"Action Cache is full!");
-	K3DActionParam* pSlot = &m_cacheAction[slot];
-	pSlot->clone(&param);
-	m_cacheHead = slot;
-}
-
-void KActionMgr::CacheAction(K3DActionParam& param)
-{
-	int slot = m_cacheTail;
-	m_cacheTail++;
-	if(m_cacheTail==MAX_CACHE_ACTION) m_cacheTail=0;
-	CCAssert( m_cacheTail!=m_cacheHead,"Action Cache is full!");
-	if(m_cacheTail==m_cacheHead) return;
-
-	K3DActionParam* pSlot = &m_cacheAction[slot];
-	pSlot->clone(&param);
-
+	m_cacheAction.cacheImediate(param);
 }
 
 KAction* KActionMgr::CreateOnActionStaticMgr(KActionStatic* pST,K3DActionParam* p,int key)
