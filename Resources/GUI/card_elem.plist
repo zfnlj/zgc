@@ -7,7 +7,7 @@
             <key>atk_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{956,87},{38,43}}</string>
+                <string>{{154,2},{38,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,82 +20,17 @@
             <key>card_back_mini.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{956,2},{60,83}}</string>
+                <string>{{306,154},{60,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{60,83}}</string>
                 <key>sourceSize</key>
                 <string>{60,83}</string>
             </dict>
             <key>card_back_normal.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,834},{120,165}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{120,165}}</string>
-                <key>sourceSize</key>
-                <string>{120,165}</string>
-            </dict>
-            <key>card_mask_equip_fire.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{610,514},{150,206}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,206}}</string>
-                <key>sourceSize</key>
-                <string>{150,206}</string>
-            </dict>
-            <key>card_mask_equip_gold.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{844,306},{150,206}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,206}}</string>
-                <key>sourceSize</key>
-                <string>{150,206}</string>
-            </dict>
-            <key>card_mask_equip_mud.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{636,306},{150,206}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,206}}</string>
-                <key>sourceSize</key>
-                <string>{150,206}</string>
-            </dict>
-            <key>card_mask_equip_null.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{484,722},{150,206}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,206}}</string>
-                <key>sourceSize</key>
-                <string>{150,206}</string>
-            </dict>
-            <key>card_mask_equip_tree.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{458,514},{150,206}}</string>
@@ -108,7 +43,46 @@
                 <key>sourceSize</key>
                 <string>{150,206}</string>
             </dict>
-            <key>card_mask_equip_water.png</key>
+            <key>card_mask_equip_fire.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{626,610},{150,206}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,206}}</string>
+                <key>sourceSize</key>
+                <string>{150,206}</string>
+            </dict>
+            <key>card_mask_equip_gold.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{626,458},{150,206}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,206}}</string>
+                <key>sourceSize</key>
+                <string>{150,206}</string>
+            </dict>
+            <key>card_mask_equip_mud.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{834,418},{150,206}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,206}}</string>
+                <key>sourceSize</key>
+                <string>{150,206}</string>
+            </dict>
+            <key>card_mask_equip_null.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{458,306},{150,206}}</string>
@@ -121,14 +95,40 @@
                 <key>sourceSize</key>
                 <string>{150,206}</string>
             </dict>
-            <key>card_mask_hero_fire.png</key>
+            <key>card_mask_equip_tree.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{692,154},{150,206}}</string>
+                <string>{{626,306},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,206}}</string>
+                <key>sourceSize</key>
+                <string>{150,206}</string>
+            </dict>
+            <key>card_mask_equip_water.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{418,834},{150,206}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,206}}</string>
+                <key>sourceSize</key>
+                <string>{150,206}</string>
+            </dict>
+            <key>card_mask_hero_fire.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{306,626},{150,206}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -137,11 +137,11 @@
             <key>card_mask_hero_gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{484,154},{150,206}}</string>
+                <string>{{306,418},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -150,7 +150,7 @@
             <key>card_mask_hero_mud.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{332,778},{150,206}}</string>
+                <string>{{834,210},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,11 +163,11 @@
             <key>card_mask_hero_null.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,570},{150,206}}</string>
+                <string>{{626,154},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -176,11 +176,11 @@
             <key>card_mask_hero_tree.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,362},{150,206}}</string>
+                <string>{{418,154},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -189,11 +189,11 @@
             <key>card_mask_hero_water.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{306,154},{150,206}}</string>
+                <string>{{210,834},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -241,11 +241,11 @@
             <key>card_mask_skill_null.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{748,2},{150,206}}</string>
+                <string>{{834,2},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -254,7 +254,7 @@
             <key>card_mask_skill_tree.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{540,2},{150,206}}</string>
+                <string>{{626,2},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,11 +267,11 @@
             <key>card_mask_skill_water.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,2},{150,206}}</string>
+                <string>{{418,2},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{150,206}}</string>
                 <key>sourceSize</key>
@@ -280,7 +280,7 @@
             <key>card_mask_soldier_fire.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{332,2},{150,206}}</string>
+                <string>{{210,2},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +293,7 @@
             <key>card_mask_soldier_gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{124,834},{150,206}}</string>
+                <string>{{2,834},{150,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,11 +358,11 @@
             <key>card_photo_bg_base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,154},{144,118}}</string>
+                <string>{{834,626},{144,118}}</string>
                 <key>offset</key>
                 <string>{0,42}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{3,2},{144,118}}</string>
                 <key>sourceSize</key>
@@ -371,7 +371,7 @@
             <key>cost_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{163,986},{28,32}}</string>
+                <string>{{41,986},{28,32}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
@@ -384,7 +384,7 @@
             <key>hp_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{124,986},{32,37}}</string>
+                <string>{{2,986},{32,37}}</string>
                 <key>offset</key>
                 <string>{-2,0}</string>
                 <key>rotated</key>
@@ -397,7 +397,7 @@
             <key>stone_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,1001},{10,10}}</string>
+                <string>{{83,998},{10,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +410,7 @@
             <key>stone_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{38,1001},{10,10}}</string>
+                <string>{{83,986},{10,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -423,7 +423,7 @@
             <key>stone_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{26,1001},{10,10}}</string>
+                <string>{{71,1010},{10,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +436,7 @@
             <key>stone_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{14,1001},{10,10}}</string>
+                <string>{{71,998},{10,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -449,7 +449,7 @@
             <key>stone_5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,1001},{10,10}}</string>
+                <string>{{71,986},{10,10}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -469,7 +469,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:de56959bba625b7b522c36025d2008f6$</string>
+            <string>$TexturePacker:SmartUpdate:c077211161753208310af5584e596af5$</string>
             <key>textureFileName</key>
             <string>card_elem.png</string>
         </dict>

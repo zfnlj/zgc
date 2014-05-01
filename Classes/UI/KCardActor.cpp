@@ -127,6 +127,7 @@ void KCardActor::init(KCardInst* pInst)
 			int jj=0;
 		}
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardBack.json");
+		m_ui->setScale(0.8);
 		m_bBack = true;
 	}else{
 		m_ui = KUIAssist::_createCardLayout(pInst,false);

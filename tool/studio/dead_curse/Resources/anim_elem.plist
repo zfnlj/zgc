@@ -4,252 +4,252 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>buf_abs_def.png</key>
+            <key>absolute_def.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,206},{32,32}}</string>
+                <string>{{220,386},{112,120}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-2}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{8,6},{112,120}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_angry.png</key>
+            <key>aixin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,172},{32,32}}</string>
+                <string>{{132,132},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{128,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_atk_equ_hp.png</key>
+            <key>anim_curse.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,138},{32,32}}</string>
+                <string>{{262,2},{120,128}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{2,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{6,0},{120,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_burn.png</key>
+            <key>anim_curse_dead.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,138},{32,32}}</string>
+                <string>{{444,306},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{64,64}</string>
             </dict>
-            <key>buf_burn_ability.png</key>
+            <key>anim_guider.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,206},{32,32}}</string>
+                <string>{{2,262},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{128,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_cost_reduce.png</key>
+            <key>anim_heal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,172},{32,32}}</string>
+                <string>{{262,132},{114,128}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-7,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{114,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_courage.png</key>
+            <key>anim_hide.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,138},{32,32}}</string>
+                <string>{{448,210},{62,56}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-1,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,5},{62,56}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{64,64}</string>
             </dict>
-            <key>buf_dead_atk.png</key>
+            <key>anim_sheep.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,104},{32,32}}</string>
+                <string>{{384,124},{104,84}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{11,22},{104,84}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_dead_curse.png</key>
+            <key>anim_strong.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,104},{32,32}}</string>
+                <string>{{132,386},{86,124}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{1,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{22,2},{86,124}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_gold_shield.png</key>
+            <key>atk_equ_hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,104},{32,32}}</string>
+                <string>{{384,2},{120,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{4,4},{120,120}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_golden_word.png</key>
+            <key>burning-hands.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,70},{32,32}}</string>
+                <string>{{378,306},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{64,64}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{64,64}</string>
             </dict>
-            <key>buf_guider.png</key>
+            <key>cost_reduce.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,70},{32,32}}</string>
+                <string>{{334,378},{108,120}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-2,1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{8,3},{108,120}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_heal_ability.png</key>
+            <key>dead_add_atk.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,70},{32,32}}</string>
+                <string>{{2,392},{114,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{7,0},{114,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_hide.png</key>
+            <key>gen_rotate.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,36},{32,32}}</string>
+                <string>{{132,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{128,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_hp_bless.png</key>
+            <key>gloden_word.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,36},{32,32}}</string>
+                <string>{{256,262},{120,114}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{4,6},{120,114}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_quest_i.png</key>
+            <key>gold_shield.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,36},{32,32}}</string>
+                <string>{{132,262},{122,122}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{3,4},{122,122}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_sp_rate.png</key>
+            <key>magic_pain_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,2},{32,32}}</string>
+                <string>{{2,132},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{128,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_strong.png</key>
+            <key>quest3blue.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,2},{32,32}}</string>
+                <string>{{378,210},{68,94}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{30,17},{68,94}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
-            <key>buf_yinu.png</key>
+            <key>sun_29_single.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{32,32}}</string>
+                <string>{{2,2},{128,128}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{32,32}}</string>
+                <string>{{0,0},{128,128}}</string>
                 <key>sourceSize</key>
-                <string>{32,32}</string>
+                <string>{128,128}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -257,13 +257,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>buf_icon_elem.png</string>
+            <string>anim_elem.png</string>
             <key>size</key>
-            <string>{128,256}</string>
+            <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a0b4c49a6b152bb0dc2fcf428a570b55$</string>
+            <string>$TexturePacker:SmartUpdate:059645d4da4dde019cc1bbe743decdde$</string>
             <key>textureFileName</key>
-            <string>buf_icon_elem.png</string>
+            <string>anim_elem.png</string>
         </dict>
     </dict>
 </plist>

@@ -619,7 +619,8 @@ void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
 {
 	for(KDoCardWhenAbilityList::iterator it=m_cardWhenList.begin();it!=m_cardWhenList.end();++it){
 		strDoCardWhenAbility& cardWhen = *it;
-		KBattleGod::getSingleton().DoCardAbilityOnWhen(this,cardWhen._card,cardWhen._when,m_evtActor);
+		KAbilityStatic* pAbility =  KSkillAssist::_findStaticAbility(cardWhen._card->GetCardId(),cardWhen._when);
+		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,m_evtActor);
 	}
 
 	m_cardWhenList.clear();

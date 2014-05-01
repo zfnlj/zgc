@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\dead_curse\dead_curse.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>dead_curse</Name>
+  <ProjectDir>D:\My Documents\dead_curse</ProjectDir>
+  <JsonFileName>dead_curse.json</JsonFileName>
+  <Resources>D:\My Documents\dead_curse\Resources</Resources>
+  <JsonFolder>D:\My Documents\dead_curse\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>anim_elem.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>

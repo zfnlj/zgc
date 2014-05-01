@@ -32,6 +32,7 @@ void KClickCardMgr::init()
 
 void KClickCardMgr::onClickCard(KCardActor* actor)
 {
+	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
 	KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	if(mainActor.GetActionMgr().FindAction("bigCard_switch")){
 		m_cacheActor = actor;

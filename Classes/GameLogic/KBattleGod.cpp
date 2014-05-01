@@ -130,16 +130,12 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 
 	}
 	if(pCard1&& pCard1->IsDead()){
+		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
 		ctrl->onCard2Tomb(pCard1);
 	}
 	if(pCard2&&pCard2->IsDead()){
-		ctrl->onCard2Tomb(pCard2);
-	}
-	if(pCard1&& pCard1->IsDead()){
-		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
-	}
-	if(pCard2&&pCard2->IsDead()){
 		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard1,pCard2);
+		ctrl->onCard2Tomb(pCard2);
 	}
 }
 

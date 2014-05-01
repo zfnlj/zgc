@@ -27,3 +27,4 @@ armature/quest_i.json
 armature/rush.json
 armature/heal_ability.json
 armature/dead_atkadd.json
+armature/dead_curse.json
