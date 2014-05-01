@@ -26,6 +26,7 @@ namespace KSkillAssist
 	int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef);
 	void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when);
 	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when);
+	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_What what);
 	void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 }
 

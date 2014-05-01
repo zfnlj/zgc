@@ -170,7 +170,10 @@ void KCardInst::EnterFightField(int pos)
 		if(pAttr->IsHide()) AddBuf(BUF_HIDE_ID);
 		if(pAttr->IsDist()) AddBuf(BUF_DIST_ID);
 	}
-	if(!rushed) AddBuf(BUF_CAN_RUSH_ID);
+	if(!rushed){
+		KAbilityStatic* pNoReady = KSkillAssist::_findStaticAbility(GetCardId(),KAbilityStatic::what_noready);
+		if(!pNoReady) AddBuf(BUF_CAN_RUSH_ID);
+	}
 }
 
 void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
@@ -178,8 +181,8 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 	switch(GetSlot()){
 	case enum_slot_fight:
 		{
-			if(!FindBuf(KAbilityStatic::what_stun)){
-				CardSlot slot = GetSlot();
+			KAbilityStatic* pNoReady = KSkillAssist::_findStaticAbility(GetCardId(),KAbilityStatic::what_noready);
+			if(!FindBuf(KAbilityStatic::what_stun) && !pNoReady){
 				m_attr.setReady(1);
 			}
 			m_attr.updateBufList();

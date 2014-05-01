@@ -148,6 +148,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_atk_add;
 	}else if(strcmp(str,"WHAT_ANGRY")==0){
 		what = what_angry;
+	}else if(strcmp(str,"WHAT_NOREADY")==0){
+		what = what_noready;
 	}else if(strcmp(str,"WHAT_STUN")==0){
 		what = what_stun;
 	}else if(strcmp(str,"WHAT_HP_ADD")==0){

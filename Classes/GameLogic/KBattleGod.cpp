@@ -383,7 +383,7 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
-	ctrl->AddDramaElapsed(4.0f);
+	ctrl->AddDramaElapsed(6.0f);
 	return true;
 }
 

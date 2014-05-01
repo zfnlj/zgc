@@ -93,6 +93,7 @@ public:
 		what_hurted,
 		what_bless_hp,
 		what_angry,
+		what_noready,
 		what_null,
 		
 	};

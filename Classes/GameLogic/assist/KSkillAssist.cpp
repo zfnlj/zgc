@@ -366,4 +366,13 @@ KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when)
 	return *(abilityList.begin());
 }
 
+KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_What what)
+{
+	KCardAbilityList abilityList;
+	KGameStaticMgr::getSingleton().GetAbilityList(cardId,abilityList);
+	for(KCardAbilityList::iterator it = abilityList.begin();it!=abilityList.end();++it){
+		if((*it)->GetWhat()==what) return *it;
+	}
+	return NULL;
+}
 }
