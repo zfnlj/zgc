@@ -61,7 +61,7 @@ bool BattleFieldScene::init()
 	m_ui = NULL;
 	//if(KUserData::GetInstancePtr()->m_otpCode==0) //Î´Á¬Íø
 	//	GameRoot::getSingleton().BattleCtrl().PlayWithAI();
-	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(BattleFieldScene::update),this,0.1f,false);
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(BattleFieldScene::update),this,0.033f,false);
     //////////////////////////////
     // 1. super init first
     if ( !CCLayer::init() )
@@ -248,7 +248,7 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 	KClickCardMgr::getSingleton().HideBigCard();
 	K3DActionParam param1;
 	param1.Copy(result);
-
+	KUIAssist::_setActionParamSlot(&param1);
 	if(result->_pAbility->ActionIsEmpty()) return;
 	KCardActor* src = KUIAssist::_getCardActor(result->_actor);
 	if(src){
@@ -278,6 +278,7 @@ void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 	param.init("duel");
 	param.SetSrcVal(result->_atker->GetRealId(),result->_val1);
 	param.SetDestVal(result->_defender->GetRealId(),result->_val2);
+	KUIAssist::_setActionParamSlot(&param);
 	atk->GetActionMgr().PlayAction(&param);
 
 	m_indicatePanel.OnSelectCardOK();

@@ -412,3 +412,15 @@ void KCardActor::updateSecret()
 	bool bMy  = GameRoot::getSingleton().BattleCtrl().GetMainPlayer()== m_card->GetOwner()->GetFacade();
 	KUIAssist::_updateSecretIcon(bMy,cardLst);
 }
+
+void KCardActor::MoveOnHit(K3DActionParam* param,float speed)
+{
+	KCardInst::CardSlot slot = (KCardInst::CardSlot)param->GetSlot(m_card->GetRealId());
+	if(slot == KCardInst::enum_slot_fight){
+		CCPoint pt = KUIAssist::_queryFighterPos(m_card);
+		Move("",pt,speed);
+
+	}else{
+		MoveBack(speed);
+	}
+}

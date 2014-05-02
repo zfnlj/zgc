@@ -99,6 +99,9 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 													pDes->GetST()->GetName(),pDes->GetRealId(),pDes->GetHp()-v1,pDes->GetHp());
 
 	pSrc->m_attr.setReady(0);
+	if(pSrc->IsDead()) pSrc->m_attr.setSlot(KCardInst::enum_slot_tomb);
+	if(pDes->IsDead()) pDes->m_attr.setSlot(KCardInst::enum_slot_tomb);
+
 	SendDuelResult(ctrl,pSrc,pDes,v2,v1);
 	PostCardDuel(ctrl,pSrc,v2,pDes,v1);
 	ctrl->AddDramaElapsed(4.0f);

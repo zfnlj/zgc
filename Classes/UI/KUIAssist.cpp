@@ -54,6 +54,20 @@ cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
 	UIWidget* obj =  MainLayer()->getWidgetByName(sz);
 	return obj->getWorldPosition();
 }
+
+cocos2d::CCPoint KUIAssist::_queryFighterPos(KCardInst* card)
+{
+	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
+	char sz[64];
+	if(bMy){
+		sprintf(sz,"my_fight_slot_%d",card->m_attr.getPos());
+	}else{
+		sprintf(sz,"your_fight_slot_%d",card->m_attr.getPos());
+	}
+	UIImageView* base = (UIImageView*)MainLayer()->getWidgetByName(sz);
+	return base->getWorldPosition();
+}
+
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
@@ -517,4 +531,16 @@ void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
 	KUIAssist::_moveCardSet(&tmpLst,"card_move");
+}
+
+void KUIAssist::_setActionParamSlot(K3DActionParam* param)
+{
+	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(param->_srcID);
+	if(card) param->_srcSlot = card->GetSlot();
+	for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
+		card = GameRoot::getSingleton().BattleCtrl().GetCard(param->_desArr[i]);
+		if(!card) break;
+		param->_destSlot[i] = card->GetSlot();
+	}
+
 }

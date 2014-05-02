@@ -71,6 +71,11 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_move:
 		if(GetActor()) GetActor()->Move(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal());
 		break;
+	case Affector_moveOnHit:
+		if(GetActor()){
+			GetActor()->MoveOnHit(m_param,m_AffectorStatic->GetFloatVal());
+		}
+		break;
 	case Affector_updateHit:
 		if(GetActor()) {
 			GetActor()->UpdateCardAttr(GetActor()->GetUI(),false,m_param);

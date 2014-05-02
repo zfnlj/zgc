@@ -49,6 +49,8 @@ public:
 	static cocos2d::CCPoint _querySecretPos(KCardInst* card);
 	static cocos2d::CCPoint _querySecretShowPos(KCardInst* card);
 	static void _resortHandCardSet(FBattleGuy* guy);
+	static void _setActionParamSlot(K3DActionParam* param);
+	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

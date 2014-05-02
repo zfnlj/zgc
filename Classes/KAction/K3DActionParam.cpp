@@ -49,16 +49,26 @@ void K3DActionParam::SetSrcVal(int src,int val)
 	_srcVal = val;
 }
 
+int K3DActionParam::GetSlot(int id)
+{
+	if(_srcID==id) return _srcSlot;
+	for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
+		if(_desArr[i]==id){
+			return _destSlot[i];
+		}
+	}
+
+	return -9999;
+}
+
 int K3DActionParam::GetVal(int id)
 {
-
 	for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
 		if(_desArr[i]==id){
 			return _desValArr[i];
 		}
 	}
 	if(_srcID==id) return _srcVal;
-
 	return -9999;
 }
 

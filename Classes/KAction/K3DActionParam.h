@@ -19,28 +19,12 @@ struct strCardAbilityResult;
 struct K3DActionParam 
 {
 	char _name[MAX_ACTION_NAME_LEN+1];	// 动作名称
-	int _bulletID;
 	int _srcID;
 	int _srcVal;
+	int _srcSlot;
 	int _desArr[MAX_ACTION_TARGET_NUM];
 	int _desValArr[MAX_ACTION_TARGET_NUM];
-	void*         _desPtr;
-//	float _destPosX;
-//	float _destPosY;
-	float _paramFloat;
-	int  _paramInt;
-	//union
-	//{
-	//	struct{
-	//		int _p1;
-	//		int _p2;
-	//	};
-	//	struct
-	//	{
-	//		float _fp1;
-	//		float _fp2;
-	//	};							// 目标位置信息
-	//};
+	int _destSlot[MAX_ACTION_TARGET_NUM];
 
 	K3DActionParam();
 	void init();
@@ -54,8 +38,7 @@ struct K3DActionParam
 	~K3DActionParam();
 	void clone(K3DActionParam*);
 	void Copy(strCardAbilityResult*);
-	int BulletID(){ return _bulletID;}
-
+	int GetSlot(int id);
 	bool IsEmpty();
 
 	int SrcID(){ return _srcID;}
