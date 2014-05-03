@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action unique="1" ex="equal_hit" exDelay="1.6" class="null">
+<action class="cast">
   <affect_body>
-  	 <affector class="missile" createtime="0" fVal="400" obj="missile_fly" life="4.0" />
-     <affector class="eff" createtime="1.2" obj="ExplodingRing" life="0.8" />
+  	<affector class="action" obj="use_bad_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
+  	<affector class="action" obj="equal_show" tarFlag="0" pre="1" createtime="0" iVal="2" life="30" />
+  	<affector class="action" obj="update" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
+  	<affector class="moveback" createtime="3" life="0.001" />
   </affect_body>
 </action>
+
+		

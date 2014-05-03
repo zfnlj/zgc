@@ -57,6 +57,9 @@ KAffectorExecutor* KAffectorVectExecutor::CreateExecFactory(KAffectorStatic* st)
 	case Affector_indicate:
 		exec = new KAffectorIndicateExecutor;
 		break;
+	case Affector_timerBar:
+		exec = new KAffectorTimerBarExecutor;
+		break;
 	default :
 		exec = new KAffectorExecutor;
 		break;

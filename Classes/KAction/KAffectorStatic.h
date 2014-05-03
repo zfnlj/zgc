@@ -51,6 +51,7 @@ enum AffectorType
 	Affector_addWidget,
 	Affector_delWidget,
 	Affector_updateSecret,
+	Affector_timerBar,
 };
 
 

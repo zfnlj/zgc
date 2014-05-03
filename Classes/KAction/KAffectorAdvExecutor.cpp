@@ -351,3 +351,46 @@ void KAffectorIndicateExecutor::OnStop(void)
 	//if(m_pChar)
 	//	KObjEffAlgorithm::_setBright(m_pChar->GetEntity(),Ogre::ColourValue::ZERO);
 }
+
+
+//////////////////////////////////////////////////////////////////
+
+
+KAffectorTimerBarExecutor::KAffectorTimerBarExecutor():m_bar(NULL)
+{
+
+}
+
+
+KAffectorTimerBarExecutor::~KAffectorTimerBarExecutor()
+{
+
+	if(m_bar){
+		m_bar->stopAllActions();
+		m_bar->removeFromParent();
+	}
+	m_bar = NULL;
+}
+
+void KAffectorTimerBarExecutor::OnPlay(K3DActionParam* param)
+{
+	CCPoint pt = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0);
+
+	CCSprite* sprite = CCSprite::createWithSpriteFrameName(m_AffectorStatic->GetObj());
+
+	m_bar = CCProgressTimer::create(sprite);
+	m_bar->setType(kCCProgressTimerTypeBar);
+	m_bar->setMidpoint(ccp(0,0));
+	m_bar->setBarChangeRate(ccp(1, 0));
+	m_bar->setPosition(pt);
+	m_bar->setAnchorPoint(ccp(0.5f,0.5f));
+
+	m_bar->runAction( CCProgressTo::create(mSurviveTime-0.6, 100));
+
+	KUIAssist::MainLayer()->addChild(m_bar,100);
+	KAffectorExecutor::OnPlay(param);
+}
+
+void KAffectorTimerBarExecutor::OnStop(void)
+{
+}

@@ -49,7 +49,6 @@ public:
 	void callbackMissileReach();
 private:
 	cocos2d::CCPoint m_srcPos;
-	float m_totalTime;
 };
 
 class KAffectorActionExecutor: public KAffectorExecutor
@@ -73,5 +72,15 @@ public:
 	void callbackMissileReach();
 private:
 	CCProgressTimer* m_bar;
-	float m_totalTime;
+};
+
+class KAffectorTimerBarExecutor: public KAffectorExecutor
+{
+public:
+	KAffectorTimerBarExecutor();
+	~KAffectorTimerBarExecutor();
+	virtual void OnPlay(K3DActionParam*);
+	virtual void OnStop(void);
+private:
+	CCProgressTimer* m_bar;
 };
