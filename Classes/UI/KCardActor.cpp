@@ -339,10 +339,11 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 
 void KCardActor::SummonSelf()
 {
-	int slot = m_card->GetSlot();
-	m_card->m_attr.setSlot(KCardInst::enum_slot_fight);
+	//secret card use other method
+	//int slot = m_card->GetSlot();
+	//m_card->m_attr.setSlot(KCardInst::enum_slot_fight);
 	KUIAssist::_showCard(m_card);
-	m_card->m_attr.setSlot(slot);
+	//m_card->m_attr.setSlot(slot);
 }
 
 void KCardActor::OnSelectShow()

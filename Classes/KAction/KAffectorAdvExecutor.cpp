@@ -61,6 +61,12 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_summonSelf:
 		if(GetActor()) GetActor()->SummonSelf();
 		break;
+	case Affector_resortHand:
+		{
+			KCardActor* cardActor = (KCardActor*)GetActor();
+			KUIAssist::_resortHandCardSet(cardActor->GetCard()->GetOwner()->GetFacade());
+		}
+		break;
 	case Affector_anim:
 		if(GetActor()) m_sprite = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
 															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());

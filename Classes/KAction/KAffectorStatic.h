@@ -43,6 +43,7 @@ enum AffectorType
 	Affector_missile,
 	Affector_summon,
 	Affector_summonSelf,
+	Affector_resortHand,
 	Affector_drawCard,
 	Affector_anim,
 	Affector_replace,

@@ -4,12 +4,12 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "absorb",
+      "name": "catch_card",
       "bone_data": [
         {
           "name": "Layer1",
           "parent": "",
-          "x": -1.0,
+          "x": 0.0,
           "y": 0.0,
           "z": 1,
           "cX": 1.0,
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "glowaion03.png",
+              "name": "state_20.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -41,11 +41,11 @@
   ],
   "animation_data": [
     {
-      "name": "absorb",
+      "name": "catch_card",
       "mov_data": [
         {
           "name": "Animation1",
-          "dr": 36,
+          "dr": 46,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -59,32 +59,42 @@
                 {
                   "dI": 0,
                   "x": 0.0,
-                  "y": 0.0,
-                  "z": 0,
-                  "cX": 1.5,
-                  "cY": 1.5,
-                  "kX": 0.0,
-                  "kY": 0.0,
-                  "fi": 0,
-                  "twE": 0,
-                  "tweenFrame": true,
-                  "color": {
-                    "a": 60,
-                    "r": 255,
-                    "g": 255,
-                    "b": 255
-                  }
-                },
-                {
-                  "dI": 0,
-                  "x": 0.0,
-                  "y": 0.0,
+                  "y": 1.0,
                   "z": 0,
                   "cX": 0.1,
                   "cY": 0.1,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 30,
+                  "fi": 0,
+                  "twE": -1,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 20,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  },
+                  "twEP": [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.009126525,
+                    1.0,
+                    1.0
+                  ]
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 20,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
@@ -97,13 +107,32 @@
                 {
                   "dI": 0,
                   "x": 0.0,
-                  "y": 0.0,
+                  "y": 1.0,
                   "z": 0,
-                  "cX": 0.1,
-                  "cY": 0.1,
+                  "cX": 1.0,
+                  "cY": 1.0,
                   "kX": 0.0,
                   "kY": 0.0,
-                  "fi": 35,
+                  "fi": 25,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 255,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 1.0,
+                  "z": 0,
+                  "cX": 2.0,
+                  "cY": 2.0,
+                  "kX": 12.566371,
+                  "kY": -12.566371,
+                  "fi": 45,
                   "twE": 0,
                   "tweenFrame": true,
                   "color": {
@@ -122,9 +151,9 @@
   ],
   "texture_data": [
     {
-      "name": "glowaion03",
-      "width": 126.0,
-      "height": 124.0,
+      "name": "state_20",
+      "width": 112.0,
+      "height": 108.0,
       "pX": 0.5,
       "pY": 0.5,
       "plistFile": "anim_elem2.plist"

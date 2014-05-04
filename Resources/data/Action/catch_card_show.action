@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<action  class="null">
+  <affect_body>
+  		<affector class="armature"  slot="screen_center" createtime="0" fVal="1.0" obj="catch_card" life="1.5" />
+  </affect_body>
+</action>
+
+		

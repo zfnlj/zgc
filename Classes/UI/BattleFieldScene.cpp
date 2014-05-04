@@ -258,11 +258,11 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 		}
 		src->GetActionMgr().PlayAction(&param1);
 
-		int oldSlot = card->GetOldSlot();
-		if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
-			FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
-			KUIAssist::_resortHandCardSet(guy);
-		}
+		//int oldSlot = card->GetOldSlot();
+		//if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
+		//	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
+		//	KUIAssist::_resortHandCardSet(guy);
+		//}
 	}
 	
 	m_indicatePanel.OnSelectCardOK();

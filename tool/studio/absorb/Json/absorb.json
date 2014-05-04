@@ -45,7 +45,7 @@
       "mov_data": [
         {
           "name": "Animation1",
-          "dr": 31,
+          "dr": 36,
           "lp": false,
           "to": 0,
           "drTW": 0,
@@ -89,6 +89,25 @@
                   "tweenFrame": true,
                   "color": {
                     "a": 255,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 0,
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0,
+                  "cX": 0.1,
+                  "cY": 0.1,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 35,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
                     "r": 255,
                     "g": 255,
                     "b": 255

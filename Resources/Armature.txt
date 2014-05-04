@@ -29,3 +29,5 @@ armature/heal_ability.json
 armature/dead_atkadd.json
 armature/dead_curse.json
 armature/kingkong_word.json
+armature/cuthead.json
+armature/catch_card.json
