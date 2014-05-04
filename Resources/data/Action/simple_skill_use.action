@@ -6,6 +6,7 @@
   	<affector class="scaleX" obj="card" createtime="0" fVal="0.8"  life="0.4" />
  
   	<affector class="moveback" createtime="1.6" life="0.001" />
+  	<affector class="resortHand" createtime="1.6" life="0.001" />
   </affect_body>
 </action>
 

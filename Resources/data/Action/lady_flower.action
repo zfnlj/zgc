@@ -7,7 +7,7 @@
   	<affector class="action" obj="heal_hit" tarFlag="2" pre="2" createtime="0" iVal="3" life="30" />
   	<affector class="action" obj="duel_hit" tarFlag="3" pre="2" createtime="0" iVal="4" life="30" />
   	<affector class="action" obj="go_tomb" tarFlag="0" pre="4" createtime="0" iVal="5" life="30" />
-  	
+  	<affector class="resortHand" createtime="3" life="0.001" />
   </affect_body>
 </action>
 
