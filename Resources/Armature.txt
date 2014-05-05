@@ -32,3 +32,4 @@ armature/kingkong_word.json
 armature/cuthead.json
 armature/catch_card.json
 armature/hp_bless.json
+armature/fire_down.json

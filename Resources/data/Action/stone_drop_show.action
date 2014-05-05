@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
-  <affect_body>
-  		<affector class="eff" slot="eff_top_pos" obj="fall_stone" createtime="0.0" fVal="1.2" iVal="90"  life="2.5" />
-  </affect_body>
-</action>
-
-		
