@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action class="cast">
   <affect_body>
   	<affector class="drawCard" createtime="0" life="0.5" />
   </affect_body>
 </action>
-
+</ag>
 		

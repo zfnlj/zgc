@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action name="fire_sea" class="cast">
   <affect_body>
   	<affector class="action" obj="use_bad_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
@@ -14,5 +15,5 @@
   		<affector class="eff" slot="screen_center" obj="fire_sea" createtime="0.0" fVal="1.2" iVal="90"  life="2.5" />
   </affect_body>
 </action>
-
+</ag>
 		

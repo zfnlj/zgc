@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action discuss_battle" class="cast">
+<ag>
+<action name="discuss_battle" class="cast">
   <affect_body>
-  	<affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
+  	<affector class="action" obj="use_good_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="soldier_hp_bless_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   </affect_body>
 </action>
@@ -12,5 +13,5 @@
     	<affector class="update" createtime="1.6"  life="0.001" />  
   </affect_body>
 </action>
-
+</ag>
 		

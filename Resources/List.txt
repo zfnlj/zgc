@@ -9,6 +9,7 @@ anim/dragon_light.png	anim/dragon_light.plist	dragon_light	18	0.13
 anim/god_kill.png	anim/god_kill.plist	god_kill	15	0.13
 anim/cut_head.png	anim/cut_head.plist	0	0	0
 anim/anim_blood.png	anim/anim_blood.plist	blood	10	0.15
+anim/evil_bless.png	anim/evil_bless.plist	evil_bless	12	0.1
 anim/dragon_move.png	anim/dragon_move.plist	0	0	0
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0

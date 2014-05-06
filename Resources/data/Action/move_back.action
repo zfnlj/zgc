@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action  class="move">
   <affect_body>
 	  	<affector class="moveback" createtime="0" life="0.001" />
   </affect_body>
 </action>
-
+</ag>
 		

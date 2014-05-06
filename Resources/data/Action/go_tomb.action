@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ag>
 <action  class="move">
   <affect_body>
   	 <affector class="scale" createtime="0" fVal="0.4" life="0.4" />
      <affector class="move" slot="card_pos" createtime="0" fVal="800" life="1" />
   </affect_body>
 </action>
-
+</ag>
 		

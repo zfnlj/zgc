@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action  class="null">
   <affect_body>
      <affector class="createSprite" slot="select_base" obj="my_turn.png" createtime="0" fVal="0.2" iVal="100" life="0.001" />
@@ -6,5 +7,5 @@
 	   <affector class="fadeout" obj="my_turn.png" fVal="0.5" createtime="1.5" life="0.5" />
   </affect_body>
 </action>
-
+</ag>
 		

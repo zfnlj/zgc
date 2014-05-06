@@ -284,7 +284,7 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 
 		fileReader->GetString("Race", "", buf, MAX_CARD_NAME);
 		pCard->m_Race = getCardRace(buf);
-		fileReader->GetString("Show", "", buf, MAX_CARD_NAME);
+		fileReader->GetString("Show", "", buf, 63);
 		if(strlen(buf)>2) strcpy(pCard->m_Show,buf);
 		fileReader->GetString("Photo", "", buf, MAX_CARD_NAME);
 		if(strlen(buf)>2) strcpy(pCard->m_Photo,buf);

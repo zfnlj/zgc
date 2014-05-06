@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action class="hit">
   <affect_body>
     <affector class="hit" createtime="0" slot="card_center" fVal="0.4" iVal="1" life="0.2" />
@@ -7,5 +8,5 @@
     <affector class="update" createtime="1.4"  life="0.001" /> 
   </affect_body>
 </action>
-
+</ag>
 		

@@ -65,7 +65,7 @@ private:
 	char m_Name[MAX_CARD_NAME];
 	char m_Desc[MAX_CARD_DESC_LEN];
 	char m_Detail[MAX_CARD_DETAIL_LEN];
-	char m_Show[MAX_CARD_NAME];
+	char m_Show[32];
 	char m_Photo[MAX_CARD_NAME];
 	CardDef m_type;
 	friend class KGameStaticMgr;

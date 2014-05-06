@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ag>
 <action name="god_kill" class="cast">
   <affect_body>
   	<affector class="action" obj="use_bad_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
@@ -14,5 +16,5 @@
   		<affector class="anim" slot="screen_center" obj="god_kill" createtime="0.0" fVal="1.2" iVal="90"  life="2.0" />
   </affect_body>
 </action>
-
+</ag>
 		

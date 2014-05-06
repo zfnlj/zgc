@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action name="update" class="null">
   <affect_body>
     	<affector class="update" createtime="0.5"  life="0.001" />  
   </affect_body>
 </action>
-
+</ag>
 		

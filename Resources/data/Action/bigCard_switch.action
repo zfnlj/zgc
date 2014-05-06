@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ag>
 <action class="hit">
   <affect_body>
   	<affector class="action" obj="bigCard_hide" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="bigCard_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   </affect_body>
 </action>
-
+</ag>
 		
