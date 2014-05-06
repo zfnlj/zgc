@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action name="heal" class="cast">
   <affect_body>
   	<affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="heal_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
   	<affector class="resortHand" createtime="3" life="0.001" />
+  </affect_body>
+</action>
+
+<action name="heal_show" class="null">
+  <affect_body>
+  		
+  		<affector class="eff" slot="card_center" obj="heal_line" createtime="0.0" fVal="1.2" iVal="90"  life="1.5" />
+  		<affector class="eff" slot="card_center" createtime="0.0" fVal="1.2" iVal="92" obj="heal_eff" life="1.5" />
+  		
+  	 	<affector class="hit" createtime="1.4" slot="card_center" fVal="0.4" iVal="1" life="0.2" />
+   		<affector class="scale" obj="hit_text" fVal="1.0" createtime="1.41" life="0.2" />
+    	<affector class="fadeout" obj="hit_text" fVal="0.5" createtime="2.4" life="0.6" />
+    	<affector class="update" createtime="2.8"  life="0.001" />  
   </affect_body>
 </action>
 

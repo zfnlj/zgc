@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action name="move_flower" class="cast">
   <affect_body>
   	<affector class="action" obj="use_bad_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="move_flower_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   	<affector class="action" obj="duel_hit" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
+  </affect_body>
+</action>
+
+<action name="move_flower_show" class="null">
+  <affect_body>
+  		<affector class="anim" slot="card_center" obj="blood" createtime="0.0" fVal="1.0" iVal="90"  life="1.4" />
   </affect_body>
 </action>
 

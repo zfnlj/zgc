@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action name="kingKong_word" class="cast">
   <affect_body>
   	<affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="kingKong_word_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
@@ -8,4 +8,10 @@
   </affect_body>
 </action>
 
+<action name="kingKong_word_show" class="null">
+  <affect_body>
+  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="kingkong_word" life="1.3" />
+    	<affector class="update" createtime="1.4"  life="0.001" />  
+  </affect_body>
+</action>
 		

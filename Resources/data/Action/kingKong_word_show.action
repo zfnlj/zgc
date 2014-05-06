@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
-  <affect_body>
-  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="kingkong_word" life="1.3" />
-    	<affector class="update" createtime="1.4"  life="0.001" />  
-  </affect_body>
-</action>
-
-		

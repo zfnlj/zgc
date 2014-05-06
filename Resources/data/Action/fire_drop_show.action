@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
-  <affect_body>
-  		<affector class="armature" slot="eff_top_pos" obj="fire_down" createtime="0.0" fVal="1.0" iVal="90"  life="1.8" />
-  </affect_body>
-</action>
-
-		

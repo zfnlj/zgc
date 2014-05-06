@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
-  <affect_body>
-  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="absolute_def" life="1.2" />
-    	<affector class="update" createtime="1.0"  life="0.001" />  
-  </affect_body>
-</action>
-
-		

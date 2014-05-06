@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action name="rain_drop" class="cast">
   <affect_body>
   	<affector class="action" obj="use_good_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="rain_drop_show" tarFlag="0" pre="1" createtime="0" iVal="2" life="30" />
@@ -9,4 +9,9 @@
   </affect_body>
 </action>
 
+<action name="rain_drop_show" class="null">
+  <affect_body>
+  		<affector class="eff" slot="eff_top_pos" obj="rain_drop" createtime="0.0" fVal="1.2" iVal="90"  life="2.5" />
+  </affect_body>
+</action>
 		

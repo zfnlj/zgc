@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action class="cast">
+<action name="burned" class="cast">
   <affect_body>
   	<affector class="action" obj="use_bad_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="burned_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
   	<affector class="resortHand" createtime="3" life="0.001" />
+  </affect_body>
+</action>
+
+<action  name=burned_show" class="null">
+  <affect_body>
+  		<affector class="armature" slot="card_center" obj="burned_buf" createtime="0.0" fVal="1.2" iVal="90"  life="1.3" />
+ 			<affector class="update" createtime="1.5"  life="0.001" />  
   </affect_body>
 </action>
 

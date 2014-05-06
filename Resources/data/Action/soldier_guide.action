@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action slot="5" class="cast">
+<action name="soldier_guide" slot="5" class="cast">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="guider" life="1.2" />
     	<affector class="update" createtime="1.4"  life="0.001" />  

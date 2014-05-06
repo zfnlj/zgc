@@ -182,51 +182,43 @@ KActionStatic* KActionStaticMgr::LoadXmlActionData(const char* name,DataStream* 
 	streamWrapper.init(dataStream);
 	JgEncStream  encStream;
 	encStream.setInputStream(&streamWrapper);
-
-	if(!parser.Parse(encStream, actionXml))
-	{
-
-		return NULL;
-	}
-
-	KActionStatic* pST = new KActionStatic(name);
+	if(!parser.Parse(encStream, actionXml))	return NULL;
+	
 	XMLNodeColl collMap = actionXml.QueryChildren("action");
-	if(collMap.Size() == 1)
-	{
+	for(int j=0;j<collMap.Size();j++){
+		XMLElementNode* pDataXml = (XMLElementNode*)collMap.GetNode(j);
+
+		const StringValue* pName = pDataXml->QueryAtt("name");
+		KActionStatic* pST = (j==0)? new KActionStatic(name): new KActionStatic(pName->c_str());
 
 		KActionStatic& actionST = *pST;
-		XMLElementNode* pDataXml = (XMLElementNode*)collMap.GetNode(0);
-		if(NULL != pDataXml)
+		const StringValue* pLoop = pDataXml->QueryAtt("loop");
+		actionST.m_ActionData.m_loop =(uchar)( (pLoop)? pLoop->Bool() : 0);
+
+		const StringValue* pSlot = pDataXml->QueryAtt("slot");
+		actionST.m_ActionData.m_slot =(uchar)( (pSlot)? pSlot->Integer() : 0);
+
+		const StringValue* pClass = pDataXml->QueryAtt("class");
+		actionST.ParseClass(pClass->c_str());
+
+		XMLNodeColl affBodyColl = pDataXml->QueryChildren("affect_body");
+		for(int i=0; i< affBodyColl.Size();++i)
 		{
-			const StringValue* pLoop = pDataXml->QueryAtt("loop");
-			actionST.m_ActionData.m_loop =(uchar)( (pLoop)? pLoop->Bool() : 0);
+			XMLElementNode* affBody = (XMLElementNode*)affBodyColl.GetNode(i);
+			XmlLoadAffectBody(affBody,actionST);
+		}
 
-			const StringValue* pSlot = pDataXml->QueryAtt("slot");
-			actionST.m_ActionData.m_slot =(uchar)( (pSlot)? pSlot->Integer() : 0);
-
-			const StringValue* pClass = pDataXml->QueryAtt("class");
-			actionST.ParseClass(pClass->c_str());
-
-			XMLNodeColl affBodyColl = pDataXml->QueryChildren("affect_body");
-			for(int i=0; i< affBodyColl.Size();++i)
-			{
-				XMLElementNode* affBody = (XMLElementNode*)affBodyColl.GetNode(i);
-				XmlLoadAffectBody(affBody,actionST);
-			}
-
-			// add by DuanGuangxiang 2012 5 2
-			XMLNodeColl soundEffectColl = pDataXml->QueryChildren("sound_body");
-			for (int i=0; i< soundEffectColl.Size();++i)
-			{
-				XMLElementNode* soundBody = (XMLElementNode*)soundEffectColl.GetNode(0);
-				XmlLoadSoundEffectBody(soundBody,actionST);
-			}
-			// the end
-
+		// add by DuanGuangxiang 2012 5 2
+		XMLNodeColl soundEffectColl = pDataXml->QueryChildren("sound_body");
+		for (int i=0; i< soundEffectColl.Size();++i)
+		{
+			XMLElementNode* soundBody = (XMLElementNode*)soundEffectColl.GetNode(0);
+			XmlLoadSoundEffectBody(soundBody,actionST);
 		}
 		AddAction(pST);
 	}
-	return pST;
+
+	return (KActionStatic*)m_ActionDict.objectForKey(name);
 
 }
 

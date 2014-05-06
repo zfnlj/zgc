@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
+<action name="summon_tar_show2" class="null">
   <affect_body> 
    	<affector class="armature"  slot="card_center" createtime="0.0" fVal="1.0" obj="gen_circle" life="0.8" />
   	<affector class="scale" createtime="0.1" fVal="0.8" life="0.6" />

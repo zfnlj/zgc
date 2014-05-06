@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<action  class="null">
-  <affect_body>
-  		<affector class="armature" slot="card_center" obj="toSheep" createtime="0.0" fVal="1.2" iVal="90"  life="0.8" />
- 			<affector class="moveback" createtime="1.2" life="0.2" />
-  </affect_body>
-</action>
-
-		
