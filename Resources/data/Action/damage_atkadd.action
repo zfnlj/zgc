@@ -11,8 +11,8 @@
 
 <action name="damage_atkadd_show" class="null">
   <affect_body>
-  		<affector class="anim" slot="card_center" obj="evil_bless" createtime="0.0" fVal="1.0" iVal="90"  life="1.2" />
-    	<affector class="update" createtime="1.4"  life="0.001" />  
+  		<affector class="anim" slot="card_center" obj="evil_bless" createtime="0.0" fVal="1.0" iVal="90"  life="1.5" />
+    	<affector class="update" createtime="1.6"  life="0.001" />  
   </affect_body>
 </action>
 </ag>

@@ -29,13 +29,18 @@ void KValDef::ParseString(char* str)
 {
 	char* ss[64];
 	int ns = split(str, ";", ss, 64);
-	if(ns==2){
+	if(ns>=2){
 		_val = atoi(ss[1]);
+	}
+	if(ns>=3){
+		_val2 = atoi(ss[2]);
 	}
 	if(strcmp(ss[0],"MyHurtedSoldier")==0){
 		_def = val_my_hurted_soldierNum;
 	}else if(strcmp(ss[0],"SoldierNum")==0){
 		_def = val_soldierNum;
+	}else if(strcmp(ss[0],"Rnd")==0){
+		_def = val_rnd;
 	}else{
 		_def = val_normal;
 		_val = atoi(str);

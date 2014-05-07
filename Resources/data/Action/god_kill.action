@@ -13,7 +13,7 @@
 
 <action name="god_kill_show" class="null">
   <affect_body>
-  		<affector class="anim" slot="screen_center" obj="god_kill" createtime="0.0" fVal="1.2" iVal="90"  life="2.0" />
+  		<affector class="anim" slot="screen_center" obj="god_kill" createtime="0.0" fVal="1.6" iVal="90"  life="2.0" />
   </affect_body>
 </action>
 </ag>

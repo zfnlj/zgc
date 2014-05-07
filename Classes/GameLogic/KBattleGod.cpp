@@ -258,7 +258,8 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 		{
-			int val = guy->calcHurtVal(pAbility->GetNormalVal());
+			int damageVal = KSkillAssist::_calcValDef(ctrl,guy,pAbility->GetVal());
+			int val = guy->calcHurtVal(damageVal);
 			val = pDes->Heal(pSrc,-val);
 			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);

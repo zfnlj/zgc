@@ -351,12 +351,16 @@ int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef)
 	case KValDef::val_soldierNum:
 		ret = ctrl->GetFighterNum() + valDef._val;
 		break;
+	case KValDef::val_rnd:
+		ret = g_rnd.GetRandom(valDef._val,valDef._val2+1);
+		break;
 	default:
 		ret = valDef.GetVal();
 		break;
 	}
 	return ret;
 }
+
 
 KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when)
 {
