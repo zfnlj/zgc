@@ -33,3 +33,5 @@ armature/cuthead.json
 armature/catch_card.json
 armature/hp_bless.json
 armature/fire_down.json
+armature/pray_card.json
+armature/pray_other.json

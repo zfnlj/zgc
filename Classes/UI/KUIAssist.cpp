@@ -355,10 +355,13 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	}else{
 		labelCost->setVisible(false);
 	}
-
-	sprintf(sz,"stone_%d.png",pInst->GetST()->GetRank());
 	UIImageView* widgetStone = (UIImageView*)ui->getChildByName("stone_pos");
-	widgetStone->loadTexture(sz,UI_TEX_TYPE_PLIST);
+	if(pInst->GetST()->GetRank()>0){
+		sprintf(sz,"stone_%d.png",pInst->GetST()->GetRank());
+		widgetStone->loadTexture(sz,UI_TEX_TYPE_PLIST);
+	}else{
+		widgetStone->setVisible(false);
+	}
 
 	UILabel* labelDesc = (UILabel*)ui->getChildByName("detail");
 	if(bBig){

@@ -204,8 +204,9 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 	} 
 }
 
-void KCardInst::OnTurnEnd()
+void KCardInst::OnTurnEnd(KBattleCtrlBase* ctrl)
 {
+	if(!FindBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_end);
 	m_attr.updateBufList();
 }
 

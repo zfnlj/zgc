@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,21002,33013,20007,31021,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,20030,33013,20007,31021,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -118,12 +118,12 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 	GetHero()->onTurnBegin(ctrl);
 }
 
-void KBattleDeck::OnTurnEnd()
+void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
-		(*it)->OnTurnEnd();
+		(*it)->OnTurnEnd(ctrl);
 	}
-	GetHero()->OnTurnEnd();
+	GetHero()->OnTurnEnd(ctrl);
 }
 
 void KBattleDeck::GetDefenderSet(KCardInstList* lst)

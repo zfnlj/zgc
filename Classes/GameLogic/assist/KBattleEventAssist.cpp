@@ -25,6 +25,9 @@ namespace KBattleEvtAssist
 			if(pDes->FindBuf(KAbilityStatic::when_healed)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_healed);
 			when = pDes->IsKindOf(KCardStatic::card_soldier)?KAbilityStatic::when_soldier_healed:KAbilityStatic::when_hero_healed;
 			break;
+		case battle_evt_use_card:
+			when = KAbilityStatic::when_use_card;
+			break;
 		default:
 			return;
 			break;

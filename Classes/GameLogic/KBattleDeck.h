@@ -20,7 +20,7 @@ public:
 	void initDeck(KDeckDefStatic* pDeckStatic);
 	void Clear();
 	void onTurnBegin(KBattleCtrlBase*);
-	void OnTurnEnd();
+	void OnTurnEnd(KBattleCtrlBase* ctrl);
 	int  DrawCard(int id,KCardInst::CardSlot slot = KCardInst::enum_slot_hand,strCardAbilityResult* result=NULL);
 	void CreateCloneCard(KCardInstList& lst,KCardInstList& newLst,KCardInst::CardSlot slot);
 	KCardInst* CreateCard(int id,KCardInst::CardSlot slot);

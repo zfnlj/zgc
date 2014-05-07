@@ -36,6 +36,8 @@ void KAbilityStatic::SetWhen(const char* str)
 		m_when = when_use_skill;
 	}else if(strcmp(str,"WHEN_I_USE_SKILL")==0){
 		m_when = when_i_use_skill;
+	}else if(strcmp(str,"WHEN_I_USE_CARD")==0){
+		m_when = when_i_use_card;
 	}else if(strcmp(str,"WHEN_EVER")==0){
 		m_when = when_ever;
 	}else if(strcmp(str,"WHEN_ALL")==0){
@@ -213,6 +215,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_hurted;
 	}else if(strcmp(str,"WHAT_BLESS_HP")==0){
 		what = what_bless_hp;
+	}else if(strcmp(str,"WHAT_ADD_ATK_HP")==0){
+		what = what_add_atk_hp;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}

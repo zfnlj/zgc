@@ -50,7 +50,7 @@ public:
 	void onSwitchFightField(int pos);
 	void EnterSecretField(int pos);
 	void onTurnBegin(KBattleCtrlBase*);     //回合开始
-	void OnTurnEnd();       //回合结束
+	void OnTurnEnd(KBattleCtrlBase* ctrl);       //回合结束
 	void onCard2Tomb();
 	bool IsDead();
 	int GetHp();

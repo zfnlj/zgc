@@ -52,6 +52,7 @@ bool KBattleGod::ProcHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
     default:
             break;
 	}
+	if(ret) KBattleEvtAssist::_onBattleEvt(battle_evt_use_card,ctrl,pSrc,pDes);
 	return ret;
 }
 
@@ -264,6 +265,13 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s:%d do damage:%d to:%s:%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),val,pDes->GetST()->GetName(),pDes->GetRealId());
+		}
+		break;
+	case KAbilityStatic::what_add_atk_hp:
+		{
+			pDes->AddAtk(pAbility->GetNormalVal());
+			pDes->AddHp(pAbility->GetVal2());
+			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;
 	case KAbilityStatic::what_heal:

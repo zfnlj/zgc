@@ -260,7 +260,7 @@ bool KBattleCtrlBase::IsGameEnd()
 void KBattleCtrlBase::TurnEnd()
 {
 	CCLog("TurnEnd");
-	m_CurPlayGuy->GetDeck().OnTurnEnd();
+	m_CurPlayGuy->GetDeck().OnTurnEnd(this);
 	KBattleGod::getSingleton().OnTurnEnd();
 	StateJump(battle_select_turnplayer);
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNEND,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
