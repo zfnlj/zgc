@@ -108,7 +108,7 @@ bool KBattleAI::UseHeroSkill()
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pHero->GetCardId()*10);
 	if(!pAbility) return false;
 	KCardInstList lst;
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pHero,pAbility,&lst);
+	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pHero,NULL,pAbility,&lst);
 	if(lst.empty()) return false;
 	KCardInst* pSelected = NULL;
 	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
@@ -163,8 +163,8 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 	if(!pAbility) return false;
 	KCardInstList lst;
 	KCardInstList lstMy;
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,pAbility,&lst);
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,pAbility,&lstMy,true);
+	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
+	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy,true);
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 		{
@@ -175,7 +175,7 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 		break;
 	case KAbilityStatic::what_draw_card:
 		{
-			return KSkillAssist::_calcValDef(m_battleCtrl,this,pAbility->GetVal())>0;
+			return KSkillAssist::_calcValDef(m_battleCtrl,this,pCard,pAbility->GetVal())>0;
 		}
 		break;
 	case KAbilityStatic::what_control:
@@ -301,8 +301,8 @@ bool KBattleAI::HandCardToField()
 		if(pAbility&& !pAbility->IsArea()){
 			KCardInstList lst;
 			KCardInstList lstMy;
-			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,pAbility,&lst);
-			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,pAbility,&lstMy,true);
+			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lst);
+			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lstMy,true);
 			if(lst.size()>0){
 				dest = (*lst.begin())->GetRealId();
 			}else if(lstMy.size()>0){

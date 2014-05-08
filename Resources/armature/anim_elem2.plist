@@ -4,6 +4,19 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>chijing.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{196,168},{56,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,7},{56,50}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>firewall.png</key>
             <dict>
                 <key>frame</key>
@@ -72,7 +85,7 @@
             <key>jiasu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,212},{56,32}}</string>
+                <string>{{196,264},{56,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +176,7 @@
             <key>yinu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,168},{56,42}}</string>
+                <string>{{196,220},{56,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +202,7 @@
             <key>zhongdubuff.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,246},{64,52}}</string>
+                <string>{{196,298},{64,52}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
@@ -209,7 +222,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:87551436260db07b42fd363af574429d$</string>
+            <string>$TexturePacker:SmartUpdate:d5355773812866184630e2f4eef283f7$</string>
             <key>textureFileName</key>
             <string>anim_elem2.png</string>
         </dict>
