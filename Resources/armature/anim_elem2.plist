@@ -4,10 +4,36 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>add_hp_ability.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{130,308},{62,64}}</string>
+                <key>offset</key>
+                <string>{-1,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
+            <key>chant-0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{196,112},{58,64}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{58,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>chijing.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,168},{56,50}}</string>
+                <string>{{196,234},{56,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>jiasu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,264},{56,32}}</string>
+                <string>{{196,330},{56,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,10 +121,23 @@
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
+            <key>pray_other.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{68,194},{64,60}}</string>
+                <key>offset</key>
+                <string>{0,-2}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,4},{64,60}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>quest_i.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,112},{56,54}}</string>
+                <string>{{196,178},{56,54}}</string>
                 <key>offset</key>
                 <string>{2,0}</string>
                 <key>rotated</key>
@@ -124,7 +163,7 @@
             <key>sp_rate.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,194},{60,60}}</string>
+                <string>{{68,260},{60,60}}</string>
                 <key>offset</key>
                 <string>{-2,-2}</string>
                 <key>rotated</key>
@@ -150,7 +189,7 @@
             <key>wuti_00125.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,256},{64,46}}</string>
+                <string>{{68,322},{64,46}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
@@ -176,7 +215,7 @@
             <key>yinu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,220},{56,42}}</string>
+                <string>{{196,286},{56,42}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +241,7 @@
             <key>zhongdubuff.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,298},{64,52}}</string>
+                <string>{{196,364},{64,52}}</string>
                 <key>offset</key>
                 <string>{0,3}</string>
                 <key>rotated</key>
@@ -222,7 +261,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d5355773812866184630e2f4eef283f7$</string>
+            <string>$TexturePacker:SmartUpdate:23d94ac41bc4d41957010253b05be635$</string>
             <key>textureFileName</key>
             <string>anim_elem2.png</string>
         </dict>

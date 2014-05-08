@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,20040,33013,20007,31021,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,20033,33013,20007,31021,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -113,18 +113,22 @@ KCardInst* KBattleDeck::SummonCard(int id)
 
 void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 {
-	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
+	KCardInstList tmpSet;
+	_copyCardSet(&m_FightCardSet,&tmpSet,NULL,KCardInst::enum_slot_fight);
+	for(KCardInstList::iterator it = tmpSet.begin();it!=tmpSet.end();it++){
 		(*it)->onTurnBegin(ctrl);
 	}
 	GetHero()->onTurnBegin(ctrl);
 }
 
-void KBattleDeck::OnTurnEnd()
+void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
 {
-	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
-		(*it)->OnTurnEnd();
+	KCardInstList tmpSet;
+	_copyCardSet(&m_FightCardSet,&tmpSet,NULL,KCardInst::enum_slot_fight);
+	for(KCardInstList::iterator it = tmpSet.begin();it!=tmpSet.end();it++){
+		(*it)->OnTurnEnd(ctrl);
 	}
-	GetHero()->OnTurnEnd();
+	GetHero()->OnTurnEnd(ctrl);
 }
 
 void KBattleDeck::GetDefenderSet(KCardInstList* lst)
@@ -332,7 +336,7 @@ void KBattleDeck::PickFighterNearby(KCardInstList* lst,KCardInst* me)
 			KCardInst* card = *it;
 			if(card==me) continue;
 			int cardPos = card->m_attr.getPos();
-			int dist = (mePos>cardPos)? mePos-cardPos : cardPos-cardPos;
+			int dist = (mePos>cardPos)? mePos-cardPos : cardPos-mePos;
 			if(dist==1) lst->push_back(card);
 	}
 }

@@ -54,7 +54,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 
 }
 
-void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)
+void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)
 {
 	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();
 	switch(pAbility->GetAbilityType()){

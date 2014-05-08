@@ -336,17 +336,13 @@ void KBattleCtrlBase::OpSetSlot(int slot)
 	if(m_CurOp._slot<0){
 		m_CurOp._slot = slot;
 		pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
-		KCardInstList arrGreen,arrRed;
-		QueryEnterFightTarget(card,&arrGreen,&arrRed);
-		n = arrGreen.size()+arrRed.size();
 	}
 	
 	
 	
 	if(!pAbility ||    //check if need to select target....
-		pAbility->GetWhich()==KAbilityStatic::which_i||
-		pAbility->IsArea() ||
-		n<=1)
+		pAbility->IsTargetSure()||
+		pAbility->IsArea())
 	{
 		m_CurOp._ok = true;
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_OPDONE,(unsigned long long)&m_CurOp,0);
@@ -384,7 +380,7 @@ void KBattleCtrlBase::QuerySkillTarget(KCardInst* skill,KCardInstList* arrGreen,
 	KGameStaticMgr::getSingleton().GetAbilityList(skill->GetCardId(),abilityList);
 	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
 		KAbilityStatic* pAbility = *it;
-		KSkillAssist::_fillAbilityTarget(this,skill,NULL,pAbility,arrGreen,arrRed);
+		KSkillAssist::_fillAllAbilityTarget(this,skill,pAbility,arrGreen,arrRed);
 	}
 }
 

@@ -361,6 +361,10 @@ KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_What what)
 	while(it != m_bufList.end()){
 		KCardBuffer& buf = *it;
 		if(buf._pST->GetWhat()== what) return buf._pST;
+		if(buf._pST->GetWhat()==KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(buf._pST->GetNormalVal());
+			if(pBuf && pBuf->GetWhat()==what) return pBuf;
+		}
 		it++;
 	}
 	return NULL;

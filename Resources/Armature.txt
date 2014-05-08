@@ -35,3 +35,4 @@ armature/hp_bless.json
 armature/fire_down.json
 armature/pray_card.json
 armature/pray_other.json
+armature/strange.json

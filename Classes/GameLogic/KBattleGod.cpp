@@ -260,7 +260,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_damage:
 		{
 			int damageVal = KSkillAssist::_calcValDef(ctrl,guy,pSrc,pAbility->GetVal());
-			int val = guy->calcHurtVal(damageVal);
+			int val = pSrc->IsKindOf(KCardStatic::card_skill)?guy->calcHurtVal(damageVal):damageVal;
 			val = pDes->Heal(pSrc,-val);
 			PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
@@ -276,7 +276,8 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_heal:
 		{
-			int val = guy->calcHealVal(pAbility->GetNormalVal());
+			int healVal = pAbility->GetNormalVal();
+			int val = pSrc->IsKindOf(KCardStatic::card_skill)?guy->calcHealVal(healVal):healVal;
 			val = pDes->Heal(pSrc,val);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s do heal:%d to:%s",pSrc->GetST()->GetName(),val,pDes->GetST()->GetName());
