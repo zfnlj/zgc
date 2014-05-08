@@ -59,19 +59,19 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pA
 	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();
 	switch(pAbility->GetAbilityType()){
 	case KAbilityStatic::ability_good:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstMy,true);
+		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstMy,true);
 		break;
 	case KAbilityStatic::ability_bad:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstYour);
+		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
 		break;
 	default:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstMy,true);
-		KSkillAssist::_fillAbilityTarget(ctrl,card,pAbility,lstYour);
+		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstMy,true);
+		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
 		break;
 	}
 }
 
-void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy)
+void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy)
 {
 	KBattleDeck& MyDeck = ctrl->GetCurGuy()->GetDeck();
 	KBattleDeck& YourDeck = ctrl->GetDefGuy()->GetDeck();
@@ -110,6 +110,16 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pA
 				YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
 				tmpLst.push_back(YourDeck.GetHero());
 			}
+		}
+		break;
+	case KAbilityStatic::which_src_nearby:
+		{
+			pSrc->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pSrc);
+		}
+		break;
+	case KAbilityStatic::which_des_nearby:
+		{
+			if(!bMy && pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
 		}
 		break;
 	case KAbilityStatic::which_soldier:
@@ -155,7 +165,7 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pA
 
 void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst)
 {
-	int maxNum = KSkillAssist::_calcValDef(ctrl,pSrc->GetOwner(),pAbility->GetMax());
+	int maxNum = KSkillAssist::_calcValDef(ctrl,pSrc->GetOwner(),pSrc,pAbility->GetMax());
 
 	int pickNum = (maxNum>(int)lst->size())? lst->size():maxNum;
 	if(pickNum==lst->size()) return ;
@@ -342,7 +352,7 @@ bool _IsMatch(KConditionDef& condDef,KCardInst* card)
 	return true;
 }
 
-int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef)
+int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card,KValDef& valDef)
 {
 	int ret =0;
 	switch(valDef.GetDef()){
@@ -354,6 +364,9 @@ int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KValDef& valDef)
 		break;
 	case KValDef::val_rnd:
 		ret = g_rnd.GetRandom(valDef._val,valDef._val2+1);
+		break;
+	case KValDef::val_getHp:
+		ret = card->GetHp();
 		break;
 	default:
 		ret = valDef.GetVal();

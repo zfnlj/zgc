@@ -232,7 +232,7 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 	if(pAbility->IsArea() ||
 		pAbility->IsTargetSure()){
 		KCardInstList lst;
-		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
+		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
 		KSkillAssist::_rndFillProc(ctrl,pSrc,pAbility,&lst);
 		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
@@ -240,7 +240,7 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		}
 	}else if(pDes){
 		KCardInstList lst;
-		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pAbility,&lst);
+		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
 		int pos = _getIndexOfCard(&lst,pDes);
 		if(pos>=0){
 			DoCardAbility2Des(ctrl,pAbility,pSrc,pDes,&result);
@@ -259,7 +259,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 		{
-			int damageVal = KSkillAssist::_calcValDef(ctrl,guy,pAbility->GetVal());
+			int damageVal = KSkillAssist::_calcValDef(ctrl,guy,pSrc,pAbility->GetVal());
 			int val = guy->calcHurtVal(damageVal);
 			val = pDes->Heal(pSrc,-val);
 			PostCardDuel(ctrl,pDes,val,NULL,0);
@@ -326,10 +326,27 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
+	case KAbilityStatic::what_atkhp_sw:
+		{
+			int newHp = pDes->GetAtk();
+			int newAtk = pDes->GetHp();
+			pDes->HpSet(newHp);
+			pDes->AtkSet(newAtk);
+			result->SetDestVal(pDes->GetRealId(),0);
+		}
+		break;
 	case KAbilityStatic::what_hp_set:
 		{
-			pDes->HpSet(pAbility->GetNormalVal());
-			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
+			int newHp = KSkillAssist::_calcValDef(ctrl,guy,pDes,pAbility->GetVal());
+			pDes->HpSet(newHp);
+			result->SetDestVal(pDes->GetRealId(),newHp);
+		}
+		break;
+	case KAbilityStatic::what_atk_set:
+		{
+			int newAtk = KSkillAssist::_calcValDef(ctrl,guy,pDes,pAbility->GetVal());
+			pDes->AtkSet(newAtk);
+			result->SetDestVal(pDes->GetRealId(),newAtk);
 		}
 		break;
 	case KAbilityStatic::what_kill:

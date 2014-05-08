@@ -39,6 +39,8 @@ void KValDef::ParseString(char* str)
 		_def = val_my_hurted_soldierNum;
 	}else if(strcmp(ss[0],"SoldierNum")==0){
 		_def = val_soldierNum;
+	}else if(strcmp(ss[0],"GetHp")==0){
+		_def = val_getHp;
 	}else if(strcmp(ss[0],"Rnd")==0){
 		_def = val_rnd;
 	}else{

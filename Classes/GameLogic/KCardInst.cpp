@@ -464,6 +464,11 @@ KAbilityStatic* KCardInst::GetSecretAbility()
 	return KGameStaticMgr::getSingleton().GetAbilityOnId(GetCardId()*10);
 }
 
+void KCardInst::AtkSet(int val)
+{
+	m_attr.setAddAtk(val-m_pST->GetAtk());
+}
+
 int KCardInst::GetAtk()
 {
 	if(FindBuf(KAbilityStatic::what_atk_equ_hp)){

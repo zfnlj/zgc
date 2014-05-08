@@ -43,6 +43,7 @@ public:
 
 	void FindFightingGuider(KCardInstList*);
 	void onCard2Tomb(KCardInst* card);
+	void PickFighterNearby(KCardInstList* lst,KCardInst* card);
 	void PickCard(KCardInstList* arr,KCardInst::CardSlot slot,KCardInst* skip);
 	void onSelectHandCardOK(KCardInstList* lst);
 	void UpdateActor(float dt);

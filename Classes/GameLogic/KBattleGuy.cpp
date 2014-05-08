@@ -253,7 +253,7 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 			strCardAbilityResult result;
 			result.init(actor,pSrc->GetRealId(),pAbility);
 
-			m_Deck.DrawCard( KSkillAssist::_calcValDef(ctrl,this,pAbility->GetVal()),KCardInst::enum_slot_hand,&result);
+			m_Deck.DrawCard( KSkillAssist::_calcValDef(ctrl,this,pSrc,pAbility->GetVal()),KCardInst::enum_slot_hand,&result);
 			KSkillAssist::_sendAbilityResult(ctrl,result);
 		}
 		break;
@@ -272,12 +272,18 @@ void KBattleGuy::RemoveGuyAbility(KAbilityStatic* pAbility)
 
 int KBattleGuy::calcHurtVal(int val)
 {
+	int realVal = val;
 	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_bufList,KAbilityStatic::what_sp_rate);
 	if(pBuf){
-		return val*pBuf->GetNormalVal();
-	}else{
-		return val;
+		realVal = val*pBuf->GetNormalVal();
 	}
+
+	KCardAbilityList::iterator it = m_bufList.begin();
+	while(it != m_bufList.end()){
+		if((*it)->GetWhat()== KAbilityStatic::what_cast_add) realVal += (*it)->GetNormalVal();
+		it++;
+	}
+	return realVal;
 }
 
 int KBattleGuy::calcHealVal(int val)

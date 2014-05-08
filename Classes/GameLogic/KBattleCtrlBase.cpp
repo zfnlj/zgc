@@ -371,7 +371,7 @@ bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrG
 	if(m_CurOp._slot<0) return false;
 	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 	if(!pAbility) return false;
-	KSkillAssist::_fillAbilityTarget(this,card,pAbility,arrGreen,arrRed);
+	KSkillAssist::_fillAbilityTarget(this,card,NULL,pAbility,arrGreen,arrRed);
 	return true;
 }
 
@@ -384,7 +384,7 @@ void KBattleCtrlBase::QuerySkillTarget(KCardInst* skill,KCardInstList* arrGreen,
 	KGameStaticMgr::getSingleton().GetAbilityList(skill->GetCardId(),abilityList);
 	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
 		KAbilityStatic* pAbility = *it;
-		KSkillAssist::_fillAbilityTarget(this,skill,pAbility,arrGreen,arrRed);
+		KSkillAssist::_fillAbilityTarget(this,skill,NULL,pAbility,arrGreen,arrRed);
 	}
 }
 

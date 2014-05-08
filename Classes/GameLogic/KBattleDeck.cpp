@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,20030,33013,20007,31021,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20008,20040,33013,20007,31021,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -49,6 +49,7 @@ void KBattleDeck::updateCardSlot(KCardInst* card)
 		if(newList) newList->push_back(card);
 	}
 }
+
 
 void KBattleDeck::SetCurDeckDB(int* cardStore,int* cardDeck)
 {
@@ -118,12 +119,12 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 	GetHero()->onTurnBegin(ctrl);
 }
 
-void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
+void KBattleDeck::OnTurnEnd()
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
-		(*it)->OnTurnEnd(ctrl);
+		(*it)->OnTurnEnd();
 	}
-	GetHero()->OnTurnEnd(ctrl);
+	GetHero()->OnTurnEnd();
 }
 
 void KBattleDeck::GetDefenderSet(KCardInstList* lst)
@@ -322,6 +323,19 @@ KCardInstList* KBattleDeck::QueryCardSet(int slot)
 	return NULL;
 }
 
+void KBattleDeck::PickFighterNearby(KCardInstList* lst,KCardInst* me)
+{
+	if(me->GetSlot()!= KCardInst::enum_slot_fight) return;
+
+	int mePos = me->m_attr.getPos();
+	for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
+			KCardInst* card = *it;
+			if(card==me) continue;
+			int cardPos = card->m_attr.getPos();
+			int dist = (mePos>cardPos)? mePos-cardPos : cardPos-cardPos;
+			if(dist==1) lst->push_back(card);
+	}
+}
 
 void KBattleDeck::PickCard(KCardInstList* lst,KCardInst::CardSlot slot,KCardInst* skip)
 {

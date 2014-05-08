@@ -126,6 +126,10 @@ void KAbilityStatic::SetWhich(const char* str)
 		m_which = which_your;
 	}else if(strcmp(str,"WHICH_SOLDIER")==0){
 		m_which = which_soldier;
+	}else if(strcmp(str,"WHICH_SRC_NEARBY")==0){
+		m_which = which_src_nearby;
+	}else if(strcmp(str,"WHICH_DES_NEARBY")==0){
+		m_which = which_des_nearby;
 	}else if(strcmp(str,"WHICH_HERO")==0){
 		m_which = which_hero;
 	}else if(strcmp(str,"WHICH_ALL")==0){
@@ -165,6 +169,10 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_hp_double;
 	}else if(strcmp(str,"WHAT_HP_SET")==0){
 		what = what_hp_set;
+	}else if(strcmp(str,"WHAT_ATKHP_SW")==0){
+		what = what_atkhp_sw;
+	}else if(strcmp(str,"WHAT_ATK_SET")==0){
+		what = what_atk_set;
 	}else if(strcmp(str,"WHAT_IMMUNE")==0){
 		what = what_immune;
 	}else if(strcmp(str,"WHAT_RES_ADD")==0){
@@ -185,6 +193,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_guide;
 	}else if(strcmp(str,"WHAT_SP_RATE")==0){
 		what = what_sp_rate;
+	}else if(strcmp(str,"WHAT_CAST_ADD")==0){
+		what = what_cast_add;
 	}else if(strcmp(str,"WHAT_MP_COST")==0){
 		what = what_mp_cost;
 	}else if(strcmp(str,"WHAT_ATK_EQU_HP")==0){

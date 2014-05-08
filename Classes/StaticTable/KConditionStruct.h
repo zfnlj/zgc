@@ -24,6 +24,7 @@ struct KValDef{
 		val_my_hurted_soldierNum,
 		val_soldierNum,
 		val_rnd,
+		val_getHp,
 	};
 	KValDef():_def(val_normal),_val(0),_val2(0){}
 	void ParseString(char* str);
