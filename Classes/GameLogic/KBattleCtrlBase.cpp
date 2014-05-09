@@ -65,6 +65,9 @@ void KBattleCtrlBase::update(float dt)
 			case battle_turn_end:
 				TurnEnd();
 				break;
+			case battle_turn_end_ok:
+				TurnEndOk();
+				break;
 			case battle_game_end:
 				GameEnd();
 				break;
@@ -216,7 +219,6 @@ void KBattleCtrlBase::TurnBegin()
 {
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
-	KBattleGod::getSingleton().OnTurnBegin();
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
     
 	m_bFirstTurn = false;
@@ -257,13 +259,17 @@ bool KBattleCtrlBase::IsGameEnd()
 	return m_state==battle_game_end;
 }
 
+void KBattleCtrlBase::TurnEndOk()
+{
+	if(IsWaitDrama()) return;
+	StateJump(battle_select_turnplayer);
+	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNEND,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
+}
 void KBattleCtrlBase::TurnEnd()
 {
 	CCLog("TurnEnd");
 	m_CurPlayGuy->GetDeck().OnTurnEnd(this);
-	KBattleGod::getSingleton().OnTurnEnd();
-	StateJump(battle_select_turnplayer);
-	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNEND,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
+	StateJump(battle_turn_end_ok);
 }
 
 void KBattleCtrlBase::GameEnd()
@@ -336,13 +342,17 @@ void KBattleCtrlBase::OpSetSlot(int slot)
 	if(m_CurOp._slot<0){
 		m_CurOp._slot = slot;
 		pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
+		KCardInstList arrGreen,arrRed;
+		QueryEnterFightTarget(card,&arrGreen,&arrRed);
+		n = arrGreen.size()+arrRed.size();
 	}
 	
 	
 	
 	if(!pAbility ||    //check if need to select target....
 		pAbility->IsTargetSure()||
-		pAbility->IsArea())
+		pAbility->IsArea()||
+		n==0)
 	{
 		m_CurOp._ok = true;
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_OPDONE,(unsigned long long)&m_CurOp,0);
@@ -367,7 +377,7 @@ bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrG
 	if(m_CurOp._slot<0) return false;
 	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 	if(!pAbility) return false;
-	KSkillAssist::_fillAbilityTarget(this,card,NULL,pAbility,arrGreen,arrRed);
+	KSkillAssist::_fillAllAbilityTarget(this,card,pAbility,arrGreen,arrRed);
 	return true;
 }
 
@@ -615,8 +625,12 @@ void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
 		strDoCardWhenAbility& cardWhen = *it;
 		KAbilityStatic* pAbility =  KSkillAssist::_findStaticAbility(cardWhen._card->GetCardId(),cardWhen._when);
 		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,actor->GetRealId());
-		AddDramaElapsed(4.0f);
 	}
 
 	m_cardWhenList.clear();
+}
+
+void KBattleCtrlBase::AddDramaElapsed(float val)
+{ 
+	m_waitDramaElapsed+=val;
 }

@@ -297,6 +297,7 @@ int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,i
 
 void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result)
 {
+	if(!result._pAbility->ActionIsEmpty()) ctrl->AddDramaElapsed(4.0f);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_ABILITYRESULT,(unsigned long long)&result,(unsigned long long)ctrl->GetWorld());
 }
 

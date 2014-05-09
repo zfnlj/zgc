@@ -21,10 +21,7 @@ public:
 	void ProcSlotCard(KCardInst* pSrc,KCardInst* pDes);
 	bool DoCardToFightField(KBattleCtrlBase*,KBattleGuy*,KCardInst*,KCardInst* pDes,int pos=-1);
 	bool DoCardToSecretField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* pCard);
-	void OnTurnBegin();
 	bool OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp*);
-	void OnTurnEnd();
-
 	bool DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes=NULL,int actor=0);
 	bool DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when,int actor=0);
 	void DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,strCardAbilityResult* result);

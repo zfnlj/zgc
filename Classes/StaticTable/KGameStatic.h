@@ -53,6 +53,7 @@ public:
 	char* GetDetail(){ return m_Detail;}
 	const char* GetShow(){ return m_Show;}
 	const char* GetPhoto(){ return m_Photo;}
+	bool IsShow() { return (strlen(m_Show)>2);}
 	static KCardStatic* create();
 private:
 	int m_Id;

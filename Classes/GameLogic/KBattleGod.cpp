@@ -30,10 +30,6 @@ void KBattleGod::init()
 	m_TurnPlayer = NULL;
 }
 
-void KBattleGod::OnTurnBegin()
-{
-}
-
 bool KBattleGod::ProcHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int pos)
 {
 	CCLog("ProcHandCard=%s",pSrc->GetST()->GetName());
@@ -213,10 +209,6 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 		op->Empty();
 	}
 	return ret;
-}
-
-void KBattleGod::OnTurnEnd()
-{
 }
 
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,int actor)
@@ -413,7 +405,7 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
-	ctrl->AddDramaElapsed(6.0f);
+	ctrl->AddDramaElapsed(2.0f);
 	return true;
 }
 
@@ -470,9 +462,8 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 	
 	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty()){
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());
-		ctrl->AddDramaElapsed(2.0f);
-	}else{
-		ctrl->AddDramaElapsed(4.0f);
+		ctrl->AddDramaElapsed(1.0f);
+		if(pCard->GetST()->IsShow()) ctrl->AddDramaElapsed(2.0f);
 	}
 	return true;
 }

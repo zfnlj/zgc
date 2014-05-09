@@ -34,6 +34,7 @@ public:
 		battle_turn_begin,
 		battle_play,
 		battle_turn_end,
+		battle_turn_end_ok,
 		battle_game_end,
 	};
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -65,7 +66,7 @@ public:
 	void OpDone();
 	void OpSetSlot(int slot);
 	void DoEndTurn();
-	
+	void TurnEndOk();
 	void PlayWithAI();
 	void PlayQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);
@@ -91,7 +92,7 @@ public:
 
 	
 	bool m_bNetReady;
-	void AddDramaElapsed(float val){ m_waitDramaElapsed+=val;}
+	void AddDramaElapsed(float val);
 	bool IsWaitDrama(){ return m_waitDramaElapsed>0.0f;}
 	void AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_When when);
 	void DoCardEvtList(KCardInst* actor);

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action class="null">
+  <affect_body>
+  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="soldier_cast" life="1.0" />
+  </affect_body>
+</action>
+</ag>		

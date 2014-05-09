@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ag>
-<action name="soldier_pray_ability" slot="5" class="cast">
-  <affect_body>
-  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="pray_other" life="1.5" />
-    	<affector class="update" createtime="1.6"  life="0.001" />  
+<action  slot="5" class="cast">
+  <affect_body> 
+   	<affector class="action" obj="soldier_cast_show" tarFlag="0" pre="0" createtime="0.0" iVal="1" life="1.0" />
+  	<affector class="action" obj="strong_show" tarFlag="1" pre="1" createtime="1.0" iVal="2" life="3.0" />
   </affect_body>
 </action>
 </ag>
