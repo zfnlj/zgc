@@ -77,7 +77,7 @@ void KActionMgr::PlayCacheAction()
 	if(!param) return;
 
 	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
-	createAction(param,0);
+	if(pST) createAction(param,0);
 	m_cacheAction.consumeParam();
 }
 
@@ -122,7 +122,8 @@ K3DActionParam* KActionMgr::FindActionParam(const char* name)
 {
 	KAction* pAction = FindAction(name);
 	if(pAction) return pAction->GetParam();
-
+	K3DActionParam* param = m_slotAction.findParam(name);
+	if(param) return param;
 	return m_cacheAction.findParam(name);
 }																														 
 
@@ -135,7 +136,10 @@ void KActionMgr::PlaySlotAction()
 	if(!param) return;
 
 	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
-	if(!pST) return;
+	if(!pST){
+		m_slotAction.consumeParam();
+		return;
+	}
 
 	KCardActor* actor = KUIAssist::_getCardActor(param->_srcID);
 	if(!actor) actor = (KCardActor*)m_Actor;
@@ -211,6 +215,10 @@ void KActionMgr::LimitAlive(const char* name)
 	KAction* pAction = FindAction(name);
 	if(pAction)
 		pAction->LimitAlive();
+	K3DActionParam* param = m_cacheAction.findParam(name);
+	if(param) param->SetAction("");
+	param = m_slotAction.findParam(name);
+	if(param) param->SetAction("");
 }
 
 void KActionMgr::onDestory(void)
@@ -221,6 +229,12 @@ void KActionMgr::onDestory(void)
 		pAction->Stop();
 	}
 	m_ActionArr.removeAllObjects();
+}
+
+bool KActionMgr::ExistAction(const char* name)
+{
+	if(FindAction(name)) return true;
+	return (FindActionParam(name)!=NULL);
 }
 
 KAction* KActionMgr::FindAction(const char* name)

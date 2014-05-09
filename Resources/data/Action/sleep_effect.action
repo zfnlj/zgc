@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ag>
+<action slot="5" class="null">
+  <affect_body>
+  		<affector class="anim" slot="card_pos" obj="sleep_effect" createtime="0.0" fVal="1.0" iVal="90"  life="0.0" />
+  </affect_body>
+</action>
+</ag>
+		

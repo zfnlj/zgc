@@ -22,8 +22,40 @@ void KIndicatePanel::init(cocos2d::extension::UILayer* layer)
 	m_layer = layer;
 }
 
+void KIndicatePanel::UpdateSleepAnim()
+{
+	KCardInstList tmpList;
+	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
+		FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+		pMainPlayer->QuerySleepFightCards(&tmpList);
+	}
+	for(KCardInstList::iterator it=m_SleepArr.begin();it!=m_SleepArr.end();++it){
+		KCardInst* card = *it;
+		if(_getIndexOfCard(&tmpList,card)<0) DoCardSleep(card,false);
+	}
+	for(KCardInstList::iterator it=tmpList.begin();it!=tmpList.end();++it){
+		KCardInst* card = *it;
+		DoCardSleep(card,true);
+	}
+	m_SleepArr.clear();
+	_copyCardSet(&tmpList,&m_SleepArr);
+}
+
+void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
+{
+	KCardActor* actor = (KCardActor*) card->getActor();
+	if(flag){
+		if(!actor->GetActionMgr().ExistAction("sleep_effect")){
+			actor->GetActionMgr().PlayAction("sleep_effect");
+		}
+	}else{
+		actor->GetActionMgr().LimitAlive("sleep_effect");
+	}
+}
+
 void KIndicatePanel::Update(float dt)
 {
+	UpdateSleepAnim();
 	KBattleCtrlBase::BattleState state = GameRoot::getSingleton().BattleCtrl().GetBattleState();
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();

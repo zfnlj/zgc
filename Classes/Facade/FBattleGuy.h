@@ -23,6 +23,7 @@ public:
 	void QueryActiveDefendCards(KCardInstList* arr);
 	void QueryActiveHandCards(KCardInstList* arr);
 	void QueryActiveFightCards(KCardInstList* arr);
+	void QuerySleepFightCards(KCardInstList* lst);
 	bool IsEmptyFightSlot(int pos);
 private:
 	KBattleGuy* m_Impl;

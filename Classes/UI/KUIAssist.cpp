@@ -510,10 +510,11 @@ void KUIAssist::_soldierShow(KCardInst* card)
 {
 	if(!card->IsKindOf(KCardStatic::card_soldier)) return;
 	if(card->GetSlot()!=KCardInst::enum_slot_fight) return;
-	KCardStatic* pST = card->GetST();
-	if(!pST->IsShow()) return;
 	KCardActor* actor = (KCardActor*)card->getActor();
 	if(!actor) return;
+	actor->GetActionMgr().PlayAction("enterfight_dust");
+	KCardStatic* pST = card->GetST();
+	if(!pST->IsShow()) return;
 	actor->GetActionMgr().PlayAction(pST->GetShow());
 }
 

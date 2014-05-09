@@ -52,7 +52,7 @@ public:
 	virtual void DrawCard(){}
 	virtual void AtkMove(int des,float val);
 	void RemoveSprite(CCSprite* sprite,const char* obj);
-	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder);
+	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder,bool);
 	cocos2d::extension::CCArmature* CreateArmature(const char* obj,const char* slot,float scale,int zOrder);
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);

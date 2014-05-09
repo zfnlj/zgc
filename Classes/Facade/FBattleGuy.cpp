@@ -81,3 +81,8 @@ void FBattleGuy::QueryActiveFightCards(KCardInstList* arr)
 {
 	if(m_Impl) m_Impl->QueryActiveFightCards(arr);
 }
+
+void FBattleGuy::QuerySleepFightCards(KCardInstList* lst)
+{
+	if(m_Impl) m_Impl->QuerySleepFightCards(lst);
+}

@@ -146,6 +146,11 @@ void KBattleGuy::QueryActiveFightCards(KCardInstList* lst)
 	m_Deck.QueryActiveFightCards(lst,m_attr.getCurRes());
 }
 
+void KBattleGuy::QuerySleepFightCards(KCardInstList* lst)
+{
+	m_Deck.QuerySleepFightCards(lst);
+}
+
 void KBattleGuy::QueryActiveDefendCards(KCardInstList* lst)
 {
 	m_Deck.QueryActiveDefendCards(lst);

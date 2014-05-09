@@ -51,6 +51,7 @@ public:
 	void QueryActiveHandCards(KCardInstList* arr,int curRes);
 	void QueryActiveFightCards(KCardInstList* arr,int curRes);
 	void QueryActiveDefendCards(KCardInstList* arr);
+	void QuerySleepFightCards(KCardInstList* lst);
 
 	size_t serializeDirty(KMemoryStream* so);
 	BOOL deserializeDirty(KMemoryStream* si);

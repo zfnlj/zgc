@@ -34,7 +34,7 @@ void KClickCardMgr::onClickCard(KCardActor* actor)
 {
 	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
 	KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	if(mainActor.GetActionMgr().FindAction("bigCard_switch")){
+	if(mainActor.GetActionMgr().ExistAction("bigCard_switch")){
 		m_cacheActor = actor;
 		return;
 	}
@@ -67,7 +67,7 @@ void KClickCardMgr::onTouchEnd()
 void KClickCardMgr::update(float dt)
 {
 	KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	if(m_cacheActor && !mainActor.GetActionMgr().FindAction("bigCard_switch")){
+	if(m_cacheActor && !mainActor.GetActionMgr().ExistAction("bigCard_switch")){
 		onClickCard(m_cacheActor);
 		m_cacheActor = NULL;
 	}

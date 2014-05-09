@@ -43,6 +43,7 @@ public:
 	KAction*	PlayAction(K3DActionParam* param,int key=0,bool bCached=false);//生成动作
 
 	K3DActionParam* FindActionParam(const char* name);
+	bool		ExistAction(const char* name);
 	KAction*	FindAction(const char* name);
 	void        LimitAlive(const char* name);//促死
 

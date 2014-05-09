@@ -58,6 +58,8 @@ public:
 	 void QueryActiveHandCards(KCardInstList* arr);
 	 void QueryActiveFightCards(KCardInstList* arr);
 	 void QueryActiveDefendCards(KCardInstList* arr);
+	 void QuerySleepFightCards(KCardInstList* lst);
+
 	 void SetBattleCtrl(KBattleCtrlBase* ctrl){ m_battleCtrl = ctrl;}
 	 KBattleCtrlBase* GetBattleCtrl(){ return m_battleCtrl;}
 

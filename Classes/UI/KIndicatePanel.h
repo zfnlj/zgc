@@ -17,11 +17,14 @@ public:
 	void Update(float );
 	void OnSelectSrcCard(KCardActor*);
 	void OnSelectCardOK();
+	void UpdateSleepAnim();
+
 private:
 	void ActiveArr(KCardInstList* arr,bool bGreen);
 	void DeactiveActor(KCardInstList* actived);
+	void DoCardSleep(KCardInst* card,bool flag);
 	cocos2d::extension::UILayer* m_layer;
-
+	KCardInstList m_SleepArr;
 	KCardInstList m_ActiveGreenArr;
 	KCardInstList m_ActiveRedArr;
 	KCardActor* m_selActor;
