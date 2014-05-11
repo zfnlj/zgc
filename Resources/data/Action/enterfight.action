@@ -3,7 +3,7 @@
 <action  class="null">
   <affect_body> 
    	<affector class="layer" createtime="0" fVal="90" life="0.001" />
-   	<affector class="move" slot="card_pos" createtime="0.0" fVal="1000" life="0.4" />
+   	<affector class="move" slot="card_pos" createtime="0.0" fVal="1000" life="10" />
   	<affector class="resortHand" createtime="0.0" life="0.001" />
   	<affector class="layer" createtime="0.5" fVal="1" life="0.001" />
   </affect_body>

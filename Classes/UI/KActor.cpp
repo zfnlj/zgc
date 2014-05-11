@@ -153,6 +153,7 @@ CCAction* KActor::ScaleX(const char* obj,float val,float elapse,CCActionDef& act
 		node->setScaleX(val);
 		return NULL;
 	}else{
+		if(elapse >0.1) elapse -=0.1f; // stop befor executor end
 		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, node->getScaleY());
 		node->runAction( actionBy);
 		actionDef.init(actionBy,node);
@@ -188,6 +189,7 @@ CCAction* KActor::Scale(const char* obj,float val,float elapse,CCActionDef& acti
 		node->setScale(val);
 		return NULL;
 	}else{
+		if(elapse >0.1) elapse -=0.1f; // stop befor executor end
 		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, val);
 		node->runAction(actionBy);
 		actionDef.init(actionBy,node);
@@ -237,7 +239,7 @@ void KActor::Shake(const char* obj,float valX,float valY,float elapse,CCActionDe
 {
  	CCNode* node = GetCNode(obj);
  	if(!node) return;
-	
+	if(elapse >0.1) elapse -=0.1f; // stop befor executor end
 	CCActionInterval*  action = CCRepeat::create(
 		CCSequence::create(
 		CCMoveBy::create(0.05f, ccp(valX,valY)),

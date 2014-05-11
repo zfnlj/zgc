@@ -2,7 +2,7 @@
 <ag>
 <action name="select_to_hand" class="null">
   <affect_body>
-     <affector class="move" slot="card_pos" createtime="0.1" fVal="800" life="0.4" />
+     <affector class="move" slot="card_pos" createtime="0.1" fVal="800" life="10" />
      <affector class="scale" createtime="0.1" fVal="0.8" life="0.4" />
      <affector class="layer" createtime="1" fVal="10" life="0.001" />
   </affect_body>

@@ -47,6 +47,7 @@ public:
 	virtual void OnPlay(K3DActionParam*);
 	virtual void OnStop(void);
 	virtual void Stop();
+	virtual float Breathe(float frameTime);
 	void StopEmitter();
 
 	AffectorType Type(void){ return m_AffectorStatic->Type();}

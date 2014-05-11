@@ -66,6 +66,15 @@ void KAffectorExecutor::LimitAlive(void)
 }
 
 
+float KAffectorExecutor::Breathe(float frameTime)
+{
+	if(mState==EXE_PLAYING){
+		if(m_ccActionDef._action && m_ccActionDef._action->isSingleReference()){ //ccAction Done;
+			LimitAlive(0.01);
+		}
+	}
+	return AdvExecutor::Breathe(frameTime);
+}
 
 void KAffectorExecutor::OnPlay(K3DActionParam* param)
 {

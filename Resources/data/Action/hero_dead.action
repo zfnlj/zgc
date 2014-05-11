@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ag>
+<action  class="move">
+  <affect_body>
+   	 <affector class="eff" slot="card_center" obj="scene_dust" createtime="0.0" fVal="1.0" iVal="90"  life="6.0" />
+		 <affector class="delWidget" obj="card" createtime="0.8" life="0.1" />
+	</affect_body>
+</action>
+</ag>
+		
