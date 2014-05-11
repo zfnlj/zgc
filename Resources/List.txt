@@ -7,13 +7,15 @@ anim/active_red.png	anim/active_red.plist	active_red	19	0.2
 anim/active_green.png	anim/active_green.plist	active_green	19	0.2
 anim/dragon_light.png	anim/dragon_light.plist	dragon_light	18	0.13
 anim/god_kill.png	anim/god_kill.plist	god_kill	15	0.13
-anim/sleep_effect.png	anim/sleep_effect.plist	sleep_effect	15	0.1
+anim/sleep_effect.png	anim/sleep_effect.plist	sleep_effect	15	0.2
 anim/cut_head.png	anim/cut_head.plist	0	0	0
 anim/anim_blood.png	anim/anim_blood.plist	blood	10	0.15
 anim/evil_bless.png	anim/evil_bless.plist	evil_bless	12	0.12
+anim/pre_cast.png	anim/pre_cast.plist	pre_cast	13	0.11
 anim/dragon_move.png	anim/dragon_move.plist	0	0	0
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0
 armature/anim_elem2.png	armature/anim_elem2.plist	0	0	0
-GUI/photo_elem1.png	GUI/photo_elem1.plist	0	0	0
+GUI/photo_soldier.jpg	GUI/photo_soldier.plist	0	0	0
+GUI/photo_skill.jpg	GUI/photo_skill.plist	0	0	0
 GUI/battle_str.png	GUI/battle_str.plist	0	0	0

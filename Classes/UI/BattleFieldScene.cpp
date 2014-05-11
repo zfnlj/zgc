@@ -341,7 +341,7 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(pCard);
 	
 	int oldSlot = pCard->GetOldSlot();
-	KCardActor* actor = (KCardActor*)pCard->getActor();
+	KCardActor* actor = KCardActor::create(pCard); 
 	if(actor->getBack()&& !GameRoot::getSingleton().BattleCtrl().IsShowBack(pCard)){
 		actor->UpdateUI();
 		m_ui->addWidget(actor->GetUI());
@@ -350,6 +350,7 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 		KUIAssist::_resortHandCardSet(guy);
 	}
 	actor->GetActionMgr().PlayAction("card_move");
+	m_indicatePanel.OnSelectCardOK();
 	KUIAssist::_soldierShow(pCard); // soldier enter fight movie.
 }
 

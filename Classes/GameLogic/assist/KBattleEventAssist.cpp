@@ -8,7 +8,7 @@ namespace KBattleEvtAssist
 	{
 		KAbilityStatic::Enum_When when;
 		switch(evt){
-		case battle_evt_duel_dead:
+		case battle_evt_soldier_dead:
 			{
 				if(pDes->FindBuf(KAbilityStatic::when_dead)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_dead);
 				when = KAbilityStatic::when_soldier_dead;

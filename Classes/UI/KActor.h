@@ -60,10 +60,14 @@ public:
 	virtual void addWidget(const char* obj,int zOrder){}
 	virtual void delWidget(const char* obj){}
 	virtual void updateSecret(){}
+
+	void StopBreathe(const char* obj);
+	void StartBreathe(const char* obj,float val,float elapse);
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;
 	CCDictionary m_spriteDict;
+	float m_backup;
 };
 
 #endif // __KCardActor_H__

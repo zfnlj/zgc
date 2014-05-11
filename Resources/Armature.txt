@@ -37,3 +37,4 @@ armature/pray_card.json
 armature/pray_other.json
 armature/strange.json
 armature/soldier_cast.json
+armature/pray_other_ability.json

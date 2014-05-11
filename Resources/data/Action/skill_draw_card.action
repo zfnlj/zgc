@@ -2,7 +2,7 @@
 <ag>
 <action name="skill_draw_card" class="cast">
   <affect_body>
-  	<affector class="layer" createtime="0" fVal="99" life="0.6" />
+  	<affector class="layer" createtime="0" fVal="99" life="0.001" />
   	<affector class="armature" slot="card_center" obj="absorb" createtime="0.0" fVal="1.0" iVal="90"  life="1.0" />
   	<affector class="action" obj="draw_card" tarFlag="1" pre="0" createtime="1.0" iVal="1" life="30" />
   	<affector class="moveback" createtime="1.6" life="0.001" />

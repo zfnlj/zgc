@@ -131,11 +131,11 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 
 	}
 	if(pCard1&& pCard1->IsDead()){
-		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard2,pCard1);
+		KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pCard2,pCard1);
 		ctrl->onCard2Tomb(pCard1);
 	}
 	if(pCard2&&pCard2->IsDead()){
-		KBattleEvtAssist::_onBattleEvt(battle_evt_duel_dead,ctrl,pCard1,pCard2);
+		KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pCard1,pCard2);
 		ctrl->onCard2Tomb(pCard2);
 	}
 }
@@ -186,6 +186,11 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 		KCardInst* pDes = ctrl->GetCard(op->_des);
 		if(!pSrc){
 			CCAssert(false , "Not Found Init Card!");
+			op->Empty();
+			return ret;
+		}
+		KBattleGuy* pPlayer = ctrl->GetCurGuy();
+		if(pSrc->GetOwner()!=pPlayer){
 			op->Empty();
 			return ret;
 		}
@@ -344,6 +349,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_kill:
 		{
+			KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pSrc,pDes);
 			ctrl->onCard2Tomb(pDes);
 			result->SetDestVal(pDes->GetRealId(),0);
 		}

@@ -30,6 +30,7 @@ enum AffectorType
 	Affector_addwidget,//向层增加widget
 	Affector_delwidget,//删除widget
 	Affector_fadeout,
+	Affector_breathe,
 	Affector_atkMove,
 	Affector_shakex, //震动
 	Affector_move, //移动
@@ -154,6 +155,7 @@ public:
         tar_des,
         tar_my,
         tar_your,
+		tar_null,
     };
 	KAffectorActionStatic()										;
 	virtual ~KAffectorActionStatic()								{}

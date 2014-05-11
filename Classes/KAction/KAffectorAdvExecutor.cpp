@@ -14,9 +14,11 @@ KAffectorExecutor::~KAffectorExecutor()
 	StopEmitter();
 	if(m_sprite){
 		GetActor()->RemoveSprite(m_sprite,m_AffectorStatic->GetObj());
+		m_sprite = NULL;
 	}
 	if(m_armature){
 		m_armature->removeFromParent();
+		m_armature = NULL;
 	}
 }
 
@@ -53,7 +55,9 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	switch(m_AffectorStatic->Type())
 	{
 	case Affector_layer:
-		if(GetActor()) GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
+		if(GetActor()){
+			GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
+		}
 		break;
 	case Affector_summon:
 		if(GetActor()) GetActor()->SummonCard(m_param->GetDesId(0));
@@ -132,6 +136,10 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_fadeout:
 		if(GetActor()) GetActor()->FadeOut(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal());
 		break;
+	case Affector_breathe:
+		if(GetActor()) GetActor()->StartBreathe(m_AffectorStatic->GetObj(),((float)m_AffectorStatic->GetIntVal())*0.01f,
+												m_AffectorStatic->GetFloatVal());
+		break;
 	case Affector_atkMove:
 		if(GetActor()) GetActor()->AtkMove(m_param->GetDesId(0),m_AffectorStatic->GetFloatVal());
 		break;
@@ -167,6 +175,14 @@ void KAffectorExecutor::StopEmitter()
 void KAffectorExecutor::OnStop(void)
 {
 	StopEmitter();
+	if(m_sprite && mSurviveTime>0.1f){ //self control life
+		GetActor()->RemoveSprite(m_sprite,m_AffectorStatic->GetObj());
+		m_sprite = NULL;
+	}
+	if(m_armature){
+		m_armature->removeFromParent();
+		m_armature = NULL;
+	}
 }
 
 void KAffectorExecutor::Stop()
@@ -192,6 +208,9 @@ void KAffectorExecutor::LimitAlive(float val)
 		break;
 	case Affector_fadeout:
 		if(GetActor()) GetActor()->FadeOut(m_AffectorStatic->GetObj(),0);
+		break;
+	case Affector_breathe:
+		if(GetActor()) GetActor()->StopBreathe(m_AffectorStatic->GetObj());
 		break;
 	case Affector_atkMove:
 		if(GetActor())  GetActor()->AtkMove(m_param->GetDesId(0),m_AffectorStatic->GetFloatVal());
@@ -281,7 +300,10 @@ float KAffectorActionExecutor::Breathe(float frameTime)
 		K3DActionParam* param = m_action->GetParam();
 		KAffectorActionStatic* pStatic = (KAffectorActionStatic*)m_AffectorStatic;
 		if(m_action->IsActonFinished(pStatic->GetPreId())){
-			if(pStatic->GetTarFlag()==KAffectorActionStatic::tar_src){
+			if(pStatic->GetTarFlag()==KAffectorActionStatic::tar_null){
+				KCardInst* card = ((KCardActor*)GetActor())->GetCard();
+				KUIAssist::_createAffectAction(card->GetRealId(),pStatic->GetObj(),param,m_action,pStatic->GetIntVal());
+			}else if(pStatic->GetTarFlag()==KAffectorActionStatic::tar_src){
 				KUIAssist::_createAffectAction(param->SrcID(),pStatic->GetObj(),param,m_action,pStatic->GetIntVal());
 			}else{
 				bool bFound = false;

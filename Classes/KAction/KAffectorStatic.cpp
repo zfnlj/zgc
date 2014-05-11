@@ -103,6 +103,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_delwidget;
 	}else if ( strcmp(szName,"fadeout") == 0 ){
 		eType = Affector_fadeout;
+	}else if ( strcmp(szName,"breathe") == 0 ){
+		eType = Affector_breathe;
 	}else if ( strcmp(szName,"atkMove") == 0 ){
 		eType = Affector_atkMove;
 	}else if ( strcmp(szName,"moveback") == 0 ){

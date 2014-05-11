@@ -57,6 +57,10 @@ void KFightAreaPanel::Hide()
 	for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
 		ActiveSlot(i,false);
 	}
+	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
+		KBattleCtrlBase::BattleOp& op = GameRoot::getSingleton().BattleCtrl().GetCurOp();
+		if(op._src && op._slot>=0) ActiveSlot(op._slot,true);
+	}
 }
 
 void KFightAreaPanel::ActiveSlot(int pos,bool flag)
@@ -72,6 +76,7 @@ void KFightAreaPanel::ActiveSlot(int pos,bool flag)
 
 void KFightAreaPanel::update(float dt)
 {
+	
 	if(m_bShowActive){
 		FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 		for(int i=0;i<MAX_FIGHT_POS_NUM;i++){

@@ -169,6 +169,7 @@ void KCardActor::DoSelect(CCObject* sender)
 	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();	
 	//layer->OnSelectSrcCard(this);
 	if(!IsActive()){
+		if(m_card->GetOwner()!= GameRoot::getSingleton().BattleCtrl().GetCurGuy()) return;
 		if(!GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
 			int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
 			GameRoot::getSingleton().getBattleScene()->onClickBackground(NULL);
@@ -344,26 +345,6 @@ void KCardActor::SummonSelf()
 	//m_card->m_attr.setSlot(KCardInst::enum_slot_fight);
 	KUIAssist::_showCard(m_card);
 	//m_card->m_attr.setSlot(slot);
-}
-
-void KCardActor::OnSelectShow()
-{
-	if(m_card->GetSlot()==KCardInst::enum_slot_hand ||
-		m_card->GetSlot()==KCardInst::enum_slot_hero){
-		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
-		pt.y +=20;
-		Move("",pt,200);
-	}
-	
-}
-
-void KCardActor::OnUnSelectShow()
-{
-	if(m_card->GetSlot()==KCardInst::enum_slot_hand||
-		m_card->GetSlot()==KCardInst::enum_slot_hero){
-		CCPoint pt = KUIAssist::_queryCardPos(NULL,m_card);
-		Move("",pt,200);
-	}
 }
 
 void KCardActor::addWidget(const char* obj,int z)

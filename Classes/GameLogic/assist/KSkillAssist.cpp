@@ -38,7 +38,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
 		ctrl->AddCardEvtAbility(card,realWhen);
 	}
-
+	tmpLst.clear();
 	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pCard->GetOwner()->GetGuyId())->GetDeck();
 	YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,NULL);
 	tmpLst.push_back(YourDeck.GetHero());
@@ -157,6 +157,10 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KA
 	}
 	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){
 		KCardInst* card = *it;
+		if(pAbility->GetWhat()== KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
+			if(card->HasBuf(pBuf)) continue; //same buf only one..
+		}
 		if(card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);

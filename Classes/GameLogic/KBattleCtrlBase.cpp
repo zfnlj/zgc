@@ -225,6 +225,7 @@ void KBattleCtrlBase::TurnBegin()
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
 	StateJump(battle_play);
+	DoCardEvtList(NULL);
 }
 
 KBattleGuy* KBattleCtrlBase::GetDefGuy()
@@ -270,6 +271,7 @@ void KBattleCtrlBase::TurnEnd()
 	CCLog("TurnEnd");
 	m_CurPlayGuy->GetDeck().OnTurnEnd(this);
 	StateJump(battle_turn_end_ok);
+	DoCardEvtList(NULL);
 }
 
 void KBattleCtrlBase::GameEnd()
@@ -621,10 +623,11 @@ void KBattleCtrlBase::AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_Whe
 
 void KBattleCtrlBase::DoCardEvtList(KCardInst* actor)
 {
+	int actorId = (actor)? actor->GetRealId():0;
 	for(KDoCardWhenAbilityList::iterator it=m_cardWhenList.begin();it!=m_cardWhenList.end();++it){
 		strDoCardWhenAbility& cardWhen = *it;
 		KAbilityStatic* pAbility =  KSkillAssist::_findStaticAbility(cardWhen._card->GetCardId(),cardWhen._when);
-		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,actor->GetRealId());
+		KBattleGod::getSingleton().DoCardAbility(this,pAbility,cardWhen._card,NULL,actorId);
 	}
 
 	m_cardWhenList.clear();

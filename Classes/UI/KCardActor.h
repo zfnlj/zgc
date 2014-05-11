@@ -30,8 +30,6 @@ public:
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	void DoSelect(CCObject* sender);
 	void onMoveEvent(CCObject* sender);
-	void OnSelectShow();
-	void OnUnSelectShow();
 	CC_SYNTHESIZE(bool,m_bBack,Back);
 	void UpdateUI();
 	cocos2d::extension::UIWidget* GetBigCard();

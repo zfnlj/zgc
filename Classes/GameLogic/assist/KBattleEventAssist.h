@@ -3,7 +3,7 @@
 
 #include "../../StaticTable/KAbilityStatic.h"
 enum Battle_evt{
-	battle_evt_duel_dead,
+	battle_evt_soldier_dead,
 	battle_evt_use_card,
 	battle_evt_use_skill,
 	battle_evt_hurted,

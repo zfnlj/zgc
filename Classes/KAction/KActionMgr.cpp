@@ -22,8 +22,11 @@ void KActionParamQueue::consumeParam()
 
 K3DActionParam* KActionParamQueue::findParam(const char* name)
 {
-	for(int i=0;i<MAX_CACHE_ACTION;i++){
-		if(strcmp(_param[i]._name,name)==0) return &_param[i];
+	int cur = _head;
+	while(cur!=_tail){
+		if(strcmp(_param[cur]._name,name)==0) return &_param[cur];
+		cur++;
+		if(cur==MAX_CACHE_ACTION) cur=0;
 	}
 	return NULL;
 }

@@ -168,7 +168,7 @@ bool StartScene::LoadRes()
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
 	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
 	if(!fileReader)	return false;
-
+	CCTexture2D::PVRImagesHavePremultipliedAlpha(true);
 	m_totalLoadPic = 100;
 	while(true)
 	{

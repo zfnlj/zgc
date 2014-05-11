@@ -355,19 +355,6 @@
                 <key>sourceSize</key>
                 <string>{150,206}</string>
             </dict>
-            <key>card_photo_bg_base.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{834,626},{144,118}}</string>
-                <key>offset</key>
-                <string>{0,42}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{3,2},{144,118}}</string>
-                <key>sourceSize</key>
-                <string>{150,206}</string>
-            </dict>
             <key>cost_icon.png</key>
             <dict>
                 <key>frame</key>
@@ -394,70 +381,70 @@
                 <key>sourceSize</key>
                 <string>{36,37}</string>
             </dict>
-            <key>stone_1.png</key>
+            <key>stone_0.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{83,998},{10,10}}</string>
+                <string>{{103,986},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{10,10}}</string>
+                <string>{{0,0},{14,14}}</string>
                 <key>sourceSize</key>
-                <string>{10,10}</string>
+                <string>{14,14}</string>
+            </dict>
+            <key>stone_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{87,1002},{14,14}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{14,14}}</string>
+                <key>sourceSize</key>
+                <string>{14,14}</string>
             </dict>
             <key>stone_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{83,986},{10,10}}</string>
+                <string>{{87,986},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{10,10}}</string>
+                <string>{{0,0},{14,14}}</string>
                 <key>sourceSize</key>
-                <string>{10,10}</string>
+                <string>{14,14}</string>
             </dict>
             <key>stone_3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{71,1010},{10,10}}</string>
+                <string>{{71,1002},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{10,10}}</string>
+                <string>{{0,0},{14,14}}</string>
                 <key>sourceSize</key>
-                <string>{10,10}</string>
+                <string>{14,14}</string>
             </dict>
             <key>stone_4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{71,998},{10,10}}</string>
+                <string>{{71,986},{14,14}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{10,10}}</string>
+                <string>{{0,0},{14,14}}</string>
                 <key>sourceSize</key>
-                <string>{10,10}</string>
-            </dict>
-            <key>stone_5.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{71,986},{10,10}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{10,10}}</string>
-                <key>sourceSize</key>
-                <string>{10,10}</string>
+                <string>{14,14}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -469,7 +456,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:bad3199f0078995a51f230a73e7b38c5$</string>
+            <string>$TexturePacker:SmartUpdate:6f940269ba24320694c714ad9693a4d9$</string>
             <key>textureFileName</key>
             <string>card_elem.png</string>
         </dict>

@@ -18,7 +18,7 @@ public:
 	void OnSelectSrcCard(KCardActor*);
 	void OnSelectCardOK();
 	void UpdateSleepAnim();
-
+	bool IsActiveCard(KCardInst*);
 private:
 	void ActiveArr(KCardInstList* arr,bool bGreen);
 	void DeactiveActor(KCardInstList* actived);

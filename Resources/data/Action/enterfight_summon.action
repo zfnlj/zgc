@@ -2,8 +2,8 @@
 <ag>
 <action  class="cast">
   <affect_body> 
-   	<affector class="move" slot="card_pos" createtime="0.0" fVal="800" life="0.4" />
-  	<affector class="action" obj="enterfight_summon_show" tarFlag="1" pre="0" createtime="0.4" iVal="1" life="1.0" />
+   	<affector class="action" obj="enterfight"  tarFlag="4" pre="0" createtime="0.0" iVal="1" life="5" />
+  	<affector class="action" obj="enterfight_summon_show" tarFlag="1" pre="1" createtime="0.0" iVal="2" life="5" />
   </affect_body>
 </action>
 
@@ -11,7 +11,7 @@
   <affect_body> 
    	<affector class="summonSelf" createtime="0" fVal="0" life="0.1" />
    	<affector class="scale" createtime="0" fVal="0.01" life="0.01" />
-   	<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="gen_circle" life="0.8" />
+   	<affector class="eff" slot="card_center" obj="card_use" createtime="0.0" fVal="1.2" iVal="90"  life="2.0" />
   	<affector class="scale" createtime="0.1" fVal="0.8" life="0.6" />
   	
   </affect_body>

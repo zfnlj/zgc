@@ -44,6 +44,7 @@ void KIndicatePanel::UpdateSleepAnim()
 void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
 {
 	KCardActor* actor = (KCardActor*) card->getActor();
+	if(!actor) return;
 	if(flag){
 		if(!actor->GetActionMgr().ExistAction("sleep_effect")){
 			actor->GetActionMgr().PlayAction("sleep_effect");
@@ -139,6 +140,7 @@ void KIndicatePanel::ActiveArr(KCardInstList* lst,bool bGreen)
 
 void KIndicatePanel::OnSelectCardOK()
 {
+	if(m_selActor) m_selActor->GetActionMgr().LimitAlive("card_breathe");
 	m_selActor = NULL;
 }
 
@@ -148,13 +150,19 @@ void KIndicatePanel::OnSelectSrcCard(KCardActor* actor)
 	
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("big_photo");
 	if(m_selActor){
-		m_selActor->OnUnSelectShow();
-		//m_selActor->GetActionMgr().PlayAction("photo_fadeout");
+		m_selActor->GetActionMgr().LimitAlive("card_breathe");
 		//m_selActor->GetActionMgr().LimitAlive("fire");
 	}
 	if(actor){
-		actor->OnSelectShow();
+		actor->GetActionMgr().PlayAction("card_breathe");
 		//actor->GetActionMgr().PlayAction("photo_fadein");
 	}
 	m_selActor = actor;
+}
+
+bool KIndicatePanel::IsActiveCard(KCardInst* card)
+{
+	if(_getIndexOfCard(&m_ActiveGreenArr,card)>=0) return true;
+	if(_getIndexOfCard(&m_ActiveRedArr,card)>=0) return true;
+	return false;
 }

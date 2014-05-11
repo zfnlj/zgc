@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,21004,20034,33013,20007,31021,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20033,20034,20035,20036,31021,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -462,7 +462,12 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 			_copyCardSet(&lstGuider,lst);
 			return;
 		}
-		_copyCardSet(&m_FightCardSet,lst);
+		for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
+			KCardInst* pCard = *it;
+			if(pCard->FindBuf(KAbilityStatic::what_hide)) continue;
+			lst->push_back(pCard);
+		}
+
 		KCardInst* pHero = GetHero();
 		if(pHero->IsActiveDefend()) lst->push_back(pHero);
 	}

@@ -2,9 +2,9 @@
 <ag>
 <action  class="cast">
   <affect_body> 
-   	<affector class="move" slot="card_pos" createtime="0.0" fVal="800" life="0.4" />
-   	<affector class="action" obj="absorb_show" tarFlag="0" pre="0" createtime="0.5" iVal="1" life="30" />
-  	<affector class="action" obj="draw_card" tarFlag="1" pre="1" createtime="0.5" iVal="2" life="30" />
+   	<affector class="action" obj="enterfight"  tarFlag="4" pre="0" createtime="0.0" iVal="1" life="5" />
+   	<affector class="action" obj="absorb_show" tarFlag="0" pre="1" createtime="0.5" iVal="2" life="30" />
+  	<affector class="action" obj="draw_card" tarFlag="1" pre="2" createtime="0.5" iVal="3" life="30" />
   </affect_body>
 </action>
 </ag>

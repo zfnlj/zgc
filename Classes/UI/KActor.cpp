@@ -176,6 +176,24 @@ CCAction* KActor::ScaleX(const char* obj,float val,float elapse)
 	}
 }
 
+void KActor::StartBreathe(const char* obj,float val,float elapse)
+{
+	CCNode* node = GetCNode(obj);
+	m_backup = node->getScale();
+
+	CCActionInterval*  action = CCRepeatForever::create(
+		CCSequence::create(
+		CCScaleTo::create(elapse*0.5, m_backup*val, m_backup*val),
+		CCScaleTo::create(elapse*0.5,m_backup,m_backup),
+		NULL));
+	node->runAction(action);
+}
+
+void KActor::StopBreathe(const char* obj)
+{
+	Scale(obj,m_backup,0.0);
+}
+
 CCAction* KActor::Scale(const char* obj,float val,float elapse)
 {
 	CCNode* node = GetCNode(obj);

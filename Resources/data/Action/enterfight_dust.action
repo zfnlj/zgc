@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ag>
-<action slot="5" class="null">
-  <affect_body>
-  	  <affector class="eff" slot="screen_center" obj="scene_dust3" createtime="0.0" fVal="1.0" iVal="0"  life="2.0" />
-  </affect_body>
-</action>
-</ag>
-		

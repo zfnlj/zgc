@@ -42,7 +42,7 @@ void KParticleCacheMgr::onDestory()
 
 CCParticleSystem* KParticleCacheMgr::CreateParticle(const char* name)
 {
-	CCParticleSystem* particle =(CCParticleSystem*)m_particleDict.objectForKey(name);
+	CCParticleSystem* particle = NULL;//(CCParticleSystem*)m_particleDict.objectForKey(name);
 	if(particle){
 		m_particleDict.removeObjectForKey(name);
 		particle->resetSystem();
