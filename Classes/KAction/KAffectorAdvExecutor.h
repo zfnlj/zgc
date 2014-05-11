@@ -36,7 +36,7 @@ protected:
 	KAffectorStatic* m_AffectorStatic;
 	K3DActionParam* m_param;
 	CCParticleSystem*    m_emitter;
-	CCSprite* m_sprite;
+	CCNode* m_dictObj;
 	cocos2d::extension::CCArmature* m_armature;
 	CCAction* m_ccAction;
 	CCActionDef m_ccActionDef;

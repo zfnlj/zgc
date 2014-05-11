@@ -104,6 +104,9 @@ public:
 	float GetCreateTime(){
 		return m_BaseData.m_createTime;
 	}
+	bool IsDel(){
+		return m_BaseData.m_bDel;
+	}
 	int GetIntVal(){ return m_BaseData.m_nVal;}
 	float GetFloatVal(){ return m_BaseData.m_fVal;}
 	struct AffBaseData 
@@ -113,6 +116,7 @@ public:
 		AffectorType m_eType;
 		int   m_nVal;
 		float m_fVal;
+		bool  m_bDel;
 		char m_obj[64];
 		char m_slot[64];
 		AffBaseData():
@@ -121,6 +125,7 @@ public:
 		,m_createTime(0.0f)
 		,m_nVal(0)
 		,m_fVal(0.0f)
+		,m_bDel(false)
 		{
 			memset(m_obj,0,sizeof(m_obj));
 			memset(m_slot,0,sizeof(m_slot));

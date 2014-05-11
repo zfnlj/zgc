@@ -96,17 +96,15 @@ void KActor::Move(const char* obj,const char* slot,float fSpeed,CCActionDef& act
 	actionDef.init(ActionInter,node);
 }
 
-CCNodeRGBA* KActor::GetRenderer(const char* obj)
+CCNode* KActor::GetDictObj(const char* obj)
 {
-	CCSprite* sprite = (CCSprite*)m_spriteDict.objectForKey(obj);
-	if(sprite) return sprite;
-
-	return NULL;
+	return (CCNode*)m_objectDict.objectForKey(obj);
 }
+
 
 CCNode* KActor::GetCNode(const char* obj)
 {
-	CCNode* pNode = GetRenderer(obj);
+	CCNode* pNode = GetDictObj(obj);
 	if(pNode) return pNode;
 
 	cocos2d::extension::UIWidget* ret = UIHelper::seekWidgetByName(m_ui, obj);;
@@ -206,11 +204,11 @@ void KActor::RemoveCCAction(const char* obj)
 
 CCAction* KActor::FadeIn(const char* obj,float val,CCActionDef& actionDef)
 {
-	CCNodeRGBA* node = GetRenderer(obj);
+	CCNode* node = GetDictObj(obj);
 	if(!node) return NULL;
 
 	if(val<0.01){
-		node->setOpacity(255);
+		DictObjSetOpacity(obj,255);
 		return NULL;
 	}else{
 		CCActionInterval*  action1 = CCFadeIn::create(val);
@@ -220,12 +218,23 @@ CCAction* KActor::FadeIn(const char* obj,float val,CCActionDef& actionDef)
 	}
 }
 
+void KActor::DictObjSetOpacity(const char* objName,int val)
+{
+	CCObject* obj = m_objectDict.objectForKey(objName);
+	if(!obj) return;
+	CCSprite* sprite = dynamic_cast<CCSprite*>(obj);
+	if(sprite) return sprite->setOpacity(val);
+
+	CCLabelBMFont* bmFont = dynamic_cast<CCLabelBMFont*>(obj);
+	if(bmFont) bmFont->setOpacity(val);
+
+}
 CCAction* KActor::FadeOut(const char* obj,float val,CCActionDef& actionDef)
 {
-	CCNodeRGBA* node = GetRenderer(obj);
+	CCNode* node = GetDictObj(obj);
 	if(!node) return NULL;
 	if(val<0.01){
-		node->setOpacity(0);
+		DictObjSetOpacity(obj,0);
 		return NULL;
 	}else{
 		CCActionInterval*  action1 = CCFadeOut::create(val);
@@ -311,7 +320,7 @@ CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zO
 	pAnim->setPosition(pt);
 	pAnim->setScale(scale);
 	KUIAssist::MainLayer()->addChild(pAnim,zOrder);
-	m_spriteDict.setObject(pAnim, obj);
+	m_objectDict.setObject(pAnim, obj);
 	return pAnim;
 }
 
@@ -339,7 +348,7 @@ CCSprite* KActor::CreateSprite(const char* obj,const char* slot,float scale,int 
 	sprite->setPosition(pt);
 	KUIAssist::MainLayer()->addChild(sprite,zOrder);
 	//widgetSlot->addRenderer(sprite,zOrder);
-	m_spriteDict.setObject(sprite, obj);
+	m_objectDict.setObject(sprite, obj);
 	return sprite;
 }
 
@@ -349,10 +358,10 @@ void KActor::AtkMove(int des,float val,CCActionDef& actionDef)
 	actionDef.init(action,m_ui->getRenderer());
 }
 
-void KActor::RemoveSprite(CCSprite* sprite,const char* obj)
+void KActor::RemoveDictObj(CCNode* node,const char* obj)
 {
-	sprite->removeFromParent();
-	m_spriteDict.removeObjectForKey(obj);
+	node->removeFromParent();
+	m_objectDict.removeObjectForKey(obj);
 }
 
 CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,float scale)

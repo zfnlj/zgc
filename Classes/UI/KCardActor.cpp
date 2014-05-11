@@ -303,7 +303,7 @@ void KCardActor::initTombAction(K3DActionParam* param)
 	m_tombAction.clone(param);
 }
 
-void KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood)
+CCNode* KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood)
 {
 	int val = param->GetVal(m_card->GetRealId());
 
@@ -327,7 +327,8 @@ void KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,bool
 	KUIAssist::MainLayer()->addChild(bmFont,100);
 
 	bmFont->setScale(scale);
-	m_spriteDict.setObject(bmFont, "hit_text");
+	m_objectDict.setObject(bmFont, "hit_text");
+	return bmFont;
 }
 
 CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int index)

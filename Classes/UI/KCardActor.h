@@ -26,7 +26,7 @@ public:
 	virtual void MoveOnHit(K3DActionParam*,float speed,CCActionDef& actionDef);
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual void MoveBack(float speed);//“∆∂Øªÿ≤€Œª
-	virtual void ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
+	virtual CCNode* ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	void DoSelect(CCObject* sender);
 	void onMoveEvent(CCObject* sender);

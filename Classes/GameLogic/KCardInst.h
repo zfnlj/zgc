@@ -82,6 +82,7 @@ public:
 	bool IsTargetLess(KAbilityStatic::Enum_When when);
 	void onCardAbility(KBattleCtrlBase*,KAbilityStatic::Enum_When when);
 	KBattleGuy* GetOwner(){ return m_Owner;}
+	void SetOwner(KBattleGuy* guy){ m_Owner = guy;}
 #ifdef _USE_COCOS2DX
 	CC_SYNTHESIZE(CCObject*,m_actor,Actor);
 	void retainActor(CCObject* actor);

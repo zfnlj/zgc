@@ -38,9 +38,10 @@ public:
 	void RemoveEff(CCParticleSystem* emitter,const char* obj);
 	KActionMgr& GetActionMgr(){ return m_ActionMgr;}
 	void setZOrder(const char* obj,int val);
-	CCNodeRGBA* GetRenderer(const char* obj);
+	CCNode* GetDictObj(const char* obj);
+	void DictObjSetOpacity(const char* obj,int val);
 	void RemoveCCAction(const char* obj);	
-	virtual void ShowHit(const char* obj,K3DActionParam*,float scale,bool bGood){}
+	virtual CCNode* ShowHit(const char* obj,K3DActionParam*,float scale,bool bGood){return NULL;}
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual CCNode* GetCNode(const char* obj);
 	virtual void MoveReached(CCObject* sender){}
@@ -49,7 +50,7 @@ public:
 	virtual void ShowCard(int realId);
 	virtual void DrawCard(){}
 	virtual void AtkMove(int des,float val,CCActionDef& actionDef);
-	void RemoveSprite(CCSprite* sprite,const char* obj);
+	void RemoveDictObj(CCNode* node,const char* obj);
 	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder,bool);
 	cocos2d::extension::CCArmature* CreateArmature(const char* obj,const char* slot,float scale,int zOrder);
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
@@ -64,7 +65,7 @@ public:
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;
-	CCDictionary m_spriteDict;
+	CCDictionary m_objectDict;
 	float m_backup;
 };
 

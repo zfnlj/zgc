@@ -47,7 +47,7 @@ void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
 	if(!actor) return;
 	if(flag){
 		if(!actor->GetActionMgr().ExistAction("sleep_effect")){
-			actor->GetActionMgr().PlayAction("sleep_effect");
+			//actor->GetActionMgr().PlayAction("sleep_effect");
 		}
 	}else{
 		actor->GetActionMgr().LimitAlive("sleep_effect");

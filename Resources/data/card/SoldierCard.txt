@@ -35,8 +35,8 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 20040	混乱的方士	1	2	3	2	0	0	进场：随机对3个单位各造成1点伤害。	0	pic_20040.jpg
 20041	方仙士	2	2	2	2	0	0	进场：使一名勇士攻击力与生命值互换。	0	pic_20041.jpg
 21001	医圣-扁鹊	1	5	4	5	water	群疗	进场：治疗全体友军2点生命	0	pic_20029.jpg
-21002	光明之泉	2	2	0	5	water	随机治疗	回合开始时随机治疗友军3点生命	soldier_heal_ability	0
-21003	墨家钜子	0	2	1	3	water	谋略	当友军受到治疗时抽张牌	soldier_drawcard_ability	pic_20031.jpg
+21002	光明之泉	2	2	0	5	water	随机治疗	回合开始时随机治疗友军3点生命	soldier_heal_ability	pic_21002.jpg
+21003	墨家钜子	0	2	1	3	water	谋略	当友军受到治疗时抽张牌	soldier_drawcard_ability	pic_21003.jpg
 21004	华佗	1	6	6	6	water	鼓舞	进场：使我方勇士生命值+3	0	pic_21004.jpg
 21005	墨子-墨翟	4	7	7	7	water	法术增益	使你的法术和治疗效果翻倍。	soldier_sp_rate	pic_21005.jpg
 21006	介子推	1	4	0	5	water	0	攻击力等于生命值。	soldier_atk_equ_hp	pic_21006.jpg

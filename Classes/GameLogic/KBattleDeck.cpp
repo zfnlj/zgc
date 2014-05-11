@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20005,20038,20039,20040,30001,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,21004,21005,21006,31025,30001,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -43,6 +43,7 @@ void KBattleDeck::RemoveCard(KCardInst* card)
 void KBattleDeck::updateCardSlot(KCardInst* card)
 {
 	KCardInstList* oldList = QueryCardSet(card);
+	if(!oldList) card->SetOwner(m_Owner);
 	KCardInstList* newList = QueryCardSet(card->GetSlot());
 	if(oldList!=newList){
 		if(oldList)_removeFromCardList(*oldList,card);

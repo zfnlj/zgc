@@ -30,9 +30,9 @@ KAffectorExecutor::KAffectorExecutor()
 KAffectorExecutor::~KAffectorExecutor()
 {
 	StopEmitter();
-	if(m_sprite){
-		GetActor()->RemoveSprite(m_sprite,m_AffectorStatic->GetObj());
-		m_sprite = NULL;
+	if(m_dictObj){
+		if(m_AffectorStatic->IsDel()) GetActor()->RemoveDictObj(m_dictObj,m_AffectorStatic->GetObj());
+		m_dictObj = NULL;
 	}
 	if(m_armature){
 		m_armature->removeFromParent();
@@ -45,7 +45,7 @@ void KAffectorExecutor::init(KAffectorStatic* st)
 	Reset();
 	m_AffectorStatic = st;
 	m_emitter = NULL;
-	m_sprite = NULL;
+	m_dictObj = NULL;
 	m_armature = NULL;
 	m_ccAction = NULL;
 	mSurviveTime = st->GetSurviveTime();
@@ -70,7 +70,7 @@ float KAffectorExecutor::Breathe(float frameTime)
 {
 	if(mState==EXE_PLAYING){
 		if(m_ccActionDef._action && m_ccActionDef._action->isSingleReference()){ //ccAction Done;
-			LimitAlive(0.01);
+			LimitAlive(0.01f);
 		}
 	}
 	return AdvExecutor::Breathe(frameTime);
@@ -100,7 +100,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		}
 		break;
 	case Affector_anim:
-		if(GetActor()) m_sprite = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
+		if(GetActor()) m_dictObj = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
 															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal(),mbInfinite);
 		break;;
 	case Affector_replace:
@@ -112,6 +112,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_moveOnHit:
 		if(GetActor()){
 			GetActor()->MoveOnHit(m_param,m_AffectorStatic->GetFloatVal(),m_ccActionDef);
+			if(!m_ccActionDef._action) LimitAlive(0.1f);
 		}
 		break;
 	case Affector_updateHit:
@@ -131,14 +132,14 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_hit:
 		if(GetActor()){
-			GetActor()->ShowHit(m_AffectorStatic->GetSlot(),m_param,m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal()>0);
+			m_dictObj = GetActor()->ShowHit(m_AffectorStatic->GetSlot(),m_param,m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal()>0);
 		}
 		break;
 	case Affector_visible:
 		if(GetActor()) GetActor()->SetVisible(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal()>0);
 		break;
 	case Affector_createSprite:
-		if(GetActor()) m_sprite = GetActor()->CreateSprite(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
+		if(GetActor()) m_dictObj = GetActor()->CreateSprite(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
 		break;
 	case Affector_armature:
 		if(GetActor()) m_armature = GetActor()->CreateArmature(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
@@ -199,9 +200,9 @@ void KAffectorExecutor::StopEmitter()
 void KAffectorExecutor::OnStop(void)
 {
 	StopEmitter();
-	if(m_sprite && mSurviveTime>0.1f){ //self control life
-		GetActor()->RemoveSprite(m_sprite,m_AffectorStatic->GetObj());
-		m_sprite = NULL;
+	if(m_dictObj && mSurviveTime>0.1f){ //self control life
+		GetActor()->RemoveDictObj(m_dictObj,m_AffectorStatic->GetObj());
+		m_dictObj = NULL;
 	}
 	if(m_armature){
 		m_armature->removeFromParent();

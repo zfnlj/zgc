@@ -274,7 +274,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_heal:
 		{
 			int healVal = pAbility->GetNormalVal();
-			int val = pSrc->IsKindOf(KCardStatic::card_skill)?guy->calcHealVal(healVal):healVal;
+			int val = (pAbility->GetWhen()==KAbilityStatic::when_use)?guy->calcHealVal(healVal):healVal;
 			val = pDes->Heal(pSrc,val);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s do heal:%d to:%s",pSrc->GetST()->GetName(),val,pDes->GetST()->GetName());

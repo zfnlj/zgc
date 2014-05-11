@@ -3,7 +3,7 @@
 <action class="null">
   <affect_body>
   	    
-   	<affector class="hit" createtime="" slot="card_center" fVal="0.4" iVal="0" life="0.2" />
+   	<affector class="hit" createtime="0.0" obj="hit_text" slot="card_center" fVal="0.4" iVal="0"  life="2.2" />
    	<affector class="scale" obj="hit_text" fVal="1.0" createtime="0.01" life="0.1" />
     <affector class="createSprite" slot="card_center" obj="hit_panle.png" createtime="0" fVal="0.4" iVal="90" life="2.001" />
     <affector class="scale" obj="hit_panle.png" fVal="1.0" createtime="0.01" life="0.1" />
@@ -11,7 +11,7 @@
     <affector class="fadeout" obj="hit_panle.png" fVal="0.5" createtime="1" life="0.5" />
     	
 	  <affector class="updateHit" createtime="2.2"  life="0.001" /> 
-	  <affector class="moveOnHit" createtime="2.2" fVal="1000" life="10" />
+	  <affector class="moveOnHit" createtime="2.2" fVal="1000" life="20" />
 	  <affector class="layer" createtime="2.5" fVal="1" life="0.001" />
   </affect_body>
 </action>

@@ -42,6 +42,9 @@ bool KAffectorStatic::parseScript(XMLElementNode* pDataXml)
 	const StringValue* pCreateTime = pDataXml->QueryAtt("createtime");
 	m_BaseData.m_createTime = (pCreateTime)?pCreateTime->Float():0.0f;
 
+	const StringValue* pDel = pDataXml->QueryAtt("bDel");
+	m_BaseData.m_bDel = (pDel)?pDel->Bool():true;
+
 	const StringValue* plifeTime = pDataXml->QueryAtt("life");
 	m_BaseData.m_surviveTime = (plifeTime)? atof(plifeTime->c_str()):1.0f;
 
