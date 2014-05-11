@@ -247,11 +247,15 @@ void KCardActor::MoveBack(float speed)
 	switch(m_card->GetSlot()){
 	case KCardInst::enum_slot_tomb:
 		{
-			param.init("go_tomb");
-			if(m_card->IsKindOf(KCardStatic::card_skill)){
+			if(m_card->IsKindOf(KCardStatic::card_hero)){
+				param.init("hero_dead");	
+			}else{
+				param.init("go_tomb");	
+			}
+			/*if(m_card->IsKindOf(KCardStatic::card_skill)){
 				FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(m_card);
 				KUIAssist::_resortHandCardSet(guy);
-			}
+			}*/
 		}
 		break;
 	case KCardInst::enum_slot_hand:
@@ -395,12 +399,12 @@ void KCardActor::updateSecret()
 	KUIAssist::_updateSecretIcon(bMy,cardLst);
 }
 
-void KCardActor::MoveOnHit(K3DActionParam* param,float speed)
+void KCardActor::MoveOnHit(K3DActionParam* param,float speed,CCActionDef& actionDef)
 {
 	KCardInst::CardSlot slot = (KCardInst::CardSlot)param->GetSlot(m_card->GetRealId());
 	if(slot == KCardInst::enum_slot_fight){
 		CCPoint pt = KUIAssist::_queryFighterPos(m_card);
-		Move("",pt,speed);
+		Move("",pt,speed,actionDef);
 
 	}else{
 		MoveBack(speed);

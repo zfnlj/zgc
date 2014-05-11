@@ -17,6 +17,19 @@
 #include "cocos-ext.h"
 class KCardActor;
 
+USING_NS_CC;
+struct CCActionDef{
+	CCAction* _action;
+	CCNode* _node;
+	CCActionDef():_action(NULL),_node(NULL){}
+	~CCActionDef();
+	void init(CCAction* action,CCNode* node){
+		_action = action;
+		_node = node;
+		_action->retain();
+	}
+	void empty();
+};
 class KAffectorExecutor :public AdvExecutor
 {
 protected:
@@ -25,6 +38,8 @@ protected:
 	CCParticleSystem*    m_emitter;
 	CCSprite* m_sprite;
 	cocos2d::extension::CCArmature* m_armature;
+	CCAction* m_ccAction;
+	CCActionDef m_ccActionDef;
 public:
 	KAffectorExecutor();
 	virtual void init(KAffectorStatic* st);

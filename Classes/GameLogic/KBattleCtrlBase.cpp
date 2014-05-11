@@ -26,7 +26,7 @@ bool KBattleCtrlBase::init(void* w)
 
 void KBattleCtrlBase::UpdateBattleGuy(float dt)
 {
-	if(m_state==battle_game_end) return;
+	//if(m_state==battle_game_end) return;
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		(*it)->update(dt);
 	}
@@ -69,7 +69,7 @@ void KBattleCtrlBase::update(float dt)
 				TurnEndOk();
 				break;
 			case battle_game_end:
-				GameEnd();
+				GameEnd(dt);
 				break;
 			default:
 				break;
@@ -90,7 +90,8 @@ KCardInst* KBattleCtrlBase::GetCard(int id)
 
 void KBattleCtrlBase::onCard2Tomb(KCardInst* card)
 {
-	if(card->GetSlot()==KCardInst::enum_slot_hero){
+	
+	if(card->IsKindOf(KCardStatic::card_hero)){
 		card->m_attr.setSlot(KCardInst::enum_slot_tomb);
 		CCLog("Hero is dead! %s ,id=%d",card->GetST()->GetName(),card->GetRealId());
 		StateJump(battle_game_end);
@@ -274,8 +275,16 @@ void KBattleCtrlBase::TurnEnd()
 	DoCardEvtList(NULL);
 }
 
-void KBattleCtrlBase::GameEnd()
+void KBattleCtrlBase::GameEnd(float dt)
 {
+	if(IsWaitDrama()){
+		for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+			KBattleGuy* guy = *it;
+			guy->GetDeck().UpdateActor(dt);
+		}
+		return;
+	}
+
 	KBattleGuy* winner = NULL;
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		KBattleGuy* guy = *it;

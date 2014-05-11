@@ -6,6 +6,7 @@
   		<affector class="move" obj="bigcard" slot="big_photo" createtime="0"  fVal="10000" life="0.01" />
   		<affector class="scaleX" obj="bigcard" createtime="0" fVal="0.1"  life="0.01" />
   		<affector class="scaleX" obj="bigcard" createtime="0" fVal="1"  life="0.4" />
+  		<affector class="null" createtime="0" fVal="1"  life="0.8" />
   		
   </affect_body>
 </action>

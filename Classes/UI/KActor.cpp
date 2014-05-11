@@ -66,25 +66,7 @@ void KActor::RemoveEff(CCParticleSystem* emitter,const char* obj)
 	KParticleCacheMgr::getSingleton().RemvoeParticle(emitter,obj);
 }
 
-void KActor::DelWidget(const char* obj)
-{
-	UIWidget* widget = GetWidget(obj);
-	if(widget) widget->removeFromParent();
-}
-
-void KActor::AddWidget(const char* obj,const char* slot)
-{
-	CCPoint pt = GetDestPosition(NULL,slot,0);
-	cocos2d::extension::UIWidget* widget = GetWidget(obj);
-	CCAssert(widget!=NULL , "Not Found widget!");
-	if(widget){
-		BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();
-		widget->setPosition(pt);
-		layer->GetUILayer()->addWidget(widget);
-	}
-}
-
-void KActor::Move(const char* obj,const char* slot,float fSpeed)
+void KActor::Move(const char* obj,const char* slot,float fSpeed,CCActionDef& actionDef)
 {
 	CCPoint pt = GetDestPosition(NULL,slot,0);
 	CCNode* node = GetCNode(obj);
@@ -111,6 +93,7 @@ void KActor::Move(const char* obj,const char* slot,float fSpeed)
 		CCCallFuncN::create(this, callfuncN_selector(KActor::MoveReached)), 
 		NULL);
 	node->runAction( ActionInter);	
+	actionDef.init(ActionInter,node);
 }
 
 CCNodeRGBA* KActor::GetRenderer(const char* obj)
@@ -162,7 +145,7 @@ void KActor::SetVisible(const char* obj,bool flag)
 	}
 }
 
-CCAction* KActor::ScaleX(const char* obj,float val,float elapse)
+CCAction* KActor::ScaleX(const char* obj,float val,float elapse,CCActionDef& actionDef)
 {
 	CCNode* node = GetCNode(obj);
 	if(!node) return NULL;
@@ -171,12 +154,13 @@ CCAction* KActor::ScaleX(const char* obj,float val,float elapse)
 		return NULL;
 	}else{
 		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, node->getScaleY());
-		node->runAction( CCSequence::create(actionBy, NULL, NULL));
+		node->runAction( actionBy);
+		actionDef.init(actionBy,node);
 		return actionBy;
 	}
 }
 
-void KActor::StartBreathe(const char* obj,float val,float elapse)
+void KActor::StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef)
 {
 	CCNode* node = GetCNode(obj);
 	m_backup = node->getScale();
@@ -187,14 +171,16 @@ void KActor::StartBreathe(const char* obj,float val,float elapse)
 		CCScaleTo::create(elapse*0.5,m_backup,m_backup),
 		NULL));
 	node->runAction(action);
+	actionDef.init(action,node);
 }
 
 void KActor::StopBreathe(const char* obj)
 {
-	Scale(obj,m_backup,0.0);
+	CCActionDef tmpDef;
+	Scale(obj,m_backup,0.0,tmpDef);
 }
 
-CCAction* KActor::Scale(const char* obj,float val,float elapse)
+CCAction* KActor::Scale(const char* obj,float val,float elapse,CCActionDef& actionDef)
 {
 	CCNode* node = GetCNode(obj);
 	if(!node) return NULL;
@@ -203,7 +189,8 @@ CCAction* KActor::Scale(const char* obj,float val,float elapse)
 		return NULL;
 	}else{
 		CCActionInterval*  actionBy = CCScaleTo::create(elapse, val, val);
-		node->runAction( CCSequence::create(actionBy, NULL, NULL));
+		node->runAction(actionBy);
+		actionDef.init(actionBy,node);
 		return actionBy;
 	}
 }
@@ -215,7 +202,7 @@ void KActor::RemoveCCAction(const char* obj)
 	node->stopAllActions();
 }
 
-CCAction* KActor::FadeIn(const char* obj,float val)
+CCAction* KActor::FadeIn(const char* obj,float val,CCActionDef& actionDef)
 {
 	CCNodeRGBA* node = GetRenderer(obj);
 	if(!node) return NULL;
@@ -226,11 +213,12 @@ CCAction* KActor::FadeIn(const char* obj,float val)
 	}else{
 		CCActionInterval*  action1 = CCFadeIn::create(val);
 		node->runAction( CCSequence::create( action1, NULL, NULL));
+		actionDef.init(action1,node);
 		return action1;
 	}
 }
 
-CCAction* KActor::FadeOut(const char* obj,float val)
+CCAction* KActor::FadeOut(const char* obj,float val,CCActionDef& actionDef)
 {
 	CCNodeRGBA* node = GetRenderer(obj);
 	if(!node) return NULL;
@@ -239,11 +227,13 @@ CCAction* KActor::FadeOut(const char* obj,float val)
 		return NULL;
 	}else{
 		CCActionInterval*  action1 = CCFadeOut::create(val);
-		node->runAction( CCSequence::create( action1, NULL, NULL));
+		CCAction* seq =  CCSequence::create( action1, NULL, NULL);
+		node->runAction(seq);
+		actionDef.init(seq,node);
 		return action1;
 	}
 }
-void KActor::Shake(const char* obj,float valX,float valY,float elapse)
+void KActor::Shake(const char* obj,float valX,float valY,float elapse,CCActionDef& actionDef)
 {
  	CCNode* node = GetCNode(obj);
  	if(!node) return;
@@ -254,6 +244,7 @@ void KActor::Shake(const char* obj,float valX,float valY,float elapse)
 		CCMoveBy::create(0.05f, ccp(-valX,-valY)),
 		NULL),elapse/0.2f);
 	node->runAction(action);
+	actionDef.init(action,node);
 //	m_ui->runAction(action);
 }
 
@@ -350,9 +341,10 @@ CCSprite* KActor::CreateSprite(const char* obj,const char* slot,float scale,int 
 	return sprite;
 }
 
-void KActor::AtkMove(int des,float val)
+void KActor::AtkMove(int des,float val,CCActionDef& actionDef)
 {
-	KUIAssist::_createAtkMove(m_ui,des,val);
+	CCAction* action = KUIAssist::_createAtkMove(m_ui,des,val);
+	actionDef.init(action,m_ui->getRenderer());
 }
 
 void KActor::RemoveSprite(CCSprite* sprite,const char* obj)
@@ -379,7 +371,7 @@ CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,
 	return emitter;
 }
 
-void KActor::Move(const char* obj,CCPoint& pt,float fSpeed)
+void KActor::Move(const char* obj,CCPoint& pt,float fSpeed,CCActionDef& actionDef)
 {
 	CCNode* node = GetCNode(obj);
 	CCPoint vTmp = pt - node->getPosition();
@@ -400,4 +392,5 @@ void KActor::Move(const char* obj,CCPoint& pt,float fSpeed)
 		CCCallFuncN::create(this, callfuncN_selector(KActor::MoveReached)), 
 		NULL);
 	node->runAction( ActionInter);	
+	actionDef.init(ActionInter,node);
 }

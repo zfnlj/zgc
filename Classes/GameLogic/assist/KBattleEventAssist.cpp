@@ -6,6 +6,7 @@ namespace KBattleEvtAssist
 {
 	void _onBattleEvt(Battle_evt evt,KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
 	{
+		if(ctrl->GetBattleState()==KBattleCtrlBase::battle_game_end) return;
 		KAbilityStatic::Enum_When when;
 		switch(evt){
 		case battle_evt_soldier_dead:

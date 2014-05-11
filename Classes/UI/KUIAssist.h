@@ -37,7 +37,7 @@ public:
 	static UIWidget* _createCardLayout(KCardInst* pInst,bool bBig);
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);
 	static CCSize _getRealSize(UIWidget* widget);
-	static void _createAtkMove(UIWidget* widgetSrc,int des,float val);
+	static CCAction* _createAtkMove(UIWidget* widgetSrc,int des,float val);
 	static CCParticleSystem* _createParticle(const char* name);
 	static KCardActor* _getCardActor(int realId);
 	static CCPoint _getScreenCenter();

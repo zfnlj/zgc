@@ -27,8 +27,6 @@ enum AffectorType
 	Affector_fadein,
 	Affector_createSprite,
 	Affector_armature,
-	Affector_addwidget,//Ïò²ãÔö¼Ówidget
-	Affector_delwidget,//É¾³ýwidget
 	Affector_fadeout,
 	Affector_breathe,
 	Affector_atkMove,

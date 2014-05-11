@@ -109,7 +109,7 @@ protected:
 	void TurnBegin();
 	void PlayCard(float);
 	void TurnEnd();
-	void GameEnd();
+	void GameEnd(float);
 	bool IsGameEnd();
 	void SelectHandCard(float dt);
 	void UpdateDirtyInfo();

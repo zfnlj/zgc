@@ -2,7 +2,8 @@
 <ag>
 <action class="move">
   <affect_body>
-     <affector class="move" slot="card_pos" createtime="0.0" fVal="800" life="0.4" />
+     <affector class="move" slot="card_pos" createtime="0.0" fVal="1000" life="0.4" /> 
+     <affector class="null" createtime="0"   life="1.0" />
   </affect_body>
 </action>
 </ag>

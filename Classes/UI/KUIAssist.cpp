@@ -401,7 +401,7 @@ CCPoint KUIAssist::_getScreenCenter()
 {
 	return GameRoot::getSingleton().getBattleScene()->GetCenterPos();
 }
-void KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
+CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 {
 	KCardInst* desCard = GameRoot::getSingleton().BattleCtrl().GetCard(des);
 	KCardActor* desActor = (KCardActor*)desCard->getActor();
@@ -439,6 +439,7 @@ void KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 
 	CCSequence* seq1 = CCSequence::create(action, move_ease_out, NULL);
 	widgetSrc->runAction(seq1);
+	return seq1;
 }
 
 CCParticleSystem* KUIAssist::_createParticle(const char* name)

@@ -3,7 +3,7 @@
 <action class="null">
   <affect_body>
   	<affector class="layer" createtime="0" iVal="99" life="0.001" />
-    <affector class="atkMove" createtime="0.0" fVal="0.8" life="1" />
+    	<affector class="atkMove" createtime="0.0" fVal="0.8" life="1" />
   </affect_body>
 </action>
 </ag>

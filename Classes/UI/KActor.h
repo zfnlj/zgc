@@ -20,17 +20,17 @@ public:
 	void Remove(const char* obj);
 	virtual void UpdateCardAttr(){}
 	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bInit,K3DActionParam* hitParam){}
-	virtual void MoveOnHit(K3DActionParam*,float speed){}
+	virtual void MoveOnHit(K3DActionParam*,float speed,CCActionDef& actionDef){}
 	virtual void UpdateCardBuf(){}
-	void Move(const char* obj,const char* slot,float speed);
-	void Move(const char* obj,CCPoint& destPt,float fSpeed);
+	void Move(const char* obj,const char* slot,float speed,CCActionDef& actionDef);
+	void Move(const char* obj,CCPoint& destPt,float fSpeed,CCActionDef& actionDef);
 	virtual void MoveBack(float speed){}//“∆∂Øªÿ≤€Œª
-	virtual CCAction* FadeIn(const char* obj,float val);
-	virtual CCAction* FadeOut(const char* obj,float val);
-	virtual CCAction* Scale(const char* obj,float val,float elapse);
-	virtual CCAction* ScaleX(const char* obj,float val,float elapse);
+	virtual CCAction* FadeIn(const char* obj,float val,CCActionDef& actionDef);
+	virtual CCAction* FadeOut(const char* obj,float val,CCActionDef& actionDef);
+	virtual CCAction* Scale(const char* obj,float val,float elapse,CCActionDef& actionDef);
+	virtual CCAction* ScaleX(const char* obj,float val,float elapse,CCActionDef& actionDef);
 	CCSprite* CreateSprite(const char* obj,const char* slot,float scale,int order);
-	void Shake(const char* obj,float valX,float valY,float elapse);
+	void Shake(const char* obj,float valX,float valY,float elapse,CCActionDef& actionDef);
 	void Filp(const char* obj,float elapse);
 	void ParticleFire(float elapse);
 	void SetVisible(const char* obj,bool flag);
@@ -41,8 +41,6 @@ public:
 	CCNodeRGBA* GetRenderer(const char* obj);
 	void RemoveCCAction(const char* obj);	
 	virtual void ShowHit(const char* obj,K3DActionParam*,float scale,bool bGood){}
-	void AddWidget(const char* obj,const char* slot);
-	void DelWidget(const char* obj);
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual CCNode* GetCNode(const char* obj);
 	virtual void MoveReached(CCObject* sender){}
@@ -50,7 +48,7 @@ public:
 	virtual void SummonSelf(){}
 	virtual void ShowCard(int realId);
 	virtual void DrawCard(){}
-	virtual void AtkMove(int des,float val);
+	virtual void AtkMove(int des,float val,CCActionDef& actionDef);
 	void RemoveSprite(CCSprite* sprite,const char* obj);
 	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder,bool);
 	cocos2d::extension::CCArmature* CreateArmature(const char* obj,const char* slot,float scale,int zOrder);
@@ -62,7 +60,7 @@ public:
 	virtual void updateSecret(){}
 
 	void StopBreathe(const char* obj);
-	void StartBreathe(const char* obj,float val,float elapse);
+	void StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef);
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;
