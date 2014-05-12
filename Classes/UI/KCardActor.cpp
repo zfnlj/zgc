@@ -219,7 +219,13 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit,K3DA
 		if(hitParam){
 			int val = hitParam->GetVal(m_card->GetRealId());
 			int oldHp = atoi(labelHp->getStringValue());
-			sprintf(info,"%d",oldHp + val);
+			int newVal = oldHp + val;
+			if(val <0){
+				if(newVal < m_card->GetHp()) newVal = m_card->GetHp();
+			}else{
+				if(newVal > m_card->GetHp()) newVal = m_card->GetHp();
+			}
+			sprintf(info,"%d",newVal);
 		}else{
 			sprintf(info,"%d",m_card->GetHp());
 		}
