@@ -12,27 +12,29 @@ namespace KBattleEvtAssist
 		case battle_evt_soldier_dead:
 			{
 				if(pDes->FindBuf(KAbilityStatic::when_dead)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_dead);
-				when = KAbilityStatic::when_soldier_dead;
+				KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,KAbilityStatic::when_soldier_dead);
 			}
 			break;
 		case battle_evt_use_skill:
-			when = KAbilityStatic::when_use_skill;
+			KSkillAssist::_fillCtrlCardEvt(ctrl,pSrc,KAbilityStatic::when_use_skill);
 			break;
 		case battle_evt_hurted:
 			if(pDes->FindBuf(KAbilityStatic::when_damaged)&& !pDes->IsDead()) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_damaged);
 			when = pDes->IsKindOf(KCardStatic::card_soldier)?KAbilityStatic::when_soldier_hurted:KAbilityStatic::when_hero_hurted;
+			KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,when);
 			break;
 		case battle_evt_healed:
 			if(pDes->FindBuf(KAbilityStatic::when_healed)) ctrl->AddCardEvtAbility(pDes,KAbilityStatic::when_healed);
 			when = pDes->IsKindOf(KCardStatic::card_soldier)?KAbilityStatic::when_soldier_healed:KAbilityStatic::when_hero_healed;
+			KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,when);
 			break;
 		case battle_evt_use_card:
-			when = KAbilityStatic::when_use_card;
+			KSkillAssist::_fillCtrlCardEvt(ctrl,pSrc,KAbilityStatic::when_use_card);
 			break;
 		default:
 			return;
 			break;
 		}
-		KSkillAssist::_fillCtrlCardEvt(ctrl,(pDes)?pDes:pSrc,when);
+		
 	}
 }
