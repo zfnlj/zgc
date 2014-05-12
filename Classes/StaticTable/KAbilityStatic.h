@@ -69,6 +69,7 @@ public:
 		what_damage_atkadd,
 		what_atk_add,
 		what_add_atk_hp,
+		what_pray,
 		what_stun,
 		what_hp_add,
 		what_hp_double,

@@ -30,6 +30,11 @@
       <File>d:\card\Secret.txt</File>
     </Export>
   </Item>
+  <Item Sheet="hero_skill" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
+    <Export>
+      <File>d:\card\hero_skill.txt</File>
+    </Export>
+  </Item>
   <Item Sheet="StateStore" Workbook="CardInfo.xls" Discription="商店" Method="Text" Export="False">
     <Export>
       <File>d:\StateStores.txt</File>

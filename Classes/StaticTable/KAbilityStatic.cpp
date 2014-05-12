@@ -227,6 +227,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_bless_hp;
 	}else if(strcmp(str,"WHAT_ADD_ATK_HP")==0){
 		what = what_add_atk_hp;
+	}else if(strcmp(str,"WHAT_PRAY")==0){
+		what = what_pray;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}

@@ -10,6 +10,7 @@
 #include "../common/KCommonObj.h"
 #include "KBattleFieldStatic.h"
 #include "KCardLayoutStatic.h"
+#include "KHeroSkillStatic.h"
 
 #define MAX_CARD_NAME 24
 #define MAX_CARD_DESC_LEN 128
@@ -89,6 +90,7 @@ public:
 	bool InitDeckDef(const char* m_FileName);
 	bool InitBattleField(const char* m_FileName);
 	bool InitRank(const char* m_FileName);
+	bool InitHeroSkill(const char* m_FileName);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
@@ -108,6 +110,7 @@ private:
 	KDeckDefMap m_deckMap;
 	KCardLayoutMap m_cardLayoutMap;
 	KBattleFieldStaticMap m_battleFieldMap;
+	KHeroSkillMap m_heroSkillMap;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
