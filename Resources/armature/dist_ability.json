@@ -1,0 +1,130 @@
+{
+  "content_scale": 1.0,
+  "armature_data": [
+    {
+      "strVersion": "1.2.0.1",
+      "version": 1.201,
+      "name": "dist_ability",
+      "bone_data": [
+        {
+          "name": "Layer1",
+          "parent": "",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 1,
+          "cX": 1.0,
+          "cY": 1.0,
+          "kX": 0.0,
+          "kY": 0.0,
+          "arrow_x": 0.0,
+          "arrow_y": 0.0,
+          "effectbyskeleton": false,
+          "display_data": [
+            {
+              "name": "bow.png",
+              "displayType": 0,
+              "skin_data": [
+                {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "cX": 1.0,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "animation_data": [
+    {
+      "name": "dist_ability",
+      "mov_data": [
+        {
+          "name": "Animation1",
+          "dr": 46,
+          "lp": false,
+          "to": 0,
+          "drTW": 0,
+          "twE": 0,
+          "sc": 0.5,
+          "mov_bone_data": [
+            {
+              "name": "Layer1",
+              "dl": 0.0,
+              "frame_data": [
+                {
+                  "dI": 0,
+                  "x": -3.04982852935791,
+                  "y": -0.42348843812942505,
+                  "z": 0,
+                  "cX": 0.1,
+                  "cY": 1.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 0,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                },
+                {
+                  "dI": 0,
+                  "x": -46.466255187988281,
+                  "y": -0.0676162838935852,
+                  "z": 0,
+                  "cX": 2.0,
+                  "cY": 2.0,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 35,
+                  "twE": 0,
+                  "tweenFrame": true
+                },
+                {
+                  "dI": 0,
+                  "x": 40.0,
+                  "y": -0.77936053276062012,
+                  "z": 0,
+                  "cX": 0.3,
+                  "cY": 0.3,
+                  "kX": 0.0,
+                  "kY": 0.0,
+                  "fi": 45,
+                  "twE": 0,
+                  "tweenFrame": true,
+                  "color": {
+                    "a": 0,
+                    "r": 255,
+                    "g": 255,
+                    "b": 255
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "texture_data": [
+    {
+      "name": "bow",
+      "width": 52.0,
+      "height": 62.0,
+      "pX": 0.5,
+      "pY": 0.5,
+      "plistFile": "anim_elem2.plist"
+    }
+  ],
+  "config_file_path": [
+    "anim_elem2.plist"
+  ]
+}

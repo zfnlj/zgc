@@ -98,7 +98,10 @@ void KCardActor::UpdateUI()
 
 cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 {
-	if(m_bigPhoto) return m_bigPhoto;
+	if(m_bigPhoto){
+		UpdateCardAttr(m_bigPhoto);
+		return m_bigPhoto;
+	}
 
 	char name[64]={0};
 	sprintf(name,"card_%d",m_card->GetRealId());
@@ -220,20 +223,24 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit,K3DA
 		}else{
 			sprintf(info,"%d",m_card->GetHp());
 		}
-		if(!bInit && strcmp(info,labelHp->getStringValue())!=0){
-			float oldScale = labelHp->getScale();
-			CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
-			labelHp->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+		if(strcmp(info,labelHp->getStringValue())!=0){
+			if(!bInit){
+				float oldScale = labelHp->getScale();
+				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
+				labelHp->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+			}
+			labelHp->setStringValue(info);
 		}
-		labelHp->setStringValue(info);
-
+		
 		sprintf(info,"%d",m_card->GetAtk());
-		if(!bInit && strcmp(info,labelAtk->getStringValue())!=0){
-			float oldScale = labelAtk->getScale();
-			CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
-			labelAtk->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+		if(strcmp(info,labelAtk->getStringValue())!=0){
+			if(!bInit){
+				float oldScale = labelAtk->getScale();
+				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
+				labelAtk->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+			}
+			labelAtk->setStringValue(info);
 		}
-		labelAtk->setStringValue(info);
 	}else{
 		labelHp->setVisible(false);
 		labelAtk->setVisible(false);

@@ -2,7 +2,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 20001	淳于越	1	1	1	2	0	0	0	0	pic_20001.jpg
 20002	猗顿	1	2	3	2	0	0	0	0	pic_20002.jpg
 20003	墨侠	1	5	3	5	0	护卫	护卫：吸引敌方攻击	soldier_guide	pic_20003.jpg
-20004	鬼谷子	1	6	4	3	0	远程	远程：进攻进不受到反击	0	pic_20004.jpg
+20004	鬼谷子	1	6	4	3	0	远程	远程：进攻进不受到反击	soldier_dist	pic_20004.jpg
 20005	荆轲	1	4	4	3	0	疾行	疾行：进场可立即进攻	0	pic_20005.jpg
 20006	刺客	1	2	2	2	0	迷踪	迷踪：不可被攻击	soldier_hide	pic_20022.jpg
 20007	朱亥	2	5	2	7	0	狂暴	狂暴:受到伤害时增加3点攻击力	soldier_angry	pic_20007.jpg
@@ -40,7 +40,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 21004	华佗	1	6	6	6	water	鼓舞	进场：使我方勇士生命值+3	0	pic_21004.jpg
 21005	墨子-墨翟	4	7	7	7	water	法术增益	使你的法术和治疗效果翻倍。	soldier_sp_rate	pic_21005.jpg
 21006	介子推	1	4	0	5	water	0	攻击力等于生命值。	soldier_atk_equ_hp	pic_21006.jpg
-21007	扁鹊	1	4	2	4	water	召唤	进场:召唤2/1的医者	0	pic_20007.jpg
+21007	扁鹊	1	4	2	4	water	召唤	进场:召唤2/1的医者	0	pic_21007.jpg
 21008	医者	1	2	2	1	water	0	0	0	pic_20026.jpg
 22001	兵法家-孙膑	4	7	5	7	fire	谋略	每当你施放一个法术时，将一张“炎龙吐息”置入手牌	soldier_drawcard_ability	pic_22001.jpg
 22002	火灵(水元素)	0	4	3	6	fire	0	点燃任何受到火灵伤害的勇士。	soldier_burn_ability	pic_22002.jpg

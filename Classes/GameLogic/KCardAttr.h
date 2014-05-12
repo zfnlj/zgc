@@ -107,8 +107,10 @@ public: // IAttrSet
 	void DelBuf(KAbilityStatic::Enum_What what);
 	void AddBuf(KAbilityStatic* pBuf,int loopNum);
 	bool HasBuf(KAbilityStatic* pBuf);
-	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
-	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
+
+	KAbilityStatic* FindRealBuf(KAbilityStatic::Enum_What what);
+	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_What what);
+	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_When when);
 
 	int getRealID(){ return getAttrValue(ca_realId);}
 	void setRealId(int val){ setAttrValue(ca_realId,val);}

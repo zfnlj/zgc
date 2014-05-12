@@ -7,7 +7,7 @@
             <key>buf_abs_def.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{138,36},{32,32}}</string>
+                <string>{{172,36},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>buf_add_hp_ability.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{104,36},{32,32}}</string>
+                <string>{{138,36},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>buf_angry.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,36},{32,32}}</string>
+                <string>{{104,36},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>buf_atk_equ_hp.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,206},{32,32}}</string>
+                <string>{{70,36},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>buf_burn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,172},{32,32}}</string>
+                <string>{{36,206},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>buf_burn_ability.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,138},{32,32}}</string>
+                <string>{{36,172},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>buf_cost_reduce.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,104},{32,32}}</string>
+                <string>{{36,138},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>buf_courage.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,70},{32,32}}</string>
+                <string>{{36,104},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>buf_dead_atk.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{36,36},{32,32}}</string>
+                <string>{{36,70},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -122,6 +122,19 @@
                 <string>{32,32}</string>
             </dict>
             <key>buf_dead_curse.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{36,36},{32,32}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{32,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+            <key>buf_dist.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{206,2},{32,32}}</string>
@@ -300,7 +313,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0ca2bd893ffdd3157e1fe0c01aaedf42$</string>
+            <string>$TexturePacker:SmartUpdate:736a638bba78be696a4caef5c13951f8$</string>
             <key>textureFileName</key>
             <string>buf_icon_elem.png</string>
         </dict>

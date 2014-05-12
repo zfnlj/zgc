@@ -17,6 +17,19 @@
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
+            <key>bow.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{68,322},{52,62}}</string>
+                <key>offset</key>
+                <string>{-2,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{4,1},{52,62}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>chant-0.png</key>
             <dict>
                 <key>frame</key>
@@ -189,11 +202,11 @@
             <key>wuti_00125.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{68,322},{64,46}}</string>
+                <string>{{2,324},{64,46}}</string>
                 <key>offset</key>
                 <string>{0,1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,8},{64,46}}</string>
                 <key>sourceSize</key>
@@ -261,7 +274,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:23d94ac41bc4d41957010253b05be635$</string>
+            <string>$TexturePacker:SmartUpdate:9858fbfbd25ef9d1f8aef5330176cfa1$</string>
             <key>textureFileName</key>
             <string>anim_elem2.png</string>
         </dict>

@@ -72,11 +72,11 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 		CCAssert(false , "Duel Card Need to be Ready!");
 		return false;
 	}
-	if(pDes->FindBuf(KAbilityStatic::what_hide)){
+	if(pDes->FindRealBuf(KAbilityStatic::what_hide)){
 		CCAssert(false , "Defender can't be hiding!");
 		return false;
 	}
-	if(!pDes->FindBuf(KAbilityStatic::what_guide)){
+	if(!pDes->FindRealBuf(KAbilityStatic::what_guide)){
 		KBattleGuy* pDefGuy = ctrl->GetDefGuy();
 		KCardInstList enemyGuider;
 		pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
@@ -90,7 +90,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	bool ret = false;
 	int atkSrc = pSrc->GetAtk();
 	int atkDes = pDes->GetAtk();
-	int v2 = (pSrc->FindBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(pDes,-atkDes);
+	int v2 = (pSrc->FindRealBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(pDes,-atkDes);
 	int v1 = pDes->Heal(pSrc,-atkSrc);
 	CCLog("ProcCardDuel=%s:%d,HP:%d->%d, VS %s:%d,HP:%d->%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),pSrc->GetHp()-v2,pSrc->GetHp(),
 													pDes->GetST()->GetName(),pDes->GetRealId(),pDes->GetHp()-v1,pDes->GetHp());
@@ -120,11 +120,11 @@ void KBattleGod::SendDuelResult(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst*
 void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,KCardInst* pCard2,int val2)
 {
 	if(pCard1 && pCard2){
-		KAbilityStatic* pAbility = pCard2->FindBuf(KAbilityStatic::when_do_damage);
+		KAbilityStatic* pAbility = pCard2->FindBufAbility(KAbilityStatic::when_do_damage);
 		if(pAbility && !pCard1->IsDead() && val1<0){
 			DoCardAbility(ctrl,pAbility,pCard2,pCard1);
 		}
-		pAbility = pCard1->FindBuf(KAbilityStatic::when_do_damage);
+		pAbility = pCard1->FindBufAbility(KAbilityStatic::when_do_damage);
 		if(pAbility && !pCard2->IsDead() && val2<0){
 			DoCardAbility(ctrl,pAbility,pCard1,pCard2);
 		}
@@ -142,7 +142,7 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 
 bool KBattleGod::DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when,int actor)
 {
-	KAbilityStatic* pAbility = (when==KAbilityStatic::when_enter)? KSkillAssist::_findStaticAbility(card->GetCardId(),when) :card->FindBuf(when);
+	KAbilityStatic* pAbility = (when==KAbilityStatic::when_enter)? KSkillAssist::_findStaticAbility(card->GetCardId(),when) :card->FindBufAbility(when);
 	if(pAbility){
 		return DoCardAbility(ctrl,pAbility,card,NULL,actor);
 	}else{

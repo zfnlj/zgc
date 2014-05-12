@@ -22,7 +22,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 	{
 		KAbilityStatic::Enum_When realWhen = when;
 		KCardInst* card = *it;
-		KAbilityStatic* pAbility = card->FindBuf(when);
+		KAbilityStatic* pAbility = card->FindBufAbility(when);
 		if(!pAbility){
 			if(when==KAbilityStatic::when_soldier_dead||
 				when==KAbilityStatic::when_soldier_hurted||
@@ -32,7 +32,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 				when==KAbilityStatic::when_use_card){
 				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
 			}
-			pAbility = card->FindBuf(realWhen);
+			pAbility = card->FindBufAbility(realWhen);
 		}
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
@@ -46,7 +46,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 	for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
 	{
 		KCardInst* card = *it;
-		KAbilityStatic* pAbility = card->FindBuf(when);
+		KAbilityStatic* pAbility = card->FindBufAbility(when);
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
 		ctrl->AddCardEvtAbility(card,when);
@@ -351,7 +351,7 @@ bool _IsMatch(KConditionDef& condDef,KCardInst* card)
 		return card->GetAtk() <= condDef.GetVal();
 		break;
 	case KConditionDef::con_exist_buf:
-		return (card->FindBuf((KAbilityStatic::Enum_What)condDef.GetVal())!=NULL);
+		return (card->FindRealBuf((KAbilityStatic::Enum_What)condDef.GetVal())!=NULL);
 		break;
 	}
 	return true;

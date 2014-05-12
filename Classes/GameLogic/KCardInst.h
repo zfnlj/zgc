@@ -73,8 +73,9 @@ public:
 	void DispleBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
-	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
-	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
+	KAbilityStatic* FindRealBuf(KAbilityStatic::Enum_What what);
+	//KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_What what);
+	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_When when);
 	KAbilityStatic* GetSecretAbility();
 	void ReplaceST(int id);
 	const char* GetBasePosName(bool bMy);
