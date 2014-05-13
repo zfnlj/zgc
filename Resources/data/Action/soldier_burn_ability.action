@@ -3,7 +3,7 @@
 <action name="soldier_burn_ability" slot="5" class="null">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="burn_buf" life="1.4" />
-    	<affector class="update" createtime="1.5"  life="0.001" />  
+    	<affector class="updateBuf" createtime="1.5"  life="0.001" />  
   </affect_body>
 </action>
 </ag>

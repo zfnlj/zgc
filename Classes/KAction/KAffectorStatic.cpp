@@ -120,10 +120,12 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_indicate;
 	}else if ( strcmp(szName,"timerBar") == 0 ){
 		eType = Affector_timerBar;
-	}else if ( strcmp(szName,"update") == 0 ){
-		eType = Affector_update;
+	}else if ( strcmp(szName,"updateBuf") == 0 ){
+		eType = Affector_updateBuf;
 	}else if ( strcmp(szName,"updateHit") == 0 ){
 		eType = Affector_updateHit;
+	}else if ( strcmp(szName,"updateAttr") == 0 ){
+		eType = Affector_updateAttr;
 	}else if ( strcmp(szName,"moveOnHit") == 0 ){
 		eType = Affector_moveOnHit;
 	}else if ( strcmp(szName,"hit") == 0 ){

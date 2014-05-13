@@ -115,15 +115,20 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 			if(!m_ccActionDef._action) LimitAlive(0.1f);
 		}
 		break;
+	case Affector_updateAttr:
+		if(GetActor()) {
+			GetActor()->UpdateCardAttr();
+			GetActor()->UpdateCardBuf();
+		}
+		break;
 	case Affector_updateHit:
 		if(GetActor()) {
 			GetActor()->UpdateCardAttr(GetActor()->GetUI(),false,m_param);
 			GetActor()->UpdateCardBuf();
 		}
 		break;
-	case Affector_update:
+	case Affector_updateBuf:
 		if(GetActor()) {
-			GetActor()->UpdateCardAttr();
 			GetActor()->UpdateCardBuf();
 		}
 		break;

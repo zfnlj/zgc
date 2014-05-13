@@ -5,7 +5,7 @@
     <affector class="hit" createtime="0" slot="card_center" fVal="0.4" iVal="1" life="0.2" />
    	<affector class="scale" obj="hit_text" fVal="1.0" createtime="0.01" life="0.2" />
     <affector class="fadeout" obj="hit_text" fVal="0.5" createtime="1.0" life="0.6" />
-    <affector class="update" createtime="1.4"  life="0.001" /> 
+    <affector class="updateHit" createtime="1.4"  life="0.001" /> 
   </affect_body>
 </action>
 </ag>

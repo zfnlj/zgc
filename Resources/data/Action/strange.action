@@ -12,7 +12,7 @@
 <action name="strange_show" class="null">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="strange" life="1.5" />
-    	<affector class="update" createtime="1.6"  life="0.001" />  
+    	<affector class="updateAttr" createtime="1.6"  life="0.001" />  
   </affect_body>
 </action>
 </ag>		

@@ -33,7 +33,8 @@ enum AffectorType
 	Affector_shakex, //震动
 	Affector_move, //移动
 	Affector_moveback, //移回
-	Affector_update, //更新
+	Affector_updateBuf, //更新
+	Affector_updateAttr, //更新
 	Affector_updateHit, //更新
 	Affector_moveOnHit,
 	Affector_hit, //更新

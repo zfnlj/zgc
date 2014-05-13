@@ -4,7 +4,7 @@
 <action slot="5" class="null">
   <affect_body>
   		<affector class="anim" slot="card_pos" obj="sleep_effect" createtime="0.0" fVal="1.0" iVal="90"  life="3.2" />
-  		<affector class="update" createtime="0.0" life="6" />
+  		<affector class="null" createtime="0.0" life="6" />
   </affect_body>
 </action>
 </ag>

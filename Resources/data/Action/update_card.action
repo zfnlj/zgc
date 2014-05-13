@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ag>
-<action name="update_card" class="cast">
-  <affect_body>
-  	<affector class="action" obj="update" tarFlag="1" pre="0" createtime="0" iVal="1" life="30" />
-  </affect_body>
-</action>
-</ag>
-		
