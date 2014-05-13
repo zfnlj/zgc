@@ -134,6 +134,7 @@ public:
 	KValDef& GetVal(){ return m_val;}
 	int GetNormalVal(){ return m_val._val;}
 	bool IsTargetSure();
+	void Clone(KAbilityStatic&);
 private:
 	int m_AbilityId;
 	Enum_When m_when;

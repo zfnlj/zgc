@@ -369,6 +369,9 @@
     <ClCompile Include="..\Classes\StaticTable\KHeroSkillStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\KHeroSkillMgr.cpp">
+      <Filter>GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -781,6 +784,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KHeroSkillStatic.h">
       <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\KHeroSkillMgr.h">
+      <Filter>GameLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

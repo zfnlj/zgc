@@ -28,7 +28,7 @@ namespace KSkillAssist
 	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when);
 	KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_What what);
 	void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
-
+	void _filterAbility(KCardAbilityList* srcLst,KCardAbilityList* desLst,KAbilityStatic::Enum_When when);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

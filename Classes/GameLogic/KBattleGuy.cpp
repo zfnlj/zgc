@@ -38,7 +38,7 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	m_attr.clearAttrs();
 	m_bSelectHandCard = true;
 	m_Deck.Clear();
-
+	m_heroSkillMgr.tmpInit(this);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DECKINIT,(unsigned long long)&m_FacadeObj,(unsigned long long)m_battleCtrl->GetWorld());
 	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 	if(pDeckDef){
@@ -67,6 +67,12 @@ void KBattleGuy::DoSelectBeginCard(KCardInstList* lst)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SELECTCARD_OK,(unsigned long long)&m_FacadeObj,(unsigned long long)m_battleCtrl->GetWorld());
 }
 
+void KBattleGuy::onTurnEnd(KBattleCtrlBase* ctrl)
+{
+	m_Deck.OnTurnEnd(ctrl);
+	m_heroSkillMgr.onTurnEnd(ctrl);
+}
+
 void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
 	
@@ -77,6 +83,7 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 	if(!bFirstTurn){
 		m_Deck.DrawCard(1);
 	}
+	m_heroSkillMgr.onTurnBegin(ctrl);
 }
 
 

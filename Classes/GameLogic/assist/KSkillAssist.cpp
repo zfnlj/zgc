@@ -54,6 +54,14 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 
 }
 
+void _filterAbility(KCardAbilityList* srcLst,KCardAbilityList* desLst,KAbilityStatic::Enum_When when)
+{
+	for(KCardAbilityList::iterator it = srcLst->begin();it != srcLst->end();++it){
+		KAbilityStatic* pAbility = *it;
+		if(pAbility->GetWhen()==when) desLst->push_back(pAbility);
+	}
+}
+
 void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour)
 {
 	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();

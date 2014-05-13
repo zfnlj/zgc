@@ -12,6 +12,19 @@ bool KAbilityStatic::init()
 	return true;
 }
 
+void KAbilityStatic::Clone(KAbilityStatic& ab)
+{
+	ab.m_AbilityId = m_AbilityId;
+	ab.m_loop = m_loop;
+	ab.m_val2 = m_val2;
+	ab.m_area = m_area;
+	strcpy(ab.m_Action,m_Action);
+	strcpy(ab.m_bufIcon,m_bufIcon);
+	memcpy(&ab.m_max,&m_max,sizeof(m_max));
+	memcpy(&ab.m_cond,&m_cond,sizeof(m_cond));
+	memcpy(&ab.m_val,&m_val,sizeof(m_val));
+}
+
 void KAbilityStatic::SetWhen(const char* str)
 {
 	if(strcmp(str,"WHEN_ENTER")==0){

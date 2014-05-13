@@ -8,6 +8,7 @@
 #include "../Facade/FBattleGuy.h"
 #include "KCardInst.h"
 #include "KBattleGuyAttr.h"
+#include "KHeroSkillMgr.h"
 class KBattleCtrlBase;
 class KMemoryStream;
 class KBattleGuy : public System::Memory::KPortableStepPool<KBattleGuy,128>
@@ -32,6 +33,7 @@ public:
 	 bool IsPlayTimeOut();
 	 void SetPlayTimeOut();
 	 void onTurnBegin(KBattleCtrlBase*,bool bFirstTurn);
+	 void onTurnEnd(KBattleCtrlBase*);
 	 virtual void onPlayCard(float dt,bool bOK);
 
 	 int  QuerySlotCardNum();
@@ -86,6 +88,7 @@ protected:
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
 	KCardAbilityList m_bufList;
+	KHeroSkillMgr m_heroSkillMgr;
 friend class KClientBattleCtrl;
 };
 

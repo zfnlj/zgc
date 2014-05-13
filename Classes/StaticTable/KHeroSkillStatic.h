@@ -10,6 +10,8 @@
 #define MAX_PNG_FILE_NAME 36
 #define MAX_HERO_SKILL_LEV 3
 #define MAX_SKILL_WHAT 6
+
+class KAbilityStatic;
 class KHeroSkillStatic
 {
 public:
@@ -17,6 +19,8 @@ public:
 	static KHeroSkillStatic* create();
 	void Init(System::File::KTabFile2* fileReader);
 	
+	int GetRndVal(int lev);
+	KAbilityStatic* GetAbility();
 private:
 	void SetWhatArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);
@@ -28,6 +32,7 @@ private:
 	int m_val1[MAX_HERO_SKILL_LEV];
 	int m_val2[MAX_HERO_SKILL_LEV];
 	int m_what[MAX_SKILL_WHAT];
+	KAbilityStatic* m_pAbility;
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KHeroSkillStatic*> KHeroSkillMap;

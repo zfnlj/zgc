@@ -4,7 +4,13 @@
 #include "../Inc/KTypeDef.h"
 #include <System/Misc/StrUtil.h>
 #include "KAbilityStatic.h"
+#include "KGameStatic.h"
 
+int KHeroSkillStatic::GetRndVal(int lev)
+{ 
+	if(lev>MAX_HERO_SKILL_LEV) return 0;
+	return m_rate[lev-1];
+}
 bool KHeroSkillStatic::init()
 {
 	memset(m_rate,0,sizeof(m_rate));
@@ -12,6 +18,7 @@ bool KHeroSkillStatic::init()
 	memset(m_val2,0,sizeof(m_val2));
 	memset(m_what,0,sizeof(m_what));
 	m_Id = m_abilityId = m_rank = 0;
+	m_pAbility = NULL;
 	return true;
 }
 
@@ -71,4 +78,12 @@ void KHeroSkillStatic::SetArrIntVal(int* arr,int size,const char* str)
 	for(int i=0;i<n;i++){
 		arr[i] = atoi(ss[i]);
 	}
+}
+
+KAbilityStatic* KHeroSkillStatic::GetAbility()
+{
+	if(!m_pAbility){
+		m_pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(m_abilityId);
+	}
+	return m_pAbility;
 }

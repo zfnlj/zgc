@@ -98,6 +98,7 @@ public:
 	KDeckDefStatic* GetDeckDef(int id);
 	KBattleFieldStatic* GetBattleField(int id);
 	KCardLayoutStatic* GetCardLayout(int idx);
+	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 private:
 #ifdef _USE_COCOS2DX

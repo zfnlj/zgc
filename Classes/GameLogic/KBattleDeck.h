@@ -4,6 +4,7 @@
 #include "KCardInst.h"
 #include "KGameDef.h"
 
+
 #define MAX_FIGHT_POS_NUM 5
 #define MAX_SECRET_POS_NUM 2
 
@@ -78,6 +79,7 @@ private:
 	KCardInstList m_TombCardSet;  //·Ø³¡ÅÆ
     KCardInstList m_SecretCardSet;
 	KBattleGuy* m_Owner;
+
 	int		m_CurDeckDB[MAX_GAME_PLAY_CARD];
 };
 

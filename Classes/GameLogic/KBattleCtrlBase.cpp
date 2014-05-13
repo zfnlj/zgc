@@ -270,7 +270,7 @@ void KBattleCtrlBase::TurnEndOk()
 void KBattleCtrlBase::TurnEnd()
 {
 	CCLog("TurnEnd");
-	m_CurPlayGuy->GetDeck().OnTurnEnd(this);
+	m_CurPlayGuy->onTurnEnd(this);
 	StateJump(battle_turn_end_ok);
 	DoCardEvtList(NULL);
 }

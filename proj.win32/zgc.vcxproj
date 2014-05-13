@@ -156,6 +156,7 @@
     <ClCompile Include="..\Classes\GameLogic\KClientBattleCtrl.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KHeroSkillMgr.cpp" />
     <ClCompile Include="..\Classes\GameRoot.cpp" />
     <ClCompile Include="..\Classes\Item\KBag.cpp" />
     <ClCompile Include="..\Classes\Item\KBagManager.cpp" />
@@ -288,6 +289,7 @@
     <ClInclude Include="..\Classes\GameLogic\KClientBattleCtrl.h" />
     <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h" />
     <ClInclude Include="..\Classes\GameLogic\KGameDef.h" />
+    <ClInclude Include="..\Classes\GameLogic\KHeroSkillMgr.h" />
     <ClInclude Include="..\Classes\GameRoot.h" />
     <ClInclude Include="..\Classes\Inc\KBusinessDefine.h" />
     <ClInclude Include="..\Classes\Inc\KLogicMsg.h" />

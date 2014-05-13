@@ -336,6 +336,13 @@ KCardStatic* KGameStaticMgr::GetCard(int id)
 	//return  (KCardStatic*)m_cardDict.objectForKey(id);
 }
 
+KHeroSkillStatic* KGameStaticMgr::GetHeroSkill(int id)
+{
+	KHeroSkillMap::iterator it  = m_heroSkillMap.find(id);
+	if(it==m_heroSkillMap.end()) return NULL;
+	return it->second;
+}
+
 KAbilityStatic* KGameStaticMgr::GetAbilityOnId(int id)
 {
 	KAbilityMap::iterator it  = m_abilityMap.find(id);
