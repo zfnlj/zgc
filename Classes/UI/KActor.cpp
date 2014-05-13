@@ -312,9 +312,10 @@ void KActor::ShowCard(int realId)
 	KUIAssist::_updateCard(card);
 }
 
-CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zOrder,bool bLoop)
+CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zOrder,float offsetY,bool bLoop)
 {
 	CCPoint pt = GetDestPosition(NULL,slot,0);
+	pt.y += offsetY;
 	CCSprite* pAnim = KUIAssist::CreateAnimationSprite(obj,bLoop);
 	pAnim->setAnchorPoint(ccp(0.50f,0.50f));
 	pAnim->setPosition(pt);

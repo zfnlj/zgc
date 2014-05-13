@@ -23,8 +23,10 @@ public:
 	virtual void onPlayCard(float dt,bool );
 	virtual bool init(void);
 	bool IsUseSkillGood(KCardInst* pCard,int& target);
+	bool IsUseSoldierAbilityGood(KCardInst* pCard,int& target);
 	virtual void onBattleInit(bool bFirst);
 private:
+	void PickMaxValTarget(KCardInstList& lst,int& target);
 	void ThinkToPlay(float dt);
 	virtual void SelectHandCard();
 	bool HandCardToField();

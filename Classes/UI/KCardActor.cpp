@@ -108,7 +108,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 
 	m_bigPhoto =  KUIAssist::_createCardLayout(m_card,true);
 
-	UpdateCardAttr(m_bigPhoto);
+	UpdateCardAttr(m_bigPhoto,true);
 	CC_SAFE_RETAIN(m_bigPhoto);
 	return m_bigPhoto;
 
@@ -162,6 +162,7 @@ void KCardActor::onMoveEvent(CCObject* sender)
 }
 void KCardActor::DoSelect(CCObject* sender)
 {
+	if(!KUIAssist::_IsPlayCardAble()) return;
 	KClickCardMgr::getSingleton().onClickCard(this);
 	if(DoSelectBeginCard(sender)) return;
 

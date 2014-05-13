@@ -28,8 +28,8 @@ void KHeroSkillMgr::onTurnEnd(KBattleCtrlBase* ctrl)
 void KHeroSkillMgr::tmpInit(KBattleGuy* guy)
 {
 	m_Owner = guy;
-	addSkill(1002,1);
-	addSkill(1003,2);
+	//addSkill(1002,1);
+	//addSkill(1003,2);
 }
 
 void KHeroSkillMgr::addSkill(int id,int lev)

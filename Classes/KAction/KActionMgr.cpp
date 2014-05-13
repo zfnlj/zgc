@@ -163,7 +163,7 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 
 	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
 	if(!pST){
-		//CCAssert(false , "Error to Create Action!");
+		CCAssert(false , "Error to Create Action!");
 		return NULL;
 	}
 	KCardInst* card = m_Actor->GetCard();

@@ -110,6 +110,7 @@ public:
 	}
 	int GetIntVal(){ return m_BaseData.m_nVal;}
 	float GetFloatVal(){ return m_BaseData.m_fVal;}
+	float GetFloatVal2(){ return m_BaseData.m_fVal2;}
 	struct AffBaseData 
 	{
 		float m_surviveTime;
@@ -117,6 +118,7 @@ public:
 		AffectorType m_eType;
 		int   m_nVal;
 		float m_fVal;
+		float m_fVal2;
 		bool  m_bDel;
 		char m_obj[64];
 		char m_slot[64];

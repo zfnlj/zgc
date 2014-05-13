@@ -51,6 +51,7 @@ public:
 	static void _resortHandCardSet(FBattleGuy* guy);
 	static void _setActionParamSlot(K3DActionParam* param);
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
+	static bool _IsPlayCardAble();
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

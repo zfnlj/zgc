@@ -101,7 +101,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_anim:
 		if(GetActor()) m_dictObj = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
-															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal(),mbInfinite);
+															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal(),m_AffectorStatic->GetFloatVal2(),mbInfinite);
 		break;;
 	case Affector_replace:
 		if(GetActor()) GetActor()->ShowCard(m_param->GetDesId(0));

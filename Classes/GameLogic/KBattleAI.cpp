@@ -108,7 +108,7 @@ bool KBattleAI::UseHeroSkill()
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pHero->GetCardId()*10);
 	if(!pAbility) return false;
 	KCardInstList lst;
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pHero,NULL,pAbility,&lst);
+	KSkillAssist::_fillAllAbilityTarget(m_battleCtrl,pHero,NULL,pAbility,&lst);
 	if(lst.empty()) return false;
 	KCardInst* pSelected = NULL;
 	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
@@ -157,14 +157,54 @@ bool KBattleAI::UseSkillCard()
 	return false;
 }
 
-bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
+bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 {
-	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10);
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pCard->GetCardId(),KAbilityStatic::when_enter);
+
 	if(!pAbility) return false;
 	KCardInstList lst;
 	KCardInstList lstMy;
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
-	KSkillAssist::_fillAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy,true);
+	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
+	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
+	switch(pAbility->GetWhat()){
+	case KAbilityStatic::what_damage:
+	case KAbilityStatic::what_control:
+	case KAbilityStatic::what_stun:
+	case KAbilityStatic::what_return:
+	case KAbilityStatic::what_kill:
+		if(lst.size()>0){
+			PickMaxValTarget(lst,target);
+			return true;
+		}
+		break;
+	case KAbilityStatic::what_heal:
+	case KAbilityStatic::what_atk_add:
+	case KAbilityStatic::what_add_atk_hp:
+	case KAbilityStatic::what_hp_add:
+	case KAbilityStatic::what_immune:
+	case KAbilityStatic::what_dist:
+		{
+			if(lstMy.size()>0){
+				PickMaxValTarget(lstMy,target);
+				return true;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+	return false;
+
+}
+
+bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
+{
+	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10); 
+	if(!pAbility) return false;
+	KCardInstList lst;
+	KCardInstList lstMy;
+	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
+	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 		{
@@ -173,11 +213,7 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 			return (val1 -2*val2) >= pCard->GetCost(); //¶ÔµÐ·½ÉËº¦´ó
 		}
 		break;
-	case KAbilityStatic::what_draw_card:
-		{
-			return KSkillAssist::_calcValDef(m_battleCtrl,this,pCard,pAbility->GetVal())>0;
-		}
-		break;
+	
 	case KAbilityStatic::what_control:
 		{
 			return CalcControlBenefit(pAbility,lst,target) >=  pCard->GetCost();
@@ -211,6 +247,19 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
         break;
 	}
 	return false;
+}
+
+void KBattleAI::PickMaxValTarget(KCardInstList& lst,int& target)
+{
+	int maxVal = 0;
+	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
+		KCardInst* pCard = *it;
+		int val = pCard->GetHp() + pCard->GetAtk();
+		if(val>maxVal){
+			target = pCard->GetRealId();
+			maxVal = val;
+		}
+	}
 }
 
 int KBattleAI::CalcTotalHpDouble(KAbilityStatic* pAbility,KCardInstList& lst,int& target)
@@ -299,7 +348,8 @@ bool KBattleAI::HandCardToField()
 		KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pSelectCard->GetCardId(),KAbilityStatic::when_enter);
 		int dest = 0;
 		if(pAbility&& !pAbility->IsArea()){
-			KCardInstList lst;
+			if(!IsUseSoldierAbilityGood(pSelectCard,dest)) dest=0;
+		/*	KCardInstList lst;
 			KCardInstList lstMy;
 			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lst);
 			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lstMy,true);
@@ -307,7 +357,7 @@ bool KBattleAI::HandCardToField()
 				dest = (*lst.begin())->GetRealId();
 			}else if(lstMy.size()>0){
 				dest = (*lstMy.begin())->GetRealId();
-			}
+			}*/
 		}
 		
 

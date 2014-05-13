@@ -229,7 +229,7 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 	if(pAbility->IsArea() ||
 		pAbility->IsTargetSure()){
 		KCardInstList lst;
-		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
+		KSkillAssist::_fillAllAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
 		KSkillAssist::_rndFillProc(ctrl,pSrc,pAbility,&lst);
 		for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 			DoCardAbility2Des(ctrl,pAbility,pSrc,*it,&result);
@@ -237,7 +237,7 @@ bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KC
 		}
 	}else if(pDes){
 		KCardInstList lst;
-		KSkillAssist::_fillAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
+		KSkillAssist::_fillAllAbilityTarget(ctrl,pSrc,pDes,pAbility,&lst);
 		int pos = _getIndexOfCard(&lst,pDes);
 		if(pos>=0){
 			DoCardAbility2Des(ctrl,pAbility,pSrc,pDes,&result);

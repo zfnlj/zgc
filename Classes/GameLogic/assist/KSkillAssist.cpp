@@ -67,19 +67,19 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic*
 	KAbilityStatic::Enum_AblityType abilityType = pAbility->GetAbilityType();
 	switch(pAbility->GetAbilityType()){
 	case KAbilityStatic::ability_good:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstMy,true);
+		KSkillAssist::_fillMyAbilityTarget(ctrl,card,NULL,pAbility,lstMy);
 		break;
 	case KAbilityStatic::ability_bad:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
+		KSkillAssist::_fillYourAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
 		break;
 	default:
-		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstMy,true);
-		KSkillAssist::_fillAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
+		KSkillAssist::_fillMyAbilityTarget(ctrl,card,NULL,pAbility,lstMy);
+		KSkillAssist::_fillYourAbilityTarget(ctrl,card,NULL,pAbility,lstYour);
 		break;
 	}
 }
 
-void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy)
+void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst)
 {
 	KBattleDeck& MyDeck = ctrl->GetCurGuy()->GetDeck();
 	KBattleDeck& YourDeck = ctrl->GetDefGuy()->GetDeck();
@@ -104,20 +104,18 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KA
 		break;
 	case KAbilityStatic::which_yoursoldier:
 		{
-			if(!bMy) YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
 		}
 		break;
 	case KAbilityStatic::which_yourhero:
 		{
-			if(!bMy) tmpLst.push_back(YourDeck.GetHero());
+			tmpLst.push_back(YourDeck.GetHero());
 		}
 		break;
 	case KAbilityStatic::which_your:
 		{
-			if(!bMy){
-				YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
-				tmpLst.push_back(YourDeck.GetHero());
-			}
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(YourDeck.GetHero());
 		}
 		break;
 	case KAbilityStatic::which_src_nearby:
@@ -127,27 +125,27 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KA
 		break;
 	case KAbilityStatic::which_des_nearby:
 		{
-			if(!bMy && pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+			if(pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
 		}
 		break;
 	case KAbilityStatic::which_soldier:
 		{
 			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
-			if(!bMy) YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
 		}
 		break;
 	case KAbilityStatic::which_hero:
 		{
 			tmpLst.push_back(MyDeck.GetHero());
-			if(!bMy) tmpLst.push_back(YourDeck.GetHero());
+			tmpLst.push_back(YourDeck.GetHero());
 		}
 		break;
 	case KAbilityStatic::which_all:
 		{
 			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
 			tmpLst.push_back(MyDeck.GetHero());
-			if(!bMy) YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
-			if(!bMy) tmpLst.push_back(YourDeck.GetHero());
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(YourDeck.GetHero());
 		}
 		break;
 	case KAbilityStatic::which_i:
@@ -159,8 +157,149 @@ void _fillAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KA
 	case KAbilityStatic::which_null:
 		break;
 	default:
-		ASSERT(false);
 		//CCAssert(false , "KBattleGod::GetAbilityTarget error");
+		break;
+	}
+	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){
+		KCardInst* card = *it;
+		if(pAbility->GetWhat()== KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
+			if(card->HasBuf(pBuf)) continue; //same buf only one..
+		}
+		if(card->HasBuf(pAbility)) continue; //same buf only one..
+		if(!_IsMatch(pAbility->GetCond(),card)) continue;
+		lst->push_back(card);
+	}
+}
+
+void _fillMyAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst)
+{
+	KBattleDeck& MyDeck = ctrl->GetCurGuy()->GetDeck();
+	KCardInst* skip = (pAbility->ToSelfEnable())?NULL:pSrc;
+	KCardInstList tmpLst;
+	switch(pAbility->GetWhich()){
+	case KAbilityStatic::which_mysoldier:
+		{
+			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+		}
+		break;
+	case KAbilityStatic::which_myhero:
+		{
+			tmpLst.push_back(MyDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_my:
+		{
+			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(MyDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_soldier:
+		{
+			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+		}
+		break;
+	case KAbilityStatic::which_src_nearby:
+		{
+			pSrc->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pSrc);
+		}
+		break;
+	case KAbilityStatic::which_des_nearby:
+		{
+			if(pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+		}
+		break;
+	case KAbilityStatic::which_hero:
+		{
+			tmpLst.push_back(MyDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_all:
+		{
+			MyDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(MyDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_i:
+		tmpLst.push_back(pSrc);
+		break;
+	case KAbilityStatic::which_u:
+		break;
+	case KAbilityStatic::which_owner:
+	case KAbilityStatic::which_null:
+		break;
+	default:
+		break;
+	}
+	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){
+		KCardInst* card = *it;
+		if(pAbility->GetWhat()== KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
+			if(card->HasBuf(pBuf)) continue; //same buf only one..
+		}
+		if(card->HasBuf(pAbility)) continue; //same buf only one..
+		if(!_IsMatch(pAbility->GetCond(),card)) continue;
+		lst->push_back(card);
+	}
+}
+
+void _fillYourAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst)
+{
+	KBattleDeck& YourDeck = ctrl->GetDefGuy()->GetDeck();
+	KCardInst* skip = (pAbility->ToSelfEnable())?NULL:pSrc;
+	KCardInstList tmpLst;
+	switch(pAbility->GetWhich()){
+	case KAbilityStatic::which_yoursoldier:
+		{
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+		}
+		break;
+	case KAbilityStatic::which_yourhero:
+		{
+			tmpLst.push_back(YourDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_your:
+		{
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(YourDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_soldier:
+		{
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+		}
+		break;
+	case KAbilityStatic::which_src_nearby:
+		{
+			pSrc->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pSrc);
+		}
+		break;
+	case KAbilityStatic::which_des_nearby:
+		{
+			if(pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+		}
+		break;
+	case KAbilityStatic::which_hero:
+		{
+			tmpLst.push_back(YourDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_all:
+		{
+			YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,skip);
+			tmpLst.push_back(YourDeck.GetHero());
+		}
+		break;
+	case KAbilityStatic::which_i:
+		tmpLst.push_back(pSrc);
+		break;
+	case KAbilityStatic::which_u:
+		break;
+	case KAbilityStatic::which_owner:
+	case KAbilityStatic::which_null:
+		break;
+	default:
 		break;
 	}
 	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){

@@ -47,7 +47,7 @@ void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
 	if(!actor) return;
 	if(flag){
 		if(!actor->GetActionMgr().ExistAction("sleep_effect")){
-			//actor->GetActionMgr().PlayAction("sleep_effect");
+			actor->GetActionMgr().PlayAction("sleep_effect");
 		}
 	}else{
 		actor->GetActionMgr().LimitAlive("sleep_effect");
@@ -74,9 +74,7 @@ void KIndicatePanel::Update(float dt)
 		break;
 	case KBattleCtrlBase::battle_play:
 		{
-			if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()|| 
-				KAction::GetTotalClassActionNum()>0 ||
-				GameRoot::getSingleton().BattleCtrl().IsWaitDrama())
+			if(!KUIAssist::_IsPlayCardAble())
 				break;
 			pMainPlayer->QueryActiveHandCards(&curActiveGreen);
 			pMainPlayer->QueryActiveFightCards(&curActiveGreen);

@@ -51,6 +51,9 @@ bool KAffectorStatic::parseScript(XMLElementNode* pDataXml)
 	const StringValue* pVal = pDataXml->QueryAtt("fVal");
 	m_BaseData.m_fVal = (pVal)? pVal->Float():0.0f;
 
+	pVal = pDataXml->QueryAtt("fVal2");
+	m_BaseData.m_fVal2 = (pVal)? pVal->Float():0.0f;
+
 	pVal = pDataXml->QueryAtt("iVal");
 	m_BaseData.m_nVal = (pVal)? pVal->Integer():0.0f;
 

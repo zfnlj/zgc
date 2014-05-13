@@ -11,7 +11,9 @@ struct strCardAbilityResult;
 namespace KSkillAssist
 {
 	void _fillAllAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lstMy,KCardInstList* lstYour);
-	void _fillAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst,bool bMy=false /*只取我方的*/);
+	void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst);
+	void _fillMyAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst);
+	void _fillYourAbilityTarget(KBattleCtrlBase*,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst);
 	void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst);
 	bool _checkSecretAbility(KCardInst* pSrc,KCardInst* pDes,KCardInst* pSecret,KAbilityStatic::Enum_When);
 	void _removeBuf(KCardAbilityList& list,int id);
