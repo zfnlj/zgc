@@ -2,14 +2,16 @@
 #include "../common/KCommonObj.h"
 #include "KBattleGod.h"
 
-int KHeroSkillMgr::HeroSkill::getRndVal()
+int KHeroSkillMgr::HeroSkill::getRateVal()
 {
-	return _skill->GetRndVal(_lev);
+	return _skill->GetRateVal(_lev);
 }
 
 void KHeroSkillMgr::HeroSkill::GenDynAbility(KAbilityStatic& dynAbility)
 {
-	GetAbility()->Clone(dynAbility);
+	GetRndAbility()->Clone(dynAbility);
+	
+	dynAbility.GetVal()._val = _skill->GetRndVal(_lev);
 }
 
 void KHeroSkillMgr::onTurnBegin(KBattleCtrlBase* ctrl)
@@ -56,8 +58,9 @@ KHeroSkillMgr::HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_Whe
 	int nRand = g_rnd.GetRandom(0,100);
 	int val = 0;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		if(m_skill[i].GetAbility()->GetWhen()!=when) continue;
-		val += m_skill[i].getRndVal();
+		if(m_skill[i].IsEmpty()) break;
+		if(m_skill[i]._skill->GetWhen()!=when) continue;
+		val += m_skill[i].getRateVal();
 		if(nRand<=val) return &m_skill[i];
 	}
 	return NULL;

@@ -45,6 +45,7 @@ public:
 		when_hero_healed,
 		when_ever,
 		when_all,
+		when_null,
 	};
 	enum Enum_Which{
 		which_mysoldier,
@@ -64,12 +65,12 @@ public:
 		which_null,
 	};
 	enum Enum_What{
-		what_damage,
+		what_damage=1,
 		what_heal,
 		what_damage_atkadd,
 		what_atk_add,
 		what_add_atk_hp,
-		what_pray,
+		what_rnd,
 		what_stun,
 		what_hp_add,
 		what_hp_double,
@@ -108,9 +109,8 @@ public:
 	};
     virtual bool init();
 	static KAbilityStatic* create();
-	void SetWhen(const char* str);
 	void SetWhich(const char* str);
-	void SetWhat(const char* str);
+	void SetWhat(int what);
 	Enum_What GetWhat(){ return m_what;}
 	Enum_When GetWhen(){ return m_when;}
 	Enum_Which GetWhich(){ return m_which;}
@@ -130,6 +130,7 @@ public:
 	bool ToSelfEnable(){ return m_mySelf>0;}
 	void Init(System::File::KTabFile2* fileReader);
 	static Enum_What Str2What(const char* str);
+	static Enum_When Str2When(const char* str);
 	KConditionDef& GetCond(){ return m_cond;}
 	KValDef& GetVal(){ return m_val;}
 	int GetNormalVal(){ return m_val._val;}

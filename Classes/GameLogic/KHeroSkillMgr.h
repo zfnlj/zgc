@@ -19,8 +19,8 @@ class KHeroSkillMgr
 			_skill = KGameStaticMgr::getSingleton().GetHeroSkill(id);
 			CCAssert(_skill , "Hero skill is null!");
 		}
-		KAbilityStatic* GetAbility(){ return _skill->GetAbility();}
-		int getRndVal();
+		KAbilityStatic* GetRndAbility(){ return _skill->GetRndAbility();}
+		int getRateVal();
 		bool IsEmpty(){ return _id==0;}
 		void GenDynAbility(KAbilityStatic& dynAbility);
 	};

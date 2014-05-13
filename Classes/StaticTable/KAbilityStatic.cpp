@@ -15,6 +15,10 @@ bool KAbilityStatic::init()
 void KAbilityStatic::Clone(KAbilityStatic& ab)
 {
 	ab.m_AbilityId = m_AbilityId;
+	ab.m_when = m_when;
+	ab.m_which = m_which;
+	ab.m_what = m_what;
+	ab.m_mySelf = m_mySelf;
 	ab.m_loop = m_loop;
 	ab.m_val2 = m_val2;
 	ab.m_area = m_area;
@@ -25,58 +29,9 @@ void KAbilityStatic::Clone(KAbilityStatic& ab)
 	memcpy(&ab.m_val,&m_val,sizeof(m_val));
 }
 
-void KAbilityStatic::SetWhen(const char* str)
+void KAbilityStatic::SetWhat(int what)
 {
-	if(strcmp(str,"WHEN_ENTER")==0){
-		m_when = when_enter;
-	}else if(strcmp(str,"WHEN_USE")==0){
-		m_when = when_use;
-	}else if(strcmp(str,"WHEN_TURN_BEGIN")==0){
-		m_when = when_turn_begin;
-	}else if(strcmp(str,"WHEN_TURN_END")==0){
-		m_when = when_turn_end;
-	}else if(strcmp(str,"WHEN_DEAD")==0){
-		m_when = when_dead;
-	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
-		m_when = when_soldier_dead;
-	}else if(strcmp(str,"WHEN_ATKED")==0){
-		m_when = when_atked;
-	}else if(strcmp(str,"WHEN_DO_DAMAGE")==0){
-		m_when = when_do_damage;
-	}else if(strcmp(str,"WHEN_DAMAGED")==0){
-		m_when = when_damaged;
-	}else if(strcmp(str,"WHEN_USE_SKILL")==0){
-		m_when = when_use_skill;
-	}else if(strcmp(str,"WHEN_I_USE_SKILL")==0){
-		m_when = when_i_use_skill;
-	}else if(strcmp(str,"WHEN_I_USE_CARD")==0){
-		m_when = when_i_use_card;
-	}else if(strcmp(str,"WHEN_EVER")==0){
-		m_when = when_ever;
-	}else if(strcmp(str,"WHEN_ALL")==0){
-		m_when = when_all;
-	}else if(strcmp(str,"WHEN_HEALED")==0){
-		m_when = when_healed;
-	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
-		m_when = when_soldier_dead;
-	}else if(strcmp(str,"WHEN_MYSOLDIER_DEAD")==0){
-		m_when = when_mysoldier_dead;
-	}else if(strcmp(str,"WHEN_SOLDIER_HURTED")==0){
-		m_when = when_soldier_hurted;
-	}else if(strcmp(str,"WHEN_MYSOLDIER_HURTED")==0){
-		m_when = when_mysoldier_hurted;
-	}else if(strcmp(str,"WHEN_SOLDIER_HEALED")==0){
-		m_when = when_soldier_healed;
-	}else if(strcmp(str,"WHEN_MYSOLDIER_HEALED")==0){
-		m_when = when_mysoldier_healed;
-	}else if(strcmp(str,"WHEN_HERO_HURTED")==0){
-		m_when = when_hero_hurted;
-	}else if(strcmp(str,"WHEN_MYHERO_HURTED")==0){
-		m_when = when_myhero_hurted;
-	}else{
-		CCAssert(false , "Set When isn't match!");
-		//CCLog("Set When isn't match!");
-	}
+	m_what = (Enum_What)what;
 }
 
 KAbilityStatic* KAbilityStatic::create()
@@ -161,6 +116,62 @@ void KAbilityStatic::SetWhich(const char* str)
 	}
 }
 
+KAbilityStatic::Enum_When KAbilityStatic::Str2When(const char* str)
+{
+	Enum_When when = when_null;
+	if(strcmp(str,"WHEN_ENTER")==0){
+		when = when_enter;
+	}else if(strcmp(str,"WHEN_USE")==0){
+		when = when_use;
+	}else if(strcmp(str,"WHEN_TURN_BEGIN")==0){
+		when = when_turn_begin;
+	}else if(strcmp(str,"WHEN_TURN_END")==0){
+		when = when_turn_end;
+	}else if(strcmp(str,"WHEN_DEAD")==0){
+		when = when_dead;
+	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
+		when = when_soldier_dead;
+	}else if(strcmp(str,"WHEN_ATKED")==0){
+		when = when_atked;
+	}else if(strcmp(str,"WHEN_DO_DAMAGE")==0){
+		when = when_do_damage;
+	}else if(strcmp(str,"WHEN_DAMAGED")==0){
+		when = when_damaged;
+	}else if(strcmp(str,"WHEN_USE_SKILL")==0){
+		when = when_use_skill;
+	}else if(strcmp(str,"WHEN_I_USE_SKILL")==0){
+		when = when_i_use_skill;
+	}else if(strcmp(str,"WHEN_I_USE_CARD")==0){
+		when = when_i_use_card;
+	}else if(strcmp(str,"WHEN_EVER")==0){
+		when = when_ever;
+	}else if(strcmp(str,"WHEN_ALL")==0){
+		when = when_all;
+	}else if(strcmp(str,"WHEN_HEALED")==0){
+		when = when_healed;
+	}else if(strcmp(str,"WHEN_SOLDIER_DEAD")==0){
+		when = when_soldier_dead;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_DEAD")==0){
+		when = when_mysoldier_dead;
+	}else if(strcmp(str,"WHEN_SOLDIER_HURTED")==0){
+		when = when_soldier_hurted;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_HURTED")==0){
+		when = when_mysoldier_hurted;
+	}else if(strcmp(str,"WHEN_SOLDIER_HEALED")==0){
+		when = when_soldier_healed;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_HEALED")==0){
+		when = when_mysoldier_healed;
+	}else if(strcmp(str,"WHEN_HERO_HURTED")==0){
+		when = when_hero_hurted;
+	}else if(strcmp(str,"WHEN_MYHERO_HURTED")==0){
+		when = when_myhero_hurted;
+	}else{
+		CCAssert(false , "Set When isn't match!");
+		//CCLog("Set When isn't match!");
+	}
+	return when;
+}
+
 KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 {
 	Enum_What what = what_null;
@@ -240,17 +251,12 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_bless_hp;
 	}else if(strcmp(str,"WHAT_ADD_ATK_HP")==0){
 		what = what_add_atk_hp;
-	}else if(strcmp(str,"WHAT_PRAY")==0){
-		what = what_pray;
+	}else if(strcmp(str,"WHAT_RND")==0){
+		what = what_rnd;
 	}else{
 		CCAssert(false , "Set What isn't match!");
 	}
 	return what;
-}
-
-void KAbilityStatic::SetWhat(const char* str)
-{
-	m_what = Str2What(str);
 }
 
 void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
@@ -258,7 +264,8 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetInteger("ID", 0, (int*)&m_AbilityId);
 	char buf[64] = {0};
 	fileReader->GetString("WHEN", "", buf, 63);
-	SetWhen(buf);
+	m_when = Str2When(buf);
+
 	fileReader->GetString("WHICH", "", buf, 63);
 	SetWhich(buf);
 
@@ -266,7 +273,8 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	m_cond.ParseString(buf);
 
 	fileReader->GetString("WHAT", "", buf, 63);
-	SetWhat(buf);
+	m_what = Str2What(buf);
+
 	fileReader->GetString("VAL", "", buf, 63);
 	m_val.ParseString(buf);
 	fileReader->GetInteger("VAL2", 0, (int*)&m_val2);
