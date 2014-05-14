@@ -2,7 +2,7 @@
 <ag>
 <action class="hit">
   <affect_body>
-    <affector class="hit" createtime="0" slot="card_center" fVal="0.4" iVal="1" life="0.2" />
+    <affector class="hit" createtime="0" obj="hit_text" slot="card_center" fVal="0.4" iVal="1" life="2.0" />
    	<affector class="scale" obj="hit_text" fVal="1.0" createtime="0.01" life="0.2" />
     <affector class="fadeout" obj="hit_text" fVal="0.5" createtime="1.0" life="0.6" />
     <affector class="updateHit" createtime="1.4"  life="0.001" /> 

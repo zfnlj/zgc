@@ -4,7 +4,7 @@
   <affect_body>
   	<affector class="action" obj="use_bad_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="equal_show" tarFlag="0" pre="1" createtime="0" iVal="2" life="30" />
-  	<affector class="action" obj="updateAttr" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
+  	<affector class="action" obj="equal_tar_show" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
   	<affector class="resortHand" createtime="3" life="0.001" />
   </affect_body>
@@ -15,5 +15,13 @@
   		<affector class="timerBar" slot="screen_center" obj="equal_str.png" createtime="0.0" iVal="90"  life="2.6" />
   </affect_body>
 </action>
+
+<action name="equal_tar_show" class="null">
+  <affect_body>
+  		<affector class="armature" slot="card_center" obj="toSheep" createtime="0.0" fVal="1.0" iVal="90"  life="0.8" />
+  		<affector class="updateAttr" createtime="1.0"  life="0.001" />  
+  </affect_body>
+</action>
+
 </ag>
 		

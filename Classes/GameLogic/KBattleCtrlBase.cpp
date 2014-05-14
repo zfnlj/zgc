@@ -65,6 +65,9 @@ void KBattleCtrlBase::update(float dt)
 			case battle_turn_end:
 				TurnEnd();
 				break;
+			case battle_turn_begin_ok:
+				TurnBeginOK();
+				break;
 			case battle_turn_end_ok:
 				TurnEndOk();
 				break;
@@ -225,8 +228,14 @@ void KBattleCtrlBase::TurnBegin()
 	m_bFirstTurn = false;
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
-	StateJump(battle_play);
 	DoCardEvtList(NULL);
+	StateJump(battle_turn_begin_ok);
+}
+
+void KBattleCtrlBase::TurnBeginOK()
+{
+	if(IsWaitDrama()) return;
+	StateJump(battle_play);
 }
 
 KBattleGuy* KBattleCtrlBase::GetDefGuy()

@@ -207,8 +207,8 @@ void KAffectorExecutor::OnStop(void)
 	StopEmitter();
 	if(m_dictObj && mSurviveTime>0.1f){ //self control life
 		GetActor()->RemoveDictObj(m_dictObj,m_AffectorStatic->GetObj());
-		m_dictObj = NULL;
 	}
+	m_dictObj = NULL;
 	if(m_armature){
 		m_armature->removeFromParent();
 		m_armature = NULL;

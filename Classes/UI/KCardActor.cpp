@@ -162,8 +162,8 @@ void KCardActor::onMoveEvent(CCObject* sender)
 }
 void KCardActor::DoSelect(CCObject* sender)
 {
-	if(!KUIAssist::_IsPlayCardAble()) return;
 	KClickCardMgr::getSingleton().onClickCard(this);
+	if(!KUIAssist::_IsPlayCardAble()) return;
 	if(DoSelectBeginCard(sender)) return;
 
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;

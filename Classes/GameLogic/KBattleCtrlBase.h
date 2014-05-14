@@ -32,6 +32,7 @@ public:
 		battle_select_turnplayer,
 		battle_select_handcard,
 		battle_turn_begin,
+		battle_turn_begin_ok,
 		battle_play,
 		battle_turn_end,
 		battle_turn_end_ok,
@@ -67,6 +68,7 @@ public:
 	void OpSetSlot(int slot);
 	void DoEndTurn();
 	void TurnEndOk();
+	void TurnBeginOK();
 	void PlayWithAI();
 	void PlayQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);
