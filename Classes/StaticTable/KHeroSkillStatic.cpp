@@ -16,7 +16,7 @@ int KHeroSkillStatic::GetRateVal(int lev)
 int KHeroSkillStatic::GetRndVal(int lev)
 { 
 	if(lev>MAX_HERO_SKILL_LEV) return 0;
-	return g_rnd.GetRandom(m_val1[lev],m_val2[lev]+1);
+	return g_rnd.GetRandom(m_val1[lev-1],m_val2[lev-1]+1);
 }
 
 KAbilityStatic* KHeroSkillStatic::GetRndAbility()

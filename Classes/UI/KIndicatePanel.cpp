@@ -144,7 +144,9 @@ void KIndicatePanel::OnSelectCardOK()
 
 void KIndicatePanel::OnSelectSrcCard(KCardActor* actor)
 {
-	if(m_selActor==actor) return;
+	if(m_selActor==actor){
+		return;
+	}
 	
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("big_photo");
 	if(m_selActor){

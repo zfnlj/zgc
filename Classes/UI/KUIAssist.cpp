@@ -553,7 +553,9 @@ void KUIAssist::_setActionParamSlot(K3DActionParam* param)
 bool KUIAssist::_IsPlayCardAble()
 {
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
-	if(KAction::GetTotalClassActionNum()>0) return false;
+	if(KAction::GetTotalClassActionNum()>0){
+		return false;
+	}
 	if(GameRoot::getSingleton().BattleCtrl().IsWaitDrama()) return false;
 	return true;
 }

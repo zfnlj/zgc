@@ -225,6 +225,15 @@ void KAffectorExecutor::LimitAlive(float val)
 	//if(GetActor()){
 	//	GetActor()->RemoveCCAction(m_AffectorStatic->GetObj());
 	//}
+	if(m_dictObj){ //self control life
+		GetActor()->RemoveDictObj(m_dictObj,m_AffectorStatic->GetObj());
+	}
+	m_dictObj = NULL;
+	if(m_armature){
+		m_armature->removeFromParent();
+		m_armature = NULL;
+	}
+
 	m_ccActionDef.empty();
 	switch(m_AffectorStatic->Type())
 	{

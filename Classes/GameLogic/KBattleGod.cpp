@@ -204,9 +204,9 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 		case KCardInst::enum_slot_fight:
 			ret = ProcCardDuel(ctrl,pSrc,pDes);
 			break;
-		case KCardInst::enum_slot_hero:
+		/*case KCardInst::enum_slot_hero:
 			ret = ProcHeroCard(ctrl,pSrc,pDes);
-			break;
+			break;*/
         default:
             break;
 		}
