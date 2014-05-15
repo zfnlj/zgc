@@ -49,8 +49,8 @@ public:
 	void onSelectHandCardOK(KCardInstList* lst);
 	void UpdateActor(float dt);
 	void UpdateActor(KCardInstList* arr,float dt);
-	void QueryActiveHandCards(KCardInstList* arr,int curRes);
-	void QueryActiveFightCards(KCardInstList* arr,int curRes);
+	void QueryValidateHandCards(KCardInstList* lst,int curRes);
+	void QueryValidateFightCards(KCardInstList* arr,int curRes);
 	void QueryActiveDefendCards(KCardInstList* arr);
 	void QuerySleepFightCards(KCardInstList* lst);
 

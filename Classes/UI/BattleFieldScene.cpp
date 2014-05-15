@@ -359,9 +359,13 @@ void BattleFieldScene::onUseRes()
 	m_resPanel.UpdateRes();
 }
 
-void BattleFieldScene::OnSelectSrcCard(KCardActor* actor)
+void BattleFieldScene::DoSelectSrcCard(KCardActor* actor)
 {
-	m_indicatePanel.OnSelectSrcCard((actor));
+	GameRoot::getSingleton().BattleCtrl().GetCurOp().Empty();
+	GameRoot::getSingleton().BattleCtrl().GetCurOp()._src = actor->GetCard()->GetRealId();
+	m_indicatePanel.OnSelectSrcCard(actor);
+	m_indicatePanel.Update(0.0f);
+
 }
 
 void BattleFieldScene::OnSelectCardOK()

@@ -40,7 +40,6 @@ public:
 	void ActiveGreen();
 	void ActiveRed();
 	void Deactive();
-	bool IsActive();
     virtual KCardInst* GetCard(){ return m_card;}
 	virtual void SummonSelf();
 	virtual void UpdateCardBuf();

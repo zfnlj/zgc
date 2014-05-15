@@ -59,7 +59,6 @@ public:
 	void onUseRes();
 
 	void onGameEnd();
-	void OnSelectSrcCard(KCardActor*);
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();
@@ -68,6 +67,8 @@ public:
 	void onClickBackground(CCObject* sender);
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
 	KActor& GetActor(){ return m_actor;}
+
+	void DoSelectSrcCard(KCardActor* actor);
 private:
 	CCLabelTTF* m_InfoLabel;
 

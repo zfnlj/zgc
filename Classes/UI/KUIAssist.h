@@ -52,6 +52,9 @@ public:
 	static void _setActionParamSlot(K3DActionParam* param);
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	static bool _IsPlayCardAble();
+
+	static bool _IsValidateSrcCard(KCardInst* card);
+	static bool _IsValidateDesCard(KCardInst* card);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

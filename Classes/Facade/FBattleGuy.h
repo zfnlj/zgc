@@ -21,8 +21,8 @@ public:
 	KBattleGuy* GetImp(){ return m_Impl;}
 	bool IsSelectHandCard();
 	void QueryActiveDefendCards(KCardInstList* arr);
-	void QueryActiveHandCards(KCardInstList* arr);
-	void QueryActiveFightCards(KCardInstList* arr);
+	void QueryValidateHandCards(KCardInstList* arr);
+	void QueryValidateFightCards(KCardInstList* arr);
 	void QuerySleepFightCards(KCardInstList* lst);
 	bool IsEmptyFightSlot(int pos);
 private:

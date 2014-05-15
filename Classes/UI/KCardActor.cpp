@@ -39,13 +39,6 @@ void KCardActor::update(float dt)
 	m_ActionMgr.breathe(dt);
 }
 
-bool KCardActor::IsActive()
-{
-	if(m_ActiveGreenSprite->getParent()!=NULL) return true;
-	if(m_ActiveRedSprite->getParent()!=NULL) return true;
-	return false;
-}
-
 void KCardActor::ActiveGreen()
 {
 	if(!m_ActiveGreenSprite->getParent()) m_ui->addRenderer(m_ActiveGreenSprite,100);
@@ -163,37 +156,29 @@ void KCardActor::onMoveEvent(CCObject* sender)
 void KCardActor::DoSelect(CCObject* sender)
 {
 	KClickCardMgr::getSingleton().onClickCard(this);
-	if(!KUIAssist::_IsPlayCardAble()) return;
 	if(DoSelectBeginCard(sender)) return;
+	if(!KUIAssist::_IsPlayCardAble()) return;
 
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
-	//m_ActionMgr.CreateAction("duel_defender");
-	//return;
+	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();
 
-	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();	
-	//layer->OnSelectSrcCard(this);
-	if(!IsActive()){
-		if(m_card->GetOwner()!= GameRoot::getSingleton().BattleCtrl().GetCurGuy()) return;
-		if(!GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
-			int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
-			GameRoot::getSingleton().getBattleScene()->onClickBackground(NULL);
-			if(srcID != m_card->GetRealId()){
-				GameRoot::getSingleton().BattleCtrl().DoSelectCard(m_card);
-				layer->OnSelectSrcCard(this);
-				//DoSelect(sender);
+	if(GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
+		if(KUIAssist::_IsValidateSrcCard(m_card)) GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(this);
+	}else{
+		int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
+		if(srcID==m_card->GetRealId()){
+			GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(NULL);
+
+			return;
+		}
+		if(KUIAssist::_IsValidateDesCard(m_card)){
+			GameRoot::getSingleton().BattleCtrl().DoSelectCard(m_card);
+		}else{
+			if(KUIAssist::_IsValidateSrcCard(m_card)){
+				GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(this);
 			}
 		}
-		return;
 	}
-	
-	GameRoot::getSingleton().BattleCtrl().DoSelectCard(m_card);
-	// 只有源才播放选中的火焰
-	if (GameRoot::getSingleton().BattleCtrl().GetCurSelSrc() == m_card->GetRealId())
-	{
-		layer->OnSelectSrcCard(this);
-		//m_ActionMgr.PlayAction("fire");
-	
-	}	
 }
 
 void KCardActor::UpdateCardAttr()

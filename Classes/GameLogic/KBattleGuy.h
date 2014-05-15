@@ -57,8 +57,8 @@ public:
 	 void Clear();
 	 void DoSelectBeginCard(KCardInstList* arr);
 	 void QueryResInfo(char* buf);
-	 void QueryActiveHandCards(KCardInstList* arr);
-	 void QueryActiveFightCards(KCardInstList* arr);
+	 void QueryValidateHandCards(KCardInstList* arr);
+	 void QueryValidateFightCards(KCardInstList* arr);
 	 void QueryActiveDefendCards(KCardInstList* arr);
 	 void QuerySleepFightCards(KCardInstList* lst);
 

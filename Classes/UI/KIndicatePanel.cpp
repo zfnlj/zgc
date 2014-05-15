@@ -76,22 +76,21 @@ void KIndicatePanel::Update(float dt)
 		{
 			if(!KUIAssist::_IsPlayCardAble())
 				break;
-			pMainPlayer->QueryActiveHandCards(&curActiveGreen);
-			pMainPlayer->QueryActiveFightCards(&curActiveGreen);
 			KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
-			if(!pSrc) break;
-			if(GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed)) break;
-			GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
-			switch(pSrc->GetKind()){
-			case KCardStatic::card_soldier:
-				if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
-					bShowMyFightArea = true;
-				}else if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
-					pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
+			if(pSrc){
+				if(pSrc->IsKindOf(KCardStatic::card_soldier)){
+					GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
+						bShowMyFightArea = true;
+					}else if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
+						pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
+					}
+				}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
+					GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
 				}
-				break;
-             default:
-                break;
+			}else{
+				pMainPlayer->QueryValidateHandCards(&curActiveGreen);
+				pMainPlayer->QueryValidateFightCards(&curActiveGreen);
 			}
 		}
 		break;

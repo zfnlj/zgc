@@ -405,10 +405,8 @@ void KBattleDeck::UpdateActor(KCardInstList* lst,float dt)
 #endif
 }
 
-void KBattleDeck::QueryActiveHandCards(KCardInstList* lst,int curRes)
+void KBattleDeck::QueryValidateHandCards(KCardInstList* lst,int curRes)
 {
-	
-	if(m_Owner->GetBattleCtrl()->GetCurSelSrc()>0) return;
 	for(KCardInstList::iterator it = m_HandCardSet.begin(); it!=m_HandCardSet.end();++it){
 		KCardInst* pCard = *it;
 		KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10);
@@ -432,17 +430,12 @@ void KBattleDeck::QuerySleepFightCards(KCardInstList* lst)
 	}
 }
 
-void KBattleDeck::QueryActiveFightCards(KCardInstList* lst,int curRes)
+void KBattleDeck::QueryValidateFightCards(KCardInstList* lst,int curRes)
 {
-	if(m_Owner->GetBattleCtrl()->GetCurSelSrc()>0)
-		return;
 	for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
 		KCardInst* pCard = *it;
 		if(pCard->m_attr.getReady()) lst->push_back(pCard);
 	}
-
-	//KCardInst* pHero = GetHero();
-	//if(pHero->m_attr.getReady()&&pHero->GetCost()<=curRes) lst->push_back(pHero);
 }
 
 void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)

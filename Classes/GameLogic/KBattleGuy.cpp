@@ -143,14 +143,14 @@ void KBattleGuy::QueryResInfo(char* buf)
 	sprintf(buf,"%d/%d",m_attr.getCurRes(),m_attr.getMaxRes());
 }
 
-void KBattleGuy::QueryActiveHandCards(KCardInstList* lst)
+void KBattleGuy::QueryValidateHandCards(KCardInstList* lst)
 {
-	m_Deck.QueryActiveHandCards(lst,m_attr.getCurRes());
+	m_Deck.QueryValidateHandCards(lst,m_attr.getCurRes());
 }
 
-void KBattleGuy::QueryActiveFightCards(KCardInstList* lst)
+void KBattleGuy::QueryValidateFightCards(KCardInstList* lst)
 {
-	m_Deck.QueryActiveFightCards(lst,m_attr.getCurRes());
+	m_Deck.QueryValidateFightCards(lst,m_attr.getCurRes());
 }
 
 void KBattleGuy::QuerySleepFightCards(KCardInstList* lst)

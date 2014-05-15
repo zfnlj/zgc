@@ -67,9 +67,9 @@ bool FBattleGuy::IsSelectHandCard()
 		return false;
 }
 
-void FBattleGuy::QueryActiveHandCards(KCardInstList* arr)
+void FBattleGuy::QueryValidateHandCards(KCardInstList* arr)
 {
-	if(m_Impl) m_Impl->QueryActiveHandCards(arr);
+	if(m_Impl) m_Impl->QueryValidateHandCards(arr);
 }
 
 void FBattleGuy::QueryActiveDefendCards(KCardInstList* arr)
@@ -77,9 +77,9 @@ void FBattleGuy::QueryActiveDefendCards(KCardInstList* arr)
 	if(m_Impl) m_Impl->QueryActiveDefendCards(arr);
 }
 
-void FBattleGuy::QueryActiveFightCards(KCardInstList* arr)
+void FBattleGuy::QueryValidateFightCards(KCardInstList* arr)
 {
-	if(m_Impl) m_Impl->QueryActiveFightCards(arr);
+	if(m_Impl) m_Impl->QueryValidateFightCards(arr);
 }
 
 void FBattleGuy::QuerySleepFightCards(KCardInstList* lst)

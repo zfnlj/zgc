@@ -559,3 +559,34 @@ bool KUIAssist::_IsPlayCardAble()
 	if(GameRoot::getSingleton().BattleCtrl().IsWaitDrama()) return false;
 	return true;
 }
+
+bool KUIAssist::_IsValidateSrcCard(KCardInst* card)
+{
+	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
+	KCardInstList curActive;
+
+	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	pMainPlayer->QueryValidateHandCards(&curActive);
+	pMainPlayer->QueryValidateFightCards(&curActive);
+	
+	return (_getIndexOfCard(&curActive,card)>=0);
+}
+
+bool KUIAssist::_IsValidateDesCard(KCardInst* card)
+{
+	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
+	KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
+	if(!pSrc) return false;
+
+	KCardInstList curActiveGreen;
+	KCardInstList curActiveRed;
+
+	if(pSrc->IsKindOf(KCardStatic::card_soldier)){
+		GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+	}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
+		GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
+	}
+	if(_getIndexOfCard(&curActiveGreen,card)>=0)  return true;
+	if(_getIndexOfCard(&curActiveRed,card)>=0)  return true;
+	return false;
+}
