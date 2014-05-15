@@ -7,7 +7,15 @@
 #include "KUserData.h"
 using namespace System::Collections;
 
-IMPLEMENT_SINGLETON(KClientGateListener)
+template<> KClientGateListener* Singleton<KClientGateListener>::mSingleton = 0; 
+KClientGateListener& KClientGateListener::getSingleton(void) 
+{
+	if(NULL == mSingleton)
+	{
+		mSingleton = new KClientGateListener;
+	}
+	return (*mSingleton);
+}
 
 class ClientSocketFilter : public JgSocketFilter
 {

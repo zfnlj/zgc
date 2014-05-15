@@ -33,7 +33,7 @@ class KParticleCacheMgr :  public Singleton<KParticleCacheMgr>
 {
 public :
 	static KParticleCacheMgr& getSingleton(void);
-	void init();
+	void init(){}
 
 	void onDestory();
 	CCParticleSystem* CreateParticle(const char* name);

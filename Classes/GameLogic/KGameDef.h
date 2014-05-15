@@ -3,16 +3,6 @@
 
 #define MAX_ACTION_TARGET_NUM 12
 
-#define IMPLEMENT_SINGLETON(__classname ) \
-	template<> __classname* Singleton<__classname>::mSingleton = 0; \
-	__classname& __classname::getSingleton(void) \
-{ \
-	if(NULL == mSingleton)\
-	{\
-	mSingleton = new __classname;\
-	}\
-	return (*mSingleton);\
-}\
 
 #define MAX_GAME_PLAY_CARD 31
 

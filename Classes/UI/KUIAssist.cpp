@@ -583,6 +583,9 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 
 	if(pSrc->IsKindOf(KCardStatic::card_soldier)){
 		GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+		if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
+			card->GetOwner()->QueryActiveDefendCards(&curActiveRed);
+		}
 	}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
 		GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
 	}

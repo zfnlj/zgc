@@ -1,10 +1,12 @@
 #include "KGameRecordMgr.h"
+#include "Inc/KTypeDef.h"
 
 IMPLEMENT_SINGLETON(KGameRecordMgr)
 
 void KGameRecordMgr::StartRecord()
 {
 	m_task.Empty();
+	m_recState = REC_RECORD;
 }
 
 bool KGameRecordMgr::SaveToFile( const char* szFileName)
@@ -20,9 +22,15 @@ bool KGameRecordMgr::LoadFile(const char* szFileName)
 
 void KGameRecordMgr::RecordPlayOp(int src,int des,int slot)
 {
+	if(m_recState!=REC_RECORD) return;
 	m_task.RecordPlayOp(src,des,slot);
 }
 
+void KGameRecordMgr::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
+{
+	if(m_recState!=REC_RECORD) return;
+	m_task.RecordMouseEvt(evt);
+}
 
 void KGameRecordMgr::InitTest()
 {

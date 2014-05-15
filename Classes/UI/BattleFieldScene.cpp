@@ -225,6 +225,8 @@ void BattleFieldScene::onHandCardReady()
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
+	KGameRecordMgr::getSingleton().RecordMouseEvt(KRecordUIMouseData::evt_turn_end);
+
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		GameRoot::getSingleton().BattleCtrl().DoEndTurn();
 	}else{
@@ -365,7 +367,7 @@ void BattleFieldScene::onUseRes()
 void BattleFieldScene::DoSelectSrcCard(KCardActor* actor)
 {
 	GameRoot::getSingleton().BattleCtrl().GetCurOp().Empty();
-	GameRoot::getSingleton().BattleCtrl().GetCurOp()._src = actor->GetCard()->GetRealId();
+	if(actor) GameRoot::getSingleton().BattleCtrl().GetCurOp()._src = actor->GetCard()->GetRealId();
 	m_indicatePanel.OnSelectSrcCard(actor);
 	m_indicatePanel.Update(0.0f);
 

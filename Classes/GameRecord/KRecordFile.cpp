@@ -1,6 +1,7 @@
 #include "KRecordFile.h"
 #include "System/Misc/KStream.h"
 #include <string>
+#include "../GameRoot.h"
 
 #ifdef _USE_COCOS2DX
 #include "cocos2d.h"
@@ -83,18 +84,11 @@ void KGameRecordDataSaveStream::Reset()
 bool KRecordFile::SaveToFile( const char* szFileName, void* pRawData, unsigned int uRawDataLength )
 {
 	char sz[128]={0};
-	sprintf(sz,"data/record/%s.rec",szFileName);
+	sprintf(sz,"%s/data/record/%s.rec",GameRoot::getSingleton().GetRootPath(),szFileName);
 	
-    std::string fullPath;
-#ifdef _USE_COCOS2DX
-	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(sz);
-#else
-	fullPath = sz;
-#endif
-
 	KOutputFileStream fileStream;
 
-	if ( !fileStream.Open( fullPath.c_str(), "wb" ) )
+	if ( !fileStream.Open(sz, "wb" ) )
 	{
 		return false;
 	}

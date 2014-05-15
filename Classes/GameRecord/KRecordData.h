@@ -13,11 +13,14 @@ enum EGameRecordedDataType
 class KRecordDataBase
 {
 public:
-	KRecordDataBase(){}
+	KRecordDataBase():m_dlgId(0){}
 	~KRecordDataBase(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init()=0;
+	virtual void init(){
+		m_dlgId=0;
+	}
+	virtual void Replay()=0;
 	virtual EGameRecordedDataType GetClassType()=0;
 private:
 	unsigned int m_dlgId;
@@ -26,12 +29,20 @@ private:
 class KRecordUIMouseData :public KRecordDataBase
 {
 public:
+	enum Mouse_evt{
+		evt_turn_end,
+		evt_null,
+	};
 	KRecordUIMouseData(){}
 	~KRecordUIMouseData(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){}
+	virtual void init(){m_evt = evt_null;}
+	void RecordMouseEvt(Mouse_evt evt);
+	virtual void Replay();
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
+private:
+	Mouse_evt m_evt;
 };
 
 class KRecordPlayOpData :public KRecordDataBase
@@ -41,12 +52,22 @@ public:
 		int _src;
 		int _des;
 		int _slot;
+		void set(int src,int des,int slot){
+			_src = src;
+			_des = des;
+			_slot =slot;
+		}
 	};
 	KRecordPlayOpData(){}
 	~KRecordPlayOpData(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){}
+	virtual void init(){
+		memset(&m_data,0,sizeof(m_data));
+		KRecordDataBase::init();
+	}
+	void RecordPlayOp(int src,int des,int slot);
+	virtual void Replay();
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
 private:
 	OpStruct m_data;

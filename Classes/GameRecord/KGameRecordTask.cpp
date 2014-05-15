@@ -7,10 +7,10 @@ KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 	KRecordDataBase* pRecordData = NULL;
 	switch(eType){
 	case EGRDT_UIMouseInput:
-		pRecordData = new KRecordPlayOpData;
+		pRecordData = new KRecordUIMouseData;
 		break;
 	case EGRDT_PlayOp:
-		pRecordData = new KRecordUIMouseData;
+		pRecordData = new KRecordPlayOpData;
 		break;
 	}
 	pRecordData->init();
@@ -19,7 +19,15 @@ KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 
 void KGameRecordTask::RecordPlayOp(int src,int des,int slot)
 {
-	KRecordDataBase* pRecord = AllocData(EGRDT_PlayOp);
+	KRecordPlayOpData* pRecord = (KRecordPlayOpData*)AllocData(EGRDT_PlayOp);
+	pRecord->RecordPlayOp(src,des,slot);
+	m_FrameData.push_back(pRecord);
+}
+
+void KGameRecordTask::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
+{
+	KRecordUIMouseData* pRecord = (KRecordUIMouseData*)AllocData(EGRDT_UIMouseInput);
+	pRecord->RecordMouseEvt(evt);
 	m_FrameData.push_back(pRecord);
 }
 
@@ -84,5 +92,5 @@ void KGameRecordTask::Empty()
 		it++;
 		delete pData;
 	}
-	m_FrameData.empty();
+	m_FrameData.clear();
 }

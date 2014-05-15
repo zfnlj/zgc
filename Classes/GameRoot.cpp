@@ -15,7 +15,7 @@
 #include "ui/KUIAssist.h"
 #include <System/File/KTabfileLoader.h>
 
-IMPLEMENT_SINGLETON(GameRoot)
+IMPLEMENT_SIMPLE_SINGLETON(GameRoot)
 using namespace System::File;
 
 void GameRoot::init()
@@ -39,6 +39,11 @@ void GameRoot::init()
 
 void GameRoot::InitializeResource()
 {
+	memset(m_rootPath,0,sizeof(m_rootPath));
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("zgc.exe");
+	int pos = fullPath.find("zgc.exe");
+	memcpy(m_rootPath,fullPath.c_str(),pos-1);
+
 	KClientTabfileLoader::GetInstance();
 	KGameStaticMgr::getSingleton().LoadStaticData();
 	KQuestManager::GetInstance()->Initialize();

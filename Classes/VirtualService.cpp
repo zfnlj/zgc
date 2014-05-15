@@ -21,7 +21,7 @@
 
 using namespace KStoreAbout;
 using namespace KItemAbout;
-IMPLEMENT_SINGLETON(VirtualService)
+IMPLEMENT_SIMPLE_SINGLETON(VirtualService)
 
 void VirtualService::init()
 {

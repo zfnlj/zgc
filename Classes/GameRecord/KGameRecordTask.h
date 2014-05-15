@@ -16,6 +16,7 @@ public:
 	KRecordDataBase* AllocData( EGameRecordedDataType eType );
 
 	void RecordPlayOp(int src,int des,int slot);
+	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt);
 	void Empty();
 private:
 

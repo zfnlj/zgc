@@ -102,7 +102,7 @@ public:
 	{
 		Clear();
 	};
-
+	void init(){}
 	void Clear();
 	KActionStatic* GetAction(const char* name);
 	static KActionStaticMgr& getSingleton(void);
