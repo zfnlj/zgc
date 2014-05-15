@@ -19,6 +19,8 @@
 #include "KJsonDictMgr.h"
 #include "KClickCardMgr.h"
 
+#include "../GameRecord/KGameRecordMgr.h"
+
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -160,9 +162,10 @@ void BattleFieldScene::onBattleInit()
 
 void BattleFieldScene::InitTest()
 {
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	KGameRecordMgr::getSingleton().InitTest();
+	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();
-	KCardActor* actor = (KCardActor*)pHero->getActor();
+	KCardActor* actor = (KCardActor*)pHero->getActor();*/
 	//actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
 }
 

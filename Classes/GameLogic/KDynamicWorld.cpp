@@ -5,16 +5,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../EventSystem/KEventDefine.h"
 
-template<> KDynamicWorld* Singleton<KDynamicWorld>::mSingleton = 0;
-
-KDynamicWorld& KDynamicWorld::getSingleton(void)
-{  
-	if(!mSingleton){
-		mSingleton = new KDynamicWorld;
-		mSingleton->init();
-	}
-	return ( *mSingleton );  
-}
+IMPLEMENT_SINGLETON(KDynamicWorld)
 
 void KDynamicWorld::init()
 {

@@ -14,16 +14,7 @@
 #include "assist/KBattleEventAssist.h"
 
 
-template<> KBattleGod* Singleton<KBattleGod>::mSingleton = 0;
-
-KBattleGod& KBattleGod::getSingleton(void)
-{  
-	if(!mSingleton){
-		mSingleton = new KBattleGod;
-		mSingleton->init();
-	}
-	return ( *mSingleton );  
-}
+IMPLEMENT_SINGLETON(KBattleGod)
 
 void KBattleGod::init()
 {

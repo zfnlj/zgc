@@ -157,6 +157,10 @@
     <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KHeroSkillMgr.cpp" />
+    <ClCompile Include="..\Classes\GameRecord\KRecordData.cpp" />
+    <ClCompile Include="..\Classes\GameRecord\KRecordFile.cpp" />
+    <ClCompile Include="..\Classes\GameRecord\KGameRecordMgr.cpp" />
+    <ClCompile Include="..\Classes\GameRecord\KGameRecordTask.cpp" />
     <ClCompile Include="..\Classes\GameRoot.cpp" />
     <ClCompile Include="..\Classes\Item\KBag.cpp" />
     <ClCompile Include="..\Classes\Item\KBagManager.cpp" />
@@ -290,6 +294,10 @@
     <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h" />
     <ClInclude Include="..\Classes\GameLogic\KGameDef.h" />
     <ClInclude Include="..\Classes\GameLogic\KHeroSkillMgr.h" />
+    <ClInclude Include="..\Classes\GameRecord\KRecordData.h" />
+    <ClInclude Include="..\Classes\GameRecord\KRecordFile.h" />
+    <ClInclude Include="..\Classes\GameRecord\KGameRecordMgr.h" />
+    <ClInclude Include="..\Classes\GameRecord\KGameRecordTask.h" />
     <ClInclude Include="..\Classes\GameRoot.h" />
     <ClInclude Include="..\Classes\Inc\KBusinessDefine.h" />
     <ClInclude Include="..\Classes\Inc\KLogicMsg.h" />

@@ -372,6 +372,18 @@
     <ClCompile Include="..\Classes\GameLogic\KHeroSkillMgr.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameRecord\KRecordData.cpp">
+      <Filter>GameRecord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameRecord\KRecordFile.cpp">
+      <Filter>GameRecord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameRecord\KGameRecordMgr.cpp">
+      <Filter>GameRecord</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameRecord\KGameRecordTask.cpp">
+      <Filter>GameRecord</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -788,6 +800,18 @@
     <ClInclude Include="..\Classes\GameLogic\KHeroSkillMgr.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GameRecord\KRecordData.h">
+      <Filter>GameRecord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameRecord\KRecordFile.h">
+      <Filter>GameRecord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameRecord\KGameRecordMgr.h">
+      <Filter>GameRecord</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameRecord\KGameRecordTask.h">
+      <Filter>GameRecord</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">
@@ -867,6 +891,9 @@
     </Filter>
     <Filter Include="UI\assist">
       <UniqueIdentifier>{a9c553bc-3c7e-4c5d-82f8-c48b7f7372cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameRecord">
+      <UniqueIdentifier>{7f73877f-0212-44b6-8166-1e18abc5dfb6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

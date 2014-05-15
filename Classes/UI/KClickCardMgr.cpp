@@ -4,16 +4,7 @@
 #include "../GameRoot.h"
 #include "BattleFieldScene.h"
 
-template<> KClickCardMgr* Singleton<KClickCardMgr>::mSingleton = 0;
-
-KClickCardMgr& KClickCardMgr::getSingleton(void)
-{  
-	if(!mSingleton){
-		mSingleton = new KClickCardMgr;
-		mSingleton->init();
-	}
-	return ( *mSingleton );  
-}
+IMPLEMENT_SINGLETON(KClickCardMgr)
 
 KClickCardMgr::KClickCardMgr()
 {
