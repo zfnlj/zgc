@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action name="" class="null">
+  <affect_body>
+    	<affector class="updateBuf" createtime="0.8"  life="0.001" />  
+  </affect_body>
+</action>
+
+</ag>
+		

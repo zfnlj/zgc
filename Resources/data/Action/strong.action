@@ -5,7 +5,7 @@
   	<affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="strong_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
-  	<affector class="resortHand" createtime="3" life="0.001" />
+  	<affector class="action" obj="delay_resortHand" tarFlag="0" createtime="3.0" life="0.001" />
   </affect_body>
 </action>
 </ag>		

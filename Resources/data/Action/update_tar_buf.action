@@ -5,12 +5,5 @@
   	<affector class="action" obj="update_tar_buf_show" tarFlag="1" pre="0" createtime="0" iVal="1" life="30" />
   </affect_body>
 </action>
-
-<action name="update_tar_buf_show" class="null">
-  <affect_body>
-    	<affector class="updateBuf" createtime="0.8"  life="0.001" />  
-  </affect_body>
-</action>
-
 </ag>
 		
