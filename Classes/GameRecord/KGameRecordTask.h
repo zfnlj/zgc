@@ -22,6 +22,7 @@ public:
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt);
 	void Empty();
 	void StartRecrod();
+	void StartPlay();
 private:
 
 	// 为了内存分配快搞的各种池

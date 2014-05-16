@@ -29,7 +29,6 @@ void KLogicModuleMsgDealer::RegisterAllMsg()
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_DECKINIT, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::DeckInit);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_USE_SECRET, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::UseSecret);
 	
-	
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_DIRTY, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::BattleDirty);
 	RegisterMsg<KBattleMsgHub>(LOGIC_BATTLE_OPDONE, &KMsgHub::getSingleton().GetBattleMsgHub(), &KBattleMsgHub::BattleOpDone);
 	

@@ -32,6 +32,7 @@ void KBattleCtrlBase::Clear()
 	m_BattleGuyList.clear();
 	m_pMainPlayer = NULL;
 	m_CurPlayGuy = NULL;
+	m_CurOp.Empty();
 }
 
 void KBattleCtrlBase::UpdateBattleGuy(float dt)
@@ -548,7 +549,7 @@ void KBattleCtrlBase::deserializeBattleGuy(UINT64 guyId,KMemoryStream* si,bool b
 size_t KBattleCtrlBase::serialize(KMemoryStream* so)
 {
 	size_t pos = so->size();
-	if(!so->WriteInt(m_state))
+	if(!so->WriteByte((BYTE)m_state))
 		return 0;
 	UINT64 playId = (m_CurPlayGuy)? m_CurPlayGuy->GetGuyId():0;
 	if(!so->WriteUint64(playId))
@@ -559,8 +560,8 @@ size_t KBattleCtrlBase::serialize(KMemoryStream* so)
 
 bool KBattleCtrlBase::deserialize(KMemoryStream* si)
 {
-	int statVal = 0;
-	if(!si->ReadInt(statVal))
+	BYTE statVal = 0;
+	if(!si->ReadByte(statVal))
 		return false;
 	UINT64 playId;
 	if(!si->ReadUint64(playId))
@@ -574,10 +575,10 @@ bool KBattleCtrlBase::deserialize(KMemoryStream* si)
 size_t KBattleCtrlBase::serializeAll(KMemoryStream* so)
 {
 	size_t pos = so->size();
-	if(!so->WriteInt(m_state)) return 0;
+	if(!so->WriteByte((BYTE)m_state)) return 0;
 	if(!so->WriteUint64(m_pMainPlayer->GetGuyId())) return 0;
 	if(!so->WriteUint64(m_CurPlayGuy->GetGuyId())) return 0;
-	if(!so->WriteInt(m_BattleGuyList.size())) return 0;
+	if(!so->WriteByte((BYTE)m_BattleGuyList.size())) return 0;
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		(*it)->serialize(so);
 	}
@@ -588,22 +589,27 @@ size_t KBattleCtrlBase::serializeAll(KMemoryStream* so)
 bool KBattleCtrlBase::deserializeAll(KMemoryStream* si)
 {
 	Clear();
-	int statVal = 0;
-	if(!si->ReadInt(statVal))
+	BYTE statVal = 0;
+	if(!si->ReadByte(statVal))
 		return false;
 	UINT64 mainPlayerId,curPlayerId;
 	if(!si->ReadUint64(mainPlayerId))
 		return false;
 	if(!si->ReadUint64(curPlayerId))
 		return false;
-	int guyNum;
-	if(!si->ReadInt(guyNum))
+	BYTE guyNum;
+	if(!si->ReadByte(guyNum))
 		return false;
 	for(int i=0;i<guyNum;i++){
 		KBattleGuy* guy = KBattleGuy::create();
 		m_BattleGuyList.push_back(guy);
-		if(guy->GetGuyId()==mainPlayerId) m_pMainPlayer = guy;
-		if(guy->GetGuyId()==curPlayerId) m_CurPlayGuy = guy;
+		guy->SetBattleCtrl(this);
+		
+	}
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		(*it)->deserialize(si);
+		if((*it)->GetGuyId()==mainPlayerId) m_pMainPlayer = (*it);
+		if((*it)->GetGuyId()==curPlayerId) m_CurPlayGuy = (*it);
 	}
 	m_state = (BattleState)statVal;
 	return true;

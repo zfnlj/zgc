@@ -22,6 +22,17 @@ cocos2d::extension::UIWidget* KCardActor::GetUI()
 
 KCardActor::~KCardActor()
 {
+	Clear();
+}
+
+void KCardActor::update(float dt)
+{
+	m_ActionMgr.breathe(dt);
+}
+
+void KCardActor::Clear()
+{
+	m_ActionMgr.onDestory();
 	if(m_ui){
 		m_ui->removeFromParent();
 	}
@@ -32,11 +43,6 @@ KCardActor::~KCardActor()
 	CC_SAFE_RELEASE(m_ActiveGreenSprite);
 	CC_SAFE_RELEASE(m_ui);
 	CC_SAFE_RELEASE(m_bigPhoto);
-}
-
-void KCardActor::update(float dt)
-{
-	m_ActionMgr.breathe(dt);
 }
 
 void KCardActor::ActiveGreen()

@@ -4,7 +4,7 @@
 #include "../Inc/KTypeDef.h"
 #include "../GameRoot.h"
 
-#define DATA_BUF_SIZE 1024
+#define DATA_BUF_SIZE 2048
 
 void KGameRecordTask::init()
 {
@@ -87,7 +87,6 @@ bool KGameRecordTask::DeserializeData( StreamInterface* pStream )
 	m_deckStream.clear();
 	pStream->ReadData( &deckSize, 4 );
 	pStream->ReadData( m_deckStream.m_pBuf, deckSize);
-	m_deckStream.Seek(deckSize);
 	
 	pStream->ReadData( &uDataCount, 4 );
 	for ( unsigned int ii=0; ii<uDataCount; ii++ )
@@ -119,4 +118,9 @@ void KGameRecordTask::StartRecrod()
 {
 	Empty();
 	GameRoot::getSingleton().BattleCtrl().serializeAll(&m_deckStream);
+}
+
+void KGameRecordTask::StartPlay()
+{
+	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
 }

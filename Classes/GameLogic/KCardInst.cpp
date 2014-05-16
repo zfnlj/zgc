@@ -5,6 +5,8 @@
 #include "System/Misc/KStream.h"
 #include "assist/KBattleEventAssist.h"
 #include "assist/KSkillAssist.h"
+#include "KDynamicWorld.h"
+#include "../Inc/KLogicMsg.h"
 
 void _removeFromCardList(KCardInstList& lst,KCardInst* card)
 {
@@ -111,6 +113,13 @@ KCardInst* KCardInst::create()
 	KCardInst* card = KCardInst::Alloc();
 	card->init();
 	return card;
+}
+
+void KCardInst::Clear()
+{
+#ifdef _USE_COCOS2DX
+	releaseActor();
+#endif
 }
 
 void KCardInst::init(int realId,KBattleGuy* owner,KCardStatic* st)
@@ -443,9 +452,9 @@ bool KCardInst::IsRangeAbility(KAbilityStatic::Enum_When when)
 size_t KCardInst::serializeDirty(KMemoryStream* so)
 {
 	size_t pos = so->size();
-	so->WriteInt(m_attr.getRealID());
+	m_attr.updateMask(KCardAttr::REAL_ID);
+	m_attr.updateMask(KCardAttr::CARD_ID);
 	m_attr.writePacketFilter(so,0,true);
-
 	return so->size() - pos;
 }
 

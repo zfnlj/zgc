@@ -32,6 +32,12 @@ public:
 	};
 	~KCardInst();
 	static KCardInst* create();
+	static void Free(KCardInst* p)
+	{
+		p->Clear();
+		System::Memory::KPortableStepPool<KCardInst,128>::Free(p);
+	}
+
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
 	void init(int realId,KBattleGuy* owner,KCardStatic* st);
 	virtual bool init();
@@ -89,6 +95,7 @@ public:
 	void retainActor(CCObject* actor);
 	void releaseActor();
 #endif
+	void Clear();
 	bool IsDirty(){ return m_attr.IsDirty();}
 	size_t serialize(KMemoryStream* so);
 	size_t serializeDirty(KMemoryStream* so);

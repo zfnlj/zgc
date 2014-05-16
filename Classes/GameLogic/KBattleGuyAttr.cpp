@@ -1,5 +1,6 @@
 #include "KBattleGuyAttr.h"
 #include "../StaticTable/KGameStatic.h"
+#include "assist/KSkillAssist.h"
 
 #pragma warning(disable:4355)
 KBattleGuyAttr::KBattleGuyAttr(void):m_attrs(*this)
@@ -94,14 +95,24 @@ bool KBattleGuyAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear
 
 	if(mask&KBattleGuyAttr::CUR_RES)
 	{
-		msg->WriteInt(getAttrValue(ca_curRes));
+		msg->WriteByte((BYTE)getAttrValue(ca_curRes));
 		if(clear) updateUnMask(CUR_RES);
 	}
 	
 	if(mask&KBattleGuyAttr::MAX_RES)
 	{
-		msg->WriteInt(getAttrValue(ca_maxRes));
+		msg->WriteByte((BYTE)getAttrValue(ca_maxRes));
 		if(clear) updateUnMask(MAX_RES);
+	}
+	if(mask&KBattleGuyAttr::BUF)
+	{
+		BYTE nBuf = (BYTE)m_bufList.size();
+		if(!msg->WriteByte(nBuf)) return 0;
+		for(KCardAbilityList::iterator it=m_bufList.begin();it!=m_bufList.end();++it){
+			if(!msg->WriteInt((*it)->GetId())) return 0;
+		}
+
+		if(clear) updateUnMask(BUF);
 	}
 
 	return true;
@@ -110,22 +121,36 @@ bool KBattleGuyAttr::readPacket( KMemoryStream* msg ,bool first)
 {
 	DWORD mask=0;
 
-	int iValue = 0;
+	BYTE iValue = 0;
 
 	msg->ReadDword(mask);
 
 	if(mask&KBattleGuyAttr::CUR_RES)
 	{
-		msg->ReadInt(iValue);
+		msg->ReadByte(iValue);
 		setAttrValue(ca_curRes,iValue,first);
 		updateMask(KBattleGuyAttr::CUR_RES);
 	}
 	if(mask&KBattleGuyAttr::MAX_RES)
 	{
-		msg->ReadInt(iValue);
+		msg->ReadByte(iValue);
 		setAttrValue(ca_maxRes,iValue,first);
 		updateMask(KBattleGuyAttr::MAX_RES);
 	}
+
+	if(mask&KBattleGuyAttr::BUF)
+	{
+		BYTE nBuf;
+		msg->ReadByte(nBuf);
+		for(BYTE n=0;n<nBuf;n++){
+			int bufId;
+			if(!msg->ReadInt(bufId)) return 0;
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(bufId);
+			m_bufList.push_back(pBuf);
+		}
+		updateMask(KBattleGuyAttr::BUF);
+	}
+
 	return true;
 }
 void KBattleGuyAttr::reset()
@@ -151,3 +176,14 @@ void KBattleGuyAttr::clearBit()
 	mUpdateMask=0;
 }
 
+void KBattleGuyAttr::AddBuf(KAbilityStatic* pBuf)
+{
+	updateMask(KBattleGuyAttr::BUF);
+	m_bufList.push_back(pBuf);
+}
+
+void KBattleGuyAttr::RemoveBuf(int id)
+{
+	updateMask(KBattleGuyAttr::BUF);
+	KSkillAssist::_removeBuf(m_bufList,id);
+}

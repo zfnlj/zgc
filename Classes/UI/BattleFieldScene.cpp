@@ -202,6 +202,7 @@ void BattleFieldScene::onTurnBegin()
 
 void BattleFieldScene::onTurnEnd()
 {
+
 	KClickCardMgr::getSingleton().HideBigCard();
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCurPlayer();
 	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
@@ -225,6 +226,7 @@ void BattleFieldScene::onHandCardReady()
 
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
+
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
 	KGameRecordMgr::getSingleton().RecordMouseEvt(KRecordUIMouseData::evt_turn_end);
 
@@ -404,3 +406,4 @@ void BattleFieldScene::onUseSecretCard(KCardInst* card)
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
 	KUIAssist::_resortHandCardSet(guy);
 }
+

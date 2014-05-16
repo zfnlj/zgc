@@ -5,6 +5,29 @@ typedef unsigned short  ushort;
 
 #define ZGC_SAFE_DELETE(p)            do { if(p) { delete (p); (p) = 0; } } while(0)
 
+#define IMPLEMENT_SINGLETON(__classname ) \
+	template<> __classname* Singleton<__classname>::mSingleton = 0; \
+	__classname& __classname::getSingleton(void) \
+{ \
+	if(NULL == mSingleton)\
+{\
+	mSingleton = new __classname;\
+	mSingleton->init();\
+}\
+	return (*mSingleton);\
+}
+
+#define IMPLEMENT_SIMPLE_SINGLETON(__classname ) \
+	template<> __classname* Singleton<__classname>::mSingleton = 0; \
+	__classname& __classname::getSingleton(void) \
+{ \
+	if(NULL == mSingleton)\
+{\
+	mSingleton = new __classname;\
+}\
+	return (*mSingleton);\
+}
+
 #ifndef _USE_COCOS2DX
 inline void CCLog(const char * pszFormat, ...)
 {

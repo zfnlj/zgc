@@ -23,6 +23,7 @@ public:
 	 }
 	 static void Free(KBattleGuy* p)
 	 {
+		 p->Clear();
 		 System::Memory::KPortableStepPool<KBattleGuy,128>::Free(p);
 	 }
 	 virtual void free(){ Free(this);}
@@ -87,7 +88,7 @@ protected:
 	FBattleGuy m_FacadeObj;
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
-	KCardAbilityList m_bufList;
+	
 	KHeroSkillMgr m_heroSkillMgr;
 friend class KClientBattleCtrl;
 };

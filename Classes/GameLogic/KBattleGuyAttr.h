@@ -25,6 +25,7 @@ public:
 	{
 		CUR_RES		= BIT(0),	//
 		MAX_RES		= BIT(1),	//
+		BUF			= BIT(2),
 	};
 
 private:
@@ -70,4 +71,6 @@ public: // IAttrSet
 
 	int getMaxRes(){ return getAttrValue(ca_maxRes);}
 	void setMaxRes(int val){ setAttrValue(ca_maxRes,val);}
+	void AddBuf(KAbilityStatic* pBuf);
+	void RemoveBuf(int id);
 };

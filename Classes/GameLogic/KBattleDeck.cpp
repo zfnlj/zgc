@@ -472,15 +472,15 @@ size_t KBattleDeck::serialize(KMemoryStream* so)
 	size_t pos = so->size();
 	if(!serializeCardList(so,m_HeroCardSet))
 		return 0;
-	if(!serializeCardList(so,m_HandCardSet))
+	if(!serializeCardList(so,m_HandCardSet,true))
 		return 0;
 	if(!serializeCardList(so,m_FightCardSet))
 		return 0;
 	if(!serializeCardList(so,m_EquipCardSet))
 		return 0;
-	if(!serializeCardList(so,m_SlotCardSet))
+	if(!serializeCardList(so,m_SlotCardSet,true))
 		return 0;
-	if(!serializeCardList(so,m_TombCardSet))
+	if(!serializeCardList(so,m_TombCardSet,true))
 		return 0;
     if(!serializeCardList(so,m_SecretCardSet))
 		return 0;
@@ -491,15 +491,15 @@ size_t KBattleDeck::serialize(KMemoryStream* so)
 size_t KBattleDeck::serializeCardList(KMemoryStream* so,KCardInstList& lst,bool newCard)
 {
 	size_t pos = so->size();
-	int n = lst.size();
-	if(!so->WriteInt(n))
+	BYTE n = lst.size();
+	if(!so->WriteByte(n))
 		return -1;
 	for(KCardInstList::iterator it=lst.begin();it!=lst.end();++it){
 		KCardInst* card = *it;
 		if(newCard){
 			if(!card->serializeDirty(so)) return 0;
 		}else{
-			if(!card->serialize(so,newCard)) return 0;
+			if(!card->serialize(so)) return 0;
 		}
 		
 	}
@@ -528,12 +528,13 @@ BOOL KBattleDeck::deserialize(KMemoryStream* si)
 BOOL KBattleDeck::deserializeCardList(KMemoryStream* si,KCardInstList& lst)
 {
 	_clearCardList(&lst);
-	int n;
-	if(!si->ReadInt(n))
+	BYTE n;
+	if(!si->ReadByte(n))
 		return FALSE;
 	for(int i=0;i<n;i++){
 		KCardInst* card = KCardInst::create();
 		if(!card->deserialize(si)) return FALSE;
+		card->SetOwner(m_Owner);
 		lst.push_back(card);
 	}
 	return TRUE;

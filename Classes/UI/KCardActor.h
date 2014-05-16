@@ -48,6 +48,7 @@ public:
 	virtual void delWidget(const char* obj);
 	virtual void updateSecret();
 	virtual CCNode* GetCNode(const char* obj);
+	void Clear();
 private:
 	void init(KCardInst*);
 	bool DoSelectBeginCard(CCObject* sender);

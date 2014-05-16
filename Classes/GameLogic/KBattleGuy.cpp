@@ -166,10 +166,10 @@ void KBattleGuy::QueryActiveDefendCards(KCardInstList* lst)
 size_t KBattleGuy::serialize(KMemoryStream* so)
 {
 	size_t pos = so->size();
-	if(!so->WriteUint64(m_guyId))
-		return 0;
-	m_attr.writePacketAll(so,true);
+	if(!so->WriteUint64(m_guyId)) return 0;
+	if(!m_attr.writePacketAll(so,true)) return 0;
 
+	if(!m_heroSkillMgr.serialize(so)) return 0;
 	if(!m_Deck.serialize(so))
 		return 0;
 	return so->size() - pos;
@@ -196,6 +196,7 @@ BOOL KBattleGuy::deserialize(KMemoryStream* si)
 	if(!si->ReadUint64(m_guyId))
 		return FALSE;
 	m_attr.readPacket(si);
+	if(!m_heroSkillMgr.deserialize(si)) return FALSE;
 	if(!m_Deck.deserialize(si))
 		return FALSE;
 	return TRUE;
@@ -270,7 +271,7 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 		}
 		break;
 	default:
-		m_bufList.push_back(pAbility);
+		m_attr.AddBuf(pAbility);
 		break;
 	}
 	if(!pAbility->BufIconEmpty()) pSrc->AddBuf(pAbility);
@@ -279,19 +280,19 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 
 void KBattleGuy::RemoveGuyAbility(KAbilityStatic* pAbility)
 {
-	KSkillAssist::_removeBuf(m_bufList,pAbility->GetId());
+	m_attr.RemoveBuf(pAbility->GetId());
 }
 
 int KBattleGuy::calcHurtVal(int val)
 {
 	int realVal = val;
-	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_bufList,KAbilityStatic::what_sp_rate);
+	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_attr.m_bufList,KAbilityStatic::what_sp_rate);
 	if(pBuf){
 		realVal = val*pBuf->GetNormalVal();
 	}
 
-	KCardAbilityList::iterator it = m_bufList.begin();
-	while(it != m_bufList.end()){
+	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
 		if((*it)->GetWhat()== KAbilityStatic::what_cast_add) realVal += (*it)->GetNormalVal();
 		it++;
 	}
@@ -300,7 +301,7 @@ int KBattleGuy::calcHurtVal(int val)
 
 int KBattleGuy::calcHealVal(int val)
 {
-	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_bufList,KAbilityStatic::what_sp_rate);
+	KAbilityStatic* pBuf = KSkillAssist::_findBuf(m_attr.m_bufList,KAbilityStatic::what_sp_rate);
 	if(pBuf){
 		return val*pBuf->GetNormalVal();
 	}else{
@@ -310,8 +311,8 @@ int KBattleGuy::calcHealVal(int val)
 
 int KBattleGuy::calcMpCost(int val)
 {
-	KCardAbilityList::iterator it = m_bufList.begin();
-	while(it != m_bufList.end()){
+	KCardAbilityList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
 		if((*it)->GetWhat()== KAbilityStatic::what_mp_cost) val += (*it)->GetNormalVal();
 		it++;
 	}

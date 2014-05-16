@@ -408,7 +408,9 @@ void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
 	m_bar->setAnchorPoint(ccp(0.0f,0.5f));
 	//m_emitter->setAngle(-vTmp.getAngle()*180*M_1_PI);
     CCCallFunc * funcall= CCCallFunc::create(this, callfunc_selector(KAffectorIndicateExecutor::callbackMissileReach));
-    m_bar->runAction(CCSequence::create(CCMoveTo::create(fTime,ptDes),funcall,NULL));
+	CCAction* seq = CCSequence::create(CCMoveTo::create(fTime,ptDes),funcall,NULL);
+    m_bar->runAction(seq);
+	m_ccActionDef.init(seq,m_bar);
 
 	KUIAssist::MainLayer()->addChild(m_bar,100);
 	KAffectorExecutor::OnPlay(param);
@@ -416,6 +418,7 @@ void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
 
 void KAffectorIndicateExecutor::OnStop(void)
 {
+	m_ccActionDef.empty();
 	//if(m_pChar)
 	//	KObjEffAlgorithm::_setBright(m_pChar->GetEntity(),Ogre::ColourValue::ZERO);
 }
@@ -461,4 +464,5 @@ void KAffectorTimerBarExecutor::OnPlay(K3DActionParam* param)
 
 void KAffectorTimerBarExecutor::OnStop(void)
 {
+	
 }

@@ -71,9 +71,10 @@ public:
 	DWORD m_deadTime;
 	DWORD m_lastAttackTime;
 	KCardBufferList m_bufList;
-private:
 	void updateMask(DWORD v);
 	void updateUnMask(DWORD v);
+private:
+	
 
 public:
 	KCardAttr(void);

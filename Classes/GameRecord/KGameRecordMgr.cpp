@@ -40,4 +40,5 @@ void KGameRecordMgr::InitTest()
 	SaveToFile("abc");
 
 	LoadFile("abc");
+	m_task.StartPlay();
 }

@@ -144,29 +144,29 @@ bool KCardAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear)
 
 	if(mask&KCardAttr::REAL_ID)
 	{
-		msg->WriteInt(getAttrValue(ca_realId));
+		msg->WriteWord((WORD)getAttrValue(ca_realId));
 		if(clear) updateUnMask(REAL_ID);
 	}
 	
 	if(mask&KCardAttr::CUR_HP)
 	{
-		msg->WriteInt(getAttrValue(ca_cur_hp));
+		msg->WriteShort((short)getAttrValue(ca_cur_hp));
 		if(clear) updateUnMask(CUR_HP);
 	}
 
 	if(mask&KCardAttr::MAX_HP)
 	{
-		msg->WriteInt(getAttrValue(ca_max_hp));
+		msg->WriteByte((BYTE)getAttrValue(ca_max_hp));
 		if(clear) updateUnMask(MAX_HP);
 	}
 
 	if(mask&KCardAttr::ADD_ATK)
 	{
-		msg->WriteInt(getAttrValue(ca_add_atk));
+		msg->WriteShort((short)getAttrValue(ca_add_atk));
 		if(clear) updateUnMask(ADD_ATK);
 	}
 
-	//if(mask&KCardAttr::CARD_ID)
+	if(mask&KCardAttr::CARD_ID)
 	{
 		msg->WriteInt(getAttrValue(ca_cardId));
 		if(clear) updateUnMask(CARD_ID);
@@ -174,25 +174,25 @@ bool KCardAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear)
 
 	if(mask&KCardAttr::READY)
 	{
-		msg->WriteInt(getAttrValue(ca_ready));
+		msg->WriteByte((BYTE)getAttrValue(ca_ready));
 		if(clear) updateUnMask(READY);
 	}
 
 	if(mask&KCardAttr::SLOT)
 	{
-		msg->WriteInt(getAttrValue(ca_slot));
+		msg->WriteByte((BYTE)getAttrValue(ca_slot));
 		if(clear) updateUnMask(SLOT);
 	}
 	if(mask&KCardAttr::BUF)
 	{
-		int n = m_bufList.size();
-		if(!msg->WriteInt(n))
+		BYTE n = (BYTE)m_bufList.size();
+		if(!msg->WriteByte(n))
 			return false;
 		KCardBufferList::iterator it = m_bufList.begin();
 		while(it != m_bufList.end()){
 			KCardBuffer& buf = *it;
 			msg->WriteInt(buf._pST->GetId());
-			msg->WriteInt(buf._loop);
+			msg->WriteByte((BYTE)buf._loop);
 			it++;
 		}
 	}
@@ -203,30 +203,33 @@ bool KCardAttr::readPacket( KMemoryStream* msg ,bool first)
 {
 	DWORD mask=0;
 	int iValue = 0;
+	WORD wValue = 0;
+	BYTE bValue = 0;
+	short sValue = 0;
 	msg->ReadDword(mask);
 
 	if(mask&KCardAttr::REAL_ID)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_realId,iValue,first);
+		msg->ReadWord(wValue);
+		setAttrValue(ca_realId,wValue,first);
 		updateMask(KCardAttr::REAL_ID);
 	}
 	if(mask&KCardAttr::CUR_HP)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_cur_hp,iValue,first);
+		msg->ReadShort(sValue);
+		setAttrValue(ca_cur_hp,sValue,first);
 		updateMask(KCardAttr::CUR_HP);
 	}
 	if(mask&KCardAttr::MAX_HP)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_max_hp,iValue,first);
+		msg->ReadByte(bValue);
+		setAttrValue(ca_max_hp,bValue,first);
 		updateMask(KCardAttr::MAX_HP);
 	}
 	if(mask&KCardAttr::ADD_ATK)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_add_atk,iValue,first);
+		msg->ReadShort(sValue);
+		setAttrValue(ca_add_atk,sValue,first);
 		updateMask(KCardAttr::ADD_ATK);
 	}
 	if(mask&KCardAttr::CARD_ID)
@@ -237,27 +240,27 @@ bool KCardAttr::readPacket( KMemoryStream* msg ,bool first)
 	}
 	if(mask&KCardAttr::READY)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_ready,iValue,first);
+		msg->ReadByte(bValue);
+		setAttrValue(ca_ready,bValue,first);
 		updateMask(KCardAttr::READY);
 	}
 	if(mask&KCardAttr::SLOT)
 	{
-		msg->ReadInt(iValue);
-		setAttrValue(ca_slot,iValue,first);
+		msg->ReadByte(bValue);
+		setAttrValue(ca_slot,bValue,first);
 		updateMask(KCardAttr::SLOT);
 	}
 	if(mask&KCardAttr::BUF)
 	{
-		int n;
-		int loop;
-		msg->ReadInt(n);
-		msg->ReadInt(loop);
+		BYTE n;
+		BYTE loop;
+		msg->ReadByte(n);
+		
 		m_bufList.clear();
 		for(int i=0;i<n;i++){
 			int bufId;
-			if(!msg->ReadInt(bufId))
-				return FALSE;
+			msg->ReadInt(bufId);
+			msg->ReadByte(loop);
 			KAbilityStatic* buf = KGameStaticMgr::getSingleton().GetAbilityOnId(bufId);
 			AddBuf(buf,loop);
 		}

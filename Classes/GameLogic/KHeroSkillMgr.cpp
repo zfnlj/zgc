@@ -36,6 +36,28 @@ void KHeroSkillMgr::tmpInit(KBattleGuy* guy)
 	//addSkill(1003,2);
 }
 
+size_t KHeroSkillMgr::serialize(KMemoryStream* so)
+{
+	size_t pos = so->size();
+	for(int i=0;i< MAX_HERO_SKILL_NUM;i++){
+		if(!so->WriteWord(m_skill[i]._id)) return 0;
+		if(!so->WriteByte(m_skill[i]._lev)) return 0;
+	}
+	return so->size() - pos;
+}
+
+BOOL KHeroSkillMgr::deserialize(KMemoryStream* si)
+{
+	WORD id;
+	BYTE lev;
+	for(int i=0;i< MAX_HERO_SKILL_NUM;i++){
+		si->ReadWord(id);
+		si->ReadByte(lev);
+		m_skill[i].init(id,lev);
+	}
+	return TRUE;
+}
+
 void KHeroSkillMgr::addSkill(int id,int lev)
 {
 	for(int i=0;i< MAX_HERO_SKILL_NUM;i++){

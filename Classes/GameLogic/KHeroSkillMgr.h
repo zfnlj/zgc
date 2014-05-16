@@ -33,6 +33,9 @@ public:
 	void tmpInit(KBattleGuy* guy);
 	void ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when);
 	HeroSkill* RndSelectSkill(KAbilityStatic::Enum_When when);
+
+	size_t serialize(KMemoryStream* so);
+	BOOL deserialize(KMemoryStream* si);
 private:
 	void addSkill(int id,int lev);
 	bool m_bDone;   //each turn only one skill actived .
