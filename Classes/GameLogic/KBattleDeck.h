@@ -57,7 +57,7 @@ public:
 	size_t serializeDirty(KMemoryStream* so);
 	BOOL deserializeDirty(KMemoryStream* si);
 	size_t serialize(KMemoryStream* so);
-	size_t serializeCardList(KMemoryStream* so,KCardInstList& lst);
+	size_t serializeCardList(KMemoryStream* so,KCardInstList& lst,bool newCard=false);
 	BOOL deserialize(KMemoryStream* si);
 	BOOL deserializeCardList(KMemoryStream* si,KCardInstList& lst);
 	void updateCardSlot(KCardInst* card);

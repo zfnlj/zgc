@@ -40,8 +40,8 @@ void GameRoot::init()
 void GameRoot::InitializeResource()
 {
 	memset(m_rootPath,0,sizeof(m_rootPath));
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("zgc.exe");
-	int pos = fullPath.find("zgc.exe");
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("zgc.dat");
+	int pos = fullPath.find("zgc.dat");
 	memcpy(m_rootPath,fullPath.c_str(),pos-1);
 
 	KClientTabfileLoader::GetInstance();

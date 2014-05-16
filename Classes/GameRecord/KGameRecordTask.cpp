@@ -1,6 +1,16 @@
 #include "KGameRecordTask.h"
 #include "KRecordFile.h"
-#include "System/Misc/KStream.h"
+
+#include "../Inc/KTypeDef.h"
+#include "../GameRoot.h"
+
+#define DATA_BUF_SIZE 1024
+
+void KGameRecordTask::init()
+{
+	m_dataBuf = new char[DATA_BUF_SIZE];
+	m_deckStream.bind(m_dataBuf,DATA_BUF_SIZE);
+}
 
 KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 {
@@ -42,7 +52,7 @@ bool KGameRecordTask::Load( const char* szFileName)
 
 bool KGameRecordTask::Save( const char* szFileName)
 {
-	KGameRecordDataSaveStream* pMemoryStream = new KGameRecordDataSaveStream;	
+	KGameRecordDataSaveStream* pMemoryStream = new KGameRecordDataSaveStream;
 	if( !SerializeData( pMemoryStream ) ){
 		delete pMemoryStream;
 		return false;
@@ -56,7 +66,11 @@ bool KGameRecordTask::Save( const char* szFileName)
 
 bool KGameRecordTask::SerializeData( StreamInterface* pStream )
 {
-	int count = m_FrameData.size();
+	unsigned int deckSize = m_deckStream.size();
+	pStream->WriteData( &deckSize, 4 );
+	pStream->WriteData(m_deckStream.data(),deckSize);
+
+	unsigned int count = m_FrameData.size();
 	pStream->WriteData( &count, 4 );
 	for(KRecordDataList::iterator it = m_FrameData.begin();it!=m_FrameData.end();++it){
 		KRecordDataBase* pData = *it;
@@ -68,8 +82,13 @@ bool KGameRecordTask::SerializeData( StreamInterface* pStream )
 }
 bool KGameRecordTask::DeserializeData( StreamInterface* pStream )
 {
-	unsigned int uDataCount;
+	unsigned int deckSize,uDataCount;
 	char cDataType;
+	m_deckStream.clear();
+	pStream->ReadData( &deckSize, 4 );
+	pStream->ReadData( m_deckStream.m_pBuf, deckSize);
+	m_deckStream.Seek(deckSize);
+	
 	pStream->ReadData( &uDataCount, 4 );
 	for ( unsigned int ii=0; ii<uDataCount; ii++ )
 	{
@@ -93,4 +112,11 @@ void KGameRecordTask::Empty()
 		delete pData;
 	}
 	m_FrameData.clear();
+	m_deckStream.clear();
+}
+
+void KGameRecordTask::StartRecrod()
+{
+	Empty();
+	GameRoot::getSingleton().BattleCtrl().serializeAll(&m_deckStream);
 }

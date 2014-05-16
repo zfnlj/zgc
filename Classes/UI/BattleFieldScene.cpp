@@ -162,11 +162,11 @@ void BattleFieldScene::onBattleInit()
 
 void BattleFieldScene::InitTest()
 {
-	KGameRecordMgr::getSingleton().InitTest();
-	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+
+	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();
-	KCardActor* actor = (KCardActor*)pHero->getActor();*/
-	//actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
+	KCardActor* actor = (KCardActor*)pHero->getActor();
+	actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
 }
 
 void BattleFieldScene::onClickBackground(CCObject* sender)
@@ -209,6 +209,7 @@ void BattleFieldScene::onTurnEnd()
 
 void BattleFieldScene::RunTest(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().InitTest();
 	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	CCLabelBMFont* bmFont = CCLabelBMFont::create("-23","GUI/num_1.fnt");
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();

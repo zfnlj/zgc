@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,31024,31025,31026,20007,20005,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20007,32002,32003,32001,20005,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -488,7 +488,7 @@ size_t KBattleDeck::serialize(KMemoryStream* so)
 
 }
 
-size_t KBattleDeck::serializeCardList(KMemoryStream* so,KCardInstList& lst)
+size_t KBattleDeck::serializeCardList(KMemoryStream* so,KCardInstList& lst,bool newCard)
 {
 	size_t pos = so->size();
 	int n = lst.size();
@@ -496,8 +496,12 @@ size_t KBattleDeck::serializeCardList(KMemoryStream* so,KCardInstList& lst)
 		return -1;
 	for(KCardInstList::iterator it=lst.begin();it!=lst.end();++it){
 		KCardInst* card = *it;
-		if(!card->serialize(so))
-			return 0;
+		if(newCard){
+			if(!card->serializeDirty(so)) return 0;
+		}else{
+			if(!card->serialize(so,newCard)) return 0;
+		}
+		
 	}
 	return so->size() - pos;
 }

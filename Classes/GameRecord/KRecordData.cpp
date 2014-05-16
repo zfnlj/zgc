@@ -32,9 +32,13 @@ bool KRecordPlayOpData::Serialize( StreamInterface* pDataStream )
 	return true;
 }
 
-void KRecordPlayOpData::Replay()
+bool KRecordPlayOpData::Replay()
 {
-
+	KBattleCtrlBase::BattleOp& op = GameRoot::getSingleton().BattleCtrl().GetCurOp();
+	if(!op.IsEmpty()) return false;
+	if(GameRoot::getSingleton().BattleCtrl().GetCurState()!=KBattleCtrlBase::battle_play) return false;
+	op.Set(m_data._src,m_data._des,m_data._slot);
+	return true;
 }
 
 bool KRecordUIMouseData::Deserialize(StreamInterface* pDataStream)
@@ -61,11 +65,12 @@ void KRecordUIMouseData::RecordMouseEvt(Mouse_evt evt)
 	m_evt = evt;
 }
 
-void KRecordUIMouseData::Replay()
+bool KRecordUIMouseData::Replay()
 {
 	switch(m_evt){
 	case evt_turn_end:
 		GameRoot::getSingleton().getBattleScene()->onTurnEnd();
 		break;
 	}
+	return true;
 }

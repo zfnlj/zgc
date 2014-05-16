@@ -20,6 +20,9 @@ public:
 			_src = _des = _slot = -1;
 			_ok = false;
 		}
+		void Set(int src,int des,int slot){
+			_src = src; _des = des; _slot = slot; _ok = true;
+		}
 		int _src;
 		int _des;
 		int _slot;
@@ -90,6 +93,9 @@ public:
 	size_t serialize(KMemoryStream* si);
 	bool deserialize(KMemoryStream* si);
 
+	size_t serializeAll(KMemoryStream* si);
+	bool deserializeAll(KMemoryStream* si);
+
 	void onNetClose();
 
 	
@@ -99,6 +105,7 @@ public:
 	void AddCardEvtAbility(KCardInst* card,KAbilityStatic::Enum_When when);
 	void DoCardEvtList(KCardInst* actor);
 	int GetFighterNum();
+	void Clear();
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;

@@ -5,7 +5,7 @@ IMPLEMENT_SINGLETON(KGameRecordMgr)
 
 void KGameRecordMgr::StartRecord()
 {
-	m_task.Empty();
+	m_task.StartRecrod();
 	m_recState = REC_RECORD;
 }
 

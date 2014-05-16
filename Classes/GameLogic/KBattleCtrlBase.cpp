@@ -24,6 +24,16 @@ bool KBattleCtrlBase::init(void* w)
 	return true;
 }
 
+void KBattleCtrlBase::Clear()
+{
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		KBattleGuy::Free(*it);
+	}
+	m_BattleGuyList.clear();
+	m_pMainPlayer = NULL;
+	m_CurPlayGuy = NULL;
+}
+
 void KBattleCtrlBase::UpdateBattleGuy(float dt)
 {
 	//if(m_state==battle_game_end) return;
@@ -557,6 +567,44 @@ bool KBattleCtrlBase::deserialize(KMemoryStream* si)
 		return false;
 	KBattleGuy* guy = GetGuy(playId);
 	m_CurPlayGuy = guy;
+	m_state = (BattleState)statVal;
+	return true;
+}
+
+size_t KBattleCtrlBase::serializeAll(KMemoryStream* so)
+{
+	size_t pos = so->size();
+	if(!so->WriteInt(m_state)) return 0;
+	if(!so->WriteUint64(m_pMainPlayer->GetGuyId())) return 0;
+	if(!so->WriteUint64(m_CurPlayGuy->GetGuyId())) return 0;
+	if(!so->WriteInt(m_BattleGuyList.size())) return 0;
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		(*it)->serialize(so);
+	}
+	return so->size() - pos;
+
+}
+
+bool KBattleCtrlBase::deserializeAll(KMemoryStream* si)
+{
+	Clear();
+	int statVal = 0;
+	if(!si->ReadInt(statVal))
+		return false;
+	UINT64 mainPlayerId,curPlayerId;
+	if(!si->ReadUint64(mainPlayerId))
+		return false;
+	if(!si->ReadUint64(curPlayerId))
+		return false;
+	int guyNum;
+	if(!si->ReadInt(guyNum))
+		return false;
+	for(int i=0;i<guyNum;i++){
+		KBattleGuy* guy = KBattleGuy::create();
+		m_BattleGuyList.push_back(guy);
+		if(guy->GetGuyId()==mainPlayerId) m_pMainPlayer = guy;
+		if(guy->GetGuyId()==curPlayerId) m_CurPlayGuy = guy;
+	}
 	m_state = (BattleState)statVal;
 	return true;
 }

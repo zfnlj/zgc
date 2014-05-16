@@ -166,7 +166,7 @@ bool KCardAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear)
 		if(clear) updateUnMask(ADD_ATK);
 	}
 
-	if(mask&KCardAttr::CARD_ID)
+	//if(mask&KCardAttr::CARD_ID)
 	{
 		msg->WriteInt(getAttrValue(ca_cardId));
 		if(clear) updateUnMask(CARD_ID);
