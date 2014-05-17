@@ -156,6 +156,7 @@ void BattleFieldScene::onBattleInit()
 
 	m_resPanel.init(m_ui);
 
+	m_gameRecPanel.init(m_ui);
 
 	InitTest();
 }
@@ -210,7 +211,6 @@ void BattleFieldScene::onTurnEnd()
 
 void BattleFieldScene::RunTest(CCObject* sender)
 {
-	KGameRecordMgr::getSingleton().InitTest();
 	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	CCLabelBMFont* bmFont = CCLabelBMFont::create("-23","GUI/num_1.fnt");
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();

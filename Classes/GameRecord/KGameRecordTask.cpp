@@ -3,6 +3,7 @@
 
 #include "../Inc/KTypeDef.h"
 #include "../GameRoot.h"
+#include "../UI/BattleFieldScene.h"
 
 #define DATA_BUF_SIZE 2048
 
@@ -123,4 +124,5 @@ void KGameRecordTask::StartRecrod()
 void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
+	GameRoot::getSingleton().getBattleScene()->FreshAllCard();
 }

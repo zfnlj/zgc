@@ -9,6 +9,22 @@ void KGameRecordMgr::StartRecord()
 	m_recState = REC_RECORD;
 }
 
+void KGameRecordMgr::Stop()
+{
+	if(m_recState==REC_RECORD){
+		SaveToFile("abc");
+	}else{
+		m_task.Stop();
+	}
+	m_recState = REC_NULL;
+}
+
+void KGameRecordMgr::StartPlay()
+{
+	m_recState = REC_PLAY;
+	m_task.StartPlay();
+}
+
 bool KGameRecordMgr::SaveToFile( const char* szFileName)
 {
 	return m_task.Save(szFileName);

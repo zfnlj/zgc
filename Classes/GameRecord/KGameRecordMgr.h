@@ -15,13 +15,15 @@ public:
 	~KGameRecordMgr(){}
 	static KGameRecordMgr& getSingleton(void);
 	void init(){m_recState = REC_NULL; m_task.init();}
-	void StartRecord();
+	
 	bool SaveToFile( const char* szFileName);
 	bool LoadFile(const char* szFileName);
 	void RecordPlayOp(int src,int des,int slot);
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
-	void StartRecrod();
+	void StartRecord();
+	void StartPlay();
+	void Stop();
 private:
 	KGameRecordTask m_task;
 	RecState m_recState;

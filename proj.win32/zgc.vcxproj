@@ -230,6 +230,7 @@
     <ClCompile Include="..\Classes\UI\KActor.cpp" />
     <ClCompile Include="..\Classes\UI\KCardActor.cpp" />
     <ClCompile Include="..\Classes\UI\KFightAreaPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KGameRecordPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGameResultPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KIndicatePanel.cpp" />
@@ -377,6 +378,7 @@
     <ClInclude Include="..\Classes\UI\KActor.h" />
     <ClInclude Include="..\Classes\UI\KCardActor.h" />
     <ClInclude Include="..\Classes\UI\KFightAreaPanel.h" />
+    <ClInclude Include="..\Classes\UI\KGameRecordPanel.h" />
     <ClInclude Include="..\Classes\UI\KGameResultPanel.h" />
     <ClInclude Include="..\Classes\UI\KGenCardPanel.h" />
     <ClInclude Include="..\Classes\UI\KIndicatePanel.h" />

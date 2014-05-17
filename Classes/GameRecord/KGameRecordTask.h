@@ -23,6 +23,7 @@ public:
 	void Empty();
 	void StartRecrod();
 	void StartPlay();
+	void Stop(){}
 private:
 
 	// 为了内存分配快搞的各种池
