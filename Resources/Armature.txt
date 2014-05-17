@@ -39,3 +39,4 @@ armature/strange.json
 armature/soldier_cast.json
 armature/pray_other_ability.json
 armature/dist_ability.json
+armature/click_down.json

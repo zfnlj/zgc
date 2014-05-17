@@ -227,7 +227,7 @@ void BattleFieldScene::onHandCardReady()
 
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
-
+	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
 	KGameRecordMgr::getSingleton().RecordMouseEvt(KRecordUIMouseData::evt_turn_end);
 
@@ -237,6 +237,22 @@ void BattleFieldScene::DoEndTurn(CCObject* sender)
 		KSocketFacade::DoEndTurn();
 	}
 	m_indicatePanel.OnSelectSrcCard(NULL);
+}
+
+void BattleFieldScene::ReGenerateAllCard()
+{
+	KClickCardMgr::getSingleton().onBattleRefresh();
+	m_indicatePanel.onBattleRefresh();
+	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	KUIAssist::_showCardSet("my_hero_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet("my_hand_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet("my_fight_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+
+	FBattleGuy* pPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
+	KUIAssist::_showCardSet("your_hero_base",pPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet("your_hand_base",pPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet("your_fight_base",pPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+	
 }
 
 void BattleFieldScene::FreshAllCard()

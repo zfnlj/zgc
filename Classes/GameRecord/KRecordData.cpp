@@ -1,6 +1,34 @@
 #include "KRecordData.h"
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
+#include "../UI/KUIAssist.h"
+enum Cur_OP_Step{
+	step_src,
+	step_des,
+	step_slot,
+	step_area,
+	step_ok,
+};
+
+Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot)
+{
+	if(op._src != src) return step_src;
+	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(src);
+	if(card->IsKindOf(KCardStatic::card_skill)){
+		if(des>0){
+			return step_des;
+		}else{
+			return step_area;
+		}
+	}else if(card->IsKindOf(KCardStatic::card_soldier)){
+		if(slot>=0){
+			return step_slot;
+		}else if(des>0){
+			return step_des;
+		}
+	}
+	return step_ok;
+}
 
 bool KRecordDataBase::Deserialize( StreamInterface* pDataStream )
 {
@@ -37,12 +65,80 @@ bool KRecordPlayOpData::Replay(int mode)
 	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
 	if(ctrl.GetCurState()!=KBattleCtrlBase::battle_play) return false;
 	if(ctrl.IsWaitDrama()) return false;
+	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	KBattleCtrlBase::BattleOp tar;
+	tar.Set(m_data._src,m_data._des,m_data._slot);
+
 	if(!ctrl.IsMyTurn()|| mode==0){
-		KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+		
 		op.Set(m_data._src,m_data._des,m_data._slot);
 		return true;
 	}
+	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
+	switch(step){
+	case step_src:
+		ActiveCard(m_data._src);
+		break;
+	case step_des:
+		ActiveCard(m_data._des);
+		break;
+	case step_slot:
+		{
+			ActiveCard(0);
+		}
+		break;
+	case step_area:
+		{
+			ActiveCard(0);
+		}
+		break;
+	default:
+		break;
+	}
+	
 	return false;
+}
+
+void KRecordPlayOpData::ActiveCard(int realId)
+{
+	KCardInst* pCard= GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	if(m_pActiveCard){
+		if(m_pActiveCard != pCard) KUIAssist::_stopClickAction(m_pActiveCard);
+	}
+	m_pActiveCard = pCard;
+	KUIAssist::_playClickAction(pCard);
+}
+
+bool KRecordPlayOpData::IsClickFightAreaValidate(int slot)
+{
+	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
+	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
+	if(step==step_slot){
+		return (m_data._slot==slot);
+	}else if(step==step_area){
+		return true;
+	}
+	return false;
+}
+
+bool KRecordPlayOpData::IsClickCardValidate(KCardInst* card)
+{
+	bool ret =false;
+	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
+	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
+	switch(step){
+	case step_src:
+		ret  = (m_data._src ==card->GetRealId());
+		break;
+	case step_des:
+		ret  = (m_data._des ==card->GetRealId());
+		break;
+	default:
+		break;
+	}
+	return ret;
 }
 
 bool KRecordUIMouseData::Deserialize(StreamInterface* pDataStream)
@@ -82,5 +178,10 @@ bool KRecordUIMouseData::Replay(int mode)
 		}
 		return true;
 	}
+	return false;
+}
+
+bool KRecordUIMouseData::IsClickButValidate(cocos2d::CCObject* obj)
+{
 	return false;
 }

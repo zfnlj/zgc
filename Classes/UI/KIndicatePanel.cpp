@@ -165,3 +165,11 @@ bool KIndicatePanel::IsActiveCard(KCardInst* card)
 	if(_getIndexOfCard(&m_ActiveRedArr,card)>=0) return true;
 	return false;
 }
+
+void KIndicatePanel::onBattleRefresh()
+{
+	m_SleepArr.clear();
+	m_ActiveGreenArr.clear();
+	m_ActiveRedArr.clear();
+	m_selActor = NULL;
+}

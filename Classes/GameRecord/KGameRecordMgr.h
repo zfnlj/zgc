@@ -3,6 +3,10 @@
 
 #include "System/Singleton.h"
 #include "KGameRecordTask.h"
+#include "cocos2d.h"
+
+class KCardInst;
+
 class KGameRecordMgr : public Singleton<KGameRecordMgr>
 {
 public:
@@ -26,6 +30,9 @@ public:
 	void StartPlay();
 	void onPlayEnd();
 	void Stop();
+	bool IsClickCardValidate(KCardInst* card);
+	bool IsClickFightAreaValidate(int slot);
+	bool IsClickButValidate(cocos2d::CCObject* obj);
 private:
 	KGameRecordTask m_task;
 	RecState m_recState;

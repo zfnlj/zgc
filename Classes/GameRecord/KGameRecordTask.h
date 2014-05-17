@@ -5,6 +5,7 @@
 #include "KRecordData.h"
 #include "KRecordFile.h"
 #include "System/Misc/KStream.h"
+#include "cocos2d.h"
 // 一次录制/回放的所有数据，多线程写/读时直接把这结构传过去
 #define CUR_TASK_VER  1
 
@@ -35,6 +36,10 @@ public:
 	void StartPlay();
 	void Stop();
 	bool Play(float);
+
+	bool IsClickCardValidate(KCardInst* card);
+	bool IsClickFightAreaValidate(int slot);
+	bool IsClickButValidate(cocos2d::CCObject* obj);
 private:
 
 	// 为了内存分配快搞的各种池

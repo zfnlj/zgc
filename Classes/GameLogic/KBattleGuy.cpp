@@ -196,6 +196,7 @@ BOOL KBattleGuy::deserialize(KMemoryStream* si)
 	if(!si->ReadUint64(m_guyId))
 		return FALSE;
 	m_attr.readPacket(si);
+	m_heroSkillMgr.init(this);
 	if(!m_heroSkillMgr.deserialize(si)) return FALSE;
 	if(!m_Deck.deserialize(si))
 		return FALSE;

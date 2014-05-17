@@ -47,6 +47,7 @@ public:
 	void onBattleInit();
 	void onHandCardReady();
 	void FreshAllCard();
+	void ReGenerateAllCard();
 	void onCardDuelResult(strCardDuelResult* result);
 	void onSummonCard(strSummonCardResult* result);
 	void onUseAbilityResult(strCardAbilityResult* result);

@@ -127,7 +127,7 @@ void KGameRecordTask::StartRecrod()
 void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
-	GameRoot::getSingleton().getBattleScene()->FreshAllCard();
+	GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
 }
 
 bool KGameRecordTask::Play(float elapsed)
@@ -148,4 +148,22 @@ bool KGameRecordTask::Play(float elapsed)
 void KGameRecordTask::Stop()
 {
 	CC_SAFE_DELETE(m_pCurOpera);
+}
+
+bool KGameRecordTask::IsClickCardValidate(KCardInst* card)
+{
+	if(!m_pCurOpera) return true;
+	return m_pCurOpera->IsClickCardValidate(card);
+}
+
+bool KGameRecordTask::IsClickFightAreaValidate(int slot)
+{
+	if(!m_pCurOpera) return true;
+	return m_pCurOpera->IsClickFightAreaValidate(slot);
+}
+
+bool KGameRecordTask::IsClickButValidate(cocos2d::CCObject* obj)
+{
+	if(!m_pCurOpera) return true;
+	return m_pCurOpera->IsClickButValidate(obj);
 }

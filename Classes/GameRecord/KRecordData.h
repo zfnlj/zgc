@@ -2,6 +2,7 @@
 #define _KRECORDDATA_H
 #include <System/Misc/StreamInterface.h>
 #include <list>
+#include "cocos2d.h"
 
 enum EGameRecordedDataType
 {
@@ -10,6 +11,7 @@ enum EGameRecordedDataType
 	EGRDT_End,
 };
 
+class KCardInst;
 class KRecordDataBase
 {
 public:
@@ -22,6 +24,9 @@ public:
 	}
 	virtual bool Replay(int op)=0;
 	virtual EGameRecordedDataType GetClassType()=0;
+	virtual bool IsClickCardValidate(KCardInst* card)=0;
+	virtual bool IsClickFightAreaValidate(int slot)=0;
+	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
 private:
 	unsigned int m_dlgId;
 };
@@ -41,6 +46,9 @@ public:
 	void RecordMouseEvt(Mouse_evt evt);
 	virtual bool Replay(int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
+	virtual bool IsClickCardValidate(KCardInst* card){ return false;}
+	virtual bool IsClickFightAreaValidate(int slot){ return false;}
+	virtual bool IsClickButValidate(cocos2d::CCObject* obj);
 private:
 	Mouse_evt m_evt;
 };
@@ -65,12 +73,18 @@ public:
 	virtual void init(){
 		memset(&m_data,0,sizeof(m_data));
 		KRecordDataBase::init();
+		m_pActiveCard = NULL;
 	}
 	void RecordPlayOp(int src,int des,int slot);
 	virtual bool Replay(int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
+	virtual bool IsClickCardValidate(KCardInst* card);
+	virtual bool IsClickFightAreaValidate(int slot);
+	virtual bool IsClickButValidate(cocos2d::CCObject* obj){ return false;}
 private:
+	void ActiveCard(int);
 	OpStruct m_data;
+	KCardInst* m_pActiveCard;
 };
 
 typedef std::list<KRecordDataBase*> KRecordDataList;

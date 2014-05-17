@@ -36,6 +36,7 @@ public:
 
 	size_t serialize(KMemoryStream* so);
 	BOOL deserialize(KMemoryStream* si);
+	void init(KBattleGuy* guy){ m_Owner = guy;}
 private:
 	void addSkill(int id,int lev);
 	bool m_bDone;   //each turn only one skill actived .

@@ -22,6 +22,7 @@ void KGameRecordMgr::Stop()
 void KGameRecordMgr::StartPlay()
 {
 	m_recState = REC_PLAY;
+	LoadFile("abc");
 	m_task.StartPlay();
 }
 
@@ -69,4 +70,22 @@ void KGameRecordMgr::update(float elapsed)
 void KGameRecordMgr::onPlayEnd()
 {
 	m_recState = REC_NULL;
+}
+
+bool KGameRecordMgr::IsClickCardValidate(KCardInst* card)
+{
+	if(m_recState!= REC_PLAY) return true;
+	return m_task.IsClickCardValidate(card);
+}
+
+bool KGameRecordMgr::IsClickFightAreaValidate(int slot)
+{
+	if(m_recState!= REC_PLAY) return true;
+	return m_task.IsClickFightAreaValidate(slot);
+}
+
+bool KGameRecordMgr::IsClickButValidate(cocos2d::CCObject* obj)
+{
+	if(m_recState!= REC_PLAY) return true;
+	return m_task.IsClickButValidate(obj);
 }

@@ -55,7 +55,8 @@ public:
 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);
-
+	static void _playClickAction(KCardInst* card);
+	static void _stopClickAction(KCardInst* card);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

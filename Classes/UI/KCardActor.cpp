@@ -10,6 +10,7 @@
 #include "KUIAssist.h"
 #include "KJsonDictMgr.h"
 #include "KClickCardMgr.h"
+#include "../GameRecord/KGameRecordMgr.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -161,6 +162,7 @@ void KCardActor::onMoveEvent(CCObject* sender)
 }
 void KCardActor::DoSelect(CCObject* sender)
 {
+	if(!KGameRecordMgr::getSingleton().IsClickCardValidate(m_card)) return;
 	KClickCardMgr::getSingleton().onClickCard(this);
 	if(DoSelectBeginCard(sender)) return;
 	if(!KUIAssist::_IsPlayCardAble()) return;

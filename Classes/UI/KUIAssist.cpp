@@ -593,3 +593,19 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 	if(_getIndexOfCard(&curActiveRed,card)>=0)  return true;
 	return false;
 }
+
+void KUIAssist::_stopClickAction(KCardInst* card)
+{
+	KCardActor* actor =(KCardActor*)card->getActor();
+	if(!actor) return;
+	actor->GetActionMgr().LimitAlive("click_card");
+}
+
+void KUIAssist::_playClickAction(KCardInst* card)
+{
+	if(!card) return;
+	KCardActor* actor =(KCardActor*)card->getActor();
+	if(!actor) return;
+	if(actor->GetActionMgr().FindAction("click_card")) return;
+	actor->GetActionMgr().PlayAction("click_card");
+}

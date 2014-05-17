@@ -8,6 +8,7 @@
 #include "GameRoot.h"
 #include "cocos-ext.h"
 #include "BattleFieldScene.h"
+#include "../GameRecord/KGameRecordMgr.h"
 
 using namespace cocos2d::extension;
 
@@ -92,8 +93,10 @@ void KFightAreaPanel::update(float dt)
 
 void KFightAreaPanel::onClickFightArea(CCObject* sender)
 {
+	
 	UIWidget* pBut = (UIWidget*)sender;
 	int index = pBut->getTag();
+	if(!KGameRecordMgr::getSingleton().IsClickFightAreaValidate(index)) return;
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
 	KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
 	if(!pSrc) return;

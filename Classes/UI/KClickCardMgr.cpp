@@ -82,3 +82,9 @@ void KClickCardMgr::HideBigCard()
 		m_curActor = NULL;
 	}
 }
+
+void KClickCardMgr::onBattleRefresh()
+{
+	m_cacheActor = m_curActor = NULL;
+	m_CardElapsed = 0;
+}

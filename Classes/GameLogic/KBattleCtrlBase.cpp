@@ -93,6 +93,7 @@ void KBattleCtrlBase::update(float dt)
 
 KCardInst* KBattleCtrlBase::GetCard(int id)
 {
+	if(id<=0) return NULL;
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		KCardInst* pCard = (*it)->GetDeck().GetCard(id);
 		if(pCard){
