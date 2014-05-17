@@ -16,6 +16,7 @@ public:
 	static KGameRecordMgr& getSingleton(void);
 	void init(){m_recState = REC_NULL; m_task.init();}
 	
+	void update(float elapsed);
 	bool SaveToFile( const char* szFileName);
 	bool LoadFile(const char* szFileName);
 	void RecordPlayOp(int src,int des,int slot);
@@ -23,10 +24,12 @@ public:
 	void InitTest();
 	void StartRecord();
 	void StartPlay();
+	void onPlayEnd();
 	void Stop();
 private:
 	KGameRecordTask m_task;
 	RecState m_recState;
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__

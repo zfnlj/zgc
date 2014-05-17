@@ -20,7 +20,7 @@ public:
 	virtual void init(){
 		m_dlgId=0;
 	}
-	virtual bool Replay()=0;
+	virtual bool Replay(int op)=0;
 	virtual EGameRecordedDataType GetClassType()=0;
 private:
 	unsigned int m_dlgId;
@@ -39,7 +39,7 @@ public:
 	virtual bool Serialize( StreamInterface* pDataStream );
 	virtual void init(){m_evt = evt_null;}
 	void RecordMouseEvt(Mouse_evt evt);
-	virtual bool Replay();
+	virtual bool Replay(int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
 private:
 	Mouse_evt m_evt;
@@ -67,7 +67,7 @@ public:
 		KRecordDataBase::init();
 	}
 	void RecordPlayOp(int src,int des,int slot);
-	virtual bool Replay();
+	virtual bool Replay(int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
 private:
 	OpStruct m_data;

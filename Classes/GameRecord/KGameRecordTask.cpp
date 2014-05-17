@@ -11,6 +11,7 @@ void KGameRecordTask::init()
 {
 	m_dataBuf = new char[DATA_BUF_SIZE];
 	m_deckStream.bind(m_dataBuf,DATA_BUF_SIZE);
+	m_pCurOpera = NULL;
 }
 
 KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
@@ -67,6 +68,7 @@ bool KGameRecordTask::Save( const char* szFileName)
 
 bool KGameRecordTask::SerializeData( StreamInterface* pStream )
 {
+	pStream->WriteData( &m_head, sizeof(m_head));
 	unsigned int deckSize = m_deckStream.size();
 	pStream->WriteData( &deckSize, 4 );
 	pStream->WriteData(m_deckStream.data(),deckSize);
@@ -83,6 +85,7 @@ bool KGameRecordTask::SerializeData( StreamInterface* pStream )
 }
 bool KGameRecordTask::DeserializeData( StreamInterface* pStream )
 {
+	pStream->ReadData( &m_head, sizeof(m_head));
 	unsigned int deckSize,uDataCount;
 	char cDataType;
 	m_deckStream.clear();
@@ -125,4 +128,24 @@ void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
 	GameRoot::getSingleton().getBattleScene()->FreshAllCard();
+}
+
+bool KGameRecordTask::Play(float elapsed)
+{
+	if(m_pCurOpera){ 
+		if(m_pCurOpera->Replay(m_head._mode)){
+			CC_SAFE_DELETE(m_pCurOpera);
+		}
+	}
+	if(!m_pCurOpera &&m_FrameData.size()>0){
+		KRecordDataList::iterator it = m_FrameData.begin();
+		m_pCurOpera = *it;
+		m_FrameData.erase(it);
+	}
+	return (m_pCurOpera!=NULL);
+}
+
+void KGameRecordTask::Stop()
+{
+	CC_SAFE_DELETE(m_pCurOpera);
 }

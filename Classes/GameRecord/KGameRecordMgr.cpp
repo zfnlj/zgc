@@ -58,3 +58,15 @@ void KGameRecordMgr::InitTest()
 	LoadFile("abc");
 	m_task.StartPlay();
 }
+
+void KGameRecordMgr::update(float elapsed)
+{
+	if(m_recState==REC_PLAY){
+		if(!m_task.Play(elapsed)) onPlayEnd();
+	}
+}
+
+void KGameRecordMgr::onPlayEnd()
+{
+	m_recState = REC_NULL;
+}

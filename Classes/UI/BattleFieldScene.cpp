@@ -41,6 +41,7 @@ CCScene* BattleFieldScene::scene()
 
 void BattleFieldScene::update(float dt)
 {
+	KGameRecordMgr::getSingleton().update(dt);
 	m_actor.update(dt);
 	m_myFightAreaPanel.update(dt);
 	m_indicatePanel.Update(dt);
