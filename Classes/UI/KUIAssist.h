@@ -59,6 +59,7 @@ public:
 	static void _playClickCardAction(KCardInst* card);
 	static void _playClickSlotAction(int slot);
 	static void _playClickFightArea();
+	static void _playClickTurnEnd();
 	static void _stopClickAction();
 	//shader
 	static CCGLProgram* _createGrayProgram();

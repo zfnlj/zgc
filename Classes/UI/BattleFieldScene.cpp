@@ -229,7 +229,7 @@ void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
 	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
-	KGameRecordMgr::getSingleton().RecordMouseEvt(KRecordUIMouseData::evt_turn_end);
+	KGameRecordMgr::getSingleton().onMouseEvt(KRecordUIMouseData::evt_turn_end);
 
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		GameRoot::getSingleton().BattleCtrl().DoEndTurn();

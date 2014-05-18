@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action class="click">
+  <affect_body>
+  	<affector class="armature"  slot="turn_end" createtime="0" fVal="0.6" fVal2="40" obj="click_down" life="0" />
+  </affect_body>
+</action>
+</ag>
+		

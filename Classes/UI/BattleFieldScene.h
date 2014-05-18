@@ -43,6 +43,7 @@ public:
 	CCPoint GetCenterPos();
 
 	KIndicatePanel& IndicatePanel(){ return m_indicatePanel;}
+	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
 	cocos2d::extension::UILayer* GetUILayer();
 	void onBattleInit();
 	void onHandCardReady();
@@ -60,6 +61,7 @@ public:
 	void onUseSecretCard(KCardInst* card);
 	void onUseRes();
 
+	
 	void onGameEnd();
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();

@@ -4,7 +4,9 @@
 #include "../Inc/KLogicMsg.h"
 #include "System/Misc/KStream.h"
 #include "assist/KSkillAssist.h"
-
+#ifdef _USE_COCOS2DX
+#include "../GameRecord/KGameRecordMgr.h"
+#endif
 #define MAX_TURN_PLAY_TIME 2*60
 
 KBattleGuy::KBattleGuy()
@@ -38,7 +40,7 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	m_attr.clearAttrs();
 	m_bSelectHandCard = true;
 	m_Deck.Clear();
-	m_heroSkillMgr.tmpInit(this);
+	//m_heroSkillMgr.tmpInit(this);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DECKINIT,(unsigned long long)&m_FacadeObj,(unsigned long long)m_battleCtrl->GetWorld());
 	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 	if(pDeckDef){
@@ -89,6 +91,9 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 
 void KBattleGuy::onPlayCard(float dt,bool bOK)
 {
+#ifdef _USE_COCOS2DX
+	if(KGameRecordMgr::getSingleton().IsPlaying()) dt=0.0f;
+#endif
 	if(bOK){
 		m_TurnPlayTime = 0;
 	}else{
@@ -103,11 +108,12 @@ void KBattleGuy::ClearPlayTimeOut()
 
 void KBattleGuy::SetPlayTimeOut()
 {
-	m_TurnPlayTime = MAX_TURN_PLAY_TIME;
+	m_TurnPlayTime = MAX_TURN_PLAY_TIME+1.0f;
 }
 bool KBattleGuy::IsPlayTimeOut()
 {
-	return (m_TurnPlayTime >MAX_TURN_PLAY_TIME);
+
+	return (m_TurnPlayTime >=MAX_TURN_PLAY_TIME);
 }
 
 int  KBattleGuy::QuerySlotCardNum()

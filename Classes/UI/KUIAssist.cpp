@@ -627,6 +627,14 @@ void KUIAssist::_playClickFightArea()
 	actor.GetActionMgr().PlayAction("click_fight_area");
 }
 
+void KUIAssist::_playClickTurnEnd()
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_turnend_but");
+	if(pCurClickCardAction) return;
+	actor.GetActionMgr().PlayAction("click_turnend_but");
+}
+
 void KUIAssist::_stopClickAction()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();

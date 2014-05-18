@@ -21,14 +21,16 @@ public:
 	virtual bool Serialize( StreamInterface* pDataStream );
 	virtual void init(){
 		m_dlgId=0;
+		m_elapsed = 0;
 	}
-	virtual bool Replay(int op)=0;
+	virtual bool Replay(DWORD timeline,int op)=0;
 	virtual EGameRecordedDataType GetClassType()=0;
 	virtual bool IsClickCardValidate(KCardInst* card)=0;
 	virtual bool IsClickFightAreaValidate(int slot)=0;
 	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
-private:
+protected:
 	unsigned int m_dlgId;
+	DWORD		 m_elapsed;
 };
 
 class KRecordUIMouseData :public KRecordDataBase
@@ -43,8 +45,8 @@ public:
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
 	virtual void init(){m_evt = evt_null;}
-	void RecordMouseEvt(Mouse_evt evt);
-	virtual bool Replay(int op);
+	void RecordMouseEvt(Mouse_evt evt,DWORD initTime);
+	virtual bool Replay(DWORD timeline,int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
 	virtual bool IsClickCardValidate(KCardInst* card){ return false;}
 	virtual bool IsClickFightAreaValidate(int slot){ return false;}
@@ -75,8 +77,8 @@ public:
 		KRecordDataBase::init();
 		m_pActiveCard = NULL;
 	}
-	void RecordPlayOp(int src,int des,int slot);
-	virtual bool Replay(int op);
+	void RecordPlayOp(int src,int des,int slot,DWORD initTime);
+	virtual bool Replay(DWORD timeline, int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
 	virtual bool IsClickCardValidate(KCardInst* card);
 	virtual bool IsClickFightAreaValidate(int slot);

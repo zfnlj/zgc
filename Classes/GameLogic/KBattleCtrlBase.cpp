@@ -11,6 +11,7 @@
 #include "System/Misc/KStream.h"
 #include "../Quest/KQuestNew.h"
 
+
 bool KBattleCtrlBase::init(void* w)
 {
 	m_CurPlayGuy = m_pMainPlayer = NULL;

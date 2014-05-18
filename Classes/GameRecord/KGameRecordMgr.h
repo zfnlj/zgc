@@ -25,7 +25,7 @@ public:
 	bool LoadFile(const char* szFileName);
 	
 	void onPlayOp(int src,int des,int slot);
-	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt);
+	void onMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
 	void StartRecord();
 	void StartPlay();
@@ -34,8 +34,10 @@ public:
 	bool IsClickCardValidate(KCardInst* card);
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);
+	bool IsPlaying(){ return m_recState==REC_PLAY;}
 private:
 	void RecordPlayOp(int src,int des,int slot);
+	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void onPlayStepOn();
 
 	KGameRecordTask m_task;

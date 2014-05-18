@@ -43,6 +43,8 @@ public:
 private:
 
 	// 为了内存分配快搞的各种池
+	float m_timeline;
+	DWORD m_startRecordTime;
 	Task_Head m_head;
 	KRecordDataList m_FrameData;
 	KMemoryStream m_deckStream;

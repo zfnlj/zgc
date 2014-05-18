@@ -1,5 +1,8 @@
 #include "KGameRecordMgr.h"
 #include "Inc/KTypeDef.h"
+#include "../GameRoot.h"
+#include "../ui/KGameRecordPanel.h"
+#include "../UI/BattleFieldScene.h"
 
 IMPLEMENT_SINGLETON(KGameRecordMgr)
 
@@ -13,7 +16,7 @@ void KGameRecordMgr::Stop()
 {
 	if(m_recState==REC_RECORD){
 		SaveToFile("abc");
-	}else{
+	}else if(m_recState==REC_PLAY){
 		m_task.Stop();
 	}
 	m_recState = REC_NULL;
@@ -56,7 +59,23 @@ void KGameRecordMgr::RecordPlayOp(int src,int des,int slot)
 	m_task.RecordPlayOp(src,des,slot);
 }
 
-void KGameRecordMgr::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
+void::KGameRecordMgr::onMouseEvt(KRecordUIMouseData::Mouse_evt evt)
+{
+	switch(m_recState){
+	case REC_RECORD:
+		m_task.RecordMouseEvt(evt);
+		break;
+	case REC_PLAY:
+		onPlayStepOn();
+		break;
+	default:
+		break;
+	}
+
+}
+
+
+void::KGameRecordMgr::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 {
 	if(m_recState!=REC_RECORD) return;
 	m_task.RecordMouseEvt(evt);
@@ -83,6 +102,7 @@ void KGameRecordMgr::update(float elapsed)
 void KGameRecordMgr::onPlayEnd()
 {
 	m_recState = REC_NULL;
+	GameRoot::getSingleton().getBattleScene()->RecordPanel().DoClickStop(NULL);
 }
 
 bool KGameRecordMgr::IsClickCardValidate(KCardInst* card)

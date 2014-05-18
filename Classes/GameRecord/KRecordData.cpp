@@ -33,16 +33,19 @@ Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot
 bool KRecordDataBase::Deserialize( StreamInterface* pDataStream )
 {
 	pDataStream->ReadData(&m_dlgId,4);
+	pDataStream->ReadData(&m_elapsed,sizeof(m_elapsed));
 	return true;
 }
 bool KRecordDataBase::Serialize( StreamInterface* pDataStream )
 {
 	pDataStream->WriteData(&m_dlgId,4);
+	pDataStream->WriteData(&m_elapsed,sizeof(m_elapsed));
 	return true;
 }
 
-void KRecordPlayOpData::RecordPlayOp(int src,int des,int slot)
+void KRecordPlayOpData::RecordPlayOp(int src,int des,int slot,DWORD initTime)
 {
+	m_elapsed = GetTickCount()-initTime;
 	m_data.set(src,des,slot);
 }
 
@@ -60,8 +63,10 @@ bool KRecordPlayOpData::Serialize( StreamInterface* pDataStream )
 	return true;
 }
 
-bool KRecordPlayOpData::Replay(int mode)
+bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 {
+	if(timeline<m_elapsed) return false;
+
 	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
 	if(ctrl.GetCurState()!=KBattleCtrlBase::battle_play) return false;
 	if(ctrl.IsWaitDrama()) return false;
@@ -92,6 +97,8 @@ bool KRecordPlayOpData::Replay(int mode)
 			KUIAssist::_playClickFightArea();
 		}
 		break;
+	case step_ok:
+		return true;
 	default:
 		break;
 	}
@@ -156,13 +163,16 @@ bool KRecordUIMouseData::Serialize( StreamInterface* pDataStream )
 	return true;
 }
 
-void KRecordUIMouseData::RecordMouseEvt(Mouse_evt evt)
+void KRecordUIMouseData::RecordMouseEvt(Mouse_evt evt,DWORD initTime)
 {
+	m_elapsed = GetTickCount()-initTime;
 	m_evt = evt;
 }
 
-bool KRecordUIMouseData::Replay(int mode)
+bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 {
+	if(timeline<m_elapsed) return false;
+
 	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
 	if(ctrl.GetCurState()!=KBattleCtrlBase::battle_play) return false;
 	if(ctrl.IsWaitDrama()) return false;
@@ -174,10 +184,21 @@ bool KRecordUIMouseData::Replay(int mode)
 		}
 		return true;
 	}
+	switch(m_evt){
+	case evt_turn_end:
+		KUIAssist::_playClickTurnEnd();
+		break;
+	}
 	return false;
 }
 
 bool KRecordUIMouseData::IsClickButValidate(cocos2d::CCObject* obj)
 {
+	UIWidget* pBut = (UIWidget*)obj;
+	switch(m_evt){
+	case evt_turn_end:
+		if(strcmp(pBut->getName(),"turn_end")==0) return true;
+		break;
+	}
 	return false;
 }

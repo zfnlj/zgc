@@ -33,14 +33,14 @@ KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 void KGameRecordTask::RecordPlayOp(int src,int des,int slot)
 {
 	KRecordPlayOpData* pRecord = (KRecordPlayOpData*)AllocData(EGRDT_PlayOp);
-	pRecord->RecordPlayOp(src,des,slot);
+	pRecord->RecordPlayOp(src,des,slot,m_startRecordTime);
 	m_FrameData.push_back(pRecord);
 }
 
 void KGameRecordTask::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 {
 	KRecordUIMouseData* pRecord = (KRecordUIMouseData*)AllocData(EGRDT_UIMouseInput);
-	pRecord->RecordMouseEvt(evt);
+	pRecord->RecordMouseEvt(evt,m_startRecordTime);
 	m_FrameData.push_back(pRecord);
 }
 
@@ -122,6 +122,7 @@ void KGameRecordTask::Empty()
 void KGameRecordTask::StartRecrod()
 {
 	Empty();
+	m_startRecordTime = GetTickCount();
 	GameRoot::getSingleton().BattleCtrl().serializeAll(&m_deckStream);
 }
 
@@ -129,6 +130,7 @@ void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
 	GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
+	m_timeline = 0;
 }
 
 void KGameRecordTask::onPlayStepOn()
@@ -139,18 +141,15 @@ void KGameRecordTask::onPlayStepOn()
 
 bool KGameRecordTask::Play(float elapsed)
 {
+	m_timeline+= elapsed;
 	if(m_pCurOpera){ 
-		if(m_pCurOpera->Replay(m_head._mode)){
-			CC_SAFE_DELETE(m_pCurOpera);
-		}
+		m_pCurOpera->Replay(m_timeline*1000,m_head._mode);
 	}
 	if(!m_pCurOpera &&m_FrameData.size()>0){
 		KRecordDataList::iterator it = m_FrameData.begin();
 		m_pCurOpera = *it;
 		m_FrameData.erase(it);
 	}
-	KBattleGuy* pCurGuy = GameRoot::getSingleton().BattleCtrl().GetCurGuy(); //播放操作时不会超时 
-	if(pCurGuy) pCurGuy->ClearPlayTimeOut();
 	return (m_pCurOpera!=NULL);
 }
 
