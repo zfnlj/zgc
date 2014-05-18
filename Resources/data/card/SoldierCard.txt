@@ -3,7 +3,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 20002	猗顿	1	2	3	2	0	0	0	0	pic_20002.jpg
 20003	墨侠	1	5	3	5	0	护卫	护卫：吸引敌方攻击	soldier_guide	pic_20003.jpg
 20004	鬼谷子	1	6	4	3	0	远程	远程：进攻进不受到反击	soldier_dist	pic_20004.jpg
-20005	荆轲	1	4	4	3	0	疾行	疾行：进场可立即进攻	0	pic_20005.jpg
+20005	荆轲	1	4	4	3	0	疾行	疾行：进场可立即进攻	soldier_rush	pic_20005.jpg
 20006	刺客	1	2	2	2	0	迷踪	迷踪：不可被攻击	soldier_hide	pic_20022.jpg
 20007	朱亥	2	5	2	7	0	狂暴	狂暴:受到伤害时增加3点攻击力	soldier_angry	pic_20007.jpg
 20008	伍子胥	1	4	4	4	0	遗言	遗言：对所有勇士造成2点伤害。	soldier_dead_curse_ability	pic_20008.jpg

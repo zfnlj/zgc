@@ -639,11 +639,20 @@ void KUIAssist::_stopClickAction()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+}
+
+static int lastAdviceId =0;
+
+void KUIAssist::_stopAdviceMsg()
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	actor.GetActionMgr().LimitAlive("hero_talk");
 }
 
-void KUIAssist::_playPopDlg(int id)
+void KUIAssist::_playAdviceMsg(int id)
 {
+	if(lastAdviceId ==id) return;
+	lastAdviceId = id;
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	KAction* pTalkAction = actor.GetActionMgr().FindAction("hero_talk");
 	if(pTalkAction && pTalkAction->GetParam()->GetDesId(0)==id) return;
@@ -654,3 +663,4 @@ void KUIAssist::_playPopDlg(int id)
 	param.SetDestVal(id,0);
 	actor.GetActionMgr().PlayAction(&param);
 }
+

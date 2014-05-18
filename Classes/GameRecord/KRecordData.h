@@ -11,7 +11,6 @@ enum EGameRecordedDataType
 	EGRDT_End,
 };
 
-static int g_dlgId_inc=1;
 class KCardInst;
 class KRecordDataBase
 {
@@ -29,6 +28,8 @@ public:
 	virtual bool IsClickCardValidate(KCardInst* card)=0;
 	virtual bool IsClickFightAreaValidate(int slot)=0;
 	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
+
+	static int g_dlgId_inc;
 protected:
 	unsigned int m_dlgId;
 	DWORD		 m_elapsed;

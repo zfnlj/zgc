@@ -10,6 +10,9 @@ enum Cur_OP_Step{
 	step_ok,
 };
 
+int KRecordDataBase::g_dlgId_inc=1;
+
+
 Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot)
 {
 	if(op._src != src) return step_src;
@@ -104,7 +107,7 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 	default:
 		break;
 	}
-	KUIAssist::_playPopDlg(m_dlgId*10+step);
+	KUIAssist::_playAdviceMsg(m_dlgId*10+step);
 	return false;
 }
 
@@ -191,7 +194,7 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 		KUIAssist::_playClickTurnEnd();
 		break;
 	}
-	KUIAssist::_playPopDlg(m_dlgId*10);
+	KUIAssist::_playAdviceMsg(m_dlgId*10);
 	return false;
 }
 

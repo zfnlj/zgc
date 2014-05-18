@@ -137,6 +137,7 @@ void KGameRecordTask::onPlayStepOn()
 {
 	CC_SAFE_DELETE(m_pCurOpera);
 	KUIAssist::_stopClickAction();
+	KUIAssist::_stopAdviceMsg();
 }
 
 bool KGameRecordTask::Play(float elapsed)

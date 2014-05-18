@@ -4,6 +4,8 @@
 #include "../BaseClasses/UIWidget.h"
 #include "UILayer.h"
 #include "../GameLogic/KCardInst.h"
+
+#define  ADVICE_TURN_END 3
 class BattleFieldScene;
 class KCardInst;
 class KAction;
@@ -61,7 +63,8 @@ public:
 	static void _playClickFightArea();
 	static void _playClickTurnEnd();
 	static void _stopClickAction();
-	static void _playPopDlg(int id);
+	static void _stopAdviceMsg();
+	static void _playAdviceMsg(int id);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

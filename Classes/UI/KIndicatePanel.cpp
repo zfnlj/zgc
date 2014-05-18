@@ -91,6 +91,7 @@ void KIndicatePanel::Update(float dt)
 			}else{
 				pMainPlayer->QueryValidateHandCards(&curActiveGreen);
 				pMainPlayer->QueryValidateFightCards(&curActiveGreen);
+				if(curActiveGreen.size()==0) KUIAssist::_playAdviceMsg(ADVICE_TURN_END);
 			}
 		}
 		break;

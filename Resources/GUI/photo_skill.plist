@@ -634,13 +634,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>photo_skill.jpg</string>
+            <string>photo_skill.png</string>
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:bd1524f4bce4185da9d46a6048ebc3ea$</string>
+            <string>$TexturePacker:SmartUpdate:0f3762e617128093f55706ed449b603b$</string>
             <key>textureFileName</key>
-            <string>photo_skill.jpg</string>
+            <string>photo_skill.png</string>
         </dict>
     </dict>
 </plist>

@@ -29,19 +29,7 @@ KAffectorExecutor::KAffectorExecutor()
 
 KAffectorExecutor::~KAffectorExecutor()
 {
-	StopEmitter();
-	if(m_dictObj){
-		if(m_AffectorStatic->IsDel()) GetActor()->RemoveDictObj(m_dictObj,m_AffectorStatic->GetObj());
-		m_dictObj = NULL;
-	}
-	if(m_armature){
-		m_armature->removeFromParent();
-		m_armature = NULL;
-	}
-	if(m_widget){
-		m_widget->removeFromParent();
-		m_widget = NULL;
-	}
+	OnStop();
 }
 
 void KAffectorExecutor::init(KAffectorStatic* st)
@@ -220,6 +208,10 @@ void KAffectorExecutor::OnStop(void)
 	if(m_armature){
 		m_armature->removeFromParent();
 		m_armature = NULL;
+	}
+	if(m_widget){
+		m_widget->removeFromParent();
+		m_widget = NULL;
 	}
 }
 

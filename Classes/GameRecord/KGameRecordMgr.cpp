@@ -8,7 +8,7 @@ IMPLEMENT_SINGLETON(KGameRecordMgr)
 
 void KGameRecordMgr::StartRecord(int recId)
 {
-	g_dlgId_inc = recId*1000;
+	KRecordDataBase::g_dlgId_inc = recId*1000;
 	m_task.StartRecrod();
 	m_recState = REC_RECORD;
 }

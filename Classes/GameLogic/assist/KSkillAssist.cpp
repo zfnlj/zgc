@@ -319,6 +319,7 @@ void _rndFillProc(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility
 	int maxNum = KSkillAssist::_calcValDef(ctrl,pSrc->GetOwner(),pSrc,pAbility->GetMax());
 
 	int pickNum = (maxNum>(int)lst->size())? lst->size():maxNum;
+	if(pickNum<0) pickNum=0;
 	if(pickNum==lst->size()) return ;
 
 	while((int)lst->size()>pickNum){
