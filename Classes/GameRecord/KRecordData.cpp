@@ -84,12 +84,12 @@ bool KRecordPlayOpData::Replay(int mode)
 		break;
 	case step_slot:
 		{
-			ActiveCard(0);
+			KUIAssist::_playClickSlotAction(m_data._slot);
 		}
 		break;
 	case step_area:
 		{
-			ActiveCard(0);
+			KUIAssist::_playClickFightArea();
 		}
 		break;
 	default:
@@ -101,12 +101,8 @@ bool KRecordPlayOpData::Replay(int mode)
 
 void KRecordPlayOpData::ActiveCard(int realId)
 {
-	KCardInst* pCard= GameRoot::getSingleton().BattleCtrl().GetCard(realId);
-	if(m_pActiveCard){
-		if(m_pActiveCard != pCard) KUIAssist::_stopClickAction(m_pActiveCard);
-	}
-	m_pActiveCard = pCard;
-	KUIAssist::_playClickAction(pCard);
+ 	KCardInst* pCard= GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	KUIAssist::_playClickCardAction(pCard);
 }
 
 bool KRecordPlayOpData::IsClickFightAreaValidate(int slot)

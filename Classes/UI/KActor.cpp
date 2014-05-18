@@ -130,6 +130,11 @@ CCPoint KActor::GetDestPosition(K3DActionParam* param,const char* obj,int index)
 	if(strcmp(obj,"dest")==0){
 		KActor* actor =  (KActor*)KUIAssist::_getCardActor(param->_desArr[index]);
 		return actor->GetUI()->getPosition();
+	}else if(strcmp(obj,"my_fight_slot")==0){
+		char sz[32];
+		sprintf(sz,"%s_%d",obj,param->_desArr[index]);
+		UIWidget* widget = GetWidget(sz);
+		return widget->getWorldPosition();
 	}else{
 		UIWidget* widget = GetWidget(obj);
 		return widget->getWorldPosition();
@@ -325,10 +330,10 @@ CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zO
 	return pAnim;
 }
 
-cocos2d::extension::CCArmature* KActor::CreateArmature(const char* obj,const char* slot,float scale,int zOrder)
+cocos2d::extension::CCArmature* KActor::CreateArmature(K3DActionParam* param,const char* obj,const char* slot,float scale,float yOffset,int zOrder)
 {
-	CCPoint pt = GetDestPosition(NULL,slot,0);
-
+	CCPoint pt = GetDestPosition(param,slot,0);
+	pt.y += yOffset;
 	CCArmature *armature = CCArmature::create(obj);
 	if(!armature) return NULL;
 	armature->setAnchorPoint(ccp(0.50f,0.50f));

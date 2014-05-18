@@ -594,18 +594,41 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 	return false;
 }
 
-void KUIAssist::_stopClickAction(KCardInst* card)
-{
-	KCardActor* actor =(KCardActor*)card->getActor();
-	if(!actor) return;
-	actor->GetActionMgr().LimitAlive("click_card");
-}
-
-void KUIAssist::_playClickAction(KCardInst* card)
+void KUIAssist::_playClickCardAction(KCardInst* card)
 {
 	if(!card) return;
-	KCardActor* actor =(KCardActor*)card->getActor();
-	if(!actor) return;
-	if(actor->GetActionMgr().FindAction("click_card")) return;
-	actor->GetActionMgr().PlayAction("click_card");
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_card");
+	if(pCurClickCardAction && pCurClickCardAction->GetParam()->GetDesId(0)==card->GetRealId()) return;
+	K3DActionParam param;
+	param.init("click_card");
+	param.SetDestVal(card->GetRealId(),0);
+	actor.GetActionMgr().PlayAction(&param);
+}
+
+void KUIAssist::_playClickSlotAction(int slot)
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_fight_slot");
+	if(pCurClickCardAction && pCurClickCardAction->GetParam()->GetDesId(0)==slot) return;
+
+	K3DActionParam param;
+	param.init("click_fight_slot");
+	param.SetDestVal(slot,0);
+	actor.GetActionMgr().PlayAction(&param);
+
+}
+
+void KUIAssist::_playClickFightArea()
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_fight_area");
+	if(pCurClickCardAction) return;
+	actor.GetActionMgr().PlayAction("click_fight_area");
+}
+
+void KUIAssist::_stopClickAction()
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
 }

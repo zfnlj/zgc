@@ -37,6 +37,19 @@ bool KGameRecordMgr::LoadFile(const char* szFileName)
 	return m_task.Load(szFileName);
 }
 
+void KGameRecordMgr::onPlayOp(int src,int des,int slot)
+{
+	switch(m_recState){
+	case REC_RECORD:
+		RecordPlayOp(src,des,slot);
+		break;
+	case REC_PLAY:
+		onPlayStepOn();
+		break;
+	default:
+		break;
+	}
+}
 void KGameRecordMgr::RecordPlayOp(int src,int des,int slot)
 {
 	if(m_recState!=REC_RECORD) return;
@@ -88,4 +101,10 @@ bool KGameRecordMgr::IsClickButValidate(cocos2d::CCObject* obj)
 {
 	if(m_recState!= REC_PLAY) return true;
 	return m_task.IsClickButValidate(obj);
+}
+
+
+void KGameRecordMgr::onPlayStepOn()
+{
+	m_task.onPlayStepOn();
 }

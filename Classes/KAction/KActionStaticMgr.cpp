@@ -47,6 +47,10 @@ void KActionStatic::ParseClass(const char* className)
 	{
 		m_ActionData.m_class = class_cast;
 	}
+	else if(strcmp(className,"click")==0)
+	{
+		m_ActionData.m_class = class_click;
+	}
 	else if(strcmp(className,"hit")==0)
 	{
 		m_ActionData.m_class = class_hit;

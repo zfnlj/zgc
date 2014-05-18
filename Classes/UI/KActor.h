@@ -52,7 +52,7 @@ public:
 	virtual void AtkMove(int des,float val,CCActionDef& actionDef);
 	void RemoveDictObj(CCNode* node,const char* obj);
 	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder,float offsetY,bool);
-	cocos2d::extension::CCArmature* CreateArmature(const char* obj,const char* slot,float scale,int zOrder);
+	cocos2d::extension::CCArmature* CreateArmature(K3DActionParam*,const char* obj,const char* slot,float scale,float yOffset,int zOrder);
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	virtual KCardInst* GetCard(){ return NULL;}

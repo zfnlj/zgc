@@ -36,7 +36,7 @@ public:
 	void StartPlay();
 	void Stop();
 	bool Play(float);
-
+	void onPlayStepOn();
 	bool IsClickCardValidate(KCardInst* card);
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);

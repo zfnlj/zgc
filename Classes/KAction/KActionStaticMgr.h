@@ -32,6 +32,7 @@ public:
 		class_cast,  //被击类
 		class_hit, //施法类
 		class_move,//状态类
+		class_click,
 		class_null, //
 	};
 	struct SActionData 

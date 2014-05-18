@@ -33,6 +33,7 @@ public:
 	 virtual void onBattleInit(bool bFirst,int deckId,bool bSelectCard=true);
 	 bool IsPlayTimeOut();
 	 void SetPlayTimeOut();
+	 void ClearPlayTimeOut();
 	 void onTurnBegin(KBattleCtrlBase*,bool bFirstTurn);
 	 void onTurnEnd(KBattleCtrlBase*);
 	 virtual void onPlayCard(float dt,bool bOK);

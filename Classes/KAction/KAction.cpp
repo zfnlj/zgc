@@ -21,7 +21,9 @@ KAction::~KAction()
 	}
 	if(m_bPlay)
 		Stop();
-	if(m_pActionStatic && m_pActionStatic->GetClass()!=KActionStatic::class_null) g_totalClassAction--;
+	if(m_pActionStatic && 
+		m_pActionStatic->GetClass()!=KActionStatic::class_null && 
+		m_pActionStatic->GetClass()!=KActionStatic::class_click) g_totalClassAction--;
 }
 
 KAction* KAction::create(KActionStatic* pST,KActionMgr* pMgr,K3DActionParam* pParam,int key)
@@ -49,7 +51,7 @@ void KAction::Init(KActionStatic* pST,KActionMgr* pMgr,K3DActionParam* pParam,in
 		//m_EffectMgr.Init(this,m_Param);
 		m_AffectMgr.Init(this);
 		//m_SoundMgr.Init(this,NULL);
-		if(m_pActionStatic->GetClass()!=KActionStatic::class_null) g_totalClassAction++;
+		if(m_pActionStatic->GetClass()!=KActionStatic::class_null && m_pActionStatic->GetClass()!=KActionStatic::class_click) g_totalClassAction++;
 	}
 }
 

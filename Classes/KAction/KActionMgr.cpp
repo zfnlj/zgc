@@ -171,8 +171,8 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 		m_slotAction.cache(*param);
 		return NULL;
 	}
-	if(MergeCastAction(pST,param)) return NULL;
-	//LimitClassAction(pST);
+	//if(MergeCastAction(pST,param)) return NULL;
+	LimitSameClassAction(pST);
 
 	if( (pST->GetClass()!=KActionStatic::class_null&& FoundClassAction())||
 		bCached){
@@ -250,12 +250,22 @@ KAction* KActionMgr::FindAction(const char* name)
 	return NULL;
 }
 
-void KActionMgr::LimitSameClassAction(KActionStatic* pST) //class µÈ¼¶¸ßµÄaction»áÍ£Ö¹µÍ¼¶µÄaction
+void KActionMgr::LimitClassAction(KActionStatic::classEnum cls)
 {
 	CCObject* pObj = NULL;
 	CCARRAY_FOREACH(&m_ActionArr, pObj){
 		KAction* pAction = (KAction*)pObj;
-		if(pAction->GetClass()==KActionStatic::class_null) continue;
+		if(pAction->GetClass()==cls) pAction->LimitAlive();
+	}
+}
+
+void KActionMgr::LimitSameClassAction(KActionStatic* pST) //class µÈ¼¶¸ßµÄaction»áÍ£Ö¹µÍ¼¶µÄaction
+{
+	if(pST->GetClass()!=KActionStatic::class_click) return;
+
+	CCObject* pObj = NULL;
+	CCARRAY_FOREACH(&m_ActionArr, pObj){
+		KAction* pAction = (KAction*)pObj;
 		if(pAction->GetClass()==pST->GetClass()) pAction->LimitAlive();
 	}
 }

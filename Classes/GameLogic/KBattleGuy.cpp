@@ -96,6 +96,11 @@ void KBattleGuy::onPlayCard(float dt,bool bOK)
 	}
 }
 
+void KBattleGuy::ClearPlayTimeOut()
+{
+	m_TurnPlayTime = 0;
+}
+
 void KBattleGuy::SetPlayTimeOut()
 {
 	m_TurnPlayTime = MAX_TURN_PLAY_TIME;

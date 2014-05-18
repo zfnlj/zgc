@@ -42,6 +42,7 @@ public:
 	KAction*	PlayAction(const char* ActionName,float delayTime=0.0f,bool bCached=false); //生成动作
 	KAction*	PlayAction(K3DActionParam* param,int key=0,bool bCached=false);//生成动作
 
+	void LimitClassAction(KActionStatic::classEnum cls);
 	K3DActionParam* FindActionParam(const char* name);
 	bool		ExistAction(const char* name);
 	KAction*	FindAction(const char* name);

@@ -4,6 +4,7 @@
 #include "../Inc/KTypeDef.h"
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
+#include "../UI/KUIAssist.h"
 
 #define DATA_BUF_SIZE 2048
 
@@ -130,6 +131,12 @@ void KGameRecordTask::StartPlay()
 	GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
 }
 
+void KGameRecordTask::onPlayStepOn()
+{
+	CC_SAFE_DELETE(m_pCurOpera);
+	KUIAssist::_stopClickAction();
+}
+
 bool KGameRecordTask::Play(float elapsed)
 {
 	if(m_pCurOpera){ 
@@ -142,6 +149,8 @@ bool KGameRecordTask::Play(float elapsed)
 		m_pCurOpera = *it;
 		m_FrameData.erase(it);
 	}
+	KBattleGuy* pCurGuy = GameRoot::getSingleton().BattleCtrl().GetCurGuy(); //播放操作时不会超时 
+	if(pCurGuy) pCurGuy->ClearPlayTimeOut();
 	return (m_pCurOpera!=NULL);
 }
 

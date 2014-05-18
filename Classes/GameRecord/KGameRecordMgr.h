@@ -23,7 +23,8 @@ public:
 	void update(float elapsed);
 	bool SaveToFile( const char* szFileName);
 	bool LoadFile(const char* szFileName);
-	void RecordPlayOp(int src,int des,int slot);
+	
+	void onPlayOp(int src,int des,int slot);
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
 	void StartRecord();
@@ -34,6 +35,9 @@ public:
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);
 private:
+	void RecordPlayOp(int src,int des,int slot);
+	void onPlayStepOn();
+
 	KGameRecordTask m_task;
 	RecState m_recState;
 

@@ -175,7 +175,7 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 	bool ret = false;
 	if(op->IsOK()){
 #ifdef _USE_COCOS2DX
-		KGameRecordMgr::getSingleton().RecordPlayOp(op->_src,op->_des,op->_slot);
+		KGameRecordMgr::getSingleton().onPlayOp(op->_src,op->_des,op->_slot);
 #endif
 		KCardInst* pSrc = ctrl->GetCard(op->_src);
 		KCardInst* pDes = ctrl->GetCard(op->_des);

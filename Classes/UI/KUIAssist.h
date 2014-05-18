@@ -53,10 +53,13 @@ public:
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	static bool _IsPlayCardAble();
 
+	//record 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);
-	static void _playClickAction(KCardInst* card);
-	static void _stopClickAction(KCardInst* card);
+	static void _playClickCardAction(KCardInst* card);
+	static void _playClickSlotAction(int slot);
+	static void _playClickFightArea();
+	static void _stopClickAction();
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

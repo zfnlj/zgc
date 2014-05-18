@@ -147,7 +147,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		if(GetActor()) m_dictObj = GetActor()->CreateSprite(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
 		break;
 	case Affector_armature:
-		if(GetActor()) m_armature = GetActor()->CreateArmature(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
+		if(GetActor()) m_armature = GetActor()->CreateArmature(m_param,m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetFloatVal2(),m_AffectorStatic->GetIntVal());
 		break;
 	case Affector_fadein:
 		if(GetActor()) GetActor()->FadeIn(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),m_ccActionDef);
