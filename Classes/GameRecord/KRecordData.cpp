@@ -79,6 +79,8 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 		op.Set(m_data._src,m_data._des,m_data._slot);
 		return true;
 	}
+	if(ctrl.GetCardOwner(m_data._src)!=ctrl.GetMainPlayer()) return false;// cur op isn't my
+
 	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
 	switch(step){
 	case step_src:
