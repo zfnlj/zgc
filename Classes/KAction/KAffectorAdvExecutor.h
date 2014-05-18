@@ -37,6 +37,7 @@ protected:
 	K3DActionParam* m_param;
 	CCParticleSystem*    m_emitter;
 	CCNode* m_dictObj;
+	cocos2d::extension::UIWidget* m_widget;
 	cocos2d::extension::CCArmature* m_armature;
 	CCAction* m_ccAction;
 	CCActionDef m_ccActionDef;

@@ -221,6 +221,7 @@
     <ClCompile Include="..\Classes\StaticTable\KGameStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KDeckDefStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KBattleFieldStatic.cpp" />
+    <ClCompile Include="..\Classes\StaticTable\KHelpStringStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KHeroSkillStatic.cpp" />
     <ClCompile Include="..\Classes\StaticTable\KRankStaticMgr.cpp" />
     <ClCompile Include="..\Classes\StaticTable\StaticData.cpp" />
@@ -369,6 +370,7 @@
     <ClInclude Include="..\Classes\StaticTable\KGameStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KDeckDefStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KBattleFieldStatic.h" />
+    <ClInclude Include="..\Classes\StaticTable\KHelpStringStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KHeroSkillStatic.h" />
     <ClInclude Include="..\Classes\StaticTable\KRankStaticMgr.h" />
     <ClInclude Include="..\Classes\StaticTable\StaticData.h" />

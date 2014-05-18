@@ -75,4 +75,9 @@
       <File>d:\Armature.txt</File>
     </Export>
   </Item>
+	<Item Sheet="help_string" Workbook="BaseInfo.xls" Discription="help_string" Method="Text" Export="False">
+    <Export>
+      <File>d:\HelpStr.txt</File>
+    </Export>
+  </Item>
 </Settings>

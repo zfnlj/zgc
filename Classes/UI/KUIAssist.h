@@ -61,6 +61,7 @@ public:
 	static void _playClickFightArea();
 	static void _playClickTurnEnd();
 	static void _stopClickAction();
+	static void _playPopDlg(int id);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

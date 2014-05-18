@@ -27,7 +27,7 @@ public:
 	void onPlayOp(int src,int des,int slot);
 	void onMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
-	void StartRecord();
+	void StartRecord(int recId);
 	void StartPlay();
 	void onPlayEnd();
 	void Stop();

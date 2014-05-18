@@ -411,3 +411,24 @@ void KActor::Move(const char* obj,CCPoint& pt,float fSpeed,CCActionDef& actionDe
 	node->runAction( ActionInter);	
 	actionDef.init(ActionInter,node);
 }
+
+cocos2d::extension::UIWidget* KActor::CreateTalk(const char* obj,const char* slot,int z, int msgId)
+{
+	UIWidget* widget = KJsonDictMgr::getSingleton().widgetFromJsonFile(obj);
+	CCPoint pt = GetDestPosition(NULL,slot,0);
+	widget->setZOrder(z);
+
+	char sz[16];
+	sprintf(sz,"id=%d",msgId);
+	UILabel* labelDesc = (UILabel*)widget->getChildByName("text_str");
+	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(msgId);
+	if(helpString){
+		labelDesc->setText(helpString->GetString());
+	}else{
+		labelDesc->setText(sz);
+	}
+
+	KUIAssist::MainLayer()->addWidget(widget);
+	widget->setPosition(pt);
+	return widget;
+}

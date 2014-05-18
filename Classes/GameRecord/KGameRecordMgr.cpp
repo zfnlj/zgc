@@ -6,8 +6,9 @@
 
 IMPLEMENT_SINGLETON(KGameRecordMgr)
 
-void KGameRecordMgr::StartRecord()
+void KGameRecordMgr::StartRecord(int recId)
 {
+	g_dlgId_inc = recId*1000;
 	m_task.StartRecrod();
 	m_recState = REC_RECORD;
 }
@@ -83,7 +84,7 @@ void::KGameRecordMgr::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 
 void KGameRecordMgr::InitTest()
 {
-	StartRecord();
+	StartRecord(1);
 	RecordPlayOp(1,2,3);
 	RecordPlayOp(3,2,1);
 	SaveToFile("abc");

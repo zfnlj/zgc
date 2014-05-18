@@ -7,7 +7,7 @@
             <key>but_ok01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,2},{98,50}}</string>
+                <string>{{151,434},{98,50}}</string>
                 <key>offset</key>
                 <string>{2,-1}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>but_ok02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,2},{98,50}}</string>
+                <string>{{151,434},{98,50}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>but_turn_end1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{147,52}}</string>
+                <string>{{2,434},{147,52}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>but_turn_end2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,108},{145,50}}</string>
+                <string>{{160,149},{145,50}}</string>
                 <key>offset</key>
                 <string>{-1,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{145,50}}</string>
                 <key>sourceSize</key>
@@ -59,11 +59,11 @@
             <key>but_your_turn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,56},{145,50}}</string>
+                <string>{{160,2},{145,50}}</string>
                 <key>offset</key>
                 <string>{1,-1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{2,2},{145,50}}</string>
                 <key>sourceSize</key>
@@ -72,7 +72,7 @@
             <key>hit_panle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,54},{91,107}}</string>
+                <string>{{160,296},{91,107}}</string>
                 <key>offset</key>
                 <string>{0,-3}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>my_turn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,163},{300,78}}</string>
+                <string>{{2,2},{300,78}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>play_but.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{144,465},{32,32}}</string>
+                <string>{{212,144},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,10 +108,23 @@
                 <key>sourceSize</key>
                 <string>{32,32}</string>
             </dict>
+            <key>pop_msg_panel.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,304},{156,128}}</string>
+                <key>offset</key>
+                <string>{-1,-10}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,26},{156,128}}</string>
+                <key>sourceSize</key>
+                <string>{160,160}</string>
+            </dict>
             <key>rec_but.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{110,465},{32,32}}</string>
+                <string>{{212,110},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,11 +137,11 @@
             <key>res_but.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,465},{72,32}}</string>
+                <string>{{212,2},{72,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{72,32}}</string>
                 <key>sourceSize</key>
@@ -137,7 +150,7 @@
             <key>stop_but.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{76,465},{32,32}}</string>
+                <string>{{212,76},{32,32}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +163,7 @@
             <key>your_turn.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{82,163},{300,76}}</string>
+                <string>{{82,2},{300,76}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -170,7 +183,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:a7299dceca3bf87b2e40a35710b3ffe9$</string>
+            <string>$TexturePacker:SmartUpdate:b204e242738618937fd03f095f940c3b$</string>
             <key>textureFileName</key>
             <string>battle_elem.png</string>
         </dict>

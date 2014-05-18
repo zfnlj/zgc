@@ -11,6 +11,7 @@ enum EGameRecordedDataType
 	EGRDT_End,
 };
 
+static int g_dlgId_inc=1;
 class KCardInst;
 class KRecordDataBase
 {
@@ -20,7 +21,7 @@ public:
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
 	virtual void init(){
-		m_dlgId=0;
+		m_dlgId = g_dlgId_inc++;
 		m_elapsed = 0;
 	}
 	virtual bool Replay(DWORD timeline,int op)=0;
@@ -44,7 +45,10 @@ public:
 	~KRecordUIMouseData(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){m_evt = evt_null;}
+	virtual void init(){
+		KRecordDataBase::init();
+		m_evt = evt_null;
+	}
 	void RecordMouseEvt(Mouse_evt evt,DWORD initTime);
 	virtual bool Replay(DWORD timeline,int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
@@ -73,8 +77,8 @@ public:
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
 	virtual void init(){
-		memset(&m_data,0,sizeof(m_data));
 		KRecordDataBase::init();
+		memset(&m_data,0,sizeof(m_data));
 		m_pActiveCard = NULL;
 	}
 	void RecordPlayOp(int src,int des,int slot,DWORD initTime);

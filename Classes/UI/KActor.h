@@ -54,6 +54,7 @@ public:
 	CCSprite* CreateAnim(const char* obj,const char* slot,float, int zOrder,float offsetY,bool);
 	cocos2d::extension::CCArmature* CreateArmature(K3DActionParam*,const char* obj,const char* slot,float scale,float yOffset,int zOrder);
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
+	virtual cocos2d::extension::UIWidget* CreateTalk(const char* obj,const char* slot,int z, int msgId);
 	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
 	virtual KCardInst* GetCard(){ return NULL;}
 	virtual void addWidget(const char* obj,int zOrder){}

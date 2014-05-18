@@ -10,9 +10,9 @@
   "designHeight": 768,
   "designWidth": 1024,
   "textures": [
-    "ui_elem.plist",
+    "battle_elem.plist",
     "card_elem.plist",
-    "battle_elem.plist"
+    "ui_elem.plist"
   ],
   "version": "1.2.0.1",
   "widgetTree": {
@@ -2096,6 +2096,55 @@
           "textColorB": 255,
           "textColorG": 255,
           "textColorR": 255
+        }
+      },
+      {
+        "classname": "Label",
+        "name": null,
+        "children": [],
+        "options": {
+          "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
+          "classname": "Label",
+          "name": "hero_talk_pos",
+          "ZOrder": 9,
+          "actiontag": 242,
+          "anchorPointX": 0.5,
+          "anchorPointY": 0.5,
+          "classType": null,
+          "colorB": 255,
+          "colorG": 255,
+          "colorR": 255,
+          "flipX": false,
+          "flipY": false,
+          "height": 27,
+          "ignoreSize": true,
+          "layoutParameter": null,
+          "opacity": 255,
+          "positionPercentX": 0.7421875,
+          "positionPercentY": 0.169270828,
+          "positionType": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "sizePercentX": 0.09277344,
+          "sizePercentY": 0.03515625,
+          "sizeType": 0,
+          "tag": 42,
+          "touchAble": false,
+          "useMergedTexture": false,
+          "visible": true,
+          "width": 95,
+          "x": 760,
+          "y": 130,
+          "areaHeight": 0,
+          "areaWidth": 0,
+          "fontFile": null,
+          "fontName": "微软雅黑",
+          "fontSize": 20,
+          "hAlignment": 0,
+          "text": "",
+          "touchScaleEnable": false,
+          "vAlignment": 0
         }
       }
     ],

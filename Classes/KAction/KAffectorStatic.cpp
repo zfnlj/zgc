@@ -101,6 +101,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_fadein;
 	}else if ( strcmp(szName,"createSprite") == 0 ){
 		eType = Affector_createSprite;
+	}else if ( strcmp(szName,"talk") == 0 ){
+		eType = Affector_talk;
 	}else if ( strcmp(szName,"armature") == 0 ){
 		eType = Affector_armature;
 	}else if ( strcmp(szName,"fadeout") == 0 ){

@@ -38,6 +38,10 @@ KAffectorExecutor::~KAffectorExecutor()
 		m_armature->removeFromParent();
 		m_armature = NULL;
 	}
+	if(m_widget){
+		m_widget->removeFromParent();
+		m_widget = NULL;
+	}
 }
 
 void KAffectorExecutor::init(KAffectorStatic* st)
@@ -48,6 +52,7 @@ void KAffectorExecutor::init(KAffectorStatic* st)
 	m_dictObj = NULL;
 	m_armature = NULL;
 	m_ccAction = NULL;
+	m_widget = NULL;
 	mSurviveTime = st->GetSurviveTime();
 	if(mSurviveTime<=0.00001)
 	{
@@ -145,6 +150,9 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_createSprite:
 		if(GetActor()) m_dictObj = GetActor()->CreateSprite(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal());
+		break;
+	case Affector_talk:
+		if(GetActor()) m_widget = GetActor()->CreateTalk(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetIntVal(),m_param->GetDesId(0));
 		break;
 	case Affector_armature:
 		if(GetActor()) m_armature = GetActor()->CreateArmature(m_param,m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetFloatVal2(),m_AffectorStatic->GetIntVal());

@@ -11,7 +11,7 @@
 #include "KBattleFieldStatic.h"
 #include "KCardLayoutStatic.h"
 #include "KHeroSkillStatic.h"
-
+#include "KHelpStringStatic.h"
 #define MAX_CARD_NAME 24
 #define MAX_CARD_DESC_LEN 128
 #define MAX_CARD_DETAIL_LEN 256
@@ -89,6 +89,7 @@ public:
 	bool InitAttr(const char* m_FileName);
 	bool InitDeckDef(const char* m_FileName);
 	bool InitBattleField(const char* m_FileName);
+	bool InitHelpString(const char* m_FileName);
 	bool InitRank(const char* m_FileName);
 	bool InitHeroSkill(const char* m_FileName);
 	KCardStatic* GetCard(int id);
@@ -100,6 +101,7 @@ public:
 	KCardLayoutStatic* GetCardLayout(int idx);
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
+	KHelpStringStatic* GetHelpString(int id);
 private:
 #ifdef _USE_COCOS2DX
 	bool InitCardLayout(const char* m_FileName);
@@ -112,6 +114,7 @@ private:
 	KCardLayoutMap m_cardLayoutMap;
 	KBattleFieldStaticMap m_battleFieldMap;
 	KHeroSkillMap m_heroSkillMap;
+	KHelpStringMap m_helpStringMap;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

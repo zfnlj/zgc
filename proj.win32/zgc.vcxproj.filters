@@ -387,6 +387,9 @@
     <ClCompile Include="..\Classes\UI\KGameRecordPanel.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KHelpStringStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -817,6 +820,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\KGameRecordPanel.h">
       <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KHelpStringStatic.h">
+      <Filter>staticTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

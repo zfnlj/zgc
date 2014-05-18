@@ -69,6 +69,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitRank("data/Rank.txt");
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
+	InitHelpString("data/HelpStr.txt");
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName)
@@ -350,6 +351,13 @@ KAbilityStatic* KGameStaticMgr::GetAbilityOnId(int id)
 	return it->second;
 }
 
+KHelpStringStatic* KGameStaticMgr::GetHelpString(int id)
+{
+	KHelpStringMap::iterator it  = m_helpStringMap.find(id);
+	if(it==m_helpStringMap.end()) return NULL;
+	return it->second;
+}
+
 void KGameStaticMgr::GetAbilityList(int id,KCardAbilityList& lst,KAbilityStatic::Enum_When when)
 {
 	for(int i=0;i<5;i++)
@@ -406,4 +414,28 @@ KCardLayoutStatic* KGameStaticMgr::GetCardLayout(int idx)
 	KCardLayoutMap::iterator it = m_cardLayoutMap.find(idx);
 	if(it==m_cardLayoutMap.end()) return NULL;
 	return it->second;
+}
+
+
+bool KGameStaticMgr::InitHelpString(const char* m_FileName)
+{
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(m_FileName);
+
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
+	if(!fileReader)	return false;
+
+	while(true)
+	{
+		int nRet = fileReader->ReadLine();
+		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
+		if(nRet == 0) break;
+
+		KHelpStringStatic* pStatic = KHelpStringStatic::create();
+		pStatic->Init(fileReader);
+		m_helpStringMap[pStatic->m_Id] = pStatic;
+	}
+
+	loader.CloseFileReader(fileReader);
+	return true;
 }

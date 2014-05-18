@@ -53,6 +53,7 @@ enum AffectorType
 	Affector_delWidget,
 	Affector_updateSecret,
 	Affector_timerBar,
+	Affector_talk,
 };
 
 

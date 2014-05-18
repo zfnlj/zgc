@@ -104,7 +104,7 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 	default:
 		break;
 	}
-	
+	KUIAssist::_playPopDlg(m_dlgId*10+step);
 	return false;
 }
 
@@ -191,6 +191,7 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 		KUIAssist::_playClickTurnEnd();
 		break;
 	}
+	KUIAssist::_playPopDlg(m_dlgId*10);
 	return false;
 }
 

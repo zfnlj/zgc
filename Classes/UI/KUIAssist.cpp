@@ -639,4 +639,18 @@ void KUIAssist::_stopClickAction()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+	actor.GetActionMgr().LimitAlive("hero_talk");
+}
+
+void KUIAssist::_playPopDlg(int id)
+{
+	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KAction* pTalkAction = actor.GetActionMgr().FindAction("hero_talk");
+	if(pTalkAction && pTalkAction->GetParam()->GetDesId(0)==id) return;
+
+	actor.GetActionMgr().LimitAlive("hero_talk");
+	K3DActionParam param;
+	param.init("hero_talk");
+	param.SetDestVal(id,0);
+	actor.GetActionMgr().PlayAction(&param);
 }
