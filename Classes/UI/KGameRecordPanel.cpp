@@ -28,7 +28,7 @@ void KGameRecordPanel::DoClickPlay(CCObject* sender)
 	m_layer->getWidgetByName("but_rec_play")->setVisible(false);
 	m_layer->getWidgetByName("but_rec_rec")->setVisible(false);
 	m_layer->getWidgetByName("but_rec_stop")->setVisible(true);
-	KGameRecordMgr::getSingleton().StartPlay();
+	KGameRecordMgr::getSingleton().StartPlay("abc");
 }
 
 void KGameRecordPanel::DoClickRecord(CCObject* sender)

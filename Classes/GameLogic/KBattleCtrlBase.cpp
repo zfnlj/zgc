@@ -11,6 +11,9 @@
 #include "System/Misc/KStream.h"
 #include "../Quest/KQuestNew.h"
 
+#ifdef _USE_COCOS2DX
+#include "../GameRecord/KGameRecordMgr.h"
+#endif
 
 bool KBattleCtrlBase::init(void* w)
 {
@@ -440,6 +443,10 @@ void KBattleCtrlBase::PlayQuestBattle(KQuestNew* pQuest)
 {
 	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
 	m_pBattleQuest = pQuest;
+#ifdef _USE_COCOS2DX
+	if(KGameRecordMgr::getSingleton().StartPlay(pBattleStatic->GetRec())) return;
+#endif
+
 	m_pMainPlayer = KBattleGuy::create();
 	KBattleAI* pAI = KBattleAI::create();
 	m_bSelectCard =pBattleStatic->IsSelectCard();

@@ -23,11 +23,12 @@ void KGameRecordMgr::Stop()
 	m_recState = REC_NULL;
 }
 
-void KGameRecordMgr::StartPlay()
+bool KGameRecordMgr::StartPlay(const char* fileName)
 {
+	if(!LoadFile(fileName)) return false;
 	m_recState = REC_PLAY;
-	LoadFile("abc");
 	m_task.StartPlay();
+	return true;
 }
 
 bool KGameRecordMgr::SaveToFile( const char* szFileName)

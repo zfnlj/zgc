@@ -23,6 +23,8 @@ public:
 	int GetMonster(){ return m_monster;}
 	int GetQuestId(){ return m_questId;}
 	void Init(System::File::KTabFile2* fileReader);
+	bool IsRecEmpty(){ return strlen(m_rec)<2;}
+	const char* GetRec(){ return m_rec;}
 private:
 	int m_Id;
 	int m_myDeck;
@@ -32,6 +34,7 @@ private:
 	int m_myFirst;
 	int m_monster;
 	int m_questId;
+	char m_rec[64];
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KBattleFieldStatic*> KBattleFieldStaticMap;

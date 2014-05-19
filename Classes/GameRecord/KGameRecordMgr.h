@@ -28,7 +28,7 @@ public:
 	void onMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
 	void StartRecord(int recId);
-	void StartPlay();
+	bool StartPlay(const char*);
 	void onPlayEnd();
 	void Stop();
 	bool IsClickCardValidate(KCardInst* card);

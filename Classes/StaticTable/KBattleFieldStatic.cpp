@@ -9,6 +9,7 @@ bool KBattleFieldStatic::init()
 {
 	m_Id = m_myDeck = m_yourDeck = m_monster = 0;
 	m_yourAI = npc_ai_null;
+	memset(m_rec,0,sizeof(m_rec));
 	return true;
 }
 
@@ -27,6 +28,8 @@ void KBattleFieldStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetInteger("MyFirst", 0, (int*)&m_myFirst);
 	fileReader->GetInteger("SelectCard", 0, (int*)&m_selectCard);
 	fileReader->GetInteger("Monster", 0, (int*)&m_monster);
+	fileReader->GetString("rec", "", m_rec, 63);
+
 	int aiVal;
 	fileReader->GetInteger("YourAI", 0, (int*)&aiVal);
 	m_yourAI = (KBattleFieldStatic::enum_npc_ai)aiVal;
