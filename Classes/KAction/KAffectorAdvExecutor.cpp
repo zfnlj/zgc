@@ -116,7 +116,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_updateHit:
 		if(GetActor()) {
-			GetActor()->UpdateCardAttr(GetActor()->GetUI(),false,m_param);
+			GetActor()->UpdateCardAttr(GetActor()->GetUI(),false,false,m_param);
 			GetActor()->UpdateCardBuf();
 		}
 		break;

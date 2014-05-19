@@ -6,6 +6,7 @@
 #include "../GameLogic/KCardInst.h"
 
 #define  ADVICE_TURN_END 3
+#define  ADVICE_ENTER_OR_CAST 4
 class BattleFieldScene;
 class KCardInst;
 class KAction;

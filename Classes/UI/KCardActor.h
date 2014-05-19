@@ -22,7 +22,7 @@ public:
     virtual void update(float dt);
 	cocos2d::extension::UIWidget* GetUI();
 	virtual void UpdateCardAttr();
-	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bInit=false,K3DActionParam* hitParam=NULL);
+	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bBigCard,bool bInit=false,K3DActionParam* hitParam=NULL);
 	virtual void MoveOnHit(K3DActionParam*,float speed,CCActionDef& actionDef);
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual void MoveBack(float speed);//“∆∂Øªÿ≤€Œª

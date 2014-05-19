@@ -82,6 +82,7 @@ void KIndicatePanel::Update(float dt)
 					GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 						bShowMyFightArea = true;
+						if(curActiveGreen.size()+curActiveRed.size()>0) KUIAssist::_playAdviceMsg(ADVICE_ENTER_OR_CAST);
 					}else if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
 						pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
 					}

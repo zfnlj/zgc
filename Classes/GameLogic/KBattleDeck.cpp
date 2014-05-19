@@ -11,7 +11,7 @@
 #include "../common/KCommonObj.h"
 
 
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20007,32013,33001,33002,20005,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20051,20045,20049,20050,20005,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -666,6 +666,11 @@ int KBattleDeck::GetEmptySecretSlot()
     }
     return -1;
     
+}
+
+int KBattleDeck::GetSoldierNum()
+{
+	return m_FightCardSet.size();
 }
 
 int KBattleDeck::GetHurtedSoldierNum()

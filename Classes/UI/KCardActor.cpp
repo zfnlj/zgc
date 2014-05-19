@@ -99,7 +99,7 @@ void KCardActor::UpdateUI()
 cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 {
 	if(m_bigPhoto){
-		UpdateCardAttr(m_bigPhoto);
+		UpdateCardAttr(m_bigPhoto,true);
 		return m_bigPhoto;
 	}
 
@@ -191,8 +191,8 @@ void KCardActor::DoSelect(CCObject* sender)
 
 void KCardActor::UpdateCardAttr()
 {
-	if(m_bigPhoto) UpdateCardAttr(m_bigPhoto);
-	if(m_ui) UpdateCardAttr(m_ui);
+	if(m_bigPhoto) UpdateCardAttr(m_bigPhoto,true);
+	if(m_ui) UpdateCardAttr(m_ui,false);
 }
 void KCardActor::UpdateCardBuf()
 {
@@ -201,7 +201,7 @@ void KCardActor::UpdateCardBuf()
 	}
 }
 
-void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit,K3DActionParam* hitParam)
+void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bBigCard,bool bInit,K3DActionParam* hitParam)
 {
 	if(!ui) return;
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
@@ -221,20 +221,27 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bInit,K3DA
 			}
 			sprintf(info,"%d",newVal);
 		}else{
-			sprintf(info,"%d",m_card->GetHp());
+			if(bInit){
+				sprintf(info,"%d",m_card->GetST()->GetHp());
+			}else{
+				sprintf(info,"%d",m_card->GetHp());
+			}
 		}
 		if(strcmp(info,labelHp->getStringValue())!=0){
-			if(!bInit){
+			if(!bInit && !bBigCard){
 				float oldScale = labelHp->getScale();
 				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
 				labelHp->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
 			}
 			labelHp->setStringValue(info);
 		}
-		
-		sprintf(info,"%d",m_card->GetAtk());
+		if(bInit){
+			sprintf(info,"%d",m_card->GetST()->GetAtk());
+		}else{
+			sprintf(info,"%d",m_card->GetAtk());
+		}
 		if(strcmp(info,labelAtk->getStringValue())!=0){
-			if(!bInit){
+			if(!bInit && !bBigCard){
 				float oldScale = labelAtk->getScale();
 				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
 				labelAtk->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));

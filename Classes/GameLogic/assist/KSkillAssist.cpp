@@ -512,6 +512,9 @@ int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card,KValDef& v
 	case KValDef::val_my_hurted_soldierNum:
 		ret = guy->GetDeck().GetHurtedSoldierNum();
 		break;
+	case KValDef::val_mySoldierNum:
+		ret = guy->GetDeck().GetSoldierNum() + valDef._val;
+		break;
 	case KValDef::val_soldierNum:
 		ret = ctrl->GetFighterNum() + valDef._val;
 		break;

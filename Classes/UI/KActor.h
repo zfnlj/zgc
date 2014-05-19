@@ -19,7 +19,7 @@ public:
 	cocos2d::extension::UIWidget* GetUI();
 	void Remove(const char* obj);
 	virtual void UpdateCardAttr(){}
-	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bInit,K3DActionParam* hitParam){}
+	virtual void UpdateCardAttr(cocos2d::extension::UIWidget*,bool bBig,bool bInit,K3DActionParam* hitParam){}
 	virtual void MoveOnHit(K3DActionParam*,float speed,CCActionDef& actionDef){}
 	virtual void UpdateCardBuf(){}
 	void Move(const char* obj,const char* slot,float speed,CCActionDef& actionDef);

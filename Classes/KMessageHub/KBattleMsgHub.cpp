@@ -4,6 +4,7 @@
 #include "../UI/BattleFieldScene.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
+#include "../UI/KUIAssist.h"
 #else
 #include "../../Scene/KWorld.h"
 #include "../../Facade/KWorldFacade.h"
@@ -143,6 +144,7 @@ void KBattleMsgHub::BattleDirty(unsigned long long Param1, unsigned long long Pa
 void KBattleMsgHub::BattleOpDone(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
+	KUIAssist::_stopAdviceMsg();
 	if(!GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		KSocketFacade::DoBattleOpDone((KBattleCtrlBase::BattleOp*)Param1);
 	}

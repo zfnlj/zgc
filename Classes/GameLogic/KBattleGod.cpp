@@ -261,9 +261,10 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_add_atk_hp:
 		{
-			pDes->AddAtk(pAbility->GetNormalVal());
-			pDes->AddHp(pAbility->GetVal2());
-			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
+			int val =  KSkillAssist::_calcValDef(ctrl,guy,pSrc,pAbility->GetVal());
+			pDes->AddAtk(val);
+			pDes->AddHp(val);
+			result->SetDestVal(pDes->GetRealId(),val);
 		}
 		break;
 	case KAbilityStatic::what_heal:

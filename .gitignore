@@ -145,3 +145,6 @@
 /tool/zgc_ui/hero_talk/Backup
 /tool/zgc_ui/hero_talk/Export
 /tool/zgc_ui/hero_talk/Resources/battle_elem_PList.Dir
+/tool/studio/doDamage/Backup
+/tool/studio/doDamage/Export
+/tool/studio/doDamage/Resources/cut_head_PList.Dir

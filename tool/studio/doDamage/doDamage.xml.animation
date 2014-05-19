@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>D:\My Documents\doDamage\doDamage.xml.animation</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>doDamage</Name>
+  <ProjectDir>D:\My Documents\doDamage</ProjectDir>
+  <JsonFileName>doDamage.json</JsonFileName>
+  <Resources>D:\My Documents\doDamage\Resources</Resources>
+  <JsonFolder>D:\My Documents\doDamage\Json</JsonFolder>
+  <JsonList />
+  <ResourceFileList>
+    <string>cut_head.plist</string>
+  </ResourceFileList>
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <bBatchImage>false</bBatchImage>
+</AnimationProject>

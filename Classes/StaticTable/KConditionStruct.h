@@ -23,6 +23,7 @@ struct KValDef{
 		val_normal,
 		val_my_hurted_soldierNum,
 		val_soldierNum,
+		val_mySoldierNum,
 		val_rnd,
 		val_getHp,
 	};

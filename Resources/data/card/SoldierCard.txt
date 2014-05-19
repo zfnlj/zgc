@@ -20,7 +20,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 20025	赵括	1	1	2	1	0	鼓舞	进场:本回合中，使一个我方勇士攻击力+2	0	0
 20026	医缓	2	1	1	2	0	谋略	当我方单位获得治疗时，获得攻击力+2	soldier_pray_ability	pic_20026.jpg
 20027	逃亡的难民	1	0	1	1	0	0	0	0	pic_20027.jpg
-20028	烛之武	1	2	1	2	0	抽牌	进场：抽取一张牌	0	pic_20028.jpg
+20028	烛之武	0	2	1	2	0	抽牌	进场：抽取一张牌	0	pic_20028.jpg
 20029	医和	1	1	2	1	0	治疗	进场：治疗我方单位2点生命	0	pic_20029.jpg
 20030	秦越人	2	1	2	1	0	增益	回合结束时，使一名我方勇士生命值+1	soldier_pray_other_ability	pic_20030.jpg
 20031	阴阳五行家	1	2	3	2	0	0	进场：使一名我方勇士回到手牌	0	pic_20031.jpg
@@ -34,6 +34,16 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
 20039	神秘的刺客	1	1	2	1	0	迷踪	迷踪：不可被攻击	soldier_hide	pic_20039.jpg
 20040	混乱的方士	1	2	3	2	0	0	进场：随机对3个单位各造成1点伤害。	0	pic_20040.jpg
 20041	方仙士	2	2	2	2	0	0	进场：使一名勇士攻击力与生命值互换。	0	pic_20041.jpg
+20042	赵奢	0	6	6	7	0	0	0	0	pic_20042.jpg
+20043	乐毅	0	7	6	6	0	鼓舞	进场:你的其他随从获得+1/+1	0	pic_20043.jpg
+20044	秦锐士	0	4	4	5	0	0	0	0	pic_20044.jpg
+20045	申息之师	0	3	3	2	0	鼓舞	进场: 使一个友方随从获得+1/+1	0	pic_20045.jpg
+20046	范雎	0	4	2	4	0	抽牌	进场：抽取一张牌	0	pic_20046.jpg
+20048	田单	0	6	5	2	0	疾行	0	soldier_rush	pic_20048.jpg
+20049	古冶子	0	3	3	1	0	疾行	0	soldier_rush	pic_20049.jpg
+20050	李牧	0	5	4	4	0	谋略	进场: 战场上每有一个其他友方随从，便获得+1/+1。	soldier_strong_show	pic_20050.jpg
+20051	齐技击	0	1	1	1	0	0	进场:造成1点伤害。	0	pic_20051.jpg
+20052	大司马	0	8	8	8	0	护卫	护卫	soldier_guide	pic_20052.jpg
 21001	医圣-扁鹊	1	5	4	5	water	群疗	进场：治疗全体友军2点生命	0	pic_20029.jpg
 21002	光明之泉	2	2	0	5	water	随机治疗	回合开始时随机治疗友军3点生命	soldier_heal_ability	pic_21002.jpg
 21003	墨家钜子	0	2	1	3	water	谋略	当友军受到治疗时抽张牌	soldier_drawcard_ability	pic_21003.jpg

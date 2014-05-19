@@ -580,11 +580,11 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 
 	KCardInstList curActiveGreen;
 	KCardInstList curActiveRed;
-
+	KBattleGuy* defGuy = GameRoot::getSingleton().BattleCtrl().GetDefGuy();
 	if(pSrc->IsKindOf(KCardStatic::card_soldier)){
 		GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 		if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
-			card->GetOwner()->QueryActiveDefendCards(&curActiveRed);
+			defGuy->QueryActiveDefendCards(&curActiveRed);
 		}
 	}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
 		GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
@@ -651,8 +651,11 @@ void KUIAssist::_stopAdviceMsg()
 
 void KUIAssist::_playAdviceMsg(int id)
 {
-	if(lastAdviceId ==id) return;
-	lastAdviceId = id;
+	static DWORD lastAdviceTime = 0;
+	if((GetTickCount()-lastAdviceTime) <2000) return;
+	lastAdviceTime = GetTickCount();
+	//if(lastAdviceId ==id) return;
+	//lastAdviceId = id;
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	KAction* pTalkAction = actor.GetActionMgr().FindAction("hero_talk");
 	if(pTalkAction && pTalkAction->GetParam()->GetDesId(0)==id) return;
