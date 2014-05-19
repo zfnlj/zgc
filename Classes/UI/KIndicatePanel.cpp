@@ -81,6 +81,7 @@ void KIndicatePanel::Update(float dt)
 				if(pSrc->IsKindOf(KCardStatic::card_soldier)){
 					GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
+						
 						bShowMyFightArea = true;
 						if(curActiveGreen.size()+curActiveRed.size()>0) KUIAssist::_playAdviceMsg(ADVICE_ENTER_OR_CAST);
 					}else if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
@@ -109,6 +110,11 @@ void KIndicatePanel::Update(float dt)
 
 	_copyCardSet(&curActiveGreen,&m_ActiveGreenArr);
 	_copyCardSet(&curActiveRed,&m_ActiveRedArr);
+
+	KBattleCtrlBase::BattleOp& op = GameRoot::getSingleton().BattleCtrl().GetCurOp();
+	if(op._slot>=0){
+		bShowMyFightArea= false;
+	}
 
 	if(bShowMyFightArea){
 		GameRoot::getSingleton().getBattleScene()->ActiveMyFightArea();
