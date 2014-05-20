@@ -26,7 +26,7 @@ KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 		pRecordData = new KRecordPlayOpData;
 		break;
 	}
-	pRecordData->init();
+	pRecordData->init(m_dlgInc++);
 	return pRecordData;
 }
 
@@ -119,8 +119,9 @@ void KGameRecordTask::Empty()
 	m_deckStream.clear();
 }
 
-void KGameRecordTask::StartRecrod()
+void KGameRecordTask::StartRecrod(int dlgInc)
 {
+	m_dlgInc = dlgInc;
 	Empty();
 	m_startRecordTime = GetTickCount();
 	GameRoot::getSingleton().BattleCtrl().serializeAll(&m_deckStream);

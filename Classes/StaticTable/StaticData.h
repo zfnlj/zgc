@@ -17,7 +17,7 @@
 #define STATIC_DATA_POINT(key) StaticData::sharedStaticData()->pointFromKey(key)
 #define STATIC_DATA_RECT(key) StaticData::sharedStaticData()->rectFromKey(key)
 #define STATIC_DATA_SIZE(key) StaticData::sharedStaticData()->sizeFromKey(key)
-
+#define STATIC_DATA_SET(key,val) StaticData::sharedStaticData()->setKeyVal(key,val)
 class StaticData : public cocos2d::CCObject
 {
 public:    
@@ -38,6 +38,7 @@ public:
     cocos2d::CCRect rectFromKey(std::string key);
     cocos2d::CCSize sizeFromKey(std::string key);
     
+	void setKeyVal(const char* keyStr,int val);
     /**
      *	@brief	 内存不足时调用
      */

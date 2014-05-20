@@ -10,9 +10,6 @@ enum Cur_OP_Step{
 	step_ok,
 };
 
-int KRecordDataBase::g_dlgId_inc=1;
-
-
 Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot)
 {
 	if(op._src != src) return step_src;

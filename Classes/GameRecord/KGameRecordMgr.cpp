@@ -3,13 +3,16 @@
 #include "../GameRoot.h"
 #include "../ui/KGameRecordPanel.h"
 #include "../UI/BattleFieldScene.h"
+#include "../StaticTable/StaticData.h"
 
 IMPLEMENT_SINGLETON(KGameRecordMgr)
 
-void KGameRecordMgr::StartRecord(int recId)
+void KGameRecordMgr::StartRecord()
 {
-	KRecordDataBase::g_dlgId_inc = recId*1000;
-	m_task.StartRecrod();
+	int inc = STATIC_DATA_INT("recInc");
+	STATIC_DATA_SET("recInc",inc+1);
+
+	m_task.StartRecrod(inc*100);
 	m_recState = REC_RECORD;
 }
 
@@ -85,7 +88,7 @@ void::KGameRecordMgr::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 
 void KGameRecordMgr::InitTest()
 {
-	StartRecord(1);
+	StartRecord();
 	RecordPlayOp(1,2,3);
 	RecordPlayOp(3,2,1);
 	SaveToFile("abc");

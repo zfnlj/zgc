@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"/>
+
 <plist version="1.0">
-<dict>
-	<key>ip</key>
-	<string>10.12.1.119</string>
-	<key>port</key>
-	<string>9998</string>
-	<key>user</key>
-	<string>zgc2</string>
-	<key>pwd</key>
-	<string>1</string>
-	<key>player</key>
-	<string>pass_16</string>
-</dict>
+    <dict>
+        <key>ip</key>
+        <string>10.12.1.119</string>
+        <key>port</key>
+        <string>9998</string>
+        <key>user</key>
+        <string>zgc2</string>
+        <key>pwd</key>
+        <string>1</string>
+        <key>player</key>
+        <string>pass_16</string>
+        <key>recInc</key>
+        <string>1</string>
+    </dict>
 </plist>

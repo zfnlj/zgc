@@ -27,7 +27,7 @@ public:
 	void onPlayOp(int src,int des,int slot);
 	void onMouseEvt(KRecordUIMouseData::Mouse_evt);
 	void InitTest();
-	void StartRecord(int recId);
+	void StartRecord();
 	bool StartPlay(const char*);
 	void onPlayEnd();
 	void Stop();
@@ -42,6 +42,8 @@ private:
 
 	KGameRecordTask m_task;
 	RecState m_recState;
+
+	static int g_dlgId_inc;
 
 };
 

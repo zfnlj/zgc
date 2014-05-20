@@ -32,7 +32,7 @@ public:
 	void RecordPlayOp(int src,int des,int slot);
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt);
 	void Empty();
-	void StartRecrod();
+	void StartRecrod(int incId);
 	void StartPlay();
 	void Stop();
 	bool Play(float);
@@ -43,6 +43,7 @@ public:
 private:
 
 	// 为了内存分配快搞的各种池
+	int m_dlgInc;
 	float m_timeline;
 	DWORD m_startRecordTime;
 	Task_Head m_head;

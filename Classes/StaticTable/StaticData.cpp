@@ -67,3 +67,17 @@ void StaticData::purge()
 {
     CC_SAFE_RELEASE_NULL(_sharedStaticData);
 }
+
+void StaticData::setKeyVal(const char* keyStr,int val)
+{
+	std::string key = keyStr;
+	char buf[24];
+	sprintf(buf,"%d",val);
+
+	CCString* pValue1 = CCString::create(buf);
+
+	_dictionary->setObject(pValue1,keyStr);
+	//pStr->initWithFormat("%d",val);//
+
+	_dictionary->writeToFile(STATIC_DATA_PATH);
+}

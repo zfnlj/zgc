@@ -11,40 +11,6 @@
 
 using namespace System::File;
 
-KCardStatic::CardRace getCardRace(const char* str)
-{
-	if(strcmp(str,"gold")==0){
-		return KCardStatic::race_gold;
-	}else if(strcmp(str,"tree")==0){
-		return KCardStatic::race_tree;
-	}else if(strcmp(str,"water")==0){
-		return KCardStatic::race_water;
-	}else if(strcmp(str,"fire")==0){
-		return KCardStatic::race_fire;
-	}else if(strcmp(str,"mud")==0){
-		return KCardStatic::race_mud;
-	}else{
-		return KCardStatic::race_null;
-	}
-}
-
-void KCardStatic::SetID(int val)
-{
-	m_Id = val;
-	m_type =  (CardDef)(m_Id/10000);
-}
-
-bool KCardStatic::init()
-{
-	memset(m_Name,0,sizeof(m_Name));
-	memset(m_Desc,0,sizeof(m_Desc));
-	memset(m_Detail,0,sizeof(m_Detail));
-	memset(m_Show,0,sizeof(m_Show));
-	memset(m_Photo,0,sizeof(m_Photo));
-	return true;
-}
-
-
 template<> KGameStaticMgr* Singleton<KGameStaticMgr>::mSingleton = 0;
 
 
@@ -295,37 +261,14 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 		if(nRet == 0) break;
 		char buf[128]={0};
 		KCardStatic* pCard = KCardStatic::create();
-		int id = 0;
-		fileReader->GetInteger("ID", 0, (int*)&id);
-		pCard->SetID(id);
-		fileReader->GetString("Name", "", pCard->m_Name, MAX_CARD_NAME);
-		fileReader->GetInteger("Atk", 0, (int*)&pCard->m_Atk);
-		fileReader->GetInteger("Def", 0, (int*)&pCard->m_Def);
-		fileReader->GetInteger("Cost", 0, (int*)&pCard->m_Cost);
-		fileReader->GetInteger("Hp", 0, (int*)&pCard->m_Hp);
-		fileReader->GetInteger("Rank", 1, (int*)&pCard->m_Rank);
-		fileReader->GetString("Desc", "", pCard->m_Desc, MAX_CARD_DESC_LEN);
-		fileReader->GetString("Detail", "", pCard->m_Detail, MAX_CARD_DETAIL_LEN);
-
-		fileReader->GetString("Race", "", buf, MAX_CARD_NAME);
-		pCard->m_Race = getCardRace(buf);
-		fileReader->GetString("Show", "", buf, 63);
-		if(strlen(buf)>2) strcpy(pCard->m_Show,buf);
-		fileReader->GetString("Photo", "", buf, MAX_CARD_NAME);
-		if(strlen(buf)>2) strcpy(pCard->m_Photo,buf);
-		m_cardMap[id] = pCard;
+		pCard->Init(fileReader);
+		m_cardMap[pCard->GetID()] = pCard;
 	}
 
 	loader.CloseFileReader(fileReader);
 	return true;
 }
 
-KCardStatic* KCardStatic::create()
-{
-	KCardStatic* card = new KCardStatic;
-	card->init();
-	return card;
-}
 
 KCardStatic* KGameStaticMgr::GetCard(int id)
 {

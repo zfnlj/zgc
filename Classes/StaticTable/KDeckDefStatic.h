@@ -6,10 +6,30 @@
 #include <list>
 #include "../common/KCommonObj.h"
 #include <System/File/KTabfileLoader.h>
+#include "KCardStatic.h"
 
 class KDeckDefStatic
 {
 public:
+	struct DynamicCardDef{
+		KCardStatic::CardDef _def;
+		KCardStatic::CardRace _race;
+		int _rank;
+		int _num;
+		static DynamicCardDef* create(){
+			DynamicCardDef* pDef = new DynamicCardDef;
+			pDef->init();
+			return pDef;
+		}
+		DynamicCardDef(){
+			
+		}
+		void init(){
+			memset(this,0,sizeof(DynamicCardDef));
+		}
+		bool init(char* sz);
+	};
+	typedef std::list<DynamicCardDef*> DynamicCardDefList;
     virtual bool init();
 	static KDeckDefStatic* create();
 	void setDeck(const char* buf);
@@ -25,8 +45,12 @@ private:
 	int m_heroHp;
 	int m_res;
 	int m_drawNum;
+	int m_rnd;
 	
+	void setDynamic(const char* buf);
+
 	KIntegerList m_cardList;
+	DynamicCardDefList m_defList;
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KDeckDefStatic*> KDeckDefMap;

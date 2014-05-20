@@ -64,7 +64,6 @@ void VirtualService::LoadPlayerData()
 	
 	//KUserQuestSql::UpdateQuest(STATIC_DATA_STRING("player"),1,27,buf,20);
 
-
 	//³õÊ¼»¯±³°ü
 	char buffer[1024] = {0};
 	KDataOutputStream os(buffer, sizeof(buffer));
@@ -91,6 +90,11 @@ void VirtualService::SendMoney()
 
 bool VirtualService::StartQuestBattle()
 {
+	{ //TMP
+		KQuestNew* pQuest = KQuestManager::GetInstance()->GetQuest(10001);
+		GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+		return true;
+	}
 	bool ret = false;
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	int num = playerQuestManager.m_quests.size();

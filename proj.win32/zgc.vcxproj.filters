@@ -390,6 +390,9 @@
     <ClCompile Include="..\Classes\StaticTable\KHelpStringStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KCardStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -822,6 +825,9 @@
       <Filter>UI\Panel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KHelpStringStatic.h">
+      <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KCardStatic.h">
       <Filter>staticTable</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,8 +19,8 @@ public:
 	~KRecordDataBase(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){
-		m_dlgId = g_dlgId_inc++;
+	virtual void init(int id){
+		m_dlgId =id;
 		m_elapsed = 0;
 	}
 	virtual bool Replay(DWORD timeline,int op)=0;
@@ -29,7 +29,7 @@ public:
 	virtual bool IsClickFightAreaValidate(int slot)=0;
 	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
 
-	static int g_dlgId_inc;
+
 protected:
 	unsigned int m_dlgId;
 	DWORD		 m_elapsed;
@@ -46,8 +46,8 @@ public:
 	~KRecordUIMouseData(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){
-		KRecordDataBase::init();
+	virtual void init(int id){
+		KRecordDataBase::init(id);
 		m_evt = evt_null;
 	}
 	void RecordMouseEvt(Mouse_evt evt,DWORD initTime);
@@ -77,8 +77,8 @@ public:
 	~KRecordPlayOpData(){}
 	virtual bool Deserialize( StreamInterface* pDataStream );
 	virtual bool Serialize( StreamInterface* pDataStream );
-	virtual void init(){
-		KRecordDataBase::init();
+	virtual void init(int id){
+		KRecordDataBase::init(id);
 		memset(&m_data,0,sizeof(m_data));
 		m_pActiveCard = NULL;
 	}
