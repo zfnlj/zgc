@@ -28,7 +28,7 @@ public:
 	virtual bool IsClickCardValidate(KCardInst* card)=0;
 	virtual bool IsClickFightAreaValidate(int slot)=0;
 	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
-
+	DWORD GetElapsed(){ return m_elapsed;}
 
 protected:
 	unsigned int m_dlgId;

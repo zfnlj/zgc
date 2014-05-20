@@ -61,6 +61,7 @@ void KBattleAI::ThinkToPlay(float dt)
 		return;
 
 	SetPlayTimeOut(); //AI 无可执行操作
+
 }
 
 bool KBattleAI::SoldierToAttack()

@@ -136,6 +136,7 @@ void KGameRecordTask::StartPlay()
 
 void KGameRecordTask::onPlayStepOn()
 {
+	m_timeline = m_pCurOpera->GetElapsed()*0.001;
 	CC_SAFE_DELETE(m_pCurOpera);
 	KUIAssist::_stopClickAction();
 	KUIAssist::_stopAdviceMsg();

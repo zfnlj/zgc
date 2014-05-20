@@ -144,12 +144,12 @@ cocos2d::extension::UILayer* BattleFieldScene::GetUILayer()
 void BattleFieldScene::onBattleInit()
 {
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
-	KUIAssist::_showCardSet("my_hero_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_showCardSet("my_hand_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
 
 	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
-	KUIAssist::_showCardSet("your_hero_base",pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_showCardSet("your_hand_base",pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
 
 	if(GameRoot::getSingleton().BattleCtrl().IsSelectCard()){
 		m_selectCardPanel.init(m_ui);
@@ -227,9 +227,11 @@ void BattleFieldScene::onHandCardReady()
 
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onPlayStepOn();
+
 	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
-	KGameRecordMgr::getSingleton().onMouseEvt(KRecordUIMouseData::evt_turn_end);
+	
 	KUIAssist::_stopAdviceMsg();
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		GameRoot::getSingleton().BattleCtrl().DoEndTurn();
@@ -244,27 +246,27 @@ void BattleFieldScene::ReGenerateAllCard()
 	KClickCardMgr::getSingleton().onBattleRefresh();
 	m_indicatePanel.onBattleRefresh();
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
-	KUIAssist::_showCardSet("my_hero_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_showCardSet("my_hand_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
-	KUIAssist::_showCardSet("my_fight_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_fight));
 
 	FBattleGuy* pPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
-	KUIAssist::_showCardSet("your_hero_base",pPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_showCardSet("your_hand_base",pPlayer->QueryCardSet(KCardInst::enum_slot_hand));
-	KUIAssist::_showCardSet("your_fight_base",pPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+	KUIAssist::_showCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_hero));
+	KUIAssist::_showCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_fight));
 	
 }
 
 void BattleFieldScene::FreshAllCard()
 {
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
-	KUIAssist::_showCardSet("my_hand_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
-	KUIAssist::_showCardSet("my_fight_base",pMainPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_fight));
 	KUIAssist::_removeCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_tomb));
 
 	FBattleGuy* pPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
-	KUIAssist::_showCardSet("your_hand_base",pPlayer->QueryCardSet(KCardInst::enum_slot_hand));
-	KUIAssist::_showCardSet("your_fight_base",pPlayer->QueryCardSet(KCardInst::enum_slot_fight));
+	KUIAssist::_showCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_showCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_fight));
 	KUIAssist::_removeCardSet(pPlayer->QueryCardSet(KCardInst::enum_slot_tomb));
 }
 

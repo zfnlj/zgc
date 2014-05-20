@@ -9,6 +9,7 @@
 #include "KCardActor.h"
 #include "GameRoot.h"
 #include "KJsonDictMgr.h"
+#include "../GameRecord/KGameRecordMgr.h"
 
 #define SHOW_CARD_OFFSET 6
 #define MAX_BUF_SLOT_NUM 5
@@ -66,6 +67,16 @@ cocos2d::CCPoint KUIAssist::_queryFighterPos(KCardInst* card)
 	}
 	UIImageView* base = (UIImageView*)MainLayer()->getWidgetByName(sz);
 	return base->getWorldPosition();
+}
+
+void KUIAssist::_showCardSet(KCardInstList* lst)
+{
+	for(KCardInstList::iterator it=lst->begin();it!=lst->end();++it){
+		KCardActor* actor = KCardActor::create(*it);
+		cocos2d::CCPoint pt = _queryCardPos(lst,*it);
+		actor->GetUI()->setPosition(pt);
+		if(!actor->GetUI()->getParent()) MainLayer()->addWidget(actor->GetUI());
+	}
 }
 
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
@@ -136,30 +147,6 @@ void KUIAssist::_showCard(KCardInst* card)
 	KCardInstList* lst = guy->QueryCardSet(card->GetSlot());
 	KUIAssist::_moveCardSet(lst,"card_move");
 	
-}
-
-void KUIAssist::_showCardSet(const char* basePos,KCardInstList* lst)
-{
-	UIImageView* base = (UIImageView*)MainLayer()->getWidgetByName(basePos);
-	int cardNum = lst->size();
-	if(cardNum==0) return;
-	int totalWidth =cardNum * base->getContentSize().width + SHOW_CARD_OFFSET*(cardNum-1);
-
-	int cur_x = base->getWorldPosition().x - (totalWidth-base->getContentSize().width)*0.5;
-	for(KCardInstList::iterator it=lst->begin();it!=lst->end();++it){
-		KCardActor* actor = KCardActor::create(*it);
-		cocos2d::CCPoint pt = base->getWorldPosition();
-		pt.x = cur_x;
-		cur_x += base->getContentSize().width + SHOW_CARD_OFFSET;
-		cocos2d::CCPoint oldpt = actor->GetUI()->getPosition();
-		if(oldpt.getDistance(pt)<200){
-
-		}else{
-			actor->GetUI()->setPosition(pt);
-		}
-		
-		if(!actor->GetUI()->getParent()) MainLayer()->addWidget(actor->GetUI());
-	}
 }
 
 void KUIAssist::_removeCardSet(KCardInstList* lst)
@@ -527,6 +514,18 @@ void KUIAssist::_updateCardListBuf(KCardInstList* lst)
 	}
 }
 
+void KUIAssist::_resortCardSet(FBattleGuy* guy,int slot)
+{
+	KCardInstList* lst = guy->QueryCardSet(slot);
+	KCardInstList tmpLst;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
+	}
+	KUIAssist::_moveCardSet(&tmpLst,"card_move");
+}
+
+
 void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 {
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
@@ -651,6 +650,8 @@ void KUIAssist::_stopAdviceMsg()
 
 void KUIAssist::_playAdviceMsg(int id)
 {
+	if(KGameRecordMgr::getSingleton().IsPlaying()&& id<1000) return;
+
 	static DWORD lastAdviceTime = 0;
 	if((GetTickCount()-lastAdviceTime) <2000) return;
 	lastAdviceTime = GetTickCount();

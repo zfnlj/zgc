@@ -35,10 +35,11 @@ public:
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);
 	bool IsPlaying(){ return m_recState==REC_PLAY;}
+	void onPlayStepOn();
 private:
 	void RecordPlayOp(int src,int des,int slot);
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt);
-	void onPlayStepOn();
+	
 
 	KGameRecordTask m_task;
 	RecState m_recState;

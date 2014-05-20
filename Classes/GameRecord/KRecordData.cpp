@@ -2,6 +2,8 @@
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
 #include "../UI/KUIAssist.h"
+#include "KGameRecordMgr.h"
+
 enum Cur_OP_Step{
 	step_src,
 	step_des,
@@ -181,7 +183,8 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 	if(!ctrl.IsMyTurn()|| mode==0){
 		switch(m_evt){
 		case evt_turn_end:
-			GameRoot::getSingleton().getBattleScene()->onTurnEnd();
+			KGameRecordMgr::getSingleton().onPlayStepOn();
+			GameRoot::getSingleton().BattleCtrl().DoEndTurn();
 			break;
 		}
 		return true;

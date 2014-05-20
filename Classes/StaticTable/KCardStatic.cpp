@@ -45,8 +45,9 @@ void KCardStatic::Init(System::File::KTabFile2* fileReader)
 {
 	char buf[64];
 
-	m_Id = 0;
-	fileReader->GetInteger("ID", 0, (int*)&m_Id);
+	int id;
+	fileReader->GetInteger("ID", 0, (int*)&id);
+	SetID(id);
 	fileReader->GetString("Name", "", m_Name, MAX_CARD_NAME);
 	fileReader->GetInteger("Atk", 0, (int*)&m_Atk);
 	fileReader->GetInteger("Def", 0, (int*)&m_Def);

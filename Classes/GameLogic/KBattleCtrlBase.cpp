@@ -277,6 +277,9 @@ void KBattleCtrlBase::PlayCard(float dt)
 	bool ret =KBattleGod::getSingleton().OnPlayCard(this,&m_CurOp);
 	m_CurPlayGuy->onPlayCard(dt,ret);
 	if(m_CurPlayGuy->IsPlayTimeOut()&&!IsGameEnd()){
+#ifdef _USE_COCOS2DX
+		KGameRecordMgr::getSingleton().onMouseEvt(KRecordUIMouseData::evt_turn_end);
+#endif
 		StateJump(battle_turn_end);
 	}
 }

@@ -183,6 +183,11 @@ bool KCardAttr::writePacketFilter( KMemoryStream* msg,DWORD mask,bool clear)
 		msg->WriteByte((BYTE)getAttrValue(ca_slot));
 		if(clear) updateUnMask(SLOT);
 	}
+	if(mask&KCardAttr::POS)
+	{
+		msg->WriteByte((BYTE)getAttrValue(ca_pos));
+		if(clear) updateUnMask(POS);
+	}
 	if(mask&KCardAttr::BUF)
 	{
 		BYTE n = (BYTE)m_bufList.size();
@@ -249,6 +254,12 @@ bool KCardAttr::readPacket( KMemoryStream* msg ,bool first)
 		msg->ReadByte(bValue);
 		setAttrValue(ca_slot,bValue,first);
 		updateMask(KCardAttr::SLOT);
+	}
+	if(mask&KCardAttr::POS)
+	{
+		msg->ReadByte(bValue);
+		setAttrValue(ca_pos,bValue,first);
+		updateMask(KCardAttr::POS);
 	}
 	if(mask&KCardAttr::BUF)
 	{

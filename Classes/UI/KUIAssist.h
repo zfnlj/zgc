@@ -22,7 +22,7 @@ public:
 	static BattleFieldScene* _getBattleFieldScene();
 	static cocos2d::CCPoint _queryCardPos(KCardInstList* lst,KCardInst* card);
 	static const char* _getBasePosName(KCardInst* card);
-	static void _showCardSet(const char* basePos,KCardInstList* lst);
+	static void _showCardSet(KCardInstList* lst);
 	static void _removeCardSet(KCardInstList* lst);
 	static void _moveCardSet(KCardInstList* lst,const char* actionname);
 	static void _showCard(KCardInst* card);
@@ -55,7 +55,7 @@ public:
 	static void _setActionParamSlot(K3DActionParam* param);
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	static bool _IsPlayCardAble();
-
+	static void _resortCardSet(FBattleGuy* guy,int slot);
 	//record 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);

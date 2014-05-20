@@ -71,7 +71,7 @@ void::KGameRecordMgr::onMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 		m_task.RecordMouseEvt(evt);
 		break;
 	case REC_PLAY:
-		onPlayStepOn();
+		//onPlayStepOn();
 		break;
 	default:
 		break;
@@ -131,5 +131,6 @@ bool KGameRecordMgr::IsClickButValidate(cocos2d::CCObject* obj)
 
 void KGameRecordMgr::onPlayStepOn()
 {
+	if(m_recState!= REC_PLAY) return;
 	m_task.onPlayStepOn();
 }
