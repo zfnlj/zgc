@@ -277,7 +277,6 @@ KCardStatic* KGameStaticMgr::GetCard(int id)
 	}else{
 		return NULL;
 	}
-	//return  (KCardStatic*)m_cardDict.objectForKey(id);
 }
 
 KHeroSkillStatic* KGameStaticMgr::GetHeroSkill(int id)
@@ -381,4 +380,31 @@ bool KGameStaticMgr::InitHelpString(const char* m_FileName)
 
 	loader.CloseFileReader(fileReader);
 	return true;
+}
+
+void KGameStaticMgr::FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num)
+{
+	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
+		KCardStatic* pCard = it->second;
+		if(pCard->GetType()!=def) continue;
+		if(pCard->GetRace()!=race) continue;
+		if(pCard->GetRank()!=rank) continue;
+
+		for(int i=0;i<num;i++){
+			lst.push_back(pCard->GetID());
+		}
+	}
+
+	/*
+	for(int i=0;i<count;i++){
+		int nRand = g_rnd.GetRandom(0,tmpLst.size());
+		int pos=0;
+		for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();it++,pos++){
+			if(pos==nRand){
+				lst.push_back(*it);
+				break;
+			}
+		}
+	}
+	*/
 }

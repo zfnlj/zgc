@@ -42,6 +42,8 @@ public:
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 	KHelpStringStatic* GetHelpString(int id);
+
+	void FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num=1);
 private:
 #ifdef _USE_COCOS2DX
 	bool InitCardLayout(const char* m_FileName);

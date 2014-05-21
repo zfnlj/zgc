@@ -67,4 +67,5 @@ private:
 	CardDef m_type;
 	friend class KGameStaticMgr;
 };
+
 #endif // __HELLOWORLD_SCENE_H__

@@ -3,6 +3,7 @@
 #include <System/Log/log.h>
 #include "../Inc/KTypeDef.h"
 #include <System/Misc/StrUtil.h>
+#include "KGameStatic.h"
 
 bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 {
@@ -22,6 +23,7 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 	_race = KCardStatic::getCardRace(ss[1]);
 	_rank = atoi(ss[2]);
 	_num = atoi(ss[3]);
+	return true;
 }
 
 bool KDeckDefStatic::init()
@@ -92,4 +94,31 @@ void KDeckDefStatic::Init(System::File::KTabFile2* fileReader)
 
 	fileReader->GetString("Dynamic", "", buf, 1023);
 	setDynamic(buf);
+}
+
+void KDeckDefStatic::GenCardList(KIntegerList& lst)
+{
+	KIntegerList tmpLst;
+	_CopyIntegerList(m_cardList,tmpLst);
+	for(DynamicCardDefList::iterator it=m_defList.begin();it!=m_defList.end();++it){
+		DynamicCardDef* def=*it;
+		FillOnDynamicCardDef(def,tmpLst);
+	}
+	if(m_rnd>0){
+		_RndIntegerList(tmpLst,lst);
+	}else{
+		_CopyIntegerList(tmpLst,lst);
+	}
+}
+
+void KDeckDefStatic::FillOnDynamicCardDef(DynamicCardDef* def,KIntegerList& lst)
+{
+	KIntegerList tmpLst,tmpLst2;
+	KGameStaticMgr::getSingleton().FilterCards(tmpLst,def->_def,def->_race,def->_rank); //选找出符合条件的卡牌
+	_RndPick(tmpLst,tmpLst2,def->_num);
+	for(KIntegerList::iterator it=tmpLst2.begin();it!=tmpLst2.end();it++)
+	{
+		lst.push_back(*it);
+		lst.push_back(*it);
+	}
 }

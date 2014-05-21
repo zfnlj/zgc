@@ -37,8 +37,8 @@ public:
 	int getRes(){ return m_res;}
 	int getHeroHp(){ return m_heroHp;}
 	int getDrawNum(){return m_drawNum;}
-	KIntegerList& getCardList(){return m_cardList;}
 	void Init(System::File::KTabFile2* fileReader);
+	void GenCardList(KIntegerList& lst);
 private:
 	int m_Id;
 	int m_heroID;
@@ -48,7 +48,7 @@ private:
 	int m_rnd;
 	
 	void setDynamic(const char* buf);
-
+	void FillOnDynamicCardDef(DynamicCardDef*,KIntegerList& lst);
 	KIntegerList m_cardList;
 	DynamicCardDefList m_defList;
 	friend class KGameStaticMgr;

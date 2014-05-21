@@ -64,9 +64,10 @@ void KBattleDeck::initDeck(KDeckDefStatic* pDeckStatic)
 {
 	memset(m_CurDeckDB,0,sizeof(m_CurDeckDB));
 	m_CurDeckDB[0] = pDeckStatic->getHero();
-	KIntegerList& lst = pDeckStatic->getCardList();
+	KIntegerList tmpLst;
+	pDeckStatic->GenCardList(tmpLst);
 	int index = 1;
-	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it,index++)
+	for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();++it,index++)
 	{
 		m_CurDeckDB[index] = *it;
 	}
