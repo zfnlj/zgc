@@ -657,6 +657,11 @@ void KUIAssist::_playAdviceMsg(int id)
 	lastAdviceTime = GetTickCount();
 	//if(lastAdviceId ==id) return;
 	//lastAdviceId = id;
+	_playLessonMsg(id);
+}
+
+void KUIAssist::_playLessonMsg(int id)
+{
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	KAction* pTalkAction = actor.GetActionMgr().FindAction("hero_talk");
 	if(pTalkAction && pTalkAction->GetParam()->GetDesId(0)==id) return;

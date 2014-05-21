@@ -46,7 +46,7 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	if(pDeckDef){
 		m_Deck.initDeck(pDeckDef);
 		m_Deck.createCards();
-		m_Deck.GetHero()->HpSet(pDeckDef->getHeroHp());
+		m_Deck.GetHero()->CurHpSet(pDeckDef->getHeroHp());
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
 		m_Deck.DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);

@@ -9,6 +9,7 @@
 #include "KUIAssist.h"
 #include "GameRoot.h"
 #include "BattleFieldScene.h"
+#include "../GameRecord/KGameRecordMgr.h"
 
 using namespace cocos2d::extension;
 
@@ -57,6 +58,8 @@ void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
 void KIndicatePanel::Update(float dt)
 {
 	UpdateSleepAnim();
+	if(KGameRecordMgr::getSingleton().IsPlaying()) return;
+
 	KBattleCtrlBase::BattleState state = GameRoot::getSingleton().BattleCtrl().GetBattleState();
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();

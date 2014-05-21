@@ -126,9 +126,6 @@ void KCardActor::init(KCardInst* pInst)
 	pInst->retainActor(this);
 
 	if(GameRoot::getSingleton().BattleCtrl().IsShowBack(pInst)){ //对方手牌，不显示牌信息
-		if(pInst->GetCardId()!=30006){
-			int jj=0;
-		}
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardBack.json");
 		m_ui->setScale(0.8f);
 		m_bBack = true;

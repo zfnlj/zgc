@@ -159,7 +159,7 @@ void BattleFieldScene::onBattleInit()
 
 	m_gameRecPanel.init(m_ui);
 
-	InitTest();
+	//InitTest();
 }
 
 void BattleFieldScene::InitTest()

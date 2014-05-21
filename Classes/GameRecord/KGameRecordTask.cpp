@@ -131,7 +131,7 @@ void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
 	GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
-	m_timeline = 0;
+	m_timeline = 8;// let first step start at once
 }
 
 void KGameRecordTask::onPlayStepOn()

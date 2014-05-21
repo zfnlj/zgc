@@ -66,6 +66,7 @@ public:
 	static void _stopClickAction();
 	static void _stopAdviceMsg();
 	static void _playAdviceMsg(int id);
+	static void _playLessonMsg(int id);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

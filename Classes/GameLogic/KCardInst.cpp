@@ -241,6 +241,11 @@ void KCardInst::HpSet(int val)
 	m_attr.setMaxHp(val);
 }
 
+void KCardInst::CurHpSet(int cur)
+{
+	m_attr.setCurHp(cur);
+}
+
 void KCardInst::AddHp(int val)
 {
 	m_attr.setCurHp(m_attr.getCurHp()+val);

@@ -63,6 +63,7 @@ public:
 	void AddHp(int val);
 	int Heal(KCardInst* pSrc,int val);
 	void HpSet(int val);
+	void CurHpSet(int cur);
 	void AtkSet(int val);
 	int GetLostHp(){ return m_attr.getMaxHp()-m_attr.getCurHp();}
 	void AddAtk(int val);

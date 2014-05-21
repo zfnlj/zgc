@@ -106,7 +106,7 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 	default:
 		break;
 	}
-	KUIAssist::_playAdviceMsg(m_dlgId*10+step);
+	KUIAssist::_playLessonMsg(m_dlgId*10+step);
 	return false;
 }
 
@@ -194,7 +194,7 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 		KUIAssist::_playClickTurnEnd();
 		break;
 	}
-	KUIAssist::_playAdviceMsg(m_dlgId*10);
+	KUIAssist::_playLessonMsg(m_dlgId*10);
 	return false;
 }
 
