@@ -393,6 +393,15 @@
     <ClCompile Include="..\Classes\StaticTable\KCardStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\DB\KPlayerDBMgr.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\DB\KCrcAssist.cpp">
+      <Filter>DB</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp">
+      <Filter>sqlite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -830,6 +839,15 @@
     <ClInclude Include="..\Classes\StaticTable\KCardStatic.h">
       <Filter>staticTable</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\DB\KPlayerDBMgr.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\DB\KCrcAssist.h">
+      <Filter>DB</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\sqlite\KSqlEnc.h">
+      <Filter>sqlite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">
@@ -912,6 +930,9 @@
     </Filter>
     <Filter Include="GameRecord">
       <UniqueIdentifier>{7f73877f-0212-44b6-8166-1e18abc5dfb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{aad9a937-a1ad-46da-87e2-a172a3f884de}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

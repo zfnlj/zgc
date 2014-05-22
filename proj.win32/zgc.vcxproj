@@ -138,6 +138,8 @@
     <ClCompile Include="..\Classes\common\KStreamWrapper.cpp" />
     <ClCompile Include="..\Classes\common\KVirtualServerAssist.cpp" />
     <ClCompile Include="..\Classes\common\OgreDataStream.cpp" />
+    <ClCompile Include="..\Classes\DB\KCrcAssist.cpp" />
+    <ClCompile Include="..\Classes\DB\KPlayerDBMgr.cpp" />
     <ClCompile Include="..\Classes\EventSystem\KEventEntity.cpp" />
     <ClCompile Include="..\Classes\EventSystem\KEventRegistry.cpp" />
     <ClCompile Include="..\Classes\EventSystem\KEventSystem.cpp" />
@@ -211,6 +213,7 @@
     <ClCompile Include="..\Classes\Quest\KQuestParamParser.cpp" />
     <ClCompile Include="..\Classes\Quest\KQuestTarget.cpp" />
     <ClCompile Include="..\Classes\Quest\KQuestTimer.cpp" />
+    <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp" />
     <ClCompile Include="..\Classes\sqlite\KSqlite.cpp" />
     <ClCompile Include="..\Classes\sqlite\KUserQuestSql.cpp" />
     <ClCompile Include="..\Classes\sqlite\KUserSql.cpp" />
@@ -277,6 +280,8 @@
     <ClInclude Include="..\Classes\common\KStreamWrapper.h" />
     <ClInclude Include="..\Classes\common\KVirtualServerAssist.h" />
     <ClInclude Include="..\Classes\common\OgreDataStream.h" />
+    <ClInclude Include="..\Classes\DB\KCrcAssist.h" />
+    <ClInclude Include="..\Classes\DB\KPlayerDBMgr.h" />
     <ClInclude Include="..\Classes\EventSystem\KEventDefine.h" />
     <ClInclude Include="..\Classes\EventSystem\KEventEntity.h" />
     <ClInclude Include="..\Classes\EventSystem\keventholder.h" />
@@ -360,6 +365,7 @@
     <ClInclude Include="..\Classes\Quest\KQuestParamParser.h" />
     <ClInclude Include="..\Classes\Quest\KQuestTarget.h" />
     <ClInclude Include="..\Classes\Quest\KQuestTimer.h" />
+    <ClInclude Include="..\Classes\sqlite\KSqlEnc.h" />
     <ClInclude Include="..\Classes\sqlite\KSqlite.h" />
     <ClInclude Include="..\Classes\sqlite\KUserQuestSql.h" />
     <ClInclude Include="..\Classes\sqlite\KUserSql.h" />

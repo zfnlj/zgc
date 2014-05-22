@@ -4,6 +4,9 @@
  
 using namespace std;
  
+
+
+
 TEA::TEA(const BYTE *key, int round /*= 32*/)
 :_round(round)
 {

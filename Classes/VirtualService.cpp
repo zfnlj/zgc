@@ -53,11 +53,14 @@ void VirtualService::RegEvt()
 void VirtualService::LoadPlayerData()
 {
 	KMainPlayer::Instance()->initPlayer(1);
-	//KUserSql::InsertUserData(STATIC_DATA_STRING("player"));
-	//KUserQuestSql::InsertUserQuestData(STATIC_DATA_STRING("player"));
 
-	KUserSql::LoadUserData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetPlayerRecord());
-	KUserQuestSql::LoadUserQuestData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetQuestRecord());
+
+	if(KUserSql::LoadUserData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetPlayerRecord())){
+		KUserQuestSql::LoadUserQuestData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetQuestRecord());
+	}else{
+		KUserSql::InsertUserData(STATIC_DATA_STRING("player"));
+		KUserQuestSql::InsertUserQuestData(STATIC_DATA_STRING("player"));
+	}
 	strcpy(KMainPlayer::RealPlayer()->m_name,STATIC_DATA_STRING("player"));
 	
 	//KUserSql::InsertUserData(STATIC_DATA_STRING("player"));
@@ -74,7 +77,7 @@ void VirtualService::LoadPlayerData()
 	KNetMsgFacade::onInitOneBag(os.m_pBuf, os.m_pos);
 
 	KMainPlayer::RealPlayer()->SyncFromRecord();
-
+	KMainPlayer::RealPlayer()->IncreaseMoney(100);
 	KQuestManager::GetInstance()->syncAvailQuests();
 }
 

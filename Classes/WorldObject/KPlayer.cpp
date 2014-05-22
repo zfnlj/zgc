@@ -164,17 +164,12 @@ namespace KWorldObjAbout
 
 	void KPlayer::syncToRecord()
 	{
-		if(m_playerRecord.mUpdateMask&tb_player_record::_MONEY){
+		if(m_playerRecord.mUpdateMask&tb_player_record::_CRI){
 			m_playerRecord.money = m_money.m_money;
-			KUserSql::UpdateIntegerVal( GetName(),"money",m_playerRecord.money);
-			m_playerRecord.updateUnMask(tb_player_record::_MONEY);
+			KUserSql::UpdateCriVal(GetName(),m_playerRecord.money,m_playerRecord.exp,m_playerRecord.pvpVal);
+			m_playerRecord.updateUnMask(tb_player_record::_CRI);
 		}
 		
-		if(m_playerRecord.mUpdateMask&tb_player_record::_EXP){
-			KUserSql::UpdateIntegerVal( GetName(),"exp",m_playerRecord.exp);
-			m_playerRecord.updateUnMask(tb_player_record::_EXP);
-		}
-
 		if(m_playerRecord.mUpdateMask&tb_player_record::_NORMALITEM){
 			KPlayerRecordAssist::syncBagToRecord(this,&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_NORMALITEM);
@@ -216,7 +211,7 @@ namespace KWorldObjAbout
 	void KPlayer::IncreaseMoney(int val)
 	{
 		m_money.Increase(val);
-		m_playerRecord.updateMask(tb_player_record::_MONEY);
+		m_playerRecord.updateMask(tb_player_record::_CRI);
 	}
 	int KPlayer::getLevel()
 	{ 

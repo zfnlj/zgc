@@ -51,6 +51,7 @@ struct tb_player_record
 		_CURDECK        = BIT(8),
 		_PVPVAL			= BIT(9),
 		_EXP			= BIT(10),
+		_CRI			= BIT(11),
 	};
 	tb_player_record(){
 		mUpdateMask = 0;
@@ -63,9 +64,10 @@ struct tb_player_record
 	DWORD lastLoginIp;
 	int lastLoginTime;
 	int lastLogoutTime;
-	int money;
+	
 	KDBBinary<2048> cardStore;
 	KDBBinary<256> cardDeck[MAX_DECK_NUM];
+	int money;
 	int curDeck;
 	int pvpVal;
 	int exp;
