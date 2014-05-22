@@ -1,63 +1,45 @@
-ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show	Photo
-20001	´¾ÓÚÔ½	1	1	1	2	0	0	0	0	pic_20001.jpg
-20002	â¢¶Ù	1	2	3	2	0	0	0	0	pic_20002.jpg
-20003	Ä«ÏÀ	1	5	3	5	0	»¤ÎÀ	»¤ÎÀ£ºÎüÒıµĞ·½¹¥»÷	soldier_guide	pic_20003.jpg
-20004	¹í¹È×Ó	1	6	4	3	0	Ô¶³Ì	Ô¶³Ì£º½ø¹¥½ø²»ÊÜµ½·´»÷	soldier_dist	pic_20004.jpg
-20005	¾£éğ	1	4	4	3	0	¼²ĞĞ	¼²ĞĞ£º½ø³¡¿ÉÁ¢¼´½ø¹¥	soldier_rush	pic_20005.jpg
-20006	´Ì¿Í	1	2	2	2	0	ÃÔ×Ù	ÃÔ×Ù£º²»¿É±»¹¥»÷	soldier_hide	pic_20022.jpg
-20007	Öìº¥	2	5	2	7	0	¿ñ±©	¿ñ±©:ÊÜµ½ÉËº¦Ê±Ôö¼Ó3µã¹¥»÷Á¦	soldier_angry	pic_20007.jpg
-20008	Îé×Óñã	1	4	4	4	0	ÒÅÑÔ	ÒÅÑÔ£º¶ÔËùÓĞÓÂÊ¿Ôì³É2µãÉËº¦¡£	soldier_dead_curse_ability	pic_20008.jpg
-20011	Ğì¸£	1	1	0	1	0	0	0	0	pic_20011.jpg
-20012	Íõôå	2	3	2	3	0	ÊÈÑª	µ±Ò»ÃûÓÂÊ¿ËÀÍöÊ±£¬Ôö¼Ó1µã¹¥»÷	soldier_dead_atkadd	pic_20012.jpg
-20013	¶«Ê©	1	1	0	1	0	»¤ÎÀ	»¤ÎÀ	soldier_guide	pic_20013.jpg
-20014	¼ÙÈË	1	1	1	3	0	0	0	0	pic_20014.jpg
-20015	Ê³¿Í	0	1	1	1	Vister	0	0	0	pic_20015.jpg
-20020	¼¦	1	1	1	1	0	0	0	0	pic_20020.jpg
-20021	ÂÃêÚ	2	2	4	5	0	ÎŞ·¨¹¥»÷	ÎŞ·¨¹¥»÷	0	pic_20021.jpg
-20022	ÒªÀë	1	3	4	2	Vister	ÃÔ×Ù	ÃÔ×Ù£º²»¿É±»¹¥»÷	soldier_hide	pic_20022.jpg
-20023	·½Ê¿-ËÎÎŞ¼É	2	3	2	2	0	Ä±ÂÔ	Ã¿µ±ÄãÊ¹ÓÃÒ»ÕÅÅÆÊ±£¬»ñµÃ+1/+1	soldier_pray_ability	pic_20023.jpg
-20024	ÃÏ³¢¾ı	1	3	2	3	0	ÕÙ»½	½ø³¡£ºÕÙ»½Ò»Ãû1/1µÄÊ³¿Í	0	pic_20024.jpg
-20025	ÕÔÀ¨	1	1	2	1	0	¹ÄÎè	½ø³¡:±¾»ØºÏÖĞ£¬Ê¹Ò»¸öÎÒ·½ÓÂÊ¿¹¥»÷Á¦+2	0	0
-20026	Ò½»º	2	1	1	2	0	Ä±ÂÔ	µ±ÎÒ·½µ¥Î»»ñµÃÖÎÁÆÊ±£¬»ñµÃ¹¥»÷Á¦+2	soldier_pray_ability	pic_20026.jpg
-20027	ÌÓÍöµÄÄÑÃñ	1	0	1	1	0	0	0	0	pic_20027.jpg
-20028	ÖòÖ®Îä	0	2	1	2	0	³éÅÆ	½ø³¡£º³éÈ¡Ò»ÕÅÅÆ	0	pic_20028.jpg
-20029	Ò½ºÍ	1	1	2	1	0	ÖÎÁÆ	½ø³¡£ºÖÎÁÆÎÒ·½µ¥Î»2µãÉúÃü	0	pic_20029.jpg
-20030	ÇØÔ½ÈË	2	1	2	1	0	ÔöÒæ	»ØºÏ½áÊøÊ±£¬Ê¹Ò»ÃûÎÒ·½ÓÂÊ¿ÉúÃüÖµ+1	soldier_pray_other_ability	pic_20030.jpg
-20031	ÒõÑôÎåĞĞ¼Ò	1	2	3	2	0	0	½ø³¡£ºÊ¹Ò»ÃûÎÒ·½ÓÂÊ¿»Øµ½ÊÖÅÆ	0	pic_20031.jpg
-20032	°Ù·ò³¤	1	2	2	2	0	0	½ø³¡£ºÏàÁÚµÄÓÂÊ¿»ñµÃ¹¥»÷Á¦+1	0	pic_20032.jpg
-20033	ê¢ÖØ²¿¶Ó	1	2	2	1	0	ÒÅÑÔ	ÒÅÑÔ£º³éÈ¡Ò»ÕÅÅÆ¡£	soldier_drawcard_ability	pic_20033.jpg
-20034	»¢êÚ	1	1	0	4	0	»¤ÎÀ	»¤ÎÀ	soldier_guide	pic_20034.jpg
-20035	»¢êÚÎÀÊ¿³¤	2	2	2	3	0	¹ÄÎè	½ø³¡£ºÊ¹ÁÚ½üµÄÓÂÊ¿»ñµÃ»¤ÎÀÄÜÁ¦¡£	0	pic_20035.jpg
-20036	Ë÷Ãü°×ÎŞ³£	3	2	0	7	0	Ä©ÈÕ	ÔÚ»ØºÏ¿ªÊ¼Ê±£¬ÏûÃğËùÓĞÓÂÊ¿¡£	soldier_dead_curse_ability	pic_20036.jpg
-20037	ÄôÕş	0	2	2	3	Vister	0	0	0	pic_20037.jpg
-20038	¹í¹È×ÓµÄÃÅÍ¯	0	2	2	2	0	0	·¨ÊõÉËº¦+1	soldier_sp_rate	pic_20038.jpg
-20039	ÉñÃØµÄ´Ì¿Í	1	1	2	1	0	ÃÔ×Ù	ÃÔ×Ù£º²»¿É±»¹¥»÷	soldier_hide	pic_20039.jpg
-20040	»ìÂÒµÄ·½Ê¿	1	2	3	2	0	0	½ø³¡£ºËæ»ú¶Ô3¸öµ¥Î»¸÷Ôì³É1µãÉËº¦¡£	0	pic_20040.jpg
-20041	·½ÏÉÊ¿	2	2	2	2	0	0	½ø³¡£ºÊ¹Ò»ÃûÓÂÊ¿¹¥»÷Á¦ÓëÉúÃüÖµ»¥»»¡£	0	pic_20041.jpg
-20042	ÕÔÉİ	0	6	6	7	0	0	0	0	pic_20042.jpg
-20043	ÀÖÒã	0	7	6	6	0	¹ÄÎè	½ø³¡:ÄãµÄÆäËûËæ´Ó»ñµÃ+1/+1	0	pic_20043.jpg
-20044	ÇØÈñÊ¿	0	4	4	5	0	0	0	0	pic_20044.jpg
-20045	ÉêÏ¢Ö®Ê¦	0	3	3	2	0	¹ÄÎè	½ø³¡: Ê¹Ò»¸öÓÑ·½Ëæ´Ó»ñµÃ+1/+1	0	pic_20045.jpg
-20046	·¶öÂ	0	4	2	4	0	³éÅÆ	½ø³¡£º³éÈ¡Ò»ÕÅÅÆ	0	pic_20046.jpg
-20048	Ìïµ¥	0	6	5	2	0	¼²ĞĞ	0	soldier_rush	pic_20048.jpg
-20049	¹ÅÒ±×Ó	0	3	3	1	0	¼²ĞĞ	0	soldier_rush	pic_20049.jpg
-20050	ÀîÄÁ	0	5	4	4	0	Ä±ÂÔ	½ø³¡: Õ½³¡ÉÏÃ¿ÓĞÒ»¸öÆäËûÓÑ·½Ëæ´Ó£¬±ã»ñµÃ+1/+1¡£	soldier_strong_show	pic_20050.jpg
-20051	Æë¼¼»÷	0	1	1	1	0	0	½ø³¡:Ôì³É1µãÉËº¦¡£	0	pic_20051.jpg
-20052	´óË¾Âí	0	8	8	8	0	»¤ÎÀ	»¤ÎÀ	soldier_guide	pic_20052.jpg
-21001	Ò½Ê¥-±âÈµ	1	5	4	5	water	ÈºÁÆ	½ø³¡£ºÖÎÁÆÈ«ÌåÓÑ¾ü2µãÉúÃü	0	pic_20029.jpg
-21002	¹âÃ÷Ö®Èª	2	2	0	5	water	Ëæ»úÖÎÁÆ	»ØºÏ¿ªÊ¼Ê±Ëæ»úÖÎÁÆÓÑ¾ü3µãÉúÃü	soldier_heal_ability	pic_21002.jpg
-21003	Ä«¼ÒîÒ×Ó	0	2	1	3	water	Ä±ÂÔ	µ±ÓÑ¾üÊÜµ½ÖÎÁÆÊ±³éÕÅÅÆ	soldier_drawcard_ability	pic_21003.jpg
-21004	»ªÙ¢	1	6	6	6	water	¹ÄÎè	½ø³¡£ºÊ¹ÎÒ·½ÓÂÊ¿ÉúÃüÖµ+3	0	pic_21004.jpg
-21005	Ä«×Ó-Ä«µÔ	4	7	7	7	water	·¨ÊõÔöÒæ	Ê¹ÄãµÄ·¨ÊõºÍÖÎÁÆĞ§¹û·­±¶¡£	soldier_sp_rate	pic_21005.jpg
-21006	½é×ÓÍÆ	1	4	0	5	water	0	¹¥»÷Á¦µÈÓÚÉúÃüÖµ¡£	soldier_atk_equ_hp	pic_21006.jpg
-21007	±âÈµ	1	4	2	4	water	ÕÙ»½	½ø³¡:ÕÙ»½2/1µÄÒ½Õß	0	pic_21007.jpg
-21008	Ò½Õß	1	2	2	1	water	0	0	0	pic_20026.jpg
-22001	±ø·¨¼Ò-Ëïë÷	4	7	5	7	fire	Ä±ÂÔ	Ã¿µ±ÄãÊ©·ÅÒ»¸ö·¨ÊõÊ±£¬½«Ò»ÕÅ¡°Ñ×ÁúÍÂÏ¢¡±ÖÃÈëÊÖÅÆ	soldier_drawcard_ability	pic_22001.jpg
-22002	»ğÁé(Ë®ÔªËØ)	0	4	3	6	fire	0	µãÈ¼ÈÎºÎÊÜµ½»ğÁéÉËº¦µÄÓÂÊ¿¡£	soldier_burn_ability	pic_22002.jpg
-22003	Ç«Ñ·µÄÄ±Ê¿(·¨Á¦¸¡Áú)	1	1	1	3	fire	·¨Êõ¿ñÈÈ	µ±ÄãÊ©·ÅÒ»¸ö·¨ÊõÊ±£¬»ñµÃ+1µÄ¹¥»÷Á¦¡£	soldier_cost_reduce	pic_22003.jpg
-22004	ËÕÇØ(Î×Ê¦Ñ§Í½)	1	2	3	2	fire	½ÚÄÜ	Ê¹ÄãµÄ·¨ÊõÖµÏûºÄ¼õÉÙ1¡£	soldier_cost_reduce	pic_22004.jpg
-23001	Àä¿áµÄ¼à¾ü(ÑÏ¿áµÄ¼à¹¤£©	1	2	2	2	gold	¹¥»÷¿ñÈÈ	¶ÔÒ»ÃûÓÂÊ¿Ôì³É1µãÉËº¦£¬²¢Ê¹Æä»ñµÃ+2¹¥»÷¡£	0	pic_23001.jpg
-23002	ºú·şÆï£¨¿â¿¨Â¡¾«Ó¢£©	0	4	4	3	gold	Í»Ï®	Í»Ï®	soldier_rush	pic_23002.jpg
-23003	ÉÙÄêÃÉÌñ£¨Õ½¸èÖ¸»Ó¹Ù£©	0	3	2	3	gold	ºÅ½Ç	½ø³¡£ºÆäËûËæ´Ó»ñµÃ³å·æĞ§¹û¡£	0	pic_23003.jpg
-23004	ÓÂÃÍµÄÏÈ·æ¹Ù£¨±©ÂÒ¿ñÕ½Ê¿£©	2	3	2	4	gold	0	µ±Ò»ÃûÎÒ·½ÓÂÊ¿ÊÜµ½ÉËº¦Ê±£¬»ñµÃ+1¹¥»÷¡£	soldier_courage	pic_23004.jpg
-23005	ÍÀ·ò-°×Æğ(¸ñÂŞÂêÊ²£©	4	8	4	9	gold	Í»Ï®	Í»Ï®£¬Ò×Å­£º+6¹¥»÷Á¦¡£	soldier_yinu	pic_23005.jpg
+ÜáXX6:t.s-v;	u<u5v,u9t8
+u*t,	rtKLONLsËÀª¢«ÁtLvMtKvLtLvNtLvNtJONMKQrtKLONKsÜÇ£vNtJvKtJvNtLvNtLv LMLOLOprMNMLLu¹Ñ°¾tKvItIvItLvÃÙ®¿uÂØ±¾ÚÂ±‚«ÿÊ®Æ¿ÆÙÂ…v
+ tJONMIQrtKLONIsÆ‘Ä´¨«tKvHtHvKtLvªÇÉ³u©ÆÌ²ÚÂÂ†Ä×Â†ËÁµ¢È¿ÈÊÂ…v
+ 	uKLONINouLMLOIt¾Ü•sNuIsKuJsOuÁÊ¯®tÀÍ®­ÙÅÁ…ÉŞ¿´»İÂÉ¿‡ÅØs	
+v LMLOIOprMNMLIuÉ°À±tKvLtJvLtLv»©¥¦uº¨¨¥ÚÂÍÃ¾³ÎÃÄ×Ä‡t	sMNMJMPqsJONMEv¨‘ÂÚuKsJuKsHuMsÀÌÓv¿ŒËÖD³ ÊÁ´±ÅØ³Ë«ˆÁ©LÉšÃÚÃ†»Ùu
+sMNMLHPqsJONMDv°”¥¬šsNuIsKuIsOu«·®ªtªº­©ÙÅÈ©±†«­©½´¾¨“Ë´JÊ›´±ÅØÜÙv
+ 
+sMNMLGPqsJONLKv®‘ÄÜuLsNuMsNuMsOuMsOuKLOMLNouLMLNLt¯ŠŠ˜sMuJsMuJsOu³´®ÔtÇÎ¬Â¹„«»²À³½¯‰´ÌÙÓª‡À¬MÈ™ÆÙÂ…v
+ v LMLNLOprMNMKLuÇÑµÕtKvMtLvMtLvÃÙ®¿uÂØ±¾t	
+v LMLNKOprMNMKKuÁ£·³tKvMtKvKtLvNtLvNtJONLHQrtKLOMHsµË¾¯vNtKvMtKv(	sOuMsOuKLOMHNouLMLMNtÀÙuLsNuLsNuMsOuMsOuKLOLMNouLMLMMtº¼”£sMuKsKuHsOu¯ÈÖÄ×Ä‡t®¡ÇÕÃÚÃ†sOuKLOLLNouLMLMLtªÕ¾’sNuJsKuKs)
+t¹«§¤s¼ª¦£ÜÄËÁÀµÌÁÆÙÂ…v
+ uKLOLKNouLMLMKtÅÂ´¾O´°¯ÃµtJvKtJvLtLvºÌº«uº½ÊÍ¹™µÅª¹­Ã¨·º¸³ËÜÒÂ‹Ê»RKPSLs 	v LMLMKOprMNMJKuº­ÌÜ¿ÿvMtIvLtIvNt§¦ÃÀsÂ†ÊÛÜÄ¨£ÄÁ«Á¼ƒLMNÉ¹²Ì¿°sOuKLOLINouLMLMIt§«¾ÕsNuLsMuLsOuÄ¸±–t¿‡ËÜBÎÀÂ¤Å¯§¬ÜÒ³Ã­ÃÅ†±¬Æ¿¬¼³½ÆÙÂ…¾ØRJvNtLrtKLOLGs­ÁÂÂvLtKvMtJvNt¸Î¼©sÊÍ¯ªÈÁÈ×±ÃÂ‹Ê»§®¾¸³ËÜÒÂ‹Ê»Ä×Ä‡¼ÖTLt	
+sMNMJIPqsJONKEv²ª¯‰É¹¸®»ŒsNuMsNuLsOuMsOuMsMNMJHPqsJONKDv¨‹¦Ñ°™sOuKsNuKsOuÊ“º¸t¿‡ËÜÙÅË”´Ş¬Â§º¹·sOuKLOLENouLMLMEtªÂÄ°sNuLsMuLsOu§®¾¸t¿‡ËÜÙÅ¨¯»¹°«ÅÂÉØ®ÄLÈ™¶„º€vNtJONKCQrtKLOKMs¸¦©¿·³tJvMtJvMtLvª‡ª™uÂ¤Å¯À›µ†³ËÜÒ³Ã­Ãº±¬Æ¿¬¼³½¶„º€©ÉRKv
+ 
+sMNMIOPqsJONJKv¬ˆ«‹°˜¬¯Â«sNuKsLuKsOuMsÂ†ÊÛÜÄ³Ã­Ãº±¬Æ¿¬¼³½Ä¦È¿µ¨¸¶vNtJONJKQrtKLOKKsÏ¥ÆŠÌÚtKvLtJvLtLvNt¿‡ËÜÙÅ¯»¥É¹©½´¾ÁÉºÃÚÃ†»ÙSLsOuKLOKKNouLMLLKt’İ¨¥ÊÀÈªsNuKsMuLsOu«·®ªtªº­©ÙÅË”´Ş¬Â§º¹·ÛÜu
+
+tJONJIQrtKLOKIsÄÜ“¢vMtKvNtHvNtÁÛ°½sÄÚ¯¼v
+ tJONJHQrtKLOKHsÄÜ“¢±¾³½ÌÚtJvLtJvKtLvÅ¹®—uÀ„ÌİÚÂµÅ¼¢Â‚È¸¬¼³½ÄÈ¹ÄÚ¯¼»¢¼ÖŞÛtLv LMLLIOprMNMIIu²…¼‚Í¥± ÊÙvKtJvNtEvNt¸Ö¶¨s«¤Â¤Å¯¾ÒµÂ³ËÜÒ®¼²ƒ¬®ªºµ¿ÜÙv
+ 
+sMNMIIPqsJONJEvº‰§uMsMuKsLu'
+
+vNtLvNtJONJEQrtKLOKEsÆ‘Ä´¨«È¸¼¹°ÍvNtJvLtJvNtLvÇÕ²Šµ²ÂÙSLs
+
+sMNMIGPqsJONJCvµŒ¹§É¹È³¿°sNuLsMuLsOuº¨¨¥t¹«§¤ÙÅÌÂ½¶ÍÂÃÚÃ†sv LMLLEOprMNMHOuÂ½¬È¸ÈÁ³½vMtJvKtJvNtLvÁ…ÉŞÛÃ±™ÃƒÆ«KÅ†ÊÙ¯ÁÇ‡©ÌµLÇœµ²ÂÙİÚsOuKLOJMNouLMLKMtÅÂ¯´²ÀuKsMuKsMuMsOuÀ„ÌİÚÂµÅ«Á¼ƒªºµ¿Ä×Ä‡¼Ö¬“´‚¼‚§ÇÄÙÂÁŞÛtLv LMLKMOprMNMHMu¨¨¶¡tLvHtFvGtLvNtLvNtJONIJQrtKLOJJs¿¨«™vNtEvHtFvNtÃ»°•sÂ†ÊÛEºšÇ»¸™±„³—È¬ÃŒÇ¼SLMTMtLv LMLKKOprMNMHKu¶¤·³½vNtHvJtGvNtLvNtLv LMLKJOprMNMHJu´’°Ü§ÎµØtLvKtIvLtLvÅ¹®—uÀ„ÌİC\µÅ«ÁÇˆª«ÈÁ²–Ë«Â‹Ê»RKPSLsOuKLOJHNouLMLKHtÅÉˆ»sOuIsMuIsOuÊ“º¸t¿‡ËÜÙÅË”´Ş¬Â§º¹·sOuKLOJGNouLMLKFt°ÉØsOuGsJuKsOuÁÊ¯®tLv
+ 	uKLOJENouLMLKEtÃº¬Ì¥¬uMsLuJsNuMsÃÌ­¬vNt	
+
+sMNMHFPqsJONHLv¾¸¾uMsJuIsKuMs»Í»¨vÁ…ÉŞD]§ÂËÜ³°»¾©¯¬ÂÄ‰¸™±„«¬ÅÂ³—È¬ÛÑËœÃŒÇ¼SLMTMÜÙv
+ 	
+v LMLJNOprMNMGNu·‘ÃÂÂ…vNtKvMtKvNtLvÁ…ÉŞD©ÌµLÇœµ²ÂÙİÚsOuKLOILNouLMLJLtÈŒ³¿º’uMsGuEsGuMsÄÚ¯¼vÃÙ®¿u
+sMNMGMPqsJNNMKv¬À²ÚQÌš·ÉtKvItHvIt
+
+v¶Ã»¹uÀ„ÌİÚÂ©°¼¶·Ó±—¬­¿€MÉš³…»sOuKLOLDNouLLLOLtÃ»†¦Ñ¶ÓsMuKsOuHs	u²–Ä„§®¾¸tÁ§Ä®½Õ´Á²Î³—Á…¨¯»¹«¬¾ƒKÈ™¶„º€v
+ uKKONKNouLLLOKt¸ÔÂ«­§ªsOuKsNuJs	u¹Ë½ªtÇÎ«¬¾ƒ´¡ÇÂ¨¯»¹´ÌÉ–©¸·¹u
+
+tJNNMIQrtKKONIsÄÔ¤ÚvMtFvHtFvtÃ»°•sÂ†ÊÛÜÄ³Ã±¬Æ¿¬¼³½¶„º€©ÉRIvNtJNNMHQrtKKONHs»Ó¦©RºÒÇ«uIsHuFsHusÈÖ³‡«ˆ«–v´Ä¸œÉ¹Å×´ˆÂ²¨¯»¹®ÖÃ„ÇĞËÉİÚs
+
+sMMMLJPqsJNNMFvÁ”¥¬±·sNuIsOuHs	uMsÆÙÂ…¾ØÈ´¬¤´‚¼‚§ÇŞÛt		uKKONGNouLLLOGtË¶ÈsNuIsMuIs	u¨£ÄÁt¿‡ËÜBª¥Â¿MOLÇ»¬À§ uMsMMMLHPqsJNNMDv¬À§ uLsMuKsNusOuMsOuKLOLGNouLKLOMtË‡ÇÕÀ­Q²”‡tHvGtGvGts»Í»¨v»¾ÇÎºš²ÖÇ¸ªÄÆ‡Å×´ˆ²ÎÛÑ¿Ô¬Â§ºİÍ«¨½ƒ¯½¯ÛÛÎ¨º´”´§·¹u
+
+tJMNMKQrtKJONKsÄ¼“W³Ï¨Õ³¥SvNtHvKtFv
+uMsÊ›µÀ·°Ã®µ¢È¿Ä¼“¶³ÃÖÊºªºµ¿ÜÙv
+ 
+uKJONKNouLKLOKtµÔ­ÆÇ»ºÌ²ÀVÆÔ¾ØÅÛ¾„TsNuLsNuJsvÇÕ²Š¿Œ´·uÈË»›³ÓÈ¹«ÁÇˆÆÔµ‰³ËÜÒÂ‹Ê»RKÊºÄ×Ä‡¼ÖŞÛt		tJMNMIQrtKJONIs´©¶¤W°¦²Ù­Ö¯ÂUtKvLtIvLtsÂ¤¹ v´Ä¸œÉ¹Å×´ˆ¦Ê¯‚Â»Âˆ³¦MÜÙv
+ 		v LKLOJOprMKMLNu½˜ÀÈ¸Ã¿€W­®½É¹ÀŸÅÙÙÖuLsMuKsMutÃÚÃ†½¶µsÉª«Á¼ƒªºµ¿©ÌµLÇœµ²ÂÙÛÑÊİ´Ä¶›ÃŒÇ¼SKÃÚÃ†ÛÜuMsMKMLNPqsJLNMJvÄƒÅ¸Ù×¿›½×¼Ü¾Ô«ÛÙÖuMsKuIsLut¯Ä¯Ïs²Ã®Îv
+ 	uKIONKNouLJLOKt³¦º“¹¶²ŒÙ×©ÀÄ—¨ÅÁ¬Å¤ÙÖuMsLuKsLutÂºÁ¶sÂ†ÊÛÜÄ·˜´ƒ²–Ë«Â‹Ê»Ê—È˜­ÕÆƒÜÙvNtJLNMIQrtKIONIs¬¼º¯Êº®´È˜Ä£ÜÖÌÓ½¬¾‹ªÁ³½ÜÕtJvKtJvJtsOuÈË­Ãº±¬Æ¿¬¼³½µ¢È¿¶³ÃÖµÍÚĞÄÈ¹TMÄ×Ä‡ÜÙv
+ v LJLOJOprMKMLJu°¼ÈŒPÌ¨¸TÇ»½”³ÊÜÕtHvFtHvEts²Ã®Îv±Â­ÑÛÑª¨¹ĞÙÅSGÃÚÃ†»ÙİÚsv LJLOIOpr

@@ -50,13 +50,13 @@ BOOL KEncryptRefiner::TakeFile(const char* file)
 	fi.Close();
 	fo.Close();
 
-	if(!DeleteFile(filepath.c_str()))
+	if(!DeleteFileA(filepath.c_str()))
 	{
 		Log(LOG_ERROR, "error: encrypt delete %s", filepath.c_str());
 		return FALSE;
 	}
 
-	if(!MoveFile(copypath.c_str(), filepath.c_str()))
+	if(!MoveFileA(copypath.c_str(), filepath.c_str()))
 	{
 		Log(LOG_ERROR, "error: encrypt move %s -> %s", copypath.c_str(), filepath.c_str());
 		return FALSE;
@@ -112,13 +112,13 @@ BOOL KDecryptRefiner::TakeFile(const char* file)
 	fi.Close();
 	fo.Close();
 
-	if(!DeleteFile(filepath.c_str()))
+	if(!DeleteFileA(filepath.c_str()))
 	{
 		Log(LOG_ERROR, "error: decrypt delete %s", filepath.c_str());
 		return FALSE;
 	}
 
-	if(!MoveFile(copypath.c_str(), filepath.c_str()))
+	if(!MoveFileA(copypath.c_str(), filepath.c_str()))
 	{
 		Log(LOG_ERROR, "error: decrypt move %s -> %s", copypath.c_str(), filepath.c_str());
 		return FALSE;

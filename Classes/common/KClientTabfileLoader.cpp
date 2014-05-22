@@ -109,12 +109,13 @@ void KClientFileStream::init()
 BOOL KClientFileStream::Open(const char* filename)
 {
 	if(!m_baseStream.Open(filename)) return FALSE;
+	if(!m_encStream.setInputStream(&m_baseStream)) return FALSE;
 	return TRUE;
 }
 
 int KClientFileStream::ReadData(void* value, size_t length)
 {
-	return m_baseStream.ReadData(value, length);
+	return m_encStream.ReadData(value, length);
 }
 
 int KClientFileStream::WriteData(const void* value, size_t length)
@@ -124,21 +125,23 @@ int KClientFileStream::WriteData(const void* value, size_t length)
 
 BOOL KClientFileStream::Seek(size_t pos)
 {
-	return m_baseStream.Seek(pos);
+	return m_encStream.Seek(pos);
 }
 
 size_t KClientFileStream::tell() const
 {
-	return m_baseStream.tell();
+	return m_encStream.tell();
 }
 
 void KClientFileStream::Close()
 {
+	m_encStream.Close();
 	m_baseStream.Close();
 }
 
 void KClientFileStream::flush()
 {
+	m_encStream.flush();
 }
 
 void KClientTabfileReader::init()

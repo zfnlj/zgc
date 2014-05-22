@@ -14,12 +14,48 @@
 #include "EventSystem/KEventDefine.h"
 #include "ui/KUIAssist.h"
 #include <System/File/KTabfileLoader.h>
+#include "System/Cipher/tea.h"
 
 IMPLEMENT_SIMPLE_SINGLETON(GameRoot)
 using namespace System::File;
 
+void encry(char* str,char* pwd)
+{
+	int len = strlen(str);
+	int pwdLen = strlen(pwd);
+
+	int keypos=0;
+	for(int i=0;i<len;i++){
+		str[i] = str[i]^ pwd[keypos];
+		keypos++;
+		if(keypos==pwdLen) keypos=0;
+	}
+}
+
+void EncryTest()
+{
+	const int SIZE_IN = 64, SIZE_OUT = 64, SIZE_KEY = 16;
+    BYTE plain[SIZE_IN]="I am a good guy. to you be here ..gogogogoogog!";
+	BYTE crypt[SIZE_OUT];
+	BYTE key[SIZE_KEY]="zhufanan";
+
+
+	TEA tea(key, 16);
+	memset(crypt,0,sizeof(crypt));
+    tea.encrypt(plain, crypt);
+	memset(plain,0,sizeof(plain));
+	tea.decrypt(crypt, plain);
+
+	char testStr[64]="I am a good guy. to you be here ..gogogogoogog!";
+	char pwd[8]="zhufana";
+	encry(testStr,pwd);
+	encry(testStr,pwd);
+	int kk=0;
+}
+
 void GameRoot::init()
 {
+	EncryTest();
 	KScriptAbout::KToLua::Instance();
 	sqlite3_config(SQLITE_CONFIG_SERIALIZED); //sqlite使用串行方式
 	KClientGateListener::getSingleton().init();
@@ -65,4 +101,5 @@ void GameRoot::LoadStringDef(const char* filename)
 	//const char* t = G_STR(70001);
 	//int kk=0;
 }
+
 

@@ -1,128 +1,113 @@
-ID	Name	WHEN	WHICH	WHAT	Condition	VAL	VAL2	LOOP	MAX	AREA	Action	MYSELF	BUF_ICON
-10001	ª§Œ¿	WHEN_ALL	WHICH_I	WHAT_GUIDE	0	1	0	0	0	0	0	1	buf_guider.png
-10002	√‘◊Ÿ	WHEN_ALL	WHICH_I	WHAT_HIDE	0	1	0	0	0	0	0	1	buf_hide.png
-10003	‘∂≥Ã	WHEN_ALL	WHICH_I	WHAT_DIST	0	1	0	0	0	0	0	1	buf_dist.png
-10004	ø…ÕªœÆ	WHEN_EVER	WHICH_I	WHAT_CAN_RUSH	0	1	0	1	0	0	0	0	0
-10005	 ‹π˝…À	WHEN_EVER	WHICH_I	WHAT_HURTED	0	0	0	0	0	0	0	0	0
-1001	”¢–€≈≠	WHEN_TURN_END	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	Hero	0	1	1	1	hero_dodamage	0	0
-1002	÷Œ¡∆ ı	WHEN_TURN_BEGIN	WHICH_MYSOLDIER	WHAT_HEAL	0	Hero	0	1	1	1	hero_heal	0	0
-1003	º”π•	WHEN_TURN_END	WHICH_MYSOLDIER	WHAT_ATK_ADD	0	1	0	1	1	1	hero_pray	0	0
-1004	º”…˙√¸	WHEN_TURN_END	WHICH_MYSOLDIER	WHAT_HP_ADD	0	1	0	1	1	1	hero_pray	0	0
-1000010	æ¯∂‘∑¿”˘	WHEN_USE	WHICH_MYSOLDIER	WHAT_IMMUNE	0	1	0	0	1	0	absolute_def	1	buf_abs_def.png
-1000020	÷Œ¡∆ ı	WHEN_USE	WHICH_MY	WHAT_HEAL	0	2	0	1	1	0	heal	1	0
-200070	÷Ï∫•	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200071	0	0	1	1	0	0	buf_angry.png
-200071	÷Ï∫•	WHEN_DAMAGED	WHICH_I	WHAT_ATK_ADD	0	3	0	0	1	0	0	1	0
-200080	ŒÈ◊”Ò„	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200081	0	0	1	0	0	1	buf_dead_curse.png
-200081	ŒÈ◊”Ò„	WHEN_DEAD	WHICH_ALL	WHAT_DAMAGE	0	2	0	1	99	1	dead_curse	1	0
-200120	ÕıÙÂ	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200121	0	0	1	0	0	1	buf_dead_atk.png
-200121	ÕıÙÂ	WHEN_SOLDIER_DEAD	WHICH_I	WHAT_ATK_ADD	0	1	0	0	1	0	update_tar_card	1	0
-200210	¬√Í⁄	WHEN_EVER	WHICH_I	WHAT_NOREADY	0	0	0	0	0	0	0	0	0
-200230	∑Ω ø-ÀŒŒﬁº…	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200231	0	0	1	0	0	0	buf_pray_card.png
-200231	∑Ω ø-ÀŒŒﬁº…	WHEN_I_USE_CARD	WHICH_I	WHAT_ADD_ATK_HP	0	1	1	0	1	0	update_tar_card	0	0
-200240	√œ≥¢æ˝	WHEN_ENTER	WHICH_OWNER	WHAT_SUMMON	0	20015	0	1	1	0	enterfight_summon	1	0
-200250	’‘¿®	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_ATK_ADD	0	2	0	1	1	0	strong	0	0
-200260	“Ωª∫	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200261	0	0	1	0	0	0	buf_pray_card.png
-200261	“Ωª∫	WHEN_MYSOLDIER_HEALED	WHICH_I	WHAT_ATK_ADD	0	2	0	0	1	0	update_tar_card	0	0
-200280	÷Ú÷ÆŒ‰	WHEN_ENTER	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	1	1	1	enterfight_draw_card	0	0
-200290	“Ω∫Õ	WHEN_ENTER	WHICH_MY	WHAT_HEAL	0	2	0	1	1	0	heal	0	0
-200300	«ÿ‘Ω»À	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200301	0	0	1	0	0	0	buf_pray_other.png
-200301	«ÿ‘Ω»À	WHEN_TURN_END	WHICH_MYSOLDIER	WHAT_HP_ADD	0	1	0	1	1	1	soldier_pray_other	0	0
-200310	“ı—ÙŒÂ––º“	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_RETURN	0	1	0	1	1	0	soldier_giveup	1	0
-200320	∞Ÿ∑Ú≥§	WHEN_ENTER	WHICH_SRC_NEARBY	WHAT_ATK_ADD	0	1	0	0	2	1	enterfight_pray_nearby	0	0
-200330	Í¢÷ÿ≤ø∂”	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200331	0	0	1	0	0	1	buf_quest_i.png
-200331	Í¢÷ÿ≤ø∂”	WHEN_DEAD	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	0	1	1	dead_drawcard	1	0
-200350	ª¢Í⁄Œ¿ ø≥§	WHEN_ENTER	WHICH_SRC_NEARBY	WHAT_BUF	0	10001	0	0	2	1	enterfight_guide_nearby	0	buf_guider.png
-200360	À˜√¸∞◊Œﬁ≥£	WHEN_ENTER	WHICH_I	WHAT_BUF	0	200361	0	0	1	0	0	0	buf_dead_curse.png
-200361	À˜√¸∞◊Œﬁ≥£	WHEN_TURN_BEGIN	WHICH_SOLDIER	WHAT_KILL	0	0	0	0	99	1	god_kill	1	0
-200380	πÌπ»◊”µƒ√≈ÕØ	WHEN_ENTER	WHICH_OWNER	WHAT_CAST_ADD	0	1	0	0	0	1	0	0	buf_sp_rate.png
-200400	ªÏ¬“µƒ∑Ω ø	WHEN_ENTER	WHICH_ALL	WHAT_DAMAGE	0	1	0	1	3	1	destory_blast	0	0
-200410	∑Ωœ… ø	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_ATKHP_SW	0	0	0	1	1	0	strange	0	0
-200430	¿÷“„	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_ADD_ATK_HP	0	1	1	1	99	1	enterfight_pray_nearby	0	0
-200450	…Íœ¢÷Æ ¶	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_ADD_ATK_HP	0	1	1	1	1	0	strong	0	0
-200460	∑∂ˆ¬	WHEN_ENTER	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	1	1	1	enterfight_draw_card	0	0
-200500	¿Óƒ¡	WHEN_ENTER	WHICH_I	WHAT_ADD_ATK_HP	0	MySoldierNum;-1	MySoldierNum;-1	1	1	1	0	0	0
-200510	∆Îººª˜	WHEN_ENTER	WHICH_YOUR	WHAT_DAMAGE	0	1	0	1	1	0	do_damage	0	0
-210010	“Ω •-±‚»µ	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_HEAL	0	2	0	1	99	1	enterfight_heal_area	0	0
-210020	π‚√˜÷Æ»™	WHEN_ENTER	WHICH_I	WHAT_BUF	0	210021	0	0	1	0	0	0	buf_heal_ability.png
-210021	π‚√˜÷Æ»™	WHEN_TURN_BEGIN	WHICH_MYSOLDIER	WHAT_HEAL	0	3	0	0	1	1	heal	0	0
-210022	π‚√˜÷Æ»™	WHEN_EVER	WHICH_I	WHAT_NOREADY	0	0	0	0	0	0	0	0	0
-210030	ƒ´º“Ó“◊”	WHEN_ENTER	WHICH_I	WHAT_BUF	0	210031	0	0	1	0	0	1	buf_quest_i.png
-210031	ƒ´º“Ó“◊”	WHEN_MYSOLDIER_HEALED	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	0	0	0	soldier_draw_card	1	0
-210040	ª™Ÿ¢	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_HP_ADD	0	3	0	1	1	0	strong	0	0
-210050	ƒ´◊”-ƒ´µ‘	WHEN_ENTER	WHICH_OWNER	WHAT_SP_RATE	0	2	0	0	1	0	0	0	buf_sp_rate.png
-210060	ΩÈ◊”Õ∆	WHEN_ENTER	WHICH_I	WHAT_ATK_EQU_HP	0	1	0	0	1	0	0	1	buf_atk_equ_hp.png
-210070	±‚»µ	WHEN_ENTER	WHICH_OWNER	WHAT_SUMMON	0	21008	0	1	1	0	enterfight_summon	1	0
-220010	±¯∑®º“-ÀÔÎ˜	WHEN_ENTER	WHICH_I	WHAT_BUF	0	220011	0	0	1	0	0	1	buf_quest_i.png
-220011	±¯∑®º“-ÀÔÎ˜	WHEN_I_USE_SKILL	WHICH_OWNER	WHAT_GET_CARD	0	32009	0	0	1	1	soldier_draw_card	0	0
-220020	ª¡È	WHEN_ENTER	WHICH_I	WHAT_BUF	0	220021	0	0	1	0	0	0	buf_burn_ability.png
-220021	ª¡È	WHEN_DO_DAMAGE	WHICH_SOLDIER	WHAT_STUN	0	1	0	2	1	0	update_tar_buf	0	buf_burn.png
-220030	«´—∑µƒƒ± ø	WHEN_ENTER	WHICH_I	WHAT_BUF	0	220031	0	0	1	0	0	1	buf_cost_reduce.png
-220031	«´—∑µƒƒ± ø	WHEN_I_USE_SKILL	WHICH_I	WHAT_ATK_ADD	0	1	0	0	1	0	update_tar_card	0	0
-220040	À’«ÿ	WHEN_ENTER	WHICH_OWNER	WHAT_MP_COST	0	-1	0	0	0	0	0	0	buf_cost_reduce.png
-230010	¿‰ø·µƒº‡æ¸	WHEN_ENTER	WHICH_SOLDIER	WHAT_DAMAGE_ATKADD	0	1	2	1	1	0	damage_atkadd	0	0
-230030	…ŸƒÍ√…ÃÒ	WHEN_ENTER	WHICH_MYSOLDIER	WHAT_RUSH	EXIST_BUF WHAT_CAN_RUSH	1	0	1	1	1	enterfight_rush_nearby	0	0
-230040	”¬√Õµƒœ»∑ÊπŸ	WHEN_ENTER	WHICH_I	WHAT_BUF	0	230041	0	0	1	1	0	1	buf_courage.png
-230041	”¬√Õµƒœ»∑ÊπŸ	WHEN_MYSOLDIER_HURTED	WHICH_I	WHAT_ATK_ADD	0	1	0	0	1	0	update_tar_card	0	0
-230050	Õ¿∑Ú-∞◊∆	WHEN_ENTER	WHICH_I	WHAT_BUF	0	230051	0	0	1	1	0	1	buf_yinu.png
-230051	Õ¿∑Ú-∞◊∆	WHEN_DAMAGED	WHICH_I	WHAT_ANGRY	0	6	230050	1	1	1	0	0	0
-300010	±¨’® ı	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	1	0	1	99	1	blast_area	1	0
-300030	ÃÏµÿ≤ª» 	WHEN_USE	WHICH_SOLDIER	WHAT_DAMAGE	0	2	0	1	99	1	no_mercy	1	0
-300040	ø◊∑Ω–÷	WHEN_USE	WHICH_I	WHAT_RES_ADD	0	1	0	1	0	0	0	1	0
-300060	À≥ ÷«£—Ú	WHEN_USE	WHICH_OWNER	WHAT_DRAW_CARD	0	2	0	1	0	1	skill_draw_card	1	0
-300070	÷∏¬πŒ™¬Ì	WHEN_USE	WHICH_SOLDIER	WHAT_REPLACE	0	20011	0	1	1	0	to_sheep	1	0
-300090	∑«π•	WHEN_USE	WHICH_SOLDIER	WHAT_RETURN	0	1	0	1	1	0	soldier_giveup	1	0
-300110	Ω∏’÷‰	WHEN_USE	WHICH_MYSOLDIER	WHAT_HP_ADD	0	2	0	0	1	0	kingKong_word	1	0
-300111	Ω∏’÷‰	WHEN_USE	WHICH_MYSOLDIER	WHAT_ATK_ADD	0	2	0	0	1	0	0	1	0
-300130	æ» Í	WHEN_DEAD	WHICH_MYSOLDIER	WHAT_HP_SET	0	1	0	1	1	0	0	1	0
-300140	Ω÷”’÷	WHEN_USE	WHICH_MYSOLDIER	WHAT_IMMUNE	0	1	0	0	1	0	absolute_def	1	buf_abs_def.png
-300150	¡˜–«”Í	WHEN_USE	WHICH_ALL	WHAT_DAMAGE	0	3	0	1	99	1	blast_area2	1	0
-310010	ÃÏΩµ∏ ¡ÿ	WHEN_USE	WHICH_SOLDIER	WHAT_HEAL	0	4	0	1	99	1	rain_drop	1	0
-310020	¥»±Ø	WHEN_USE	WHICH_MYHERO	WHAT_HEAL	0	4	0	1	1	0	heal	1	0
-310030	«ø…Ì ı	WHEN_USE	WHICH_MYSOLDIER	WHAT_HP_DOUBLE	0	1	0	0	1	0	strong	1	0
-310040	∆Ωµ»	WHEN_USE	WHICH_SOLDIER	WHAT_HP_SET	0	1	0	1	99	1	equal	1	0
-310160	ÃÏ≈Æ…¢ª®	WHEN_USE	WHICH_YOUR	WHAT_DAMAGE	0	2	0	1	99	1	lady_flower	1	0
-310161	ÃÏ≈Æ…¢ª®	WHEN_USE	WHICH_MY	WHAT_HEAL	0	2	0	1	99	1	lady_flower	1	0
-310170	‘∏’ﬂ…œπ≥	WHEN_USE	WHICH_OWNER	WHAT_COPY_HAND	0	1	0	1	0	1	steal_handcard	0	0
-310180	«Ó…Ò÷™ªØ	WHEN_USE	WHICH_OWNER	WHAT_COPY_HAND	0	2	0	1	0	1	steal_handcard	0	0
-310190	ΩÃªØ	WHEN_USE	WHICH_OWNER	WHAT_COPY_FIGHT	0	1	0	1	0	1	steal_fightcard	0	0
-310200	æªªØ	WHEN_USE	WHICH_YOURSOLDIER	WHAT_KILL	ATK_LE 3	3	0	1	1	0	cuthead	0	0
-310210	∏ﬂΩ◊æªªØ	WHEN_USE	WHICH_YOURSOLDIER	WHAT_KILL	ATK_HE 5	5	0	1	1	0	cuthead	0	0
-310220	«˝…¢	WHEN_USE	WHICH_SOLDIER	WHAT_CLEAR_BUF	0	1	0	1	1	0	clear_buf	0	0
-310230	◊‘«ø≤ªœ¢	WHEN_USE	WHICH_MYSOLDIER	WHAT_HP_ADD	0	2	0	1	1	0	self_strong	1	0
-310231	◊‘«ø≤ªœ¢	WHEN_USE	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	1	0	0	skill_draw_card	1	0
-310240	“∆ª®Ω”ƒæ	WHEN_USE	WHICH_YOUR	WHAT_DAMAGE	0	5	0	1	1	0	move_flower	0	0
-310241	“∆ª®Ω”ƒæ	WHEN_USE	WHICH_MYHERO	WHAT_HEAL	0	5	0	1	1	0	heal	1	0
-310250	µ„ªØ	WHEN_USE	WHICH_YOURSOLDIER	WHAT_CONTROL	0	99	0	0	1	0	ctrl_card	0	0
-310260	π• ÿœ‡º√	WHEN_USE	WHICH_SOLDIER	WHAT_ATK_SET	0	GetHp	0	0	1	0	strange	0	0
-320010	“˝ª…’…Ì	WHEN_USE	WHICH_YOURSOLDIER	WHAT_STUN	0	1	0	2	1	0	burned	0	buf_burn.png
-320020	ª…’¡¨”™	WHEN_USE	WHICH_YOURSOLDIER	WHAT_STUN	0	1	0	1	1	0	0	0	0
-320021	ª…’¡¨”™	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	1	0	0	0	0	0	0	0
-320030	ª∫£	WHEN_USE	WHICH_YOURSOLDIER	WHAT_STUN	0	1	0	2	99	1	fire_sea	0	buf_burn.png
-320040	¥Ù»Ùƒæº¶	WHEN_USE	WHICH_YOURSOLDIER	WHAT_REPLACE	0	20020	0	1	1	0	to_sheep	0	0
-320050	—‡◊”»˝≥≠ÀÆ	WHEN_USE	WHICH_YOUR	WHAT_DAMAGE	0	1	0	1	3	1	destory_blast	0	0
-320060	∂´ ©–ßÚ≠	WHEN_USE	WHICH_OWNER	WHAT_SUMMON	0	20013	0	1	2	1	summon_area	0	0
-320070	ÃÏª∑Ÿ…Ì	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	3	0	1	1	0	skill_dodamage	0	0
-320071	ÃÏª∑Ÿ…Ì	WHEN_USE	WHICH_YOURSOLDIER	WHAT_STUN	0	1	0	2	1	0	update_tar_buf	0	buf_burn.png
-320080	¡˜–«ª”Í	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	4	0	1	99	1	fire_drop	0	0
-320090	—◊¡˙Õ¬œ¢	WHEN_USE	WHICH_YOUR	WHAT_DAMAGE	0	6	0	1	1	0	dragon_breathe	0	0
-320100	ø∫¡˙”–ª⁄	WHEN_USE	WHICH_YOUR	WHAT_DAMAGE	0	10	0	1	1	0	dragon_light	0	0
-320110	∆∆’Û∏Ë	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	1	0	1	99	1	destory_blast	0	0
-320120	ªÀŸ‘ˆ‘Æ	WHEN_USE	WHICH_OWNER	WHAT_DRAW_CARD	0	2	0	0	0	1	skill_draw_card	0	0
-320130	µÿ”¸¡“—Ê	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	3	0	1	99	1	god_fire	0	0
-320131	µÿ”¸¡“—Ê	WHEN_USE	WHICH_YOURSOLDIER	WHAT_STUN	0	1	0	2	99	1	update_tar_buf	0	buf_burn.png
-330010	◊≥ ø“ª»•Ÿ‚	WHEN_USE	WHICH_SOLDIER	WHAT_KILL	0	0	0	1	SoldierNum;-1	1	hero_bye	1	0
-330020	ÕªœÆ	WHEN_USE	WHICH_MYSOLDIER	WHAT_RUSH	EXIST_BUF WHAT_CAN_RUSH	1	0	1	1	0	rush_soldier	0	0
-330030	≤‹ÿ€¬€’Ω	WHEN_USE	WHICH_MYSOLDIER	WHAT_BLESS_HP	0	1	0	1	99	1	discuss_battle	0	buf_hp_bless.png
-330031	≤‹ÿ€¬€’Ω	WHEN_USE	WHICH_OWNER	WHAT_DRAW_CARD	0	1	0	1	0	0	skill_draw_card	0	0
-330040	ﬁÎ√Á÷˙≥§	WHEN_USE	WHICH_SOLDIER	WHAT_DAMAGE_ATKADD	0	1	2	1	1	0	damage_atkadd	0	0
-330050	’Ω’˘’Ÿº±¡Ó	WHEN_USE	WHICH_OWNER	WHAT_DRAW_CARD	0	MyHurtedSoldier	0	1	1	1	skill_draw_card	0	0
-330060	’∂ ◊	WHEN_USE	WHICH_YOURSOLDIER	WHAT_KILL	EXIST_BUF WHAT_HURTED	1	0	1	1	0	cuthead	0	0
-330070	µ∂π‚Ω£”∞	WHEN_USE	WHICH_SOLDIER	WHAT_DAMAGE	0	1	0	1	99	1	destory_blast	0	0
-330080	πƒŒË ø∆¯	WHEN_USE	WHICH_MYSOLDIER	WHAT_HP_ADD	EXIST_BUF WHAT_HURTED	3	0	1	1	0	kingKong_word	0	0
-330081	πƒŒË ø∆¯	WHEN_USE	WHICH_MYSOLDIER	WHAT_ATK_ADD	EXIST_BUF WHAT_HURTED	3	0	1	1	0	0	0	0
-330130	¬“…‰	WHEN_USE	WHICH_YOURSOLDIER	WHAT_DAMAGE	0	Rnd;2;4	0	1	2	1	destory_blast	0	0
-600040	“‘“›¥˝¿Õ	WHEN_ENTER	WHICH_YOURSOLDIER	WHAT_HP_SET	0	1	0	1	1	0	0	1	0
-620010	¿Ó¥˙Ã“Ω©	WHEN_ATKED	WHICH_MYSOLDIER	WHAT_SUMMON_GUIDER	0	20013	0	2	1	0	sec_summon_guider	1	0
-620020	≈◊◊©“˝”Ò	WHEN_USE_SKILL	WHICH_MYSOLDIER	WHAT_SUMMON_GUIDER	0	20013	0	2	1	0	sec_summon_guider	1	0
-620030	∑¥º‰º∆	WHEN_USE_SKILL	WHICH_ALL	WHAT_KILL	0	0	0	2	1	0	sec_stop_skill	1	0
-620040	’Ù∑¢	WHEN_ATKED	WHICH_MYHERO	WHAT_KILL	0	1	0	2	0	0	sec_kill_soldier	1	0
+‹·XX6:t.s(68.v'53<6t%7=)s<
+u';3u';3Lt00/-s2=%s>,8;v=s2%*738t:*83<//ouMMLOMt¡€∞Ωs(68. =10v'53<63v'5;+6'6:8sOuLsOuMsOuMsOuLs		OprNNMLMu∫®®•t%79/>21s(64974s(6<( 648:uMsNuMsOuMsOuMsNuOprNNMLLu©∆Ã≤t%79/>21s(64974s(6<( :4)+uMsNuMsOuMsOuMsNu
+OprNNMLKuæ≥≤√ÆŒv'5718&:,t%75:4 5t%7=)<=/-)*4vNtKvNtKvNtLvNtLvNprNNMLJu≥†∆Å¥±v'5718&:,t%75:4 5t%7=)7)+(::tLvNtLvNtLvNtLvNtLrtLLOMt©›Æ¢∑“u&4:0(*,/:09s(6497$-*,*-3:47-u&4>*8>1<5:uMs7vNtKvMtKv
+tLvNprNNMJv®Øªπ¥às(68. *(*1;785/s(64970#,/1869+s(6<( 68;3uMs7vNtKvMtKv
+tLvNprNNMIv¬™√⁄u&4:0(*,/:09s(64970#,/1869+s(6<( =)1 =98vNtKvNtKvMtKv
+
+tLvNprNNMHv¬™≥ÖªÅs(68. *(*18.;u&46;52%*-3:47-u&4>*4/<8;uMsNuMsNuLsNusOuMouMMLONLLv¿Ö∆´«Ω©Üu&4:0',9t%75:4 1$)0293:,t%7=)610'19tLvMtLvNtKvNt
+
+sNuPqsKONMLMNt¶±Ω∑≤äu&4:0',9t%75:4 1$s(6<( 68;3uMsMuMsNuLsOutKvNprMNMLHNt¶ìƒÿs(68. 9/(:,t%75:4 5t%7=)=)7sOuKLONFKvNtLvMtKvNtLv OprMNMLHMt¶ìƒÿs(68. :</>788v'53<63v'5;+<(4<8;uMsLuMsOuLsOuMsNuMouLMLOFMs±ï¶©éõt%79/:0)7-u&46;56u&4>*:*8tLvLMLOFLsOuMsNuMsOuLs	 
+OprMNMLGMtÆñß™ãúu&4:08:=9s(6497<03u&4>*8>1<5:uMsMuMsNuDCvMt		uLsOqsJONLJOu∞áãôt%79/:0)7-u&46;56u&4>*:*8tLvLMLNLLsOuMsNuMsOuLs	 	QrtKLOMKKv±ààöu&4:0)0293:,8:=9s(64974s(6<( =)1 =98vNtKvNtLvMtLv	
+vMtLrtKLOLLLvº∫í•u&4:07)9+s(64974s(6<( 0.*:=9#vNtLvNtLvNtLvNtLvNprMNMJLNt≈¬¥æO¥∞Øû√µt%79/:0)7-u&46;56u&4>*:*8tLvLMLMKLsOuMsNuMsOuMs	 
+PqsJONKINu∆øµøP±±∞ü¿∂u&4:03 )*7 ;<*;u&46;56u&4>*;;:;+34/uMsNuLsOuLsOu	 
+
+ 
+uMsOqsJONKHOu∫≠Ã‹øˇv'5718.+9+s(6497.%19+s(6<( +(/2//sOuKLOMHsOuLsNuMs	
+	
+uLsOqsJONKGOu®®ø÷t%79/:0)7-u&46;52%*-3:47-u&4>*;+3;;:tLvLtLvMtKvNt	uMsOqsJONKFOu´øƒƒt%79/:0)7-u&46;56u&4>*:*8tLvLMLMHLsOuMsNuMsOuMs	 
+PqsJONKFNu´øƒƒt%79/2%*-3:47-57>288v'53<63v'5;+<(4<8;uMsMuMsOuLsOu	 
+
+ 
+uMsOqsJONKDOußä©–Øòv'5718.+9+s(6497.%19+s(6<( :+;(:;-:tLvMtLvMtKvMt
+
+
+sOuMouLMLMEMs≠¡√Øv'5718.+9+s(64970#v'5;+57>2tLvLtLvMtKvNtsOuMouLMLLNMs∏¶©ø∑≥t%79/:0)7-u&46;56u&4>*:*8tLvLMLLNLsOuMsNuMsOuMs	 	OprMNMIOMtµß™¿¥¥u&4:0(*,/:09s(64970#,/1869+s(6<( 6->:9sOuLsOuLsNuLs 	tLvNprMNMINNt™ä≠âÆöÆ≠¿≠u&4:071*8*v'53<6/&+.0;58*v'5;++7+)+.vNtKvNtKvMtLv
+ 	sNuMouLMLLLMsœ•∆äÃ⁄t%79/:0)7-u&46;5,,:19<*=%t%7=)>*2>:9sOuLsOuMsMuLs	
+
+tLvNprMNMILNtí›®• ¿»™s(68. 9/(:,t%75:4 5t%7=)=)7sOuKLOKJKvNtLvMtLvNtKv 
+QrtKLOKJKvî€¶ßÃæ∆¨u&4:08:=9s(6497.%19+s(6<( :+;(:;-:tLvMtLvNtKvMtvMtLrtKLOKHLv√€í•∞Ω≤¿ÀŸs(68. 9/(:,t%75:4 ++9 08;-<$s(6<( <(6vNtKONMKvNtLvLtKv		vNt
+
+PqsJONJFOu≤ÖºÇÕ•±† Ÿv'5718.+9+s(64974s(6<( <(6vNtJONJFNuMsOuLsOuMsOu
+
+QrtKLOKGKv≥ÜπÉŒ¶Æ°À⁄s(68. *(*1;785/s(6497*-3:47-u&4>*1621sOuMsOuMsFEtKv uLsOqsJONJDOuƒè∆∂¶© ∫∫∑≤œt%79/:0)7-u&46;50'/7-u&4>*9>+)>:9sOuLsOuMsOuLsOuMs	
+
+NouLMLKNMsƒíª™ ∫∆øµøt%79/:0)7-u&46;5>21s(6<( :</>78sOuLsOuLsLuLs
+	uMsOqsJONIKOu∆ø∞µ≥Ωv'5718.+9+s(64970#,/1869+s(6<( =)17.)(uMsOuMsNuLsOu
+uMsOqsJONIIOuΩ¶≠õt%79/:0)7-u&46;52%*-3:47-u&4>*;;:;+34/uMsNuLsNuDCvMt
+
+
+uMsOqsJONIGOu¥í∞‹ßŒµÿt%79/:0)7-u&46;52%*-3:47-u&4>*;;:;+34/uMsNuLsNuLsOu
+vNtLrtKLOJGLv««ÜΩu&4:071*8*v'53<6-(08*v'5;+9*>'9>,9sOuLsOuLsNuLs	
+vNtLrtKLOIMLvæè∏æu&4:071*8*v'53<63v'5;+<8;<(45,vNt/+
+1	ARMt/+
+1	ARMtKvMtKvNtLvNprMNMGNNt∂î¬¡¡àu&4:071*8*v'53<6#0)+s(6<( :</>78sOuLsOuLsNuMsuMsOqsJNNMKOu´øµŸPÀù∂»s(68. 9/(:,t%75:4 1$)0293:,t%7=)79<0vNtJvNtKvEDsNu 
+tLvNprMMMLMNt√ùªÜ¶—∂”s(68. 9/(:,t%75:4 5t%7=)=)7sOuKKONKKvNtLvMtLvNtLv PqsJNNMJNuƒöºáßŒ∑‘t%79/+)+. <8560t%75:4 1$)0293:,t%7=)79<0vNtIvNtLvMtKvuMsOqsJNNMJMuƒöºáßŒ∑‘t%79/:(8*v'53<63v'5;+/--9<8&uMsOuMsOuMsOuMsOuMouLLLOKMsª”¡™ë¨¶©v'5718.+9+s(64974s(6<( <(6vNtJNNMINuMsOuLsOuMsNu	PqsJNNMINuπ—√¨è™®´t%79/2%*-3:47-57>288v'53<6-(08*v'5;+9*>'9>,9sOuLsOuMsOuMs 
+uLsOqsJNNMHOu¬“¶‹t%79/:0)7-u&46;52%*-3:47-u&4>*4/<8;uMsLuMsNuLsOu
+vNtLrtKKONHLv∫“•¨Qπ— ™t%79/:0)7-u&46;50'/7-u&4>*)/+;+9tLvLtLvNtKvNtLvNt
+	OprMMMLINtøñß™Øπu&4:071*8*v'53<63v'5;+<(48+*5,vNtKvNtLvMtLvNtKv 	  NouLLLOGMsŒúµ«v'5718.+9+s(6497.%19+s(6<( +(/2//sOuKKONEsOuLsNuMs	
+	
+uLsOqsJMNMKOuÃÑ»÷¡™R≥éëàu&4:071*8*v'53<63v'5;+;'9uMsMLMLNMtLvNtKvNtLvMt
+
+
+ OprMLMLNMtÀá«’¿≠Q≤çîát%79/6():*1621s(6497.%19+s(6<( 78( ;<*;uMsLLMLFuMsOuLsNu
+
+sOuMouLKLOLMsƒéºìv'5718.+9+s(64974s(6<( <(6vNtJMNMJNuMsOuLsOuMsOuOprMLMLMMt¡èΩîs(68. :.;=0;89t%75:4 +.0;58*v'5;+*(*0tLvMtLvLtKvNt	uMs		QrtKJONJLv∑“´»…π∏Œ¥æs(68. 9/(:,t%75:4 5t%7=)=)7sOuKJONJKvNtLvMtLvNtKv 		QrtKJONJKv∑“´»…π∏Œ¥æs(68. 5',9)4510v'53<63v'5;+<(4<8;uMsNuMsOuLsOu	 
+
+ 
+uMsOqsJMNMHOu≤ß∏¶t%79/:0)7-u&46;50'/7-u&4>*//:-,*tLvQLsOuMsOuMsOuMs	
+ 
+NouLJLOMMsøöæõ ∫¡ú¡Çt%79/:0)7-u&46;5,/1869+s(6<( :</>78>*2;;:tLvMtJvMtKvNtvNtLrtKIONJLvµ§∏ïª¥∞éu&4:071*8*v'53<6/&+.0;58*v'5;++',6t7'5*( <(6_'5;+:;1+',6tKvNtKvMtKv		
+ sOuMouLJLOJMs¨º∫Ø ∫Æ¥»òƒ£v'5718.+9+s(64974s(6<( <(6vNtJLNMHNuMsOuLsNuMsNu
+PqsJLNMHNu™∫º±»∏∞∂∆ñ∆•t%79/2%*-3:47-5'-*88v'53<63v'5;+<(4<8;uMsNuMsOuLsOu	 
+
+ 
+uMsOqsJLNMGOu∞º»åPÃ®∏çs(68. 9/(:,t%75:4 5t%7=)=)7sOuKIONHKvNtLvMtKvNtKv 
+PqsJLNMGNu∞º»åPÃ®∏çs(68. :</>788v'53<63v'5;+<.8,$sOuGsMKMLJNtKvMtKvNtLvNprLNMLNNtÀ”©’≤äu&4:0',9t%75:4 %.'-+.0;58*v'5;+9;2=67vNtKvNtKvEDsNu	vMtLrtJLONJLv≤ë«ßÃ¬¥µu&4:0',9t%75:4 +.0;58*v'5;+9;2=67vNtJvNtKvEDsNu 
+tKvNprLNMLKNtΩ®«¿¨©u&4:0',9t%75:4 5t%7=)-9*>:9sOuLsOuLsOuMsOuLsOqsIONMFOu≤…µ®∂ŸÆåt%79/*+8s(6497.%19+s(6<( :+;(:;-:tLvLtLvMtLvMt	 tKvNprLNMLHNt¶«ºƒÆ’ºês(68. )*7v'53<6)0293:,t%7=)-9-0>;8sOuKLOMLsOuLsNuMs	vMtLrtJLONDLv«∂√⁄u&4:0',9t%75:4 +.0;58*v'5;++7+)+.vNtKvNtKvMtLv
+ 	sNuMouKMLNMMs¬é≈ß©öt%79/*+8s(64970#,/1869+s(6<( 6->:9sOuKsOuMsNuMs4 
+uLsOqsIONLKNu¿å«©ßòv'571():u&46;52%*-3:47-u&4>*;+3;;:tLvLtLvNtKvNtLvMtLrtJLOMJLv¿µ≤ïu&4:08:=9s(64970#,/1869+s(6<( 6-,9)sOuLsOuLsNuMsOuLsOqsIONLHOu¿å©´®¶v'571():u&46;52%*-3:47-u&4>*321(.:uMsNuMsOuLsOutKv 	 QrtJLOMHLvΩÜ¨∏´ìs(68. )*7v'53<6;32t%7=);=0;89tLvKtLvMtCFuLs	
+KsNuMouKLLOMMs≥í¿««¥º§v'571():u&46;5,/1869+s(6<( 68;3uMsKuMsNuDCvMt
+vMtLrtJKONKLv µÀ–u&4:0',9t%75:4 1$4:,.s(6<( 68;3uMsKuMsNuLsOutKvNprLMMLLNtµ¿µê≤äu&4:0',9t%75:4 1$)0293:,t%7=)7.80);0:uMsNuMsOuLsOu
+vMtLrtJKONILv∏¿«∑u&4:0',9t%75:4 +.0;58*v'5;+5, +8(vNtKvNtKvEDsNu
+sNuMouKLLNHMs≥í∏Œ∂‹¬‘v'571():u&46;5&/(*v'5;+9;2=67vNtJvNtKvEDsNuuLsOqsINNLFNu±ê∫–¥⁄ƒ÷t%79/*+8s(64970#v'5;+57>2tLvLtLvMtCFuLs sNuMouKLLNGMs´∆®ù∂Øƒ…v'571():u&46;50'/7-u&4>*90.$7=/8vNtKvNtKvNtKv	sOuMouKLLNFMs∏ê¥ã©‘¬Õv'571():u&46;50'/7-u&4>*90.$7=/8vNtJvNtKvNtKv	sOuMouKLLNEMs¬≤¬Õv'571():u&46;50'/7-u&4>*90.$9564+uMsNuMsNuMsNu
+
+uMsOqsINNKLOuø¡ƒœt%79/*+8s(6497$-*,*-3:47-u&4>*1621s>*239]IvKtLvMtKvNt
+
+tLvNprLMMJNNtƒ†¡¶æƒ√Œs(68. )*7v'53<6#0)+)0293:,t%7=)4510v=)1 68\JuHsOuLsNuMs		sOuMouKLLMLMs∏Å¥⁄v'571():u&46;5,/1869+s(6<( ;17>,:*8tLvMtLvMtKvNt
+ vNtLrtJKOLJLvß©µ¿Ã¬≠›u&4:0',9t%75:4 1$)0293:,t%7=)7.;;:tLvLtLvMtKvNt	
+tKvNprLMMJLMt•´∑æ ƒØ€s(68. )*7v'53<6-(08*v'5;+9*>'9>,9sOuLsOuLsOuMs
+sNuMouKLLMJMs≠∏¬‘¬´πæv'571():u&46;5&/(*v'5;+9;2=67vNtGvNtKvMtLv
+vNtLrtJKOLIKv¨∑¡◊¡™∏¡u&4:0',9t%75:4 1$4:,.s(6<( 68;3uMsJuMsNuLsOutKvNprLMMJJNt«ú√Œs(68. )*7v'53<6#0)+)0293:,t%7=)<//(-/1sOuDCvNtLvMtLv	
+tLvNprLMMJINt√⁄¥•≠ü¬∫s(68. )*7v'53<6)0293:,t%7=)>*2,9)sOu66sOuMsNuMs
+sOuMouKKLOMMs≠Å¬å∂©¥èv'571():u&46;5&/(*,/1869+s(6<( +)'1uMsNuMsMuLsOuvNt
+
+NouKKLOLMsƒé¥ßæ“™“v'571():u&46;5&/(*,/1869+s(6<( +)'1uMsNuMsNuLsOuMsOuMouKKLOLLsƒé¥ßæ“™“v'571():u&46;5&/(*,/1869+s(6<( :</>78sOuLsOuMsOuMsOuMsOqsIMNMIOu¬å≈€t%79/*+8s(6497$-*,*-3:47-u&4>*)+)/sOuLsOuKsFEtKv
+
+uMs		QrtJJONILv â¥ã∫ø¿Ÿu&4:0',9t%75:4 %.'-+.0;58*v'5;++7/2<9:uMsMNMJOuMsNuLsOu	 tLvNprLLMLJNt´üß™¥ÇÀ–±—u&4:0',9t%75:4 %.'-u&4>*8>1<5:uMsNuMsNuJsNu
+
+	sOuMouKKLOHMs…”≥”Ø◊ãœv'571():u&46;50'/7-u&4>*)*10-1uMsMNMKLuMsNuKsNu
+ uMsOqsIMNMEOu±êƒé∆£∂ët%79/*+8s(6497$-*,*-3:47-u&4>*8>1<5:uMsLuMsNuLsOu
+vNtLrtJJONFKv≤ë¡è«§≥íu&4:0',9t%75:4 %.'-+.0;58*v'5;+*(*0tLvMtLvLtKvNt	uMs		QrtJJONELvΩÜ¨∏√ç©ïu&4:0',9t%75:4 %.'-+.0;58*v'5;+9;2=67vNtHvNtKvEDsNusOuMouKKLOEMsÆßºÇ≤ºÆ⁄v'571():u&46;5&/(*v'5;+9;2=67vNtFvNtKvMtLvsOuMouKKLNNMs¿ƒºÇ¨Æ¬¢v'571():u&46;5&/(*v'5;+9;2=67vNtKOuMsNuLsOu
+ 
+tLvNprLLMKNNt∂π©äƒóu&4:0',9t%75:4 %.'-+.0;58*v'5;+9;2=67vNtKvNtKvEDsNu
+
+	sOuMouKKLNLMsƒé≤£´à©Œv'571():u&46;50'/7-u&4>*8-=&<=+8vNtJvNtLvNtKvvNtLrtJJOMJLv…•©ÉΩ´´ôu&4:0',9t%75:4 %.'-+.0;58*v'5;+9;2=67vNtIvNtKvEDsNutLvNprLLMKLMt«ß´Åª≠≠ós(68. )*7v'53<6#0)+)0293:,t%7=),*(.vNtKvNtJvEDsNu	 
+
+ vNt
+
+NouKJLOMMs®À≥Ω≠√µ◊¶út%79/*+8s(6497*-3:47-u&4>*1621sOuMsOuLs,.
+BONuLs vMtLrtJIONKLv±¬≠—u&4:0',9t%75:4 1$)0293:,t%7=)-)*4v9%3,*:*8]%7=)<=/-)*4vMtLvMtKvNt
+
+sOuMouKJLOKMsÕ¢•°Ω£®øv'571():u&46;52%*-3:47-u&4>*:39*) 6-sOuLsOuLsFEtKv		
+	 sOu OprLKMLLMt £¶¢∫§©¿s(68. )*7v'53<6-(08*v'5;+9*>'9>,9sOuLsOuLsOuMs
+sOuMouKJLOJMs°ì∫ï©Ñ ÿv'571():u&46;5,/1869+s(6<( :</>78>*2;;:tLvMtJvMtKvNtvNtLrtJIONHLv©¿ßÜ©§¿ŒΩès(68. )*7v'53<6-(08*v'5;+9*>'9>,9sOu07	*uMsNuLsNu
+ 
+uMsOqsILNMFOu®∆µßt%79/*+8s(6497$-*,*-3:47-u&4>*1621s:&4)+;'9^&4>*4*,)7;uLsOuLsNuMs		sOuMouKJLOGMs »ƒö¬€™Ãv'571():u&46;5,/1869+s(6<( :</>78sOuLsOuLsFEtKv	 
+tLvNprLKMLGNt√ª∞ï≤¿∏Ös(68. )*7v'53<6/&+.0;58*v'5;+5, =98v9%3,*:*8]%7=)7)+(::tIvNtKvMtLv3tLvNprLKMLGMt√ª∞ï≤¿∏Ös(68. )*7v'53<6/&+.0;58*v'5;+<(4<8;u8$6+)=)7\(6<( 6(*+99sLuMsNuLsOuMsOuMouKJLNKMsΩ¨¥òv'571():u&46;5&/(*,/1869+s(6<( :</>78sOu+CKAKuMsNuKsNu
+
+	sOuMouHMLOJMs≠™´üÀÅΩØv'5718.+9+s(6497$-*,*-3:47-u&4>*4/*7+uMsNuMsNuLsOuMsNuMouHKLOMMsøê…Ç≥¨¿”v'571<(499s(64970#,/1869+s(6<( +(/2//8)48:,tLvLMLNKtLvLtKvNt		
+
+vMtLrtGJONKLvπ¶•÷¨Ä©éu&4:0',9)4510v'53<6/&+.0;58*v'5;+*'21.. 7(3;9+sOuKLOMJsOuKsNuMs	
+uLsOqsFMNMIOu∆»√ö¡∂v'571():*1621s(6497<03u&4>*1621sOuMsOuKsNuMs
+ tKvNprILMLKNtßã«€s(68. =)1::t%75:4 1$4:,.s(6<( 3403uMsNuMsMuMsOu
+	tKvNpr

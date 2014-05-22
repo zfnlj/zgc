@@ -9,6 +9,8 @@
 #include "../sqlite/KUserSql.h"
 #include "../sqlite/KUserQuestSql.h"
 #include "../StaticTable/KRankStaticMgr.h"
+#include "CommonLogic/WorldObject/KAttrDefines.h"
+
 using namespace KItemAbout;
 using namespace KAttributeAbout;
 
@@ -220,4 +222,10 @@ namespace KWorldObjAbout
 	{ 
 		return KRankStaticDataManager::Instance()->ExpToLevel(m_playerRecord.GetExp());
 	}	
+
+	void KPlayer::SetQuestGiftSelectPos(int pos)
+	{
+		SetAttrValue(ca_selectPos,pos);
+	}
 }
+

@@ -27,6 +27,7 @@ namespace KAttributeAbout
 		ca_critNum,//±©»÷±¶ÂÊ
  		ca_cny,
  		ca_gameMoney,
+		ca_selectPos=88,
 		ca_1End
 	};
 

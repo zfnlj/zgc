@@ -45,6 +45,7 @@ public:
 
 public:
 	KFileStreamBase m_baseStream;
+	JgEncStream m_encStream;
 };
 
 struct KPatchFile

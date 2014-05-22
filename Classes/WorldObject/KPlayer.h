@@ -64,6 +64,8 @@ namespace KWorldObjAbout
 		bool AcceptQuestForce(KQuestNew* pQuest){return m_questOperation._AcceptQuestForce(pQuest);};
 		bool CancelQuest(KQuestNew* pQuest){ return m_questOperation.CancelQuest(pQuest);}
 		KQuestHolderBase& GetQuestHolder(){ return m_questOperation;}
+
+		void SetQuestGiftSelectPos(int pos);
 	private:
 
 	public:

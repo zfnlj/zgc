@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Patterns">
+      <UniqueIdentifier>{fc3ba3e2-583b-4df0-8a7a-7171a5c1795c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sync">
+      <UniqueIdentifier>{40fa40df-dd0b-48db-aab1-45c5d73fc917}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collections">
+      <UniqueIdentifier>{d90f0de4-b6a8-4f39-93c5-97fd46cee8f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Memory">
+      <UniqueIdentifier>{f17b0c28-7c63-4721-92cb-70c81760de68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{5d57f2b9-099b-42ca-a8a8-36c1dec53951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File">
+      <UniqueIdentifier>{67291c43-81ca-4ab5-8390-852d424e7ce6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{0da79831-8461-4b6c-b988-cb23b181f006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc">
+      <UniqueIdentifier>{f2997a93-d198-4438-bfce-b6dca769d5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Misc\MD5">
+      <UniqueIdentifier>{5b066383-bc43-45e9-bab2-f40359d3d88d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{1a5354cf-13e1-40a7-bf4d-da08a668c4fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Charset">
+      <UniqueIdentifier>{a73c9e78-2683-41af-8f3d-663c7fb77b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Cipher">
+      <UniqueIdentifier>{bd9327dd-0a2b-4754-815c-9d48c513a5cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Random">
+      <UniqueIdentifier>{86c72305-8b13-4e80-9711-289c09e9be01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm">
+      <UniqueIdentifier>{5205ee37-d038-4d9b-9ff2-4c9874d47d40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{d0eda8d6-0e54-44e8-96ea-31c913963644}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{cd868a71-9d25-4cfb-9ba5-6430cc5cf0bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Decimal">
+      <UniqueIdentifier>{b05cdf37-c604-437b-a467-c6eee35006a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ThreadApp">
+      <UniqueIdentifier>{f3153513-924b-4035-8270-6080236faca1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Patterns\KBaseGroupMethod.h">
+      <Filter>Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="Patterns\KSingleton.h">
+      <Filter>Patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="Sync\KClock.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Sync\KProcessMutex.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Sync\KSync.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Sync\KTimer.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Sync\RWMutex.h">
+      <Filter>Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\DynArray.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\DynComplexArray.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KBinHeap.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KBitset.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KCircularBuffer.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KCoupler.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KHashTable.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KMapByVector.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KPipe.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KQueue.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KSDList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KSimpleIndexTable.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KStack.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KString.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KTree.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Collections\KVector.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\_heap_alloc.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\_memory_pool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KAlloc.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KAutoPoolObjPtr.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KBuffer64k.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KDataBuffer.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KMemory.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KMemoryCleaner.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KMemoryMonitor.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KMemoryRecordset.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KNew.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KObjectPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KPieceBufferStream.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KStepObjectPool.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\KThreadLocalStorage.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\multi_module.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Memory\RingBuffer.h">
+      <Filter>Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\AsyncLogger.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Log\log.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KBinarySignFile.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KFile.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KMMap.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KTabFile.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KTabFileDiff.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KTabfileLoader.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KTabFileReader.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="File\KTextReader.h">
+      <Filter>File</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\KLinuxThreadImpl.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\KThread.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\KThreadImpl.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Thread\KWin32ThreadImpl.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KBitset.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KCheckSum.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KCrc32.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KDatetime.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KEncoding.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KName.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KRefObject.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KSmartPointer.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KStream.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KStringtable.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\KVariant.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\rand.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\StreamInterface.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\StrUtil.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\md5.h">
+      <Filter>Misc\MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="Misc\md5new.h">
+      <Filter>Misc\MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\ascii.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\asciitab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\expat.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\expat_external.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\gb2312tab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\iasciitab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\internal.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\latin1tab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\nametab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\utf8tab.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xmldom.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xmlrole.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xmlstream.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xmltok.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xmltok_impl.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset_Ascii.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset_Big5.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset_GB2312.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset_Japan.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharset_Normal.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KCharsetConvert.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Charset\KWordTree.h">
+      <Filter>Charset</Filter>
+    </ClInclude>
+    <ClInclude Include="Cipher\jgencryptor.h">
+      <Filter>Cipher</Filter>
+    </ClInclude>
+    <ClInclude Include="Cipher\vgcipher.h">
+      <Filter>Cipher</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\KRandom.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\KRandomGroup.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\AngleComputer.h">
+      <Filter>Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\ArcChecker.h">
+      <Filter>Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\Distance.h">
+      <Filter>Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm\LineChecker.h">
+      <Filter>Algorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\KMilliTimer.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\KPerfCounter.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\KPerfHitchCounter.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Helper\KPooledMap.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Decimal\KInteger.h">
+      <Filter>Decimal</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadFunctor.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadInstance.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadPool.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadProcessor.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadProcessorUnit.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadUnit.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KThreadUnitQueue.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPJobList.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPKernel.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPKernelMacros.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPObjPool.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPStream.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPStreamPartitioner.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPTask.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPWorkflow.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPWorkflowSerializer.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPWorkload.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadApp\KTPWorkPool.h">
+      <Filter>ThreadApp</Filter>
+    </ClInclude>
+    <ClInclude Include="KMacro.h" />
+    <ClInclude Include="KPlatform.h" />
+    <ClInclude Include="KType.h" />
+    <ClInclude Include="SockHeader.h" />
+    <ClInclude Include="Cipher\tea.h">
+      <Filter>Cipher</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sync\KProcessMutex.cpp">
+      <Filter>Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="Sync\KSync.cpp">
+      <Filter>Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="Sync\RWMutex.cpp">
+      <Filter>Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="Collections\KTree.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KBuffer64k.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KDataBuffer.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KMemory.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KMemoryCleaner.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KMemoryMonitor.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KMemoryRecordset.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Memory\KThreadLocalStorage.cpp">
+      <Filter>Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\AsyncLogger.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Log\log.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KBinarySignFile.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KFile.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KMMap.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KTabFile.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KTabFileDiff.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KTabfileLoader.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KTabFileReader.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="File\KTextReader.cpp">
+      <Filter>File</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread\KLinuxThreadImpl.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread\KThread.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread\KThreadImpl.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Thread\KWin32ThreadImpl.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KBitset.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KCheckSum.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KCrc32.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KDatetime.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KEncoding.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KName.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KRefObject.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KStream.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\KStringtable.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\rand.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\StrUtil.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc\md5c_opt.c">
+      <Filter>Misc\MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmldom.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmlparse.c">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmlrole.c">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmlstream.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmltok.c">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmltok_impl.c">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml\xmltok_ns.c">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset_Ascii.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset_Big5.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset_GB2312.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset_Japan.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharset_Normal.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KCharsetConvert.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Charset\KWordTree.cpp">
+      <Filter>Charset</Filter>
+    </ClCompile>
+    <ClCompile Include="Cipher\jgencryptor.cpp">
+      <Filter>Cipher</Filter>
+    </ClCompile>
+    <ClCompile Include="Cipher\vgcipher.cpp">
+      <Filter>Cipher</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\KRandom.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\KRandomGroup.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithm\AngleComputer.cpp">
+      <Filter>Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithm\Distance.cpp">
+      <Filter>Algorithm</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\KMilliTimer.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\KPerfCounter.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\KPerfHitchCounter.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Decimal\KInteger.cpp">
+      <Filter>Decimal</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadFunctor.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadInstance.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadPool.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadProcessor.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadProcessorUnit.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadUnit.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KThreadUnitQueue.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPJobList.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPObjPool.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPStream.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPStreamPartitioner.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPTask.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPWorkflow.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPWorkflowSerializer.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadApp\KTPWorkPool.cpp">
+      <Filter>ThreadApp</Filter>
+    </ClCompile>
+    <ClCompile Include="KPlatform.cpp" />
+    <ClCompile Include="Cipher\tea.cpp">
+      <Filter>Cipher</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Misc\KRefObject.inl">
+      <Filter>Misc</Filter>
+    </None>
+    <None Include="Misc\KSmartPointer.inl">
+      <Filter>Misc</Filter>
+    </None>
+    <None Include="ThreadApp\KTPObjPool.inl">
+      <Filter>ThreadApp</Filter>
+    </None>
+    <None Include="ThreadApp\KTPStream.inl">
+      <Filter>ThreadApp</Filter>
+    </None>
+    <None Include="ThreadApp\KTPStreamPartitioner.inl">
+      <Filter>ThreadApp</Filter>
+    </None>
+    <None Include="ThreadApp\KTPTask.inl">
+      <Filter>ThreadApp</Filter>
+    </None>
+    <None Include="ThreadApp\KTPWorkload.inl">
+      <Filter>ThreadApp</Filter>
+    </None>
+  </ItemGroup>
+</Project>
