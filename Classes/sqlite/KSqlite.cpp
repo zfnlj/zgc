@@ -168,7 +168,10 @@ int KSqlite::loadBlobBuf(char* des,int size,char* src)
 	unsigned char buf[2048];
 	KSqlEnc::Dec((unsigned char*)src+sizeof(head),buf,head.length);
 	WORD crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)buf,head.length);
-	if(head.crc!=crc) return 0;
+	if(head.crc!=crc){
+		CCAssert(false , "Blob data error!");
+		return 0;
+	}
 	memcpy(des,buf,head.length);
 	return head.length;
 }
