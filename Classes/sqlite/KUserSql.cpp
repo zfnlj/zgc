@@ -26,18 +26,6 @@ enum player_field_enum
 	f_normalItem,
 };
 
-bool loadCriData(char* buf,int len,tb_player_record* record)
-{
-	CriPlayerInfo decInfo(0,0,0);
-	KSqlEnc::Dec((unsigned char*)buf,(unsigned char*)&decInfo,sizeof(decInfo));
-	int crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)&decInfo,sizeof(int)*3);
-	if(decInfo._crc!=crc) return false;
-	record->exp = decInfo._exp;
-	record->money = decInfo._money;
-	record->pvpVal = decInfo._pvpVal;
-	return true;
-}
-
 int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_name)
 {
 	char buf[2048];
@@ -47,8 +35,13 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 	LOAD_BLOB_FIELD(column_value[f_normalItem],record->normalItem,buf)
 
 	if(column_value[f_criInfo]){
-		int len = KSqlite::loadBlobBuf(buf,2048,column_value[f_criInfo]);
-		loadCriData(buf,len,record);
+		CriPlayerInfo decInfo(0,0,0);
+		int len = KSqlite::loadBlobBuf((char*)&decInfo,sizeof(decInfo),column_value[f_criInfo]);
+		if(len==sizeof(decInfo)){
+			record->exp = decInfo._exp;
+			record->money = decInfo._money;
+			record->pvpVal = decInfo._pvpVal;
+		}
 	}
 
 
@@ -65,22 +58,12 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 
 bool KUserSql::UpdateCriVal(const char* userName,int money,int exp,int pvpVal)
 {
-	CriPlayerInfo criInfo(money,pvpVal,exp),criEnc(0,0,0);
-	criInfo._crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)&criInfo,sizeof(int)*3);
-	KSqlEnc::Enc((BYTE*)&criInfo,(BYTE*)&criEnc,sizeof(criInfo));
-
-	CriPlayerInfo decInfo(0,0,0);
-	KSqlEnc::Dec((unsigned char*)&criEnc,(unsigned char*)&decInfo,sizeof(decInfo));
-	int crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)&decInfo,sizeof(int)*3);
-
-
-
+	CriPlayerInfo criInfo(money,pvpVal,exp);
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set criInfo=? where name='%s'",SQLITE_USER_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,(const char *)&criEnc,sizeof(criEnc));
-
-	return false;
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,(const char *)&criInfo,sizeof(criInfo));
 }
+
 bool KUserSql::UpdateIntegerVal(const char* userName,const char* field,int val)
 {
 	execUpdateSqlStruct execSql;
@@ -116,6 +99,7 @@ bool KUserSql::UpdateNormalBag(const char* userName,tb_player_record* record)
 bool KUserSql::LoadUserData(const char* userName,tb_player_record* record)
 {
 
+	record->init();
 	char sqlstr[128];
 
 	sprintf(sqlstr,"select * from %s where name='%s'",SQLITE_USER_TABLE,userName);

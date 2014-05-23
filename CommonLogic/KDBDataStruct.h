@@ -20,10 +20,6 @@ struct tb_player_record
 	enum field_enum
 	{
 		f_playerID,
-		f_map,
-		f_x,
-		f_y,
-		f_z,
 		f_lastLoginIp,
 		f_lastLoginTime,
 		f_lastLogoutTime,
@@ -56,11 +52,17 @@ struct tb_player_record
 	tb_player_record(){
 		mUpdateMask = 0;
 	}
+	void init(){
+		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money = curDeck = pvpVal = exp = 0;
+		cardStore.actualLength = 0;
+		for(int i=0;i<MAX_DECK_NUM;i++){
+			cardDeck[i].actualLength=0;
+		}
+		normalItem.actualLength = 0;
+	}
 	int GetExp(){ return exp;}
 	DWORD mUpdateMask;
 	KObjectID playerID;
-	int map;
-	int x,y,z;
 	DWORD lastLoginIp;
 	int lastLoginTime;
 	int lastLogoutTime;
@@ -153,6 +155,14 @@ struct tb_playerquest_record
 			}
 		}
 		return slot;
+	}
+	void init(){
+		memset(qid,0,sizeof(qid));
+		for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){
+			qstate[i].actualLength = 0;
+		}
+		qhistory.actualLength = 0;
+		qpersist.actualLength = 0;
 	}
 	KObjectID playerID;
 	int qid[MAX_PLAYER_QUEST_NUM];

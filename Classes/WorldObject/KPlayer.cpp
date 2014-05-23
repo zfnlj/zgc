@@ -99,6 +99,8 @@ namespace KWorldObjAbout
 		m_pBagManager = KBagManager::Alloc();
 		ASSERT_RETURN(m_pBagManager, false);
 		m_pBagManager->SetMasterID(m_id);
+		m_playerRecord.init();
+		m_questRecord.init();
 		return true;
 	}
 

@@ -7,8 +7,8 @@ struct CriPlayerInfo{
 	int _money;
 	int _pvpVal;
 	int _exp;
-	int _crc;
-	CriPlayerInfo(int money,int pvp,int exp):_money(money),_pvpVal(pvp),_exp(exp)
+	int _dump;
+	CriPlayerInfo(int money,int pvp,int exp):_money(money),_pvpVal(pvp),_exp(exp),_dump(0)
 	{}
 };
 class KUserSql

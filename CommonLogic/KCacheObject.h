@@ -81,6 +81,7 @@ template <int size> struct KDBBinary : public KDBBaseBinary// size 可容纳的�
 struct KDbBinaryHead
 {
 	WORD length;
+	WORD crc;
 	char data[2];
 };
 

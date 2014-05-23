@@ -3,10 +3,10 @@
 #include "platform/CCFileUtils.h"
 #include "ccMacros.h"
 #include "CommonLogic/KCacheObject.h"
+#include "../DB/KPlayerDBMgr.h"
+#include "KSqlEnc.h"
 
 using namespace std;
-
-
 
 
 
@@ -153,7 +153,10 @@ int KSqlite::fillBlobBuf(char* des,int size,const char* src,int len)
 	if(size < (len+sizeof(KDbBinaryHead))) return -1;
 	KDbBinaryHead* pHead = (KDbBinaryHead*)des;
 	pHead->length = len;
-	memcpy(des+sizeof(KDbBinaryHead),src,len);
+	pHead->crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)src,len);
+
+	KSqlEnc::Enc((unsigned char*)src,(unsigned char*)(des+sizeof(KDbBinaryHead)),len);
+
 	return len+sizeof(KDbBinaryHead);
 }
 
@@ -162,7 +165,11 @@ int KSqlite::loadBlobBuf(char* des,int size,char* src)
 	KDbBinaryHead head;
 	memcpy(&head,src,sizeof(head));
 	if(size <head.length) return -1;
-	memcpy(des,src+sizeof(head),head.length);
+	unsigned char buf[2048];
+	KSqlEnc::Dec((unsigned char*)src+sizeof(head),buf,head.length);
+	WORD crc = KPlayerDBMgr::getSingleton().GetCrc_16((unsigned char *)buf,head.length);
+	if(head.crc!=crc) return 0;
+	memcpy(des,buf,head.length);
 	return head.length;
 }
 

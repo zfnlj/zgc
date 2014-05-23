@@ -54,7 +54,6 @@ void VirtualService::LoadPlayerData()
 {
 	KMainPlayer::Instance()->initPlayer(1);
 
-
 	if(KUserSql::LoadUserData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetPlayerRecord())){
 		KUserQuestSql::LoadUserQuestData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetQuestRecord());
 	}else{
@@ -76,8 +75,9 @@ void VirtualService::LoadPlayerData()
 	os.WriteShort(10);									// 未锁定格子数
 	KNetMsgFacade::onInitOneBag(os.m_pBuf, os.m_pos);
 
-	KMainPlayer::RealPlayer()->SyncFromRecord();
 	KMainPlayer::RealPlayer()->IncreaseMoney(100);
+
+	KMainPlayer::RealPlayer()->SyncFromRecord();
 	KQuestManager::GetInstance()->syncAvailQuests();
 }
 
