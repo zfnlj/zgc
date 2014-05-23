@@ -75,8 +75,6 @@ void VirtualService::LoadPlayerData()
 	os.WriteShort(10);									// 未锁定格子数
 	KNetMsgFacade::onInitOneBag(os.m_pBuf, os.m_pos);
 
-	KMainPlayer::RealPlayer()->IncreaseMoney(100);
-
 	KMainPlayer::RealPlayer()->SyncFromRecord();
 	KQuestManager::GetInstance()->syncAvailQuests();
 }

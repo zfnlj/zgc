@@ -18,11 +18,12 @@ public:
 	void init(cocos2d::extension::UILayer* layer);
 	void DoClickClose(CCObject* sender);
 	void updatePanel();
-
 private:
 	void DoCancleQuest(CCObject* sender);
 	void DoAcceptQuest(CCObject* sender);
 	void DoClickSumbit(CCObject* sender);
+
+	
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
 };

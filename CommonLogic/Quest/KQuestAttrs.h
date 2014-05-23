@@ -157,18 +157,15 @@ public:
 		achievement,
 		userData,			//任务的自定义数据
 		timeperiod,
-		activityId,			// 相关的活动ID
 
 		flag,				// 任务标志
 
 		acceptDialogId,		// 接受任务对话id, 0表示无对话
-		noFinishDialogId,	// 未完对话id
 		finishDialogId,		// 完成后交任务对话id
 
 		acceptTopLimit,		// 任务等级上限
 
 		grade,				// 任务等阶，默认为0,1为白色，2为绿色，3为蓝色，4为紫色
-		estimateTime,		// 任务预估时间
 
 		extraDescStr,		// 额外任务描述字符串
 		extraDescBGP,		// 额外任务描述图片

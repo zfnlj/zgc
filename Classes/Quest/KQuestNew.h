@@ -171,12 +171,9 @@ public:
 
 	DWORD m_nameId;
 	DWORD m_talkId;
-	DWORD m_effectId;
 	DWORD m_acceptDialogId;		// 接受对话
-	DWORD m_noFinishDialogId;	// 未完对话
 	DWORD m_finishDialogId;		// 完成对话
 	int   m_level;
-	int   m_viewLevel;
 	int   m_acceptLevel;
 	int	  m_acceptTopLimit;		// 任务等级上限
 	int   m_prevQuest;
@@ -185,7 +182,6 @@ public:
 	int	  m_profession;	// 任务相关职业
 
 	int   m_grade;		// 任务等阶，其值决定任务的颜色
-	int	  m_estimateTime;	// 任务预估时间, 用于计算任务奖励
 
 	BYTE  m_type;
 	//BYTE  m_view;

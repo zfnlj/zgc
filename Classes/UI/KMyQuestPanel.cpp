@@ -114,11 +114,7 @@ void KMyQuestPanel::DoAcceptQuest(CCObject* sender)
 {
 	UIWidget* pWidget = (UIWidget*)sender;
 	int questId= pWidget->getTag();
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
-		KNetMsgFacade::onAcceptQuest(questId);
-	}else{
-		KSocketFacade::DoAcceptQuest(questId);
-	}
+	
 }
 
 void KMyQuestPanel::DoCancleQuest(CCObject* sender)

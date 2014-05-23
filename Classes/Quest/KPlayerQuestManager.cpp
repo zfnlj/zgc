@@ -393,3 +393,24 @@ bool KPlayerQuestManager::OnEventImp(KEventAbout::KEventID id, const KEventAbout
 
 	return true;
 }
+
+KQuestNew* KPlayerQuestManager::QueryNormalQuest()
+{
+	for(int i=0; i<m_quests.size(); i++)
+	{
+		KQuestNew* pQuest = m_quests[i];
+		if(pQuest->m_type == enum_normal_quest) return pQuest;
+	}
+
+
+	int num = m_availQuests.size();
+	for(int i=0;i<num;i++)
+	{
+		KQuestNew* pQuest = m_availQuests[i];
+		if(pQuest->m_type == enum_normal_quest){
+
+			return pQuest;
+		}
+	}
+	return NULL;
+}

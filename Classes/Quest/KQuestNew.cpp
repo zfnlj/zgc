@@ -129,9 +129,7 @@ KQuestNew* KQuestNew::Clone()
 	pQuest->m_qid = m_qid;
 	pQuest->m_nameId = m_nameId;
 	pQuest->m_talkId = m_talkId;
-	pQuest->m_effectId = m_effectId;
 	pQuest->m_level = m_level;
-	pQuest->m_viewLevel = m_viewLevel;
 	pQuest->m_acceptLevel = m_acceptLevel;
 	pQuest->m_acceptTopLimit = m_acceptTopLimit;
 	pQuest->m_prevQuest = m_prevQuest;
@@ -141,8 +139,6 @@ KQuestNew* KQuestNew::Clone()
 	pQuest->m_abandon = m_abandon;
 	pQuest->m_reuse = m_reuse;
 	pQuest->m_share = m_share;
-
-	pQuest->m_estimateTime = m_estimateTime;
 
 	pQuest->m_profession = m_profession;
 
@@ -156,7 +152,6 @@ KQuestNew* KQuestNew::Clone()
 	pQuest->m_finishDescId = m_finishDescId;
 	pQuest->m_noFinishDescId = m_noFinishDescId;
 	pQuest->m_acceptDialogId = m_acceptDialogId;
-	pQuest->m_noFinishDialogId = m_noFinishDialogId;
 	pQuest->m_finishDialogId = m_finishDialogId;
 
 	pQuest->m_achieveId = m_achieveId;
@@ -213,19 +208,14 @@ void KQuestNew::Reset()
 	m_battleField = 0;
 	m_nameId = 0;
 	m_talkId = 0;
-	m_effectId = 2010;
 	m_acceptDialogId = 0;	// 接受对话
-	m_noFinishDialogId = 0;	// 未完对话
 	m_finishDialogId = 0;	// 完成对话
 	m_level = 0;
-	m_viewLevel = 0;
 	m_acceptLevel = 0;
 	m_acceptTopLimit = 0;
 	m_prevQuest = 0;
 	m_nextQuest = 0;
 	m_type = 0;
-	m_estimateTime = 0;
-
 	//m_view = 0;
 	m_abandon = 1;
 	m_reuse = 0;
@@ -380,7 +370,6 @@ int KQuestNew::GetIntAttr(const char* attrName, int defVal)
 	case KQuestAttr::extraDescBGP:	return m_extraDescBGPId;
 	case KQuestAttr::battleField:	return m_battleField;
 	case KQuestAttr::talk:			return m_talkId;
-	case KQuestAttr::effect:		return m_effectId;
 	case KQuestAttr::type:			return m_type;
 	case KQuestAttr::level:			return m_level;
 	case KQuestAttr::abandon:		return m_abandon;
@@ -400,7 +389,6 @@ int KQuestNew::GetIntAttr(const char* attrName, int defVal)
 	case KQuestAttr::timeperiod:	return m_timeperiod;
 	case KQuestAttr::grade:			return m_grade;
 	case KQuestAttr::acceptTopLimit: return m_acceptTopLimit;
-	case KQuestAttr::estimateTime:  return m_estimateTime;
 	};
 	return defVal;
 }
@@ -656,17 +644,11 @@ bool KQuestNew::SetAttr(int attrId, char* val)
 	case KQuestAttr::extraDescStr:
 		m_extraDescStrId = str2int(val);
 		return true;
-	case KQuestAttr::effect:
-		m_effectId = str2int(val);
-		return true;
 	case KQuestAttr::grade:
 		m_grade = str2int(val);	// 任务等阶，决定任务颜色
 		return true;
 	case KQuestAttr::acceptDialogId:	//接受对话
 		m_acceptDialogId = str2int(val);
-		return true;
-	case KQuestAttr::noFinishDialogId:	//未完对话
-		m_noFinishDialogId = str2int(val);
 		return true;
 	case KQuestAttr::finishDialogId:	//完成对话
 		m_finishDialogId = str2int(val);
@@ -685,9 +667,6 @@ bool KQuestNew::SetAttr(int attrId, char* val)
 		return true;
 	case KQuestAttr::share:
 		m_share = str2int(val);
-		return true;
-	case KQuestAttr::estimateTime:
-		m_estimateTime = str2int(val);
 		return true;
 	case KQuestAttr::acceptLevel:
 		m_acceptLevel = str2int(val);
@@ -1057,12 +1036,6 @@ bool KQuestNew::CanSee(KPlayer* pPlayer, DWORD npcId)
 	if (this->hasLua(lua_CanSee) || this->hasLua(lua_CanDoThis)) 
 		return false;
 
-	int nViewLevel = m_viewLevel > 1 ? m_viewLevel : m_acceptLevel;
-	if (pPlayer->GetAttrValue(ca_level) < nViewLevel)
-	{
-		// 接受等级检查
-		return false;
-	}
 	if (m_acceptTopLimit && pPlayer->GetAttrValue(ca_level) > m_acceptTopLimit)
 	{
 		// 超过等级上限检查

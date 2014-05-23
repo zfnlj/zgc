@@ -4,8 +4,8 @@ Quest_10001 =
 {
 Initialize = function(quest)
 	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=10;money=5;");
-	quest:SetAttrs("nameId=100010;talk=0;desc=100011;finishDesc=1500511;noFinishDesc=1500512;");
-	quest:SetAttrs("type=1;sheetType=1;reuse=0;hardDegree=1;achieveId=0;share=0;");
+	quest:SetAttrs("nameId=100010;talk=0;desc=100011;finishDesc=1500511;");
+	quest:SetAttrs("type=1;sheetType=1;reuse=0;hardDegree=1;achieveId=0;");
 	quest:SetAttrs("nextQuest=10002;achievement=0;timeperiod=0;");
 	quest:SetAttrs("battleField=10;");
 	

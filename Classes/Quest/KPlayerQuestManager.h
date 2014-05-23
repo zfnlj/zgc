@@ -139,6 +139,8 @@ public:
 	BOOL ClearAllHistory(void);
 	bool IsQuestEverDone(int qid);
 	bool IsQuestEverDone(int qid, int dayOffset);
+
+	KQuestNew* QueryNormalQuest();
 public:
 	QuestSortArray m_quests;
 	QuestSortArray m_availQuests;

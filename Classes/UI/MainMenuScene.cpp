@@ -19,6 +19,7 @@
 #include "BattleFieldScene.h"
 #include "VirtualService.h"
 #include "KJsonDictMgr.h"
+#include "KQuestFacade.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -155,7 +156,7 @@ void MainMenuScene::DoClickQuestBut(CCObject* sender)
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
-		if(!VirtualService::getSingleton().StartQuestBattle())
+		if(!KQuestFacade::_startMainQuestBattle())
 			GameRoot::getSingleton().BattleCtrl().PlayWithAI();
 	}else{
 

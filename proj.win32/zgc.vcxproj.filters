@@ -402,6 +402,9 @@
     <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp">
       <Filter>sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\KQuestFacade.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -847,6 +850,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\sqlite\KSqlEnc.h">
       <Filter>sqlite</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KQuestFacade.h">
+      <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
