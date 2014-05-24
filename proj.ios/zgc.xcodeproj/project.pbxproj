@@ -1577,8 +1577,6 @@
 		81A6A6501896655F0039FF68 /* KQuestTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KQuestTimer.h; sourceTree = "<group>"; };
 		81A6A6521896655F0039FF68 /* KAbilityStatic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KAbilityStatic.cpp; sourceTree = "<group>"; };
 		81A6A6531896655F0039FF68 /* KAbilityStatic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KAbilityStatic.h; sourceTree = "<group>"; };
-		81A6A6541896655F0039FF68 /* KCardStatic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KCardStatic.cpp; sourceTree = "<group>"; };
-		81A6A6551896655F0039FF68 /* KCardStatic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KCardStatic.h; sourceTree = "<group>"; };
 		81A6A6561896655F0039FF68 /* StaticData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StaticData.cpp; sourceTree = "<group>"; };
 		81A6A6571896655F0039FF68 /* StaticData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticData.h; sourceTree = "<group>"; };
 		81A6A6591896655F0039FF68 /* KStoreManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KStoreManager.cpp; sourceTree = "<group>"; };
@@ -3909,8 +3907,6 @@
 			children = (
 				81A6A6521896655F0039FF68 /* KAbilityStatic.cpp */,
 				81A6A6531896655F0039FF68 /* KAbilityStatic.h */,
-				81A6A6541896655F0039FF68 /* KCardStatic.cpp */,
-				81A6A6551896655F0039FF68 /* KCardStatic.h */,
 				81A6A6561896655F0039FF68 /* StaticData.cpp */,
 				81A6A6571896655F0039FF68 /* StaticData.h */,
 			);
