@@ -6,7 +6,7 @@
 #include <list>
 #include "../common/KCommonObj.h"
 #include <System/File/KTabfileLoader.h>
-
+#include <string>
 class KHelpStringStatic
 {
 public:

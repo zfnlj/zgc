@@ -421,6 +421,22 @@
 		81BAA81618B0483400643189 /* KSqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81218B0483400643189 /* KSqlite.cpp */; };
 		81BAA81718B0483400643189 /* KUserSql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81418B0483400643189 /* KUserSql.cpp */; };
 		81BAA81A18B0487900643189 /* KShopPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81818B0487900643189 /* KShopPanel.cpp */; };
+		81BF26941930E6B6007B2A28 /* KCrcAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */; };
+		81BF26951930E6B6007B2A28 /* KPlayerDBMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26921930E6B6007B2A28 /* KPlayerDBMgr.cpp */; };
+		81BF269F1930E6E1007B2A28 /* KGameRecordMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26971930E6E1007B2A28 /* KGameRecordMgr.cpp */; };
+		81BF26A01930E6E1007B2A28 /* KGameRecordTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26991930E6E1007B2A28 /* KGameRecordTask.cpp */; };
+		81BF26A11930E6E1007B2A28 /* KRecordData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF269B1930E6E1007B2A28 /* KRecordData.cpp */; };
+		81BF26A21930E6E1007B2A28 /* KRecordFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF269D1930E6E1007B2A28 /* KRecordFile.cpp */; };
+		81BF26A51930E6F3007B2A28 /* KSqlEnc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26A31930E6F3007B2A28 /* KSqlEnc.cpp */; };
+		81BF26A81930E731007B2A28 /* KConditionStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26A61930E731007B2A28 /* KConditionStruct.cpp */; };
+		81BF26AD1930E73D007B2A28 /* KHelpStringStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26A91930E73D007B2A28 /* KHelpStringStatic.cpp */; };
+		81BF26AE1930E73D007B2A28 /* KHeroSkillStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26AB1930E73D007B2A28 /* KHeroSkillStatic.cpp */; };
+		81BF26B11930E855007B2A28 /* KClickCardMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26AF1930E855007B2A28 /* KClickCardMgr.cpp */; };
+		81BF26B41930E868007B2A28 /* KGameRecordPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */; };
+		81BF26B71930E87B007B2A28 /* KQuestAwardPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */; };
+		81BF26BA1930E889007B2A28 /* KQuestResultPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26B81930E889007B2A28 /* KQuestResultPanel.cpp */; };
+		81BF26BD1930E895007B2A28 /* StageWaitScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */; };
+		81BF26C01930E8A2007B2A28 /* KQuestFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */; };
 		81CB43D6185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */; };
 		81CB43DA185DDF9000D9E774 /* FBattleGuy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D8185DDF9000D9E774 /* FBattleGuy.cpp */; };
 		81CB43F0185DDF9C00D9E774 /* KLogAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43DD185DDF9C00D9E774 /* KLogAssist.cpp */; };
@@ -475,7 +491,6 @@
 		81D4AF0018AF735900D2A630 /* KStoreCreate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AEFE18AF735900D2A630 /* KStoreCreate.cpp */; };
 		81D4AF0318AF73CF00D2A630 /* VirtualService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AF0118AF73CF00D2A630 /* VirtualService.cpp */; };
 		81D4AF0A18AF740700D2A630 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AF0618AF740700D2A630 /* sqlite3.c */; };
-		81D6FDEE1869E024000D53A7 /* KOnHitMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FDEC1869E024000D53A7 /* KOnHitMgr.cpp */; };
 		81D6FDF41869E033000D53A7 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FDEF1869E033000D53A7 /* ProgressBar.cpp */; };
 		81D6FDF51869E033000D53A7 /* StartScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FDF21869E033000D53A7 /* StartScene.cpp */; };
 		81D6FE2F1869E63E000D53A7 /* JgPacketSpecific.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE191869E63E000D53A7 /* JgPacketSpecific.cpp */; };
@@ -507,7 +522,6 @@
 		81E7DCF118E319560043CCC7 /* armature in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF018E319560043CCC7 /* armature */; };
 		81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF218E319D80043CCC7 /* Armature.txt */; };
 		81E7DCF518E319EA0043CCC7 /* anim in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF418E319EA0043CCC7 /* anim */; };
-		81F811B31860484C00120FBF /* blast.action in Resources */ = {isa = PBXBuildFile; fileRef = 81F811B21860484C00120FBF /* blast.action */; };
 		81FA0E5218D0981500F7DD22 /* KBattleFieldStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4A18D0981500F7DD22 /* KBattleFieldStatic.cpp */; };
 		81FA0E5318D0981500F7DD22 /* KDeckDefStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4C18D0981500F7DD22 /* KDeckDefStatic.cpp */; };
 		81FA0E5418D0981500F7DD22 /* KGameStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4E18D0981500F7DD22 /* KGameStatic.cpp */; };
@@ -1662,6 +1676,38 @@
 		81BAA81518B0483400643189 /* KUserSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KUserSql.h; sourceTree = "<group>"; };
 		81BAA81818B0487900643189 /* KShopPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KShopPanel.cpp; sourceTree = "<group>"; };
 		81BAA81918B0487900643189 /* KShopPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KShopPanel.h; sourceTree = "<group>"; };
+		81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KCrcAssist.cpp; path = ../Classes/DB/KCrcAssist.cpp; sourceTree = "<group>"; };
+		81BF26911930E6B6007B2A28 /* KCrcAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCrcAssist.h; path = ../Classes/DB/KCrcAssist.h; sourceTree = "<group>"; };
+		81BF26921930E6B6007B2A28 /* KPlayerDBMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPlayerDBMgr.cpp; path = ../Classes/DB/KPlayerDBMgr.cpp; sourceTree = "<group>"; };
+		81BF26931930E6B6007B2A28 /* KPlayerDBMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPlayerDBMgr.h; path = ../Classes/DB/KPlayerDBMgr.h; sourceTree = "<group>"; };
+		81BF26971930E6E1007B2A28 /* KGameRecordMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KGameRecordMgr.cpp; path = ../Classes/GameRecord/KGameRecordMgr.cpp; sourceTree = "<group>"; };
+		81BF26981930E6E1007B2A28 /* KGameRecordMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGameRecordMgr.h; path = ../Classes/GameRecord/KGameRecordMgr.h; sourceTree = "<group>"; };
+		81BF26991930E6E1007B2A28 /* KGameRecordTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KGameRecordTask.cpp; path = ../Classes/GameRecord/KGameRecordTask.cpp; sourceTree = "<group>"; };
+		81BF269A1930E6E1007B2A28 /* KGameRecordTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KGameRecordTask.h; path = ../Classes/GameRecord/KGameRecordTask.h; sourceTree = "<group>"; };
+		81BF269B1930E6E1007B2A28 /* KRecordData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KRecordData.cpp; path = ../Classes/GameRecord/KRecordData.cpp; sourceTree = "<group>"; };
+		81BF269C1930E6E1007B2A28 /* KRecordData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KRecordData.h; path = ../Classes/GameRecord/KRecordData.h; sourceTree = "<group>"; };
+		81BF269D1930E6E1007B2A28 /* KRecordFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KRecordFile.cpp; path = ../Classes/GameRecord/KRecordFile.cpp; sourceTree = "<group>"; };
+		81BF269E1930E6E1007B2A28 /* KRecordFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KRecordFile.h; path = ../Classes/GameRecord/KRecordFile.h; sourceTree = "<group>"; };
+		81BF26A31930E6F3007B2A28 /* KSqlEnc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSqlEnc.cpp; sourceTree = "<group>"; };
+		81BF26A41930E6F3007B2A28 /* KSqlEnc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSqlEnc.h; sourceTree = "<group>"; };
+		81BF26A61930E731007B2A28 /* KConditionStruct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KConditionStruct.cpp; sourceTree = "<group>"; };
+		81BF26A71930E731007B2A28 /* KConditionStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KConditionStruct.h; sourceTree = "<group>"; };
+		81BF26A91930E73D007B2A28 /* KHelpStringStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KHelpStringStatic.cpp; sourceTree = "<group>"; };
+		81BF26AA1930E73D007B2A28 /* KHelpStringStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHelpStringStatic.h; sourceTree = "<group>"; };
+		81BF26AB1930E73D007B2A28 /* KHeroSkillStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KHeroSkillStatic.cpp; sourceTree = "<group>"; };
+		81BF26AC1930E73D007B2A28 /* KHeroSkillStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHeroSkillStatic.h; sourceTree = "<group>"; };
+		81BF26AF1930E855007B2A28 /* KClickCardMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KClickCardMgr.cpp; sourceTree = "<group>"; };
+		81BF26B01930E855007B2A28 /* KClickCardMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KClickCardMgr.h; sourceTree = "<group>"; };
+		81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGameRecordPanel.cpp; sourceTree = "<group>"; };
+		81BF26B31930E868007B2A28 /* KGameRecordPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGameRecordPanel.h; sourceTree = "<group>"; };
+		81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KQuestAwardPanel.cpp; sourceTree = "<group>"; };
+		81BF26B61930E87B007B2A28 /* KQuestAwardPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KQuestAwardPanel.h; sourceTree = "<group>"; };
+		81BF26B81930E889007B2A28 /* KQuestResultPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KQuestResultPanel.cpp; sourceTree = "<group>"; };
+		81BF26B91930E889007B2A28 /* KQuestResultPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KQuestResultPanel.h; sourceTree = "<group>"; };
+		81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageWaitScene.cpp; sourceTree = "<group>"; };
+		81BF26BC1930E895007B2A28 /* StageWaitScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageWaitScene.h; sourceTree = "<group>"; };
+		81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KQuestFacade.cpp; sourceTree = "<group>"; };
+		81BF26BF1930E8A2007B2A28 /* KQuestFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KQuestFacade.h; sourceTree = "<group>"; };
 		81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLogicModuleMsgDealer.cpp; sourceTree = "<group>"; };
 		81CB43D3185DDF8300D9E774 /* KLogicModuleMsgDealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLogicModuleMsgDealer.h; sourceTree = "<group>"; };
 		81CB43D4185DDF8300D9E774 /* KMsgDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMsgDelegate.h; sourceTree = "<group>"; };
@@ -1779,8 +1825,6 @@
 		81D4AF0618AF740700D2A630 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		81D4AF0718AF740700D2A630 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		81D4AF0818AF740700D2A630 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
-		81D6FDEC1869E024000D53A7 /* KOnHitMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KOnHitMgr.cpp; sourceTree = "<group>"; };
-		81D6FDED1869E024000D53A7 /* KOnHitMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KOnHitMgr.h; sourceTree = "<group>"; };
 		81D6FDEF1869E033000D53A7 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressBar.cpp; sourceTree = "<group>"; };
 		81D6FDF01869E033000D53A7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
 		81D6FDF11869E033000D53A7 /* ProgressProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressProtocol.h; sourceTree = "<group>"; };
@@ -1844,7 +1888,6 @@
 		81E7DCF018E319560043CCC7 /* armature */ = {isa = PBXFileReference; lastKnownFileType = folder; path = armature; sourceTree = "<group>"; };
 		81E7DCF218E319D80043CCC7 /* Armature.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Armature.txt; sourceTree = "<group>"; };
 		81E7DCF418E319EA0043CCC7 /* anim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = anim; sourceTree = "<group>"; };
-		81F811B21860484C00120FBF /* blast.action */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = blast.action; path = data/Action/blast.action; sourceTree = "<group>"; };
 		81FA0E4A18D0981500F7DD22 /* KBattleFieldStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleFieldStatic.cpp; sourceTree = "<group>"; };
 		81FA0E4B18D0981500F7DD22 /* KBattleFieldStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBattleFieldStatic.h; sourceTree = "<group>"; };
 		81FA0E4C18D0981500F7DD22 /* KDeckDefStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KDeckDefStatic.cpp; sourceTree = "<group>"; };
@@ -2437,6 +2480,8 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26961930E6CB007B2A28 /* GameRecord */,
+				81BF268F1930E69F007B2A28 /* DB */,
 				81FA0EB418D0A94400F7DD22 /* ClientLogic */,
 				81FA0E5618D09EF000F7DD22 /* game */,
 				81D4AF0418AF740700D2A630 /* sqlite */,
@@ -2923,7 +2968,6 @@
 				812E2790187AF5E4000567D7 /* progress_bg.png */,
 				812E2791187AF5E4000567D7 /* static_data.plist */,
 				8120F62B1869DCBE000FDB17 /* data */,
-				81F811B21860484C00120FBF /* blast.action */,
 				8149030B1860144000695114 /* GUI */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -3439,6 +3483,8 @@
 		814E9E2B18D92EC8003749B2 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */,
+				81BF26BF1930E8A2007B2A28 /* KQuestFacade.h */,
 				814E9E2C18D92EF4003749B2 /* KJsonDictMgr.cpp */,
 				814E9E2D18D92EF4003749B2 /* KJsonDictMgr.h */,
 				81CB4448185DDFEC00D9E774 /* KUIAssist.cpp */,
@@ -4047,6 +4093,32 @@
 			path = ../Classes/WorldObject;
 			sourceTree = "<group>";
 		};
+		81BF268F1930E69F007B2A28 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */,
+				81BF26911930E6B6007B2A28 /* KCrcAssist.h */,
+				81BF26921930E6B6007B2A28 /* KPlayerDBMgr.cpp */,
+				81BF26931930E6B6007B2A28 /* KPlayerDBMgr.h */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
+		81BF26961930E6CB007B2A28 /* GameRecord */ = {
+			isa = PBXGroup;
+			children = (
+				81BF26971930E6E1007B2A28 /* KGameRecordMgr.cpp */,
+				81BF26981930E6E1007B2A28 /* KGameRecordMgr.h */,
+				81BF26991930E6E1007B2A28 /* KGameRecordTask.cpp */,
+				81BF269A1930E6E1007B2A28 /* KGameRecordTask.h */,
+				81BF269B1930E6E1007B2A28 /* KRecordData.cpp */,
+				81BF269C1930E6E1007B2A28 /* KRecordData.h */,
+				81BF269D1930E6E1007B2A28 /* KRecordFile.cpp */,
+				81BF269E1930E6E1007B2A28 /* KRecordFile.h */,
+			);
+			name = GameRecord;
+			sourceTree = "<group>";
+		};
 		81CB43CF185DDF8300D9E774 /* CommonLogic */ = {
 			isa = PBXGroup;
 			children = (
@@ -4166,6 +4238,12 @@
 		81CB442F185DDFEC00D9E774 /* StaticTable */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26A91930E73D007B2A28 /* KHelpStringStatic.cpp */,
+				81BF26AA1930E73D007B2A28 /* KHelpStringStatic.h */,
+				81BF26AB1930E73D007B2A28 /* KHeroSkillStatic.cpp */,
+				81BF26AC1930E73D007B2A28 /* KHeroSkillStatic.h */,
+				81BF26A61930E731007B2A28 /* KConditionStruct.cpp */,
+				81BF26A71930E731007B2A28 /* KConditionStruct.h */,
 				814E9E2818D92EA2003749B2 /* KCardLayoutStatic.cpp */,
 				814E9E2918D92EA2003749B2 /* KCardLayoutStatic.h */,
 				81FA0E4A18D0981500F7DD22 /* KBattleFieldStatic.cpp */,
@@ -4188,25 +4266,11 @@
 		81CB4434185DDFEC00D9E774 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26AF1930E855007B2A28 /* KClickCardMgr.cpp */,
+				81BF26B01930E855007B2A28 /* KClickCardMgr.h */,
 				814E9E2B18D92EC8003749B2 /* assist */,
-				81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */,
-				81FA0EA318D0A63000F7DD22 /* MainMenuScene.h */,
-				81FA0E9918D0A61900F7DD22 /* KMyQuestPanel.cpp */,
-				81FA0E9A18D0A61900F7DD22 /* KMyQuestPanel.h */,
-				81FA0E9B18D0A61900F7DD22 /* KMyStorePanel.cpp */,
-				81FA0E9C18D0A61900F7DD22 /* KMyStorePanel.h */,
-				81FA0E9318D0A60D00F7DD22 /* KGameResultPanel.cpp */,
-				81FA0E9418D0A60D00F7DD22 /* KGameResultPanel.h */,
-				81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */,
-				81FA0E9618D0A60D00F7DD22 /* KGenCardPanel.h */,
 				81D6FDF11869E033000D53A7 /* ProgressProtocol.h */,
-				81D6FDF21869E033000D53A7 /* StartScene.cpp */,
-				81D6FDF31869E033000D53A7 /* StartScene.h */,
-				81D6FDEC1869E024000D53A7 /* KOnHitMgr.cpp */,
-				81D6FDED1869E024000D53A7 /* KOnHitMgr.h */,
 				81D6FDEB1869DFF6000D53A7 /* Panel */,
-				81CB4435185DDFEC00D9E774 /* BattleFieldScene.cpp */,
-				81CB4436185DDFEC00D9E774 /* BattleFieldScene.h */,
 				81CB4438185DDFEC00D9E774 /* KActor.cpp */,
 				81CB4439185DDFEC00D9E774 /* KActor.h */,
 				81CB443C185DDFEC00D9E774 /* KCardActor.cpp */,
@@ -4305,6 +4369,8 @@
 		81D4AF0418AF740700D2A630 /* sqlite */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26A31930E6F3007B2A28 /* KSqlEnc.cpp */,
+				81BF26A41930E6F3007B2A28 /* KSqlEnc.h */,
 				81FA0E9018D0A53B00F7DD22 /* KUserQuestSql.cpp */,
 				81FA0E9118D0A53B00F7DD22 /* KUserQuestSql.h */,
 				81BAA81218B0483400643189 /* KSqlite.cpp */,
@@ -4322,6 +4388,28 @@
 		81D6FDEB1869DFF6000D53A7 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */,
+				81BF26BC1930E895007B2A28 /* StageWaitScene.h */,
+				81BF26B81930E889007B2A28 /* KQuestResultPanel.cpp */,
+				81BF26B91930E889007B2A28 /* KQuestResultPanel.h */,
+				81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */,
+				81BF26B61930E87B007B2A28 /* KQuestAwardPanel.h */,
+				81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */,
+				81BF26B31930E868007B2A28 /* KGameRecordPanel.h */,
+				81CB4435185DDFEC00D9E774 /* BattleFieldScene.cpp */,
+				81CB4436185DDFEC00D9E774 /* BattleFieldScene.h */,
+				81D6FDF21869E033000D53A7 /* StartScene.cpp */,
+				81D6FDF31869E033000D53A7 /* StartScene.h */,
+				81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */,
+				81FA0EA318D0A63000F7DD22 /* MainMenuScene.h */,
+				81FA0E9918D0A61900F7DD22 /* KMyQuestPanel.cpp */,
+				81FA0E9A18D0A61900F7DD22 /* KMyQuestPanel.h */,
+				81FA0E9B18D0A61900F7DD22 /* KMyStorePanel.cpp */,
+				81FA0E9C18D0A61900F7DD22 /* KMyStorePanel.h */,
+				81FA0E9318D0A60D00F7DD22 /* KGameResultPanel.cpp */,
+				81FA0E9418D0A60D00F7DD22 /* KGameResultPanel.h */,
+				81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */,
+				81FA0E9618D0A60D00F7DD22 /* KGenCardPanel.h */,
 				81BAA81818B0487900643189 /* KShopPanel.cpp */,
 				81BAA81918B0487900643189 /* KShopPanel.h */,
 				81CB4446185DDFEC00D9E774 /* KSelectBeginCardPanel.cpp */,
@@ -4555,7 +4643,6 @@
 				81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */,
 				810C387D185F28DD00F03DFA /* KRefObject.inl in Resources */,
 				814E9E4818D932E4003749B2 /* StringManager in Resources */,
-				81F811B31860484C00120FBF /* blast.action in Resources */,
 				8149030C1860144000695114 /* GUI in Resources */,
 				81E7DCF518E319EA0043CCC7 /* anim in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
@@ -4592,6 +4679,7 @@
 				81D6FE391869E63E000D53A7 /* KSockServer.cpp in Sources */,
 				15A3D9011682F7D5002FB0C5 /* b2CollideEdge.cpp in Sources */,
 				81D6FE551869E881000D53A7 /* KAppData.cpp in Sources */,
+				81BF26A11930E6E1007B2A28 /* KRecordData.cpp in Sources */,
 				81FA0E8B18D0A06800F7DD22 /* KUseItemManager.cpp in Sources */,
 				810C3885185F28DD00F03DFA /* KRandom.cpp in Sources */,
 				812143D0187AE4400053FC18 /* KAttrDefines.cpp in Sources */,
@@ -4608,6 +4696,7 @@
 				810C3865185F28DD00F03DFA /* KTabFile.cpp in Sources */,
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,
+				81BF26BA1930E889007B2A28 /* KQuestResultPanel.cpp in Sources */,
 				814E9E2E18D92EF4003749B2 /* KJsonDictMgr.cpp in Sources */,
 				81D4AF0018AF735900D2A630 /* KStoreCreate.cpp in Sources */,
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
@@ -4647,7 +4736,6 @@
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
 				81CB441B185DDFCC00D9E774 /* AdvExecutor.cpp in Sources */,
 				810C3893185F28DD00F03DFA /* KThreadInstance.cpp in Sources */,
-				81D6FDEE1869E024000D53A7 /* KOnHitMgr.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				81D6FE581869E881000D53A7 /* KPacketGate_ChC.cpp in Sources */,
 				810C3894185F28DD00F03DFA /* KThreadPool.cpp in Sources */,
@@ -4664,6 +4752,7 @@
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
 				810C3899185F28DD00F03DFA /* KTPJobList.cpp in Sources */,
 				810C3867185F28DD00F03DFA /* KTabfileLoader.cpp in Sources */,
+				81BF26941930E6B6007B2A28 /* KCrcAssist.cpp in Sources */,
 				812143CD187AE4400053FC18 /* KConstStringManager.cpp in Sources */,
 				810C38AB185F28DD00F03DFA /* xmlrole.c in Sources */,
 				810C386D185F28DD00F03DFA /* log.cpp in Sources */,
@@ -4684,6 +4773,7 @@
 				15A3D9281682F7D5002FB0C5 /* b2RopeJoint.cpp in Sources */,
 				810C38A0185F28DD00F03DFA /* KTPTask.cpp in Sources */,
 				81CD4A3318964AC400D6DB43 /* KQuestArray.cpp in Sources */,
+				81BF26951930E6B6007B2A28 /* KPlayerDBMgr.cpp in Sources */,
 				15A3D9291682F7D5002FB0C5 /* b2WeldJoint.cpp in Sources */,
 				810C38AE185F28DD00F03DFA /* xmltok_impl.c in Sources */,
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
@@ -4707,6 +4797,7 @@
 				810C3853185F28DD00F03DFA /* Distance.cpp in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
 				81D6FE331869E63E000D53A7 /* KIocpSocket.cpp in Sources */,
+				81BF26A21930E6E1007B2A28 /* KRecordFile.cpp in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
@@ -4716,6 +4807,7 @@
 				81CB43F5185DDF9C00D9E774 /* KBattleGod.cpp in Sources */,
 				810C385B185F28DD00F03DFA /* KWordTree.cpp in Sources */,
 				812143C3187AE4400053FC18 /* KServerTabfileLoader.cpp in Sources */,
+				81BF26A51930E6F3007B2A28 /* KSqlEnc.cpp in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
 				81E786CE185DC38A00829E82 /* OgreDataStream.cpp in Sources */,
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
@@ -4731,6 +4823,7 @@
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
 				15A3D9A91682F7F9002FB0C5 /* cpPolyShape.c in Sources */,
+				81BF26A81930E731007B2A28 /* KConditionStruct.cpp in Sources */,
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
 				81FA0E9818D0A60D00F7DD22 /* KGenCardPanel.cpp in Sources */,
 				810C386F185F28DD00F03DFA /* KBuffer64k.cpp in Sources */,
@@ -4840,8 +4933,10 @@
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				810C3898185F28DD00F03DFA /* KThreadUnitQueue.cpp in Sources */,
+				81BF26B41930E868007B2A28 /* KGameRecordPanel.cpp in Sources */,
 				81A6A6FA18966F5C0039FF68 /* KQuestManager.cpp in Sources */,
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
+				81BF26A01930E6E1007B2A28 /* KGameRecordTask.cpp in Sources */,
 				810C385A185F28DD00F03DFA /* KCharsetConvert.cpp in Sources */,
 				810C3879185F28DD00F03DFA /* KDatetime.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
@@ -4855,9 +4950,12 @@
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,
 				810C3857185F28DD00F03DFA /* KCharset_GB2312.cpp in Sources */,
 				810C3876185F28DD00F03DFA /* KBitset.cpp in Sources */,
+				81BF26AD1930E73D007B2A28 /* KHelpStringStatic.cpp in Sources */,
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,
 				81FA0E7E18D09F4C00F7DD22 /* KEventEntity.cpp in Sources */,
 				810C3854185F28DD00F03DFA /* KCharset.cpp in Sources */,
+				81BF26B11930E855007B2A28 /* KClickCardMgr.cpp in Sources */,
+				81BF26BD1930E895007B2A28 /* StageWaitScene.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
 				810C388E185F28DD00F03DFA /* KLinuxThreadImpl.cpp in Sources */,
 				81FA0E5518D0981500F7DD22 /* KRankStaticMgr.cpp in Sources */,
@@ -4868,6 +4966,7 @@
 				810C3855185F28DD00F03DFA /* KCharset_Ascii.cpp in Sources */,
 				81A6A70E18966F6C0039FF68 /* KCharacter.cpp in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
+				81BF26B71930E87B007B2A28 /* KQuestAwardPanel.cpp in Sources */,
 				810C3852185F28DD00F03DFA /* AngleComputer.cpp in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
@@ -5014,8 +5113,10 @@
 				81E786CD185DC38A00829E82 /* KStreamWrapper.cpp in Sources */,
 				81CB4450185DDFEC00D9E774 /* KActor.cpp in Sources */,
 				810C3895185F28DD00F03DFA /* KThreadProcessor.cpp in Sources */,
+				81BF269F1930E6E1007B2A28 /* KGameRecordMgr.cpp in Sources */,
 				379BB9C617F03F3700829B88 /* UILoadingBar.cpp in Sources */,
 				379BB9C717F03F3700829B88 /* UISlider.cpp in Sources */,
+				81BF26AE1930E73D007B2A28 /* KHeroSkillStatic.cpp in Sources */,
 				379BB9C817F03F3700829B88 /* UISwitch.cpp in Sources */,
 				379BB9C917F03F3700829B88 /* UITextField.cpp in Sources */,
 				379BB9CA17F03F3700829B88 /* CSContentJsonDictionary.cpp in Sources */,
@@ -5024,6 +5125,7 @@
 				810C3869185F28DD00F03DFA /* KTextReader.cpp in Sources */,
 				ED35BF4C183230FC002A0750 /* UIListViewEx.cpp in Sources */,
 				81CD4A3518964AC400D6DB43 /* KQuestCommon.cpp in Sources */,
+				81BF26C01930E8A2007B2A28 /* KQuestFacade.cpp in Sources */,
 				81FA0E8F18D0A51900F7DD22 /* KWorldMsgHub.cpp in Sources */,
 				81FA0E7F18D09F4C00F7DD22 /* KEventRegistry.cpp in Sources */,
 				810C3870185F28DD00F03DFA /* KDataBuffer.cpp in Sources */,

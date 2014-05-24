@@ -16,7 +16,7 @@
 #include <System/File/KTabfileLoader.h>
 #include "System/Cipher/tea.h"
 #include "DB/KPlayerDBMgr.h"
-#include "../sqlite/KUserSql.h"
+#include "sqlite/KUserSql.h"
 
 IMPLEMENT_SIMPLE_SINGLETON(GameRoot)
 using namespace System::File;

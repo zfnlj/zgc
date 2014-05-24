@@ -1,5 +1,5 @@
 #include "KGameRecordMgr.h"
-#include "Inc/KTypeDef.h"
+#include "../Inc/KTypeDef.h"
 #include "../GameRoot.h"
 #include "../ui/KGameRecordPanel.h"
 #include "../UI/BattleFieldScene.h"

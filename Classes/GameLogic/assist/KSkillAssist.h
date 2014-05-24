@@ -2,7 +2,7 @@
 #define _KSKILLASSIST_H
 
 #include "../KCardInst.h"
-#include "../StaticTable/KConditionStruct.h"
+#include "../../StaticTable/KConditionStruct.h"
 #include "KBattleEventAssist.h"
 class KAbilityStatic;
 class KBattleCtrlBase;
