@@ -15,7 +15,7 @@
     <key>emitterType</key>
     <real>0</real>
     <key>emissionRate</key>
-    <real>正无穷大</real>
+    <real>1000</real>
     <key>finishColorAlpha</key>
     <real>1</real>
     <key>finishColorBlue</key>
