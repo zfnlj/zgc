@@ -7,7 +7,7 @@
 class KBattleGuy;
 class KCardInst;
 class KQuestNew;
-class KBattleCtrlBase 
+class KBattleCtrlBase	 
 {
 public:
 	struct BattleOp{

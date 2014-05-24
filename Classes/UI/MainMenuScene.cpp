@@ -20,6 +20,7 @@
 #include "VirtualService.h"
 #include "KJsonDictMgr.h"
 #include "KQuestFacade.h"
+#include "../WorldObject/KMainPlayer.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -98,9 +99,7 @@ bool MainMenuScene::init()
     // add "MainMenuScene" splash screen"
 
 	this->addChild(GetUILayer(), 1);
-	
-	unsigned long long val = time(NULL);
-	srand(val);//
+
     return true;
 }
 
@@ -155,13 +154,14 @@ void MainMenuScene::DoClickQuestBut(CCObject* sender)
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	KUIAssist::_switch2StageWaitScene();
+	/*if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		if(!KQuestFacade::_startMainQuestBattle())
 			GameRoot::getSingleton().BattleCtrl().PlayWithAI();
 	}else{
 
-	}
-	KUIAssist::_switch2BattleScene();
+	}*/
+	
 
 }
 
@@ -201,6 +201,6 @@ void MainMenuScene::onQuestUpdate()
 
 void MainMenuScene::onQuestFinished(int qId)
 {
-	m_gameResultPanel.onQuestFinished(qId);
-	m_myQuestPanel.updatePanel();
+	//m_gameResultPanel.onQuestFinished(qId);
+	//m_myQuestPanel.updatePanel();
 }

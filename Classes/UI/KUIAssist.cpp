@@ -10,6 +10,8 @@
 #include "GameRoot.h"
 #include "KJsonDictMgr.h"
 #include "../GameRecord/KGameRecordMgr.h"
+#include "StageWaitScene.h"
+
 
 #define SHOW_CARD_OFFSET 6
 #define MAX_BUF_SLOT_NUM 5
@@ -179,6 +181,15 @@ UIWidget* KUIAssist::GetIndexWidget(UIWidget* panel,const char* baseName,int pos
 	char sz[64];
 	sprintf(sz,"%s_%d",baseName,pos);
 	return  UIHelper::seekWidgetByName(panel,sz);
+}
+
+;
+
+void KUIAssist::_switch2StageWaitScene()
+{
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, StageWaitScene::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+
 }
 
 void KUIAssist::_switch2BattleScene()

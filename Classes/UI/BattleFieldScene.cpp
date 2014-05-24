@@ -106,6 +106,8 @@ bool BattleFieldScene::init()
 
 	this->addChild(GetUILayer(), 1);
 
+
+
 	unsigned long long val = time(NULL);
 	srand(val);//
     return true;
@@ -135,6 +137,8 @@ cocos2d::extension::UILayer* BattleFieldScene::GetUILayer()
 		m_indicatePanel.init(m_ui);
 		m_myFightAreaPanel.init(m_ui);
 		m_gameResultPanel.init(m_ui);
+		m_resPanel.init(m_ui);
+		m_gameRecPanel.init(m_ui);
 		m_ui->getWidgetByName("turn_end")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::DoEndTurn));
 		m_ui->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
 	}
@@ -154,11 +158,6 @@ void BattleFieldScene::onBattleInit()
 	if(GameRoot::getSingleton().BattleCtrl().IsSelectCard()){
 		m_selectCardPanel.init(m_ui);
 	}
-
-	m_resPanel.init(m_ui);
-
-	m_gameRecPanel.init(m_ui);
-
 	//InitTest();
 }
 
@@ -227,11 +226,13 @@ void BattleFieldScene::onHandCardReady()
 
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
-	KGameRecordMgr::getSingleton().onPlayStepOn();
+
 
 	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
 	
+	KGameRecordMgr::getSingleton().onPlayStepOn();
+
 	KUIAssist::_stopAdviceMsg();
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		GameRoot::getSingleton().BattleCtrl().DoEndTurn();
@@ -411,10 +412,9 @@ void BattleFieldScene::onSummonCard(strSummonCardResult* result)
 	OnSelectCardOK();
 }
 
-void BattleFieldScene::onGameEnd()
+void BattleFieldScene::onGameEnd(unsigned long long Param1)
 {
-	GameResult result;
-	m_gameResultPanel.ShowPanel(result,KGameResultPanel::enum_panel_game);
+	m_gameResultPanel.onGameEnd(Param1);
 }
 
 void BattleFieldScene::onUseSecretCard(KCardInst* card)

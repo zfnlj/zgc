@@ -25,7 +25,9 @@ void KResPanel::UpdateRes()
 {
 	char msg[64]={0};
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	if(!pMainPlayer) return;
 	pMainPlayer->QueryResInfo(msg);
+
 	if(!m_myResFont){
 		m_myResFont = CCLabelBMFont::create(msg,"GUI/num_res.fnt");
 		m_myResFont->setAnchorPoint(ccp(0.50f,0.50f));
@@ -38,6 +40,7 @@ void KResPanel::UpdateRes()
 	}
 
 	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
+	if(!pOtherPlayer) return;
 	pOtherPlayer->QueryResInfo(msg);
 	if(!m_yourResFont){
 		m_yourResFont = CCLabelBMFont::create(msg,"GUI/num_res.fnt");

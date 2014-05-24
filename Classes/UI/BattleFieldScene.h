@@ -62,7 +62,7 @@ public:
 	void onUseRes();
 
 	
-	void onGameEnd();
+	void onGameEnd(unsigned long long Param1);
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();

@@ -1,2 +1,13 @@
-QuestID	Level	NpcID	Nationality	MinLevelLimit	MaxLevelLimit
-10001	1	1	1	1	50
+QuestID	Level	MinLevelLimit	MaxLevelLimit
+10001	1	1	5
+10002	1	1	5
+10003	1	1	5
+10004	1	1	5
+10005	1	1	5
+10006	1	1	5
+10007	1	1	5
+10008	1	1	5
+10009	1	1	5
+10010	1	1	5
+10011	1	1	5
+10012	1	1	5

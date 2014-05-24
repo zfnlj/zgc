@@ -93,3 +93,42 @@
 	 at ? line:311
 	(tail) at =(tail call)
 
+2014-05-24 18:38:45 [6652] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:38:45 [6652] 
+
+2014-05-24 18:40:13 [6652] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:40:13 [6652] 
+
+2014-05-24 18:44:45 [3400] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:44:45 [3400] 
+
+2014-05-24 18:48:11 [4660] attempt to call a nil value
+	 at =[C]
+
+2014-05-24 18:51:48 [4416] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:51:48 [4416] 
+
+2014-05-24 18:52:21 [5864] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:52:21 [5864] 
+
+2014-05-24 18:54:35 [4452] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:54:35 [4452] 
+
+2014-05-24 18:58:58 [4684] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 18:58:58 [4684] 
+
+2014-05-24 19:01:06 [2428] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 19:01:06 [2428] 
+
+2014-05-24 19:05:17 [5916] LuaTinker::call() attempt to call table function `Initialize' (not a function)
+2014-05-24 19:05:17 [5916] 
+
+2014-05-24 19:09:32 [4656] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 19:09:32 [4656] 
+
+2014-05-24 19:12:59 [6700] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 19:12:59 [6700] 
+
+2014-05-24 19:13:29 [6764] LuaTinker::call() attempt to call table function `Name' (not a function)
+2014-05-24 19:13:29 [6764] 
+

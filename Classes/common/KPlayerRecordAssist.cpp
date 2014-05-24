@@ -84,6 +84,7 @@ bool syncQuestFromRecord(KPlayerQuestManager* playerQuestMgr,tb_playerquest_reco
 		KQuestSessionItem * pSessionItem = (KQuestSessionItem*)buf;
 		KClientQuestSession* pSession = (KClientQuestSession*)pAdd->m_pSession;
 		pSession->InitSessions(pSessionItem,num);
+		pAdd->SyncStatusFromSession();
 	}
 	void* buf;
 	int num = record->qhistory.Get(buf)/sizeof(KDBQuestHistoryDataUnit);

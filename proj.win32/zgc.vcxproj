@@ -243,6 +243,7 @@
     <ClCompile Include="..\Classes\UI\KMyQuestPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KMyStorePanel.cpp" />
     <ClCompile Include="..\Classes\UI\KClickCardMgr.cpp" />
+    <ClCompile Include="..\Classes\UI\KQuestAwardPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KQuestFacade.cpp" />
     <ClCompile Include="..\Classes\UI\KResPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KSelectBeginCardPanel.cpp" />
@@ -251,6 +252,7 @@
     <ClCompile Include="..\Classes\UI\MainMenuScene.cpp" />
     <ClCompile Include="..\Classes\UI\PlayerGuide.cpp" />
     <ClCompile Include="..\Classes\UI\ProgressBar.cpp" />
+    <ClCompile Include="..\Classes\UI\StageWaitScene.cpp" />
     <ClCompile Include="..\Classes\UI\StartScene.cpp" />
     <ClCompile Include="..\Classes\VirtualService.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KCharacter.cpp" />
@@ -397,6 +399,7 @@
     <ClInclude Include="..\Classes\UI\KMyQuestPanel.h" />
     <ClInclude Include="..\Classes\UI\KMyStorePanel.h" />
     <ClInclude Include="..\Classes\UI\KClickCardMgr.h" />
+    <ClInclude Include="..\Classes\UI\KQuestAwardPanel.h" />
     <ClInclude Include="..\Classes\UI\KQuestFacade.h" />
     <ClInclude Include="..\Classes\UI\KResPanel.h" />
     <ClInclude Include="..\Classes\UI\KSelectBeginCardPanel.h" />
@@ -406,6 +409,7 @@
     <ClInclude Include="..\Classes\UI\PlayerGuide.h" />
     <ClInclude Include="..\Classes\UI\ProgressBar.h" />
     <ClInclude Include="..\Classes\UI\ProgressProtocol.h" />
+    <ClInclude Include="..\Classes\UI\StageWaitScene.h" />
     <ClInclude Include="..\Classes\UI\StartScene.h" />
     <ClInclude Include="..\Classes\VirtualService.h" />
     <ClInclude Include="..\Classes\WorldObject\KCharacter.h" />

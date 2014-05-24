@@ -8,6 +8,7 @@
 
 class KCardInst;
 class KAbilityStatic;
+class FBattleGuy;
 struct strCardDuelResult{   //卡片对打的结果
 	KCardInst* _atker;	  //进攻方
 	KCardInst* _defender;//防御方
@@ -24,6 +25,12 @@ struct strReplaceCardResult{
 	KCardInst* _des;
 };
 
+struct strGameResult{
+	FBattleGuy* _winner;
+	int _questId;
+	int _money;
+	int _exp;
+};
 struct strCardAbilityResult{   //卡片对打的结果
 	strCardAbilityResult();
 	int  _src;	  //进攻方

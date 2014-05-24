@@ -25,9 +25,9 @@ public:
 	}
 	virtual bool Replay(DWORD timeline,int op)=0;
 	virtual EGameRecordedDataType GetClassType()=0;
-	virtual bool IsClickCardValidate(KCardInst* card)=0;
-	virtual bool IsClickFightAreaValidate(int slot)=0;
-	virtual bool IsClickButValidate(cocos2d::CCObject* obj)=0;
+	virtual bool IsClickCardValidate(DWORD,KCardInst* card)=0;
+	virtual bool IsClickFightAreaValidate(DWORD,int slot)=0;
+	virtual bool IsClickButValidate(DWORD,cocos2d::CCObject* obj)=0;
 	DWORD GetElapsed(){ return m_elapsed;}
 
 protected:
@@ -53,9 +53,9 @@ public:
 	void RecordMouseEvt(Mouse_evt evt,DWORD initTime);
 	virtual bool Replay(DWORD timeline,int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
-	virtual bool IsClickCardValidate(KCardInst* card){ return false;}
-	virtual bool IsClickFightAreaValidate(int slot){ return false;}
-	virtual bool IsClickButValidate(cocos2d::CCObject* obj);
+	virtual bool IsClickCardValidate(DWORD,KCardInst* card){ return false;}
+	virtual bool IsClickFightAreaValidate(DWORD,int slot){ return false;}
+	virtual bool IsClickButValidate(DWORD timeline,cocos2d::CCObject* obj);
 private:
 	Mouse_evt m_evt;
 };
@@ -85,9 +85,9 @@ public:
 	void RecordPlayOp(int src,int des,int slot,DWORD initTime);
 	virtual bool Replay(DWORD timeline, int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
-	virtual bool IsClickCardValidate(KCardInst* card);
-	virtual bool IsClickFightAreaValidate(int slot);
-	virtual bool IsClickButValidate(cocos2d::CCObject* obj){ return false;}
+	virtual bool IsClickCardValidate(DWORD,KCardInst* card);
+	virtual bool IsClickFightAreaValidate(DWORD,int slot);
+	virtual bool IsClickButValidate(DWORD,cocos2d::CCObject* obj){ return false;}
 private:
 	void ActiveCard(int);
 	OpStruct m_data;

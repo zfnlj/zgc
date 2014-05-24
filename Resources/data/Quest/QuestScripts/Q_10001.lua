@@ -16,25 +16,22 @@ Initialize = function(quest)
 	return true;
 end,
 
+QName = function (quest , player)
+	local exp
+	local money
+	local itemlist
+		exp = 10			-- 经验奖励
+		money = 5	  	-- 金钱奖励
+	return GetQuestGiftStr(itemlist,exp,money)
+end,  
+
+
 GiftDesc = function (quest , player)
   local exp
 	local money
 	local itemlist
 		exp = 10			-- 经验奖励
 		money = 5	  	-- 金钱奖励
-    if player:GetAttrValue(88)==0 then
-		  itemlist = "5001:1" -- 任务奖励物品
-		elseif player:GetAttrValue(88)==1 then
-		  itemlist = "5001:1" -- 任务奖励物品
-		elseif player:GetAttrValue(88)==2 then
-		  itemlist = "5001:1" -- 任务奖励物品
-		elseif player:GetAttrValue(88)==3 then
-			itemlist = "5001:1" -- 任务奖励物品
-		elseif player:GetAttrValue(88)==4 then
-			itemlist = "5001:1" -- 任务奖励物品
-		else -- 默认奖励信息为0，一般不要改
-		  itemlist = "5001:1" -- 任务奖励物品
-		end
 	return GetQuestGiftStr(itemlist,exp,money)
 end, 
   

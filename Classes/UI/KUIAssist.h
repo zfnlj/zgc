@@ -37,6 +37,7 @@ public:
 	static CCSprite* CreateAnimationSprite(const char* animationName,bool bLoop=true);
 	static void _switch2BattleScene();
 	static void _switch2MainMenu();
+	static void _switch2StageWaitScene();
 	static UIWidget* _createCardLayout(KCardInst* pInst,bool bBig);
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);
 	static CCSize _getRealSize(UIWidget* widget);

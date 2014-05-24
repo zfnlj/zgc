@@ -30,6 +30,7 @@ public:
 	KCardInst* GetCard(KCardInstList* arr,int id);
 	KCardInst* GetHandCard(int id) { return GetCard(&m_HandCardSet,id);}
 
+	bool ExistCards();
 	KCardInstList* QueryCardSet(int slot);
 
 	void GetDefenderSet(KCardInstList*);

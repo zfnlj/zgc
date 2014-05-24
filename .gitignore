@@ -153,3 +153,8 @@
 /System_
 
 /jgcrypt/jgcrypt.log
+/tool/zgc_ui/game_result/Backup
+/tool/zgc_ui/game_result/Export
+/tool/zgc_ui/game_result/Resources/game_result_PList.Dir
+/tool/zgc_ui/stage_wait/Backup
+/tool/zgc_ui/stage_wait/Export

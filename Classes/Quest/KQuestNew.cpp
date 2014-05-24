@@ -38,7 +38,7 @@ const char* KQuestNew::m_luaMethods[lua_Count] = {
 	"AfterInitialize",
 	"GiftDesc",
 	"GetTraceText",
-	"Name",
+	"QName",
 	"Synposis",
 	"Description",
 	"TalkDesc",
@@ -150,7 +150,6 @@ KQuestNew* KQuestNew::Clone()
 	pQuest->m_expBase = m_expBase;
 	pQuest->m_descId = m_descId;
 	pQuest->m_finishDescId = m_finishDescId;
-	pQuest->m_noFinishDescId = m_noFinishDescId;
 	pQuest->m_acceptDialogId = m_acceptDialogId;
 	pQuest->m_finishDialogId = m_finishDialogId;
 
@@ -234,7 +233,6 @@ void KQuestNew::Reset()
 	m_expBase = 0;
 	m_descId = 0;
 	m_finishDescId = 0;
-	m_noFinishDescId = 0;
 
 	m_achieveId = 0;
 	m_achievement = 0;
@@ -383,7 +381,6 @@ int KQuestNew::GetIntAttr(const char* attrName, int defVal)
 	case KQuestAttr::exp:			return m_exp;
 	case KQuestAttr::desc:			return m_descId;
 	case KQuestAttr::finishDesc:	return m_finishDescId;
-	case KQuestAttr::noFinishDesc:	return m_noFinishDescId;
 	case KQuestAttr::achieveId:		return m_achieveId;
 	case KQuestAttr::achievement:	return m_achievement;
 	case KQuestAttr::timeperiod:	return m_timeperiod;
@@ -612,6 +609,11 @@ bool KQuestNew::IsOverStatus()
 			|| questStatus == KQ_QuestFailed;
 }
 
+void KQuestNew::SyncStatusFromSession()
+{
+	m_status = GetQuestStatus();
+}
+
 bool KQuestNew::hasLua(int method)
 {
 	return (m_dwLuaMethodFlag & (1<<method)) != 0;
@@ -732,9 +734,6 @@ bool KQuestNew::SetAttr(int attrId, char* val)
 	case KQuestAttr::finishDesc:
 		m_finishDescId = str2int(val);
 		return true;
-	case KQuestAttr::noFinishDesc:
-		m_noFinishDescId = str2int(val);
-		return true;
 	case KQuestAttr::achieveId:
 		m_achieveId = str2int(val);
 		return true;
@@ -783,7 +782,6 @@ const char* KQuestNew::GetStatusDesc(KPlayer* pPlayer, char* buf, int len)
 		return this->GetFinishDesc(pPlayer, buf, len);
 	case KQ_QuestRuning:
 	case KQ_QuestFailed:
-		return this->GetNoFinishDesc(pPlayer, buf, len);
 	default:
 		return this->GetTalkDesc(pPlayer, buf, len);
 	}
@@ -917,29 +915,6 @@ const char* KQuestNew::GetTalkDesc(KPlayer* pPlayer, char* buf, int len)
 	return "";
 }
 
-const char* KQuestNew::GetNoFinishDesc(KPlayer* pPlayer, char* buf, int len)
-{
-	if(this->hasLua(lua_NoFinishDesc))
-	{
-		MethodName fn = this->luaMethod(lua_NoFinishDesc);
-		const char* f = fn.c_str();
-		const char* pc = LuaWraper.Call<const char*>(f, this, pPlayer);
-		strcpy_k(buf, len, pc);
-		return buf;
-	}
-	else
-	{
-		const char* s = KDynamicWorld::getSingleton().GetStringByID(m_noFinishDescId);
-		if(!s) s = "<NULL>";
-		KQuestLuaParser& parser = KQuestManager::GetInstance()->m_luaParser;
-		const char* pc = parser.ParseQuestString(pPlayer, this, s);
-		if(!pc) pc = "<NULL>";
-		strcpy_k(buf, len, pc);
-		return buf;
-	}
-	return "";
-}
-
 const char* KQuestNew::GetFinishDesc(KPlayer* pPlayer, char* buf, int len)
 {
 	if(this->hasLua(lua_FinishDesc))
@@ -980,7 +955,7 @@ int KQuestNew::GetStatDescriptionID(KPlayer* iPlayer, DWORD dwQuestState)
 		return m_finishDescId;
 	case KQ_QuestRuning:
 	case KQ_QuestFailed:
-		return m_noFinishDescId;
+		return 0;
 	};
 	return 0;
 }

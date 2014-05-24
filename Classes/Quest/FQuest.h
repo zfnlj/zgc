@@ -45,7 +45,6 @@ public:
 	LuaString GetName(FPlayer* player);
 	LongLuaString GetStatusDesc(FPlayer* player);
 	LongLuaString GetTalkDesc(FPlayer* player);
-	LongLuaString GetNoFinishDesc(FPlayer* player);
 	LongLuaString GetFinishDesc(FPlayer* player);
 
 	LongLuaString GetDesc(FPlayer* player);

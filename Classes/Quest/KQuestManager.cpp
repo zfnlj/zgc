@@ -280,8 +280,6 @@ bool KQuestManager::LoadAvailQuestList(void)
 
 		fileReader->GetInteger("QuestID", 0, (int*)&availDesc.m_nQuestId);
 		fileReader->GetInteger("Level", 0, &availDesc.m_nLevel);
-		fileReader->GetInteger("NpcID", 0, (int*)&availDesc.m_dwNpcID);
-		fileReader->GetInteger("Nationality", 0, (int*)&availDesc.m_nNationality);
 		fileReader->GetInteger("MinLevelLimit", 0, &availDesc.m_nMinLevelLimit);
 		fileReader->GetInteger("MaxLevelLimit", 0, &availDesc.m_nMaxLevelLimit);
 

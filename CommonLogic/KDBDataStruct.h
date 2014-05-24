@@ -219,7 +219,7 @@ struct KDBQuestHistoryDataUnit
 {
 	DWORD qid : 24;
 	DWORD val : 8;
-	WORD  time_h;
+	DWORD  time_h;
 };
 
 DECLARE_SIMPLE_TYPE(KDBQuestHistoryDataUnit);

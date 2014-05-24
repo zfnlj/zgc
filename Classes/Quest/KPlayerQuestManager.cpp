@@ -289,8 +289,8 @@ KDBQuestHistoryDataUnit* KPlayerQuestManager::GetQuestHistoryUnit_force(int qid)
 BOOL KPlayerQuestManager::GetQuestHistory(int qid, int& val, time_t& t)
 {
 	KDBQuestHistoryDataUnit* pu = this->GetQuestHistoryUnit(qid);
-	if(!pu || !pu->val) return FALSE;
-
+	//if(!pu || !pu->val) return FALSE;
+	if(!pu) return FALSE;
 	val = pu->val;
 	t = KQuestCommon::GetUniTime(pu->time_h);
 
@@ -391,7 +391,7 @@ bool KPlayerQuestManager::OnEventImp(KEventAbout::KEventID id, const KEventAbout
 		pQuest->OnEventImp(id,pData,customData);
 	}
 
-	return true;
+	return false;
 }
 
 KQuestNew* KPlayerQuestManager::QueryNormalQuest()

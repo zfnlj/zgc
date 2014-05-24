@@ -80,4 +80,9 @@
       <File>d:\HelpStr.txt</File>
     </Export>
   </Item>
+	<Item Sheet="AcceptQuestList" Workbook="BaseInfo.xls" Discription="AcceptQuestList" Method="Text" Export="False">
+    <Export>
+      <File>d:\AcceptQuestList.txt</File>
+    </Export>
+  </Item>
 </Settings>

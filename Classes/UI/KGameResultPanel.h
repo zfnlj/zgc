@@ -4,40 +4,36 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "UILayer.h"
+#include "../GameLogic/KGameDef.h"
 USING_NS_CC;
 using namespace cocos2d::extension;
 #define MAX_QUEST_SLOT_NUM 3
 
-struct GameResult{
-	GameResult():_money(0),_exp(0){}
-	int _money;
-	int _exp;
-};
-
 class KGameResultPanel :public CCObject
 {
 public:
-	enum panel_type{
-		enum_panel_task,
-		enum_panel_game,
-		enum_panel_null,
+	enum result_type{
+		result_win,
+		result_lost,
+		result_equal,
 	};
 	KGameResultPanel();
 	~KGameResultPanel();
 
 	void init(cocos2d::extension::UILayer* layer);
 	void DoClickClose(CCObject* sender);
+	void DoClickContinue(CCObject* sender);
 	void updatePanel();
-	void ShowPanel(GameResult& result,panel_type tp=enum_panel_task);
+	void ShowPanel();
 
-	void onQuestFinished(int qId);
+	void onGameEnd(unsigned long long Param1);
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
 
 	CCPoint m_pt;
-	panel_type m_panelType;
-	GameResult m_result;
+	strGameResult m_result;
+	result_type m_resultType;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

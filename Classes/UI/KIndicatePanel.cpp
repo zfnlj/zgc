@@ -58,7 +58,10 @@ void KIndicatePanel::DoCardSleep(KCardInst* card,bool flag)
 void KIndicatePanel::Update(float dt)
 {
 	UpdateSleepAnim();
-	if(KGameRecordMgr::getSingleton().IsPlaying()) return;
+	if(KGameRecordMgr::getSingleton().IsPlaying()){
+		GameRoot::getSingleton().getBattleScene()->DeactiveMyFightArea();
+		return;
+	}
 
 	KBattleCtrlBase::BattleState state = GameRoot::getSingleton().BattleCtrl().GetBattleState();
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();

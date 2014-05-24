@@ -79,13 +79,6 @@ LongLuaString FQuest::GetTalkDesc(FPlayer* player)
 	return LongLuaString(pc);
 }
 
-LongLuaString FQuest::GetNoFinishDesc(FPlayer* player)
-{
-	char buf[1024];
-	const char* pc = this->GetFacadeImpl()->GetNoFinishDesc(TO_KPLAYER(player), buf, sizeof(buf));
-	return LongLuaString(pc);
-}
-
 LongLuaString FQuest::GetFinishDesc(FPlayer* player)
 {
 	char buf[1024];

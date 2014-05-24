@@ -66,7 +66,7 @@ void KFightAreaPanel::Hide()
 
 void KFightAreaPanel::ActiveSlot(int pos,bool flag)
 {
-	if(flag){
+	if(flag&&!KGameRecordMgr::getSingleton().IsPlaying()){
 		m_ActiveSprites[pos]->setVisible(true);
 		//if(!m_ActiveSprites[pos]->getParent()) m_layer->addChild(m_ActiveSprites[pos],1);
 	}else{

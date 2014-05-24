@@ -14,8 +14,6 @@ struct AvailQuestDesc
 {
 	int m_nQuestId;
 	int m_nLevel;
-	DWORD m_dwNpcID;
-	int m_nNationality;
 	int m_nMinLevelLimit;
 	int m_nMaxLevelLimit;
 };

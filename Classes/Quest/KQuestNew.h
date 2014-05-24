@@ -143,7 +143,6 @@ public:
 	void GetGiftDescWithExtraExp(KPlayer* pPlayer, KDString<512>& GiftStr, int aExp, int aTimes);
 	void GetLimitCondition(KPlayer* pPlayer, KDString<512>& cStr);	// 得到任务的限制条件
 	const char* GetTalkDesc(KPlayer* pPlayer, char* buf, int len);
-	const char* GetNoFinishDesc(KPlayer* pPlayer, char* buf, int len);
 	const char* GetFinishDesc(KPlayer* pPlayer, char* buf, int len);
 	const char* GetTypeText(KPlayer* pPlayer, char* buf, int len);
 	const char* GetTypeText_lua(int qtype = 0);
@@ -155,7 +154,7 @@ public:
 	const char* _GetTraceText(char* buf, int len);
 	bool SetAttr(int attrId, char* val);
 	bool IsOverStatus();
-
+	void SyncStatusFromSession();
 private:
 	void AddGroup(KTargetGroup* pGrp);
 	LuaString _GetName(KPlayer* pPlayer);
@@ -200,7 +199,6 @@ public:
 	int m_expBase;
 	DWORD m_descId;
 	DWORD m_finishDescId;
-	DWORD m_noFinishDescId;
 
 	int m_achieveId;
 	int m_achievement;

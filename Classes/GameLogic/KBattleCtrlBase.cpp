@@ -282,6 +282,10 @@ void KBattleCtrlBase::PlayCard(float dt)
 #endif
 		StateJump(battle_turn_end);
 	}
+	if(!m_pMainPlayer->GetDeck().ExistCards()&& m_pBattleQuest){
+		m_pMainPlayer->GetDeck().GetHero()->m_attr.setSlot(KCardInst::enum_slot_tomb);
+		StateJump(battle_game_end);
+	}
 }
 
 bool KBattleCtrlBase::IsGameEnd()
@@ -305,6 +309,8 @@ void KBattleCtrlBase::TurnEnd()
 
 void KBattleCtrlBase::GameEnd(float dt)
 {
+	strGameResult result;
+	memset(&result,0,sizeof(result));
 	if(IsWaitDrama()){
 		for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 			KBattleGuy* guy = *it;
@@ -326,7 +332,9 @@ void KBattleCtrlBase::GameEnd(float dt)
 		KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
 	}
 #endif
-	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_GAMEEND,(unsigned long long)winner,(unsigned long long)m_world);
+	result._winner = winner->GetFacade();
+	result._questId = (m_pBattleQuest)? m_pBattleQuest->GetID():0;
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_GAMEEND,(unsigned long long)&result,(unsigned long long)m_world);
 
 	StateJump(battle_null);
 }
@@ -507,6 +515,7 @@ FBattleGuy* KBattleCtrlBase::GetCardOwner(int id)
 
 bool KBattleCtrlBase::IsMyTurn()
 {
+	if(!m_pMainPlayer) return false;
 	return m_pMainPlayer==m_CurPlayGuy;
 }
 

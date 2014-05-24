@@ -116,8 +116,10 @@ void KRecordPlayOpData::ActiveCard(int realId)
 	KUIAssist::_playClickCardAction(pCard);
 }
 
-bool KRecordPlayOpData::IsClickFightAreaValidate(int slot)
+bool KRecordPlayOpData::IsClickFightAreaValidate(DWORD timeline,int slot)
 {
+	if(timeline<m_elapsed) return false;
+
 	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
 	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
 	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
@@ -129,8 +131,10 @@ bool KRecordPlayOpData::IsClickFightAreaValidate(int slot)
 	return false;
 }
 
-bool KRecordPlayOpData::IsClickCardValidate(KCardInst* card)
+bool KRecordPlayOpData::IsClickCardValidate(DWORD timeline,KCardInst* card)
 {
+	if(timeline<m_elapsed) return false;
+
 	bool ret =false;
 	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
 	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
@@ -198,8 +202,10 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 	return false;
 }
 
-bool KRecordUIMouseData::IsClickButValidate(cocos2d::CCObject* obj)
+bool KRecordUIMouseData::IsClickButValidate(DWORD timeline,cocos2d::CCObject* obj)
 {
+	if(timeline<m_elapsed) return false;
+
 	UIWidget* pBut = (UIWidget*)obj;
 	switch(m_evt){
 	case evt_turn_end:

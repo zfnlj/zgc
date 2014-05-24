@@ -164,17 +164,17 @@ void KGameRecordTask::Stop()
 bool KGameRecordTask::IsClickCardValidate(KCardInst* card)
 {
 	if(!m_pCurOpera) return true;
-	return m_pCurOpera->IsClickCardValidate(card);
+	return m_pCurOpera->IsClickCardValidate(m_timeline*1000,card);
 }
 
 bool KGameRecordTask::IsClickFightAreaValidate(int slot)
 {
 	if(!m_pCurOpera) return true;
-	return m_pCurOpera->IsClickFightAreaValidate(slot);
+	return m_pCurOpera->IsClickFightAreaValidate(m_timeline*1000,slot);
 }
 
 bool KGameRecordTask::IsClickButValidate(cocos2d::CCObject* obj)
 {
 	if(!m_pCurOpera) return true;
-	return m_pCurOpera->IsClickButValidate(obj);
+	return m_pCurOpera->IsClickButValidate(m_timeline*1000,obj);
 }

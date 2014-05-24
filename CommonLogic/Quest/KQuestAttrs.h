@@ -137,7 +137,6 @@ public:
 		effect,
 		type,
 		level,
-		view,
 		abandon,
 		reuse,
 		share,
@@ -152,7 +151,6 @@ public:
 		questItems,
 		desc,
 		finishDesc,
-		noFinishDesc,
 		achieveId,
 		achievement,
 		userData,			//任务的自定义数据

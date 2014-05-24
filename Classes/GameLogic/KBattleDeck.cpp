@@ -683,3 +683,8 @@ int KBattleDeck::GetHurtedSoldierNum()
 	}
 	return count;
 }
+
+bool KBattleDeck::ExistCards()
+{
+	return ((m_FightCardSet.size() + m_HandCardSet.size() + m_SlotCardSet.size()) > 0);
+}

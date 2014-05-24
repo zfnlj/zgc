@@ -175,9 +175,9 @@ void KBattleMsgHub::DeckInit(unsigned long long Param1, unsigned long long Param
 void KBattleMsgHub::GameEnd(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	GameRoot::getSingleton().getBattleScene()->onGameEnd();
+	GameRoot::getSingleton().getBattleScene()->onGameEnd(Param1);
 #else
-	KWorldFacade::onGameEnd((KBattleGuy*)Param1,(KWorld*)Param2);
+	KWorldFacade::onGameEnd((strGameResult*)Param1,(KWorld*)Param2);
 #endif
 }
 
