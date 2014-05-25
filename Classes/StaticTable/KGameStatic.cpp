@@ -14,6 +14,23 @@ using namespace System::File;
 template<> KGameStaticMgr* Singleton<KGameStaticMgr>::mSingleton = 0;
 
 
+#define LOAD_TAB_TO_MAPOBJ(__classname,fileName,myMap) \
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(fileName); \
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();	\
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str()); \
+	if(!fileReader)	return false;	\
+	while(true)	\
+	{\
+		int nRet = fileReader->ReadLine();\
+		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }\
+		if(nRet == 0) break;\
+		__classname* pStatic = __classname::create();\
+		pStatic->Init(fileReader);\
+		myMap[pStatic->m_Id] = pStatic;\
+	}\
+	loader.CloseFileReader(fileReader);\
+	return true;\
+
 KGameStaticMgr& KGameStaticMgr::getSingleton(void)
 {
 	if(!mSingleton){
@@ -35,7 +52,9 @@ void KGameStaticMgr::LoadStaticData()
 	InitRank("data/Rank.txt");
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
-	InitHelpString("data/HelpStr.txt");
+	InitHelpString("data/string/HelpStr.txt");
+	InitTipString("data/string/TipStr.txt");
+	InitStoryString("data/string/StoryStr.txt");
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName)
@@ -61,48 +80,14 @@ bool KGameStaticMgr::InitRank(const char* m_FileName)
 
 bool KGameStaticMgr::InitHeroSkill(const char* m_FileName)
 {
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(m_FileName);
-
-	KTabfileLoader& loader = KTabfileLoader::GetInstance();
-	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
-	if(!fileReader)	return false;
-
-	while(true)
-	{
-		int nRet = fileReader->ReadLine();
-		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
-		if(nRet == 0) break;
-
-		KHeroSkillStatic* pStatic = KHeroSkillStatic::create();
-		pStatic->Init(fileReader);
-		m_heroSkillMap[pStatic->m_Id] = pStatic;
-	}
-
-	loader.CloseFileReader(fileReader);
-	return true;
+	LOAD_TAB_TO_MAPOBJ(KHeroSkillStatic,m_FileName,m_heroSkillMap)
 }
 
 bool KGameStaticMgr::InitCardLayout(const char* m_FileName)
 {
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(m_FileName);
 
-	KTabfileLoader& loader = KTabfileLoader::GetInstance();
-	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
-	if(!fileReader)	return false;
+	LOAD_TAB_TO_MAPOBJ(KCardLayoutStatic,m_FileName,m_cardLayoutMap);
 
-	while(true)
-	{
-		int nRet = fileReader->ReadLine();
-		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
-		if(nRet == 0) break;
-
-		KCardLayoutStatic* pStatic = KCardLayoutStatic::create();
-		pStatic->Init(fileReader);
-		m_cardLayoutMap[pStatic->m_Id] = pStatic;
-	}
-
-	loader.CloseFileReader(fileReader);
-	return true;
 }
 
 
@@ -361,25 +346,7 @@ KCardLayoutStatic* KGameStaticMgr::GetCardLayout(int idx)
 
 bool KGameStaticMgr::InitHelpString(const char* m_FileName)
 {
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(m_FileName);
-
-	KTabfileLoader& loader = KTabfileLoader::GetInstance();
-	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
-	if(!fileReader)	return false;
-
-	while(true)
-	{
-		int nRet = fileReader->ReadLine();
-		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
-		if(nRet == 0) break;
-
-		KHelpStringStatic* pStatic = KHelpStringStatic::create();
-		pStatic->Init(fileReader);
-		m_helpStringMap[pStatic->m_Id] = pStatic;
-	}
-
-	loader.CloseFileReader(fileReader);
-	return true;
+	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_helpStringMap);
 }
 
 void KGameStaticMgr::FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num)
@@ -407,4 +374,14 @@ void KGameStaticMgr::FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCar
 		}
 	}
 	*/
+}
+
+bool KGameStaticMgr::InitTipString(const char* m_FileName)
+{
+	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_tipStringMap);
+}
+
+bool KGameStaticMgr::InitStoryString(const char* m_FileName)
+{
+	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_storyStringMap);
 }

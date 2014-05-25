@@ -32,7 +32,10 @@ sqlite3* KSqlite::prepareTableInDB(const char* table,const char* dbFileName,cons
 {
     sqlite3 *pDB = NULL;
     char* errorMsg = NULL;
-    if(SQLITE_OK!= sqlite3_open(dbFileName,&pDB)){
+	std::string writablePath = cocos2d::CCFileUtils::sharedFileUtils()->getWritablePath();
+	char fullPath[256];
+	sprintf(fullPath,"%s\%s",writablePath.c_str(),dbFileName);
+    if(SQLITE_OK!= sqlite3_open(fullPath,&pDB)){
         CCLOG("open sql file failed");
         return NULL;
     }
@@ -53,8 +56,7 @@ bool KSqlite::updateToSQLite(execUpdateSqlStruct* exec)
 {
 	char sql[1024];
 	std::string fullPath;
-	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(SQLITE_FILE_NAME);
-	sqlite3* pDB = prepareTableInDB(exec->_table, fullPath.c_str());
+	sqlite3* pDB = prepareTableInDB(exec->_table, SQLITE_FILE_NAME);
 	if(pDB){
 		char* errorMsg;
 		sqlite3_exec(pDB,exec->_sql_update,NULL,NULL,&errorMsg);
@@ -83,8 +85,7 @@ bool KSqlite::updateBlobBinaryData(const char* table,const char* sqlstr,const ch
 bool KSqlite::updateBlob(const char* table,const char* sqlstr,const char* buf,int len)
 {
 	std::string fullPath;
-	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(SQLITE_FILE_NAME);
-	sqlite3* pDB = prepareTableInDB(table, fullPath.c_str());
+	sqlite3* pDB = prepareTableInDB(table, SQLITE_FILE_NAME);
 	if(!pDB) return false;
 	sqlite3_stmt      *pstmt = 0;
 	int ret;
@@ -107,8 +108,7 @@ bool KSqlite::saveToSQLite(execSaveSqlStruct*exec)
 {
     char sql[1024];
 	std::string fullPath;
-	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(SQLITE_FILE_NAME);
-    sqlite3* pDB = prepareTableInDB(exec->_table, fullPath.c_str(),exec->_createField);
+    sqlite3* pDB = prepareTableInDB(exec->_table, SQLITE_FILE_NAME,exec->_createField);
     if(pDB){
         int count = 0 ;
         char* errorMsg;

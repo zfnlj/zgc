@@ -17,6 +17,7 @@ public:
 private:
 	int m_Id;
 	std::string m_des;
+	std::string m_author;
 	friend class KGameStaticMgr;
 };
 typedef System::Collections::KMapByVector<int,KHelpStringStatic*> KHelpStringMap;

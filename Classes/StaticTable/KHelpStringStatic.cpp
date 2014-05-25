@@ -19,7 +19,10 @@ KHelpStringStatic* KHelpStringStatic::create()
 void KHelpStringStatic::Init(System::File::KTabFile2* fileReader)
 {
 	fileReader->GetInteger("ID", 0, (int*)&m_Id);
-	char buf[128]={0};
+	char buf[512]={0};
 	fileReader->GetString("String", "", buf, 127);
 	m_des = buf;
+
+	fileReader->GetString("Author", "", buf, 127);
+	m_author = buf;
 }

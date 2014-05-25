@@ -77,7 +77,17 @@
   </Item>
 	<Item Sheet="help_string" Workbook="BaseInfo.xls" Discription="help_string" Method="Text" Export="False">
     <Export>
-      <File>d:\HelpStr.txt</File>
+      <File>d:\string\HelpStr.txt</File>
+    </Export>
+  </Item>
+  <Item Sheet="tipStr" Workbook="BaseInfo.xls" Discription="tipStr" Method="Text" Export="False">
+    <Export>
+      <File>d:\string\TipStr.txt</File>
+    </Export>
+  </Item>
+  <Item Sheet="storyStr" Workbook="BaseInfo.xls" Discription="storyStr" Method="Text" Export="False">
+    <Export>
+      <File>d:\string\StoryStr.txt</File>
     </Export>
   </Item>
 	<Item Sheet="AcceptQuestList" Workbook="BaseInfo.xls" Discription="AcceptQuestList" Method="Text" Export="False">

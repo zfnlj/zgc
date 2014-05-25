@@ -32,6 +32,8 @@ public:
 	bool InitHelpString(const char* m_FileName);
 	bool InitRank(const char* m_FileName);
 	bool InitHeroSkill(const char* m_FileName);
+	bool InitTipString(const char* m_FileName);
+	bool InitStoryString(const char* m_FileName);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
@@ -57,6 +59,8 @@ private:
 	KBattleFieldStaticMap m_battleFieldMap;
 	KHeroSkillMap m_heroSkillMap;
 	KHelpStringMap m_helpStringMap;
+	KHelpStringMap m_tipStringMap;
+	KHelpStringMap m_storyStringMap;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
