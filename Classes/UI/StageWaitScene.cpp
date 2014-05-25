@@ -22,6 +22,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../Quest/KPlayerQuestManager.h"
 #include "../Quest/KQuestManager.h"
+#include "../StaticTable/KHelpStringStatic.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -76,16 +77,31 @@ bool StageWaitScene::init()
 		UILabelAtlas* labelName = (UILabelAtlas*)m_ui->getWidgetByName("stage_txt");
 		char stageName[64]={0};
 		pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
-		if(strlen(stageName)>0){
-			labelName->setVisible(true);
-			labelName->setStringValue(stageName);
+		/*if(strlen(stageName)>0){
+		labelName->setVisible(true);
+		labelName->setStringValue(stageName);
 		}else{
-			labelName->setVisible(false);
-		}
+		labelName->setVisible(false);
+		}*/
 	}
+
+	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
+	SetTip(tip);
     return true;
 }
 
+void StageWaitScene::SetTip(KHelpStringStatic* tip)
+{
+	UILabel* pLabel = (UILabel*)m_ui->getWidgetByName("tip_txt");
+	pLabel->setText(tip->GetString());
+	
+	pLabel = (UILabel*)m_ui->getWidgetByName("author");
+	if(tip->HasAutorh()){
+		pLabel->setText(tip->GetAuthor());
+	}else{
+		pLabel->setText("");
+	}
+}
 
 cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 {

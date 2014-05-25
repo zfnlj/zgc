@@ -194,7 +194,7 @@ void KUIAssist::_switch2StageWaitScene()
 
 void KUIAssist::_switch2BattleScene()
 {
-	CCScene* scene = CCTransitionFadeBL::create(0.5f, BattleFieldScene::scene());
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, BattleFieldScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 }
 
@@ -212,8 +212,8 @@ void KUIAssist::_moveInWidget(UIWidget* panel,CCPoint& src,CCPoint& des,float el
 	CCPoint vTmp = des - src;
 
 	ccBezierConfig bezier;
-	bezier.controlPoint_1 = vTmp*0.05f + src;
-	bezier.controlPoint_2 = vTmp*0.95f + src;
+	bezier.controlPoint_1 = vTmp*0.25f + src;
+	bezier.controlPoint_2 = vTmp*0.75f + src;
 	bezier.endPosition = des;
 
 	CCActionInterval*  ActionInter = CCSequence::create(

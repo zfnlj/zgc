@@ -385,3 +385,15 @@ bool KGameStaticMgr::InitStoryString(const char* m_FileName)
 {
 	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_storyStringMap);
 }
+
+KHelpStringStatic* KGameStaticMgr::GetRndTip()
+{
+	int nRand = g_rnd.GetRandom(1,m_tipStringMap.size()+1);
+	return m_tipStringMap[nRand];
+}
+
+KHelpStringStatic* KGameStaticMgr::GetRndStory()
+{
+	int nRand = g_rnd.GetRandom(1,m_storyStringMap.size()+1);
+	return m_storyStringMap[nRand];
+}

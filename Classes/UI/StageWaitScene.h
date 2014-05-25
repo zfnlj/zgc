@@ -6,6 +6,7 @@
 
 USING_NS_CC;
 
+class KHelpStringStatic;
 class StageWaitScene : public cocos2d::CCLayer
 {
 public:
@@ -23,6 +24,7 @@ public:
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
 
 	void DoClickClose(CCObject* sender);
+	void SetTip(KHelpStringStatic* tip);
 private:
 	CCLabelTTF* m_InfoLabel;
 

@@ -158,7 +158,7 @@ void BattleFieldScene::onBattleInit()
 	if(GameRoot::getSingleton().BattleCtrl().IsSelectCard()){
 		m_selectCardPanel.init(m_ui);
 	}
-	//InitTest();
+	InitTest();
 }
 
 void BattleFieldScene::InitTest()
@@ -211,6 +211,7 @@ void BattleFieldScene::onTurnEnd()
 
 void BattleFieldScene::RunTest(CCObject* sender)
 {
+	m_gameResultPanel.ShowPanel();
 	/*FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 	CCLabelBMFont* bmFont = CCLabelBMFont::create("-23","GUI/num_1.fnt");
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();

@@ -101,7 +101,8 @@ void StartScene::cacheInit()
 		char sz[128];
 		fileReader->GetString("plist", "",sz, 127);
 		if(strlen(sz)>0){
-			CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(sz);
+			 std::string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename(sz);
+			CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(fullPath.c_str());
 		}
 		char anim[128];
 		fileReader->GetString("anim", "",anim, 127);

@@ -14,6 +14,8 @@ public:
 	static KHelpStringStatic* create();
 	void Init(System::File::KTabFile2* fileReader);
 	const char* GetString(){ return m_des.c_str();}
+	bool HasAutorh(){ return m_author.size()>0;}
+	const char* GetAuthor(){ return m_author.c_str();}
 private:
 	int m_Id;
 	std::string m_des;

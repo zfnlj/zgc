@@ -71,8 +71,11 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 void KGameResultPanel::ShowPanel()
 {
 	if(!m_Panel->getParent()) m_layer->addWidget(m_Panel);
-    CCPoint pt(m_pt.x,m_pt.y+500);
-	KUIAssist::_moveInWidget(m_Panel,pt,m_pt,0.6f);
+	m_Panel->setScale(0.1);
+	m_Panel->setAnchorPoint(ccp(0.5,0.5));
+	CCActionInterval*  actionBy = CCScaleTo::create(0.3, 1, 1);
+	m_Panel->runAction(actionBy);
+	m_Panel->setPosition(KUIAssist::_getScreenCenter());
 	updatePanel();
 }
 

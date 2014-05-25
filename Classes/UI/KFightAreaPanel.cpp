@@ -81,7 +81,7 @@ void KFightAreaPanel::update(float dt)
 	if(m_bShowActive){
 		FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
 		for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
-			if(pMainPlayer->IsEmptyFightSlot(i)){
+			if(pMainPlayer&& pMainPlayer->IsEmptyFightSlot(i)){
 				ActiveSlot(i,true);
 			}else{
 				ActiveSlot(i,false);
