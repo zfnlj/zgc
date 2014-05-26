@@ -40,6 +40,7 @@ public:
 		lua_NoFinishDesc,
 		lua_CanSee,
 		lua_CanDoThis,
+		lua_SelectGift,
 		lua_Count,
 	};
 
@@ -146,6 +147,7 @@ public:
 	const char* GetFinishDesc(KPlayer* pPlayer, char* buf, int len);
 	const char* GetTypeText(KPlayer* pPlayer, char* buf, int len);
 	const char* GetTypeText_lua(int qtype = 0);
+	const char* GetSelectGift(char* buf, int len);
 
 	bool IsOver();
 	int GetID(){ return m_qid;}

@@ -234,7 +234,9 @@ protected:
 		{
 			int capacity = m_capacity;
 			while(capacity < size) capacity += inflateStep;
+			value_type* tmp = m_vals;
 			m_vals = (value_type*)realloc_k(m_vals, capacity*sizeof(value_type));
+			if(!m_vals) free_k(tmp);
 			m_capacity = capacity;
 		}
 		return TRUE;

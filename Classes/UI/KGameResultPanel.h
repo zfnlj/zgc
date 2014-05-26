@@ -9,6 +9,7 @@ USING_NS_CC;
 using namespace cocos2d::extension;
 #define MAX_QUEST_SLOT_NUM 3
 
+class KQuestNew;
 class KGameResultPanel :public CCObject
 {
 public:
@@ -28,12 +29,14 @@ public:
 
 	void onGameEnd(unsigned long long Param1);
 private:
+	bool ShowSelectGift(KQuestNew* pQuest);
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
 
 	CCPoint m_pt;
 	strGameResult m_result;
 	result_type m_resultType;
+	bool m_bSelectGift;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

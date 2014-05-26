@@ -44,6 +44,7 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 	m_layer = layer;
 	//m_layer->addWidget(m_Panel);
 	m_Panel->setZOrder(999);
+	m_bSelectGift = false;
 	updatePanel();
 }
 
@@ -58,15 +59,9 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 	}else{
 		m_resultType = result_equal;
 	}
-	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
-	KQuestNew* pQuest = playerQuestManager.GetQuest(result->_questId);
-	if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
-		m_result._money = pQuest->m_money;
-		m_result._exp = pQuest->m_exp;
-		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
-	}
 	ShowPanel();
 }
+
 
 void KGameResultPanel::ShowPanel()
 {
@@ -149,17 +144,45 @@ void KGameResultPanel::updatePanel()
     default:
         break;
 	}
+
+	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
+	KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
+	if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
+		m_result._money = pQuest->m_money;
+		m_result._exp = pQuest->m_exp;
+
+		if(ShowSelectGift(pQuest)) return;
+		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
+	}
+
+
 	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
-	if(m_result._money>0){
+	if( pQuest->m_money>0){
 		pMoneyVal->setVisible(true);
 	}else{
 		pMoneyVal->setVisible(false);
 	}
 	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	if(m_result._exp>0){
+	if(pQuest->m_exp>0){
 		pExpVal->setVisible(true);
 	}else{
 		pExpVal->setVisible(false);
 	}
+}
+
+bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
+{
+	char buf[64]={0};
+	pQuest->GetSelectGift(buf,63);
+	m_bSelectGift = (strlen(buf)>0)? true:false;
+	if(!m_bSelectGift) return false;
+
+
+	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
+	pMoneyVal->setVisible(false);
+	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
+	pExpVal->setVisible(false);
+
+	return true;
 }
 

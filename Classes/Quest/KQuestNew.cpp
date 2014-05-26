@@ -45,7 +45,8 @@ const char* KQuestNew::m_luaMethods[lua_Count] = {
 	"FinishDesc",
 	"NoFinishDesc",
 	"CanSee",
-	"CanDoThis"
+	"CanDoThis",
+	"SelectGift"
 };
 
 KQuestNew::KQuestNew()
@@ -845,6 +846,19 @@ void KQuestNew::GetGiftDescWithExtraExp( KPlayer* pPlayer, KDString<512>& GiftSt
 	//int nExp = (m_exp + aExp)*aTimes;
 	//const char* tmp = LuaWraper.Call<const char* ,const char*, int, int, int>("GetQuestGiftStr", itemList.c_str(), nExp, m_money, 0);
 	//GiftStr.append(tmp);
+}
+
+const char* KQuestNew::GetSelectGift(char* buf, int len)
+{
+	if(this->hasLua(lua_SelectGift))
+	{
+		MethodName fn = this->luaMethod(lua_SelectGift);
+		const char* f = fn.c_str();
+		LuaString str = LuaWraper.Call<LuaString>(f, this);
+		strcpy_k(buf, len, str.c_str());
+		return buf;
+	}
+	return "";
 }
 
 const char* KQuestNew::GetName(KPlayer* pPlayer, char* buf, int len)

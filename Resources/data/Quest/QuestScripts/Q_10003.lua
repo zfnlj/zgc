@@ -16,6 +16,10 @@ Initialize = function(quest)
 	return true;
 end,
 
+QName = function (quest , player)
+	return "stage 1-3";
+end,   
+
 GiftDesc = function (quest , player)
   local exp
 	local money

@@ -74,15 +74,15 @@ bool StageWaitScene::init()
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	KQuestNew* pQuest = playerQuestManager.QueryNormalQuest();
 	if(pQuest && pQuest->GetQuestStatus()!=KQ_PreStepOver){
-		UILabelAtlas* labelName = (UILabelAtlas*)m_ui->getWidgetByName("stage_txt");
+		UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 		char stageName[64]={0};
 		pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
-		/*if(strlen(stageName)>0){
-		labelName->setVisible(true);
-		labelName->setStringValue(stageName);
+		if(strlen(stageName)>0){
+			labelName->setVisible(true);
+			labelName->setText(stageName);
 		}else{
-		labelName->setVisible(false);
-		}*/
+			labelName->setVisible(false);
+		}
 	}
 
 	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
