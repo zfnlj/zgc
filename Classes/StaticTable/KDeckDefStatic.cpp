@@ -96,7 +96,7 @@ void KDeckDefStatic::Init(System::File::KTabFile2* fileReader)
 	setDynamic(buf);
 }
 
-void KDeckDefStatic::GenCardList(KIntegerList& lst)
+void KDeckDefStatic::GenCardList(KIntegerList& lst,bool bRnd)
 {
 	KIntegerList tmpLst;
 	_CopyIntegerList(m_cardList,tmpLst);
@@ -104,7 +104,7 @@ void KDeckDefStatic::GenCardList(KIntegerList& lst)
 		DynamicCardDef* def=*it;
 		FillOnDynamicCardDef(def,tmpLst);
 	}
-	if(m_rnd>0){
+	if(bRnd>0){
 		_RndIntegerList(tmpLst,lst);
 	}else{
 		_CopyIntegerList(tmpLst,lst);

@@ -97,6 +97,7 @@ public:
 	bool hasLua(int method);
 	MethodName luaMethod(int method);
 	void GeneratNormalCard(UINT64 playerId,int count,int rank);
+	void GenerateCardDeck(UINT64 playerId,int deckId);
 public:
 	BeginDefLuaClass(KUseItem)
 		DefMemberFunc(SetFlag);
@@ -106,6 +107,7 @@ public:
 		DefMemberFunc(GetIntAttr);
 		DefMemberFunc(GetStringAttr);
 		DefMemberFunc(GeneratNormalCard);
+		DefMemberFunc(GenerateCardDeck);
 	EndDef
 };
 

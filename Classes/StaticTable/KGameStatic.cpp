@@ -397,3 +397,16 @@ KHelpStringStatic* KGameStaticMgr::GetRndStory()
 	int nRand = g_rnd.GetRandom(1,m_storyStringMap.size()+1);
 	return m_storyStringMap[nRand];
 }
+
+KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank)
+{
+	KHeroSkillMap tmpMap;
+	int pos=0;
+	for(KHeroSkillMap::iterator it=m_heroSkillMap.begin();it!=m_heroSkillMap.end();++it){
+		KHeroSkillStatic* skill = it->second;
+		if(skill->GetRank()==rank) tmpMap[pos++] = skill;
+	}
+	if(tmpMap.empty()) return NULL;
+	int nRand = g_rnd.GetRandom(0,tmpMap.size()+1);
+	return tmpMap[nRand];
+}

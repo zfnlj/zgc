@@ -38,7 +38,8 @@ public:
 	int getHeroHp(){ return m_heroHp;}
 	int getDrawNum(){return m_drawNum;}
 	void Init(System::File::KTabFile2* fileReader);
-	void GenCardList(KIntegerList& lst);
+	void GenCardList(KIntegerList& lst,bool bRnd=false);
+	bool IsRnd(){ return m_rnd>0;}
 private:
 	int m_Id;
 	int m_heroID;

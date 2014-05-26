@@ -1,1 +1,14 @@
-茚XX6:t.s8)48:u+',6t46:8s;5*(rtKLONJs挥vMtLvNtLrtKLONIs茟拇ǐtLvNtLvMprMNMLJu抠枎tLvMtLvNprMNMLIu砂辣tLvNtKvNprMNMKLu茄嫡tKvNtLvNprMNMJMu扫鲸绩卧tLvNtKvNprMNMIKu纶暏tKvNtLvNprMNMIFu磱鸡雀瞬警vNtLvMtLrtKLOJEs硰茸vNtKvNtLrtKLOJDs乒ǐtLvMtLvNprMKMLMu脗葊穽vNtKvNtLrtKIONHs簿茒R桅稄uMsNuMsOqsJONHJv蕣绷紣sNuMsOuMou
+ID	Name	GUIDE	RUSH	HIDE	DIST
+20003	墨侠	1	0	0	0
+20004	鬼谷子	0	0	0	1
+20005	荆轲	0	1	0	0
+20006	刺客	0	0	1	0
+20013	东施	1	0	0	0
+20022	丛林猎豹	0	0	1	0
+20034	虎贲	1	0	0	0
+20039	神秘的刺客	0	0	1	0
+20048	田单	0	1	0	0
+20049	古冶子	0	1	0	0
+23002	胡服骑	0	1	0	0
+23005	屠夫-白起	0	1	0	0
+20052	大司马	1	0	0	0

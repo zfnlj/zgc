@@ -31,7 +31,10 @@ StaticData::~StaticData()
 }
 bool StaticData::init()
 {
-    _dictionary = CCDictionary::createWithContentsOfFile(_staticDataPath.c_str());
+	std::string writablePath = cocos2d::CCFileUtils::sharedFileUtils()->getWritablePath();
+	sprintf(m_fullPath,"%s\\%s",writablePath.c_str(),STATIC_DATA_PATH);
+
+    _dictionary = CCDictionary::createWithContentsOfFile(m_fullPath);
     CC_SAFE_RETAIN(_dictionary);
     return true;
 }
@@ -78,6 +81,12 @@ void StaticData::setKeyVal(const char* keyStr,int val)
 
 	_dictionary->setObject(pValue1,keyStr);
 	//pStr->initWithFormat("%d",val);//
+	_dictionary->writeToFile(m_fullPath);
+}
 
-	_dictionary->writeToFile(STATIC_DATA_PATH);
+int StaticData::GetInc()
+{
+	int val = intFromKey("Inc");
+	setKeyVal("Inc",val+1);
+	return val;
 }

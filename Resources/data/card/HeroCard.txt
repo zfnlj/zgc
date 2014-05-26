@@ -1,3 +1,3 @@
-‹·XX6:t.s-v;	u<u5v,u9t8
-u-
-ouMMLOMt∂î√≈√‘uLsMuMsLNtLv¿Ö∆´«Ω©ÜuøÑ…™∆º¨ÖC«©øƒ™ƒ Ø≥¥ƒ◊sNNMLNPqsKONMJv≤“•¨…ŸsNuKsOuJLvt¶±Ω∑≤äußÆæ∏≥á‹ƒßÆæ∏K«úµÉπÉ®»sNNMLMPqs
+ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Photo
+10001	∆Îª∏π´	1	2	0	30	0	æ¯∂‘∑¿”˘	æ¯∂‘∑¿”˘:µ÷øπ“ª¥Œ…À∫¶	pic_10001.jpg
+10002	Ã´◊”µ§	1	2	0	30	water	÷Œ¡∆ ı	÷Œ¡∆ ı£∫÷Œ¡∆2µ„…˙√¸÷µ	pic_10002.jpg

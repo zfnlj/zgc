@@ -18,6 +18,7 @@
 #define STATIC_DATA_RECT(key) StaticData::sharedStaticData()->rectFromKey(key)
 #define STATIC_DATA_SIZE(key) StaticData::sharedStaticData()->sizeFromKey(key)
 #define STATIC_DATA_SET(key,val) StaticData::sharedStaticData()->setKeyVal(key,val)
+#define STATIC_DATA_INC() StaticData::sharedStaticData()->GetInc()
 class StaticData : public cocos2d::CCObject
 {
 public:    
@@ -46,11 +47,13 @@ public:
     
     CC_SYNTHESIZE_READONLY(std::string, _staticDataPath, StaticDataPath);
 
+	int GetInc();
 protected:
     cocos2d::CCDictionary* _dictionary;
 private:
     StaticData();
     ~StaticData();
     bool init();
+	char m_fullPath[256];
 };
 #endif /* defined(__FishingJoy__StaticData__) */

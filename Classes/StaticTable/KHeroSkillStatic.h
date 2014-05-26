@@ -23,6 +23,8 @@ public:
 	int GetRndVal(int lev);
 	KAbilityStatic* GetRndAbility();
 	KAbilityStatic::Enum_When GetWhen(){ return m_when;}
+	int GetRank(){ return m_rank;}
+	int GetId(){ return m_Id;}
 private:
 	void SetAbilityArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);

@@ -42,9 +42,10 @@ void GameRoot::init()
 
 void GameRoot::InitializeResource()
 {
+	int val = STATIC_DATA_INC();
 	memset(m_rootPath,0,sizeof(m_rootPath));
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("static_data.plist");
-	int pos = fullPath.find("static_data.plist");
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("List.txt");
+	int pos = fullPath.find("List.txt");
 	memcpy(m_rootPath,fullPath.c_str(),pos-1);
 
 	KClientTabfileLoader::GetInstance();

@@ -284,8 +284,12 @@ void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_WORLD_GEN_PLAYERCARD,(unsigned long long)&genCard,0);
 }
 
-void GenerateCardDeck(UINT64 playerId,int deckId)
+void KUseItem::GenerateCardDeck(UINT64 playerId,int deckId)
 {
+	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
+	KPlayerDeck deck;
+	deck.CreateOnDeckDef(deckId);
+
 }
 
 };
