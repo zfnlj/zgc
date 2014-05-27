@@ -413,10 +413,6 @@ void BattleFieldScene::onSummonCard(strSummonCardResult* result)
 	OnSelectCardOK();
 }
 
-void BattleFieldScene::onGameEnd(unsigned long long Param1)
-{
-	m_gameResultPanel.onGameEnd(Param1);
-}
 
 void BattleFieldScene::onUseSecretCard(KCardInst* card)
 {

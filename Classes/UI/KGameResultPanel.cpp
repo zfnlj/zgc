@@ -27,7 +27,7 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 {
 	UIWidget* pBut;
 	if(!m_Panel){
-		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/game_result.json");
+		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/GameResult.json");
 		CC_SAFE_RETAIN(m_Panel);
 		pBut = UIHelper::seekWidgetByName(m_Panel, "bk");
 		pBut->addPushDownEvent(this, coco_pushselector(KGameResultPanel::DoClickClose));
@@ -67,6 +67,14 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 	ShowPanel();
 }
 
+void KGameResultPanel::onQuestPreOver(KQuestNew* pQuest)
+{
+	m_result._questId = pQuest->GetID();
+	m_result._winner = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	m_resultType = result_win;
+	ShowPanel();
+}
+
 
 void KGameResultPanel::ShowPanel()
 {
@@ -87,6 +95,7 @@ void KGameResultPanel::DoClickSlot(CCObject* sender)
 		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
 		pSelect->setVisible(i==selectId);
 	}
+	m_bSelectGift = false;
 }
 
 bool KGameResultPanel::DoSelectGift()
@@ -104,8 +113,13 @@ bool KGameResultPanel::DoSelectGift()
 }
 void KGameResultPanel::DoClickContinue(CCObject* sender)
 {
-	if(m_bSelectGift)
+	if(m_bSelectGift) return;
 	//m_Panel->removeFromParent();
+	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
+	KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
+	if(pQuest&& pQuest->GetQuestStatus()==KQ_PreStepOver){
+		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
+	}
 	KUIAssist::_switch2StageWaitScene();
 }
 
@@ -148,6 +162,11 @@ void KGameResultPanel::updatePanel()
 	pMoneyTxt->setText(buf);
 	sprintf(buf,"%d",m_result._exp);
 	pExpTxt->setText(buf);
+	for(int i=0; i<3; i++)
+	{
+		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
+		pSelect->setVisible(false);
+	}
 	switch(m_resultType){
 	case result_win:
 		{
@@ -184,15 +203,22 @@ void KGameResultPanel::updatePanel()
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
 	}
 
+	for(int i=0; i<3; i++)
+	{
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
+		pSlot->setVisible(false);
+	}
+	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
+	pSelectAward->setVisible(false);
 
 	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
-	if( pQuest->m_money>0){
+	if( pQuest&&pQuest->m_money>0){
 		pMoneyVal->setVisible(true);
 	}else{
 		pMoneyVal->setVisible(false);
 	}
 	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	if(pQuest->m_exp>0){
+	if( pQuest&&pQuest->m_exp>0){
 		pExpVal->setVisible(true);
 	}else{
 		pExpVal->setVisible(false);
@@ -215,6 +241,7 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 		const KCreateInfo_ItemBase* pCIIB = KItemCreate::Instance()->GetItemCreateInfo(itemId);
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
 		pSlot->loadTexture(pCIIB->s_icon,UI_TEX_TYPE_PLIST);
+		pSlot->setVisible(true);
 	}
 
 	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
@@ -224,6 +251,12 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 
 	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
 	pSelectAward->setVisible(true);
+
+	UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
+	pMoneyIcon->setVisible(false);
+
+	UIWidget* pExpIcon = UIHelper::seekWidgetByName(m_Panel,"exp_icon");
+	pExpIcon->setVisible(false);
 	return true;
 }
 

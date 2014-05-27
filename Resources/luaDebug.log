@@ -132,3 +132,13 @@
 2014-05-24 19:13:29 [6764] LuaTinker::call() attempt to call table function `Name' (not a function)
 2014-05-24 19:13:29 [6764] 
 
+2014-05-27 22:51:09 [6972] [string "?"]:311: attempt to call global 'GetItemIcon' (a nil value)
+	GetItemIcon(C) at =[C]
+	 at ? line:311
+	(tail) at =(tail call)
+
+2014-05-27 22:53:22 [5572] [string "?"]:311: attempt to call global 'GetItemIcon' (a nil value)
+	GetItemIcon(C) at =[C]
+	 at ? line:311
+	(tail) at =(tail call)
+

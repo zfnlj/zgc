@@ -148,7 +148,7 @@ public:
 	const char* GetTypeText(KPlayer* pPlayer, char* buf, int len);
 	const char* GetTypeText_lua(int qtype = 0);
 	const char* GetSelectGift(char* buf, int len);
-
+	bool IsSelectGift();
 	bool IsOver();
 	int GetID(){ return m_qid;}
 public:

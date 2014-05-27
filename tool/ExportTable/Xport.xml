@@ -95,4 +95,9 @@
       <File>d:\AcceptQuestList.txt</File>
     </Export>
   </Item>
+   <Item Sheet="ItemInfo" Workbook="BaseInfo.xls" Discription="ItemInfo" Method="Text" Export="False">
+    <Export>
+      <File>d:\ItemInfo.txt</File>
+    </Export>
+  </Item>
 </Settings>

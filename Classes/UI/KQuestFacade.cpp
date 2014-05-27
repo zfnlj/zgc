@@ -9,6 +9,7 @@
 #include "MainMenuScene.h"
 #include "../VirtualService.h"
 #include "../Quest/KQuestManager.h"
+#include "BattleFieldScene.h"
 
 bool KQuestFacade::_startMainQuestBattle()
 {
@@ -19,9 +20,14 @@ bool KQuestFacade::_startMainQuestBattle()
 	if(!pQuest) return false;
 
 	if(pQuest &&pQuest->GetQuestStatus()==KQ_PreStepOver){
-		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
-
-		return _startMainQuestBattle();
+		if(pQuest->IsSelectGift()){
+			GameRoot::getSingleton().getBattleScene()->GameResult().onQuestPreOver(pQuest);
+			return false;
+		}else{
+			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
+			return _startMainQuestBattle();
+		}
+		
 	}
 
 	if(!playerQuestManager.GetQuest(pQuest->GetID())){  // 任务不未接

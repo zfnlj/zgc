@@ -28,6 +28,7 @@ public:
 	void ShowPanel();
 
 	void onGameEnd(unsigned long long Param1);
+	void onQuestPreOver(KQuestNew* pQuest);
 private:
 	bool ShowSelectGift(KQuestNew* pQuest);
 	cocos2d::extension::UILayer* m_layer;

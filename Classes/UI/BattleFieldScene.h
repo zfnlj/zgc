@@ -62,7 +62,6 @@ public:
 	void onUseRes();
 
 	
-	void onGameEnd(unsigned long long Param1);
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();
@@ -73,6 +72,7 @@ public:
 	KActor& GetActor(){ return m_actor;}
 
 	void DoSelectSrcCard(KCardActor* actor);
+	KGameResultPanel& GameResult(){ return m_gameResultPanel;}
 private:
 	CCLabelTTF* m_InfoLabel;
 

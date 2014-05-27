@@ -39,7 +39,7 @@ GiftDesc = function (quest , player)
 	  itemlist = "5003:1" -- 任务奖励物品
 	end  
 	
-	return GetQuestGiftStr(itemlist,exp,money)
+	return itemlist
 end, 
   
 }

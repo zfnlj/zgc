@@ -848,6 +848,12 @@ void KQuestNew::GetGiftDescWithExtraExp( KPlayer* pPlayer, KDString<512>& GiftSt
 	//GiftStr.append(tmp);
 }
 
+bool KQuestNew::IsSelectGift()
+{
+	char buf[128]={0};
+	GetSelectGift(buf,127);
+	return strlen(buf)>0;
+}
 const char* KQuestNew::GetSelectGift(char* buf, int len)
 {
 	if(this->hasLua(lua_SelectGift))
@@ -1383,10 +1389,17 @@ void KQuestNew::OnGift()
 	{
 		//m_pPlayer->AddAchievement(m_achieveId, m_achievement);
 	}
-
+	m_itemGiftCount = 0;
+	if(this->hasLua(lua_GiftDesc))
+	{
+		MethodName fn = this->luaMethod(lua_GiftDesc);
+		const char* tmp = LuaWraper.Call<const char*>(fn.c_str(), this, m_pPlayer);
+		char sz[128]={0};
+		strcpy(sz,tmp);
+		SetAttr(KQuestAttr::items,sz);
+	}
 	if (m_itemGiftCount > 0)
 	{
-		KItemAbout::KItemListInfo itemList;
 		for (BYTE i=0; i<m_itemGiftCount; i++)
 		{
 			VirtualService::getSingleton().AddItem(m_itemGifts[i].itemId,m_itemGifts[i].count);
