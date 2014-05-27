@@ -32,7 +32,8 @@ private:
 	bool ShowSelectGift(KQuestNew* pQuest);
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
-
+	void DoClickSlot(CCObject* sender);
+	bool DoSelectGift();
 	CCPoint m_pt;
 	strGameResult m_result;
 	result_type m_resultType;

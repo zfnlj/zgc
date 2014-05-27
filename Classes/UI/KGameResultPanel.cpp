@@ -10,9 +10,10 @@
 #include "BattleFieldScene.h"
 #include "../Quest/KQuestManager.h"
 #include "KQuestFacade.h"
+#include "../Item/KItemCreate.h"
 
 using namespace cocos2d::extension;
-
+using namespace KItemAbout;
 
 KGameResultPanel::KGameResultPanel():m_Panel(NULL)
 {
@@ -37,8 +38,12 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 		pBut = UIHelper::seekWidgetByName(m_Panel, "but_continue");
 		pBut->addPushDownEvent(this, coco_pushselector(KGameResultPanel::DoClickContinue));
 
-		m_pt =m_Panel->getPosition();
-		m_pt =m_Panel->getWorldPosition();
+		for(int i=0; i<3; i++)
+		{
+			UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
+			pSlot->addPushDownEvent(this, coco_pushselector(KGameResultPanel::DoClickSlot));
+			pSlot->setTag(i);
+		}
 
 	}
 	m_layer = layer;
@@ -74,8 +79,32 @@ void KGameResultPanel::ShowPanel()
 	updatePanel();
 }
 
+void KGameResultPanel::DoClickSlot(CCObject* sender)
+{
+	int selectId = ((UIWidget*)sender)->getTag();
+	for(int i=0; i<3; i++)
+	{
+		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
+		pSelect->setVisible(i==selectId);
+	}
+}
+
+bool KGameResultPanel::DoSelectGift()
+{
+	if(!m_bSelectGift) return true;
+	int pos = -1;
+	for(int i=0; i<3; i++)
+	{
+		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
+		if(pSelect->isVisible()) pos = i;
+	}
+	if(pos<0) return false;
+	KMainPlayer::RealPlayer()->UpdateAttrValue(88,pos);
+	return true;
+}
 void KGameResultPanel::DoClickContinue(CCObject* sender)
 {
+	if(m_bSelectGift)
 	//m_Panel->removeFromParent();
 	KUIAssist::_switch2StageWaitScene();
 }
@@ -178,11 +207,23 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 	if(!m_bSelectGift) return false;
 
 
+	char* ss[32];
+	int n = split(buf, ';', ss, 32);
+	for(int i=0; i<n; i++)
+	{
+		int itemId = atoi(ss[i]);
+		const KCreateInfo_ItemBase* pCIIB = KItemCreate::Instance()->GetItemCreateInfo(itemId);
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
+		pSlot->loadTexture(pCIIB->s_icon,UI_TEX_TYPE_PLIST);
+	}
+
 	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
 	pMoneyVal->setVisible(false);
 	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
 	pExpVal->setVisible(false);
 
+	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
+	pSelectAward->setVisible(true);
 	return true;
 }
 
