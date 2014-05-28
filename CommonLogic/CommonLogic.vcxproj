@@ -77,6 +77,8 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Attribute\KAttrDefine.cpp" />
+    <ClCompile Include="Attribute\KAttrGroupHolder.cpp" />
     <ClCompile Include="CommSession\KStreamSession.cpp" />
     <ClCompile Include="Configure\KCoordinateTable.cpp" />
     <ClCompile Include="Configure\KGatewaySetting.cpp" />
@@ -108,6 +110,9 @@
     <ClCompile Include="KTaskSchedule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Attribute\KAttrDefine.h" />
+    <ClInclude Include="Attribute\KAttrGroupHolder.h" />
+    <ClInclude Include="Attribute\KAttrHolder.h" />
     <ClInclude Include="CommSession\KStreamSession.h" />
     <ClInclude Include="Configure\KCoordinateTable.h" />
     <ClInclude Include="Configure\KGatewaySetting.h" />

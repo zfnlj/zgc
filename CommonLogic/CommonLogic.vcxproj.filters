@@ -46,6 +46,9 @@
     <Filter Include="StaticTable">
       <UniqueIdentifier>{662e4ff8-c007-4a1a-aef6-d3b21b97bb05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Attribute">
+      <UniqueIdentifier>{b795bc66-ae36-4d4a-9da8-edc0379a4ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Configure\KCoordinateTable.cpp">
@@ -126,6 +129,12 @@
     </ClCompile>
     <ClCompile Include="StaticTable\KStaticTabFileManager.cpp">
       <Filter>StaticTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Attribute\KAttrDefine.cpp">
+      <Filter>Attribute</Filter>
+    </ClCompile>
+    <ClCompile Include="Attribute\KAttrGroupHolder.cpp">
+      <Filter>Attribute</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +320,15 @@
     </ClInclude>
     <ClInclude Include="StaticTable\KStaticTabFileManager.h">
       <Filter>StaticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Attribute\KAttrDefine.h">
+      <Filter>Attribute</Filter>
+    </ClInclude>
+    <ClInclude Include="Attribute\KAttrGroupHolder.h">
+      <Filter>Attribute</Filter>
+    </ClInclude>
+    <ClInclude Include="Attribute\KAttrHolder.h">
+      <Filter>Attribute</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

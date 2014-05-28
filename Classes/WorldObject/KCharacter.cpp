@@ -1,6 +1,7 @@
 
 #include "KCharacter.h"
 #include <iostream>
+#include "Attribute/KAttrGroupHolder.h"
 
 #pragma warning(disable:4355)	//  warning C4355: 'this' : used in base member initializer list
 
@@ -22,10 +23,16 @@ namespace KWorldObjAbout
 		m_state = KAttributeAbout::enumCS_Stand;
 		m_lastState = KAttributeAbout::enumCS_Stand;
 		m_pAttrChangeSensor = NULL;
+		m_pAGH = KCommonAttrGroupHolder::Alloc();
 	}
 
 	KCharacter::~KCharacter(void)
 	{
+		if (m_pAGH)
+		{
+			KCommonAttrGroupHolder::Free((KCommonAttrGroupHolder*)m_pAGH);
+			m_pAGH = NULL;
+		}
 	}
 
 	void KCharacter::Breathe(int nInterval)
