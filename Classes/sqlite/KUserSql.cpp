@@ -10,7 +10,7 @@
 //#define  SQLITE_USER_CREATE "(name char(80) primary key,money integer)";
 #define  SQLITE_USER_CREATE "(name char(80) primary key ,\
 								cardStore blob,cardDeck0 blob,cardDeck1 blob,cardDeck2 blob,cardDeck3 blob,cardDeck4 blob,\
-								curDeck integer,criInfo blob,normalItem blob)";
+								curDeck integer,criInfo blob,normalItem blob,heroData blob)";
 
 enum player_field_enum
 {
@@ -24,6 +24,7 @@ enum player_field_enum
 	f_curDeck,
 	f_criInfo,
 	f_normalItem,
+	f_heroData,
 };
 
 int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_name)
@@ -33,14 +34,16 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 
 	LOAD_BLOB_FIELD(column_value[f_cardStore],record->cardStore,buf)
 	LOAD_BLOB_FIELD(column_value[f_normalItem],record->normalItem,buf)
+	LOAD_BLOB_FIELD(column_value[f_heroData],record->heroData,buf)
 
 	if(column_value[f_criInfo]){
-		CriPlayerInfo decInfo(0,0,0);
+		CriPlayerInfo decInfo(0,0,0,0);
 		int len = KSqlite::loadBlobBuf((char*)&decInfo,sizeof(decInfo),column_value[f_criInfo]);
 		if(len==sizeof(decInfo)){
 			record->exp = decInfo._exp;
 			record->money = decInfo._money;
 			record->pvpVal = decInfo._pvpVal;
+			record->power = decInfo._power;
 		}
 	}
 
@@ -56,9 +59,9 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 }
 
 
-bool KUserSql::UpdateCriVal(const char* userName,int money,int exp,int pvpVal)
+bool KUserSql::UpdateCriVal(const char* userName,tb_player_record* record)
 {
-	CriPlayerInfo criInfo(money,pvpVal,exp);
+	CriPlayerInfo criInfo(record->money,record->pvpVal,record->power,record->exp);
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set criInfo=? where name='%s'",SQLITE_USER_TABLE,userName);
 	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,(const char *)&criInfo,sizeof(criInfo));
@@ -81,12 +84,20 @@ bool KUserSql::UpdateDeckStore(const char* userName,tb_player_record* record)
 	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->cardStore.binData,record->cardStore.actualLength);
 }
 
-bool KUserSql::UpdateCardDeck(const char* userName,int index,const char* buf,int len)
+bool KUserSql::UpdateCardDeck(const char* userName,tb_player_record* record,int index)
 {
 	char sqlstr[128];
 
 	sprintf(sqlstr,"update %s set cardDeck%d=? where name='%s'",SQLITE_USER_TABLE,index,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,buf,len);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->cardDeck[index].binData,record->cardDeck[index].actualLength);
+}
+
+bool KUserSql::UpdateHeroData(const char* userName,tb_player_record* record)
+{
+	char sqlstr[128];
+
+	sprintf(sqlstr,"update %s set heroData=? where name='%s'",SQLITE_USER_TABLE,userName);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->heroData.binData,record->heroData.actualLength);
 }
 
 bool KUserSql::UpdateNormalBag(const char* userName,tb_player_record* record)
@@ -116,7 +127,7 @@ bool KUserSql::InsertUserData(const char* userName)
 	char sqlcount[128];
 	sprintf(sqlcount,"select count(*) from %s where name = '%s'",SQLITE_USER_TABLE,userName);
 	char sqlInsert[128];
-	sprintf(sqlInsert,"insert into %s (name,curDeck) values ( '%s',0)",SQLITE_USER_TABLE,userName);
+	sprintf(sqlInsert,"insert into %s (name,curDeck) values ( '%s',-1)",SQLITE_USER_TABLE,userName);
 	execSaveSqlStruct execSql;
 	execSql._table = SQLITE_USER_TABLE;
 	execSql._sql_count = sqlcount;

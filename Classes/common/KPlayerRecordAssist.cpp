@@ -6,6 +6,7 @@
 #include "../Quest/KPlayerQuestManager.h"
 #include "../Quest/KClientQuestSession.h"
 #include "../Quest/KQuestNew.h"
+#include "../PlayerCard/KPlayerDeck.h"
 
 using namespace KItemAbout;
 namespace KPlayerRecordAssist
@@ -27,6 +28,30 @@ bool syncBagToRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	}
 	
 	return KUserSql::UpdateNormalBag( player->GetName(),record);
+}
+
+bool addCardDeck(tb_player_record* record,KIntegerList& lst)
+{
+	int index = 0;
+	for(index;index<MAX_DECK_NUM;index++){
+		if(record->cardDeck[index].actualLength==0) break;
+	}
+	if(index==MAX_DECK_NUM) return false;
+	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it){
+		int id = *it;
+		record->cardDeck[index].Append(&id,sizeof(int));
+	}
+	record->updateMask(tb_player_record::_CARDDECK0+index);
+	return true;
+}
+
+bool addHero(tb_player_record* record,KHeroDef* hero)
+{
+	if(record->heroData.actualLength>=MAX_HERO_NUM*sizeof(KHeroDef)) return false;
+
+	record->heroData.Append(hero,sizeof(KHeroDef));
+	record->updateMask(tb_player_record::_HERODATA);
+	return true;
 }
 
 bool addStoreCard(tb_player_record* record,int id,int count)
@@ -161,7 +186,7 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 void AddExp(tb_player_record* record,int val)
 {
 	record->exp += val;
-	record->updateMask(tb_player_record::_EXP);
+	record->updateMask(tb_player_record::_CRI);
 }
 
 }

@@ -159,7 +159,6 @@
     <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KGameDef.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KHeroSkillMgr.cpp" />
-    <ClCompile Include="..\Classes\GameLogic\KPlayerDeck.cpp" />
     <ClCompile Include="..\Classes\GameRecord\KRecordData.cpp" />
     <ClCompile Include="..\Classes\GameRecord\KRecordFile.cpp" />
     <ClCompile Include="..\Classes\GameRecord\KGameRecordMgr.cpp" />
@@ -202,6 +201,8 @@
     <ClCompile Include="..\Classes\KNet\KSocketFacade.cpp" />
     <ClCompile Include="..\Classes\KNet\KUserData.cpp" />
     <ClCompile Include="..\Classes\KTouchDispatcher.cpp" />
+    <ClCompile Include="..\Classes\PlayerCard\KPlayerCardDepot.cpp" />
+    <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp" />
     <ClCompile Include="..\Classes\Quest\FQuest.cpp" />
     <ClCompile Include="..\Classes\Quest\KClientQuestSession.cpp" />
     <ClCompile Include="..\Classes\Quest\KPlayerQuestManager.cpp" />
@@ -306,7 +307,6 @@
     <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h" />
     <ClInclude Include="..\Classes\GameLogic\KGameDef.h" />
     <ClInclude Include="..\Classes\GameLogic\KHeroSkillMgr.h" />
-    <ClInclude Include="..\Classes\GameLogic\KPlayerDeck.h" />
     <ClInclude Include="..\Classes\GameRecord\KRecordData.h" />
     <ClInclude Include="..\Classes\GameRecord\KRecordFile.h" />
     <ClInclude Include="..\Classes\GameRecord\KGameRecordMgr.h" />
@@ -357,6 +357,8 @@
     <ClInclude Include="..\Classes\KNet\PacketGate\KPacketGate.h" />
     <ClInclude Include="..\Classes\KNet\PacketGate\KPacket_Segment_Define.h" />
     <ClInclude Include="..\Classes\KTouchDispatcher.h" />
+    <ClInclude Include="..\Classes\PlayerCard\KPlayerCardDepot.h" />
+    <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h" />
     <ClInclude Include="..\Classes\Quest\FQuest.h" />
     <ClInclude Include="..\Classes\Quest\KClientQuestSession.h" />
     <ClInclude Include="..\Classes\Quest\KPlayerQuestManager.h" />

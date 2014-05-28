@@ -8,7 +8,7 @@ struct KHeroDef{
 		int _skillId;
 		int _lev;
 	};
-	DWORD _exp;
+	int _deck;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
 	int _heroId;
 	void rndGenerate(int id);

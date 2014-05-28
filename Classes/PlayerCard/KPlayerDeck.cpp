@@ -4,7 +4,7 @@
 void KHeroDef::rndGenerate(int id)
 {
 	_heroId = id;
-	_exp = 0;
+	_deck = -1;
 	memset(_skill,0,sizeof(_skill));
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);
@@ -15,6 +15,7 @@ void KHeroDef::rndGenerate(int id)
 
 void KPlayerDeck::CreateOnDeckDef(int id)
 {
+	int n = sizeof(KHeroDef);
 	m_cardList.clear();
 	KDeckDefStatic* deck = KGameStaticMgr::getSingleton().GetDeckDef(id);
 	deck->GenCardList(m_cardList);

@@ -21,13 +21,12 @@ namespace KPlayerRecordAssist
 	};
 	typedef System::Collections::KDynSortedArray<KDBBagItemUnit*,itemCmp> DBBagItemSortArray;
 
-
-
 	bool syncBagToRecord(KWorldObjAbout::KPlayer*,tb_player_record* record);
 	bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record);
 	bool fillDBBuf(char* des,int size,char* src,int len);
 	bool addStoreCard(tb_player_record* record,int id,int num);
-
+	bool addHero(tb_player_record* record,KHeroDef* hero);
+	bool addCardDeck(tb_player_record* record,KIntegerList& lst);
 	//money
 	void AddExp(tb_player_record* record,int val);
 	//quest

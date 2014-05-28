@@ -407,6 +407,6 @@ KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank)
 		if(skill->GetRank()==rank) tmpMap[pos++] = skill;
 	}
 	if(tmpMap.empty()) return NULL;
-	int nRand = g_rnd.GetRandom(0,tmpMap.size()+1);
+	int nRand = g_rnd.GetRandom(0,tmpMap.size());
 	return tmpMap[nRand];
 }

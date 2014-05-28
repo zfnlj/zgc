@@ -17,23 +17,6 @@ template <typename BinaryStruct, int size> class DatabaseBinaryStruct : public B
 #define MAX_PLAYER_QUEST_NUM 5
 struct tb_player_record
 {
-	enum field_enum
-	{
-		f_playerID,
-		f_lastLoginIp,
-		f_lastLoginTime,
-		f_lastLogoutTime,
-		f_money,
-		f_cardStore,
-		f_cardDeck0,
-		f_cardDeck1,
-		f_cardDeck2,
-		f_cardDeck3,
-		f_cardDeck4,
-		f_curDeck,
-		f_pvpVal,
-		f_exp,
-	};
 	enum MaskBit
 	{
 		_MONEY			= BIT(0),	//
@@ -45,22 +28,27 @@ struct tb_player_record
 		_CARDDECK3		= BIT(6),
 		_CARDDECK4		= BIT(7),
 		_CURDECK        = BIT(8),
-		_PVPVAL			= BIT(9),
-		_EXP			= BIT(10),
-		_CRI			= BIT(11),
+		_HERODATA		= BIT(9),
+		_CRI			= BIT(10),
 	};
 	tb_player_record(){
 		mUpdateMask = 0;
 	}
 	void init(){
-		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money = curDeck = pvpVal = exp = 0;
+		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money = curDeck = pvpVal = power = exp = 0;
 		cardStore.actualLength = 0;
+		heroData.actualLength = 0;
 		for(int i=0;i<MAX_DECK_NUM;i++){
 			cardDeck[i].actualLength=0;
 		}
 		normalItem.actualLength = 0;
 	}
 	int GetExp(){ return exp;}
+	int GetCurDeck(){ return curDeck;}
+	void SetCurDeck(int deck){
+		curDeck = deck;
+		updateMask(_CURDECK);
+	}
 	DWORD mUpdateMask;
 	KObjectID playerID;
 	DWORD lastLoginIp;
@@ -69,10 +57,12 @@ struct tb_player_record
 	
 	KDBBinary<2048> cardStore;
 	KDBBinary<256> cardDeck[MAX_DECK_NUM];
+	KDBBinary<400>  heroData; //10 hero
 	int money;
 	int curDeck;
 	int pvpVal;
 	int exp;
+	int power;
 	KDBBinary<800> normalItem;
 	System::Sync::KSync_CS m_lock;
 

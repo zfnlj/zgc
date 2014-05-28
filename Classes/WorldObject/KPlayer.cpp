@@ -101,6 +101,7 @@ namespace KWorldObjAbout
 		m_pBagManager->SetMasterID(m_id);
 		m_playerRecord.init();
 		m_questRecord.init();
+		m_cardDepot.init(&m_playerRecord);
 		return true;
 	}
 
@@ -168,7 +169,7 @@ namespace KWorldObjAbout
 	{
 		if(m_playerRecord.mUpdateMask&tb_player_record::_CRI){
 			m_playerRecord.money = m_money.m_money;
-			KUserSql::UpdateCriVal(GetName(),m_playerRecord.money,m_playerRecord.exp,m_playerRecord.pvpVal);
+			KUserSql::UpdateCriVal(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_CRI);
 		}
 		
@@ -180,6 +181,21 @@ namespace KWorldObjAbout
 			KUserSql::UpdateDeckStore(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_CARDSTORE);
 		}
+
+		if(m_playerRecord.mUpdateMask&tb_player_record::_HERODATA){
+			KUserSql::UpdateHeroData(GetName(),&m_playerRecord);
+			m_playerRecord.updateUnMask(tb_player_record::_HERODATA);
+		}
+	#define CARD_DECK_UPDATE(mask)								\
+		if(m_playerRecord.mUpdateMask&mask){						\
+			KUserSql::UpdateCardDeck(GetName(),&m_playerRecord,mask-tb_player_record::_CARDDECK0);\
+			m_playerRecord.updateUnMask(mask);						\
+		}
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK0)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK1)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK2)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK3)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK4)
 
 	#define  QUEST_RECORD_ID_UPDATE( mask,fieldName,val)			\
 		if(m_questRecord.mUpdateMask&mask){							\

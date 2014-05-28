@@ -411,8 +411,11 @@
     <ClCompile Include="..\Classes\UI\StageWaitScene.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameLogic\KPlayerDeck.cpp">
-      <Filter>GameLogic</Filter>
+    <ClCompile Include="..\Classes\PlayerCard\KPlayerCardDepot.cpp">
+      <Filter>PlayerCard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp">
+      <Filter>PlayerCard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -869,8 +872,11 @@
     <ClInclude Include="..\Classes\UI\StageWaitScene.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameLogic\KPlayerDeck.h">
-      <Filter>GameLogic</Filter>
+    <ClInclude Include="..\Classes\PlayerCard\KPlayerCardDepot.h">
+      <Filter>PlayerCard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h">
+      <Filter>PlayerCard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -957,6 +963,9 @@
     </Filter>
     <Filter Include="DB">
       <UniqueIdentifier>{aad9a937-a1ad-46da-87e2-a172a3f884de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayerCard">
+      <UniqueIdentifier>{e01cada3-6abe-4075-9188-e0f1961b99f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
