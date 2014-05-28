@@ -1,3 +1,4 @@
-ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Photo
-10001	齐桓公	1	2	0	30	0	绝对防御	绝对防御:抵抗一次伤害	pic_10001.jpg
-10002	太子丹	1	2	0	30	water	治疗术	治疗术：治疗2点生命值	pic_10002.jpg
+ID	Name	Atk	Hp	Race	Desc	Detail	Photo
+10001	齐桓公	0	30	gold	0	0	pic_10001.jpg
+10002	太子丹	0	30	water	0	0	pic_10002.jpg
+10003	赵武灵王	0	30	fire	0	0	pic_10003.jpg

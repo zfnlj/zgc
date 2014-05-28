@@ -234,10 +234,11 @@ void KActionMgr::onDestory(void)
 	m_ActionArr.removeAllObjects();
 }
 
-bool KActionMgr::ExistAction(const char* name)
+K3DActionParam* KActionMgr::ExistAction(const char* name)
 {
-	if(FindAction(name)) return true;
-	return (FindActionParam(name)!=NULL);
+	KAction* pAction = FindAction(name);
+	if(pAction) return pAction->GetParam();
+	return FindActionParam(name);
 }
 
 KAction* KActionMgr::FindAction(const char* name)

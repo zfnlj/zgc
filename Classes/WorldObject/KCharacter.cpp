@@ -40,12 +40,12 @@ namespace KWorldObjAbout
 
 	int KCharacter::GetAttrValue(int idx) const
 	{
-		return 1;
+		return m_pAGH->GetAttrValue(idx);
 	}
 
 	void KCharacter::SetAttrValue(int idx, int val)
 	{
-		//m_pAGH->SetAttrValue(idx, val, 0);
+		m_pAGH->SetAttrValue(idx, val, 0);
 	}
 
 	bool KCharacter::IsKindOf(eWorldObjectKind flag) const

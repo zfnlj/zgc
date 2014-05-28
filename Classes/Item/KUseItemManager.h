@@ -5,16 +5,6 @@
 #include <System/Memory/KAlloc.h>
 #include "Inc/Lua/KLuaWrap.h"
 
-// 未接任务相关
-struct AvailQuestDesc
-{
-	int m_nQuestId;
-	int m_nLevel;
-	DWORD m_dwNpcID;
-	int m_nNationality;
-	int m_nMinLevelLimit;
-	int m_nMaxLevelLimit;
-};
 namespace KItemAbout
 {
 class KUseItem;

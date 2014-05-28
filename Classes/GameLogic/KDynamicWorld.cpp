@@ -59,10 +59,12 @@ void KDynamicWorld::ShowSystemMsg(int id)
 
 KWorldObjAbout::KPlayer* KDynamicWorld::GetPlayer(int id)
 {
-#ifdef _USE_COCOS2DX
-	if(id==0) return KMainPlayer::RealPlayer();
-#endif
-	return NULL; //TBD
+	return KMainPlayer::RealPlayer();
+
+//#ifdef _USE_COCOS2DX
+//	if(id==0) return KMainPlayer::RealPlayer();
+//#endif
+//	return NULL; //TBD
 }
 
 #ifdef _USE_COCOS2DX

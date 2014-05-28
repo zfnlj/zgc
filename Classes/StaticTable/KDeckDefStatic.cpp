@@ -116,6 +116,7 @@ void KDeckDefStatic::FillOnDynamicCardDef(DynamicCardDef* def,KIntegerList& lst)
 	KIntegerList tmpLst,tmpLst2;
 	KGameStaticMgr::getSingleton().FilterCards(tmpLst,def->_def,def->_race,def->_rank); //选找出符合条件的卡牌
 	_RndPick(tmpLst,tmpLst2,def->_num);
+	CCAssert(tmpLst2.size()==def->_num , "Parse dynamic def error!");
 	for(KIntegerList::iterator it=tmpLst2.begin();it!=tmpLst2.end();it++)
 	{
 		lst.push_back(*it);

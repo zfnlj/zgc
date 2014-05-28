@@ -95,22 +95,10 @@ void KGameResultPanel::DoClickSlot(CCObject* sender)
 		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
 		pSelect->setVisible(i==selectId);
 	}
+	KMainPlayer::RealPlayer()->UpdateAttrValue(88,selectId);
 	m_bSelectGift = false;
 }
 
-bool KGameResultPanel::DoSelectGift()
-{
-	if(!m_bSelectGift) return true;
-	int pos = -1;
-	for(int i=0; i<3; i++)
-	{
-		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
-		if(pSelect->isVisible()) pos = i;
-	}
-	if(pos<0) return false;
-	KMainPlayer::RealPlayer()->UpdateAttrValue(88,pos);
-	return true;
-}
 void KGameResultPanel::DoClickContinue(CCObject* sender)
 {
 	if(m_bSelectGift) return;
@@ -228,7 +216,7 @@ void KGameResultPanel::updatePanel()
 bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 {
 	char buf[64]={0};
-	pQuest->GetSelectGift(buf,63);
+	pQuest->GetSelectGiftList(buf,63);
 	m_bSelectGift = (strlen(buf)>0)? true:false;
 	if(!m_bSelectGift) return false;
 

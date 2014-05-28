@@ -111,7 +111,7 @@ public:
 	EndDef
 };
 
-//DECLARE_SIMPLE_TYPE(KUseItem::EvtReg);
+DECLARE_SIMPLE_TYPE(KUseItem::EvtReg);
 };
 #endif
 

@@ -44,7 +44,7 @@ public:
 
 	void LimitClassAction(KActionStatic::classEnum cls);
 	K3DActionParam* FindActionParam(const char* name);
-	bool		ExistAction(const char* name);
+	K3DActionParam*	ExistAction(const char* name);
 	KAction*	FindAction(const char* name);
 	void        LimitAlive(const char* name);//¥ŸÀ¿
 

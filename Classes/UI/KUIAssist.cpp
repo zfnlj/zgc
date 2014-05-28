@@ -608,8 +608,8 @@ void KUIAssist::_playClickCardAction(KCardInst* card)
 {
 	if(!card) return;
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_card");
-	if(pCurClickCardAction && pCurClickCardAction->GetParam()->GetDesId(0)==card->GetRealId()) return;
+	K3DActionParam* pCurClickCardParam = actor.GetActionMgr().ExistAction("click_card");
+	if(pCurClickCardParam && pCurClickCardParam->GetDesId(0)==card->GetRealId()) return;
 	K3DActionParam param;
 	param.init("click_card");
 	param.SetDestVal(card->GetRealId(),0);
@@ -619,8 +619,8 @@ void KUIAssist::_playClickCardAction(KCardInst* card)
 void KUIAssist::_playClickSlotAction(int slot)
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_fight_slot");
-	if(pCurClickCardAction && pCurClickCardAction->GetParam()->GetDesId(0)==slot) return;
+	K3DActionParam* pCurClickSlotParam = actor.GetActionMgr().ExistAction("click_fight_slot");
+	if(pCurClickSlotParam && pCurClickSlotParam->GetDesId(0)==slot) return;
 
 	K3DActionParam param;
 	param.init("click_fight_slot");
@@ -632,16 +632,14 @@ void KUIAssist::_playClickSlotAction(int slot)
 void KUIAssist::_playClickFightArea()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_fight_area");
-	if(pCurClickCardAction) return;
+	if(actor.GetActionMgr().ExistAction("click_fight_area")) return;
 	actor.GetActionMgr().PlayAction("click_fight_area");
 }
 
 void KUIAssist::_playClickTurnEnd()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	KAction* pCurClickCardAction = actor.GetActionMgr().FindAction("click_turnend_but");
-	if(pCurClickCardAction) return;
+	if(actor.GetActionMgr().ExistAction("click_turnend_but")) return;
 	actor.GetActionMgr().PlayAction("click_turnend_but");
 }
 
@@ -674,9 +672,9 @@ void KUIAssist::_playAdviceMsg(int id)
 void KUIAssist::_playLessonMsg(int id)
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
-	KAction* pTalkAction = actor.GetActionMgr().FindAction("hero_talk");
-	if(pTalkAction && pTalkAction->GetParam()->GetDesId(0)==id) return;
+	K3DActionParam* pCurTalkParam = actor.GetActionMgr().ExistAction("hero_talk");
 
+	if(pCurTalkParam && pCurTalkParam->GetDesId(0)==id) return;
 	actor.GetActionMgr().LimitAlive("hero_talk");
 	K3DActionParam param;
 	param.init("hero_talk");

@@ -16,6 +16,7 @@
 #include "../common/KPlayerRecordAssist.h"
 #include "../Item/KBagManager.h"
 #include "../VirtualService.h"
+#include "../Item/KUseItemManager.h"
 
 using namespace KAttributeAbout;
 using namespace System::Collections;
@@ -46,7 +47,8 @@ const char* KQuestNew::m_luaMethods[lua_Count] = {
 	"NoFinishDesc",
 	"CanSee",
 	"CanDoThis",
-	"SelectGift"
+	"UseGift",
+	"SelectGiftList"
 };
 
 KQuestNew::KQuestNew()
@@ -851,16 +853,30 @@ void KQuestNew::GetGiftDescWithExtraExp( KPlayer* pPlayer, KDString<512>& GiftSt
 bool KQuestNew::IsSelectGift()
 {
 	char buf[128]={0};
-	GetSelectGift(buf,127);
+	GetSelectGiftList(buf,127);
 	return strlen(buf)>0;
 }
-const char* KQuestNew::GetSelectGift(char* buf, int len)
+
+const char* KQuestNew::GetSelectGiftList(char* buf, int len)
 {
-	if(this->hasLua(lua_SelectGift))
+	if(this->hasLua(lua_SelectGiftList))
 	{
-		MethodName fn = this->luaMethod(lua_SelectGift);
+		MethodName fn = this->luaMethod(lua_SelectGiftList);
 		const char* f = fn.c_str();
 		LuaString str = LuaWraper.Call<LuaString>(f, this);
+		strcpy_k(buf, len, str.c_str());
+		return buf;
+	}
+	return "";
+}
+
+const char* KQuestNew::GetUseGift(KPlayer* pPlayer,char* buf, int len)
+{
+	if(this->hasLua(lua_UseGift))
+	{
+		MethodName fn = this->luaMethod(lua_UseGift);
+		const char* f = fn.c_str();
+		LuaString str = LuaWraper.Call<LuaString>(f, this,pPlayer);
 		strcpy_k(buf, len, str.c_str());
 		return buf;
 	}
@@ -1389,15 +1405,10 @@ void KQuestNew::OnGift()
 	{
 		//m_pPlayer->AddAchievement(m_achieveId, m_achievement);
 	}
-	m_itemGiftCount = 0;
-	if(this->hasLua(lua_GiftDesc))
-	{
-		MethodName fn = this->luaMethod(lua_GiftDesc);
-		const char* tmp = LuaWraper.Call<const char*>(fn.c_str(), this, m_pPlayer);
-		char sz[128]={0};
-		strcpy(sz,tmp);
-		SetAttr(KQuestAttr::items,sz);
-	}
+	char sz[128]={0};
+	const char* pUseGift = GetUseGift(m_pPlayer,sz,127);
+	int useItem = atoi(pUseGift);
+	if(useItem>0) KItemAbout::KUseItemManager::GetInstance()->UseItem(useItem,m_pPlayer->GetID());
 	if (m_itemGiftCount > 0)
 	{
 		for (BYTE i=0; i<m_itemGiftCount; i++)
