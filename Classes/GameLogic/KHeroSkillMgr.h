@@ -2,10 +2,11 @@
 #define _KHEROSKILLMGR_H
 #include "../StaticTable/KGameStatic.h"
 #include "../Inc/KTypeDef.h"
+#include "../PlayerCard/KPlayerDeck.h"
 
-#define MAX_HERO_SKILL_NUM  3
 class KBattleCtrlBase;
 class KBattleGuy;
+struct KHeroDef;
 class KHeroSkillMgr
 {
 	struct HeroSkill{
@@ -34,6 +35,7 @@ public:
 	void ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when);
 	HeroSkill* RndSelectSkill(KAbilityStatic::Enum_When when);
 
+	void SetHero(KHeroDef* pDef);
 	size_t serialize(KMemoryStream* so);
 	BOOL deserialize(KMemoryStream* si);
 	void init(KBattleGuy* guy){ m_Owner = guy;}

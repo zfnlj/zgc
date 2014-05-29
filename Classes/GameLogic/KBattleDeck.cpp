@@ -9,8 +9,9 @@
 #include "KBattleCtrlBase.h"
 #include "System/Misc/KStream.h"
 #include "../common/KCommonObj.h"
+#include "../PlayerCard/KPlayerCardDepot.h"
 
-
+#define  MAX_DECK_CARD_NUM 30
 int tmpCard[MAX_GAME_PLAY_CARD]={10002,20051,20045,20049,20050,20005,
 								 20004,20005,30001,20002,20002,20001,
 								 20007,20003,30003,30001,20002,20001,
@@ -51,43 +52,47 @@ void KBattleDeck::updateCardSlot(KCardInst* card)
 	}
 }
 
-
-void KBattleDeck::SetCurDeckDB(int* cardStore,int* cardDeck)
+bool KBattleDeck::createDeck(KPlayerCardDepot* pDepot)
 {
-	for(int i=0;i<MAX_GAME_PLAY_CARD;i++)
-	{
-		m_CurDeckDB[i] = cardStore[cardDeck[i]];
-	}
+	if(!pDepot) return false;
+	int heroId;
+	KIntegerList tmpLst;
+	if(!pDepot->PickCurDeck(heroId,tmpLst)) return false;
+	createDeck(heroId,tmpLst);
+	return true;
 }
 
-void KBattleDeck::initDeck(KDeckDefStatic* pDeckStatic)
+void KBattleDeck::createDeck(KDeckDefStatic* pDeckStatic)
 {
-	memset(m_CurDeckDB,0,sizeof(m_CurDeckDB));
-	m_CurDeckDB[0] = pDeckStatic->getHero();
 	KIntegerList tmpLst;
 	pDeckStatic->GenCardList(tmpLst,pDeckStatic->IsRnd());
-	int index = 1;
-	for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();++it,index++)
-	{
-		m_CurDeckDB[index] = *it;
-	}
+	createDeck(pDeckStatic->getHero(),tmpLst);
 }
 
-bool KBattleDeck::createCards(void)
+void KBattleDeck::createDeck(int heroId,KIntegerList& cardLst)
 {
+	Clear();
 
 	KCardInst* pHero = KCardInst::create();
-	if(m_CurDeckDB[0]==0) memcpy(m_CurDeckDB ,tmpCard,sizeof(tmpCard));
-
-	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(m_CurDeckDB[0]);
+	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(heroId);
 	pHero->init(g_inc++,m_Owner,pST);
 	pHero->m_attr.setSlot(KCardInst::enum_slot_hero);
 	AddCard(&m_HeroCardSet,pHero);
 
-	for(int i=1;i<MAX_GAME_PLAY_CARD;i++){
-		if(m_CurDeckDB[i]==0) break;
-		CreateCard(m_CurDeckDB[i],KCardInst::enum_slot_slot);
+	int num=0;
+	for(KIntegerList::iterator it=cardLst.begin();it!=cardLst.end();++it,num++){
+		if(num==MAX_DECK_CARD_NUM) break;
+		CreateCard(*it,KCardInst::enum_slot_slot);
 	}
+}
+
+bool KBattleDeck::createTestDeck(void)
+{
+	KIntegerList tmpLst;
+	for(int i=1;i<MAX_GAME_PLAY_CARD;i++){
+		tmpLst.push_back(tmpCard[i]);
+	}
+	createDeck(tmpCard[0],tmpLst);
 	return true;
 }
 
@@ -157,7 +162,6 @@ void KBattleDeck::FindFightingGuider(KCardInstList* lst)
 
 void KBattleDeck::Clear()
 {
-	memset(m_CurDeckDB,0,sizeof(m_CurDeckDB));
 	_clearCardList(&m_HeroCardSet);
 	_clearCardList(&m_HandCardSet);
 	_clearCardList(&m_FightCardSet);

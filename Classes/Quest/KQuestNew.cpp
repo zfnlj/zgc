@@ -518,7 +518,9 @@ KQuestSession* KQuestNew::GetSessionObj()
 bool KQuestNew::SetSession(const char* name, int val)
 {
 	bool ret = GetSessionObj()->SetSession(name, val) == TRUE;
-	if(ret) KDynamicWorld::getSingleton().onQuestSetSession(this);
+	if(ret) {
+		KDynamicWorld::getSingleton().onQuestSetSession(this);
+	}
 	return ret;
 }
 

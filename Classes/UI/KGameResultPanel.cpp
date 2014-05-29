@@ -79,9 +79,9 @@ void KGameResultPanel::onQuestPreOver(KQuestNew* pQuest)
 void KGameResultPanel::ShowPanel()
 {
 	if(!m_Panel->getParent()) m_layer->addWidget(m_Panel);
-	m_Panel->setScale(0.1);
+	m_Panel->setScale(0.1f);
 	m_Panel->setAnchorPoint(ccp(0.5,0.5));
-	CCActionInterval*  actionBy = CCScaleTo::create(0.3, 1, 1);
+	CCActionInterval*  actionBy = CCScaleTo::create(0.3f, 1, 1);
 	m_Panel->runAction(actionBy);
 	m_Panel->setPosition(KUIAssist::_getScreenCenter());
 	updatePanel();
@@ -146,10 +146,7 @@ void KGameResultPanel::updatePanel()
 	UIWidget* pEqualWidget = UIHelper::seekWidgetByName(m_Panel,"equal_icon");
 	UILabel* pMoneyTxt = (UILabel*) UIHelper::seekWidgetByName(m_Panel,"money_val");
 	UILabel* pExpTxt =  (UILabel*)UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	sprintf(buf,"%d",m_result._money);
-	pMoneyTxt->setText(buf);
-	sprintf(buf,"%d",m_result._exp);
-	pExpTxt->setText(buf);
+
 	for(int i=0; i<3; i++)
 	{
 		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
@@ -191,6 +188,11 @@ void KGameResultPanel::updatePanel()
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
 	}
 
+	sprintf(buf,"%d",m_result._money);
+	pMoneyTxt->setText(buf);
+	sprintf(buf,"%d",m_result._exp);
+	pExpTxt->setText(buf);
+
 	for(int i=0; i<3; i++)
 	{
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
@@ -200,13 +202,13 @@ void KGameResultPanel::updatePanel()
 	pSelectAward->setVisible(false);
 
 	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
-	if( pQuest&&pQuest->m_money>0){
+	if( m_result._money>0){
 		pMoneyVal->setVisible(true);
 	}else{
 		pMoneyVal->setVisible(false);
 	}
 	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	if( pQuest&&pQuest->m_exp>0){
+	if( m_result._exp>0){
 		pExpVal->setVisible(true);
 	}else{
 		pExpVal->setVisible(false);

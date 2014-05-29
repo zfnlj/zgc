@@ -186,6 +186,11 @@ namespace KWorldObjAbout
 			KUserSql::UpdateHeroData(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_HERODATA);
 		}
+		if(m_playerRecord.mUpdateMask&tb_player_record::_CURDECK){							
+			KUserSql::UpdateIntegerVal(GetName(),"curDeck",m_playerRecord.curDeck);
+			m_playerRecord.updateUnMask(tb_player_record::_CURDECK);						
+		}
+
 	#define CARD_DECK_UPDATE(mask)								\
 		if(m_playerRecord.mUpdateMask&mask){						\
 			KUserSql::UpdateCardDeck(GetName(),&m_playerRecord,mask-tb_player_record::_CARDDECK0);\
@@ -202,6 +207,9 @@ namespace KWorldObjAbout
 			KUserQuestSql::UpdateIntegerVal(GetName(),fieldName,val);\
 			m_questRecord.updateUnMask(mask);						\
 		}
+
+		
+		
 
 		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID0,"Qid_0",m_questRecord.qid[0])
 		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID1,"Qid_1",m_questRecord.qid[1])

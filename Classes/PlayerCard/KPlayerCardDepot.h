@@ -7,6 +7,7 @@
 #define MAX_GUY_CARD_NUM 512
 
 struct tb_player_record;
+class KBattleDeck;
 class KPlayerCardDepot
 {
 public:
@@ -14,8 +15,10 @@ public:
 	~KPlayerCardDepot(void){}
 	bool CreateOnDeckDef(int id);
 	void init(tb_player_record* record){ m_record = record;}
-	bool FillCurDeck(int* arr,KHeroDef& hero);
-	bool GetCardDeck(int index,int* buf,KHeroDef& hero);
+	bool GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero);
+	bool PickCurDeck(int& hero,KIntegerList& tmpLst);
+	bool PickCurHero(KHeroDef& hero);
+	KHeroDef* FindHero(int id);
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;

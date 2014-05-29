@@ -11,14 +11,17 @@
 class KCardInst;
 class KBattleGuy;
 class KMemoryStream;
+class KPlayerCardDepot;
 class KBattleDeck
 {
 public:
 	~KBattleDeck();
 
 	bool initGuy(KBattleGuy* guy);
-	bool createCards(void);
-	void initDeck(KDeckDefStatic* pDeckStatic);
+	bool createTestDeck(void);
+	void createDeck(int heroId,KIntegerList& cardLst);
+	void createDeck(KDeckDefStatic* pDeckStatic);
+	bool createDeck(KPlayerCardDepot* pDepot);
 	void Clear();
 	void onTurnBegin(KBattleCtrlBase*);
 	void OnTurnEnd(KBattleCtrlBase* ctrl);
@@ -62,7 +65,6 @@ public:
 	BOOL deserialize(KMemoryStream* si);
 	BOOL deserializeCardList(KMemoryStream* si,KCardInstList& lst);
 	void updateCardSlot(KCardInst* card);
-	void SetCurDeckDB(int* cardStore,int* cardDeck);
 	void RemoveCard(KCardInst* card);
     int GetEmptyFightSlot();
 	int GetEmptyFightSlotNum();
@@ -81,8 +83,6 @@ private:
 	KCardInstList m_TombCardSet;  //·Ø³¡ÅÆ
     KCardInstList m_SecretCardSet;
 	KBattleGuy* m_Owner;
-
-	int		m_CurDeckDB[MAX_GAME_PLAY_CARD];
 };
 
 #endif // __HELLOWORLD_SCENE_H__

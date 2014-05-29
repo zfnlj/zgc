@@ -28,7 +28,6 @@ void KZGThread::Finalize()
 
 void KZGThread::Execute()
 {
-	DWORD now;
 	int waitTicks;
 	int checkInterval = 1000;
 	DWORD lastCheckTick = GetTickCount();

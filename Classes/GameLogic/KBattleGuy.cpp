@@ -7,6 +7,10 @@
 #ifdef _USE_COCOS2DX
 #include "../GameRecord/KGameRecordMgr.h"
 #endif
+#include "../PlayerCard/KPlayerCardDepot.h"
+#include "../WorldObject/KMainPlayer.h"
+#include "../WorldObject/KPlayer.h"
+
 #define MAX_TURN_PLAY_TIME 2*60
 
 KBattleGuy::KBattleGuy()
@@ -42,16 +46,26 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	m_Deck.Clear();
 	//m_heroSkillMgr.tmpInit(this);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DECKINIT,(unsigned long long)&m_FacadeObj,(unsigned long long)m_battleCtrl->GetWorld());
+
+	KPlayerCardDepot* playerCardDepot = NULL;
+	if(m_battleCtrl->GetMainPlayer()->GetImp()==this) playerCardDepot = KMainPlayer::RealPlayer()->GetCardDepot();
 	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
+
 	if(pDeckDef){
-		m_Deck.initDeck(pDeckDef);
-		m_Deck.createCards();
+		m_Deck.createDeck(pDeckDef);
 		m_Deck.GetHero()->CurHpSet(pDeckDef->getHeroHp());
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
 		m_Deck.DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
+	}else if(m_Deck.createDeck(playerCardDepot)){
+		m_attr.setMaxRes(1);
+		m_attr.setCurRes(1);
+		KHeroDef heroDef;
+		playerCardDepot->PickCurHero(heroDef);
+		m_heroSkillMgr.SetHero(&heroDef);
+		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 	}else{
-		m_Deck.createCards();
+		m_Deck.createTestDeck();
 		m_attr.setMaxRes(10);
 		m_attr.setCurRes(10);
 		if(bFirst){ //先手抓三张，后手抓四张

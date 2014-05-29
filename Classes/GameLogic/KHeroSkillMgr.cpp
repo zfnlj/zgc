@@ -2,6 +2,7 @@
 #include "../common/KCommonObj.h"
 #include "KBattleGod.h"
 
+
 int KHeroSkillMgr::HeroSkill::getRateVal()
 {
 	return _skill->GetRateVal(_lev);
@@ -60,6 +61,7 @@ BOOL KHeroSkillMgr::deserialize(KMemoryStream* si)
 
 void KHeroSkillMgr::addSkill(int id,int lev)
 {
+	if(lev<1) return;
 	for(int i=0;i< MAX_HERO_SKILL_NUM;i++){
 		if(m_skill[i].IsEmpty()){
 			m_skill[i].init(id,lev);
@@ -90,4 +92,12 @@ KHeroSkillMgr::HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_Whe
 		if(nRand<=val) return &m_skill[i];
 	}
 	return NULL;
+}
+
+void KHeroSkillMgr::SetHero(KHeroDef* pDef)
+{
+	if(!pDef) return;
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		addSkill(pDef->_skill[i]._skillId,pDef->_skill[i]._lev);
+	}
 }

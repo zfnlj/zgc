@@ -47,7 +47,8 @@ public:
 	K3DActionParam*	ExistAction(const char* name);
 	KAction*	FindAction(const char* name);
 	void        LimitAlive(const char* name);//促死
-
+	bool		FoundAction(KActionStatic::classEnum cls);
+	bool FoundClassAction();
 	virtual void breathe(float deltaTime);		// 更新动作组，需要查找优先级最高的动作组播动作，并且并行的播放特效
 	/// dwExclusiveType valued 0 will not exclude any action
 
@@ -66,7 +67,7 @@ private:
 	bool MergeCastAction(KActionStatic* pST,K3DActionParam* p);
 	void PlayCacheAction();
 	void PlaySlotAction();
-	bool FoundClassAction();
+	
 	void LimitSameClassAction(KActionStatic* pST);
 };
 

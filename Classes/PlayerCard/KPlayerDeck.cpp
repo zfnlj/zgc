@@ -5,7 +5,6 @@
 void KHeroDef::rndGenerate(int id)
 {
 	_heroId = id;
-	_deck = -1;
 	_Id = STATIC_DATA_INC();
 	memset(_skill,0,sizeof(_skill));
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){

@@ -290,5 +290,5 @@ bool KMainPlayer::OnEventImp(KEventAbout::KEventID id, const KEventAbout::KEvent
 		KEventAbout::KEDQuestSession* pQuestSession = (KEventAbout::KEDQuestSession*)pData;
 		KPlayerRecordAssist::UpdataQuestSession(&m_pRealPlayer->m_questRecord,pQuestSession->m_pQuest);
 	}
-	return true;
+	return false;
 }

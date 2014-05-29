@@ -8,7 +8,6 @@ struct KHeroDef{
 		int _skillId;
 		int _lev;
 	};
-	int _deck;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
 	int _heroId;
 	int _Id;

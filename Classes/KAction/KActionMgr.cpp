@@ -271,6 +271,16 @@ void KActionMgr::LimitSameClassAction(KActionStatic* pST) //class 等级高的action
 	}
 }
 
+bool KActionMgr::FoundAction(KActionStatic::classEnum cls)
+{
+	CCObject* pObj = NULL;
+	CCARRAY_FOREACH(&m_ActionArr, pObj){
+		KAction* pAction = (KAction*)pObj;
+		if(pAction->GetClass()==cls) return true;
+	}
+	return false;
+}
+
 bool KActionMgr::FoundClassAction()
 {
 	CCObject* pObj = NULL;

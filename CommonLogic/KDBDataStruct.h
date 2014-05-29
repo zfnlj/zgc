@@ -35,7 +35,8 @@ struct tb_player_record
 		mUpdateMask = 0;
 	}
 	void init(){
-		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money = curDeck = pvpVal = power = exp = 0;
+		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money =  pvpVal = power = exp = 0;
+		curDeck = -1;
 		cardStore.actualLength = 0;
 		heroData.actualLength = 0;
 		for(int i=0;i<MAX_DECK_NUM;i++){

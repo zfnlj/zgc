@@ -610,6 +610,11 @@ void KUIAssist::_playClickCardAction(KCardInst* card)
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	K3DActionParam* pCurClickCardParam = actor.GetActionMgr().ExistAction("click_card");
 	if(pCurClickCardParam && pCurClickCardParam->GetDesId(0)==card->GetRealId()) return;
+	if(actor.GetActionMgr().FoundClassAction()){
+		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+		actor.GetActionMgr().breathe(0.1);
+		return;
+	}
 	K3DActionParam param;
 	param.init("click_card");
 	param.SetDestVal(card->GetRealId(),0);
@@ -621,7 +626,11 @@ void KUIAssist::_playClickSlotAction(int slot)
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	K3DActionParam* pCurClickSlotParam = actor.GetActionMgr().ExistAction("click_fight_slot");
 	if(pCurClickSlotParam && pCurClickSlotParam->GetDesId(0)==slot) return;
-
+	if(actor.GetActionMgr().FoundClassAction()){
+		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+		actor.GetActionMgr().breathe(0.1);
+		return;
+	}
 	K3DActionParam param;
 	param.init("click_fight_slot");
 	param.SetDestVal(slot,0);
@@ -633,6 +642,11 @@ void KUIAssist::_playClickFightArea()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	if(actor.GetActionMgr().ExistAction("click_fight_area")) return;
+	if(actor.GetActionMgr().FoundClassAction()){
+		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+		actor.GetActionMgr().breathe(0.1f);
+		return;
+	}
 	actor.GetActionMgr().PlayAction("click_fight_area");
 }
 
@@ -640,6 +654,11 @@ void KUIAssist::_playClickTurnEnd()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	if(actor.GetActionMgr().ExistAction("click_turnend_but")) return;
+	if(actor.GetActionMgr().FoundClassAction()){
+		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+		actor.GetActionMgr().breathe(0.1f);
+		return;
+	}
 	actor.GetActionMgr().PlayAction("click_turnend_but");
 }
 
@@ -647,6 +666,7 @@ void KUIAssist::_stopClickAction()
 {
 	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
 	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+	actor.GetActionMgr().breathe(0.1f);
 }
 
 static int lastAdviceId =0;

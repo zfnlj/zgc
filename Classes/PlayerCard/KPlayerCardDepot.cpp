@@ -19,7 +19,8 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 	if(m_record->GetCurDeck()<0) m_record->SetCurDeck(0);
 
 	cardList.push_front(hero._Id);
-	KPlayerRecordAssist::addCardDeck(m_record,cardList);
+	cardList.push_back(0); // for 8 size,useless;
+	KPlayerRecordAssist::insertCardDeck(m_record,cardList);
 	return true;
 }
 
@@ -36,19 +37,49 @@ bool KPlayerCardDepot::FillHeroDef(int heroId,KHeroDef& hero)
 	return false;
 }
 
-bool KPlayerCardDepot::GetCardDeck(int index,int* buf,KHeroDef& hero)
+KHeroDef* KPlayerCardDepot::FindHero(int id)
 {
-	if(index <0 || index >=MAX_DECK_NUM) return false;
-	if(m_record->cardDeck[index].actualLength!=31*sizeof(int)) return false;
-	int* pDeck = (int*)m_record->cardDeck[index].binData;
-	int heroId = *pDeck;
-	pDeck++;
-	if(!FillHeroDef(heroId,hero)) return false;
-	memcpy(buf,pDeck,sizeof(int)*30);
+	int heroNum = m_record->heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
+	for(int i=0;i<heroNum;i++){
+		if(pHero->_Id==id) return pHero;
+	}
+	return NULL;
+}
+
+bool KPlayerCardDepot::PickCurHero(KHeroDef& hero)
+{
+	if(m_record->curDeck<0) return false;
+	int cardNum = m_record->cardDeck[m_record->curDeck].actualLength/sizeof(KHeroDef);
+	if(cardNum<1) return false;
+	int* pDeck = (int*)m_record->cardDeck[m_record->curDeck].binData;
+	KHeroDef* pDef = FindHero(pDeck[0]);
+	if(!pDef) return false;
+	memcpy(&hero,pDef,sizeof(KHeroDef));
 	return true;
 }
 
-bool KPlayerCardDepot::FillCurDeck(int* arr,KHeroDef& hero)
+bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero)
 {
-	return GetCardDeck(m_record->curDeck,arr,hero);
+	if(index <0 || index >=MAX_DECK_NUM) return false;
+	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
+	if(cardNum<1) return false;
+
+	int* pDeck = (int*)m_record->cardDeck[index].binData;
+	PickCurHero(hero);
+	int heroId = hero._heroId;
+	pDeck++;
+	for(int i=0;i<cardNum-1;i++,pDeck++){
+		tmpLst.push_back(*pDeck);
+	}
+	return true;
+}
+
+bool KPlayerCardDepot::PickCurDeck(int& heroId,KIntegerList& tmpLst)
+{
+	if(m_record->curDeck<0) return false;
+	KHeroDef hero;
+	bool ret = GetCardDeck(m_record->curDeck,tmpLst,hero);
+	heroId = hero._heroId;
+	return ret;
 }

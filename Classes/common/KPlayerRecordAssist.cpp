@@ -30,7 +30,7 @@ bool syncBagToRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	return KUserSql::UpdateNormalBag( player->GetName(),record);
 }
 
-bool addCardDeck(tb_player_record* record,KIntegerList& lst)
+bool insertCardDeck(tb_player_record* record,KIntegerList& lst)
 {
 	int index = 0;
 	for(index;index<MAX_DECK_NUM;index++){
@@ -113,8 +113,8 @@ bool syncQuestFromRecord(KPlayerQuestManager* playerQuestMgr,tb_playerquest_reco
 	}
 	void* buf;
 	int num = record->qhistory.Get(buf)/sizeof(KDBQuestHistoryDataUnit);
-	for(int i=0;i<num;i++){
-		KDBQuestHistoryDataUnit* pHistory = (KDBQuestHistoryDataUnit*)buf;
+	KDBQuestHistoryDataUnit* pHistory = (KDBQuestHistoryDataUnit*)buf;
+	for(int i=0;i<num;i++,pHistory++){
 		playerQuestMgr->SetQuestHistory(pHistory->qid,pHistory->val,0);
 	}
 	return true;
@@ -148,25 +148,29 @@ bool AddQuest(tb_playerquest_record* record,KQuestNew* pQuest)
 void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest)
 {
 	int slot = record->getQuestSlot(pQuest->m_qid);
-	if(slot<0) return;
+	if(slot<0){
+		return;
+	}
 	char buf[160];
 	KClientQuestSession* pClientSession = (KClientQuestSession*)pQuest->GetSessionObj();
 	int len = pClientSession->QueryData(buf);
-	record->qstate[slot].Set(buf,len);
-	record->updateMask(BIT(slot*2));
-	record->updateMask(BIT(slot*2+1));
+	if(pQuest->GetQuestStatus()==KQ_QuestOver){
+		record->qid[slot] = 0;
+		record->qstate[slot].Set(NULL,0);
+		record->updateMask(BIT(slot*2));
+		record->updateMask(BIT(slot*2+1));
+	}else{
+		record->qstate[slot].Set(buf,len);
+		record->updateMask(BIT(slot*2+1));
+	}
 }
 
 bool QuestOk(tb_playerquest_record* record,int qid,int accepttime)
 {
-	void* buf;
-	int len = record->qhistory.Get(buf);
-	int num = len/sizeof(KDBQuestHistoryDataUnit);
-	KDBQuestHistoryDataUnit* pHistory = (KDBQuestHistoryDataUnit*)buf;
-	pHistory +=num;
-	pHistory->qid = qid;
-	pHistory->val = (int)KQ_QuestOver;
-	record->qhistory.actualLength = len + sizeof(KDBQuestHistoryDataUnit);
+	KDBQuestHistoryDataUnit history;
+	history.qid = qid;
+	history.val = (int)KQ_QuestOver;
+	record->qhistory.Append(&history,sizeof(KDBQuestHistoryDataUnit));
 	record->updateMask(tb_playerquest_record::_QHISTORY);
 	CancelQuest(record,qid);
 	return true;
@@ -186,6 +190,7 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 void AddExp(tb_player_record* record,int val)
 {
 	record->exp += val;
+	record->power += val;
 	record->updateMask(tb_player_record::_CRI);
 }
 
