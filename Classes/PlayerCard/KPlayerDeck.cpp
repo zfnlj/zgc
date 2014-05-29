@@ -1,10 +1,12 @@
 #include "KPlayerDeck.h"
 #include "../StaticTable/KGameStatic.h"
+#include "../StaticTable/StaticData.h"
 
 void KHeroDef::rndGenerate(int id)
 {
 	_heroId = id;
 	_deck = -1;
+	_Id = STATIC_DATA_INC();
 	memset(_skill,0,sizeof(_skill));
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);

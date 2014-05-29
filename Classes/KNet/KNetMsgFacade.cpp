@@ -154,7 +154,7 @@ void KNetMsgFacade::onCancleQuest(int qId)
 	KMainPlayer::RealPlayer()->CancelQuest(pQuest);
 }
 
-void KNetMsgFacade::onAcceptQuest(int qId)
+bool KNetMsgFacade::onAcceptQuest(int qId)
 {
-	KMainPlayer::RealPlayer()->AcceptQuest(qId);
+	return KMainPlayer::RealPlayer()->AcceptQuest(qId);
 }

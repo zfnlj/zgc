@@ -56,7 +56,7 @@ struct tb_player_record
 	int lastLogoutTime;
 	
 	KDBBinary<2048> cardStore;
-	KDBBinary<256> cardDeck[MAX_DECK_NUM];
+	KDBBinary<128> cardDeck[MAX_DECK_NUM];
 	KDBBinary<400>  heroData; //10 hero
 	int money;
 	int curDeck;

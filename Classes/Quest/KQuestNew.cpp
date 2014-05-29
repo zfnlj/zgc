@@ -1074,7 +1074,7 @@ bool KQuestNew::CanSee(KPlayer* pPlayer, DWORD npcId)
 bool KQuestNew::CanDoThis(KPlayer* pPlayer)
 {
 	// Level.
-	int level = pPlayer->GetAttrValue(ca_level);
+	int level = pPlayer->GetLev();
 	if (level < m_acceptLevel) return false;
 	if(m_acceptTopLimit && level > m_acceptTopLimit) return false;
 

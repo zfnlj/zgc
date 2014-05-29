@@ -23,5 +23,5 @@ public:
 	//quest
 	static void onQuestFinished(int qId);
 	static void onCancleQuest(int qId);
-	static void onAcceptQuest(int qId);
+	static bool onAcceptQuest(int qId);
 };

@@ -53,6 +53,7 @@ namespace KWorldObjAbout
 		KQuestNew* GetActiveQuest(int qid) { return m_questManager.GetQuest(qid);}
 		bool IsQuestEverDone(int qid) { return m_questManager.IsQuestEverDone(qid);}
 		void AddExp(int val);
+		int GetLev() { return 1;}
 		tb_player_record* GetPlayerRecord(){ return &m_playerRecord;}
 		tb_playerquest_record* GetQuestRecord(){ return &m_questRecord;}
 		void SyncFromRecord();

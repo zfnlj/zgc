@@ -14,6 +14,9 @@ public:
 	~KPlayerCardDepot(void){}
 	bool CreateOnDeckDef(int id);
 	void init(tb_player_record* record){ m_record = record;}
+	bool FillCurDeck(int* arr,KHeroDef& hero);
+	bool GetCardDeck(int index,int* buf,KHeroDef& hero);
 private:
+	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;
 };
