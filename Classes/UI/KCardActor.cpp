@@ -7,8 +7,8 @@
 #include "cocos-ext.h"
 #include "GameRoot.h"
 #include "BattleFieldScene.h"
-#include "KUIAssist.h"
-#include "KJsonDictMgr.h"
+#include "assist/KUIAssist.h"
+#include "assist/KJsonDictMgr.h"
 #include "KClickCardMgr.h"
 #include "../GameRecord/KGameRecordMgr.h"
 

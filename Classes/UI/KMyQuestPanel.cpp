@@ -1,13 +1,13 @@
 #include "KMyQuestPanel.h"
 #include "../GameLogic/KDynamicWorld.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "../VirtualService.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
 #include "../Quest/KPlayerQuestManager.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "../KNet/KNetMsgFacade.h"
 
 using namespace cocos2d::extension;

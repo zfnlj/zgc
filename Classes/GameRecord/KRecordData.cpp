@@ -1,7 +1,7 @@
 #include "KRecordData.h"
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
-#include "../UI/KUIAssist.h"
+#include "../UI/assist/KUIAssist.h"
 #include "KGameRecordMgr.h"
 
 enum Cur_OP_Step{

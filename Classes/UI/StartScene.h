@@ -9,8 +9,8 @@
 #ifndef __FishingJoy__StartScene__
 #define __FishingJoy__StartScene__
 #include "cocos2d.h"
-#include "ProgressProtocol.h"
-#include "ProgressBar.h"
+#include "assist/ProgressProtocol.h"
+#include "assist/ProgressBar.h"
 
 USING_NS_CC;
 

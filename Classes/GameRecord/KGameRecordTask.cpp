@@ -4,7 +4,7 @@
 #include "../Inc/KTypeDef.h"
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
-#include "../UI/KUIAssist.h"
+#include "../UI/assist/KUIAssist.h"
 
 #define DATA_BUF_SIZE 2048
 

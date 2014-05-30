@@ -19,6 +19,7 @@ public:
 	bool PickCurDeck(int& hero,KIntegerList& tmpLst);
 	bool PickCurHero(KHeroDef& hero);
 	KHeroDef* FindHero(int id);
+	int GetCurDeck();
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;

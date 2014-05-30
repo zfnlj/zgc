@@ -163,3 +163,8 @@
 
 /tool/zgc_ui/gameResult/Export
 /tool/zgc_ui/gameResult/Resources/game_result_PList.Dir
+/tool/zgc_ui/cardGroup/Backup
+/tool/zgc_ui/cardGroup/Export
+/tool/zgc_ui/miniCard/Backup
+/tool/zgc_ui/miniCard/Export
+/tool/zgc_ui/miniCard/Resources/card_sort_PList.Dir

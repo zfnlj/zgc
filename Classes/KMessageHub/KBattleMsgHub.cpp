@@ -4,7 +4,7 @@
 #include "../UI/BattleFieldScene.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
-#include "../UI/KUIAssist.h"
+#include "../UI/assist/KUIAssist.h"
 #else
 #include "../../Scene/KWorld.h"
 #include "../../Facade/KWorldFacade.h"

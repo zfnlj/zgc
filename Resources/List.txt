@@ -20,3 +20,4 @@ GUI/photo_soldier.jpg	GUI/photo_soldier.plist	0	0	0
 GUI/photo_soldier2.jpg	GUI/photo_soldier2.plist	0	0	0
 GUI/photo_skill.jpg	GUI/photo_skill.plist	0	0	0
 GUI/battle_str.png	GUI/battle_str.plist	0	0	0
+GUI/pp_all.jpg	GUI/pp_all.plist	0	0	0

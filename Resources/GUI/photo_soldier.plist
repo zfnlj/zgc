@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20007.jpg</key>
+            <key>pic_20006.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{854,398},{150,120}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20008.jpg</key>
+            <key>pic_20007.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{702,368},{150,120}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20011.jpg</key>
+            <key>pic_20008.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{550,368},{150,120}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20012.jpg</key>
+            <key>pic_20011.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{428,854},{150,120}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20013.jpg</key>
+            <key>pic_20012.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{368,702},{150,120}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20014.jpg</key>
+            <key>pic_20013.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{368,550},{150,120}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20015.jpg</key>
+            <key>pic_20014.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{368,398},{150,120}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20020.jpg</key>
+            <key>pic_20015.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{884,246},{150,120}}</string>
@@ -199,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20021.jpg</key>
+            <key>pic_20020.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{732,246},{150,120}}</string>
@@ -212,10 +212,23 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
-            <key>pic_20022.jpg</key>
+            <key>pic_20021.jpg</key>
             <dict>
                 <key>frame</key>
                 <string>{{580,246},{150,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,120}}</string>
+                <key>sourceSize</key>
+                <string>{150,120}</string>
+            </dict>
+            <key>pic_20022.jpg</key>
+            <dict>
+                <key>frame</key>
+                <string>{{854,398},{150,120}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -589,6 +602,19 @@
                 <key>sourceSize</key>
                 <string>{150,120}</string>
             </dict>
+            <key>pic_21001.jpg</key>
+            <dict>
+                <key>frame</key>
+                <string>{{246,246},{150,120}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,120}}</string>
+                <key>sourceSize</key>
+                <string>{150,120}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -599,7 +625,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6afb00b5c3f16bf37e0702edf46422f7$</string>
+            <string>$TexturePacker:SmartUpdate:6c6a82a1c552eba1c2584639f274c5f9$</string>
             <key>textureFileName</key>
             <string>photo_soldier.jpg</string>
         </dict>

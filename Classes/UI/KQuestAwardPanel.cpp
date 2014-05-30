@@ -3,7 +3,7 @@
 #include "../GameLogic/KCardInst.h"
 #include "KCardActor.h"
 #include "../Facade/FBattleGuy.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "cocos-ext.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"

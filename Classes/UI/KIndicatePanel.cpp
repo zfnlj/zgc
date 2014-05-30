@@ -6,7 +6,7 @@
 #include "../GameLogic/KCardInst.h"
 #include "KCardActor.h"
 #include "../Facade/FBattleGuy.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "GameRoot.h"
 #include "BattleFieldScene.h"
 #include "../GameRecord/KGameRecordMgr.h"

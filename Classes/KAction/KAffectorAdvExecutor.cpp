@@ -1,7 +1,7 @@
 #include "KAffectorAdvExecutor.h"
 #include "../UI/KCardActor.h"
 #include <math.h>
-#include "../UI/KUIAssist.h"
+#include "../UI/assist/KUIAssist.h"
 #include "GameRoot.h"
 
 CCActionDef::~CCActionDef()

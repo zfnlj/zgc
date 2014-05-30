@@ -13,8 +13,8 @@
 #include <System/File/KTabfileLoader.h>
 #include "platform/CCFileUtils.h"
 #include "ccMacros.h"
-#include "KUIAssist.h"
-#include "KJsonDictMgr.h"
+#include "assist/KUIAssist.h"
+#include "assist/KJsonDictMgr.h"
 //#include "PersonalAudioEngine.h"
 
 USING_NS_CC;

@@ -11,15 +11,15 @@
 #include "../GameLogic/KCardInst.h"
 #include "KCardActor.h"
 #include "../GameLogic/KGameDef.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "GameRoot.h"
 #include "MainMenuScene.h"
 #include "../KNet/KUserData.h"
 #include "../KNet/KSocketFacade.h"
 #include "BattleFieldScene.h"
 #include "VirtualService.h"
-#include "KJsonDictMgr.h"
-#include "KQuestFacade.h"
+#include "assist/KJsonDictMgr.h"
+#include "assist/KQuestFacade.h"
 #include "../WorldObject/KMainPlayer.h"
 
 USING_NS_CC;
@@ -144,7 +144,8 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
-	m_myStorePanel.init(m_ui);
+	KUIAssist::_switch2CardGroupScene();
+	//m_myStorePanel.init(m_ui);
 }
 
 void MainMenuScene::DoClickQuestBut(CCObject* sender)

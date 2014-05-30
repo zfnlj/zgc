@@ -4,10 +4,10 @@
 #include "GameRoot.h"
 #include "../Facade/FBattleGuy.h"
 #include "cocos-ext.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "BattleFieldScene.h"
 #include "KCardActor.h"
-#include "KJsonDictMgr.h"
+#include "assist/KJsonDictMgr.h"
 //#include "KAction/ParticleBase.h"
 
 USING_NS_CC;

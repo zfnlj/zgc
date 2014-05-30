@@ -70,9 +70,14 @@ bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero
 	int heroId = hero._heroId;
 	pDeck++;
 	for(int i=0;i<cardNum-1;i++,pDeck++){
-		tmpLst.push_back(*pDeck);
+		if(*pDeck>0) tmpLst.push_back(*pDeck);
 	}
 	return true;
+}
+
+int KPlayerCardDepot::GetCurDeck()
+{
+	return m_record->curDeck;
 }
 
 bool KPlayerCardDepot::PickCurDeck(int& heroId,KIntegerList& tmpLst)

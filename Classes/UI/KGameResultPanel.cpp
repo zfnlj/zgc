@@ -1,15 +1,15 @@
 #include "KGameResultPanel.h"
 #include "../GameLogic/KDynamicWorld.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "../VirtualService.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../Quest/KPlayerQuestManager.h"
-#include "KUIAssist.h"
+#include "assist/KUIAssist.h"
 #include "BattleFieldScene.h"
 #include "../Quest/KQuestManager.h"
-#include "KQuestFacade.h"
+#include "assist/KQuestFacade.h"
 #include "../Item/KItemCreate.h"
 
 using namespace cocos2d::extension;

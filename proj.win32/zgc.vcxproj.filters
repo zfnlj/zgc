@@ -332,15 +332,6 @@
     <ClCompile Include="..\Classes\StaticTable\KRankStaticMgr.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KJsonDictMgr.cpp">
-      <Filter>UI\assist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\KUIAssist.cpp">
-      <Filter>UI\assist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\ProgressBar.cpp">
-      <Filter>UI\assist</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
@@ -402,9 +393,6 @@
     <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp">
       <Filter>sqlite</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KQuestFacade.cpp">
-      <Filter>UI\assist</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UI\KQuestAwardPanel.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
@@ -416,6 +404,24 @@
     </ClCompile>
     <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp">
       <Filter>PlayerCard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\CardGroupScene.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KJsonDictMgr.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KQuestFacade.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KUIAssist.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\ProgressBar.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KCardGroupAssist.cpp">
+      <Filter>UI\assist</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -796,15 +802,6 @@
     <ClInclude Include="..\Classes\StaticTable\KRankStaticMgr.h">
       <Filter>staticTable</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\KJsonDictMgr.h">
-      <Filter>UI\assist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KUIAssist.h">
-      <Filter>UI\assist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\ProgressBar.h">
-      <Filter>UI\assist</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\BattleFieldScene.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
@@ -863,9 +860,6 @@
     <ClInclude Include="..\Classes\sqlite\KSqlEnc.h">
       <Filter>sqlite</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\KQuestFacade.h">
-      <Filter>UI\assist</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\KQuestAwardPanel.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
@@ -877,6 +871,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h">
       <Filter>PlayerCard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\CardGroupScene.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KJsonDictMgr.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KQuestFacade.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KUIAssist.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\ProgressBar.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\ProgressProtocol.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KCardGroupAssist.h">
+      <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

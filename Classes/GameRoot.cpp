@@ -12,7 +12,7 @@
 #include "Quest/KQuestManager.h"
 #include "ClientLogic/KToLua.h"
 #include "EventSystem/KEventDefine.h"
-#include "ui/KUIAssist.h"
+#include "ui/assist/KUIAssist.h"
 #include <System/File/KTabfileLoader.h>
 #include "System/Cipher/tea.h"
 #include "DB/KPlayerDBMgr.h"
