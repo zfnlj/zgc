@@ -10,9 +10,11 @@
   <JsonList>
     <string>cardGroup_1.json</string>
   </JsonList>
-  <imageFileList />
+  <imageFileList>
+    <string>card_sort.plist</string>
+  </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson />
+  <CurrentUIJson>cardGroup_1.json</CurrentUIJson>
   <CanvasSize>
     <Width>1024</Width>
     <Height>768</Height>

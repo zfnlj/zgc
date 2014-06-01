@@ -2,6 +2,15 @@
 #include "../StaticTable/KGameStatic.h"
 #include "../StaticTable/StaticData.h"
 
+float KHeroDef::GetStarNum()
+{
+	float starNum = 0;
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		if(_skill[i]._lev>0) starNum += _skill[i]._lev;
+	}
+	return starNum;
+}
+
 void KHeroDef::rndGenerate(int id)
 {
 	_heroId = id;

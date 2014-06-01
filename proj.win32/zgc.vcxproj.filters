@@ -423,6 +423,9 @@
     <ClCompile Include="..\Classes\UI\assist\KCardGroupAssist.cpp">
       <Filter>UI\assist</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KRadioWidget.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -891,6 +894,9 @@
       <Filter>UI\assist</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\assist\KCardGroupAssist.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KRadioWidget.h">
       <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>

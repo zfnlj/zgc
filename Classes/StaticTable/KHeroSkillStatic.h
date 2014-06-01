@@ -25,6 +25,7 @@ public:
 	KAbilityStatic::Enum_When GetWhen(){ return m_when;}
 	int GetRank(){ return m_rank;}
 	int GetId(){ return m_Id;}
+	const char* GetName(){ return m_Name;}
 private:
 	void SetAbilityArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);

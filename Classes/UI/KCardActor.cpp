@@ -33,6 +33,7 @@ void KCardActor::update(float dt)
 
 void KCardActor::Clear()
 {
+	KJsonDictMgr::getSingleton().OnCardWidgetDestory(m_ui);
 	m_ActionMgr.onDestory();
 	if(m_ui){
 		m_ui->removeFromParent();
@@ -106,7 +107,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 	char name[64]={0};
 	sprintf(name,"card_%d",m_card->GetRealId());
 
-	m_bigPhoto =  KUIAssist::_createCardLayout(m_card,true);
+	m_bigPhoto =  KUIAssist::_createCardLayout(m_card->GetST(),true);
 
 	UpdateCardAttr(m_bigPhoto,true);
 	CC_SAFE_RETAIN(m_bigPhoto);
@@ -130,7 +131,7 @@ void KCardActor::init(KCardInst* pInst)
 		m_ui->setScale(0.8f);
 		m_bBack = true;
 	}else{
-		m_ui = KUIAssist::_createCardLayout(pInst,false);
+		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),false);
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));

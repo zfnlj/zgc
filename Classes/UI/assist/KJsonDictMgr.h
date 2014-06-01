@@ -2,7 +2,8 @@
 #define _KJSONDICTMGR_H
 #include "System/Singleton.h"
 #include "cocos-ext.h"
-
+#include <list>
+#define  MAX_CACHE_CARD_ELEM 10
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -15,6 +16,7 @@ public:
 	cs::CSJsonDictionary* m_json;
 };
 
+typedef std::list<UIWidget*> KCardWidgetList;
 class KJsonDictMgr :  public Singleton<KJsonDictMgr> 
 {
 public :
@@ -24,8 +26,11 @@ public :
 	void onDestory();
 	KJsonDictObj* GetJsonDict(const char *fileName);
 	UIWidget* widgetFromJsonFile(const char* fileName);
+	UIWidget* CreateCardWidget();
+	void OnCardWidgetDestory(UIWidget*);
 private :
 	CCDictionary m_jsonDict;
+	KCardWidgetList m_cacheCardWidget;
 };
 
 

@@ -346,18 +346,58 @@ UIWidget* KUIAssist::_createMiniCard(KCardStatic* cardST,int num)
 	return ui;
 }
 
-UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
+void KUIAssist::_showHeroSkill(UIWidget* widget,KHeroDef& heroDef)
 {
-	int idx = ((int)pInst->GetKind())*10 + pInst->GetST()->GetRace();
+	for(int i=0;i<MAX_BUF_SLOT_NUM;i++){
+		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(widget,"buf_slot",i);
+		if(widgetSlot) widgetSlot->setVisible(false);
+	}
+
+	float starNum = heroDef.GetStarNum()/3.0f;
+	int fullStarNum = (int)starNum;
+	bool bHasHalfStar = (starNum-fullStarNum)>0.0f ? true:false;
+	for(int n=0;n<fullStarNum;n++){
+		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(widget,"buf_slot",n);
+		if(widgetSlot){
+			widgetSlot->setAnchorPoint(CCPoint(1.0f,0.5f));
+			widgetSlot->loadTexture("star_full.png",UI_TEX_TYPE_PLIST);
+			widgetSlot->setVisible(true);
+		}
+	}
+	if(bHasHalfStar){
+		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(widget,"buf_slot",fullStarNum);
+		if(widgetSlot){
+			widgetSlot->setAnchorPoint(CCPoint(1.0f,0.5f));
+			widgetSlot->loadTexture("star_half.png",UI_TEX_TYPE_PLIST);
+			widgetSlot->setVisible(true);
+		}
+	}
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		char sz[64]={0};
+		UILabel* pLabel = (UILabel*)GetIndexWidget(widget,"hero_skill",i);
+		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(heroDef._skill[i]._skillId);
+		if(heroDef._skill[i]._lev>0 && skill){
+			sprintf(sz,"%s:  lev(%d)",skill->GetName(),heroDef._skill[i]._lev);
+			pLabel->setText(sz);
+			pLabel->setVisible(true);
+		}else{
+			pLabel->setVisible(false);
+		}
+	}
+}
+
+UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
+{
+	int idx = ((int)pST->GetType())*10 + pST->GetRace();
 	KCardLayoutStatic* pLayout = KGameStaticMgr::getSingleton().GetCardLayout(idx);
-	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pInst->GetKind())*10 + 0);
-	UIWidget* ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/card_elem.json");
+	if(!pLayout) pLayout =  KGameStaticMgr::getSingleton().GetCardLayout(((int)pST->GetType())*10 + 0);
+	UIWidget* ui = KJsonDictMgr::getSingleton().CreateCardWidget();
 
 	char sz[24];
 	UIImageView* widgetBg =(UIImageView*)ui->getChildByName("background");
-	sprintf(sz,"pic_%d.jpg",pInst->GetCardId());
-	if(widgetBg && strlen(pInst->GetST()->GetPhoto())>0){
-		widgetBg->loadTexture(pInst->GetST()->GetPhoto(),UI_TEX_TYPE_PLIST);
+	sprintf(sz,"pic_%d.jpg",pST->GetID());
+	if(widgetBg && strlen(pST->GetPhoto())>0){
+		widgetBg->loadTexture(pST->GetPhoto(),UI_TEX_TYPE_PLIST);
 	}
 
 	UIImageView* widgetMask =(UIImageView*)ui->getChildByName("card_mask");
@@ -365,7 +405,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	
 	
 	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("title");
-	sprintf(sz,"t_%d.png",pInst->GetCardId());
+	sprintf(sz,"t_%d.png",pST->GetID());
 	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
 	widgetTitle->setScale(0.9f);
 
@@ -381,14 +421,14 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 	UILabelAtlas* labelCost = (UILabelAtlas*)ui->getChildByName("cost");
  	if(pLayout->IsShowCost()){
 		char info[64]={0};
-		sprintf(info,"%d",pInst->GetCost());
+		sprintf(info,"%d",pST->GetCost());
 		labelCost->setStringValue(info);
 	}else{
 		labelCost->setVisible(false);
 	}
 	UIImageView* widgetStone = (UIImageView*)ui->getChildByName("stone_pos");
-	if(pInst->GetST()->GetRank()>0){
-		sprintf(sz,"stone_%d.png",pInst->GetST()->GetRank());
+	if(pST->GetRank()>0){
+		sprintf(sz,"stone_%d.png",pST->GetRank());
 		widgetStone->loadTexture(sz,UI_TEX_TYPE_PLIST);
 	}else{
 		widgetStone->setVisible(false);
@@ -396,11 +436,26 @@ UIWidget* KUIAssist::_createCardLayout(KCardInst* pInst,bool bBig)
 
 	UILabel* labelDesc = (UILabel*)ui->getChildByName("detail");
 	if(bBig){
-		if(strlen(pInst->GetST()->GetDetail())>2)	labelDesc->setText(pInst->GetST()->GetDetail());
+		if(strlen(pST->GetDetail())>2)	labelDesc->setText(pST->GetDetail());
 	}else{
-		if(strlen(pInst->GetST()->GetDesc())>2)	labelDesc->setText(pInst->GetST()->GetDesc());
+		if(strlen(pST->GetDesc())>2)	labelDesc->setText(pST->GetDesc());
 	}
 
+	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
+	if(pLayout->IsShowHp()){
+		sprintf(sz,"%d",pST->GetHp());
+		labelHp->setStringValue(sz);
+	}else{
+		labelHp->setVisible(false);
+	}
+
+	UILabelAtlas* labelAtk = (UILabelAtlas*)ui->getChildByName("atk");
+	if(pLayout->IsShowAtk()){
+		sprintf(sz,"%d",pST->GetAtk());
+		labelAtk->setStringValue(sz);
+	}else{
+		labelAtk->setVisible(false);
+	}
 	
 	ui->setAnchorPoint(ccp(0.5,0.5));
 	ui->setPosition(ccp(-500.0f,-500.0f));
@@ -735,3 +790,12 @@ void KUIAssist::_playLessonMsg(int id)
 	actor.GetActionMgr().PlayAction(&param);
 }
 
+void KUIAssist::ShowWidgetArr(UILayer* layer,const char* name,int num,bool flag)
+{
+	for(int i=0;i<num;i++){
+		char sz[64];
+		sprintf(sz,"%s_%d",name,i);
+		UIWidget* widget = layer->getWidgetByName(sz);
+		if(widget) widget->setVisible(flag);
+	}
+}

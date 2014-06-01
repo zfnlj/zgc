@@ -3,7 +3,7 @@
 #include <System/Misc/StrUtil.h>
 #include "../UI/KCardActor.h"
 #include "../GameLogic/KCardInst.h"
-#include "../UI/KUIAssist.h"
+#include "../UI/assist/KUIAssist.h"
 
 using  namespace Ogre;
 

@@ -12,6 +12,26 @@ void KJsonDictMgr::init()
 {
 }
 
+UIWidget* KJsonDictMgr::CreateCardWidget()
+{
+	KCardWidgetList::iterator it= m_cacheCardWidget.begin();
+	if(it!=m_cacheCardWidget.end()){
+		UIWidget* pRet = *it;
+		m_cacheCardWidget.erase(it);
+		pRet->setScale(1.0f);
+		return pRet;
+	}else{
+		return widgetFromJsonFile("GUI/card_elem.json");
+	}
+}
+
+void KJsonDictMgr::OnCardWidgetDestory(UIWidget* pWidget)
+{
+	if(!pWidget) return;
+	m_cacheCardWidget.push_back(pWidget);
+	if(pWidget->retainCount()<10) pWidget->retain();
+}
+
 UIWidget* KJsonDictMgr::widgetFromJsonFile(const char* fileName)
 {
 	KJsonDictObj* dictObj = GetJsonDict(fileName);
@@ -34,7 +54,6 @@ void KJsonDictMgr::onDestory()
 {
 	m_jsonDict.removeAllObjects(); //leak????
 }
-
 
 void KParticleCacheMgr::onDestory()
 {
@@ -64,3 +83,4 @@ void KParticleCacheMgr::RemvoeParticle(CCParticleSystem* particle,const char* na
 	m_particleDict.setObject(particle, name);
 	particle->removeFromParentAndCleanup(false);
 }
+

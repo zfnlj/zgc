@@ -14,7 +14,7 @@
     <string>card_elem.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson />
+  <CurrentUIJson>card_elem.json</CurrentUIJson>
   <CanvasSize>
     <Width>150</Width>
     <Height>206</Height>
