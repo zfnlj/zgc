@@ -320,9 +320,12 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 	return pSprite;
 }
 
-UIWidget* KUIAssist::_createMiniCard(KCardStatic* cardST,int num)
+UIWidget* KUIAssist::_createMiniCard(int cardId,int num)
 {
-	UIWidget* ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/miniCard.json");
+	KCardStatic* cardST = KGameStaticMgr::getSingleton().GetCard(cardId);
+	if(!cardST) return NULL;
+
+	UIWidget* ui = KJsonDictMgr::getSingleton().CreateMiniCardWidget();
 	
 	ui->setAnchorPoint(CCPoint(0.5f,0.5f));
 	char sz[64];
@@ -344,6 +347,15 @@ UIWidget* KUIAssist::_createMiniCard(KCardStatic* cardST,int num)
 	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
 
 	return ui;
+}
+
+void KUIAssist::UpdateMiniCardWidgetNum(UIWidget* ui,int num)
+{
+	UILabelAtlas* labelNum = (UILabelAtlas*)ui->getChildByName("num_val");
+	char sz[64];
+	sprintf(sz,"%d",num);
+	labelNum->setStringValue(sz);
+	labelNum->setVisible((num>1)?true:false);
 }
 
 void KUIAssist::_showHeroSkill(UIWidget* widget,KHeroDef& heroDef)
@@ -798,4 +810,10 @@ void KUIAssist::ShowWidgetArr(UILayer* layer,const char* name,int num,bool flag)
 		UIWidget* widget = layer->getWidgetByName(sz);
 		if(widget) widget->setVisible(flag);
 	}
+}
+
+void KUIAssist::ShowButton(UIWidget* pBut,bool flag)
+{
+	pBut->setVisible(flag);
+	pBut->setTouchEnable(flag);
 }

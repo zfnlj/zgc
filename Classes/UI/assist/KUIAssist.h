@@ -59,8 +59,10 @@ public:
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	static bool _IsPlayCardAble();
 	static void _resortCardSet(FBattleGuy* guy,int slot);
-	static UIWidget* _createMiniCard(KCardStatic* cardST,int num);
+	static UIWidget* _createMiniCard(int cardId,int num);
+	static void UpdateMiniCardWidgetNum(UIWidget* ui,int num);
 	static void ShowWidgetArr(UILayer* layer,const char* name,int num,bool flag);
+	static void ShowButton(UIWidget* pBut,bool flag);
 	//record 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);

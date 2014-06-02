@@ -15,6 +15,9 @@ class KPlayerCardDepot;
 
 #define  PAGE_CARD_NUM 8
 
+
+
+
 class CardGroupScene : public cocos2d::CCLayer
 {
 	enum MainType{
@@ -44,8 +47,8 @@ private:
 
 	void CreateMiniCardList(int index);
 	void ShowMiniCardList();
-	KPlayerCardDepot* m_depot;
-	KItemUnitList m_miniCardList;
+	void FreshMiniCardList();
+	void UpdateDeckCardCount();
 	void onClickCheckHero(CCObject* sender);
 	void onClickCheckSoldier(CCObject* sender);
 	void onClickCheckSkill(CCObject* sender);
@@ -53,14 +56,27 @@ private:
 	void onClickCardGroup(int index);
 	void onClickSlot(CCObject* sender);
 	void onClickNewCardGroup(CCObject* sender);
+	void onClickMiniCard(CCObject* obj);
+	void onClickSlotAdd(CCObject* sender);
+	void onClickSlotSub(CCObject* sender);
+	void onClickCost(CCObject* sender);
+	void onClickMainType(CCObject* sender);
+	void onClickPageDown(CCObject* sender);
+	void onClickPageUp(CCObject* sender);
 	void UpdateUI();
 	void ShowCardGroup();
 	void ShowCardBrowse();
 	void HideNewGroupIcon();
+	void UpdateAddSubBut();
+	void UpdatePageInfo(int moreNum);
+	void onMiniCardChanged();
+	KPlayerCardDepot* m_depot;
+	KMiniCardList m_miniCardList;
+	UILabel* m_pPageInfo;
+	KRadioWidget m_radioCost;
 	KRadioWidget m_radioMain;
 	MainType m_mainType;
 	int m_curCardGroup;
-	KCardGroupAssist::BrowseCard m_browseType;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];
 };

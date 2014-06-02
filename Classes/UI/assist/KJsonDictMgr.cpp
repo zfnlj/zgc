@@ -32,6 +32,27 @@ void KJsonDictMgr::OnCardWidgetDestory(UIWidget* pWidget)
 	if(pWidget->retainCount()<10) pWidget->retain();
 }
 
+
+UIWidget* KJsonDictMgr::CreateMiniCardWidget()
+{
+	KCardWidgetList::iterator it= m_miniCardWidget.begin();
+	if(it!=m_miniCardWidget.end()){
+		UIWidget* pRet = *it;
+		m_miniCardWidget.erase(it);
+		pRet->setScale(1.0f);
+		return pRet;
+	}else{
+		return widgetFromJsonFile("GUI/miniCard.json");
+	}
+}
+
+void KJsonDictMgr::OnMiniCardWidgetDestory(UIWidget* pWidget)
+{
+	if(!pWidget) return;
+	m_miniCardWidget.push_back(pWidget);
+	if(pWidget->retainCount()<10) pWidget->retain();
+}
+
 UIWidget* KJsonDictMgr::widgetFromJsonFile(const char* fileName)
 {
 	KJsonDictObj* dictObj = GetJsonDict(fileName);

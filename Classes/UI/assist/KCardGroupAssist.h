@@ -20,6 +20,16 @@ struct KCardGroupSlotElem{
 	elemType _type;
 	UIWidget* _widget;
 };
+
+struct KMiniCardWidget{
+	int _id;
+	int _count;
+	UIWidget* _pWidget;
+	KMiniCardWidget(int id,int count):_id(id),_count(count),_pWidget(NULL){}
+};
+
+typedef std::list<KMiniCardWidget> KMiniCardList;
+
 class KCardGroupAssist
 {
 public:
@@ -28,16 +38,19 @@ public:
 		sort_cost,
 	};
 	enum BrowseCard{
+		browse_hero=0,
+		browse_soldier=1,
+		browse_skill=2,
 		browse_all,
-		browse_hero,
-		browse_soldier,
-		browse_skill,
 	};
 	static void ClearSlotElem(KCardGroupSlotElem* arr,int n);
 	static void SetSlotElem(KCardGroupSlotElem* elem,int id,KCardGroupSlotElem::elemType tp,UIWidget* widget);
-	static void SortCardGroup(KIntegerList& src,KItemUnitList& des,sort_enum sortType=sort_cost);
-	static void InsetCardGroupElem(int cardId,KItemUnitList& des);
-	static void FilterCard(KItemUnitList& src,KItemUnitList& des,BrowseCard browse,int skip);
+	static void SortCardGroup(KIntegerList& src,KMiniCardList& des,sort_enum sortType=sort_cost);
+	static void InsetCardGroupElem(int cardId,KMiniCardList& des);
+	static void FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int costId,int skip);
+	static void AddMiniCard(KMiniCardList& lst,int cardId,int);
+	static int GetDeckMiniCardNum(KMiniCardList& lst,int cardId);
+	static int GetTotalCardNum(KMiniCardList& lst);
 };
 
 #endif // 	

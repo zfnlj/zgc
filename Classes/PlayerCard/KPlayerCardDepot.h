@@ -9,6 +9,7 @@
 #define MAX_GUY_CARD_NUM 512
 
 struct tb_player_record;
+
 typedef std::list<KDBBagItemUnit> KItemUnitList;
 class KBattleDeck;
 class KPlayerCardDepot

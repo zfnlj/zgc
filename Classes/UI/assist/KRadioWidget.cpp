@@ -8,10 +8,35 @@ void KRadioBut::onClick()
 	}
 }
 
-void KRadioWidget::AddBut(UICheckBox* pBut,CCObject* target,SEL_PushEvent selector)
+void KRadioWidget::AddGroupBut(const char* name,int num,cocos2d::extension::UILayer* layer,CCObject* target,SEL_PushEvent selector,int checked)
+{
+	for(int i=0;i<num;i++){
+		char sz[32];
+		sprintf(sz,"%s_%d",name,i);
+		UICheckBox* pCheck = (UICheckBox*)layer->getWidgetByName(sz);
+		AddBut(pCheck,target,selector,(i==checked));
+	}
+}
+
+void KRadioWidget::AddBut(UICheckBox* pBut,CCObject* target,SEL_PushEvent selector,bool bCheck)
 {
 	m_butList.push_back(KRadioBut(pBut,target,selector));
+	pBut->setTouchEnable(true);
 	pBut->addPushDownEvent(this, coco_pushselector(KRadioWidget::onClick));
+	if(bCheck){
+		pBut->setSelectedState(true);
+		m_pSelected = pBut;
+	}
+}
+
+int  KRadioWidget::GetSelectVal()
+{
+	UIWidget* pSelected = (UIWidget*)m_pSelected;
+	if(pSelected){
+		return pSelected->getTag();
+	}else{
+		return -1;
+	}
 }
 
 void KRadioWidget::onClick(CCObject* obj)

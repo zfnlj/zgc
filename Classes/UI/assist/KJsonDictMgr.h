@@ -28,9 +28,12 @@ public :
 	UIWidget* widgetFromJsonFile(const char* fileName);
 	UIWidget* CreateCardWidget();
 	void OnCardWidgetDestory(UIWidget*);
+	UIWidget* CreateMiniCardWidget();
+	void OnMiniCardWidgetDestory(UIWidget*);
 private :
 	CCDictionary m_jsonDict;
 	KCardWidgetList m_cacheCardWidget;
+	KCardWidgetList m_miniCardWidget;
 };
 
 
