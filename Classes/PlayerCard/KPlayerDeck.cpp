@@ -2,7 +2,7 @@
 #include "../StaticTable/KGameStatic.h"
 #include "../StaticTable/StaticData.h"
 
-float KHeroDef::GetStarNum()
+float KHeroDef::GetStarNum() const 
 {
 	float starNum = 0;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){

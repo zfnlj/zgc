@@ -11,6 +11,7 @@
     <string>cardGroup_1.json</string>
   </JsonList>
   <imageFileList>
+    <string>card_elem.plist</string>
     <string>card_sort.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>

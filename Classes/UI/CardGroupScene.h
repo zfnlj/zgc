@@ -40,8 +40,6 @@ public:
 	cocos2d::extension::UILayer* GetUILayer();
 
 private:
-	CCLabelTTF* m_InfoLabel;
-
 	cocos2d::extension::UILayer* m_ui;
 	void InitTest();
 
@@ -57,24 +55,37 @@ private:
 	void onClickSlot(CCObject* sender);
 	void onClickNewCardGroup(CCObject* sender);
 	void onClickMiniCard(CCObject* obj);
+	void onClickMiniHero(CCObject* obj);
 	void onClickSlotAdd(CCObject* sender);
 	void onClickSlotSub(CCObject* sender);
 	void onClickCost(CCObject* sender);
 	void onClickMainType(CCObject* sender);
 	void onClickPageDown(CCObject* sender);
 	void onClickPageUp(CCObject* sender);
+	void onClickRace(CCObject* sender);
+	void onClickSelectHero(CCObject* sender);
 	void UpdateUI();
 	void ShowCardGroup();
 	void ShowCardBrowse();
+	void ShowAllHero();
 	void HideNewGroupIcon();
 	void UpdateAddSubBut();
+	void UpdateSelectHeroBut();
 	void UpdatePageInfo(int moreNum);
 	void onMiniCardChanged();
+	void SetMiniHero(UIWidget* newHero);
+	void ShowMiniHero();
+	void UpdateMiniCardNumInfo();
+	void onClickCard(CCObject* sender);
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
+	UIWidget* m_pMiniHeroWidget;
 	UILabel* m_pPageInfo;
 	KRadioWidget m_radioCost;
+	KRadioWidget m_radioRace;
 	KRadioWidget m_radioMain;
+	KRadioWidget m_radioSelectHero;
+	KHeroDef m_miniHero;
 	MainType m_mainType;
 	int m_curCardGroup;
 	int m_curPage;

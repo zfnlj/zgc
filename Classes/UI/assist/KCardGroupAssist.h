@@ -47,10 +47,12 @@ public:
 	static void SetSlotElem(KCardGroupSlotElem* elem,int id,KCardGroupSlotElem::elemType tp,UIWidget* widget);
 	static void SortCardGroup(KIntegerList& src,KMiniCardList& des,sort_enum sortType=sort_cost);
 	static void InsetCardGroupElem(int cardId,KMiniCardList& des);
-	static void FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int costId,int skip);
+	static void FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int costId,int raceId,int skip);
 	static void AddMiniCard(KMiniCardList& lst,int cardId,int);
 	static int GetDeckMiniCardNum(KMiniCardList& lst,int cardId);
 	static int GetTotalCardNum(KMiniCardList& lst);
+	static void ClearMiniCardList(KMiniCardList&lst);
+	static bool IsMiniCardListMatch(KCardGroupSlotElem& elem,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot*);
 };
 
 #endif // 	

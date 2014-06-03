@@ -16,8 +16,23 @@
 #define SHOW_CARD_OFFSET 6
 #define MAX_BUF_SLOT_NUM 5
 
+static char* raceIcon[]={"null","gold","tree","water","fire","mud"};
 using namespace cocos2d::extension;
 
+
+void KUIAssist::SetRaceIcon(UIWidget* widgetRace, int race)
+{
+	char sz[32];
+	UIImageView* imageWidget = (UIImageView*)widgetRace;
+
+	if(race !=(int)KCardStatic::race_null){
+		sprintf(sz,"%s_icon.png",raceIcon[race]);
+		imageWidget->loadTexture(sz,UI_TEX_TYPE_PLIST);
+		imageWidget->setVisible(true);
+	}else{
+		imageWidget->setVisible(false);
+	}
+}
 
 cocos2d::extension::UILayer* KUIAssist::MainLayer()
 {
@@ -320,6 +335,35 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 	return pSprite;
 }
 
+UIWidget* KUIAssist::_createMiniHero(KHeroDef& hero)
+{
+	KCardStatic* cardST = KGameStaticMgr::getSingleton().GetCard(hero._heroId);
+	if(!cardST) return NULL;
+	UIWidget* ui = KJsonDictMgr::getSingleton().CreateMiniCardWidget();
+	ui->setAnchorPoint(CCPoint(0.5f,0.5f));
+
+	char sz[64];
+	sprintf(sz,"pp_%d.jpg",cardST->GetID());
+	UILayout* panel = (UILayout*)ui->getChildByName("bk");
+	panel->setBackGroundImage(sz,UI_TEX_TYPE_PLIST);
+
+	UIWidget* widgetIcon = ui->getChildByName("cost_icon");
+	widgetIcon->setVisible(false);
+
+	UILabelAtlas* labelCost = (UILabelAtlas*)ui->getChildByName("cost_val");
+	labelCost->setVisible(false);
+
+	UILabelAtlas* labelNum = (UILabelAtlas*)ui->getChildByName("num_val");
+	labelNum->setVisible(false);
+
+	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("card_title");
+	sprintf(sz,"t_%d.png",cardST->GetID());
+	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
+
+
+	return ui;
+}
+
 UIWidget* KUIAssist::_createMiniCard(int cardId,int num)
 {
 	KCardStatic* cardST = KGameStaticMgr::getSingleton().GetCard(cardId);
@@ -333,8 +377,12 @@ UIWidget* KUIAssist::_createMiniCard(int cardId,int num)
 	UILayout* panel = (UILayout*)ui->getChildByName("bk");
 	panel->setBackGroundImage(sz,UI_TEX_TYPE_PLIST);
 
+	UIWidget* widgetIcon = ui->getChildByName("cost_icon");
+	widgetIcon->setVisible(true);
+
 	UILabelAtlas* labelCost = (UILabelAtlas*)ui->getChildByName("cost_val");
 	sprintf(sz,"%d",cardST->GetCost());
+	labelCost->setVisible(true);
 	labelCost->setStringValue(sz);
 
 	UILabelAtlas* labelNum = (UILabelAtlas*)ui->getChildByName("num_val");
@@ -358,7 +406,7 @@ void KUIAssist::UpdateMiniCardWidgetNum(UIWidget* ui,int num)
 	labelNum->setVisible((num>1)?true:false);
 }
 
-void KUIAssist::_showHeroSkill(UIWidget* widget,KHeroDef& heroDef)
+void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 {
 	for(int i=0;i<MAX_BUF_SLOT_NUM;i++){
 		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(widget,"buf_slot",i);
@@ -398,6 +446,15 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,KHeroDef& heroDef)
 	}
 }
 
+UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig)
+{
+	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._heroId);
+	if(!pST) return NULL;
+	UIWidget* widget = _createCardLayout(pST,bBig);
+	_showHeroSkill(widget,hero);
+	return widget;
+}
+
 UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 {
 	int idx = ((int)pST->GetType())*10 + pST->GetRace();
@@ -411,6 +468,9 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	if(widgetBg && strlen(pST->GetPhoto())>0){
 		widgetBg->loadTexture(pST->GetPhoto(),UI_TEX_TYPE_PLIST);
 	}
+	UIImageView* widgetRace = (UIImageView*)ui->getChildByName("race_icon");
+
+	SetRaceIcon(widgetRace, pST->GetRace());
 
 	UIImageView* widgetMask =(UIImageView*)ui->getChildByName("card_mask");
 	if(widgetMask) widgetMask->loadTexture(pLayout->GetMask(),UI_TEX_TYPE_PLIST);
@@ -435,6 +495,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 		char info[64]={0};
 		sprintf(info,"%d",pST->GetCost());
 		labelCost->setStringValue(info);
+		labelCost->setVisible(true);
 	}else{
 		labelCost->setVisible(false);
 	}
@@ -442,6 +503,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	if(pST->GetRank()>0){
 		sprintf(sz,"stone_%d.png",pST->GetRank());
 		widgetStone->loadTexture(sz,UI_TEX_TYPE_PLIST);
+		widgetStone->setVisible(true);
 	}else{
 		widgetStone->setVisible(false);
 	}
@@ -457,6 +519,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	if(pLayout->IsShowHp()){
 		sprintf(sz,"%d",pST->GetHp());
 		labelHp->setStringValue(sz);
+		labelHp->setVisible(true);
 	}else{
 		labelHp->setVisible(false);
 	}
@@ -465,6 +528,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	if(pLayout->IsShowAtk()){
 		sprintf(sz,"%d",pST->GetAtk());
 		labelAtk->setStringValue(sz);
+		labelAtk->setVisible(true);
 	}else{
 		labelAtk->setVisible(false);
 	}

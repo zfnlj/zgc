@@ -5,6 +5,7 @@
 #include "UILayer.h"
 #include "../GameLogic/KCardInst.h"
 #include "../../PlayerCard/KPlayerDeck.h"
+
 #define  ADVICE_TURN_END 3
 #define  ADVICE_ENTER_OR_CAST 4
 class BattleFieldScene;
@@ -14,7 +15,7 @@ class KCardActor;
 class FBattleGuy;
 struct K3DActionParam;
 USING_NS_CC;
-using namespace cocos2d::extension;
+USING_NS_CC_EXT;
 class KUIAssist
 {
 public:
@@ -26,7 +27,7 @@ public:
 	static void _removeCardSet(KCardInstList* lst);
 	static void _moveCardSet(KCardInstList* lst,const char* actionname);
 	static void _showCard(KCardInst* card);
-	static void _showHeroSkill(UIWidget* widget,KHeroDef& heroDef);
+	static void _showHeroSkill(UIWidget* widget,const KHeroDef& heroDef);
 	static void _updateCard(KCardInst* card);
 	static UIWidget* GetIndexWidget(UIWidget* panel,const char* baseName,int index);
 	static UIWidget* _setVisible(UIWidget* panel,const char* baseName,int pos ,bool);
@@ -41,6 +42,7 @@ public:
 	static void _switch2StageWaitScene();
 	static void _switch2CardGroupScene();
 	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig);
+	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig);
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);
 	static CCSize _getRealSize(UIWidget* widget);
 	static CCAction* _createAtkMove(UIWidget* widgetSrc,int des,float val);
@@ -60,9 +62,11 @@ public:
 	static bool _IsPlayCardAble();
 	static void _resortCardSet(FBattleGuy* guy,int slot);
 	static UIWidget* _createMiniCard(int cardId,int num);
+	static UIWidget* _createMiniHero(KHeroDef& hero);
 	static void UpdateMiniCardWidgetNum(UIWidget* ui,int num);
 	static void ShowWidgetArr(UILayer* layer,const char* name,int num,bool flag);
 	static void ShowButton(UIWidget* pBut,bool flag);
+	static void SetRaceIcon(UIWidget* widgetRace, int race);
 	//record 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);

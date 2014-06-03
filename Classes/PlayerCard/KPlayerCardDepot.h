@@ -25,7 +25,9 @@ public:
 	bool PickCurHero(KHeroDef& hero);
 	bool PickStoreCard(KItemUnitList& tmpLst);
 	int  GetDeckCardNum(int deck,int cardId);
-	KHeroDef* FindHero(int id);
+	int  GetHeroNum();
+	const KHeroDef* FindHeroOnIndex(int index);
+	const KHeroDef* FindHero(int id);
 	int GetCurDeck();
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);

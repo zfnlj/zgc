@@ -7,7 +7,7 @@
             <key>atk_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,230},{38,43}}</string>
+                <string>{{154,234},{38,43}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,26 +371,26 @@
             <key>fire_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,140},{44,48}}</string>
+                <string>{{154,176},{50,56}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{10,9},{44,48}}</string>
+                <string>{{7,4},{50,56}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
             <key>gold_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,186},{42,48}}</string>
+                <string>{{154,118},{50,56}}</string>
                 <key>offset</key>
-                <string>{1,-2}</string>
+                <string>{0,-2}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{12,10},{42,48}}</string>
+                <string>{{7,6},{50,56}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -410,13 +410,13 @@
             <key>mud_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,94},{44,48}}</string>
+                <string>{{154,60},{52,56}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{10,9},{44,48}}</string>
+                <string>{{6,4},{52,56}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -514,26 +514,26 @@
             <key>tree_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,2},{44,50}}</string>
+                <string>{{154,2},{52,56}}</string>
                 <key>offset</key>
-                <string>{0,-1}</string>
+                <string>{1,-1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{10,8},{44,50}}</string>
+                <string>{{7,5},{52,56}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
             <key>water_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,48},{44,48}}</string>
+                <string>{{216,306},{56,58}}</string>
                 <key>offset</key>
-                <string>{0,-2}</string>
+                <string>{0,-1}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
-                <string>{{10,10},{44,48}}</string>
+                <string>{{4,4},{56,58}}</string>
                 <key>sourceSize</key>
                 <string>{64,64}</string>
             </dict>
@@ -547,7 +547,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8e2ce2b5872c547f0fc837728c00b8fe$</string>
+            <string>$TexturePacker:SmartUpdate:c12c2d290f7e9e71b26269b44d0cbdf4$</string>
             <key>textureFileName</key>
             <string>card_elem.png</string>
         </dict>

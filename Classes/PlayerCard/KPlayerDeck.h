@@ -8,11 +8,14 @@ struct KHeroDef{
 		int _skillId;
 		int _lev;
 	};
-	float GetStarNum();
+	float GetStarNum() const ;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
 	int _heroId;
 	int _Id;
 	void rndGenerate(int id);
+	void Clear(){
+		memset(this,0,sizeof(KHeroDef));
+	}
 };
 
 class KPlayerDeck

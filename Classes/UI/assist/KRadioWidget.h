@@ -20,17 +20,22 @@ typedef std::list<KRadioBut> KRadioButList;
 class KRadioWidget :public CCObject
 {
 public:
-	KRadioWidget(){}
+	KRadioWidget(){ m_bUnSelectable =false;}
 	~KRadioWidget(){}
 	
 	void AddBut(UICheckBox* pBut,CCObject* target,SEL_PushEvent selector,bool bCheck=false);
 	void AddGroupBut(const char* name,int num,cocos2d::extension::UILayer*,CCObject* target,SEL_PushEvent selector,int checked=-1);
 	void onClick(CCObject* obj);
 	void SetVisible(bool flag);
+	void SetVisible(int index, bool flag);
+	void SetSelected(int index);
 	int  GetSelectVal();
+	bool GetSelectState(int& val,bool& bChecked);
+	void SetUnSelectAble(bool flag){ m_bUnSelectable = flag;}
 private:
 	KRadioButList m_butList;
 	CCObject* m_pSelected;
+	bool m_bUnSelectable;
 
 };
 

@@ -37,11 +37,22 @@ bool KPlayerCardDepot::FillHeroDef(int heroId,KHeroDef& hero)
 	return false;
 }
 
-KHeroDef* KPlayerCardDepot::FindHero(int id)
+int  KPlayerCardDepot::GetHeroNum()
+{
+	return m_record->heroData.actualLength/sizeof(KHeroDef);
+}
+
+const KHeroDef* KPlayerCardDepot::FindHeroOnIndex(int index)
+{
+	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
+	return &pHero[index];
+}
+
+const KHeroDef* KPlayerCardDepot::FindHero(int id)
 {
 	int heroNum = m_record->heroData.actualLength/sizeof(KHeroDef);
 	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
-	for(int i=0;i<heroNum;i++){
+	for(int i=0;i<heroNum;i++,pHero++){
 		if(pHero->_Id==id) return pHero;
 	}
 	return NULL;
@@ -69,7 +80,7 @@ bool KPlayerCardDepot::PickDeckHero(int index,KHeroDef& hero)
 	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
 	if(cardNum<1) return false;
 	int* pDeck = (int*)m_record->cardDeck[index].binData;
-	KHeroDef* pDef = FindHero(pDeck[0]);
+	const KHeroDef* pDef = FindHero(pDeck[0]);
 	if(!pDef) return false;
 	memcpy(&hero,pDef,sizeof(KHeroDef));
 	return true;

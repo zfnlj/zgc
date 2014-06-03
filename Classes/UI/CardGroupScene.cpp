@@ -62,9 +62,11 @@ bool CardGroupScene::init()
 
 	this->addChild(GetUILayer(), 1);
 
+	m_pMiniHeroWidget = NULL;
 	memset(m_slotElem,0,sizeof(m_slotElem));
 	m_depot = KMainPlayer::RealPlayer()->GetCardDepot();
 	CreateMiniCardList(m_depot->GetCurDeck());
+	ShowMiniHero();
 	ShowMiniCardList();
 	UpdateUI();
     return true;
@@ -95,20 +97,24 @@ cocos2d::extension::UILayer* CardGroupScene::GetUILayer()
 		for(int i=0;i<PAGE_CARD_NUM;i++){
 			sprintf(sz,"card_slot_%d",i);
 			pBut = m_ui->getWidgetByName(sz);
+			pBut->setTag(i);
 			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSlot));
 
 
 			sprintf(sz,"slot_add_%d",i);
 			pBut = m_ui->getWidgetByName(sz);
+			pBut->setTag(i);
 			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSlotAdd));
 
 			sprintf(sz,"slot_sub_%d",i);
 			pBut = m_ui->getWidgetByName(sz);
+			pBut->setTag(i);
 			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSlotSub));
 		}
-
-
+		m_radioSelectHero.SetUnSelectAble(true);
+		m_radioSelectHero.AddGroupBut("check_hero",8,m_ui,this,coco_pushselector(CardGroupScene::onClickSelectHero),-1);
 		m_radioCost.AddGroupBut("check_cost",8,m_ui,this,coco_pushselector(CardGroupScene::onClickCost),0);
+		m_radioRace.AddGroupBut("check_race",6,m_ui,this,coco_pushselector(CardGroupScene::onClickRace),0);
 		for(int j=1;j<8;j++){
 			sprintf(sz,"check_cost_%d",j);
 			pBut = m_ui->getWidgetByName(sz);
@@ -120,12 +126,21 @@ cocos2d::extension::UILayer* CardGroupScene::GetUILayer()
 			pBut->addCCNode(bmFont);
 		}
 		m_mainType = type_cardgroup;
-		m_curPage = 0;
+		m_curCardGroup = m_curPage = 0;
+		m_miniHero.Clear();
+		m_depot = NULL;
+		m_pMiniHeroWidget = NULL;
 	}
 	return m_ui;
 }
 
 void CardGroupScene::onClickMainType(CCObject* sender)
+{
+	m_curPage = 0;
+	UpdateUI();
+}
+
+void CardGroupScene::onClickRace(CCObject* sender)
 {
 	m_curPage = 0;
 	UpdateUI();
@@ -152,16 +167,44 @@ void CardGroupScene::CreateMiniCardList(int index)
 {
 	if(index<0) return;
 	KIntegerList cardList;
-	KHeroDef heroDef;
-	m_depot->GetCardDeck(index,cardList,heroDef);
-	m_miniCardList.clear();
+	m_depot->GetCardDeck(index,cardList,m_miniHero);
+	KCardGroupAssist::ClearMiniCardList(m_miniCardList);
 	KCardGroupAssist::SortCardGroup(cardList,m_miniCardList);
+}
+
+void CardGroupScene::SetMiniHero(UIWidget* newHero)
+{
+	if(m_pMiniHeroWidget){
+		KJsonDictMgr::getSingleton().OnMiniCardWidgetDestory(m_pMiniHeroWidget);
+		m_pMiniHeroWidget->removeFromParent();
+	}
+	m_pMiniHeroWidget = newHero;
+}
+
+void CardGroupScene::ShowMiniHero()
+{
+	UIWidget* slot = m_ui->getWidgetByName("mini_card_pos");
+	CCPoint pt = slot->getPosition();
+	UIImageView* raceSlot = (UIImageView*)m_ui->getWidgetByName("race_slot");
+	UIWidget* pWidgetHero = KUIAssist::_createMiniHero(m_miniHero);
+
+	KCardStatic* heroST = KGameStaticMgr::getSingleton().GetCard(m_miniHero._heroId);
+	KUIAssist::SetRaceIcon(raceSlot, (heroST)?heroST->GetRace():0);
+	if(pWidgetHero){
+		pWidgetHero->setPosition(pt);
+		pWidgetHero->setTouchEnable(true);
+		pWidgetHero->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickMiniHero));
+		m_ui->addWidget(pWidgetHero);
+	}
+	SetMiniHero(pWidgetHero);
 }
 
 void CardGroupScene::ShowMiniCardList()
 {
 	UIWidget* slot = m_ui->getWidgetByName("mini_card_pos");
 	CCPoint pt = slot->getPosition();
+	pt.y -= 34;
+
 	for(KMiniCardList::iterator it=m_miniCardList.begin();it!=m_miniCardList.end();++it)
 	{
 		KMiniCardWidget& elem = *it;
@@ -187,22 +230,40 @@ void CardGroupScene::onClickMiniCard(CCObject* obj)
 	onMiniCardChanged();
 }
 
+void CardGroupScene::onClickMiniHero(CCObject* obj)
+{
+
+}
+
+void CardGroupScene::UpdateMiniCardNumInfo()
+{
+	UILabelBMFont* cardNumWidget = (UILabelBMFont*)m_ui->getWidgetByName("deck_size");
+	char sz[64];
+	int num = KCardGroupAssist::GetTotalCardNum(m_miniCardList);
+	sprintf(sz,"%d/30",num);
+	cardNumWidget->setText(sz);
+}
+
 void CardGroupScene::onMiniCardChanged()
 {
 	FreshMiniCardList();
 	UpdateDeckCardCount();
 	UpdateAddSubBut();
+	UpdateSelectHeroBut();
+	UpdateMiniCardNumInfo();
 }
 
 void CardGroupScene::FreshMiniCardList()
 {
 	UIWidget* slot = m_ui->getWidgetByName("mini_card_pos");
 	CCPoint pt = slot->getPosition();
+	pt.y -= 34;
 	for(KMiniCardList::iterator it=m_miniCardList.begin();it!=m_miniCardList.end();++it)
 	{
 		KMiniCardWidget& elem = *it;
 		if(!elem._pWidget){
 			elem._pWidget = KUIAssist::_createMiniCard(elem._id,elem._count);
+			elem._pWidget->setTag(elem._id);
 			if(!elem._pWidget) continue;
 			m_ui->addWidget(elem._pWidget);
 		}
@@ -230,13 +291,17 @@ void CardGroupScene::UpdateUI()
 	if(m_mainType==type_cardgroup){
 		m_radioMain.SetVisible(false);
 		m_radioCost.SetVisible(false);
+		m_radioRace.SetVisible(false);
 		ShowCardGroup();
 	}else if(m_mainType==type_card){
 		m_radioMain.SetVisible(true);
 		m_radioCost.SetVisible(true);
+		m_radioRace.SetVisible(true);
 		ShowCardBrowse();
 	}
 	UpdateAddSubBut();
+	UpdateSelectHeroBut();
+	UpdateMiniCardNumInfo();
 }
 
 void CardGroupScene::UpdateDeckCardCount()
@@ -270,16 +335,42 @@ void CardGroupScene::UpdatePageInfo(int moreNum)
 	UIWidget* pPageUp = m_ui->getWidgetByName("page_up_but");
 	pPageUp->setVisible(m_curPage>0);
 	UIWidget* pPageDown = m_ui->getWidgetByName("page_down_but");
-	pPageDown->setVisible(m_curPage+1 !=totalPage);
+	pPageDown->setVisible( (m_curPage+1 !=totalPage) &&(totalPage>0));
+}
+
+void CardGroupScene::ShowAllHero()
+{
+	int heroNum = m_depot->GetHeroNum();
+
+	UpdatePageInfo(heroNum);
+	int curPos = 0;
+	for(int i=0;i<heroNum;i++){
+		const KHeroDef*  pHeroDef = m_depot->FindHeroOnIndex(i);
+		UIWidget* widget = KUIAssist::_createHero(*pHeroDef,true);
+		if(!widget) continue;
+
+		m_ui->addWidget(widget);
+		char sz[64];
+		sprintf(sz,"%s_%d","card_slot",curPos);
+
+		UIImageView* widgetPos =(UIImageView*)m_ui->getWidgetByName(sz);
+		widget->setPosition(widgetPos->getPosition());
+		widget->setTouchEnable(false);
+		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_Id,KCardGroupSlotElem::elem_hero,widget);
+	}
 }
 
 void CardGroupScene::ShowCardBrowse()
 {
-
+	if(m_radioMain.GetSelectVal() ==(int)KCardGroupAssist::browse_hero){
+		ShowAllHero();
+		return;
+	}
 	KItemUnitList tmpList,desList;
 	m_depot->PickStoreCard(tmpList);
 
-	KCardGroupAssist::FilterCard(tmpList,desList,m_radioMain.GetSelectVal(),m_radioCost.GetSelectVal(),m_curPage*PAGE_CARD_NUM);
+	KCardGroupAssist::FilterCard(tmpList,desList,m_radioMain.GetSelectVal(),m_radioRace.GetSelectVal(),
+									m_radioCost.GetSelectVal(),m_curPage*PAGE_CARD_NUM);
 	UpdatePageInfo(desList.size());
 	int showPos = 0;
 	for(KItemUnitList::iterator it=desList.begin();it!=desList.end();++it){
@@ -288,6 +379,8 @@ void CardGroupScene::ShowCardBrowse()
 		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(unit._id);
 		UIWidget* widget = KUIAssist::_createCardLayout(pST,true);
 		char sz[64];
+		widget->setTag(unit._id);
+		widget->addPushDownEvent(this, coco_pushselector(CardGroupScene::onClickCard));
 		sprintf(sz,"%s_%d","card_slot",showPos);
 
 		UIImageView* widgetPos =(UIImageView*)m_ui->getWidgetByName(sz);
@@ -318,9 +411,7 @@ void CardGroupScene::ShowCardGroup()
 		m_depot->GetCardDeck(i,tmpList,hero);
 		UIWidget* widget = NULL;
 		if(tmpList.size()>0 &&hero._heroId>0){
-			KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._heroId);
-			widget = KUIAssist::_createCardLayout(pST,true);
-			KUIAssist::_showHeroSkill(widget,hero);
+			widget = KUIAssist::_createHero(hero,true);
 		}
 		if(widget){
 			m_ui->addWidget(widget);
@@ -345,6 +436,18 @@ void CardGroupScene::ShowCardGroup()
 	}
 }
 
+void CardGroupScene::onClickCard(CCObject* sender)
+{
+	int i=0;
+	for(;i< PAGE_CARD_NUM;i++){
+		if(m_slotElem[i]._widget==sender) break;
+	}
+	if(m_mainType==type_card && i<PAGE_CARD_NUM){
+		UIWidget* pAdd = KUIAssist::GetIndexWidget(m_ui->getRootWidget(),"slot_add",i);
+		if(pAdd->isVisible()) onClickSlotAdd(pAdd);
+	}
+}
+
 void CardGroupScene::onClickSlot(CCObject* sender)
 {
 	UIImageView* pWidgetSlot = (UIImageView*)sender;
@@ -354,6 +457,9 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 		}else if(m_slotElem[pWidgetSlot->getTag()]._widget){
 			return onClickCardGroup(pWidgetSlot->getTag());
 		}
+	}else if(m_mainType==type_card){
+		UIWidget* pAdd = KUIAssist::GetIndexWidget(m_ui->getRootWidget(),"slot_add",pWidgetSlot->getTag());
+		if(pAdd->isVisible()) onClickSlotAdd(sender);
 	}
 }
 
@@ -367,7 +473,17 @@ void CardGroupScene::onClickCardGroup(int index)
 
 void CardGroupScene::onClickNewCardGroup(CCObject* sender)
 {
-
+	UIImageView* raceSlot = (UIImageView*)m_ui->getWidgetByName("race_slot");
+	raceSlot->setVisible(false);
+	SetMiniHero(NULL);
+	m_miniHero.Clear();
+	KCardGroupAssist::ClearMiniCardList(m_miniCardList);
+	m_curCardGroup = 99;
+	m_curPage = 0;
+	m_mainType = type_card;
+	m_radioMain.SetSelected(0);
+	m_radioSelectHero.SetSelected(-1);
+	UpdateUI();
 }
 
 void CardGroupScene::onClickSlotAdd(CCObject* sender)
@@ -387,6 +503,7 @@ void CardGroupScene::onClickSlotSub(CCObject* sender)
 	onMiniCardChanged();
 }
 
+
 void CardGroupScene::UpdateAddSubBut()
 {
 	bool bFull = KCardGroupAssist::GetTotalCardNum(m_miniCardList)>= 30;
@@ -396,7 +513,10 @@ void CardGroupScene::UpdateAddSubBut()
 
 		 int deckCardCount =KCardGroupAssist::GetDeckMiniCardNum(m_miniCardList,m_slotElem[i]._id);
 
-		 if(m_mainType==type_cardgroup ||
+		 bool bMatch = KCardGroupAssist::IsMiniCardListMatch(m_slotElem[i],m_miniHero,m_miniCardList,m_depot);
+		 if( !bMatch||
+			 m_mainType==type_cardgroup ||
+			 (m_mainType==type_card && m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero)||
 			 !m_slotElem[i]._widget){
 			 KUIAssist::ShowButton(pAdd,false);
 			 KUIAssist::ShowButton(pSub,false);
@@ -426,4 +546,37 @@ void CardGroupScene::onClickPageUp(CCObject* sender)
 {
 	if(m_curPage>0) m_curPage--;
 	UpdateUI();
+}
+
+void CardGroupScene::onClickSelectHero(CCObject* sender)
+{
+	int index = -1;
+	bool bChecked = false;
+	if(!m_radioSelectHero.GetSelectState(index,bChecked)) return;
+	if(!KCardGroupAssist::IsMiniCardListMatch(m_slotElem[index],m_miniHero,m_miniCardList,m_depot)) return;
+	const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[index]._id);
+	if(bChecked){
+		memcpy(&m_miniHero,pHeroDef,sizeof(KHeroDef));
+	}else{
+		m_miniHero.Clear();
+	}
+	UpdateUI();
+	ShowMiniHero();
+}
+
+void CardGroupScene::UpdateSelectHeroBut()
+{
+	if(m_mainType==type_cardgroup){
+		m_radioSelectHero.SetVisible(false);
+	}else if(m_mainType==type_card){
+		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
+			m_radioSelectHero.SetVisible(true);
+			for(int i=0;i<PAGE_CARD_NUM;i++){
+				bool bMatch = KCardGroupAssist::IsMiniCardListMatch(m_slotElem[i],m_miniHero,m_miniCardList,m_depot);
+				m_radioSelectHero.SetVisible(i,bMatch);
+			}
+		}else{
+			m_radioSelectHero.SetVisible(false);
+		}
+	}
 }

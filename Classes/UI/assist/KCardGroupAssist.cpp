@@ -62,7 +62,7 @@ int KCardGroupAssist::GetDeckMiniCardNum(KMiniCardList& list,int cardId)
 	return 0;
 }
 
-void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int costId,int skip)
+void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int raceId,int costId,int skip)
 {
 	BrowseCard browse = (BrowseCard)browseId;
 	for(KItemUnitList::iterator it=src.begin();it!=src.end();++it){
@@ -73,6 +73,7 @@ void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int brow
 		}else if(costId>0){
 			if(pST->GetCost()!=costId) continue;
 		}
+		if(raceId!=KCardStatic::race_null&& raceId!=pST->GetRace()) continue;
 		if(!pST) continue;
 		switch(browse){
 		case browse_all:
@@ -107,7 +108,10 @@ void KCardGroupAssist::ClearSlotElem(KCardGroupSlotElem* arr,int n)
 {
 	KCardGroupSlotElem* elem = arr;
 	for(int i=0;i<n;i++,elem++){
-		if(elem->_type==KCardGroupSlotElem::elem_card) KJsonDictMgr::getSingleton().OnCardWidgetDestory(elem->_widget);
+		if(elem->_type==KCardGroupSlotElem::elem_card||
+			elem->_type==KCardGroupSlotElem::elem_hero){
+				KJsonDictMgr::getSingleton().OnCardWidgetDestory(elem->_widget);
+		}
 		if(elem->_widget) elem->_widget->removeFromParent();
 		memset(elem,0,sizeof(KCardGroupSlotElem));
 	}
@@ -139,4 +143,42 @@ void KCardGroupAssist::AddMiniCard(KMiniCardList& lst,int cardId,int count)
 		}
 		lst.sort(comp);
 	}
+}
+
+void KCardGroupAssist::ClearMiniCardList(KMiniCardList&lst)
+{
+	for(KMiniCardList::iterator it=lst.begin();it!=lst.end();++it){
+		KMiniCardWidget& elem = *it;
+		if(elem._pWidget){
+			KJsonDictMgr::getSingleton().OnMiniCardWidgetDestory(elem._pWidget);
+			elem._pWidget->removeFromParent();
+		}
+	}
+	lst.clear();
+}
+
+bool KCardGroupAssist::IsMiniCardListMatch(KCardGroupSlotElem& elem,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot)
+{
+	if(elem._id==0) return false;
+	KCardStatic* pST = NULL;
+	if(elem._type==KCardGroupSlotElem::elem_card){
+		pST = KGameStaticMgr::getSingleton().GetCard(elem._id);
+	}else if(elem._type==KCardGroupSlotElem::elem_hero){
+		const KHeroDef* herDef = depot->FindHero(elem._id);
+		if(herDef){
+			pST = KGameStaticMgr::getSingleton().GetCard(herDef->_heroId);
+		}
+	}
+	if(!pST) return false;
+	if(pST->GetRace()==KCardStatic::race_null) return true;
+
+	KCardStatic* pCurHeroST = KGameStaticMgr::getSingleton().GetCard(curHero._heroId);
+	if(pCurHeroST && pCurHeroST->GetRace()!=pST->GetRace()) return false;
+
+	for(KMiniCardList::iterator it=miniList.begin();it!=miniList.end();it++){
+		KCardStatic* pCardST = KGameStaticMgr::getSingleton().GetCard(it->_id);
+		if(pCardST->GetRace()==KCardStatic::race_null) continue;
+		return (pCardST->GetRace()==pST->GetRace());
+	}
+	return true;
 }
