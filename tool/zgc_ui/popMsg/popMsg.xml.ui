@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\popMsg\popMsg.xml.ui</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>popMsg</Name>
+  <ProjectDir>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\popMsg</ProjectDir>
+  <JsonFileName>popMsg.json</JsonFileName>
+  <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\popMsg\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\popMsg\Json</JsonFolder>
+  <JsonList>
+    <string>popMsg_1.json</string>
+  </JsonList>
+  <imageFileList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>popMsg_1.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>230</Width>
+    <Height>230</Height>
+  </CanvasSize>
+</UIProject>

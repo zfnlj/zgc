@@ -170,3 +170,9 @@
 /tool/zgc_ui/miniCard/Resources/card_sort_PList.Dir
 /tool/zgc_ui/cardGroup/Resources/card_sort_PList.Dir
 /tool/zgc_ui/cardGroup/Resources/card_elem_PList.Dir
+
+/tool/zgc_ui/popMsg/Backup
+
+/tool/zgc_ui/popMsg/Export
+
+/tool/zgc_ui/popMsg/Resources/popMsg_PList.Dir
