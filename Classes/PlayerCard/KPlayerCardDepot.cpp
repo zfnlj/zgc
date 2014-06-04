@@ -20,7 +20,7 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 
 	cardList.push_front(hero._Id);
 	cardList.push_back(0); // for 8 size,useless;
-	KPlayerRecordAssist::insertCardDeck(m_record,cardList);
+	KPlayerRecordAssist::updateCardDeck(m_record,cardList);
 	return true;
 }
 
@@ -124,4 +124,14 @@ bool KPlayerCardDepot::PickStoreCard(KItemUnitList& tmpLst)
 		tmpLst.push_back(KDBBagItemUnit(pUnit->_id,pUnit->_count));
 	}
 	return true;
+}
+
+bool KPlayerCardDepot::SaveDeck(int deckId,KIntegerList& tmpLst)
+{
+	return  KPlayerRecordAssist::updateCardDeck(m_record,tmpLst,deckId);
+}
+
+bool KPlayerCardDepot::ClearDeck(int deckId)
+{
+	return KPlayerRecordAssist::ClearCardDeck(m_record,deckId);
 }

@@ -21,6 +21,8 @@ namespace KPlayerRecordAssist
 	};
 	typedef System::Collections::KDynSortedArray<KDBBagItemUnit*,itemCmp> DBBagItemSortArray;
 
+	bool ClearCardDeck(tb_player_record* record,int index);
+	bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index=99);
 	bool syncBagToRecord(KWorldObjAbout::KPlayer*,tb_player_record* record);
 	bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record);
 	bool fillDBBuf(char* des,int size,char* src,int len);

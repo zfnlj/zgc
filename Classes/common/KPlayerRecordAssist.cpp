@@ -30,13 +30,29 @@ bool syncBagToRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	return KUserSql::UpdateNormalBag( player->GetName(),record);
 }
 
-bool insertCardDeck(tb_player_record* record,KIntegerList& lst)
+bool ClearCardDeck(tb_player_record* record,int index)
 {
-	int index = 0;
-	for(index;index<MAX_DECK_NUM;index++){
-		if(record->cardDeck[index].actualLength==0) break;
+	if(index<0 || index>=MAX_DECK_NUM) return false;
+	record->cardDeck[index].Set(NULL,0);
+	record->updateMask(tb_player_record::_CARDDECK0+index);
+	return true;
+}
+
+bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
+{
+	if(lst.size()>31) return false;
+
+	if(index >=MAX_DECK_NUM){
+		for(int i=0;i<MAX_DECK_NUM;i++){
+			if(record->cardDeck[i].actualLength==0){
+				index = i;
+				break;
+			}
+		}
 	}
-	if(index==MAX_DECK_NUM) return false;
+	if(index>=MAX_DECK_NUM) return false;
+
+	record->cardDeck[index].Set(NULL,0);
 	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it){
 		int id = *it;
 		record->cardDeck[index].Append(&id,sizeof(int));

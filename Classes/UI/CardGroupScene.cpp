@@ -208,12 +208,12 @@ void CardGroupScene::ShowMiniCardList()
 	for(KMiniCardList::iterator it=m_miniCardList.begin();it!=m_miniCardList.end();++it)
 	{
 		KMiniCardWidget& elem = *it;
-		UIWidget* pWidget = KUIAssist::_createMiniCard(elem._id,elem._count);
+		UIWidget* pWidget = KUIAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
 		if(!pWidget) continue;
 
 		elem._pWidget = pWidget;
 		pWidget->setPosition(pt);
-		pWidget->setTag(elem._id);
+		pWidget->setTag(elem.GetCardID());
 		pWidget->setTouchEnable(true);
 		pWidget->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickMiniCard));
 		m_ui->addWidget(pWidget);
@@ -262,8 +262,8 @@ void CardGroupScene::FreshMiniCardList()
 	{
 		KMiniCardWidget& elem = *it;
 		if(!elem._pWidget){
-			elem._pWidget = KUIAssist::_createMiniCard(elem._id,elem._count);
-			elem._pWidget->setTag(elem._id);
+			elem._pWidget = KUIAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
+			elem._pWidget->setTag(elem.GetCardID());
 			if(!elem._pWidget) continue;
 			m_ui->addWidget(elem._pWidget);
 		}
@@ -579,4 +579,14 @@ void CardGroupScene::UpdateSelectHeroBut()
 			m_radioSelectHero.SetVisible(false);
 		}
 	}
+}
+
+void CardGroupScene::onClickSave(CCObject* sender)
+{
+	KCardGroupAssist::SaveCardGroup(m_curCardGroup,m_miniHero,m_miniCardList,m_depot);
+}
+
+void CardGroupScene::onClickClearDeck(CCObject* sender)
+{
+	m_depot->ClearDeck(m_curCardGroup);
 }

@@ -77,6 +77,8 @@ private:
 	void ShowMiniHero();
 	void UpdateMiniCardNumInfo();
 	void onClickCard(CCObject* sender);
+	void onClickSave(CCObject* sender);
+	void onClickClearDeck(CCObject* sender);
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
 	UIWidget* m_pMiniHeroWidget;

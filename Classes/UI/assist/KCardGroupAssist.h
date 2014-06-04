@@ -22,10 +22,13 @@ struct KCardGroupSlotElem{
 };
 
 struct KMiniCardWidget{
-	int _id;
+	int _cardId;
 	int _count;
 	UIWidget* _pWidget;
-	KMiniCardWidget(int id,int count):_id(id),_count(count),_pWidget(NULL){}
+	int GetCount(){ return _count;}
+	int GetCardID(){ return _cardId;}
+	void SetCardID(int cardId){ _cardId=cardId;}
+	KMiniCardWidget(int cardId,int count):_cardId(cardId),_count(count),_pWidget(NULL){}
 };
 
 typedef std::list<KMiniCardWidget> KMiniCardList;
@@ -53,6 +56,7 @@ public:
 	static int GetTotalCardNum(KMiniCardList& lst);
 	static void ClearMiniCardList(KMiniCardList&lst);
 	static bool IsMiniCardListMatch(KCardGroupSlotElem& elem,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot*);
+	static bool SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot);
 };
 
 #endif // 	

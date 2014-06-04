@@ -5,8 +5,8 @@
 static KCardGroupAssist::sort_enum g_sortType= KCardGroupAssist::sort_null;
 bool comp(const KMiniCardWidget &lhs, const KMiniCardWidget &rhs)
 {
-	KCardStatic* p1 = KGameStaticMgr::getSingleton().GetCard(lhs._id);
-	KCardStatic* p2 = KGameStaticMgr::getSingleton().GetCard(rhs._id);
+	KCardStatic* p1 = KGameStaticMgr::getSingleton().GetCard(lhs._cardId);
+	KCardStatic* p2 = KGameStaticMgr::getSingleton().GetCard(rhs._cardId);
 	switch(g_sortType){
 	case KCardGroupAssist::sort_cost:
 		return p1->GetCost()<p2->GetCost();
@@ -23,7 +23,7 @@ void KCardGroupAssist::InsetCardGroupElem(int cardId,KMiniCardList& des)
 {
 	for(KMiniCardList::iterator it=des.begin();it!=des.end();++it)
 	{
-		if((*it)._id==cardId){
+		if((*it)._cardId==cardId){
 			(*it)._count++;
 			return;
 		}
@@ -55,7 +55,7 @@ int KCardGroupAssist::GetDeckMiniCardNum(KMiniCardList& list,int cardId)
 {
 	for(KMiniCardList::iterator it=list.begin();it!=list.end();++it)
 	{
-		if((*it)._id==cardId){
+		if((*it)._cardId==cardId){
 			return (*it)._count;
 		}
 	}
@@ -121,7 +121,7 @@ void KCardGroupAssist::AddMiniCard(KMiniCardList& lst,int cardId,int count)
 {
 	for(KMiniCardList::iterator it=lst.begin();it!=lst.end();++it){
 		KMiniCardWidget& elem = *it;
-		if(elem._id == cardId){
+		if(elem._cardId == cardId){
 			elem._count += count;
 			if(elem._count<0) elem._count=0;
 			if(elem._count>2) elem._count=2;
@@ -176,9 +176,25 @@ bool KCardGroupAssist::IsMiniCardListMatch(KCardGroupSlotElem& elem,KHeroDef& cu
 	if(pCurHeroST && pCurHeroST->GetRace()!=pST->GetRace()) return false;
 
 	for(KMiniCardList::iterator it=miniList.begin();it!=miniList.end();it++){
-		KCardStatic* pCardST = KGameStaticMgr::getSingleton().GetCard(it->_id);
+		KCardStatic* pCardST = KGameStaticMgr::getSingleton().GetCard(it->_cardId);
 		if(pCardST->GetRace()==KCardStatic::race_null) continue;
 		return (pCardST->GetRace()==pST->GetRace());
 	}
+	return true;
+}
+
+bool KCardGroupAssist::SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot)
+{
+	KIntegerList tmpLst;
+	tmpLst.push_back(curHero._Id);
+	KCardStatic* pHeroST = KGameStaticMgr::getSingleton().GetCard(curHero._heroId);
+
+	for(KMiniCardList::iterator it=miniList.begin();it!=miniList.end();++it){
+		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(it->_cardId);
+		if(pST->GetRace()!= KCardStatic::race_null &&
+			pST->GetRace()!= pHeroST->GetRace()) continue;
+		tmpLst.push_back(it->_cardId);
+	}
+	depot->SaveDeck(deckId,tmpLst);
 	return true;
 }
