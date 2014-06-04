@@ -905,6 +905,9 @@
     <ClInclude Include="..\Classes\UI\assist\KPopupLayer.h">
       <Filter>UI\assist</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KUIMsgDef.h">
+      <Filter>UI\assist</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">

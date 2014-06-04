@@ -4,19 +4,6 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>grid.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,232},{157,39}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{157,39}}</string>
-                <key>sourceSize</key>
-                <string>{157,39}</string>
-            </dict>
             <key>panel.png</key>
             <dict>
                 <key>frame</key>
@@ -29,6 +16,19 @@
                 <string>{{0,0},{229,228}}</string>
                 <key>sourceSize</key>
                 <string>{239,228}</string>
+            </dict>
+            <key>pop_title.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,232},{157,39}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{157,39}}</string>
+                <key>sourceSize</key>
+                <string>{157,39}</string>
             </dict>
             <key>short_but_1.png</key>
             <dict>
@@ -66,7 +66,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:67ea0c1a76229edb62b0f48a032d7adb$</string>
+            <string>$TexturePacker:SmartUpdate:18a7848a464b863a3c804b27132f94cc$</string>
             <key>textureFileName</key>
             <string>popMsg.png</string>
         </dict>

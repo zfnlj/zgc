@@ -73,11 +73,12 @@ private:
 	void UpdateSelectHeroBut();
 	void UpdatePageInfo(int moreNum);
 	void onMiniCardChanged();
-	void SetMiniHero(UIWidget* newHero);
+	void SetMiniHeroWidget(UIWidget* newHero);
 	void ShowMiniHero();
 	void UpdateMiniCardNumInfo();
 	void onClickCard(CCObject* sender);
-	void onClickSave(CCObject* sender);
+	void DoClearDeck(CCObject* sender);
+	void onClickSaveDeck(CCObject* sender);
 	void onClickClearDeck(CCObject* sender);
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
@@ -89,6 +90,8 @@ private:
 	KRadioWidget m_radioSelectHero;
 	KHeroDef m_miniHero;
 	MainType m_mainType;
+	UIWidget* m_pSaveWidget;
+	UIWidget* m_pClearWidget;
 	int m_curCardGroup;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];

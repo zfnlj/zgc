@@ -19,7 +19,9 @@
 #include "VirtualService.h"
 #include "assist/KJsonDictMgr.h"
 #include "assist/KQuestFacade.h"
+#include "assist/KPopupLayer.h"
 #include "../WorldObject/KMainPlayer.h"
+#include "assist/KUIMsgDef.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -90,6 +92,12 @@ cocos2d::extension::UILayer* CardGroupScene::GetUILayer()
 
 		pBut = m_ui->getWidgetByName("page_up_but");
 		pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickPageUp));
+
+		m_pSaveWidget = m_ui->getWidgetByName("but_save");
+		m_pSaveWidget->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSaveDeck));
+
+		m_pClearWidget = m_ui->getWidgetByName("but_clear");
+		m_pClearWidget->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickClearDeck));
 
 		m_pPageInfo = (UILabel*)m_ui->getWidgetByName("page_info");
 
@@ -172,7 +180,7 @@ void CardGroupScene::CreateMiniCardList(int index)
 	KCardGroupAssist::SortCardGroup(cardList,m_miniCardList);
 }
 
-void CardGroupScene::SetMiniHero(UIWidget* newHero)
+void CardGroupScene::SetMiniHeroWidget(UIWidget* newHero)
 {
 	if(m_pMiniHeroWidget){
 		KJsonDictMgr::getSingleton().OnMiniCardWidgetDestory(m_pMiniHeroWidget);
@@ -196,7 +204,7 @@ void CardGroupScene::ShowMiniHero()
 		pWidgetHero->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickMiniHero));
 		m_ui->addWidget(pWidgetHero);
 	}
-	SetMiniHero(pWidgetHero);
+	SetMiniHeroWidget(pWidgetHero);
 }
 
 void CardGroupScene::ShowMiniCardList()
@@ -292,11 +300,15 @@ void CardGroupScene::UpdateUI()
 		m_radioMain.SetVisible(false);
 		m_radioCost.SetVisible(false);
 		m_radioRace.SetVisible(false);
+		KUIAssist::ShowButton(m_pSaveWidget,false);
+		KUIAssist::ShowButton(m_pClearWidget,false);
 		ShowCardGroup();
 	}else if(m_mainType==type_card){
 		m_radioMain.SetVisible(true);
 		m_radioCost.SetVisible(true);
 		m_radioRace.SetVisible(true);
+		KUIAssist::ShowButton(m_pSaveWidget,true);
+		KUIAssist::ShowButton(m_pClearWidget,true);
 		ShowCardBrowse();
 	}
 	UpdateAddSubBut();
@@ -475,7 +487,7 @@ void CardGroupScene::onClickNewCardGroup(CCObject* sender)
 {
 	UIImageView* raceSlot = (UIImageView*)m_ui->getWidgetByName("race_slot");
 	raceSlot->setVisible(false);
-	SetMiniHero(NULL);
+	SetMiniHeroWidget(NULL);
 	m_miniHero.Clear();
 	KCardGroupAssist::ClearMiniCardList(m_miniCardList);
 	m_curCardGroup = 99;
@@ -581,12 +593,23 @@ void CardGroupScene::UpdateSelectHeroBut()
 	}
 }
 
-void CardGroupScene::onClickSave(CCObject* sender)
+void CardGroupScene::DoClearDeck(CCObject* sender)
+{
+	UIWidget* pBut = (UIWidget*)sender;
+	if(pBut->getTag()==KPopupLayer::RT_YES){
+		m_depot->ClearDeck(m_curCardGroup);
+		onClickNewCardGroup(NULL);
+	}
+}
+
+void CardGroupScene::onClickSaveDeck(CCObject* sender)
 {
 	KCardGroupAssist::SaveCardGroup(m_curCardGroup,m_miniHero,m_miniCardList,m_depot);
+	KPopupLayer::DoModal(UI_NOTIFY_STR,SAVE_DECK_OK_STR,KPopupLayer::DT_Ok);
+	
 }
 
 void CardGroupScene::onClickClearDeck(CCObject* sender)
 {
-	m_depot->ClearDeck(m_curCardGroup);
+	KPopupLayer::DoModal(UI_WARNING_STR,DEL_DECK_NOTIFY_STR,KPopupLayer::DT_Yes_No,coco_pushselector(CardGroupScene::DoClearDeck),this);
 }

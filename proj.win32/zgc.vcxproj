@@ -401,6 +401,7 @@
     <ClInclude Include="..\Classes\UI\assist\KQuestFacade.h" />
     <ClInclude Include="..\Classes\UI\assist\KRadioWidget.h" />
     <ClInclude Include="..\Classes\UI\assist\KUIAssist.h" />
+    <ClInclude Include="..\Classes\UI\assist\KUIMsgDef.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressBar.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressProtocol.h" />
     <ClInclude Include="..\Classes\UI\BattleFieldScene.h" />

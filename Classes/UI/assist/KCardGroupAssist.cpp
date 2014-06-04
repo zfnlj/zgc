@@ -193,7 +193,9 @@ bool KCardGroupAssist::SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList&
 		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(it->_cardId);
 		if(pST->GetRace()!= KCardStatic::race_null &&
 			pST->GetRace()!= pHeroST->GetRace()) continue;
-		tmpLst.push_back(it->_cardId);
+		for(int i=0;i<it->_count;i++){
+			tmpLst.push_back(it->_cardId);
+		}
 	}
 	depot->SaveDeck(deckId,tmpLst);
 	return true;
