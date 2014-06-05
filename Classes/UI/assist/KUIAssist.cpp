@@ -452,6 +452,8 @@ UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig)
 	if(!pST) return NULL;
 	UIWidget* widget = _createCardLayout(pST,bBig);
 	_showHeroSkill(widget,hero);
+	UILabel* labelDesc = (UILabel*)widget->getChildByName("detail");
+	labelDesc->setVisible(false);
 	return widget;
 }
 
@@ -509,6 +511,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	}
 
 	UILabel* labelDesc = (UILabel*)ui->getChildByName("detail");
+	labelDesc->setVisible(true);
 	if(bBig){
 		if(strlen(pST->GetDetail())>2)	labelDesc->setText(pST->GetDetail());
 	}else{

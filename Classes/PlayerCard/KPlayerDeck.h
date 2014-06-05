@@ -18,6 +18,7 @@ struct KHeroDef{
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));
 	}
+	int GetRace();
 };
 
 class KPlayerDeck

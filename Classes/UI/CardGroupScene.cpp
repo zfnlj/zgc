@@ -196,8 +196,7 @@ void CardGroupScene::ShowMiniHero()
 	UIImageView* raceSlot = (UIImageView*)m_ui->getWidgetByName("race_slot");
 	UIWidget* pWidgetHero = KUIAssist::_createMiniHero(m_miniHero);
 
-	KCardStatic* heroST = KGameStaticMgr::getSingleton().GetCard(m_miniHero._cardId);
-	KUIAssist::SetRaceIcon(raceSlot, (heroST)?heroST->GetRace():0);
+	KUIAssist::SetRaceIcon(raceSlot, KCardGroupAssist::GetCurDeckRace(m_miniHero,m_miniCardList));
 	if(pWidgetHero){
 		pWidgetHero->setPosition(pt);
 		pWidgetHero->setTouchEnable(true);
@@ -345,9 +344,9 @@ void CardGroupScene::UpdatePageInfo(int moreNum)
 	sprintf(sz,"%d-%d",totalPage,m_curPage+1);
 	m_pPageInfo->setText(sz);
 	UIWidget* pPageUp = m_ui->getWidgetByName("page_up_but");
-	pPageUp->setVisible(m_curPage>0);
+	KUIAssist::_setButVisible(pPageUp,m_curPage>0);
 	UIWidget* pPageDown = m_ui->getWidgetByName("page_down_but");
-	pPageDown->setVisible( (m_curPage+1 !=totalPage) &&(totalPage>0));
+	KUIAssist::_setButVisible(pPageDown, (m_curPage+1 !=totalPage) &&(totalPage>0));
 }
 
 void CardGroupScene::ShowAllHero()
@@ -380,8 +379,8 @@ void CardGroupScene::ShowCardBrowse()
 	}
 	KItemUnitList tmpList,desList;
 	m_depot->PickStoreCard(tmpList);
-
-	KCardGroupAssist::FilterCard(tmpList,desList,m_radioMain.GetSelectVal(),m_radioRace.GetSelectVal(),
+	KCardGroupAssist::SortCardItem(tmpList);
+	KCardGroupAssist::FilterCard(tmpList,desList,m_radioMain.GetSelectVal(),m_radioRace.GetSelectVal(),m_miniHero.GetRace(),
 									m_radioCost.GetSelectVal(),m_curPage*PAGE_CARD_NUM);
 	UpdatePageInfo(desList.size());
 	int showPos = 0;
@@ -480,6 +479,10 @@ void CardGroupScene::onClickCardGroup(int index)
 	m_curCardGroup = m_slotElem[index]._id;
 	m_curPage = 0;
 	m_mainType = type_card;
+	m_radioSelectHero.SetSelected(index);
+	CreateMiniCardList(m_curCardGroup);
+	onMiniCardChanged();
+	ShowMiniHero();
 	UpdateUI();
 }
 

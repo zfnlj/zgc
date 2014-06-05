@@ -190,16 +190,17 @@ namespace KWorldObjAbout
 			m_playerRecord.updateUnMask(tb_player_record::_CURDECK);						
 		}
 
-	#define CARD_DECK_UPDATE(mask)								\
+	#define CARD_DECK_UPDATE(mask,i)								\
 		if(m_playerRecord.mUpdateMask&mask){						\
-			KUserSql::UpdateCardDeck(GetName(),&m_playerRecord,mask-tb_player_record::_CARDDECK0);\
+			KUserSql::UpdateCardDeck(GetName(),&m_playerRecord,i);\
 			m_playerRecord.updateUnMask(mask);						\
 		}
-		CARD_DECK_UPDATE(tb_player_record::_CARDDECK0)
-		CARD_DECK_UPDATE(tb_player_record::_CARDDECK1)
-		CARD_DECK_UPDATE(tb_player_record::_CARDDECK2)
-		CARD_DECK_UPDATE(tb_player_record::_CARDDECK3)
-		CARD_DECK_UPDATE(tb_player_record::_CARDDECK4)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK0,0)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK1,1)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK2,2)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK3,3)
+		CARD_DECK_UPDATE(tb_player_record::_CARDDECK4,4)
+
 
 	#define  QUEST_RECORD_ID_UPDATE( mask,fieldName,val)			\
 		if(m_questRecord.mUpdateMask&mask){							\

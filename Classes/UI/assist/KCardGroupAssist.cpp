@@ -18,6 +18,12 @@ bool comp(const KMiniCardWidget &lhs, const KMiniCardWidget &rhs)
 	return false;
 }
 
+bool comp2(const KDBBagItemUnit &lhs, const KDBBagItemUnit &rhs)
+{
+	KCardStatic* p1 = KGameStaticMgr::getSingleton().GetCard(lhs._id);
+	KCardStatic* p2 = KGameStaticMgr::getSingleton().GetCard(rhs._id);
+	return p1->GetCost()<p2->GetCost();
+}
 
 void KCardGroupAssist::InsetCardGroupElem(int cardId,KMiniCardList& des)
 {
@@ -30,6 +36,11 @@ void KCardGroupAssist::InsetCardGroupElem(int cardId,KMiniCardList& des)
 	}
 	
 	des.push_back(KMiniCardWidget(cardId,1));
+}
+
+void KCardGroupAssist::SortCardItem(KItemUnitList& lst)
+{
+	lst.sort(comp2);
 }
 
 void KCardGroupAssist::SortCardGroup(KIntegerList& src,KMiniCardList& des,sort_enum sortType)
@@ -62,7 +73,7 @@ int KCardGroupAssist::GetDeckMiniCardNum(KMiniCardList& list,int cardId)
 	return 0;
 }
 
-void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int raceId,int costId,int skip)
+void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int raceId,int heroRace,int costId,int skip)
 {
 	BrowseCard browse = (BrowseCard)browseId;
 	for(KItemUnitList::iterator it=src.begin();it!=src.end();++it){
@@ -74,6 +85,7 @@ void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int brow
 			if(pST->GetCost()!=costId) continue;
 		}
 		if(raceId!=KCardStatic::race_null&& raceId!=pST->GetRace()) continue;
+		if(pST->GetRace()!=0 && heroRace>0 && pST->GetRace()!=heroRace) continue;
 		if(!pST) continue;
 		switch(browse){
 		case browse_all:
@@ -143,6 +155,19 @@ void KCardGroupAssist::AddMiniCard(KMiniCardList& lst,int cardId,int count)
 		}
 		lst.sort(comp);
 	}
+}
+
+int KCardGroupAssist::GetCurDeckRace(KHeroDef& hero,KMiniCardList&lst)
+{
+	KCardStatic* heroST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
+	if(heroST) return heroST->GetRace();
+
+	for(KMiniCardList::iterator it=lst.begin();it!=lst.end();++it){
+		KMiniCardWidget& elem = *it;
+		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(elem._cardId);
+		if(pST && pST->GetRace()>0) return pST->GetRace();
+	}
+	return 0;
 }
 
 void KCardGroupAssist::ClearMiniCardList(KMiniCardList&lst)

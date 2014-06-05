@@ -34,7 +34,7 @@ bool ClearCardDeck(tb_player_record* record,int index)
 {
 	if(index<0 || index>=MAX_DECK_NUM) return false;
 	record->cardDeck[index].Set(NULL,0);
-	record->updateMask(tb_player_record::_CARDDECK0+index);
+	record->updateMask(tb_player_record::_CARDDECK0<<index);
 	return true;
 }
 
@@ -57,7 +57,7 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 		int id = *it;
 		record->cardDeck[index].Append(&id,sizeof(int));
 	}
-	record->updateMask(tb_player_record::_CARDDECK0+index);
+	record->updateMask(tb_player_record::_CARDDECK0<<index);
 	return true;
 }
 

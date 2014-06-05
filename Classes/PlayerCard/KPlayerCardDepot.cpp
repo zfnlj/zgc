@@ -19,7 +19,6 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 	if(m_record->GetCurDeck()<0) m_record->SetCurDeck(0);
 
 	cardList.push_front(hero._id);
-	cardList.push_back(0); // for 8 size,useless;
 	KPlayerRecordAssist::updateCardDeck(m_record,cardList);
 	return true;
 }
