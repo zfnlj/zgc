@@ -82,7 +82,7 @@ struct KDbBinaryHead
 {
 	WORD length;
 	WORD crc;
-	char data[2];
+	WORD dumpLen;
 };
 
 #pragma pack(pop)

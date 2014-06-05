@@ -7,10 +7,6 @@ bool KSqlEnc::Enc(unsigned char* buf,unsigned char* out,int len)
 {
 	//const int SIZE_IN = 8, SIZE_OUT = 8, SIZE_KEY = 16;
 
-	if( (len%8) !=0 ) {
-		CCAssert(false , "Error Enc size!");
-		return false;
-	}
 	TEA tea(key, 16);
 	int n = len/8;
 	unsigned char* pIn = buf;
@@ -20,15 +16,18 @@ bool KSqlEnc::Enc(unsigned char* buf,unsigned char* out,int len)
 		pIn += 8;
 		pOut+= 8;
 	}
+	int remainLen = len -n*8;
+	if(remainLen>0) memcpy(pOut,pIn,remainLen);
 	return true;
 }
 
 bool KSqlEnc::Dec(unsigned char* in,unsigned char* out,int len)
 {
-	if( (len%8) !=0 ){
-		CCAssert(false , "Error Dec size!");
-		return false;
-	}
+	//if( (len%8) !=0 ){
+	//	memcpy(out,in,len);
+	//	//CCAssert(false , "Error Dec size!");
+	//	return true;
+	//}
 	TEA tea(key, 16);
 	int n = len/8;
 	unsigned char* pIn = in;
@@ -38,5 +37,7 @@ bool KSqlEnc::Dec(unsigned char* in,unsigned char* out,int len)
 		pIn += 8;
 		pOut+= 8;
 	}
+	int remainLen = len - n*8;
+	if(remainLen>0) memcpy(pOut,pIn,remainLen);
 	return true;
 }

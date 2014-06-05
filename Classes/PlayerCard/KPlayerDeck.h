@@ -3,15 +3,17 @@
 #include "../Inc/KTypeDef.h"
 #include "../common/KCommonObj.h"
 #define MAX_HERO_SKILL_NUM 3
+#define MAX_HERO_SKILL_LEV 3
 struct KHeroDef{
 	struct skillDef{
 		int _skillId;
-		int _lev;
 	};
-	float GetStarNum() const ;
+	int GetLev() const ;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
-	int _heroId;
-	int _Id;
+	int GetSkillLev(int skillIndex) const ;
+	int _cardId;
+	int _id;
+	int _exp;
 	void rndGenerate(int id);
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));

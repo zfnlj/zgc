@@ -18,18 +18,18 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 
 	if(m_record->GetCurDeck()<0) m_record->SetCurDeck(0);
 
-	cardList.push_front(hero._Id);
+	cardList.push_front(hero._id);
 	cardList.push_back(0); // for 8 size,useless;
 	KPlayerRecordAssist::updateCardDeck(m_record,cardList);
 	return true;
 }
 
-bool KPlayerCardDepot::FillHeroDef(int heroId,KHeroDef& hero)
+bool KPlayerCardDepot::FillHeroDef(int id,KHeroDef& hero)
 {
 	KHeroDef* pCurHero = (KHeroDef*)m_record->heroData.binData;
 	int num = m_record->heroData.actualLength/sizeof(KHeroDef);
 	for(int i=0;i<num;i++,pCurHero++){
-		if(pCurHero->_Id==heroId){
+		if(pCurHero->_id==id){
 			memcpy(&hero,pCurHero,sizeof(KHeroDef));
 			return true;
 		}
@@ -53,7 +53,7 @@ const KHeroDef* KPlayerCardDepot::FindHero(int id)
 	int heroNum = m_record->heroData.actualLength/sizeof(KHeroDef);
 	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
 	for(int i=0;i<heroNum;i++,pHero++){
-		if(pHero->_Id==id) return pHero;
+		if(pHero->_id==id) return pHero;
 	}
 	return NULL;
 }
@@ -94,7 +94,7 @@ bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero
 
 	int* pDeck = (int*)m_record->cardDeck[index].binData;
 	PickDeckHero(index,hero);
-	int heroId = hero._heroId;
+	int heroId = hero._cardId;
 	pDeck++;
 	for(int i=0;i<cardNum-1;i++,pDeck++){
 		if(*pDeck>0) tmpLst.push_back(*pDeck);
@@ -107,12 +107,12 @@ int KPlayerCardDepot::GetCurDeck()
 	return m_record->curDeck;
 }
 
-bool KPlayerCardDepot::PickCurDeck(int& heroId,KIntegerList& tmpLst)
+bool KPlayerCardDepot::PickCurDeck(int& heroCardId,KIntegerList& tmpLst)
 {
 	if(m_record->curDeck<0) return false;
 	KHeroDef hero;
 	bool ret = GetCardDeck(m_record->curDeck,tmpLst,hero);
-	heroId = hero._heroId;
+	heroCardId = hero._cardId;
 	return ret;
 }
 
@@ -134,4 +134,17 @@ bool KPlayerCardDepot::SaveDeck(int deckId,KIntegerList& tmpLst)
 bool KPlayerCardDepot::ClearDeck(int deckId)
 {
 	return KPlayerRecordAssist::ClearCardDeck(m_record,deckId);
+}
+
+int KPlayerCardDepot::ConsumeExp(int val)
+{
+	KHeroDef heroDef;
+	if(!PickCurHero(heroDef)) return val;
+	int oldHeroLev = heroDef.GetLev();
+	if(oldHeroLev==9) return val; // max lev
+	heroDef._exp += val;
+	//int curHeroLev = heroDef.GetLev();
+	KPlayerRecordAssist::updateHeroExp(m_record,heroDef._id,heroDef._exp);
+	
+	return 0;
 }

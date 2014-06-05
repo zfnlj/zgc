@@ -61,6 +61,19 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 	return true;
 }
 
+bool updateHeroExp(tb_player_record* record,int id,int exp)
+{
+	int heroNum = record->heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)record->heroData.binData;
+	for(int i=0;i<heroNum;i++,pHero++){
+		if(pHero->_id==id){
+			pHero->_exp =exp;
+			break;
+		}
+	}
+	record->updateMask(tb_player_record::_HERODATA);
+	return true;
+}
 bool addHero(tb_player_record* record,KHeroDef* hero)
 {
 	if(record->heroData.actualLength>=MAX_HERO_NUM*sizeof(KHeroDef)) return false;
@@ -203,10 +216,10 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 	return true;
 }
 
-void AddExp(tb_player_record* record,int val)
+void AddExp(tb_player_record* record,int val,int power)
 {
 	record->exp += val;
-	record->power += val;
+	record->power += power;
 	record->updateMask(tb_player_record::_CRI);
 }
 

@@ -13,7 +13,7 @@
 #include "KHeroSkillStatic.h"
 #include "KHelpStringStatic.h"
 #include "KCardStatic.h"
-
+#include "KRankStaticMgr.h"
 class KGameStaticMgr : public Singleton<KGameStaticMgr>
 {
 public:
@@ -30,10 +30,13 @@ public:
 	bool InitDeckDef(const char* m_FileName);
 	bool InitBattleField(const char* m_FileName);
 	bool InitHelpString(const char* m_FileName);
-	bool InitRank(const char* m_FileName);
+	bool InitRank(const char* m_FileName,KRankStaticDataManager& mgr);
 	bool InitHeroSkill(const char* m_FileName);
 	bool InitTipString(const char* m_FileName);
 	bool InitStoryString(const char* m_FileName);
+
+	int  PlayerExpToLevel(int exp);
+	int  HeroExpToLevel(int exp);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
@@ -64,6 +67,8 @@ private:
 	KHelpStringMap m_helpStringMap;
 	KHelpStringMap m_tipStringMap;
 	KHelpStringMap m_storyStringMap;
+	KRankStaticDataManager m_playerExpMgr;
+	KRankStaticDataManager m_heroExpMgr;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -29,8 +29,12 @@ namespace KPlayerRecordAssist
 	bool addStoreCard(tb_player_record* record,int id,int num);
 	bool addHero(tb_player_record* record,KHeroDef* hero);
 	bool insertCardDeck(tb_player_record* record,KIntegerList& lst);
+
+	//hero
+	bool updateHeroExp(tb_player_record* record,int id,int exp);
+
 	//money
-	void AddExp(tb_player_record* record,int val);
+	void AddExp(tb_player_record* record,int val,int power);
 	//quest
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);

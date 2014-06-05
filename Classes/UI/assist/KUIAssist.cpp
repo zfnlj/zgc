@@ -337,7 +337,7 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 
 UIWidget* KUIAssist::_createMiniHero(KHeroDef& hero)
 {
-	KCardStatic* cardST = KGameStaticMgr::getSingleton().GetCard(hero._heroId);
+	KCardStatic* cardST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
 	if(!cardST) return NULL;
 	UIWidget* ui = KJsonDictMgr::getSingleton().CreateMiniCardWidget();
 	ui->setAnchorPoint(CCPoint(0.5f,0.5f));
@@ -413,7 +413,7 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 		if(widgetSlot) widgetSlot->setVisible(false);
 	}
 
-	float starNum = heroDef.GetStarNum()/3.0f;
+	float starNum = (float)heroDef.GetLev()/3.0f;
 	int fullStarNum = (int)starNum;
 	bool bHasHalfStar = (starNum-fullStarNum)>0.0f ? true:false;
 	for(int n=0;n<fullStarNum;n++){
@@ -436,8 +436,8 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 		char sz[64]={0};
 		UILabel* pLabel = (UILabel*)GetIndexWidget(widget,"hero_skill",i);
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(heroDef._skill[i]._skillId);
-		if(heroDef._skill[i]._lev>0 && skill){
-			sprintf(sz,"%s:  lev(%d)",skill->GetName(),heroDef._skill[i]._lev);
+		if(heroDef.GetSkillLev(i)>0 && skill){
+			sprintf(sz,"%s:  lev(%d)",skill->GetName(),heroDef.GetSkillLev(i));
 			pLabel->setText(sz);
 			pLabel->setVisible(true);
 		}else{
@@ -448,7 +448,7 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 
 UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig)
 {
-	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._heroId);
+	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
 	if(!pST) return NULL;
 	UIWidget* widget = _createCardLayout(pST,bBig);
 	_showHeroSkill(widget,hero);

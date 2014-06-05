@@ -20,7 +20,6 @@ public:
 
 
 class KRankStaticDataManager
-		:public System::Patterns::KSingleton<KRankStaticDataManager>
 {
 	public:
 		// 获得指定id的全局参数

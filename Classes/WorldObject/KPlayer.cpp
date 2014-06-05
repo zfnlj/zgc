@@ -8,9 +8,8 @@
 #include "../common/KPlayerRecordAssist.h"
 #include "../sqlite/KUserSql.h"
 #include "../sqlite/KUserQuestSql.h"
-#include "../StaticTable/KRankStaticMgr.h"
+#include "../StaticTable/KGameStatic.h"
 #include "CommonLogic/WorldObject/KAttrDefines.h"
-
 using namespace KItemAbout;
 using namespace KAttributeAbout;
 
@@ -241,12 +240,17 @@ namespace KWorldObjAbout
 	}
 	int KPlayer::getLevel()
 	{ 
-		return KRankStaticDataManager::Instance()->ExpToLevel(m_playerRecord.GetExp());
+		return KGameStaticMgr::getSingleton().PlayerExpToLevel(m_playerRecord.GetExp());
 	}	
 
 	void KPlayer::SetQuestGiftSelectPos(int pos)
 	{
 		SetAttrValue(ca_selectPos,pos);
+	}
+	void KPlayer::IncreaseExp(int val)
+	{
+		int power = m_cardDepot.ConsumeExp(val);
+		KPlayerRecordAssist::AddExp(&m_playerRecord,val,power);
 	}
 }
 

@@ -98,6 +98,6 @@ void KHeroSkillMgr::SetHero(KHeroDef* pDef)
 {
 	if(!pDef) return;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		addSkill(pDef->_skill[i]._skillId,pDef->_skill[i]._lev);
+		addSkill(pDef->_skill[i]._skillId,pDef->GetSkillLev(i));
 	}
 }

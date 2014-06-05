@@ -2,19 +2,21 @@
 #include "../StaticTable/KGameStatic.h"
 #include "../StaticTable/StaticData.h"
 
-float KHeroDef::GetStarNum() const 
+int KHeroDef::GetLev() const 
 {
-	float starNum = 0;
-	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		if(_skill[i]._lev>0) starNum += _skill[i]._lev;
-	}
-	return starNum;
+	return KGameStaticMgr::getSingleton().HeroExpToLevel(_exp);
 }
 
-void KHeroDef::rndGenerate(int id)
+int KHeroDef::GetSkillLev(int skillIndex) const
 {
-	_heroId = id;
-	_Id = STATIC_DATA_INC();
+	int curLev = GetLev()- skillIndex*MAX_HERO_SKILL_LEV;
+	return (curLev >MAX_HERO_SKILL_LEV)? MAX_HERO_SKILL_LEV: curLev;
+}
+
+void KHeroDef::rndGenerate(int cardId)
+{
+	_cardId = cardId;
+	_id = STATIC_DATA_INC();
 	memset(_skill,0,sizeof(_skill));
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);

@@ -1395,7 +1395,7 @@ void KQuestNew::OnGift()
 	// ½±Àø
 	if (m_exp != 0)
 	{
-		KPlayerRecordAssist::AddExp(m_pPlayer->GetPlayerRecord(),m_exp);
+		m_pPlayer->IncreaseExp(m_exp);
 	}
 
 	if (m_money != 0)

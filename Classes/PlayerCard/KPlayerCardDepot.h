@@ -31,6 +31,7 @@ public:
 	int GetCurDeck();
 	bool SaveDeck(int deckId,KIntegerList& tmpLst);
 	bool ClearDeck(int deckId);
+	int ConsumeExp(int val);
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;

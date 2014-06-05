@@ -196,7 +196,7 @@ void CardGroupScene::ShowMiniHero()
 	UIImageView* raceSlot = (UIImageView*)m_ui->getWidgetByName("race_slot");
 	UIWidget* pWidgetHero = KUIAssist::_createMiniHero(m_miniHero);
 
-	KCardStatic* heroST = KGameStaticMgr::getSingleton().GetCard(m_miniHero._heroId);
+	KCardStatic* heroST = KGameStaticMgr::getSingleton().GetCard(m_miniHero._cardId);
 	KUIAssist::SetRaceIcon(raceSlot, (heroST)?heroST->GetRace():0);
 	if(pWidgetHero){
 		pWidgetHero->setPosition(pt);
@@ -368,7 +368,7 @@ void CardGroupScene::ShowAllHero()
 		UIImageView* widgetPos =(UIImageView*)m_ui->getWidgetByName(sz);
 		widget->setPosition(widgetPos->getPosition());
 		widget->setTouchEnable(false);
-		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_Id,KCardGroupSlotElem::elem_hero,widget);
+		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_id,KCardGroupSlotElem::elem_hero,widget);
 	}
 }
 
@@ -422,7 +422,7 @@ void CardGroupScene::ShowCardGroup()
 		KHeroDef hero;
 		m_depot->GetCardDeck(i,tmpList,hero);
 		UIWidget* widget = NULL;
-		if(tmpList.size()>0 &&hero._heroId>0){
+		if(tmpList.size()>0 &&hero._cardId>0){
 			widget = KUIAssist::_createHero(hero,true);
 		}
 		if(widget){

@@ -49,7 +49,8 @@ void KGameStaticMgr::LoadStaticData()
 	InitAttr("data/card/Attr.txt");
 	InitDeckDef("data/DeckDef.txt");
 	InitBattleField("data/BattleField.txt");
-	InitRank("data/Rank.txt");
+	InitRank("data/Rank.txt",m_playerExpMgr);
+	InitRank("data/HeroRank.txt",m_heroExpMgr);
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
 	InitHelpString("data/string/HelpStr.txt");
@@ -57,7 +58,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitStoryString("data/string/StoryStr.txt");
 }
 
-bool KGameStaticMgr::InitRank(const char* m_FileName)
+bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)
 {
 	std::string pathKey = m_FileName;
 
@@ -71,8 +72,7 @@ bool KGameStaticMgr::InitRank(const char* m_FileName)
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
 	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
 	if(!fileReader)	return false;
-	KRankStaticDataManager::Instance()->Init(fileReader);
-	int lev = KRankStaticDataManager::Instance()->ExpToLevel(0);
+	mgr.Init(fileReader);
 	loader.CloseFileReader(fileReader);
 	return true;
 
@@ -409,4 +409,14 @@ KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank)
 	if(tmpMap.empty()) return NULL;
 	int nRand = g_rnd.GetRandom(0,tmpMap.size());
 	return tmpMap[nRand];
+}
+
+int KGameStaticMgr::PlayerExpToLevel(int exp)
+{
+	return m_playerExpMgr.ExpToLevel(exp);
+}
+
+int KGameStaticMgr::HeroExpToLevel(int exp)
+{
+	return m_heroExpMgr.ExpToLevel(exp);
 }
