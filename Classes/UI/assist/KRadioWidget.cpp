@@ -104,3 +104,12 @@ void KRadioWidget::SetVisible(int index, bool flag)
 		}
 	}
 }
+
+void KRadioWidget::ClearSelected()
+{
+	if(m_pSelected) m_pSelected = NULL;
+	for(KRadioButList::iterator it=m_butList.begin();it!=m_butList.end();++it){
+		KRadioBut& radioBut =*it;
+		radioBut.m_pBut->setSelectedState(false);
+	}
+}

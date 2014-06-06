@@ -32,6 +32,7 @@ public:
 	int  GetSelectVal();
 	bool GetSelectState(int& val,bool& bChecked);
 	void SetUnSelectAble(bool flag){ m_bUnSelectable = flag;}
+	void ClearSelected();
 private:
 	KRadioButList m_butList;
 	CCObject* m_pSelected;

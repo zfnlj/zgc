@@ -70,8 +70,8 @@ bool CardGroupScene::init()
 	CreateMiniCardList(m_depot->GetCurDeck());
 	ShowMiniHero();
 	ShowMiniCardList();
-
 	UpdateUI();
+	UpdateCurDeckRadio();
     return true;
 }
 
@@ -179,6 +179,7 @@ void CardGroupScene::onClickBack(CCObject* sender)
 	if(m_mainType== type_card){
 		m_mainType = type_cardgroup;
 		UpdateUI();
+		UpdateCurDeckRadio();
 	}else if(m_mainType==type_cardgroup){
 		KUIAssist::_switch2MainMenu();
 	}
@@ -252,7 +253,12 @@ void CardGroupScene::onClickMiniCard(CCObject* obj)
 
 void CardGroupScene::onClickMiniHero(CCObject* obj)
 {
-
+	if(m_mainType==type_card){
+		m_miniHero.Clear();
+		UpdateUI();
+		SetMiniHeroWidget(NULL);
+		m_radioSelectHero.ClearSelected();
+	}
 }
 
 void CardGroupScene::UpdateMiniCardNumInfo()
@@ -328,7 +334,6 @@ void CardGroupScene::UpdateUI()
 	UpdateAddSubBut();
 	UpdateSelectHeroBut();
 	UpdateMiniCardNumInfo();
-	UpdateCurDeckRadio();
 }
 
 void CardGroupScene::UpdateDeckCardCount()
@@ -485,8 +490,18 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 			return onClickCardGroup(pWidgetSlot->getTag());
 		}
 	}else if(m_mainType==type_card){
-		UIWidget* pAdd = KUIAssist::GetIndexWidget(m_ui->getRootWidget(),"slot_add",pWidgetSlot->getTag());
-		if(pAdd->isVisible()) onClickSlotAdd(sender);
+		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
+			m_radioSelectHero.SetSelected(pWidgetSlot->getTag(),false);
+			
+			if(KCardGroupAssist::IsMiniCardListMatch(m_slotElem[pWidgetSlot->getTag()],m_miniHero,m_miniCardList,m_depot)){
+				const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[pWidgetSlot->getTag()]._id);
+				memcpy(&m_miniHero,pHeroDef,sizeof(KHeroDef));
+				ShowMiniHero();
+			}
+		}else{
+			UIWidget* pAdd = KUIAssist::GetIndexWidget(m_ui->getRootWidget(),"slot_add",pWidgetSlot->getTag());
+			if(pAdd->isVisible()) onClickSlotAdd(sender);
+		}
 	}
 }
 
@@ -586,6 +601,8 @@ void CardGroupScene::onClickSelectHero(CCObject* sender)
 	if(!m_radioSelectHero.GetSelectState(index,bChecked)) return;
 	if(m_mainType==type_cardgroup){
 		m_depot->SetCurDeck(m_slotElem[index]._id);
+		CreateMiniCardList(m_depot->GetCurDeck());
+		ShowMiniCardList();
 	}else if(m_mainType==type_card){
 		if(!KCardGroupAssist::IsMiniCardListMatch(m_slotElem[index],m_miniHero,m_miniCardList,m_depot)) return;
 		const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[index]._id);
@@ -631,6 +648,14 @@ void CardGroupScene::DoClearDeck(CCObject* sender)
 
 void CardGroupScene::onClickSaveDeck(CCObject* sender)
 {
+	if(m_miniHero._cardId<=0){
+		KPopupLayer::DoModal(UI_WARNING_STR,NEED_HERO_CARD_STR,KPopupLayer::DT_Ok);
+		return;
+	}
+	if(m_miniCardList.size()!=30){
+		KPopupLayer::DoModal(UI_WARNING_STR,NEED_30_CARD_STR,KPopupLayer::DT_Ok);
+		return;
+	}
 	KCardGroupAssist::SaveCardGroup(m_curCardGroup,m_miniHero,m_miniCardList,m_depot);
 	KPopupLayer::DoModal(UI_NOTIFY_STR,SAVE_DECK_OK_STR,KPopupLayer::DT_Ok);
 	

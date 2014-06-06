@@ -33,6 +33,7 @@ public:
 	bool ClearDeck(int deckId);
 	int ConsumeExp(int val);
 	void SetCurDeck(int index);
+	bool IsDeckReady(int index);
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;

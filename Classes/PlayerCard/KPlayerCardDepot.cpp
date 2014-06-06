@@ -85,6 +85,13 @@ bool KPlayerCardDepot::PickDeckHero(int index,KHeroDef& hero)
 	return true;
 }
 
+bool KPlayerCardDepot::IsDeckReady(int index)
+{
+	if(index <0 || index >=MAX_DECK_NUM) return false;
+	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
+	return (cardNum==31);
+}
+
 bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero)
 {
 	if(index <0 || index >=MAX_DECK_NUM) return false;
