@@ -389,7 +389,7 @@ void CardGroupScene::ShowAllHero()
 		UIImageView* widgetPos =(UIImageView*)m_ui->getWidgetByName(sz);
 		widget->setPosition(widgetPos->getPosition());
 		widget->setTouchEnable(false);
-		if(pHeroDef->_id==m_miniHero._id) 	m_radioSelectHero.SetSelected(curPos,false);
+		//if(pHeroDef->_id==m_miniHero._id) 	m_radioSelectHero.SetSelected(curPos,false);
 		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_id,KCardGroupSlotElem::elem_hero,widget);
 	}
 }
@@ -521,6 +521,14 @@ void CardGroupScene::onClickCardGroup(int index)
 	onMiniCardChanged();
 	ShowMiniHero();
 	UpdateUI();
+	
+	int curPos=0;
+	for(int i=0;i<m_depot->GetHeroNum();i++){
+		const KHeroDef*  pHeroDef = m_depot->FindHeroOnIndex(i);
+		if(!pHeroDef) continue;
+		if(pHeroDef->_id==m_miniHero._id) 	m_radioSelectHero.SetSelected(curPos,false);
+		curPos++;
+	}
 }
 
 void CardGroupScene::onClickNewCardGroup(CCObject* sender)
