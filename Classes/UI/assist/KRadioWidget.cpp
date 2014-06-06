@@ -52,10 +52,12 @@ int  KRadioWidget::GetSelectVal()
 void KRadioWidget::SetSelected(int index,bool bClick)
 {
 	int pos=0;
+	if(index<0) m_pSelected = NULL;
 	for(KRadioButList::iterator it=m_butList.begin();it!=m_butList.end();++it,pos++){
 		KRadioBut& radioBut =*it;
 		if(pos==index){
 			radioBut.m_pBut->setSelectedState(true);
+			if(!m_bUnSelectable)radioBut.m_pBut->setTouchEnable(false);
 			m_pSelected = radioBut.m_pBut;
 			if(bClick){
 				onClick(radioBut.m_pBut);
@@ -88,7 +90,7 @@ void KRadioWidget::SetVisible(bool flag)
 		KRadioBut& radioBut =*it;
 		radioBut.m_pBut->setVisible(flag);
 		radioBut.m_pBut->setTouchEnable(flag);
-		if(flag && radioBut.m_pBut==m_pSelected) radioBut.m_pBut->setTouchEnable(false);
+		if(flag && radioBut.m_pBut==m_pSelected && !m_bUnSelectable) radioBut.m_pBut->setTouchEnable(false);
 	}
 }
 
@@ -100,6 +102,7 @@ void KRadioWidget::SetVisible(int index, bool flag)
 			KRadioBut& radioBut =*it;
 			radioBut.m_pBut->setVisible(flag);
 			radioBut.m_pBut->setTouchEnable(flag);
+			if(flag && radioBut.m_pBut==m_pSelected && !m_bUnSelectable) radioBut.m_pBut->setTouchEnable(false);
 			return;
 		}
 	}

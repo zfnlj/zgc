@@ -176,6 +176,7 @@ void CardGroupScene::UpdateCurDeckRadio()
 void CardGroupScene::onClickBack(CCObject* sender)
 {
 	m_curPage = 0;
+	m_radioSelectHero.SetSelected(-1,false);
 	if(m_mainType== type_card){
 		m_mainType = type_cardgroup;
 		UpdateUI();
@@ -388,6 +389,7 @@ void CardGroupScene::ShowAllHero()
 		UIImageView* widgetPos =(UIImageView*)m_ui->getWidgetByName(sz);
 		widget->setPosition(widgetPos->getPosition());
 		widget->setTouchEnable(false);
+		if(pHeroDef->_id==m_miniHero._id) 	m_radioSelectHero.SetSelected(curPos,false);
 		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_id,KCardGroupSlotElem::elem_hero,widget);
 	}
 }
@@ -454,9 +456,13 @@ void CardGroupScene::ShowCardGroup()
 			widget->setPosition(widgetPos->getPosition());
 			widget->setTouchEnable(false);
 			UIImageView* pCardCenter = (UIImageView*)UIHelper::seekWidgetByName(widget,"card_center");
-			pCardCenter->loadTexture("card_edit_txt.png",UI_TEX_TYPE_PLIST);
+			pCardCenter->loadTexture("card_fight_txt.png",UI_TEX_TYPE_PLIST);
+			if(m_depot->GetCurDeck()==i){
+				pCardCenter->setVisible(true);
+			}else{
+				pCardCenter->setVisible(false);
+			}
 			pCardCenter->setScale(0.8f);
-			pCardCenter->setVisible(true);
 			KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],i,KCardGroupSlotElem::elem_card_group,widget);
 		}
 	}
@@ -510,7 +516,7 @@ void CardGroupScene::onClickCardGroup(int index)
 	m_curCardGroup = m_slotElem[index]._id;
 	m_curPage = 0;
 	m_mainType = type_card;
-	m_radioSelectHero.SetSelected(index,false);
+
 	CreateMiniCardList(m_curCardGroup);
 	onMiniCardChanged();
 	ShowMiniHero();
@@ -620,7 +626,6 @@ void CardGroupScene::onClickSelectHero(CCObject* sender)
 void CardGroupScene::UpdateSelectHeroBut()
 {
 	if(m_mainType==type_cardgroup){
-		m_radioSelectHero.SetVisible(true);
 		for(int i=0;i<PAGE_CARD_NUM;i++){
 			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget);
 		}
@@ -652,7 +657,7 @@ void CardGroupScene::onClickSaveDeck(CCObject* sender)
 		KPopupLayer::DoModal(UI_WARNING_STR,NEED_HERO_CARD_STR,KPopupLayer::DT_Ok);
 		return;
 	}
-	if(m_miniCardList.size()!=30){
+	if(KCardGroupAssist::GetTotalCardNum(m_miniCardList)!=30){
 		KPopupLayer::DoModal(UI_WARNING_STR,NEED_30_CARD_STR,KPopupLayer::DT_Ok);
 		return;
 	}

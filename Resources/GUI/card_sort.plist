@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{38,37}</string>
             </dict>
-            <key>card_edit_txt.png</key>
+            <key>card_fight_txt.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,396},{129,84}}</string>
@@ -352,7 +352,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:98d20ba359b322baa8ccba289a71d4dc$</string>
+            <string>$TexturePacker:SmartUpdate:dcc70db3bd0484611c5cf5b25768485b$</string>
             <key>textureFileName</key>
             <string>card_sort.png</string>
         </dict>

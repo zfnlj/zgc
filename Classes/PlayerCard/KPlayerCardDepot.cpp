@@ -75,6 +75,7 @@ bool KPlayerCardDepot::PickCurHero(KHeroDef& hero)
 
 bool KPlayerCardDepot::PickDeckHero(int index,KHeroDef& hero)
 {
+	memset(&hero,0,sizeof(KHeroDef));
 	if(index<0) return false;
 	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
 	if(cardNum<1) return false;
