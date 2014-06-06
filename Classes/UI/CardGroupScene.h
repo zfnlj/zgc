@@ -80,6 +80,7 @@ private:
 	void DoClearDeck(CCObject* sender);
 	void onClickSaveDeck(CCObject* sender);
 	void onClickClearDeck(CCObject* sender);
+	void UpdateCurDeckRadio();
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
 	UIWidget* m_pMiniHeroWidget;

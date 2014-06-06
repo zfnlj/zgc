@@ -83,6 +83,15 @@ bool addHero(tb_player_record* record,KHeroDef* hero)
 	return true;
 }
 
+bool setCurDeck(tb_player_record* record,int index)
+{
+	if(index >=MAX_DECK_NUM) return false;
+	if(record->cardDeck[index].actualLength==0) return false;
+	record->curDeck = index;
+	record->updateMask(tb_player_record::_CURDECK);
+	return true;
+}
+
 bool addStoreCard(tb_player_record* record,int id,int count)
 {
 	void* buf=NULL;

@@ -106,6 +106,11 @@ int KPlayerCardDepot::GetCurDeck()
 	return m_record->curDeck;
 }
 
+void KPlayerCardDepot::SetCurDeck(int index)
+{
+	KPlayerRecordAssist::setCurDeck(m_record,index);
+}
+
 bool KPlayerCardDepot::PickCurDeck(int& heroCardId,KIntegerList& tmpLst)
 {
 	if(m_record->curDeck<0) return false;

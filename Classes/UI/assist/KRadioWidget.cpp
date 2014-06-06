@@ -49,15 +49,18 @@ int  KRadioWidget::GetSelectVal()
 	}
 }
 
-void KRadioWidget::SetSelected(int index)
+void KRadioWidget::SetSelected(int index,bool bClick)
 {
 	int pos=0;
 	for(KRadioButList::iterator it=m_butList.begin();it!=m_butList.end();++it,pos++){
 		KRadioBut& radioBut =*it;
 		if(pos==index){
 			radioBut.m_pBut->setSelectedState(true);
-			onClick(radioBut.m_pBut);
-			return;
+			m_pSelected = radioBut.m_pBut;
+			if(bClick){
+				onClick(radioBut.m_pBut);
+				return;
+			}
 		}else{
 			radioBut.m_pBut->setSelectedState(false);
 		}

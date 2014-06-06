@@ -28,7 +28,7 @@ public:
 	void onClick(CCObject* obj);
 	void SetVisible(bool flag);
 	void SetVisible(int index, bool flag);
-	void SetSelected(int index);
+	void SetSelected(int index,bool bClick);
 	int  GetSelectVal();
 	bool GetSelectState(int& val,bool& bChecked);
 	void SetUnSelectAble(bool flag){ m_bUnSelectable = flag;}

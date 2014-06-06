@@ -70,6 +70,7 @@ bool CardGroupScene::init()
 	CreateMiniCardList(m_depot->GetCurDeck());
 	ShowMiniHero();
 	ShowMiniCardList();
+
 	UpdateUI();
     return true;
 }
@@ -119,7 +120,7 @@ cocos2d::extension::UILayer* CardGroupScene::GetUILayer()
 			pBut->setTag(i);
 			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSlotSub));
 		}
-		m_radioSelectHero.SetUnSelectAble(true);
+		m_radioSelectHero.SetUnSelectAble(false);
 		m_radioSelectHero.AddGroupBut("check_hero",8,m_ui,this,coco_pushselector(CardGroupScene::onClickSelectHero),-1);
 		m_radioCost.AddGroupBut("check_cost",8,m_ui,this,coco_pushselector(CardGroupScene::onClickCost),0);
 		m_radioRace.AddGroupBut("check_race",6,m_ui,this,coco_pushselector(CardGroupScene::onClickRace),0);
@@ -158,6 +159,18 @@ void CardGroupScene::onClickCost(CCObject* sender)
 {
 	m_curPage = 0;
 	UpdateUI();
+}
+
+void CardGroupScene::UpdateCurDeckRadio()
+{
+	if(m_mainType==type_cardgroup){
+		for(int i=0;i<PAGE_CARD_NUM;i++){
+			if(m_slotElem[i]._id==m_depot->GetCurDeck()){
+				m_radioSelectHero.SetSelected(i,false);
+				break;
+			}
+		}
+	}
 }
 
 void CardGroupScene::onClickBack(CCObject* sender)
@@ -299,6 +312,7 @@ void CardGroupScene::UpdateUI()
 		m_radioMain.SetVisible(false);
 		m_radioCost.SetVisible(false);
 		m_radioRace.SetVisible(false);
+		m_radioSelectHero.SetUnSelectAble(false);
 		KUIAssist::ShowButton(m_pSaveWidget,false);
 		KUIAssist::ShowButton(m_pClearWidget,false);
 		ShowCardGroup();
@@ -306,6 +320,7 @@ void CardGroupScene::UpdateUI()
 		m_radioMain.SetVisible(true);
 		m_radioCost.SetVisible(true);
 		m_radioRace.SetVisible(true);
+		m_radioSelectHero.SetUnSelectAble(true);
 		KUIAssist::ShowButton(m_pSaveWidget,true);
 		KUIAssist::ShowButton(m_pClearWidget,true);
 		ShowCardBrowse();
@@ -313,6 +328,7 @@ void CardGroupScene::UpdateUI()
 	UpdateAddSubBut();
 	UpdateSelectHeroBut();
 	UpdateMiniCardNumInfo();
+	UpdateCurDeckRadio();
 }
 
 void CardGroupScene::UpdateDeckCardCount()
@@ -479,7 +495,7 @@ void CardGroupScene::onClickCardGroup(int index)
 	m_curCardGroup = m_slotElem[index]._id;
 	m_curPage = 0;
 	m_mainType = type_card;
-	m_radioSelectHero.SetSelected(index);
+	m_radioSelectHero.SetSelected(index,false);
 	CreateMiniCardList(m_curCardGroup);
 	onMiniCardChanged();
 	ShowMiniHero();
@@ -496,8 +512,8 @@ void CardGroupScene::onClickNewCardGroup(CCObject* sender)
 	m_curCardGroup = 99;
 	m_curPage = 0;
 	m_mainType = type_card;
-	m_radioMain.SetSelected(0);
-	m_radioSelectHero.SetSelected(-1);
+	m_radioMain.SetSelected(0,false);
+	m_radioSelectHero.SetSelected(-1,false);
 	UpdateUI();
 }
 
@@ -568,13 +584,18 @@ void CardGroupScene::onClickSelectHero(CCObject* sender)
 	int index = -1;
 	bool bChecked = false;
 	if(!m_radioSelectHero.GetSelectState(index,bChecked)) return;
-	if(!KCardGroupAssist::IsMiniCardListMatch(m_slotElem[index],m_miniHero,m_miniCardList,m_depot)) return;
-	const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[index]._id);
-	if(bChecked){
-		memcpy(&m_miniHero,pHeroDef,sizeof(KHeroDef));
-	}else{
-		m_miniHero.Clear();
+	if(m_mainType==type_cardgroup){
+		m_depot->SetCurDeck(m_slotElem[index]._id);
+	}else if(m_mainType==type_card){
+		if(!KCardGroupAssist::IsMiniCardListMatch(m_slotElem[index],m_miniHero,m_miniCardList,m_depot)) return;
+		const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[index]._id);
+		if(bChecked){
+			memcpy(&m_miniHero,pHeroDef,sizeof(KHeroDef));
+		}else{
+			m_miniHero.Clear();
+		}
 	}
+
 	UpdateUI();
 	ShowMiniHero();
 }
@@ -582,7 +603,10 @@ void CardGroupScene::onClickSelectHero(CCObject* sender)
 void CardGroupScene::UpdateSelectHeroBut()
 {
 	if(m_mainType==type_cardgroup){
-		m_radioSelectHero.SetVisible(false);
+		m_radioSelectHero.SetVisible(true);
+		for(int i=0;i<PAGE_CARD_NUM;i++){
+			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget);
+		}
 	}else if(m_mainType==type_card){
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
 			m_radioSelectHero.SetVisible(true);

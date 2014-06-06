@@ -29,7 +29,7 @@ namespace KPlayerRecordAssist
 	bool addStoreCard(tb_player_record* record,int id,int num);
 	bool addHero(tb_player_record* record,KHeroDef* hero);
 	bool insertCardDeck(tb_player_record* record,KIntegerList& lst);
-
+	bool setCurDeck(tb_player_record* record,int index);
 	//hero
 	bool updateHeroExp(tb_player_record* record,int id,int exp);
 
