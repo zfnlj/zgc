@@ -8,12 +8,12 @@ void KRadioBut::onClick()
 	}
 }
 
-void KRadioWidget::AddGroupBut(const char* name,int num,cocos2d::extension::UILayer* layer,CCObject* target,SEL_PushEvent selector,int checked)
+void KRadioWidget::AddGroupBut(const char* name,int num,cocos2d::extension::UIWidget* panel,CCObject* target,SEL_PushEvent selector,int checked)
 {
 	for(int i=0;i<num;i++){
 		char sz[32];
 		sprintf(sz,"%s_%d",name,i);
-		UICheckBox* pCheck = (UICheckBox*)layer->getWidgetByName(sz);
+		UICheckBox* pCheck = (UICheckBox*)UIHelper::seekWidgetByName(panel,sz);
 		pCheck->setTag(i);
 		AddBut(pCheck,target,selector,(i==checked));
 	}

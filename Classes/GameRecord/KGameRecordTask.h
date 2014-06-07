@@ -31,6 +31,7 @@ public:
 
 	void RecordPlayOp(int src,int des,int slot);
 	void RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt);
+	void RecordClickWidgetEvt(const char* widgetName,int index=-1);
 	void Empty();
 	void StartRecrod(int incId);
 	void StartPlay();
@@ -40,6 +41,7 @@ public:
 	bool IsClickCardValidate(KCardInst* card);
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);
+	bool IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt);
 private:
 
 	// 为了内存分配快搞的各种池

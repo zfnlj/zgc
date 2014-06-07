@@ -209,6 +209,7 @@ void KUIAssist::_switch2StageWaitScene()
 
 void KUIAssist::_switch2CardGroupScene()
 {
+	//CCScene* scene = CCTransitionSplitRows::create(0.5f, RecCardGroupScene::scene());
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, CardGroupScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 

@@ -128,6 +128,12 @@ bool KGameRecordMgr::IsClickButValidate(cocos2d::CCObject* obj)
 	return m_task.IsClickButValidate(obj);
 }
 
+bool KGameRecordMgr::IsClickWidgetValidate(cocos2d::CCObject* layer,CCPoint& pt)
+{
+	if(m_recState!= REC_PLAY) return true;
+	return m_task.IsClickWidgetValidate(layer,pt);
+}
+
 
 void KGameRecordMgr::onPlayStepOn()
 {

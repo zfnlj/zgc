@@ -4,10 +4,12 @@
 #include <list>
 #include "cocos2d.h"
 
+#define REC_WIDGET_NAME_LEN 32
 enum EGameRecordedDataType
 {
 	EGRDT_UIMouseInput	= 0,
 	EGRDT_PlayOp		= 1,
+	EGRDT_UIClickWidget = 2,
 	EGRDT_End,
 };
 
@@ -25,9 +27,11 @@ public:
 	}
 	virtual bool Replay(DWORD timeline,int op)=0;
 	virtual EGameRecordedDataType GetClassType()=0;
-	virtual bool IsClickCardValidate(DWORD,KCardInst* card)=0;
-	virtual bool IsClickFightAreaValidate(DWORD,int slot)=0;
-	virtual bool IsClickButValidate(DWORD,cocos2d::CCObject* obj)=0;
+	virtual bool IsClickCardValidate(DWORD,KCardInst* card){return false;}
+	virtual bool IsClickFightAreaValidate(DWORD,int slot){return false;}
+	virtual bool IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt,DWORD){return false;}
+	virtual bool IsClickButValidate(DWORD,cocos2d::CCObject* obj){return false;}
+	virtual bool IsClickWidgetValidate(cocos2d::CCPoint& pt){return false;}
 	DWORD GetElapsed(){ return m_elapsed;}
 
 protected:
@@ -53,8 +57,6 @@ public:
 	void RecordMouseEvt(Mouse_evt evt,DWORD initTime);
 	virtual bool Replay(DWORD timeline,int op);
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIMouseInput;}
-	virtual bool IsClickCardValidate(DWORD,KCardInst* card){ return false;}
-	virtual bool IsClickFightAreaValidate(DWORD,int slot){ return false;}
 	virtual bool IsClickButValidate(DWORD timeline,cocos2d::CCObject* obj);
 private:
 	Mouse_evt m_evt;
@@ -87,11 +89,31 @@ public:
 	virtual EGameRecordedDataType GetClassType(){ return EGRDT_PlayOp;}
 	virtual bool IsClickCardValidate(DWORD,KCardInst* card);
 	virtual bool IsClickFightAreaValidate(DWORD,int slot);
-	virtual bool IsClickButValidate(DWORD,cocos2d::CCObject* obj){ return false;}
 private:
 	void ActiveCard(int);
 	OpStruct m_data;
 	KCardInst* m_pActiveCard;
+};
+
+class KRecordClickWidget :public KRecordDataBase
+{
+public:
+	KRecordClickWidget(){}
+	~KRecordClickWidget(){}
+	virtual bool Deserialize( StreamInterface* pDataStream );
+	virtual bool Serialize( StreamInterface* pDataStream );
+	virtual void init(int id){
+		KRecordDataBase::init(id);
+		memset(m_widgetName,0,sizeof(m_widgetName));
+		m_index = -1;
+	}
+	void RecordMouseEvt(const char* widgetName,int index,DWORD initTime);
+	virtual bool Replay(DWORD timeline,int op);
+	virtual EGameRecordedDataType GetClassType(){ return EGRDT_UIClickWidget;}
+	virtual bool IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt,DWORD);
+private:
+	char m_widgetName[REC_WIDGET_NAME_LEN];
+	int m_index;
 };
 
 typedef std::list<KRecordDataBase*> KRecordDataList;

@@ -25,6 +25,9 @@ KRecordDataBase* KGameRecordTask::AllocData( EGameRecordedDataType eType )
 	case EGRDT_PlayOp:
 		pRecordData = new KRecordPlayOpData;
 		break;
+	case EGRDT_UIClickWidget:
+		pRecordData = new KRecordClickWidget;
+		break;
 	}
 	pRecordData->init(m_dlgInc++);
 	return pRecordData;
@@ -41,6 +44,13 @@ void KGameRecordTask::RecordMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 {
 	KRecordUIMouseData* pRecord = (KRecordUIMouseData*)AllocData(EGRDT_UIMouseInput);
 	pRecord->RecordMouseEvt(evt,m_startRecordTime);
+	m_FrameData.push_back(pRecord);
+}
+
+void KGameRecordTask::RecordClickWidgetEvt(const char* widgetName,int index)
+{
+	KRecordClickWidget* pRecord = (KRecordClickWidget*)AllocData(EGRDT_UIClickWidget);
+	pRecord->RecordMouseEvt(widgetName,index,m_startRecordTime);
 	m_FrameData.push_back(pRecord);
 }
 
@@ -177,4 +187,10 @@ bool KGameRecordTask::IsClickButValidate(cocos2d::CCObject* obj)
 {
 	if(!m_pCurOpera) return true;
 	return m_pCurOpera->IsClickButValidate(m_timeline*1000,obj);
+}
+
+bool KGameRecordTask::IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt)
+{
+	if(!m_pCurOpera) return true;
+	return m_pCurOpera->IsClickWidgetValidate(layer,pt,m_timeline*1000);
 }

@@ -34,6 +34,7 @@ public:
 	bool IsClickCardValidate(KCardInst* card);
 	bool IsClickFightAreaValidate(int slot);
 	bool IsClickButValidate(cocos2d::CCObject* obj);
+	bool IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt);
 	bool IsPlaying(){ return m_recState==REC_PLAY;}
 	void onPlayStepOn();
 private:

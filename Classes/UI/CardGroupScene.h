@@ -18,14 +18,13 @@ class KPlayerCardDepot;
 
 
 
-class CardGroupScene : public cocos2d::CCLayer
+class CardGroupScene : public cocos2d::extension::UILayer
 {
-	enum MainType{
+public:
+		enum MainType{
 		type_cardgroup,
 		type_card,
 	};
-	
-public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
 
@@ -37,19 +36,16 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(CardGroupScene);
 
-	cocos2d::extension::UILayer* GetUILayer();
-
-private:
-	cocos2d::extension::UILayer* m_ui;
+	cocos2d::extension::UIWidget* GetPanel();
+	virtual bool ccTouchBegan(CCTouch * touch,CCEvent * pevent);
+protected:
+	cocos2d::extension::UIWidget* m_ui;
 	void InitTest();
 
 	void CreateMiniCardList(int index);
 	void ShowMiniCardList();
 	void FreshMiniCardList();
 	void UpdateDeckCardCount();
-	void onClickCheckHero(CCObject* sender);
-	void onClickCheckSoldier(CCObject* sender);
-	void onClickCheckSkill(CCObject* sender);
 	void onClickBack(CCObject* sender);
 	void onClickCardGroup(int index);
 	void onClickSlot(CCObject* sender);
@@ -64,6 +60,11 @@ private:
 	void onClickPageUp(CCObject* sender);
 	void onClickRace(CCObject* sender);
 	void onClickSelectHero(CCObject* sender);
+	void onClickCard(CCObject* sender);
+	void DoClearDeck(CCObject* sender);
+	void onClickSaveDeck(CCObject* sender);
+	void onClickClearDeck(CCObject* sender);
+
 	void UpdateUI();
 	void ShowCardGroup();
 	void ShowCardBrowse();
@@ -76,10 +77,7 @@ private:
 	void SetMiniHeroWidget(UIWidget* newHero);
 	void ShowMiniHero();
 	void UpdateMiniCardNumInfo();
-	void onClickCard(CCObject* sender);
-	void DoClearDeck(CCObject* sender);
-	void onClickSaveDeck(CCObject* sender);
-	void onClickClearDeck(CCObject* sender);
+
 	void UpdateCurDeckRadio();
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;

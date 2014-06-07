@@ -24,7 +24,7 @@ public:
 	~KRadioWidget(){}
 	
 	void AddBut(UICheckBox* pBut,CCObject* target,SEL_PushEvent selector,bool bCheck=false);
-	void AddGroupBut(const char* name,int num,cocos2d::extension::UILayer*,CCObject* target,SEL_PushEvent selector,int checked=-1);
+	void AddGroupBut(const char* name,int num,cocos2d::extension::UIWidget*,CCObject* target,SEL_PushEvent selector,int checked=-1);
 	void onClick(CCObject* obj);
 	void SetVisible(bool flag);
 	void SetVisible(int index, bool flag);

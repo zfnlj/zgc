@@ -214,3 +214,66 @@ bool KRecordUIMouseData::IsClickButValidate(DWORD timeline,cocos2d::CCObject* ob
 	}
 	return false;
 }
+
+
+
+
+
+
+bool KRecordClickWidget::Deserialize(StreamInterface* pDataStream)
+{
+	KRecordDataBase::Deserialize(pDataStream);
+	pDataStream->ReadData(&m_widgetName,sizeof(m_widgetName));
+	pDataStream->ReadData(&m_index,sizeof(m_index));
+
+	return true;
+}
+
+
+
+bool KRecordClickWidget::Serialize( StreamInterface* pDataStream )
+{
+	KRecordDataBase::Serialize(pDataStream);
+	pDataStream->WriteData(&m_widgetName,sizeof(m_widgetName));
+	pDataStream->WriteData(&m_index,sizeof(m_index));
+	return true;
+}
+
+void KRecordClickWidget::RecordMouseEvt(const char* widgetName,int index,DWORD initTime)
+{
+	m_elapsed = GetTickCount()-initTime;
+	strcpy(m_widgetName,widgetName);
+	m_index = index;
+
+}
+
+bool KRecordClickWidget::Replay(DWORD timeline,int mode)
+{
+	if(timeline<m_elapsed) return false;
+
+	//TBD
+	KUIAssist::_playLessonMsg(m_dlgId*10);
+	return false;
+}
+
+bool KRecordClickWidget::IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt,DWORD timeline)
+{
+	UIWidget* panel = (UIWidget*)layer;
+	UIWidget* root = NULL;
+	if(m_index<0){
+		root = UIHelper::seekWidgetByName(panel,m_widgetName);
+	}else{
+		root = KUIAssist::GetIndexWidget(panel,m_widgetName,m_index);
+	}
+
+	if ( root && 
+		root->isEnabled() && 
+		root->isTouchEnabled() && 
+		root->hitTest(pt) && 
+		root->clippingParentAreaContainPoint(pt))
+	{
+		return true;
+	}
+
+	return false;
+}
