@@ -140,7 +140,9 @@ void KGameRecordTask::StartRecrod(int dlgInc)
 void KGameRecordTask::StartPlay()
 {
 	GameRoot::getSingleton().BattleCtrl().deserializeAll(&m_deckStream);
-	GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
+	if(GameRoot::getSingleton().BattleCtrl().GetCurState()!=KBattleCtrlBase::battle_null){
+		GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
+	}
 	m_timeline = 8;// let first step start at once
 }
 

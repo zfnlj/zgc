@@ -2,10 +2,11 @@
 #define _CARDGROUPSCENE_H
 
 #include "cocos2d.h"
-#include "UILayer.h"
+#include "KSceneLayerBase.h"
 #include "assist/KCardGroupAssist.h"
 #include "cocos-ext.h"
 #include "assist/KRadioWidget.h"
+#include "KGameRecordPanel.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -18,7 +19,7 @@ class KPlayerCardDepot;
 
 
 
-class CardGroupScene : public cocos2d::extension::UILayer
+class CardGroupScene : public KSceneLayerBase
 {
 public:
 		enum MainType{
@@ -36,11 +37,9 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(CardGroupScene);
 
-	cocos2d::extension::UIWidget* GetPanel();
+	virtual cocos2d::extension::UIWidget* GetPanel();
 	virtual bool ccTouchBegan(CCTouch * touch,CCEvent * pevent);
 protected:
-	cocos2d::extension::UIWidget* m_ui;
-	void InitTest();
 
 	void CreateMiniCardList(int index);
 	void ShowMiniCardList();
@@ -82,6 +81,7 @@ protected:
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
 	UIWidget* m_pMiniHeroWidget;
+	KGameRecordPanel m_gameRecPanel;
 	UILabel* m_pPageInfo;
 	KRadioWidget m_radioCost;
 	KRadioWidget m_radioRace;
@@ -94,6 +94,7 @@ protected:
 	int m_curCardGroup;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];
+
 };
 
 #endif // __CardGroupScene_SCENE_H__

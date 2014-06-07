@@ -29,9 +29,6 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(MainMenuScene);
 
-	CCArray m_testArr;
-	CCPoint GetCenterPos();
-
 	cocos2d::extension::UILayer* GetUILayer();
 	void DoClickShopBut(CCObject* sender);
 	void DoClickBattleBut(CCObject* sender);

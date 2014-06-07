@@ -24,6 +24,7 @@
 #include "assist/KUIMsgDef.h"
 #include "../GameRecord/KGameRecordMgr.h"
 
+
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -43,24 +44,19 @@ CCScene* CardGroupScene::scene()
 
 void CardGroupScene::update(float dt)
 {
+	KSceneLayerBase::update(dt);
 }
 
 // on "init" you need to initialize your instance
 bool CardGroupScene::init()
 {
-	//CCDirector::sharedDirector()->getRunningScene
-	m_ui = NULL;
 
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(CardGroupScene::update),this,0.1f,false);
     //////////////////////////////
-   if (!UILayer::init())
+   if (!KSceneLayerBase::init())
 	{
 		return false;
 	}
-    
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-
 
 	addWidget(GetPanel());
 
@@ -72,6 +68,7 @@ bool CardGroupScene::init()
 	ShowMiniCardList();
 	UpdateUI();
 	UpdateCurDeckRadio();
+	m_gameRecPanel.init(this);
     return true;
 }
 
@@ -139,24 +136,29 @@ cocos2d::extension::UIWidget* CardGroupScene::GetPanel()
 		m_miniHero.Clear();
 		m_depot = NULL;
 		m_pMiniHeroWidget = NULL;
+
 	}
 	return m_ui;
 }
 
 void CardGroupScene::onClickMainType(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
 	m_curPage = 0;
 	UpdateUI();
 }
 
 void CardGroupScene::onClickRace(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	m_curPage = 0;
 	UpdateUI();
 }
 
 void CardGroupScene::onClickCost(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
 	m_curPage = 0;
 	UpdateUI();
 }
@@ -175,6 +177,8 @@ void CardGroupScene::UpdateCurDeckRadio()
 
 void CardGroupScene::onClickBack(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	m_curPage = 0;
 	m_radioSelectHero.SetSelected(-1,false);
 	if(m_mainType== type_card){
@@ -243,17 +247,21 @@ void CardGroupScene::ShowMiniCardList()
 	}
 }
 
-void CardGroupScene::onClickMiniCard(CCObject* obj)
+void CardGroupScene::onClickMiniCard(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	if(m_mainType!=type_card) return;
-	UIWidget* pWidget = (UIWidget*)obj;
+	UIWidget* pWidget = (UIWidget*)sender;
 
 	KCardGroupAssist::AddMiniCard(m_miniCardList,pWidget->getTag(),-1);
 	onMiniCardChanged();
 }
 
-void CardGroupScene::onClickMiniHero(CCObject* obj)
+void CardGroupScene::onClickMiniHero(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	if(m_mainType==type_card){
 		m_miniHero.Clear();
 		UpdateUI();
@@ -476,6 +484,8 @@ void CardGroupScene::ShowCardGroup()
 
 void CardGroupScene::onClickCard(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	int i=0;
 	for(;i< PAGE_CARD_NUM;i++){
 		if(m_slotElem[i]._widget==sender) break;
@@ -488,6 +498,8 @@ void CardGroupScene::onClickCard(CCObject* sender)
 
 void CardGroupScene::onClickSlot(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	UIImageView* pWidgetSlot = (UIImageView*)sender;
 	if(m_mainType==type_cardgroup){
 		if(pWidgetSlot->isVisible()){
@@ -513,6 +525,7 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 
 void CardGroupScene::onClickCardGroup(int index)
 {
+
 	m_curCardGroup = m_slotElem[index]._id;
 	m_curPage = 0;
 	m_mainType = type_card;
@@ -533,6 +546,8 @@ void CardGroupScene::onClickCardGroup(int index)
 
 void CardGroupScene::onClickNewCardGroup(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	UIImageView* raceSlot = (UIImageView*)this->getWidgetByName("race_slot");
 	raceSlot->setVisible(false);
 	SetMiniHeroWidget(NULL);
@@ -548,6 +563,7 @@ void CardGroupScene::onClickNewCardGroup(CCObject* sender)
 
 void CardGroupScene::onClickSlotAdd(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
 
 	UIWidget* pWidget = (UIWidget*)sender;
 	KCardGroupSlotElem& elem = m_slotElem[pWidget->getTag()];
@@ -557,6 +573,8 @@ void CardGroupScene::onClickSlotAdd(CCObject* sender)
 
 void CardGroupScene::onClickSlotSub(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	UIWidget* pWidget = (UIWidget*)sender;
 	KCardGroupSlotElem& elem = m_slotElem[pWidget->getTag()];
 	KCardGroupAssist::AddMiniCard(m_miniCardList,elem._id,-1);
@@ -598,18 +616,24 @@ void CardGroupScene::UpdateAddSubBut()
 
 void CardGroupScene::onClickPageDown(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	m_curPage++;
 	UpdateUI();
 }
 
 void CardGroupScene::onClickPageUp(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	if(m_curPage>0) m_curPage--;
 	UpdateUI();
 }
 
 void CardGroupScene::onClickSelectHero(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	int index = -1;
 	bool bChecked = false;
 	if(!m_radioSelectHero.GetSelectState(index,bChecked)) return;
@@ -661,6 +685,8 @@ void CardGroupScene::DoClearDeck(CCObject* sender)
 
 void CardGroupScene::onClickSaveDeck(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	if(m_miniHero._cardId<=0){
 		KPopupLayer::DoModal(UI_WARNING_STR,NEED_HERO_CARD_STR,KPopupLayer::DT_Ok);
 		return;
@@ -676,6 +702,8 @@ void CardGroupScene::onClickSaveDeck(CCObject* sender)
 
 void CardGroupScene::onClickClearDeck(CCObject* sender)
 {
+	KGameRecordMgr::getSingleton().onClickWidget(sender);
+
 	KPopupLayer::DoModal(UI_WARNING_STR,DEL_DECK_NOTIFY_STR,KPopupLayer::DT_Yes_No,coco_pushselector(CardGroupScene::DoClearDeck),this);
 }
 
@@ -683,7 +711,7 @@ bool CardGroupScene::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 {
 	CCPoint touchPoint;
 	touchPoint.x = touch->getLocation().x;
-    touchPoint.y = touch->getLocation().y;
+	touchPoint.y = touch->getLocation().y;
 
 	if(!KGameRecordMgr::getSingleton().IsClickWidgetValidate(m_ui,touchPoint)) return true;
 

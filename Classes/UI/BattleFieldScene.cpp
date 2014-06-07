@@ -41,70 +41,41 @@ CCScene* BattleFieldScene::scene()
 
 void BattleFieldScene::update(float dt)
 {
-	KGameRecordMgr::getSingleton().update(dt);
-	m_actor.update(dt);
+	KSceneLayerBase::update(dt);
+
 	m_myFightAreaPanel.update(dt);
 	m_indicatePanel.Update(dt);
 	KClickCardMgr::getSingleton().update(dt);
-}
-
-CCPoint BattleFieldScene::GetCenterPos()
-{
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint pt = CCDirector::sharedDirector()->getVisibleOrigin();
-	pt.x += visibleSize.width/2;
-	pt.y += visibleSize.height/2;
-	return pt;
 }
 
 // on "init" you need to initialize your instance
 bool BattleFieldScene::init()
 {
 	//CCDirector::sharedDirector()->getRunningScene
-	m_ui = NULL;
 	//if(KUserData::GetInstancePtr()->m_otpCode==0) //Î´Á¬Íø
 	//	GameRoot::getSingleton().BattleCtrl().PlayWithAI();
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(BattleFieldScene::update),this,0.033f,false);
     //////////////////////////////
     // 1. super init first
-    if ( !CCLayer::init() )
+    if ( !KSceneLayerBase::init() )
     {
         return false;
     }
-	registerWithTouchDispatcher();
-
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseSelected.png",
-                                        this,
-                                        menu_selector(BattleFieldScene::menuCloseCallback));
-    
-	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
-                                origin.y + pCloseItem->getContentSize().height/2));
-
-    // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-    pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    
   
     // add "BattleFieldScene" splash screen"
 
-	this->addChild(GetUILayer(), 1);
+	if(!m_ui){
+		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/battle.json");
+		addWidget(m_ui);
+		m_actor.init(m_ui);
+		m_indicatePanel.init(this);
+		m_myFightAreaPanel.init(this);
+		m_gameResultPanel.init(this);
+		m_resPanel.init(this);
+		m_gameRecPanel.init(this);
+		this->getWidgetByName("turn_end")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::DoEndTurn));
+		this->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
+	}
 
 
 
@@ -126,25 +97,6 @@ void BattleFieldScene::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
-
-cocos2d::extension::UILayer* BattleFieldScene::GetUILayer()
-{
-	if(!m_ui){
-		m_ui =cocos2d::extension::UILayer::create();
-		UIWidget* widgetBattle = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/battle.json");
-		m_ui->addWidget(widgetBattle);
-		m_actor.init(widgetBattle);
-		m_indicatePanel.init(m_ui);
-		m_myFightAreaPanel.init(m_ui);
-		m_gameResultPanel.init(m_ui);
-		m_resPanel.init(m_ui);
-		m_gameRecPanel.init(m_ui);
-		m_ui->getWidgetByName("turn_end")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::DoEndTurn));
-		m_ui->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
-	}
-	return m_ui;
-}
-
 void BattleFieldScene::onBattleInit()
 {
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
@@ -156,7 +108,7 @@ void BattleFieldScene::onBattleInit()
 	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
 
 	if(GameRoot::getSingleton().BattleCtrl().IsSelectCard()){
-		m_selectCardPanel.init(m_ui);
+		m_selectCardPanel.init(this);
 	}
 	InitTest();
 }
@@ -185,7 +137,7 @@ void BattleFieldScene::onSelectCardOK(FBattleGuy* guy)
 void BattleFieldScene::onTurnBegin()
 {
 
-	UIButton* pBut = (UIButton*)m_ui->getWidgetByName("turn_end");
+	UIButton* pBut = (UIButton*)getWidgetByName("turn_end");
 	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
 		pBut->setTouchEnabled(true);
 		pBut->setBright(true);
@@ -286,12 +238,6 @@ void BattleFieldScene::onUseAbilityResult(strCardAbilityResult* result)
 			KUIAssist::_updateCard(card);
 		}
 		src->GetActionMgr().PlayAction(&param1);
-
-		//int oldSlot = card->GetOldSlot();
-		//if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
-		//	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
-		//	KUIAssist::_resortHandCardSet(guy);
-		//}
 	}
 	
 	m_indicatePanel.OnSelectCardOK();
@@ -319,7 +265,7 @@ void BattleFieldScene::onFighterBackHand(KCardInst* pCard)
 	KCardActor* actor = (KCardActor*)pCard->getActor();
 	if(GameRoot::getSingleton().BattleCtrl().IsShowBack(pCard)){
 		actor->UpdateUI();
-		m_ui->addWidget(actor->GetUI());
+		addWidget(actor->GetUI());
 	}
 	KUIAssist::_resortHandCardSet(guy);
 }
@@ -333,9 +279,9 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 		return;
 	UIImageView* base = NULL;
 	if(guy==GameRoot::getSingleton().BattleCtrl().GetMainPlayer()){
-		base = (UIImageView*)m_ui->getWidgetByName("my_slot_base");
+		base = (UIImageView*)getWidgetByName("my_slot_base");
 	}else{
-		base = (UIImageView*)m_ui->getWidgetByName("your_slot_base");
+		base = (UIImageView*)getWidgetByName("your_slot_base");
 	}
 	for(it=cardList->begin();it!=cardList->end();++it){
 		KCardInst* card = *it;
@@ -344,7 +290,7 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 			actor->GetUI()->setPosition(base->getWorldPosition());
 			actor->GetUI()->setScale(base->getScale());
 		}
-		m_ui->addWidget(actor->GetUI());
+		addWidget(actor->GetUI());
 	}
 
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
@@ -373,7 +319,7 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 	KCardActor* actor = KCardActor::create(pCard); 
 	if(actor->getBack()&& !GameRoot::getSingleton().BattleCtrl().IsShowBack(pCard)){
 		actor->UpdateUI();
-		m_ui->addWidget(actor->GetUI());
+		addWidget(actor->GetUI());
 	}
 	if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
 		KUIAssist::_resortHandCardSet(guy);

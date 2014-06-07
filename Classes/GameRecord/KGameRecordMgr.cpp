@@ -64,6 +64,23 @@ void KGameRecordMgr::RecordPlayOp(int src,int des,int slot)
 	m_task.RecordPlayOp(src,des,slot);
 }
 
+void KGameRecordMgr::onClickWidget(cocos2d::CCObject* obj)
+{
+	UIWidget* pWidget = (UIWidget*)obj;
+	
+	switch(m_recState){
+	case REC_RECORD:
+		m_task.RecordClickWidgetEvt(pWidget->getName());
+		break;
+	case REC_PLAY:
+		//onPlayStepOn();
+		break;
+	default:
+		break;
+	}
+
+}
+
 void::KGameRecordMgr::onMouseEvt(KRecordUIMouseData::Mouse_evt evt)
 {
 	switch(m_recState){

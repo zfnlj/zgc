@@ -597,6 +597,8 @@ size_t KBattleCtrlBase::serializeAll(KMemoryStream* so)
 {
 	size_t pos = so->size();
 	if(!so->WriteByte((BYTE)m_state)) return 0;
+	if(m_state==battle_null) return so->size() - pos;
+
 	if(!so->WriteUint64(m_pMainPlayer->GetGuyId())) return 0;
 	if(!so->WriteUint64(m_CurPlayGuy->GetGuyId())) return 0;
 	if(!so->WriteByte((BYTE)m_BattleGuyList.size())) return 0;
@@ -613,6 +615,8 @@ bool KBattleCtrlBase::deserializeAll(KMemoryStream* si)
 	BYTE statVal = 0;
 	if(!si->ReadByte(statVal))
 		return false;
+	if(statVal==(int)battle_null) return true;
+
 	UINT64 mainPlayerId,curPlayerId;
 	if(!si->ReadUint64(mainPlayerId))
 		return false;

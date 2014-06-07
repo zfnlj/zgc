@@ -17,7 +17,7 @@ public:
 	void DoClickRecord(CCObject* sender);
 	void DoClickStop(CCObject* sender);
 private:
-	cocos2d::extension::UILayer* m_layer;
+	cocos2d::extension::UIWidget* m_panel;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

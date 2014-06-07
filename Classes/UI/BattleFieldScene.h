@@ -2,7 +2,7 @@
 #define __BATTLEFIELDSCENE__H__
 
 #include "cocos2d.h"
-#include "UILayer.h"
+#include "KSceneLayerBase.h"
 #include "KSelectBeginCardPanel.h"
 #include "KResPanel.h"
 #include "KIndicatePanel.h"
@@ -24,7 +24,7 @@ struct strReplaceCardResult;
 class KCardInst;
 class FBattleGuy;
 
-class BattleFieldScene : public cocos2d::CCLayer
+class BattleFieldScene :public KSceneLayerBase
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -39,12 +39,9 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(BattleFieldScene);
 
-	CCArray m_testArr;
-	CCPoint GetCenterPos();
 
 	KIndicatePanel& IndicatePanel(){ return m_indicatePanel;}
 	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
-	cocos2d::extension::UILayer* GetUILayer();
 	void onBattleInit();
 	void onHandCardReady();
 	void FreshAllCard();
@@ -68,18 +65,15 @@ public:
 
 	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);
-	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
+	cocos2d::extension::UILayer* GetLayer(){ return this;}
 	KActor& GetActor(){ return m_actor;}
 
 	void DoSelectSrcCard(KCardActor* actor);
 	KGameResultPanel& GameResult(){ return m_gameResultPanel;}
 private:
 	CCLabelTTF* m_InfoLabel;
-
-	cocos2d::extension::UILayer* m_ui;
 	void InitTest();
 	void RunTest(CCObject*);
-	KActor m_actor;
 	KSelectBeginCardPanel m_selectCardPanel;
 	KResPanel m_resPanel;
 	KIndicatePanel m_indicatePanel;

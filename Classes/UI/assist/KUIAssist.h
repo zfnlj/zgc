@@ -13,6 +13,7 @@ class KCardInst;
 class KAction;
 class KCardActor;
 class FBattleGuy;
+class KSceneLayerBase;
 struct K3DActionParam;
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -78,6 +79,7 @@ public:
 	static void _stopAdviceMsg();
 	static void _playAdviceMsg(int id);
 	static void _playLessonMsg(int id);
+	static KSceneLayerBase* _activeSceneLayer();
 	//shader
 	static CCGLProgram* _createGrayProgram();
 };

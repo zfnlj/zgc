@@ -13,6 +13,7 @@
   <imageFileList>
     <string>card_elem.plist</string>
     <string>card_sort.plist</string>
+    <string>popMsg.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>cardGroup_1.json</CurrentUIJson>

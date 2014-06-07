@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\record_panel\record_panel.xml.ui</filePath>
+  <Version>1.2.0.1</Version>
+  <Name>record_panel</Name>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\record_panel</ProjectDir>
+  <JsonFileName>record_panel.json</JsonFileName>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\record_panel\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\record_panel\Json</JsonFolder>
+  <JsonList>
+    <string>record_panel_1.json</string>
+  </JsonList>
+  <imageFileList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>record_panel_1.json</CurrentUIJson>
+  <CanvasSize>
+    <Width>240</Width>
+    <Height>32</Height>
+  </CanvasSize>
+</UIProject>

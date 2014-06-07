@@ -565,8 +565,13 @@ CCSize KUIAssist::_getRealSize(UIWidget* widget)
 
 CCPoint KUIAssist::_getScreenCenter()
 {
-	return GameRoot::getSingleton().getBattleScene()->GetCenterPos();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint pt = CCDirector::sharedDirector()->getVisibleOrigin();
+	pt.x += visibleSize.width/2;
+	pt.y += visibleSize.height/2;
+	return pt;
 }
+
 CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 {
 	KCardInst* desCard = GameRoot::getSingleton().BattleCtrl().GetCard(des);
@@ -576,7 +581,7 @@ CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 	CCPointArray *arr = CCPointArray::create(10);
 	
 	CCPoint ptLast = desActor->GetUI()->getPosition();
-	CCPoint centerPt = GameRoot::getSingleton().getBattleScene()->GetCenterPos();
+	CCPoint centerPt = KUIAssist::_getScreenCenter();
 	if(pt1.y>centerPt.y){
 		ptLast.y += _getRealSize(desActor->GetUI()).height;
 		pt2= ccp(centerPt.x, centerPt.y*2);
@@ -884,4 +889,9 @@ void KUIAssist::ShowButton(UIWidget* pBut,bool flag)
 {
 	pBut->setVisible(flag);
 	pBut->setTouchEnable(flag);
+}
+
+KSceneLayerBase* KUIAssist::_activeSceneLayer()
+{
+	return (KSceneLayerBase*)CCDirector::sharedDirector()->getRunningScene();
 }

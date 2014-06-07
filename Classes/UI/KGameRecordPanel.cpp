@@ -1,9 +1,10 @@
 #include "KGameRecordPanel.h"
 #include "../GameRecord/KGameRecordMgr.h"
+#include "assist/KJsonDictMgr.h"
 
 using namespace cocos2d::extension;
 
-KGameRecordPanel::KGameRecordPanel():m_layer(NULL)
+KGameRecordPanel::KGameRecordPanel():m_panel(NULL)
 {
 }
 
@@ -13,36 +14,42 @@ KGameRecordPanel::~KGameRecordPanel()
 
 void KGameRecordPanel::init(cocos2d::extension::UILayer* layer)
 {
-	m_layer = layer;
+	m_panel = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/record_panel.json");
 
-	layer->getWidgetByName("but_rec_play")->addPushDownEvent(this, coco_pushselector(KGameRecordPanel::DoClickPlay));
-	layer->getWidgetByName("but_rec_rec")->addPushDownEvent(this, coco_pushselector(KGameRecordPanel::DoClickRecord));
+	
+	UIHelper::seekWidgetByName(m_panel,"but_rec_play")->addPushDownEvent(this, coco_pushselector(KGameRecordPanel::DoClickPlay));
+	UIHelper::seekWidgetByName(m_panel,"but_rec_rec")->addPushDownEvent(this, coco_pushselector(KGameRecordPanel::DoClickRecord));
 
-	UIWidget* pBut = layer->getWidgetByName("but_rec_stop");
+	UIWidget* pBut = UIHelper::seekWidgetByName(m_panel,"but_rec_stop");
 	pBut->addPushDownEvent(this, coco_pushselector(KGameRecordPanel::DoClickStop));
 	pBut->setVisible(false);
+
+	CCPoint pt = layer->getWidgetByName("rec_panel_pos")->getPosition();
+	m_panel->setPosition(pt);
+	m_panel->setAnchorPoint(CCPoint(0.5f,0.5f));
+	layer->addWidget(m_panel);
 }
 
 void KGameRecordPanel::DoClickPlay(CCObject* sender)
 {
-	m_layer->getWidgetByName("but_rec_play")->setVisible(false);
-	m_layer->getWidgetByName("but_rec_rec")->setVisible(false);
-	m_layer->getWidgetByName("but_rec_stop")->setVisible(true);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_play")->setVisible(false);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_rec")->setVisible(false);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_stop")->setVisible(true);
 	KGameRecordMgr::getSingleton().StartPlay("abc");
 }
 
 void KGameRecordPanel::DoClickRecord(CCObject* sender)
 {
-	m_layer->getWidgetByName("but_rec_play")->setVisible(false);
-	m_layer->getWidgetByName("but_rec_rec")->setVisible(false);
-	m_layer->getWidgetByName("but_rec_stop")->setVisible(true);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_play")->setVisible(false);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_rec")->setVisible(false);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_stop")->setVisible(true);
 	KGameRecordMgr::getSingleton().StartRecord();
 }
 
 void KGameRecordPanel::DoClickStop(CCObject* sender)
 {
-	m_layer->getWidgetByName("but_rec_play")->setVisible(true);
-	m_layer->getWidgetByName("but_rec_rec")->setVisible(true);
-	m_layer->getWidgetByName("but_rec_stop")->setVisible(false);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_play")->setVisible(true);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_rec")->setVisible(true);
+	UIHelper::seekWidgetByName(m_panel,"but_rec_stop")->setVisible(false);
 	KGameRecordMgr::getSingleton().Stop();
 }

@@ -177,3 +177,6 @@
 
 /tool/zgc_ui/popMsg/Resources/popMsg_PList.Dir
 /tool/zgc_ui/cardGroup/Resources/popMsg_PList.Dir
+/tool/zgc_ui/record_panel/Backup
+/tool/zgc_ui/record_panel/Export
+/tool/zgc_ui/record_panel/Resources/battle_elem_PList.Dir

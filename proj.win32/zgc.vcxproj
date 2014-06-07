@@ -249,6 +249,7 @@
     <ClCompile Include="..\Classes\UI\KGameResultPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KIndicatePanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KSceneLayerBase.cpp" />
     <ClCompile Include="..\Classes\UI\KMyQuestPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KMyStorePanel.cpp" />
     <ClCompile Include="..\Classes\UI\KClickCardMgr.cpp" />
@@ -413,6 +414,7 @@
     <ClInclude Include="..\Classes\UI\KGameResultPanel.h" />
     <ClInclude Include="..\Classes\UI\KGenCardPanel.h" />
     <ClInclude Include="..\Classes\UI\KIndicatePanel.h" />
+    <ClInclude Include="..\Classes\UI\KSceneLayerBase.h" />
     <ClInclude Include="..\Classes\UI\KMyQuestPanel.h" />
     <ClInclude Include="..\Classes\UI\KMyStorePanel.h" />
     <ClInclude Include="..\Classes\UI\KClickCardMgr.h" />

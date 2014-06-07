@@ -12,6 +12,11 @@
 class KGameRecordTask
 {
 public:
+	enum Rec_type{
+		rec_battle = 1,
+		rec_cardgroup = 2,
+	};
+
 	struct Task_Head{
 		int _ver;
 		char _mode; // need operator;

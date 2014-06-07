@@ -26,6 +26,7 @@ public:
 	
 	void onPlayOp(int src,int des,int slot);
 	void onMouseEvt(KRecordUIMouseData::Mouse_evt);
+	void onClickWidget(cocos2d::CCObject* obj);
 	void InitTest();
 	void StartRecord();
 	bool StartPlay(const char*);

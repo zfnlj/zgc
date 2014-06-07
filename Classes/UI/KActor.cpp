@@ -8,6 +8,7 @@
 #include "BattleFieldScene.h"
 #include "KCardActor.h"
 #include "assist/KJsonDictMgr.h"
+#include "KSceneLayerBase.h"
 //#include "KAction/ParticleBase.h"
 
 USING_NS_CC;
@@ -56,8 +57,9 @@ void KActor::setZOrder(const char* obj,int val)
 
 void KActor::ShowEff(CCParticleSystem* emitter,CCPoint* pt)
 {	
-	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();
-	layer->GetUILayer()->addChild(emitter);
+	KSceneLayerBase* sceneLayer = KUIAssist::_activeSceneLayer();
+
+	sceneLayer->addChild(emitter);
 	emitter->setPosition(*pt);
 }
 

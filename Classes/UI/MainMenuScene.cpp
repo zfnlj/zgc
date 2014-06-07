@@ -44,14 +44,6 @@ void MainMenuScene::update(float dt)
 {
 }
 
-CCPoint MainMenuScene::GetCenterPos()
-{
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint pt = CCDirector::sharedDirector()->getVisibleOrigin();
-	pt.x += visibleSize.width/2;
-	pt.y += visibleSize.height/2;
-	return pt;
-}
 
 // on "init" you need to initialize your instance
 bool MainMenuScene::init()
