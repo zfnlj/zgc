@@ -18,8 +18,9 @@
 #include "../KNet/KSocketFacade.h"
 #include "assist/KJsonDictMgr.h"
 #include "KClickCardMgr.h"
-
+#include "../Quest/KQuestManager.h"
 #include "../GameRecord/KGameRecordMgr.h"
+#include "assist/KQuestFacade.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -33,7 +34,7 @@ CCScene* BattleFieldScene::scene()
     BattleFieldScene *layer = BattleFieldScene::create();
 	GameRoot::getSingleton().SetBattleScene(layer);
     // add layer as a child to scene
-    scene->addChild(layer);
+    scene->addChild(layer,0,1977);
 	
     // return the scene
     return scene;
@@ -76,11 +77,8 @@ bool BattleFieldScene::init()
 		this->getWidgetByName("turn_end")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::DoEndTurn));
 		this->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
 	}
-
-
-
-	unsigned long long val = time(NULL);
-	srand(val);//
+	m_actor.init(m_ui);
+	KUIAssist::_battleScene = this;
     return true;
 }
 
@@ -369,3 +367,8 @@ void BattleFieldScene::onUseSecretCard(KCardInst* card)
 	KUIAssist::_resortHandCardSet(guy);
 }
 
+void BattleFieldScene::onEnterTransitionDidFinish()
+{
+	KSceneLayerBase::onEnterTransitionDidFinish();
+	//KQuestFacade::_startMainQuestBattle();
+}

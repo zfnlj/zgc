@@ -336,7 +336,7 @@ CCNode* KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,b
 	CCLabelBMFont* bmFont = CCLabelBMFont::create(msg,"GUI/num_1.fnt");
 	bmFont->setAnchorPoint(ccp(0.50f,0.50f));
 	bmFont->setPosition(widget->getWorldPosition());
-	KUIAssist::MainLayer()->addChild(bmFont,100);
+	KUIAssist::_activeSceneLayer()->addChild(bmFont,100);
 
 	bmFont->setScale(scale);
 	m_objectDict.setObject(bmFont, "hit_text");
@@ -377,7 +377,7 @@ void KCardActor::addWidget(const char* obj,int z)
 	}
 	if(widget) {
 		widget->setZOrder(z);
-		KUIAssist::MainLayer()->addWidget(widget);
+		KUIAssist::_activeSceneLayer()->addWidget(widget);
 	}
 }
 
@@ -402,7 +402,7 @@ void KCardActor::delWidget(const char* obj)
 	else if(strcmp(obj,"card")==0){
 		widget = m_ui;
 	}
-	if(widget) KUIAssist::MainLayer()->removeWidget(widget);
+	if(widget) KUIAssist::_activeSceneLayer()->removeWidget(widget);
 }
 
 void KCardActor::updateSecret()

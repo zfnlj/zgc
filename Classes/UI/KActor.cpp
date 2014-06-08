@@ -34,6 +34,7 @@ void KActor::init(cocos2d::extension::UIWidget* ui)
 { 
 	m_ActionMgr.Init(this);
 	m_ui = ui;
+	m_backup = 1;
 }
 
 void KActor::update(float dt)
@@ -120,7 +121,7 @@ UIWidget* KActor::GetWidget(const char* obj)
 {
 	cocos2d::extension::UIWidget* ret = UIHelper::seekWidgetByName(m_ui, obj);
 	if(ret) return ret;
-	ret = KUIAssist::MainLayer()->getWidgetByName(obj);
+	ret = KUIAssist::_activeSceneLayer()->getWidgetByName(obj);
 	if(ret) return ret;
 	
 	return m_ui;
@@ -327,7 +328,7 @@ CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zO
 	pAnim->setAnchorPoint(ccp(0.50f,0.50f));
 	pAnim->setPosition(pt);
 	pAnim->setScale(scale);
-	KUIAssist::MainLayer()->addChild(pAnim,zOrder);
+	KUIAssist::_activeSceneLayer()->addChild(pAnim,zOrder);
 	m_objectDict.setObject(pAnim, obj);
 	return pAnim;
 }
@@ -342,7 +343,7 @@ cocos2d::extension::CCArmature* KActor::CreateArmature(K3DActionParam* param,con
 	armature->setScale(scale);
 	armature->setPosition(pt);
 	armature->getAnimation()->playByIndex(0);
-	KUIAssist::MainLayer()->addChild(armature,zOrder);
+	KUIAssist::_activeSceneLayer()->addChild(armature,zOrder);
 	return armature;
 }
 
@@ -354,7 +355,7 @@ CCSprite* KActor::CreateSprite(const char* obj,const char* slot,float scale,int 
 	sprite->setAnchorPoint(ccp(0.50f,0.50f));
 	sprite->setScale(scale);
 	sprite->setPosition(pt);
-	KUIAssist::MainLayer()->addChild(sprite,zOrder);
+	KUIAssist::_activeSceneLayer()->addChild(sprite,zOrder);
 	//widgetSlot->addRenderer(sprite,zOrder);
 	m_objectDict.setObject(sprite, obj);
 	return sprite;
@@ -378,14 +379,9 @@ CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,
 	CCParticleSystem* emitter = KParticleCacheMgr::getSingleton().CreateParticle(obj);
 	if(!emitter) return NULL;
 	emitter->setScale(scale);
-	//UIWidget* widget = UIHelper::seekWidgetByName(m_ui, slot);
-	//if(widget){
-	//	widget->getRenderer()->addChild(emitter,zOrder);
-	//}else{
-		CCPoint destPt = GetDestPosition(NULL,slot,0);
-		emitter->setPosition(destPt);
-		KUIAssist::MainLayer()->addChild(emitter,zOrder);
-	//}
+	CCPoint destPt = GetDestPosition(NULL,slot,0);
+	emitter->setPosition(destPt);
+	KUIAssist::_activeSceneLayer()->addChild(emitter,zOrder);
 	
 	return emitter;
 }
@@ -430,7 +426,7 @@ cocos2d::extension::UIWidget* KActor::CreateTalk(const char* obj,const char* slo
 		labelDesc->setText(sz);
 	}
 
-	KUIAssist::MainLayer()->addWidget(widget);
+	KUIAssist::_activeSceneLayer()->addWidget(widget);
 	widget->setPosition(pt);
 	return widget;
 }

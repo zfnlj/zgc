@@ -36,7 +36,7 @@ CCScene* CardGroupScene::scene()
     // 'layer' is an autorelease object
     CardGroupScene *layer = CardGroupScene::create();
     // add layer as a child to scene
-    scene->addChild(layer);
+    scene->addChild(layer,0,1977);
 	
     // return the scene
     return scene;
@@ -69,6 +69,7 @@ bool CardGroupScene::init()
 	UpdateUI();
 	UpdateCurDeckRadio();
 	m_gameRecPanel.init(this);
+	m_actor.init(m_ui);
     return true;
 }
 

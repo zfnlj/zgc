@@ -66,10 +66,11 @@ public:
 	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);
 	cocos2d::extension::UILayer* GetLayer(){ return this;}
-	KActor& GetActor(){ return m_actor;}
 
 	void DoSelectSrcCard(KCardActor* actor);
 	KGameResultPanel& GameResult(){ return m_gameResultPanel;}
+
+	virtual void onEnterTransitionDidFinish();
 private:
 	CCLabelTTF* m_InfoLabel;
 	void InitTest();

@@ -15,6 +15,7 @@ public:
 	
 	virtual void update(float dt);
 	virtual bool init();
+	KActor& GetActor(){ return m_actor;}
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActor m_actor;

@@ -13,6 +13,7 @@ class KCardInst;
 class KAction;
 class KCardActor;
 class FBattleGuy;
+class KActor;
 class KSceneLayerBase;
 struct K3DActionParam;
 USING_NS_CC;
@@ -20,8 +21,7 @@ USING_NS_CC_EXT;
 class KUIAssist
 {
 public:
-	static cocos2d::extension::UILayer* MainLayer();
-	static BattleFieldScene* _getBattleFieldScene();
+	static BattleFieldScene* _getBattleSceneLayer();
 	static cocos2d::CCPoint _queryCardPos(KCardInstList* lst,KCardInst* card);
 	static const char* _getBasePosName(KCardInst* card);
 	static void _showCardSet(KCardInstList* lst);
@@ -80,8 +80,10 @@ public:
 	static void _playAdviceMsg(int id);
 	static void _playLessonMsg(int id);
 	static KSceneLayerBase* _activeSceneLayer();
+	static KActor& _activeSceneActor();
 	//shader
 	static CCGLProgram* _createGrayProgram();
+	static BattleFieldScene* _battleScene;
 };
 
 #endif // __HELLOWORLD_SCENE_H__	

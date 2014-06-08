@@ -19,7 +19,7 @@
 static char* raceIcon[]={"null","gold","tree","water","fire","mud"};
 using namespace cocos2d::extension;
 
-
+BattleFieldScene* KUIAssist::_battleScene = NULL;
 void KUIAssist::SetRaceIcon(UIWidget* widgetRace, int race)
 {
 	char sz[32];
@@ -34,20 +34,10 @@ void KUIAssist::SetRaceIcon(UIWidget* widgetRace, int race)
 	}
 }
 
-cocos2d::extension::UILayer* KUIAssist::MainLayer()
-{
-	return GameRoot::getSingleton().getBattleScene()->GetLayer();
-}
-
-BattleFieldScene* KUIAssist::_getBattleFieldScene()
-{
-	//return dynamic_cast*>CCDirector::sharedDirector()->getRunningScene();
-	return NULL;
-}
 
 bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
 {
-	UIWidget* obj = MainLayer()->getWidgetByName(name);
+	UIWidget* obj = _activeSceneLayer()->getWidgetByName(name);
 	if(!obj) return false;
 	pt = obj->getWorldPosition();
 	return true;
@@ -56,10 +46,10 @@ bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
 cocos2d::CCPoint KUIAssist::_querySecretShowPos(KCardInst* card)
 {
 	if(GameRoot::getSingleton().BattleCtrl().IsMyCard(card)){
-		UIWidget* widget = MainLayer()->getWidgetByName("my_secret_show");
+		UIWidget* widget = _battleScene->getWidgetByName("my_secret_show");
 		if(widget) return widget->getWorldPosition();
 	}else{
-		UIWidget* widget = MainLayer()->getWidgetByName("your_secret_show");
+		UIWidget* widget = _battleScene->getWidgetByName("your_secret_show");
 		if(widget) return widget->getWorldPosition();
 	}
 	return CCPoint(-500,-500);
@@ -69,7 +59,7 @@ cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
 {
 	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
 	const char* sz = card->GetBasePosName(bMy);
-	UIWidget* obj =  MainLayer()->getWidgetByName(sz);
+	UIWidget* obj =  _battleScene->getWidgetByName(sz);
 	return obj->getWorldPosition();
 }
 
@@ -82,7 +72,7 @@ cocos2d::CCPoint KUIAssist::_queryFighterPos(KCardInst* card)
 	}else{
 		sprintf(sz,"your_fight_slot_%d",card->m_attr.getPos());
 	}
-	UIImageView* base = (UIImageView*)MainLayer()->getWidgetByName(sz);
+	UIImageView* base = (UIImageView*)_battleScene->getWidgetByName(sz);
 	return base->getWorldPosition();
 }
 
@@ -92,14 +82,14 @@ void KUIAssist::_showCardSet(KCardInstList* lst)
 		KCardActor* actor = KCardActor::create(*it);
 		cocos2d::CCPoint pt = _queryCardPos(lst,*it);
 		actor->GetUI()->setPosition(pt);
-		if(!actor->GetUI()->getParent()) MainLayer()->addWidget(actor->GetUI());
+		if(!actor->GetUI()->getParent()) _battleScene->addWidget(actor->GetUI());
 	}
 }
 
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
-	UIImageView* base = (UIImageView*)MainLayer()->getWidgetByName(_getBasePosName(card));
+	UIImageView* base = (UIImageView*)_battleScene->getWidgetByName(_getBasePosName(card));
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
 		if(!lst) lst = GameRoot::getSingleton().BattleCtrl().GetCardSet(card);
@@ -145,19 +135,17 @@ const char* KUIAssist::_getBasePosName(KCardInst* card)
 
 void KUIAssist::_updateCard(KCardInst* card)
 {
-	cocos2d::extension::UILayer* mainLayer = GameRoot::getSingleton().getBattleScene()->GetLayer();
 	KCardActor* cardActor = (KCardActor*)card->getActor();
 	cardActor->UpdateUI();
-	if(!cardActor->GetUI()->getParent()) mainLayer->addWidget(cardActor->GetUI());
+	if(!cardActor->GetUI()->getParent()) _battleScene->addWidget(cardActor->GetUI());
 }
 
 void KUIAssist::_showCard(KCardInst* card)
 {
-	cocos2d::extension::UILayer* mainLayer = GameRoot::getSingleton().getBattleScene()->GetLayer();
 	cocos2d::CCPoint pt = _queryCardPos(NULL,card);
 	KCardActor* actor = KCardActor::create(card);
 	actor->GetUI()->setPosition(pt);
-	if(!actor->GetUI()->getParent()) mainLayer->addWidget(actor->GetUI());
+	if(!actor->GetUI()->getParent()) _battleScene->addWidget(actor->GetUI());
 
 	
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
@@ -549,7 +537,7 @@ void KUIAssist::_createAffectAction(int actorId,const char* action,K3DActionPara
 	if(!card) return;
 
 	KCardActor* actor = KCardActor::create(card);
-	if(!actor->GetUI()->getParent()) MainLayer()->addWidget(actor->GetUI());
+	if(!actor->GetUI()->getParent()) _activeSceneLayer()->addWidget(actor->GetUI());
 
 	K3DActionParam param;
 	param.init(p);
@@ -632,7 +620,7 @@ KCardActor* KUIAssist::_getCardActor(int realId)
 
 void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
 {
-	UIWidget* panel = MainLayer()->getRootWidget();
+	UIWidget* panel = _battleScene->getRootWidget();
 
 	for(int i=0;i<MAX_SECRET_POS_NUM;i++){
 		UIWidget* widget = GetIndexWidget(panel,(bMy)?"my_secret_slot":"your_secret_slot",i);
@@ -780,7 +768,7 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 void KUIAssist::_playClickCardAction(KCardInst* card)
 {
 	if(!card) return;
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	K3DActionParam* pCurClickCardParam = actor.GetActionMgr().ExistAction("click_card");
 	if(pCurClickCardParam && pCurClickCardParam->GetDesId(0)==card->GetRealId()) return;
 	if(actor.GetActionMgr().FoundClassAction()){
@@ -796,7 +784,7 @@ void KUIAssist::_playClickCardAction(KCardInst* card)
 
 void KUIAssist::_playClickSlotAction(int slot)
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	K3DActionParam* pCurClickSlotParam = actor.GetActionMgr().ExistAction("click_fight_slot");
 	if(pCurClickSlotParam && pCurClickSlotParam->GetDesId(0)==slot) return;
 	if(actor.GetActionMgr().FoundClassAction()){
@@ -813,7 +801,7 @@ void KUIAssist::_playClickSlotAction(int slot)
 
 void KUIAssist::_playClickFightArea()
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	if(actor.GetActionMgr().ExistAction("click_fight_area")) return;
 	if(actor.GetActionMgr().FoundClassAction()){
 		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
@@ -825,7 +813,7 @@ void KUIAssist::_playClickFightArea()
 
 void KUIAssist::_playClickTurnEnd()
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	if(actor.GetActionMgr().ExistAction("click_turnend_but")) return;
 	if(actor.GetActionMgr().FoundClassAction()){
 		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
@@ -837,7 +825,7 @@ void KUIAssist::_playClickTurnEnd()
 
 void KUIAssist::_stopClickAction()
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
 	actor.GetActionMgr().breathe(0.1f);
 }
@@ -846,7 +834,7 @@ static int lastAdviceId =0;
 
 void KUIAssist::_stopAdviceMsg()
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	actor.GetActionMgr().LimitAlive("hero_talk");
 }
 
@@ -864,7 +852,7 @@ void KUIAssist::_playAdviceMsg(int id)
 
 void KUIAssist::_playLessonMsg(int id)
 {
-	KActor& actor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& actor = _activeSceneActor();
 	K3DActionParam* pCurTalkParam = actor.GetActionMgr().ExistAction("hero_talk");
 
 	if(pCurTalkParam && pCurTalkParam->GetDesId(0)==id) return;
@@ -893,5 +881,11 @@ void KUIAssist::ShowButton(UIWidget* pBut,bool flag)
 
 KSceneLayerBase* KUIAssist::_activeSceneLayer()
 {
-	return (KSceneLayerBase*)CCDirector::sharedDirector()->getRunningScene();
+	CCScene* scene = CCDirector::sharedDirector()->getRunningScene();
+	return (KSceneLayerBase*)scene->getChildByTag(1977);
+}
+
+KActor& KUIAssist::_activeSceneActor()
+{
+	return _activeSceneLayer()->GetActor();
 }

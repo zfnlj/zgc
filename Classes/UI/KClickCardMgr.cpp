@@ -3,6 +3,7 @@
 #include "../GameLogic/KCardInst.h"
 #include "../GameRoot.h"
 #include "BattleFieldScene.h"
+#include "assist/KUIAssist.h"
 
 IMPLEMENT_SINGLETON(KClickCardMgr)
 
@@ -26,7 +27,7 @@ void KClickCardMgr::onClickCard(KCardActor* actor)
 	if(GameRoot::getSingleton().BattleCtrl().IsWaitDrama()) return;
 
 	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
-	KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& mainActor =  KUIAssist::_activeSceneActor();
 	if(mainActor.GetActionMgr().ExistAction("bigCard_switch")){
 		m_cacheActor = actor;
 		return;
@@ -59,7 +60,7 @@ void KClickCardMgr::onTouchEnd()
 
 void KClickCardMgr::update(float dt)
 {
-	KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
+	KActor& mainActor =  KUIAssist::_activeSceneActor();
 	if(m_cacheActor && !mainActor.GetActionMgr().ExistAction("bigCard_switch")){
 		onClickCard(m_cacheActor);
 		m_cacheActor = NULL;
@@ -75,7 +76,7 @@ void KClickCardMgr::HideBigCard()
 {
 	
 	if(m_curActor){
-		KActor& mainActor = GameRoot::getSingleton().getBattleScene()->GetActor();
+		KActor& mainActor =  KUIAssist::_activeSceneActor();
 		mainActor.GetActionMgr().LimitAlive("bigCard_switch");
 		m_curActor->GetActionMgr().LimitAlive("bigCard_show");
 		m_curActor->GetActionMgr().PlayAction("bigCard_hide");

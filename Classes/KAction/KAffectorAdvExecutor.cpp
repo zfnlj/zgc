@@ -3,6 +3,7 @@
 #include <math.h>
 #include "../UI/assist/KUIAssist.h"
 #include "GameRoot.h"
+#include "../ui/KSceneLayerBase.h"
 
 CCActionDef::~CCActionDef()
 {
@@ -412,7 +413,7 @@ void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
     m_bar->runAction(seq);
 	m_ccActionDef.init(seq,m_bar);
 
-	KUIAssist::MainLayer()->addChild(m_bar,100);
+	KUIAssist::_activeSceneLayer()->addChild(m_bar,100);
 	KAffectorExecutor::OnPlay(param);
 }
 
@@ -458,7 +459,7 @@ void KAffectorTimerBarExecutor::OnPlay(K3DActionParam* param)
 
 	m_bar->runAction( CCProgressTo::create(mSurviveTime-0.6, 100));
 
-	KUIAssist::MainLayer()->addChild(m_bar,100);
+	KUIAssist::_activeSceneLayer()->addChild(m_bar,100);
 	KAffectorExecutor::OnPlay(param);
 }
 

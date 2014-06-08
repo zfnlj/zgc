@@ -1,14 +1,17 @@
 #include "KSceneLayerBase.h"
 #include "ccMacros.h"
 #include "../GameRecord/KGameRecordMgr.h"
+#include "assist/KUIAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
 
 void KSceneLayerBase::update(float dt)
 {
-	m_actor.update(dt);
-	KGameRecordMgr::getSingleton().update(dt);
+	if(KUIAssist::_activeSceneLayer()==this){
+		m_actor.update(dt);
+		KGameRecordMgr::getSingleton().update(dt);
+	}
 }
 
 bool KSceneLayerBase::init()
