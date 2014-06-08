@@ -144,7 +144,7 @@ void KCardGroupAssist::AddMiniCard(KMiniCardList& lst,int cardId,int count)
 				}
 				lst.erase(it);
 			}else{
-				KUIAssist::UpdateMiniCardWidgetNum(elem._pWidget,elem._count);
+				if(elem._pWidget) KUIAssist::UpdateMiniCardWidgetNum(elem._pWidget,elem._count);
 			}
 			return;
 		}
@@ -225,4 +225,28 @@ bool KCardGroupAssist::SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList&
 	}
 	depot->SaveDeck(deckId,tmpLst);
 	return true;
+}
+
+void KCardGroupAssist::SmartFillCardGroup(KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot)
+{
+	if(curHero._id==0) return;
+	KItemUnitList tmpList,desList;
+	depot->PickStoreCard(tmpList);
+	FilterCard(tmpList,desList,browse_all,KCardStatic::race_null,curHero.GetRace(),-1,0);
+	int kk=0;
+	KIntegerList remainLst;
+	for(KItemUnitList::iterator it= tmpList.begin();it!=tmpList.end();++it){
+		int remainNum = 2 - GetDeckMiniCardNum(miniList,it->_id);
+		while(remainNum>0){
+			remainLst.push_back(it->_id);
+			remainNum--;
+		}
+	}
+	KIntegerList pickLst;
+
+	int reaminNum = 30 - GetTotalCardNum(miniList);
+	_RndPick(remainLst,pickLst,reaminNum);
+	for(KIntegerList::iterator it= pickLst.begin();it!=pickLst.end();++it){
+		AddMiniCard(miniList,*it,1);
+	}
 }

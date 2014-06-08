@@ -44,7 +44,6 @@ void GameRoot::init()
 
 void GameRoot::InitializeResource()
 {
-	int val = STATIC_DATA_INC();
 	memset(m_rootPath,0,sizeof(m_rootPath));
 	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("List.txt");
 	int pos = fullPath.find("List.txt");

@@ -41,7 +41,6 @@ public:
 
 
 	KIndicatePanel& IndicatePanel(){ return m_indicatePanel;}
-	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
 	void onBattleInit();
 	void onHandCardReady();
 	void FreshAllCard();
@@ -80,7 +79,6 @@ private:
 	KIndicatePanel m_indicatePanel;
 	KFightAreaPanel m_myFightAreaPanel;
 	KGameResultPanel m_gameResultPanel;
-	KGameRecordPanel m_gameRecPanel;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

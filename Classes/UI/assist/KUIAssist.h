@@ -15,6 +15,7 @@ class KCardActor;
 class FBattleGuy;
 class KActor;
 class KSceneLayerBase;
+class KGameRecordPanel;
 struct K3DActionParam;
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -75,6 +76,7 @@ public:
 	static void _playClickSlotAction(int slot);
 	static void _playClickFightArea();
 	static void _playClickTurnEnd();
+	static void _playClickWidget(const char* widgetName);
 	static void _stopClickAction();
 	static void _stopAdviceMsg();
 	static void _playAdviceMsg(int id);
@@ -84,6 +86,7 @@ public:
 	//shader
 	static CCGLProgram* _createGrayProgram();
 	static BattleFieldScene* _battleScene;
+	static KGameRecordPanel& _recordPanel();
 };
 
 #endif // __HELLOWORLD_SCENE_H__	

@@ -241,6 +241,12 @@ bool KRecordClickWidget::Serialize( StreamInterface* pDataStream )
 
 void KRecordClickWidget::RecordMouseEvt(const char* widgetName,int index,DWORD initTime)
 {
+	static DWORD lastClickWidget =0;
+	DWORD curtime = GetTickCount();
+	if(curtime -lastClickWidget <500){
+		int kk=0;
+	}
+	lastClickWidget = curtime;
 	m_elapsed = GetTickCount()-initTime;
 	strcpy(m_widgetName,widgetName);
 	m_index = index;
@@ -251,6 +257,7 @@ bool KRecordClickWidget::Replay(DWORD timeline,int mode)
 {
 	if(timeline<m_elapsed) return false;
 
+	KUIAssist::_playClickWidget(m_widgetName);
 	//TBD
 	KUIAssist::_playLessonMsg(m_dlgId*10);
 	return false;
@@ -258,6 +265,7 @@ bool KRecordClickWidget::Replay(DWORD timeline,int mode)
 
 bool KRecordClickWidget::IsClickWidgetValidate(cocos2d::CCObject* layer,cocos2d::CCPoint& pt,DWORD timeline)
 {
+	if(timeline<m_elapsed) return false;
 	UIWidget* panel = (UIWidget*)layer;
 	UIWidget* root = NULL;
 	if(m_index<0){

@@ -753,6 +753,9 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 	KCardInstList curActiveRed;
 	KBattleGuy* defGuy = GameRoot::getSingleton().BattleCtrl().GetDefGuy();
 	if(pSrc->IsKindOf(KCardStatic::card_soldier)){
+
+
+
 		GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 		if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
 			defGuy->QueryActiveDefendCards(&curActiveRed);
@@ -809,6 +812,21 @@ void KUIAssist::_playClickFightArea()
 		return;
 	}
 	actor.GetActionMgr().PlayAction("click_fight_area");
+}
+
+void KUIAssist::_playClickWidget(const char* widgetName)
+{
+	KActor& actor = _activeSceneActor();
+	if(actor.GetActionMgr().ExistAction("click_widget")) return;
+	if(actor.GetActionMgr().FoundClassAction()){
+		actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
+		actor.GetActionMgr().breathe(0.1f);
+		return;
+	}
+	K3DActionParam param;
+	param.init("click_widget");
+	param.SetString(widgetName);
+	actor.GetActionMgr().PlayAction(&param);
 }
 
 void KUIAssist::_playClickTurnEnd()
@@ -888,4 +906,9 @@ KSceneLayerBase* KUIAssist::_activeSceneLayer()
 KActor& KUIAssist::_activeSceneActor()
 {
 	return _activeSceneLayer()->GetActor();
+}
+
+KGameRecordPanel& KUIAssist::_recordPanel()
+{
+	return _activeSceneLayer()->RecordPanel();
 }

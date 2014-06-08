@@ -6,7 +6,7 @@
 #include "assist/KCardGroupAssist.h"
 #include "cocos-ext.h"
 #include "assist/KRadioWidget.h"
-#include "KGameRecordPanel.h"
+
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -63,6 +63,7 @@ protected:
 	void DoClearDeck(CCObject* sender);
 	void onClickSaveDeck(CCObject* sender);
 	void onClickClearDeck(CCObject* sender);
+	void onClickSmartCardGroup(CCObject* sender);
 
 	void UpdateUI();
 	void ShowCardGroup();
@@ -76,12 +77,13 @@ protected:
 	void SetMiniHeroWidget(UIWidget* newHero);
 	void ShowMiniHero();
 	void UpdateMiniCardNumInfo();
+	void UpdateSmartCardGroupBut();
 
 	void UpdateCurDeckRadio();
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
 	UIWidget* m_pMiniHeroWidget;
-	KGameRecordPanel m_gameRecPanel;
+	
 	UILabel* m_pPageInfo;
 	KRadioWidget m_radioCost;
 	KRadioWidget m_radioRace;
@@ -91,6 +93,7 @@ protected:
 	MainType m_mainType;
 	UIWidget* m_pSaveWidget;
 	UIWidget* m_pClearWidget;
+	UIWidget* m_pSmartCardGroup;
 	int m_curCardGroup;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];

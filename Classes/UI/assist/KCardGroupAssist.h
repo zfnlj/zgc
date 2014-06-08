@@ -59,6 +59,7 @@ public:
 	static bool SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot);
 	static void SortCardItem(KItemUnitList& lst);
 	static int GetCurDeckRace(KHeroDef& hero,KMiniCardList&lst);
+	static void SmartFillCardGroup(KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot);
 };
 
 #endif // 	

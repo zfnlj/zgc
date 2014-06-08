@@ -25,7 +25,7 @@ struct K3DActionParam
 	int _desArr[MAX_ACTION_TARGET_NUM];
 	int _desValArr[MAX_ACTION_TARGET_NUM];
 	int _destSlot[MAX_ACTION_TARGET_NUM];
-
+	char _string[32];
 	K3DActionParam();
 	void init();
 	int GetVal(int id);
@@ -35,11 +35,13 @@ struct K3DActionParam
 	void init(K3DActionParam*);
 	void init(const char* name);
 	void SetAction(const char* name);
+	void SetString(const char* str);
 	~K3DActionParam();
 	void clone(K3DActionParam*);
 	void Copy(strCardAbilityResult*);
 	int GetSlot(int id);
 	bool IsEmpty();
+	bool IsStrEmpty(){ return strlen(_string)<2;}
 
 	int SrcID(){ return _srcID;}
 };

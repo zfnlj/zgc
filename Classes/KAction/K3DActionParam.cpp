@@ -37,6 +37,12 @@ void K3DActionParam::SetAction(const char* name)
 {
 	strcpy(_name,name);
 }
+
+void K3DActionParam::SetString(const char* str)
+{
+	strcpy(_string,str);
+}
+
 void K3DActionParam::init(const char* name)
 {
 	init();

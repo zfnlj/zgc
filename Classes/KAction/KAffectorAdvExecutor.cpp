@@ -144,7 +144,15 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		if(GetActor()) m_widget = GetActor()->CreateTalk(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetIntVal(),m_param->GetDesId(0));
 		break;
 	case Affector_armature:
-		if(GetActor()) m_armature = GetActor()->CreateArmature(m_param,m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetFloatVal2(),m_AffectorStatic->GetIntVal());
+		if(GetActor()){
+			if(!m_param->IsStrEmpty()){
+				m_armature = GetActor()->CreateArmature(m_param,m_AffectorStatic->GetObj(),m_param->_string,
+					m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetFloatVal2(),m_AffectorStatic->GetIntVal());
+			}else{
+				m_armature = GetActor()->CreateArmature(m_param,m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
+														m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetFloatVal2(),m_AffectorStatic->GetIntVal());
+			}
+		}
 		break;
 	case Affector_fadein:
 		if(GetActor()) GetActor()->FadeIn(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),m_ccActionDef);

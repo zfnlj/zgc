@@ -4,6 +4,7 @@
 #include "../ui/KGameRecordPanel.h"
 #include "../UI/BattleFieldScene.h"
 #include "../StaticTable/StaticData.h"
+#include "../UI/assist/KUIAssist.h"
 
 IMPLEMENT_SINGLETON(KGameRecordMgr)
 
@@ -124,7 +125,7 @@ void KGameRecordMgr::update(float elapsed)
 void KGameRecordMgr::onPlayEnd()
 {
 	m_recState = REC_NULL;
-	GameRoot::getSingleton().getBattleScene()->RecordPanel().DoClickStop(NULL);
+	KUIAssist::_recordPanel().DoClickStop(NULL);
 }
 
 bool KGameRecordMgr::IsClickCardValidate(KCardInst* card)
