@@ -14,10 +14,8 @@ ID	HeroID	HeroHp	Res	DECK	Dynamic	DrawNum	Rnd
 80	10001	10	2	32011;32009;20001;20002;20003;20005;20049	0	2	1
 90	10001	1	5	31002;32009	0	1	0
 91	10001	4	5	20005;20006	0	1	0
-100	10001	3	7	20001;31025	0	1	0
-101	10001	5	7	20007;20001;20034;	0	1	0
-110	10001	20	1	30007;30011	soldier*null*0*5;soldier*null*1*4;	2	1
-120	10001	30	1	30001;30007;30011;30015	soldier*null*0*7;soldier*null*1*4;soldier*null*2*2;	3	1
+100	10001	20	1	30007;30011	soldier*null*0*5;soldier*null*1*4;	2	1
+110	10001	30	1	30001;30007;30011;30015	soldier*null*0*7;soldier*null*1*4;soldier*null*2*2;	3	1
 5001	10002	30	1	0	soldier*water*0*1;soldier*water*1*2;soldier*null*0*4;soldier*null*1*3;skill*water*0*3;skill*water*1*2;	0	0
 5002	10001	30	1	0	soldier*gold*0*2;soldier*gold*1*1;skill*gold*0*2;skill*gold*1*2;soldier*null*0*5;soldier*null*1*3;	0	0
 5003	10003	30	1	0	soldier*fire*0*1;soldier*fire*1*2;skill*fire*0*3;skill*fire*1*2;soldier*null*0*4;soldier*null*1*3;	0	0

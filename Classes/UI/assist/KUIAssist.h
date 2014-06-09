@@ -83,6 +83,8 @@ public:
 	static void _playLessonMsg(int id);
 	static KSceneLayerBase* _activeSceneLayer();
 	static KActor& _activeSceneActor();
+	static void _hideBufIcon(UIWidget* panel);
+	static void _popNotifyMsg(int dlgId);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 	static BattleFieldScene* _battleScene;

@@ -282,7 +282,7 @@ void KBattleCtrlBase::PlayCard(float dt)
 #endif
 		StateJump(battle_turn_end);
 	}
-	if(!m_pMainPlayer->GetDeck().ExistCards()&& m_pBattleQuest){
+	if(!m_pMainPlayer->GetDeck().ExistCards()&& m_pBattleQuest && !IsGameEnd() ){
 		m_pMainPlayer->GetDeck().GetHero()->m_attr.setSlot(KCardInst::enum_slot_tomb);
 		StateJump(battle_game_end);
 	}

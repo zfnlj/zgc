@@ -146,7 +146,11 @@ void KPopupLayer::HideModal()
 
 void KPopupLayer::DoModal(int titleId,int contentId,DialogueType type,SEL_PushEvent p,CCObject* pListener)
 {
-	const char* titleStr = KGameStaticMgr::getSingleton().GetHelpString(titleId)->GetString();
-	const char* contentStr = KGameStaticMgr::getSingleton().GetHelpString(contentId)->GetString();
+	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(titleId);
+	if(!helpString) return;
+	const char* titleStr = helpString->GetString();
+	helpString = KGameStaticMgr::getSingleton().GetHelpString(contentId);
+	if(!helpString) return;
+	const char* contentStr = helpString->GetString();
 	DoModal(titleStr,contentStr,type,p,pListener);
 }

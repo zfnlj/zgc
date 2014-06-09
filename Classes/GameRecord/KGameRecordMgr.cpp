@@ -27,11 +27,12 @@ void KGameRecordMgr::Stop()
 	m_recState = REC_NULL;
 }
 
-bool KGameRecordMgr::StartPlay(const char* fileName)
+bool KGameRecordMgr::StartPlay(const char* fileName,int endDlg)
 {
 	if(!LoadFile(fileName)) return false;
 	m_recState = REC_PLAY;
 	m_task.StartPlay();
+	m_endDlg = endDlg;
 	return true;
 }
 
@@ -126,6 +127,7 @@ void KGameRecordMgr::onPlayEnd()
 {
 	m_recState = REC_NULL;
 	KUIAssist::_recordPanel().DoClickStop(NULL);
+	KUIAssist::_popNotifyMsg(m_endDlg);
 }
 
 bool KGameRecordMgr::IsClickCardValidate(KCardInst* card)

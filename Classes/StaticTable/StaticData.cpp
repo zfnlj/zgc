@@ -128,7 +128,7 @@ int StaticData::GetInc()
 void StaticData::OnQuestOk(int questId)
 {
 	switch(questId){
-	case 10003:
+	case 10003: //10012
 		setKeyVal("open_cardgroup",1);
 		break;
 	/*case 10003:

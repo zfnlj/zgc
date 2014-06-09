@@ -23,7 +23,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "assist/KUIMsgDef.h"
 #include "../GameRecord/KGameRecordMgr.h"
-
+#include "../StaticTable/StaticData.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -70,9 +70,17 @@ bool CardGroupScene::init()
 	UpdateCurDeckRadio();
 	m_gameRecPanel.init(this);
 	m_actor.init(m_ui);
+	ShowHelpDrama();
     return true;
 }
 
+void CardGroupScene::ShowHelpDrama()
+{
+	if(STATIC_DATA_INT("cardgroup_help")==0){
+		KGameRecordMgr::getSingleton().StartPlay("cardgroup_help",END_CARDGROUP_LESSON_STR);
+		STATIC_DATA_SET("cardgroup_help",1);
+	}
+}
 
 cocos2d::extension::UIWidget* CardGroupScene::GetPanel()
 {

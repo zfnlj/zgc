@@ -28,6 +28,7 @@ UIWidget* KJsonDictMgr::CreateCardWidget()
 void KJsonDictMgr::OnCardWidgetDestory(UIWidget* pWidget)
 {
 	if(!pWidget) return;
+	if(strcmp(pWidget->getName(),"panel_card")!=0) return;
 	m_cacheCardWidget.push_back(pWidget);
 	if(pWidget->retainCount()<10) pWidget->retain();
 }

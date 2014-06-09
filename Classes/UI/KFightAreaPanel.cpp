@@ -36,6 +36,7 @@ void KFightAreaPanel::init(cocos2d::extension::UILayer* layer)
 		m_ActiveSprites[i] = KUIAssist::CreateAnimationSprite("active_green");
 		//m_ActiveSprites[i]->setPosition(pBut->getWorldPosition());
 		m_ActiveSprites[i]->setScale(0.8f);
+		m_ActiveSprites[i]->setVisible(false);
 		m_ActiveSprites[i]->setAnchorPoint(ccp(0.5,0.5));
 		pBut->addRenderer(m_ActiveSprites[i],1);
 		CC_SAFE_RETAIN(m_ActiveSprites[i]);

@@ -80,6 +80,7 @@ protected:
 	void UpdateSmartCardGroupBut();
 
 	void UpdateCurDeckRadio();
+	void ShowHelpDrama();
 	KPlayerCardDepot* m_depot;
 	KMiniCardList m_miniCardList;
 	UIWidget* m_pMiniHeroWidget;

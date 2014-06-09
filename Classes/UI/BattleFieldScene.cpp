@@ -44,9 +44,12 @@ void BattleFieldScene::update(float dt)
 {
 	KSceneLayerBase::update(dt);
 
-	m_myFightAreaPanel.update(dt);
-	m_indicatePanel.Update(dt);
-	KClickCardMgr::getSingleton().update(dt);
+	if(this==KUIAssist::_activeSceneLayer()){
+		m_myFightAreaPanel.update(dt);
+		m_indicatePanel.Update(dt);
+		KClickCardMgr::getSingleton().update(dt);
+	}
+
 }
 
 // on "init" you need to initialize your instance

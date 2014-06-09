@@ -33,6 +33,7 @@ void KCardActor::update(float dt)
 
 void KCardActor::Clear()
 {
+	KUIAssist::_hideBufIcon(m_ui);
 	KJsonDictMgr::getSingleton().OnCardWidgetDestory(m_ui);
 	m_ActionMgr.onDestory();
 	if(m_ui){

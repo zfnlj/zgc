@@ -18,7 +18,7 @@ public:
 	KGameRecordMgr(){}
 	~KGameRecordMgr(){}
 	static KGameRecordMgr& getSingleton(void);
-	void init(){m_recState = REC_NULL; m_task.init();}
+	void init(){m_recState = REC_NULL; m_task.init();m_endDlg=0;}
 	
 	void update(float elapsed);
 	bool SaveToFile( const char* szFileName);
@@ -29,7 +29,7 @@ public:
 	void onClickWidget(cocos2d::CCObject* obj);
 	void InitTest();
 	void StartRecord();
-	bool StartPlay(const char*);
+	bool StartPlay(const char*,int dlg=-1);
 	void onPlayEnd();
 	void Stop();
 	bool IsClickCardValidate(KCardInst* card);
@@ -45,7 +45,7 @@ private:
 
 	KGameRecordTask m_task;
 	RecState m_recState;
-
+	int m_endDlg;
 	static int g_dlgId_inc;
 
 };

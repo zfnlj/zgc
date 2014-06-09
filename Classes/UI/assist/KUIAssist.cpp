@@ -12,6 +12,8 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../StageWaitScene.h"
 #include "../CardGroupScene.h"
+#include "KPopupLayer.h"
+#include "KUIMsgDef.h"
 
 #define SHOW_CARD_OFFSET 6
 #define MAX_BUF_SLOT_NUM 5
@@ -502,9 +504,17 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	UILabel* labelDesc = (UILabel*)ui->getChildByName("detail");
 	labelDesc->setVisible(true);
 	if(bBig){
-		if(strlen(pST->GetDetail())>2)	labelDesc->setText(pST->GetDetail());
+		if(strlen(pST->GetDetail())>2){
+			labelDesc->setText(pST->GetDetail());
+		}else{
+			labelDesc->setVisible(false);
+		}
 	}else{
-		if(strlen(pST->GetDesc())>2)	labelDesc->setText(pST->GetDesc());
+		if(strlen(pST->GetDesc())>2){
+			labelDesc->setText(pST->GetDesc());
+		}else{
+			labelDesc->setVisible(false);
+		}
 	}
 
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
@@ -635,6 +645,14 @@ void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
 			widget->setTag(card->GetRealId());
 			widget->setVisible(true);
 		}
+	}
+}
+
+void KUIAssist::_hideBufIcon(UIWidget* panel)
+{
+	for(int i=0;i<MAX_BUF_SLOT_NUM;i++){
+		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(panel,"buf_slot",i);
+		if(widgetSlot) widgetSlot->setVisible(false);
 	}
 }
 
@@ -911,4 +929,9 @@ KActor& KUIAssist::_activeSceneActor()
 KGameRecordPanel& KUIAssist::_recordPanel()
 {
 	return _activeSceneLayer()->RecordPanel();
+}
+
+void KUIAssist::_popNotifyMsg(int dlgId)
+{
+	KPopupLayer::DoModal(UI_NOTIFY_STR,dlgId,KPopupLayer::DT_Ok);
 }

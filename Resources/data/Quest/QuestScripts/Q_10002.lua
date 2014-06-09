@@ -24,8 +24,8 @@ GiftDesc = function (quest , player)
   local exp
 	local money
 	local itemlist
-		exp = 10			-- 经验奖励
-		money = 5	  	-- 金钱奖励
+		exp = 12			-- 经验奖励
+		money = 6	  	-- 金钱奖励
 	return GetQuestGiftStr(itemlist,exp,money)
 end, 
   
