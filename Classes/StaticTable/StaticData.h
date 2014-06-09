@@ -10,6 +10,7 @@
 #define __FishingJoy__StaticData__
 
 #include "cocos2d.h"
+#define STATIC_DATA_INIT(user,pwd) StaticData::sharedStaticData()->init(user,pwd)
 #define STATIC_DATA_STRING(key) StaticData::sharedStaticData()->stringFromKey(key)
 #define STATIC_DATA_INT(key) StaticData::sharedStaticData()->intFromKey(key)
 #define STATIC_DATA_FLOAT(key) StaticData::sharedStaticData()->floatFromKey(key)
@@ -19,6 +20,7 @@
 #define STATIC_DATA_SIZE(key) StaticData::sharedStaticData()->sizeFromKey(key)
 #define STATIC_DATA_SET(key,val) StaticData::sharedStaticData()->setKeyVal(key,val)
 #define STATIC_DATA_INC() StaticData::sharedStaticData()->GetInc()
+#define STATIC_DATA_QUEST_OK(id) StaticData::sharedStaticData()->OnQuestOk(id)
 class StaticData : public cocos2d::CCObject
 {
 public:    
@@ -48,12 +50,17 @@ public:
     CC_SYNTHESIZE_READONLY(std::string, _staticDataPath, StaticDataPath);
 
 	int GetInc();
+	void createDefault(const char* userName,const char* pwd);
+	void init(const char* userName,const char* pwd);
+	void OnQuestOk(int questId);
 protected:
     cocos2d::CCDictionary* _dictionary;
 private:
     StaticData();
     ~StaticData();
     bool init();
+	void set(const char* keyStr,const char* val);
+	void set(const char* keyStr,int val);
 	char m_fullPath[256];
 };
 #endif /* defined(__FishingJoy__StaticData__) */

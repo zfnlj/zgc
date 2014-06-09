@@ -43,6 +43,19 @@
                 <key>sourceSize</key>
                 <string>{158,213}</string>
             </dict>
+            <key>lock.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{377,2},{126,104}}</string>
+                <key>offset</key>
+                <string>{-2,4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{126,104}}</string>
+                <key>sourceSize</key>
+                <string>{130,112}</string>
+            </dict>
             <key>quest.png</key>
             <dict>
                 <key>frame</key>
@@ -92,7 +105,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f16b4ee0142c3e4014ceaa4a91fab80d$</string>
+            <string>$TexturePacker:SmartUpdate:e011c77e420f8cde54c65923b2a9af4e$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>

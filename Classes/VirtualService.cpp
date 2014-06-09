@@ -53,7 +53,7 @@ void VirtualService::RegEvt()
 void VirtualService::LoadPlayerData()
 {
 	KMainPlayer::Instance()->initPlayer(1);
-
+	STATIC_DATA_INIT("zfn","111");
 	if(KUserSql::LoadUserData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetPlayerRecord())){
 		KUserQuestSql::LoadUserQuestData(STATIC_DATA_STRING("player"),KMainPlayer::RealPlayer()->GetQuestRecord());
 	}else{

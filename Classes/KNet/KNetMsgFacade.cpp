@@ -14,6 +14,7 @@
 #include "../Quest/KQuestManager.h"
 #include "../Quest/KPlayerQuestManager.h"
 #include "../Quest/KQuestOperation.h"
+#include "../StaticTable/StaticData.h"
 
 void KNetMsgFacade::onBattleInit()
 {
@@ -142,7 +143,7 @@ void KNetMsgFacade::onQuestFinished(int qId)
 
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	playerQuestManager.SetQuestHistory(qId,1,1);
-
+	STATIC_DATA_QUEST_OK(qId);
 	//GameRoot::getSingleton().getMainMenuScene()->onQuestFinished(qId);
 }
 

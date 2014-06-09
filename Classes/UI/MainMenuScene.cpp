@@ -21,6 +21,7 @@
 #include "assist/KJsonDictMgr.h"
 #include "assist/KQuestFacade.h"
 #include "../WorldObject/KMainPlayer.h"
+#include "../StaticTable/StaticData.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -92,6 +93,7 @@ bool MainMenuScene::init()
 
 	this->addChild(GetUILayer(), 1);
 
+	UpdateLockStatus();
     return true;
 }
 
@@ -125,7 +127,7 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut = m_ui->getWidgetByName("but_quest");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickQuestBut));
 
-		pBut = m_ui->getWidgetByName("but_store");
+		pBut = m_ui->getWidgetByName("but_cardgroup");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickStoreBut));
 
 		m_gameResultPanel.init(m_ui);
@@ -155,6 +157,28 @@ void MainMenuScene::DoClickBattleBut(CCObject* sender)
 
 	}*/
 	
+
+}
+
+void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const char* lockImage)
+{
+	UIWidget* pBut = m_ui->getWidgetByName(butName);
+	int openVal = STATIC_DATA_INT(key);
+	UIWidget* pLockWidget = m_ui->getWidgetByName(lockImage);
+	if(openVal>0){
+		pBut->setTouchEnable(true);
+		pLockWidget->setVisible(false);
+	}else{
+		pBut->setTouchEnable(false);
+		pLockWidget->setVisible(true);
+	}
+}
+
+void MainMenuScene::UpdateLockStatus()
+{
+	UpdateLockStatus("open_quest","but_quest","lock_quest");
+	UpdateLockStatus("open_cardgroup","but_cardgroup","lock_cardgroup");
+	UpdateLockStatus("open_shop","but_shop","lock_shop");
 
 }
 

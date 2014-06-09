@@ -180,3 +180,9 @@
 /tool/zgc_ui/record_panel/Backup
 /tool/zgc_ui/record_panel/Export
 /tool/zgc_ui/record_panel/Resources/battle_elem_PList.Dir
+
+/tool/zgc_ui/MainMenu/Backup
+
+/tool/zgc_ui/MainMenu/Export
+
+/tool/zgc_ui/MainMenu/Resources/ui_elem_PList.Dir

@@ -7,7 +7,7 @@
             <key>CloseNormal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{464,2},{53,35}}</string>
+                <string>{{68,432},{53,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>battle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{322,279},{158,213}}</string>
+                <string>{{162,162},{158,213}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,46 +33,33 @@
             <key>cardstore.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{162,279},{158,213}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{158,213}}</string>
-                <key>sourceSize</key>
-                <string>{158,213}</string>
-            </dict>
-            <key>labelatlasimg.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{464,57},{220,27}}</string>
+                <string>{{162,2},{158,213}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{220,27}}</string>
+                <string>{{0,0},{158,213}}</string>
                 <key>sourceSize</key>
-                <string>{220,27}</string>
+                <string>{158,213}</string>
             </dict>
-            <key>my_turn.png</key>
+            <key>lock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{300,78}}</string>
+                <string>{{377,2},{126,104}}</string>
                 <key>offset</key>
-                <string>{0,0}</string>
+                <string>{-2,4}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,78}}</string>
+                <string>{{0,0},{126,104}}</string>
                 <key>sourceSize</key>
-                <string>{300,78}</string>
+                <string>{130,112}</string>
             </dict>
             <key>quest.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,279},{158,213}}</string>
+                <string>{{2,217},{158,213}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -81,11 +68,24 @@
                 <string>{{0,0},{158,213}}</string>
                 <key>sourceSize</key>
                 <string>{158,213}</string>
+            </dict>
+            <key>secret_icon.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,432},{64,64}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
             </dict>
             <key>shop.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{304,2},{158,213}}</string>
+                <string>{{2,2},{158,213}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -94,45 +94,6 @@
                 <string>{{0,0},{158,213}}</string>
                 <key>sourceSize</key>
                 <string>{158,213}</string>
-            </dict>
-            <key>turn_end1.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,217},{147,52}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{147,52}}</string>
-                <key>sourceSize</key>
-                <string>{147,52}</string>
-            </dict>
-            <key>turn_end2.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,160},{145,50}}</string>
-                <key>offset</key>
-                <string>{-1,1}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{145,50}}</string>
-                <key>sourceSize</key>
-                <string>{147,52}</string>
-            </dict>
-            <key>your_turn.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{2,82},{300,76}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{300,76}}</string>
-                <key>sourceSize</key>
-                <string>{300,76}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -144,7 +105,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0d16244e04f39c1f21dce59098a71e2e$</string>
+            <string>$TexturePacker:SmartUpdate:e011c77e420f8cde54c65923b2a9af4e$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>

@@ -10,7 +10,7 @@
 USING_NS_CC;
 using namespace std;
 
-#define STATIC_DATA_PATH "static_data.plist"
+#define STATIC_DATA_NAME "static_data.plist"
 
 static StaticData* _sharedStaticData = NULL;
 StaticData* StaticData::sharedStaticData()
@@ -23,21 +23,55 @@ StaticData* StaticData::sharedStaticData()
 }
 StaticData::StaticData()
 {
-    _staticDataPath = STATIC_DATA_PATH;
+    _staticDataPath = STATIC_DATA_NAME;
 }
 StaticData::~StaticData()
 {
     CC_SAFE_RELEASE_NULL(_dictionary);
 }
+
+void StaticData::init(const char* userName,const char* pwd)
+{
+	std::string writablePath = CCFileUtils::sharedFileUtils()->getWritablePath();
+	sprintf(m_fullPath,"%s\\%s_%s",writablePath.c_str(),userName,STATIC_DATA_NAME);
+
+	if(!CCFileUtils::sharedFileUtils()->isFileExist(m_fullPath)){
+		_dictionary = CCDictionary::create();
+		set("user",userName);
+		set("pwd",pwd);
+		set("player",userName);
+		set("recInc",1);
+		set("Inc",1);
+		_dictionary->writeToFile(m_fullPath);
+	}else{
+		_dictionary = CCDictionary::createWithContentsOfFile(m_fullPath);
+	}
+    CC_SAFE_RETAIN(_dictionary);
+}
+
+void StaticData::createDefault(const char* userName,const char* pwd)
+{
+	_dictionary = CCDictionary::create();
+}
+
 bool StaticData::init()
 {
-	std::string writablePath = cocos2d::CCFileUtils::sharedFileUtils()->getWritablePath();
-	sprintf(m_fullPath,"%s\\%s",writablePath.c_str(),STATIC_DATA_PATH);
-
-    _dictionary = CCDictionary::createWithContentsOfFile(m_fullPath);
-    CC_SAFE_RETAIN(_dictionary);
     return true;
 }
+
+void StaticData::set(const char* keyStr,int val)
+{
+	char buf[24];
+	sprintf(buf,"%d",val);
+	set(keyStr,buf);
+}
+
+void StaticData::set(const char* keyStr,const char* val)
+{
+	CCString* pValue1 = CCString::create(val);
+	_dictionary->setObject(pValue1,keyStr);
+}
+
 const char* StaticData::stringFromKey(string key)
 {
     return _dictionary->valueForKey(key)->getCString();
@@ -89,4 +123,17 @@ int StaticData::GetInc()
 	int val = intFromKey("Inc");
 	setKeyVal("Inc",val+1);
 	return val;
+}
+
+void StaticData::OnQuestOk(int questId)
+{
+	switch(questId){
+	case 10003:
+		setKeyVal("open_cardgroup",1);
+		break;
+	/*case 10003:
+		setKeyVal("open_quest",1);
+		setKeyVal("open_shop",1);
+		break;*/
+	}
 }
