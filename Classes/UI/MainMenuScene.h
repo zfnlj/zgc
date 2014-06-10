@@ -6,8 +6,6 @@
 #include "KActor.h"
 #include "KShopPanel.h"
 #include "KGenCardPanel.h"
-#include "KMyStorePanel.h"
-#include "KMyQuestPanel.h"
 #include "KGameResultPanel.h"
 
 USING_NS_CC;
@@ -36,7 +34,6 @@ public:
 	void DoClickStoreBut(CCObject* sender);
 
 	void onGenPlayerCard(unsigned long long p1);
-	void openMyStorePanel();
 
 	void OnSelectCard(KCardActor*);
 	void onUpdateMoney();
@@ -53,8 +50,6 @@ private:
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
 	KShopPanel	m_shopPanel;
 	KGenCardPanel m_genCardPanel;
-	KMyStorePanel m_myStorePanel;
-	KMyQuestPanel m_myQuestPanel;
 	KGameResultPanel m_gameResultPanel;
 };
 

@@ -293,9 +293,6 @@
     <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KMyStorePanel.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StaticTable\KDeckDefStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
@@ -307,9 +304,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\EventSystem\KEventRegistry.cpp">
       <Filter>game\EventSystem</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\KMyQuestPanel.cpp">
-      <Filter>UI\Panel</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Quest\KQuestOperation.cpp">
       <Filter>game\Quest</Filter>
@@ -392,9 +386,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp">
       <Filter>sqlite</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\KQuestAwardPanel.cpp">
-      <Filter>UI\Panel</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI\StageWaitScene.cpp">
       <Filter>UI\Panel</Filter>
@@ -769,9 +760,6 @@
     <ClInclude Include="..\Classes\UI\KGenCardPanel.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\KMyStorePanel.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KDeckDefStatic.h">
       <Filter>staticTable</Filter>
     </ClInclude>
@@ -786,9 +774,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\EventSystem\KEventEntity.h">
       <Filter>game\EventSystem</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KMyQuestPanel.h">
-      <Filter>UI\Panel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Quest\KQuestOperation.h">
       <Filter>game\Quest</Filter>
@@ -868,9 +853,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\sqlite\KSqlEnc.h">
       <Filter>sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KQuestAwardPanel.h">
-      <Filter>UI\Panel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\StageWaitScene.h">
       <Filter>UI\Panel</Filter>

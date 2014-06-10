@@ -15,6 +15,7 @@
 #include "../Quest/KPlayerQuestManager.h"
 #include "../Quest/KQuestOperation.h"
 #include "../StaticTable/StaticData.h"
+#include "../WorldObject/KPlayer.h"
 
 void KNetMsgFacade::onBattleInit()
 {

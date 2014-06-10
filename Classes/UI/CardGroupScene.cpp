@@ -24,6 +24,7 @@
 #include "assist/KUIMsgDef.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../StaticTable/StaticData.h"
+#include "../WorldObject/KPlayer.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;

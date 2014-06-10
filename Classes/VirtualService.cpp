@@ -18,7 +18,7 @@
 #include "Quest/KQuestManager.h"
 #include "GameRoot.h"
 #include "common/KVirtualServerAssist.h"
-
+#include "common/KPlayerRecordAssist.h"
 using namespace KStoreAbout;
 using namespace KItemAbout;
 IMPLEMENT_SIMPLE_SINGLETON(VirtualService)

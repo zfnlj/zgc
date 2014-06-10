@@ -23,6 +23,7 @@
 #include "../Quest/KPlayerQuestManager.h"
 #include "../Quest/KQuestManager.h"
 #include "../StaticTable/KHelpStringStatic.h"
+#include "../WorldObject/KPlayer.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;

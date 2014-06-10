@@ -11,6 +11,7 @@
 #include "../Quest/KQuestManager.h"
 #include "assist/KQuestFacade.h"
 #include "../Item/KItemCreate.h"
+#include "../WorldObject/KPlayer.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;

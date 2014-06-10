@@ -139,12 +139,10 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
 	KUIAssist::_switch2CardGroupScene();
-	//m_myStorePanel.init(m_ui);
 }
 
 void MainMenuScene::DoClickQuestBut(CCObject* sender)
 {
-	m_myQuestPanel.init(m_ui);
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
@@ -206,18 +204,11 @@ void MainMenuScene::onGenPlayerCard(unsigned long long p1)
 	m_genCardPanel.init(m_ui,p1);
 }
 
-void MainMenuScene::openMyStorePanel()
-{
-	m_myStorePanel.init(GetUILayer());
-}
-
 void MainMenuScene::onQuestUpdate()
 {
-	m_myQuestPanel.updatePanel();
 }
 
 void MainMenuScene::onQuestFinished(int qId)
 {
 	//m_gameResultPanel.onQuestFinished(qId);
-	//m_myQuestPanel.updatePanel();
 }

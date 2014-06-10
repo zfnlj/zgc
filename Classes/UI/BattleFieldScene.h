@@ -11,7 +11,6 @@
 #include "KActor.h"
 #include "KShopPanel.h"
 #include "KGenCardPanel.h"
-#include "KMyStorePanel.h"
 #include "KGameResultPanel.h"
 #include "KGameRecordPanel.h"
 
