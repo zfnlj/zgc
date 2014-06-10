@@ -81,7 +81,6 @@ bool BattleFieldScene::init()
 		this->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
 	}
 	m_actor.init(m_ui);
-	KUIAssist::_battleScene = this;
     return true;
 }
 

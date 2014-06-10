@@ -14,12 +14,18 @@ void KSceneLayerBase::update(float dt)
 	}
 }
 
+KSceneLayerBase::~KSceneLayerBase()
+{
+	if(KUIAssist::_activeScene == this) KUIAssist::_activeScene = NULL;
+}
+
 bool KSceneLayerBase::init()
 {
 	m_ui=NULL;
 	UILayer::init();
 	registerWithTouchDispatcher();
 
+	KUIAssist::_activeScene = this;
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 

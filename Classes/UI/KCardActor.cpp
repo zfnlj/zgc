@@ -28,7 +28,7 @@ KCardActor::~KCardActor()
 
 void KCardActor::update(float dt)
 {
-	m_ActionMgr.breathe(dt);
+	if(KUIAssist::_activeScene) m_ActionMgr.breathe(dt);
 }
 
 void KCardActor::Clear()

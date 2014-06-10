@@ -12,7 +12,7 @@ class KSceneLayerBase :public cocos2d::extension::UILayer
 {
 public:
 	KSceneLayerBase(){}
-	~KSceneLayerBase(){}
+	~KSceneLayerBase();
 	
 	virtual void update(float dt);
 	virtual bool init();

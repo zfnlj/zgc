@@ -21,7 +21,8 @@
 static char* raceIcon[]={"null","gold","tree","water","fire","mud"};
 using namespace cocos2d::extension;
 
-BattleFieldScene* KUIAssist::_battleScene = NULL;
+KSceneLayerBase* KUIAssist::_activeScene = NULL;
+
 void KUIAssist::SetRaceIcon(UIWidget* widgetRace, int race)
 {
 	char sz[32];
@@ -48,10 +49,10 @@ bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
 cocos2d::CCPoint KUIAssist::_querySecretShowPos(KCardInst* card)
 {
 	if(GameRoot::getSingleton().BattleCtrl().IsMyCard(card)){
-		UIWidget* widget = _battleScene->getWidgetByName("my_secret_show");
+		UIWidget* widget = _activeScene->getWidgetByName("my_secret_show");
 		if(widget) return widget->getWorldPosition();
 	}else{
-		UIWidget* widget = _battleScene->getWidgetByName("your_secret_show");
+		UIWidget* widget = _activeScene->getWidgetByName("your_secret_show");
 		if(widget) return widget->getWorldPosition();
 	}
 	return CCPoint(-500,-500);
@@ -61,7 +62,7 @@ cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
 {
 	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
 	const char* sz = card->GetBasePosName(bMy);
-	UIWidget* obj =  _battleScene->getWidgetByName(sz);
+	UIWidget* obj =  _activeScene->getWidgetByName(sz);
 	return obj->getWorldPosition();
 }
 
@@ -74,7 +75,7 @@ cocos2d::CCPoint KUIAssist::_queryFighterPos(KCardInst* card)
 	}else{
 		sprintf(sz,"your_fight_slot_%d",card->m_attr.getPos());
 	}
-	UIImageView* base = (UIImageView*)_battleScene->getWidgetByName(sz);
+	UIImageView* base = (UIImageView*)_activeScene->getWidgetByName(sz);
 	return base->getWorldPosition();
 }
 
@@ -84,14 +85,14 @@ void KUIAssist::_showCardSet(KCardInstList* lst)
 		KCardActor* actor = KCardActor::create(*it);
 		cocos2d::CCPoint pt = _queryCardPos(lst,*it);
 		actor->GetUI()->setPosition(pt);
-		if(!actor->GetUI()->getParent()) _battleScene->addWidget(actor->GetUI());
+		if(!actor->GetUI()->getParent()) _activeScene->addWidget(actor->GetUI());
 	}
 }
 
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
-	UIImageView* base = (UIImageView*)_battleScene->getWidgetByName(_getBasePosName(card));
+	UIImageView* base = (UIImageView*)_activeScene->getWidgetByName(_getBasePosName(card));
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
 		if(!lst) lst = GameRoot::getSingleton().BattleCtrl().GetCardSet(card);
@@ -139,7 +140,7 @@ void KUIAssist::_updateCard(KCardInst* card)
 {
 	KCardActor* cardActor = (KCardActor*)card->getActor();
 	cardActor->UpdateUI();
-	if(!cardActor->GetUI()->getParent()) _battleScene->addWidget(cardActor->GetUI());
+	if(!cardActor->GetUI()->getParent()) _activeScene->addWidget(cardActor->GetUI());
 }
 
 void KUIAssist::_showCard(KCardInst* card)
@@ -147,7 +148,7 @@ void KUIAssist::_showCard(KCardInst* card)
 	cocos2d::CCPoint pt = _queryCardPos(NULL,card);
 	KCardActor* actor = KCardActor::create(card);
 	actor->GetUI()->setPosition(pt);
-	if(!actor->GetUI()->getParent()) _battleScene->addWidget(actor->GetUI());
+	if(!actor->GetUI()->getParent()) _activeScene->addWidget(actor->GetUI());
 
 	
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
@@ -630,7 +631,7 @@ KCardActor* KUIAssist::_getCardActor(int realId)
 
 void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)
 {
-	UIWidget* panel = _battleScene->getRootWidget();
+	UIWidget* panel = _activeScene->getRootWidget();
 
 	for(int i=0;i<MAX_SECRET_POS_NUM;i++){
 		UIWidget* widget = GetIndexWidget(panel,(bMy)?"my_secret_slot":"your_secret_slot",i);
@@ -917,8 +918,7 @@ void KUIAssist::ShowButton(UIWidget* pBut,bool flag)
 
 KSceneLayerBase* KUIAssist::_activeSceneLayer()
 {
-	CCScene* scene = CCDirector::sharedDirector()->getRunningScene();
-	return (KSceneLayerBase*)scene->getChildByTag(1977);
+	return _activeScene;
 }
 
 KActor& KUIAssist::_activeSceneActor()
