@@ -186,3 +186,6 @@
 /tool/zgc_ui/MainMenu/Export
 
 /tool/zgc_ui/MainMenu/Resources/ui_elem_PList.Dir
+/tool/zgc_ui/shop/Backup
+/tool/zgc_ui/shop/Export
+/tool/zgc_ui/shop/Resources/shop_PList.Dir
