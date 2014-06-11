@@ -8,9 +8,16 @@
 #include <System/File/KTabfileLoader.h>
 #include "KCardStatic.h"
 
+
+
 class KDeckDefStatic
 {
 public:
+	struct HeroSkill{
+		int m_Id;
+		int m_lev;
+	};
+
 	struct DynamicCardDef{
 		KCardStatic::CardDef _def;
 		KCardStatic::CardRace _race;
@@ -47,8 +54,9 @@ private:
 	int m_res;
 	int m_drawNum;
 	int m_rnd;
-	
+	HeroSkill m_skill[MAX_HERO_SKILL_NUM];
 	void setDynamic(const char* buf);
+	void setHeroSkill(const char* buf);
 	void FillOnDynamicCardDef(DynamicCardDef*,KIntegerList& lst);
 	KIntegerList m_cardList;
 	DynamicCardDefList m_defList;

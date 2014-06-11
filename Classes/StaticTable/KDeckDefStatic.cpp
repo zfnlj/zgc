@@ -29,6 +29,7 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 bool KDeckDefStatic::init()
 {
 	m_heroID = m_heroHp = m_res = 0;
+	memset(m_skill,0,sizeof(m_skill));
 	return true;
 }
 
@@ -91,9 +92,38 @@ void KDeckDefStatic::Init(System::File::KTabFile2* fileReader)
 	
 	fileReader->GetInteger("DrawNum", 0, (int*)&m_drawNum);
 	
+	fileReader->GetString("HeroSkill", "", buf, 1023);
+	setHeroSkill(buf);
+
 
 	fileReader->GetString("Dynamic", "", buf, 1023);
 	setDynamic(buf);
+}
+
+
+void KDeckDefStatic::setHeroSkill(const char* buf)
+{
+	char strBuf[1024];
+	strcpy(strBuf,buf);
+
+	char* ss[64];
+	int ns = split(strBuf, ";", ss, 64);
+
+	int pos = 0;
+	for(int i=0; i<ns; i++)
+	{
+		char* s = _trim(ss[i]);
+
+		char* qq[64];
+		int nb = split(s, "*", qq, 64);
+		if(nb!=2) continue;
+		for(int j=0;j<2;j++)
+		{
+			char* p = _trim(qq[i]);
+		}
+		
+	}
+
 }
 
 void KDeckDefStatic::GenCardList(KIntegerList& lst,bool bRnd)

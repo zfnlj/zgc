@@ -3,9 +3,12 @@
 #include "System/Random/KRandom.h"
 #include <list>
 #include "System/Misc/KStream.h"
+
+
 extern System::Random::KRandom g_rnd;
 
 typedef std::list<int > KIntegerList;
+#define MAX_HERO_SKILL_NUM  3
 
 extern KMsgOutputStream g_ostream;
 

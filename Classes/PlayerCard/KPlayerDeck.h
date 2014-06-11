@@ -2,7 +2,7 @@
 
 #include "../Inc/KTypeDef.h"
 #include "../common/KCommonObj.h"
-#define MAX_HERO_SKILL_NUM 3
+
 #define MAX_HERO_SKILL_LEV 3
 struct KHeroDef{
 	struct skillDef{
