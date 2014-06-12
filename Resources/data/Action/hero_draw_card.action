@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action  class="cast">
+  <affect_body>
+    <affector class="anim" slot="card_center" obj="pre_cast" createtime="0.0" fVal="1.0" iVal="90"  life="1.5" />
+    <affector class="action" obj="absorb_show" tarFlag="0" pre="0" createtime="1.6" iVal="1" life="30" />
+    <affector class="action" obj="draw_card" tarFlag="1" pre="1" createtime="1.6" iVal="2" life="30" /> 
+  </affect_body>
+</action>
+
+</ag>
+		

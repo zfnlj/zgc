@@ -105,7 +105,7 @@ void BattleFieldScene::onBattleInit()
 
 	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
 	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+	KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 
 	if(GameRoot::getSingleton().BattleCtrl().IsSelectCard()){
 		m_selectCardPanel.init(this);

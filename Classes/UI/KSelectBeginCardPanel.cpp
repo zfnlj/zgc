@@ -70,7 +70,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("select_base");
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 	if(guy==GameRoot::getSingleton().BattleCtrl().GetMainPlayer()){
-		KUIAssist::_showCardSet(lst);
+		//KUIAssist::_showCardSet(lst);
 
 		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 			KCardInst* card = *it;

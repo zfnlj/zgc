@@ -34,12 +34,13 @@ public:
 		quest_battle_init,
 		battle_select_turnplayer,
 		battle_select_handcard,
+		battle_draw_card,
 		battle_turn_begin,
-		battle_turn_begin_ok,
 		battle_play,
 		battle_turn_end,
 		battle_turn_end_ok,
 		battle_game_end,
+		battle_wait_drama,
 	};
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init(void*);  
@@ -71,7 +72,7 @@ public:
 	void OpSetSlot(int slot);
 	void DoEndTurn();
 	void TurnEndOk();
-	void TurnBeginOK();
+	void DrawCard();
 	void PlayWithAI();
 	void PlayQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);
@@ -109,6 +110,7 @@ public:
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;
+	BattleState m_nextState;
 	float m_WaitTime;
 	bool m_bSelectCard;
 	void* m_world;
@@ -123,6 +125,12 @@ protected:
 	void SelectHandCard(float dt);
 	void UpdateDirtyInfo();
 	void QuestBattleInit(KQuestNew* pQuest);
+	void JumpOnDrama(BattleState newState)
+	{
+		m_nextState = newState;
+		m_state = battle_wait_drama;
+	}
+	void WaitDrama();
 	void StateJump(BattleState newState)
 	{
 		m_state = newState;

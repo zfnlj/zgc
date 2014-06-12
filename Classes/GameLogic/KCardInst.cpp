@@ -380,7 +380,7 @@ const char* KCardInst::GetBasePosName(bool bMy)
 	static char sz[64];
 	switch(GetSlot()){
 	case KCardInst::enum_slot_select:
-		return "select_base";
+		return ((bMy))?"select_base":"your_hand_base";
 		break;
 	case KCardInst::enum_slot_hand:
 		return (bMy)? "my_hand_base":"your_hand_base";

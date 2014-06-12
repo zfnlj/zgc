@@ -86,16 +86,18 @@ void KBattleGuy::onTurnEnd(KBattleCtrlBase* ctrl)
 	m_Deck.OnTurnEnd(ctrl);
 }
 
-void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
+void KBattleGuy::onDrawCard()
+{
+	m_Deck.DrawCard(1);
+}
+
+void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl)
 {
 	
 	m_TurnPlayTime = 0;
 	m_attr.setMaxRes(m_attr.getMaxRes()+1);
 	m_attr.setCurRes(m_attr.getMaxRes());
 	m_Deck.onTurnBegin(ctrl);
-	if(!bFirstTurn){
-		m_Deck.DrawCard(1);
-	}
 }
 
 

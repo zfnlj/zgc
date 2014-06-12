@@ -71,6 +71,9 @@ void KBattleCtrlBase::update(float dt)
 			case battle_select_handcard:
 				SelectHandCard(dt);
 				break;
+			case battle_draw_card:
+				DrawCard();
+				break;
 			case battle_turn_begin:
 				TurnBegin();
 				break;
@@ -80,14 +83,14 @@ void KBattleCtrlBase::update(float dt)
 			case battle_turn_end:
 				TurnEnd();
 				break;
-			case battle_turn_begin_ok:
-				TurnBeginOK();
-				break;
 			case battle_turn_end_ok:
 				TurnEndOk();
 				break;
 			case battle_game_end:
 				GameEnd(dt);
+				break;
+			case battle_wait_drama:
+				WaitDrama();
 				break;
 			default:
 				break;
@@ -213,7 +216,7 @@ void KBattleCtrlBase::SelectHandCard(float dt)
 			}
 		}
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_HANDCARD_READY,0,(unsigned long long)m_world);
-		StateJump(battle_turn_begin);
+		StateJump(battle_draw_card);
 	}
 }
 
@@ -231,27 +234,34 @@ void KBattleCtrlBase::SelectTurnPlayer()
 		m_CurPlayGuy = *it;
 	}
 
-	StateJump(battle_turn_begin);
+	StateJump(battle_draw_card);
 	m_bDirty = true;
 }
 
+void KBattleCtrlBase::DrawCard()
+{
+	if(!m_bFirstTurn){
+		m_CurPlayGuy->onDrawCard();
+		AddDramaElapsed(2.0f);
+	}
+	m_bFirstTurn = false;
+	JumpOnDrama(battle_turn_begin);
+}
 void KBattleCtrlBase::TurnBegin()
 {
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
-	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
-    
-	m_bFirstTurn = false;
+	m_CurPlayGuy->onTurnBegin(this);
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
 	DoCardEvtList(NULL);
-	StateJump(battle_turn_begin_ok);
+	JumpOnDrama(battle_play);
 }
 
-void KBattleCtrlBase::TurnBeginOK()
+void KBattleCtrlBase::WaitDrama()
 {
 	if(IsWaitDrama()) return;
-	StateJump(battle_play);
+	StateJump(m_nextState);
 }
 
 KBattleGuy* KBattleCtrlBase::GetDefGuy()
@@ -689,7 +699,7 @@ void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 	if(pBattleStatic->IsSelectCard()){
 		StateJump(battle_select_handcard);
 	}else{
-		StateJump(battle_turn_begin);
+		StateJump(battle_draw_card);
 	}
 	m_bDirty = true;
 }
