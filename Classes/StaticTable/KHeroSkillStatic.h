@@ -12,6 +12,20 @@
 #define MAX_HERO_SKILL_LEV 3
 #define MAX_SKILL_ABILITY 6
 
+class KHeroSkillStatic;
+
+struct HeroSkill{
+		int _id;
+		int _lev;
+		KHeroSkillStatic* _skill;
+		HeroSkill():_id(0),_lev(0),_skill(NULL){}
+		void init(int id,int lev);
+		KAbilityStatic* GetRndAbility();
+		int getRateVal();
+		bool IsEmpty(){ return _id==0;}
+		void GenDynAbility(KAbilityStatic& dynAbility);
+};
+
 class KHeroSkillStatic
 {
 public:

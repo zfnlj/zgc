@@ -47,7 +47,6 @@ void KGameStaticMgr::LoadStaticData()
     InitCard("data/card/Secret.txt");
 	InitAbility("data/card/Ability.txt");
 	InitAttr("data/card/Attr.txt");
-	InitDeckDef("data/DeckDef.txt");
 	InitBattleField("data/BattleField.txt");
 	InitRank("data/Rank.txt",m_playerExpMgr);
 	InitRank("data/HeroRank.txt",m_heroExpMgr);
@@ -56,6 +55,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitHelpString("data/string/HelpStr.txt");
 	InitTipString("data/string/TipStr.txt");
 	InitStoryString("data/string/StoryStr.txt");
+	InitDeckDef("data/DeckDef.txt");
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)

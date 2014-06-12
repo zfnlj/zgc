@@ -3,19 +3,6 @@
 #include "KBattleGod.h"
 
 
-int KHeroSkillMgr::HeroSkill::getRateVal()
-{
-	return _skill->GetRateVal(_lev);
-}
-
-void KHeroSkillMgr::HeroSkill::GenDynAbility(KAbilityStatic& dynAbility)
-{
-	GetRndAbility()->Clone(dynAbility);
-	
-	dynAbility.GetVal()._val = _skill->GetRndVal(_lev);
-
-}
-
 void KHeroSkillMgr::onTurnBegin(KBattleCtrlBase* ctrl)
 {
 	m_bDone = false;
@@ -81,7 +68,7 @@ void KHeroSkillMgr::ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When 
 }
 
 
-KHeroSkillMgr::HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_When when)
+HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_When when)
 {
 	int nRand = g_rnd.GetRandom(0,100);
 	int val = 0;
@@ -100,4 +87,11 @@ void KHeroSkillMgr::SetHero(KHeroDef* pDef)
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		addSkill(pDef->_skill[i]._skillId,pDef->GetSkillLev(i));
 	}
+}
+
+void KHeroSkillMgr::SetSkill(KDeckDefStatic* pDeckDef)
+{
+	memset(m_skill,0,sizeof(m_skill));
+	if(!pDeckDef) return;
+	memcpy(m_skill,pDeckDef->GetHeroSkill(),sizeof(m_skill));
 }

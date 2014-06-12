@@ -52,17 +52,15 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 
 	if(pDeckDef){
-		m_Deck.createDeck(pDeckDef);
-		m_Deck.GetHero()->CurHpSet(pDeckDef->getHeroHp());
+		m_Deck.initDeck(pDeckDef,bSelectCard);
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
-		m_Deck.DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 	}else if(m_Deck.createDeck(playerCardDepot)){
 		m_attr.setMaxRes(1);
 		m_attr.setCurRes(1);
 		KHeroDef heroDef;
 		playerCardDepot->PickCurHero(heroDef);
-		m_heroSkillMgr.SetHero(&heroDef);
+		m_Deck.m_heroSkillMgr.SetHero(&heroDef);
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 	}else{
 		m_Deck.createTestDeck();
@@ -86,7 +84,6 @@ void KBattleGuy::DoSelectBeginCard(KCardInstList* lst)
 void KBattleGuy::onTurnEnd(KBattleCtrlBase* ctrl)
 {
 	m_Deck.OnTurnEnd(ctrl);
-	m_heroSkillMgr.onTurnEnd(ctrl);
 }
 
 void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
@@ -99,7 +96,6 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 	if(!bFirstTurn){
 		m_Deck.DrawCard(1);
 	}
-	m_heroSkillMgr.onTurnBegin(ctrl);
 }
 
 
@@ -194,7 +190,7 @@ size_t KBattleGuy::serialize(KMemoryStream* so)
 	if(!so->WriteUint64(m_guyId)) return 0;
 	if(!m_attr.writePacketAll(so,true)) return 0;
 
-	if(!m_heroSkillMgr.serialize(so)) return 0;
+
 	if(!m_Deck.serialize(so))
 		return 0;
 	return so->size() - pos;
@@ -221,8 +217,6 @@ BOOL KBattleGuy::deserialize(KMemoryStream* si)
 	if(!si->ReadUint64(m_guyId))
 		return FALSE;
 	m_attr.readPacket(si);
-	m_heroSkillMgr.init(this);
-	if(!m_heroSkillMgr.deserialize(si)) return FALSE;
 	if(!m_Deck.deserialize(si))
 		return FALSE;
 	return TRUE;

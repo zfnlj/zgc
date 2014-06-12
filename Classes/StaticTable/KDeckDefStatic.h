@@ -7,17 +7,13 @@
 #include "../common/KCommonObj.h"
 #include <System/File/KTabfileLoader.h>
 #include "KCardStatic.h"
+#include "KHeroSkillStatic.h"
 
 
 
 class KDeckDefStatic
 {
 public:
-	struct HeroSkill{
-		int m_Id;
-		int m_lev;
-	};
-
 	struct DynamicCardDef{
 		KCardStatic::CardDef _def;
 		KCardStatic::CardRace _race;
@@ -47,6 +43,7 @@ public:
 	void Init(System::File::KTabFile2* fileReader);
 	void GenCardList(KIntegerList& lst,bool bRnd=false);
 	bool IsRnd(){ return m_rnd>0;}
+	const HeroSkill* GetHeroSkill(){ return m_skill;}
 private:
 	int m_Id;
 	int m_heroID;

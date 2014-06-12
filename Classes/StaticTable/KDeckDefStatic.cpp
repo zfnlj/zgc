@@ -105,7 +105,7 @@ void KDeckDefStatic::setHeroSkill(const char* buf)
 {
 	char strBuf[1024];
 	strcpy(strBuf,buf);
-
+	if(strlen(buf)<2) return;
 	char* ss[64];
 	int ns = split(strBuf, ";", ss, 64);
 
@@ -117,11 +117,12 @@ void KDeckDefStatic::setHeroSkill(const char* buf)
 		char* qq[64];
 		int nb = split(s, "*", qq, 64);
 		if(nb!=2) continue;
-		for(int j=0;j<2;j++)
-		{
-			char* p = _trim(qq[i]);
-		}
 		
+		char* p = _trim(qq[0]);
+		int id = atoi(p);
+		p = _trim(qq[1]);
+		int lev =atoi(p);
+		m_skill[pos++].init(id,lev);
 	}
 
 }

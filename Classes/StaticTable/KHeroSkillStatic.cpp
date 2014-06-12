@@ -7,6 +7,31 @@
 #include "KGameStatic.h"
 #include "../common/KCommonObj.h"
 
+
+void HeroSkill::init(int id,int lev){
+			_id = id;
+			_lev = lev;
+			_skill = KGameStaticMgr::getSingleton().GetHeroSkill(id);
+			//CCAssert(_skill , "Hero skill is null!");
+}
+
+int HeroSkill::getRateVal()
+{
+	return _skill->GetRateVal(_lev);
+}
+
+KAbilityStatic* HeroSkill::GetRndAbility()
+{
+	return _skill->GetRndAbility();
+}
+
+void HeroSkill::GenDynAbility(KAbilityStatic& dynAbility)
+{
+	GetRndAbility()->Clone(dynAbility);
+	dynAbility.GetVal()._val = _skill->GetRndVal(_lev);
+}
+
+
 int KHeroSkillStatic::GetRateVal(int lev)
 { 
 	if(lev>MAX_HERO_SKILL_LEV) return 0;

@@ -26,6 +26,7 @@ KBattleDeck::~KBattleDeck()
 bool KBattleDeck::initGuy(KBattleGuy* guy)
 {
 	m_Owner = guy;
+	m_heroSkillMgr.init(guy);
 	return true;
 }
 
@@ -126,6 +127,7 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 		(*it)->onTurnBegin(ctrl);
 	}
 	GetHero()->onTurnBegin(ctrl);
+	m_heroSkillMgr.onTurnBegin(ctrl);
 }
 
 void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
@@ -136,6 +138,7 @@ void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
 		(*it)->OnTurnEnd(ctrl);
 	}
 	GetHero()->OnTurnEnd(ctrl);
+	m_heroSkillMgr.onTurnEnd(ctrl);
 }
 
 void KBattleDeck::GetDefenderSet(KCardInstList* lst)
@@ -475,6 +478,7 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 size_t KBattleDeck::serialize(KMemoryStream* so)
 {
 	size_t pos = so->size();
+	if(!m_heroSkillMgr.serialize(so)) return 0;
 	if(!serializeCardList(so,m_HeroCardSet))
 		return 0;
 	if(!serializeCardList(so,m_HandCardSet,true))
@@ -513,6 +517,7 @@ size_t KBattleDeck::serializeCardList(KMemoryStream* so,KCardInstList& lst,bool 
 
 BOOL KBattleDeck::deserialize(KMemoryStream* si)
 {
+	if(!m_heroSkillMgr.deserialize(si)) return FALSE;
 	if(!deserializeCardList(si,m_HeroCardSet))
 		return FALSE;
 	if(!deserializeCardList(si,m_HandCardSet))
@@ -691,4 +696,13 @@ int KBattleDeck::GetHurtedSoldierNum()
 bool KBattleDeck::ExistCards()
 {
 	return ((m_FightCardSet.size() + m_HandCardSet.size() + m_SlotCardSet.size()) > 0);
+}
+
+void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
+{
+	m_heroSkillMgr.SetSkill(pDeckDef);
+	if(!pDeckDef) return;
+	createDeck(pDeckDef);
+	GetHero()->CurHpSet(pDeckDef->getHeroHp());
+	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 }

@@ -8,7 +8,7 @@
 #include "../Facade/FBattleGuy.h"
 #include "KCardInst.h"
 #include "KBattleGuyAttr.h"
-#include "KHeroSkillMgr.h"
+
 class KBattleCtrlBase;
 class KMemoryStream;
 class KBattleGuy : public System::Memory::KPortableStepPool<KBattleGuy,128>
@@ -89,8 +89,6 @@ protected:
 	FBattleGuy m_FacadeObj;
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
-	
-	KHeroSkillMgr m_heroSkillMgr;
 friend class KClientBattleCtrl;
 };
 

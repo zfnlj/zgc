@@ -3,7 +3,7 @@
 
 #include "KCardInst.h"
 #include "KGameDef.h"
-
+#include "KHeroSkillMgr.h"
 
 #define MAX_FIGHT_POS_NUM 5
 #define MAX_SECRET_POS_NUM 2
@@ -18,6 +18,7 @@ public:
 	~KBattleDeck();
 
 	bool initGuy(KBattleGuy* guy);
+	void initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard);
 	bool createTestDeck(void);
 	void createDeck(int heroId,KIntegerList& cardLst);
 	void createDeck(KDeckDefStatic* pDeckStatic);
@@ -74,6 +75,7 @@ public:
 	void RndPickCard(KCardInstList& lst,int num,KCardInst::CardSlot slot,KCardStatic::CardDef cardDef=KCardStatic::card_null);
 	int GetHurtedSoldierNum();
 	int GetSoldierNum();
+	KHeroSkillMgr m_heroSkillMgr;
 private:
 	KCardInstList m_HeroCardSet;
 	KCardInstList m_HandCardSet;	// ÷≈∆
@@ -83,6 +85,7 @@ private:
 	KCardInstList m_TombCardSet;  //∑ÿ≥°≈∆
     KCardInstList m_SecretCardSet;
 	KBattleGuy* m_Owner;
+	
 };
 
 #endif // __HELLOWORLD_SCENE_H__

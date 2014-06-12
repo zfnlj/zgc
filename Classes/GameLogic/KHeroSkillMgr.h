@@ -9,22 +9,6 @@ class KBattleGuy;
 struct KHeroDef;
 class KHeroSkillMgr
 {
-	struct HeroSkill{
-		int _id;
-		int _lev;
-		KHeroSkillStatic* _skill;
-		HeroSkill():_id(0),_lev(0){}
-		void init(int id,int lev){
-			_id = id;
-			_lev = lev;
-			_skill = KGameStaticMgr::getSingleton().GetHeroSkill(id);
-			//CCAssert(_skill , "Hero skill is null!");
-		}
-		KAbilityStatic* GetRndAbility(){ return _skill->GetRndAbility();}
-		int getRateVal();
-		bool IsEmpty(){ return _id==0;}
-		void GenDynAbility(KAbilityStatic& dynAbility);
-	};
 public:
 	KHeroSkillMgr():m_bDone(false){}
 	~KHeroSkillMgr(){}
@@ -36,6 +20,7 @@ public:
 	HeroSkill* RndSelectSkill(KAbilityStatic::Enum_When when);
 
 	void SetHero(KHeroDef* pDef);
+	void SetSkill(KDeckDefStatic* pDeckDef);
 	size_t serialize(KMemoryStream* so);
 	BOOL deserialize(KMemoryStream* si);
 	void init(KBattleGuy* guy){ m_Owner = guy;}
