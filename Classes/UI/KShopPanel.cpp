@@ -33,10 +33,10 @@ KShopPanel::~KShopPanel()
 void KShopPanel::init(cocos2d::extension::UILayer* layer)
 {
 	if(!m_Panel){
-		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/shop/shop.json");
+		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/shop.json");
 		CC_SAFE_RETAIN(m_Panel);
 
-		UIWidget* pBut = UIHelper::seekWidgetByName(m_Panel, "close_Button");
+		UIWidget* pBut = UIHelper::seekWidgetByName(m_Panel, "but_close");
 		KShopPanel* me = this;
 		pBut->addPushDownEvent(me, coco_pushselector(KShopPanel::DoClickClose));
 	}
@@ -50,9 +50,10 @@ void KShopPanel::init(cocos2d::extension::UILayer* layer)
 
 void KShopPanel::UpdateMoney()
 {
-	UILabel* pLabel = (UILabel*)UIHelper::seekWidgetByName(m_Panel, "my_money");
-	pLabel->setText(KMainPlayer::RealPlayer()->GetMoney());
+	CCLabelBMFont* pLabel = (CCLabelBMFont*)UIHelper::seekWidgetByName(m_Panel, "money_txt");
+	pLabel->setString(KMainPlayer::RealPlayer()->GetMoney());
 }
+
 void KShopPanel::DoClickClose(CCObject* sender)
 {
 	m_layer->removeWidget(m_Panel);
