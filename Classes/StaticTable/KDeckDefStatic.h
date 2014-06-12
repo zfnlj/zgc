@@ -44,6 +44,7 @@ public:
 	void GenCardList(KIntegerList& lst,bool bRnd=false);
 	bool IsRnd(){ return m_rnd>0;}
 	const HeroSkill* GetHeroSkill(){ return m_skill;}
+	static int RndPickSummonSoldier(int maxCost);
 private:
 	int m_Id;
 	int m_heroID;

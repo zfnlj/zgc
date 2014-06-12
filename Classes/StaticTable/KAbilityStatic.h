@@ -136,6 +136,7 @@ public:
 	int GetNormalVal(){ return m_val._val;}
 	bool IsTargetSure();
 	void Clone(KAbilityStatic&);
+	int GetSummonId();
 private:
 	int m_AbilityId;
 	Enum_When m_when;

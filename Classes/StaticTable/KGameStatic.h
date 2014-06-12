@@ -52,6 +52,7 @@ public:
 
 	KHeroSkillStatic* GetRndHeroSkill(int rank);
 	void FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num=1);
+	void FilterCardsOnCost(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int maxCost,int num);
 private:
 #ifdef _USE_COCOS2DX
 	bool InitCardLayout(const char* m_FileName);

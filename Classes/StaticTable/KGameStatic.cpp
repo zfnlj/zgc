@@ -349,6 +349,20 @@ bool KGameStaticMgr::InitHelpString(const char* m_FileName)
 	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_helpStringMap);
 }
 
+void KGameStaticMgr::FilterCardsOnCost(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int maxCost,int num)
+{
+	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
+		KCardStatic* pCard = it->second;
+		if(pCard->GetType()!=def) continue;
+		if(pCard->GetRace()!=race) continue;
+		if(pCard->GetCost()>maxCost) continue;
+
+		for(int i=0;i<num;i++){
+			lst.push_back(pCard->GetID());
+		}
+	}
+}
+
 void KGameStaticMgr::FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num)
 {
 	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){

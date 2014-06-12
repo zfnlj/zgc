@@ -289,6 +289,14 @@ void KAbilityStatic::Init(System::File::KTabFile2* fileReader)
 	if(strlen(m_bufIcon)<2) memset(m_bufIcon,0,sizeof(m_bufIcon));
 }
 
+int KAbilityStatic::GetSummonId()
+{
+	if(GetNormalVal()>10){
+		return GetNormalVal();
+	}else{
+		return KDeckDefStatic::RndPickSummonSoldier(GetNormalVal());
+	}
+}
 
 bool KAttrStatic::init()
 {

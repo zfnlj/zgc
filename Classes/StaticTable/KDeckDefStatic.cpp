@@ -154,3 +154,25 @@ void KDeckDefStatic::FillOnDynamicCardDef(DynamicCardDef* def,KIntegerList& lst)
 		lst.push_back(*it);
 	}
 }
+
+int KDeckDefStatic::RndPickSummonSoldier(int maxCost)
+{
+	KIntegerList tmpLst;
+	KIntegerList filterLst;
+	KGameStaticMgr::getSingleton().FilterCardsOnCost(tmpLst,KCardStatic::card_soldier,
+													KCardStatic::race_null,maxCost,1);
+	for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
+	{
+		KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId((*it)*10);
+		if(!pAbility ||
+			pAbility->GetWhich()==KAbilityStatic::which_i)
+			filterLst.push_back(*it);
+	}
+	KIntegerList des;
+	_RndPick(filterLst,des,1);
+	if(des.size()>0){
+		return *(des.begin());
+	}else{
+		return 0;
+	}
+}
