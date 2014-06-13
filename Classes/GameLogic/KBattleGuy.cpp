@@ -280,7 +280,10 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 		break;
 	case KAbilityStatic::what_res_add:
 		{
-			AddRes(ctrl,pAbility);
+			AddRes(pAbility->GetNormalVal());
+			strCardAbilityResult result;
+			result.init(actor,pSrc->GetRealId(),pAbility);
+			KSkillAssist::_sendAbilityResult(ctrl,result);
 		}
 		break;
 	case KAbilityStatic::what_draw_card:

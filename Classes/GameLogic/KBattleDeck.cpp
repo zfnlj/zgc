@@ -127,7 +127,6 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 		(*it)->onTurnBegin(ctrl);
 	}
 	GetHero()->onTurnBegin(ctrl);
-	if(!bFirstTurn) m_heroSkillMgr.onTurnBegin(ctrl);
 }
 
 void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)

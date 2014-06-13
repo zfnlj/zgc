@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>d:\My Documents\addRes\addRes.xml.animation</filePath>
+  <filePath>D:\My Documents\addRes\addRes.xml.animation</filePath>
   <Version>1.2.0.1</Version>
   <Name>addRes</Name>
-  <ProjectDir>d:\My Documents\addRes</ProjectDir>
+  <ProjectDir>D:\My Documents\addRes</ProjectDir>
   <JsonFileName>addRes.json</JsonFileName>
-  <Resources>d:\My Documents\addRes\Resources</Resources>
-  <JsonFolder>d:\My Documents\addRes\Json</JsonFolder>
+  <Resources>D:\My Documents\addRes\Resources</Resources>
+  <JsonFolder>D:\My Documents\addRes\Json</JsonFolder>
   <JsonList />
   <ResourceFileList>
-    <string>card_sort.plist</string>
+    <string>anim_elem2.plist</string>
   </ResourceFileList>
   <CanvasSize>
     <Width>0</Width>

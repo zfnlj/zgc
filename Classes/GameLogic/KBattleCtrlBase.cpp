@@ -252,10 +252,10 @@ void KBattleCtrlBase::TurnBegin()
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
-	m_bFirstTurn = false;
-
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
+	if(!m_bFirstTurn) m_CurPlayGuy->GetDeck().m_heroSkillMgr.onTurnBegin(this);
+	m_bFirstTurn = false;
 	DoCardEvtList(NULL);
 	JumpOnDrama(battle_play);
 }

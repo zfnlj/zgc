@@ -7,7 +7,7 @@
       "name": "addRes",
       "bone_data": [
         {
-          "name": "Layer2",
+          "name": "Layer1",
           "parent": "",
           "x": 0.0,
           "y": 0.0,
@@ -21,7 +21,7 @@
           "effectbyskeleton": false,
           "display_data": [
             {
-              "name": "cost_icon_big.png",
+              "name": "cost_icon_anim.png",
               "displayType": 0,
               "skin_data": [
                 {
@@ -53,7 +53,7 @@
           "sc": 0.5,
           "mov_bone_data": [
             {
-              "name": "Layer2",
+              "name": "Layer1",
               "dl": 0.0,
               "frame_data": [
                 {
@@ -77,18 +77,18 @@
                 },
                 {
                   "dI": 0,
-                  "x": 1.0,
-                  "y": 200.0,
+                  "x": 0.0,
+                  "y": 140.0,
                   "z": 0,
-                  "cX": 3.0,
-                  "cY": 3.0,
+                  "cX": 2.0,
+                  "cY": 2.0,
                   "kX": 0.0,
                   "kY": 0.0,
                   "fi": 2,
-                  "twE": 0,
+                  "twE": 8,
                   "tweenFrame": true,
                   "color": {
-                    "a": 0,
+                    "a": 20,
                     "r": 255,
                     "g": 255,
                     "b": 255
@@ -122,23 +122,15 @@
   ],
   "texture_data": [
     {
-      "name": "cost_icon_big2",
-      "width": 56.0,
-      "height": 62.0,
-      "pX": 0.5,
-      "pY": 0.5,
-      "plistFile": "card_sort.plist"
-    },
-    {
-      "name": "cost_icon_big",
+      "name": "cost_icon_anim",
       "width": 52.0,
       "height": 58.0,
       "pX": 0.5,
       "pY": 0.5,
-      "plistFile": "card_sort.plist"
+      "plistFile": "anim_elem2.plist"
     }
   ],
   "config_file_path": [
-    "card_sort.plist"
+    "anim_elem2.plist"
   ]
 }
