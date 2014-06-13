@@ -160,6 +160,9 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_updateSecret:
 		if(GetActor()) GetActor()->updateSecret();
 		break;
+	case Affector_updateRes:
+		if(GetActor()) GetActor()->updateRes();
+		break;
 	case Affector_addWidget:
 		if(GetActor()) GetActor()->addWidget(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
 		break;

@@ -54,6 +54,7 @@ enum AffectorType
 	Affector_updateSecret,
 	Affector_timerBar,
 	Affector_talk,
+	Affector_updateRes,
 };
 
 

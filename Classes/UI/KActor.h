@@ -60,7 +60,7 @@ public:
 	virtual void addWidget(const char* obj,int zOrder){}
 	virtual void delWidget(const char* obj){}
 	virtual void updateSecret(){}
-
+	void updateRes();
 	void StopBreathe(const char* obj);
 	void StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef);
 protected:

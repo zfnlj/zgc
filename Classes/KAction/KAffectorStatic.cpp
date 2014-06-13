@@ -157,6 +157,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_null;
 	}else if ( strcmp(szName,"drawCard") == 0 ){
 		eType = Affector_drawCard;
+	}else if ( strcmp(szName,"updateRes") == 0 ){
+		eType = Affector_updateRes;
 	}
 	return eType;
 }

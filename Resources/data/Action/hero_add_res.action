@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action  class="cast">
+  <affect_body>
+    <affector class="anim" slot="card_center" obj="pre_cast" createtime="0.0" fVal="1.0" iVal="90"  life="1.5" />
+    <affector class="armature"  slot="res" createtime="1.5" fVal="1.0" obj="addRes" life="1.0" />
+    <affector class="updateRes" createtime="2.5" life="0.2" /> 
+  </affect_body>
+</action>
+
+</ag>
+		
