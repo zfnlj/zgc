@@ -440,7 +440,7 @@ int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,i
 	if(emptySlotNum<0) return 0;
 	int num = (pAbility->GetMaxNormalVal()>emptySlotNum)? emptySlotNum:pAbility->GetMaxNormalVal();
 	for(int i=0;i<num;i++){
-		id = pPlayer->GetDeck().SummonCard(pAbility->GetNormalVal())->GetRealId();
+		id = pPlayer->GetDeck().SummonCard(pAbility->GetSummonId())->GetRealId();
 		result.SetDestVal(id,0);
 	}
 	_sendAbilityResult(ctrl,result);

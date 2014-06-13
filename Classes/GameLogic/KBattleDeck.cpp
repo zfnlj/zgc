@@ -112,14 +112,14 @@ KCardInst* KBattleDeck::CreateCard(int id,KCardInst::CardSlot slot)
 
 KCardInst* KBattleDeck::SummonCard(int id)
 {
-	int pos = GetEmptyFightSlot();
+	int pos = GetRndEmptyFightSlot();
 	if(pos < 0) return NULL;
 	KCardInst* pCard = CreateCard(id,KCardInst::enum_slot_fight);
 	pCard->EnterFightField(pos);
 	return pCard;
 }
 
-void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
+void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
 	KCardInstList tmpSet;
 	_copyCardSet(&m_FightCardSet,&tmpSet,NULL,KCardInst::enum_slot_fight);
@@ -127,7 +127,7 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl)
 		(*it)->onTurnBegin(ctrl);
 	}
 	GetHero()->onTurnBegin(ctrl);
-	m_heroSkillMgr.onTurnBegin(ctrl);
+	if(!bFirstTurn) m_heroSkillMgr.onTurnBegin(ctrl);
 }
 
 void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)

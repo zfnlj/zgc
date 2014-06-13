@@ -397,6 +397,9 @@ void KAffectorIndicateExecutor::callbackMissileReach()
 void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
 {
 	CCPoint ptSrc = GetActor()->GetDestPosition(param,"card_center",0);
+
+	if(param->_desArr[0]==0) return;
+
 	CCPoint ptDes = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0);
 	CCPoint vTmp = ptDes - ptSrc;
 	float fDistance = vTmp.getLength();

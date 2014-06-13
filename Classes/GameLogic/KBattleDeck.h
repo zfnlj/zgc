@@ -24,7 +24,7 @@ public:
 	void createDeck(KDeckDefStatic* pDeckStatic);
 	bool createDeck(KPlayerCardDepot* pDepot);
 	void Clear();
-	void onTurnBegin(KBattleCtrlBase*);
+	void onTurnBegin(KBattleCtrlBase*,bool bFirstTurn);
 	void OnTurnEnd(KBattleCtrlBase* ctrl);
 	int  DrawCard(int id,KCardInst::CardSlot slot = KCardInst::enum_slot_hand,strCardAbilityResult* result=NULL);
 	void CreateCloneCard(KCardInstList& lst,KCardInstList& newLst,KCardInst::CardSlot slot);

@@ -244,14 +244,16 @@ void KBattleCtrlBase::DrawCard()
 		m_CurPlayGuy->onDrawCard();
 		AddDramaElapsed(2.0f);
 	}
-	m_bFirstTurn = false;
+	
 	JumpOnDrama(battle_turn_begin);
 }
 void KBattleCtrlBase::TurnBegin()
 {
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
-	m_CurPlayGuy->onTurnBegin(this);
+	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
+	m_bFirstTurn = false;
+
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
 	DoCardEvtList(NULL);

@@ -352,6 +352,9 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 		return KUIAssist::_querySecretPos(m_card);
 	}else if(strcmp(slot,"secret_show")==0){
 		return KUIAssist::_querySecretShowPos(m_card);
+	}else if(strcmp(obj,"res")==0){
+		char sz[32];
+		bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(m_card);
 	}
 	return KActor::GetDestPosition(param,slot,index);
 }

@@ -41,3 +41,4 @@ armature/pray_other_ability.json
 armature/dist_ability.json
 armature/click_down.json
 armature/doDamage.json
+armature/addRes.json

@@ -189,3 +189,8 @@
 /tool/zgc_ui/shop/Backup
 /tool/zgc_ui/shop/Export
 /tool/zgc_ui/shop/Resources/shop_PList.Dir
+
+/tool/zgc_ui/addRes/Backup
+
+/tool/zgc_ui/addRes/Export
+/tool/zgc_ui/addRes/Resources/card_sort_PList.Dir
