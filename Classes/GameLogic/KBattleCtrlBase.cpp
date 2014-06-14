@@ -71,8 +71,11 @@ void KBattleCtrlBase::update(float dt)
 			case battle_select_handcard:
 				SelectHandCard(dt);
 				break;
-			case battle_draw_card:
-				DrawCard();
+			case battle_turn_begin_hero:
+				TurnBeginHero();
+				break;
+			case battle_turn_end_hero:
+				TurnEndHero();
 				break;
 			case battle_turn_begin:
 				TurnBegin();
@@ -216,7 +219,7 @@ void KBattleCtrlBase::SelectHandCard(float dt)
 			}
 		}
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_HANDCARD_READY,0,(unsigned long long)m_world);
-		StateJump(battle_draw_card);
+		StateJump(battle_turn_begin);
 	}
 }
 
@@ -234,32 +237,38 @@ void KBattleCtrlBase::SelectTurnPlayer()
 		m_CurPlayGuy = *it;
 	}
 
-	StateJump(battle_draw_card);
+	StateJump(battle_turn_begin);
 	m_bDirty = true;
 }
 
-void KBattleCtrlBase::DrawCard()
-{
-	if(!m_bFirstTurn){
-		m_CurPlayGuy->onDrawCard();
-		AddDramaElapsed(2.0f);
-	}
-	
-	JumpOnDrama(battle_turn_begin);
-}
 void KBattleCtrlBase::TurnBegin()
 {
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
+	if(!m_bFirstTurn){
+		m_CurPlayGuy->onDrawCard();
+		AddDramaElapsed(2.0f);
+	}
+	m_bFirstTurn = false;
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 	m_CurOp.Empty();
-	if(!m_bFirstTurn) m_CurPlayGuy->GetDeck().m_heroSkillMgr.onTurnBegin(this);
-	m_bFirstTurn = false;
+	
 	DoCardEvtList(NULL);
+	JumpOnDrama(battle_turn_begin_hero);
+}
+
+void KBattleCtrlBase::TurnBeginHero()
+{
+	m_CurPlayGuy->GetDeck().m_heroSkillMgr.onTurnBegin(this);
 	JumpOnDrama(battle_play);
 }
 
+void KBattleCtrlBase::TurnEndHero()
+{
+	m_CurPlayGuy->GetDeck().m_heroSkillMgr.onTurnEnd(this);
+	JumpOnDrama(battle_turn_end_ok);
+}
 void KBattleCtrlBase::WaitDrama()
 {
 	if(IsWaitDrama()) return;
@@ -307,15 +316,15 @@ bool KBattleCtrlBase::IsGameEnd()
 
 void KBattleCtrlBase::TurnEndOk()
 {
-	if(IsWaitDrama()) return;
 	StateJump(battle_select_turnplayer);
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNEND,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
 }
+
 void KBattleCtrlBase::TurnEnd()
 {
 	CCLog("TurnEnd");
 	m_CurPlayGuy->onTurnEnd(this);
-	StateJump(battle_turn_end_ok);
+	StateJump(battle_turn_end_hero);
 	DoCardEvtList(NULL);
 }
 
@@ -701,7 +710,7 @@ void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 	if(pBattleStatic->IsSelectCard()){
 		StateJump(battle_select_handcard);
 	}else{
-		StateJump(battle_draw_card);
+		StateJump(battle_turn_begin);
 	}
 	m_bDirty = true;
 }

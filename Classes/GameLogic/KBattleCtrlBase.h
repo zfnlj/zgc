@@ -34,10 +34,11 @@ public:
 		quest_battle_init,
 		battle_select_turnplayer,
 		battle_select_handcard,
-		battle_draw_card,
 		battle_turn_begin,
+		battle_turn_begin_hero,
 		battle_play,
 		battle_turn_end,
+		battle_turn_end_hero,
 		battle_turn_end_ok,
 		battle_game_end,
 		battle_wait_drama,
@@ -72,7 +73,8 @@ public:
 	void OpSetSlot(int slot);
 	void DoEndTurn();
 	void TurnEndOk();
-	void DrawCard();
+	void TurnBeginHero();
+	void TurnEndHero();
 	void PlayWithAI();
 	void PlayQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);

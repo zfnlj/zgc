@@ -137,7 +137,7 @@ void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
 		(*it)->OnTurnEnd(ctrl);
 	}
 	GetHero()->OnTurnEnd(ctrl);
-	m_heroSkillMgr.onTurnEnd(ctrl);
+
 }
 
 void KBattleDeck::GetDefenderSet(KCardInstList* lst)
