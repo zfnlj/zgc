@@ -159,7 +159,7 @@ void KActionMgr::PlaySlotAction()
 KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//生成动作									 
 {
 	m_debugInfo +=param->_name;
-	m_debugInfo +="#";
+	m_debugInfo +="  #";
 
 	KActionStatic* pST = KActionStaticMgr::getSingleton().GetAction(param->_name);
 	if(!pST){

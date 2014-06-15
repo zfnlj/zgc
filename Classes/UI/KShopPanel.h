@@ -27,8 +27,10 @@ private:
 	void InitItem();
 	
 	void DoClickBuy(CCObject* sender);
+	void onClickBuy(CCObject* sender);
 	void DoClickUseItem(CCObject* sender);
 	KStoreAbout::KStoreCreateInfo* m_store;
+	int m_buyProduct;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

@@ -103,6 +103,8 @@ namespace KStoreAbout
 		const KItemAbout::KItem* GetBuyBackItem(int nIdx) const;
 		bool IsOpening() const;
 
+		const KItemAbout::KCreateInfo_ItemBase* GetItemCreateInfoOnIndex(int nProductID);
+
 		const KItemAbout::KCreateInfo_ItemBase* GetItemCreateInfo(int nProductID) const;
 		/**
 		 * 弹出批量购买设置框

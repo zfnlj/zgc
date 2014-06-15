@@ -10,6 +10,7 @@
 #include "GameRoot.h"
 #include "BattleFieldScene.h"
 #include "../GameRecord/KGameRecordMgr.h"
+#include "../GameLogic/assist/KSkillAssist.h"
 
 using namespace cocos2d::extension;
 
@@ -89,7 +90,7 @@ void KIndicatePanel::Update(float dt)
 					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 						
 						bShowMyFightArea = true;
-						if(curActiveGreen.size()+curActiveRed.size()>0) KUIAssist::_playAdviceMsg(ADVICE_ENTER_OR_CAST);
+						if(curActiveGreen.size()+curActiveRed.size()>0 && KSkillAssist::_needEnterFightTarget(pSrc->GetCardId())) KUIAssist::_playAdviceMsg(ADVICE_ENTER_OR_CAST);
 					}else if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
 						pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
 					}

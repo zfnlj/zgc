@@ -2,7 +2,7 @@
 <ag>
 <action  class="cast">
   <affect_body>
-    <affector class="anim" slot="card_center" obj="pre_cast" createtime="0.0" fVal="1.0" iVal="90"  life="1.5" />
+    <affector class="anim" slot="card_center" obj="hero_cast2" createtime="0.0" fVal="1.0" iVal="90"  life="2.0" />
   	<affector class="action" obj="summon_tar" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   </affect_body>
 </action>

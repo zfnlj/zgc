@@ -3,14 +3,14 @@
 <action class="cast">
   <affect_body>
     <affector class="anim" slot="card_center" obj="pre_cast" createtime="0.0" fVal="1.0" iVal="90"  life="1.5" />
-  	<affector class="action" obj="use_bad_tar_skill" tarFlag="0" pre="0" createtime="1.0" iVal="1" life="30" />
+  	<affector class="action" obj="use_bad_tar_skill" tarFlag="0" pre="0" createtime="1.3" iVal="1" life="30" />
   	<affector class="action" obj="hero_stun_show" tarFlag="1" pre="1" createtime="0" iVal="2" life="30" />
   </affect_body>
 </action>
 
 <action  name="hero_stun_show" class="null">
   <affect_body>
-  		<affector class="armature" slot="card_center" obj="burned_buf" createtime="0.0" fVal="1.2" iVal="90"  life="1.3" />
+  		<affector class="anim" slot="card_center" obj="ice_break" createtime="0.0" fVal="1.0" iVal="90"  life="2.0" />
  			<affector class="updateBuf" createtime="1.5"  life="0.001" />  
   </affect_body>
 </action> 

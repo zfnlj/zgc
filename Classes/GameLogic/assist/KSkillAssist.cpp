@@ -549,4 +549,18 @@ KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_What what)
 	}
 	return NULL;
 }
+
+bool _needEnterFightTarget(int cardId)
+{
+	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(cardId,KAbilityStatic::when_enter);
+
+	if(!pAbility ||
+		pAbility->IsTargetSure()||
+		pAbility->IsArea()){
+		return false;
+	}else{
+		return true;
+	}
+}
+
 }

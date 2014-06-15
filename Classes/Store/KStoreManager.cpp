@@ -599,4 +599,13 @@ namespace KStoreAbout
 		g_DynamicWorld.SendWorldMsg(LOGIC_WORLD_POPCOMMBUYDIALOG, 0, (unsigned long)(&PCBDP));*/
 	}
 
+	const KItemAbout::KCreateInfo_ItemBase* KStoreManager::GetItemCreateInfoOnIndex(int index)
+	{
+		MAP_CLIENTSTORE_PRODUCT::iterator itorFind = m_mapClientStoreProduct.find(index);
+		ASSERT_RETURN(itorFind != m_mapClientStoreProduct.end(), NULL);
+
+		KClientStoreProduct* pProduct = itorFind->second;
+		return GetItemCreateInfo(pProduct->m_dwItemID);
+	}
 };
+

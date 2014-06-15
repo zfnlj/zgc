@@ -8,4 +8,5 @@
 #define NEED_HERO_CARD_STR 9
 #define NEED_30_CARD_STR 10
 #define END_CARDGROUP_LESSON_STR 11
+#define WILL_BUY_STR 12
 #endif // __HELLOWORLD_SCENE_H__	

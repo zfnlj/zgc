@@ -270,6 +270,7 @@ CCAction* KUIAssist::_fadeIn(UIWidget* widget,float val)
 
 void KUIAssist::_setButVisible(UIWidget* but,bool flag)
 {
+	if(!but) return;
 	but->setVisible(flag);
 	but->setTouchEnable(flag);
 }
