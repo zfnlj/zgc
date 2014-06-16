@@ -271,15 +271,24 @@ void KUseItem::run(UINT64 playerId)
 
 }
 
-void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank)
+void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate)
 {
 	SC_GenPlayerCard genCard;
 	KIntegerList tmpLst;
-	KGameStaticMgr::getSingleton().RndGetNormalCard(rank,count,tmpLst);
+	KGameStaticMgr::getSingleton().RndGetNormalCard(count,rank1Rate,rank2Rate,rank3Rate,heroRate,tmpLst);
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
 	for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();it++){
-		KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),*it,1);
-		genCard.AddCard(*it);
+
+		bool bNew = true;
+		KCardStatic* pCardStatic = KGameStaticMgr::getSingleton().GetCard(*it);
+		if(pCardStatic->GetType()==KCardStatic::card_hero){
+			KHeroDef hero;
+			hero.rndGenerate(*it);
+			KPlayerRecordAssist::addHero(pPlayer->GetPlayerRecord(),&hero);
+		}else{
+			KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),*it,1,bNew);
+		}
+		genCard.AddCard(*it,bNew);
 	}
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_WORLD_GEN_PLAYERCARD,(unsigned long long)&genCard,0);
 }

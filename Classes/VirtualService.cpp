@@ -114,7 +114,8 @@ bool VirtualService::StartQuestBattle()
 bool VirtualService::AddItem(int itemId,int count)
 {
 	if(KCreateInfo_ItemBase::IsCardItem(itemId)){
-		return KPlayerRecordAssist::addStoreCard(KMainPlayer::RealPlayer()->GetPlayerRecord(),itemId,count);
+		bool bNew=true;
+		return KPlayerRecordAssist::addStoreCard(KMainPlayer::RealPlayer()->GetPlayerRecord(),itemId,count,bNew);
 	}else{
 		return KVirtualServerAssist::AddItem(itemId,count);
 	}

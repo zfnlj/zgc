@@ -50,6 +50,9 @@ public:
 	KHelpStringStatic* GetRndTip();
 	KHelpStringStatic* GetRndStory();
 
+	void RndGetHeroCard(int count,KIntegerList& lst);
+	void RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int rank3Rate,
+									  int heroRate,KIntegerList& tmpLst);
 	KHeroSkillStatic* GetRndHeroSkill(int rank);
 	void FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int rank,int num=1);
 	void FilterCardsOnCost(KIntegerList& lst,KCardStatic::CardDef def,KCardStatic::CardRace race,int maxCost,int num);

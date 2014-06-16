@@ -10,7 +10,8 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 
 	deck->GenCardList(cardList);
 	for(KIntegerList::iterator it=cardList.begin();it!=cardList.end();++it){
-		KPlayerRecordAssist::addStoreCard(m_record,*it,1);
+		bool bNew;
+		KPlayerRecordAssist::addStoreCard(m_record,*it,1,bNew);
 	}
 	KHeroDef hero;
 	hero.rndGenerate(deck->getHero());

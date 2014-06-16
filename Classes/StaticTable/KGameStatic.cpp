@@ -301,8 +301,29 @@ KAttrStatic* KGameStaticMgr::GetAttr(int id)
 	return m_attrArr.at(id);
 }
 
+void KGameStaticMgr::RndGetHeroCard(int count,KIntegerList& lst)
+{
+	KIntegerList tmpLst;
+	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
+		KCardStatic* pCard = it->second;
+		if(pCard->GetType()!=KCardStatic::card_hero) continue;
+		tmpLst.push_back(pCard->GetID());
+	}
+	for(int i=0;i<count;i++){
+		int nRand = g_rnd.GetRandom(0,tmpLst.size());
+		int pos=0;
+		for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();it++,pos++){
+			if(pos==nRand){
+				lst.push_back(*it);
+				break;
+			}
+		}
+	}
+}
+
 void KGameStaticMgr::RndGetNormalCard(int rank,int count,KIntegerList& lst)
 {
+	if(count==0) return;
 	KIntegerList tmpLst;
 	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
 		KCardStatic* pCard = it->second;
@@ -433,4 +454,19 @@ int KGameStaticMgr::PlayerExpToLevel(int exp)
 int KGameStaticMgr::HeroExpToLevel(int exp)
 {
 	return m_heroExpMgr.ExpToLevel(exp);
+}
+
+void KGameStaticMgr::RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int rank3Rate,
+									  int heroRate,KIntegerList& outLst)
+{
+	KIntegerList tmpLst;
+
+	RndGetNormalCard(0,rank1Rate*0.5,tmpLst);
+	RndGetNormalCard(1,rank1Rate*0.5,tmpLst);
+	RndGetNormalCard(2,rank2Rate*0.5,tmpLst);
+	RndGetNormalCard(3,rank2Rate*0.5,tmpLst);
+	RndGetNormalCard(4,rank3Rate,tmpLst);
+	RndGetHeroCard(heroRate,tmpLst);
+
+	_RndPick(tmpLst,outLst,count);
 }

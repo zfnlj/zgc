@@ -92,8 +92,9 @@ bool setCurDeck(tb_player_record* record,int index)
 	return true;
 }
 
-bool addStoreCard(tb_player_record* record,int id,int count)
+bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 {
+	bNew = false;
 	void* buf=NULL;
 	int len = record->cardStore.Get(buf);
 	KDBBagItemUnit* dbCard = (KDBBagItemUnit*)buf;
@@ -108,6 +109,7 @@ bool addStoreCard(tb_player_record* record,int id,int count)
 		dbCard++;
 	}
 	if(!bFound){
+		bNew = true;
 		KDBBagItemUnit addCard(id,count);
 		record->cardStore.Append(&addCard,sizeof(addCard));
 	}

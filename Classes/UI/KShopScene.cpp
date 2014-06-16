@@ -121,7 +121,9 @@ void KShopScene::DoClickBuy(CCObject* sender)
 	KBagNormal* pBag = pBagMgr->FindNormalBag();
 	if(!pBag) return;
 
-	int pos = pBag->GetFirstPos(m_buyProduct);
+	const KItemAbout::KCreateInfo_ItemBase* item = KStoreManager::GetInstancePtr()->GetItemCreateInfo(m_buyProduct);
+	if(!item) return;
+	int pos = pBag->GetFirstPos(item->s_nItemID);
 	if(pos<0) return;
 
 	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){

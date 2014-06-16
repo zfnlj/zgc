@@ -5,6 +5,8 @@
 #include "Inc/KCommonStruct.h"
 #include "common_packet.h"
 #include "Inc/KBusinessDefine.h"
+
+#define MAX_GEN_CARD_NUM 3
 enum CS_Protocol
 {
 	s_nCS_Connected = s_nCS_PacketStart,
@@ -636,15 +638,17 @@ struct SC_BagAddResponse : public SC_BagOperation
 
 struct SC_GenPlayerCard{
 	enum { s_nCode = s_nSC_GenPlayerCard };
-	int cardID[3];
+	int cardID[MAX_GEN_CARD_NUM];
+	bool newFlag[MAX_GEN_CARD_NUM];
 	int count;
 	SC_GenPlayerCard(){
 		count = 0;
 		memset(cardID,0,sizeof(count));
 	}
-	bool AddCard(int id){
-		if(count==3) return false;
-		cardID[count++] = id;
+	bool AddCard(int id,bool bNew){
+		if(count==MAX_GEN_CARD_NUM) return false;
+		cardID[count] = id;
+		newFlag[count++] = bNew;
 		return true;
 	}
 };

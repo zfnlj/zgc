@@ -26,7 +26,7 @@ namespace KPlayerRecordAssist
 	bool syncBagToRecord(KWorldObjAbout::KPlayer*,tb_player_record* record);
 	bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record);
 	bool fillDBBuf(char* des,int size,char* src,int len);
-	bool addStoreCard(tb_player_record* record,int id,int num);
+	bool addStoreCard(tb_player_record* record,int id,int num,bool& bNew);
 	bool addHero(tb_player_record* record,KHeroDef* hero);
 	bool insertCardDeck(tb_player_record* record,KIntegerList& lst);
 	bool setCurDeck(tb_player_record* record,int index);
