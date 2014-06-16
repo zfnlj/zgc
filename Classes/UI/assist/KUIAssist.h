@@ -3,7 +3,7 @@
 
 #include "../BaseClasses/UIWidget.h"
 #include "UILayer.h"
-#include "../GameLogic/KCardInst.h"
+#include "../../GameLogic/KCardInst.h"
 #include "../../PlayerCard/KPlayerDeck.h"
 
 #define  ADVICE_TURN_END 3
