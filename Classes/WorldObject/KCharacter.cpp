@@ -1,7 +1,7 @@
 
 #include "KCharacter.h"
 #include <iostream>
-#include "Attribute/KAttrGroupHolder.h"
+#include "CommonLogic/Attribute/KAttrGroupHolder.h"
 
 #pragma warning(disable:4355)	//  warning C4355: 'this' : used in base member initializer list
 

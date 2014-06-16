@@ -8,6 +8,9 @@
 #include <System/Collections/KSDList.h>
 #include "CommonLogic/Item/KStruct_Item.h"
 
+
+
+
 namespace KItemAbout
 {
 
@@ -112,11 +115,15 @@ public:
 };
 
 
-template <> struct _is_simple_type_<KUseItem::EvtReg> 
-{ 
-	static const bool value = true; 
-};
+
 
 };
+
+template <> struct _is_simple_type_<KItemAbout::KUseItem::EvtReg>
+{
+	static const bool value = true;
+};
+
+
 #endif
 

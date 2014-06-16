@@ -338,7 +338,6 @@
 		812E278C187AF451000567D7 /* KPacketGate_Gw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */; };
 		812E2794187AF5E4000567D7 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E278F187AF5E4000567D7 /* progress_bar.png */; };
 		812E2795187AF5E4000567D7 /* progress_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E2790187AF5E4000567D7 /* progress_bg.png */; };
-		812E2796187AF5E4000567D7 /* static_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 812E2791187AF5E4000567D7 /* static_data.plist */; };
 		814347D2186FCACD00134432 /* KGatewayMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CA186FCACD00134432 /* KGatewayMsgDealer.cpp */; };
 		814347D3186FCACD00134432 /* KLoginMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CC186FCACD00134432 /* KLoginMsgDealer.cpp */; };
 		814347D4186FCACD00134432 /* KMsgDelegateBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CE186FCACD00134432 /* KMsgDelegateBase.cpp */; };
@@ -347,7 +346,6 @@
 		814347DE186FCC1C00134432 /* StaticData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347DC186FCC1C00134432 /* StaticData.cpp */; };
 		8149030C1860144000695114 /* GUI in Resources */ = {isa = PBXBuildFile; fileRef = 8149030B1860144000695114 /* GUI */; };
 		814E9E2A18D92EA2003749B2 /* KCardLayoutStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814E9E2818D92EA2003749B2 /* KCardLayoutStatic.cpp */; };
-		814E9E2E18D92EF4003749B2 /* KJsonDictMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814E9E2C18D92EF4003749B2 /* KJsonDictMgr.cpp */; };
 		814E9E4618D932B7003749B2 /* Item in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4518D932B7003749B2 /* Item */; };
 		814E9E4818D932E4003749B2 /* StringManager in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4718D932E4003749B2 /* StringManager */; };
 		814E9E4A18D93410003749B2 /* List.txt in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4918D93410003749B2 /* List.txt */; };
@@ -417,10 +415,8 @@
 		81A6A70F18966F6C0039FF68 /* KMainPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70818966F6C0039FF68 /* KMainPlayer.cpp */; };
 		81A6A71018966F6C0039FF68 /* KPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70A18966F6C0039FF68 /* KPlayer.cpp */; };
 		81A6A71118966F6C0039FF68 /* KWorldObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70C18966F6C0039FF68 /* KWorldObj.cpp */; };
-		81BAA81118B0481E00643189 /* zgc.dat in Resources */ = {isa = PBXBuildFile; fileRef = 81BAA81018B0481E00643189 /* zgc.dat */; };
 		81BAA81618B0483400643189 /* KSqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81218B0483400643189 /* KSqlite.cpp */; };
 		81BAA81718B0483400643189 /* KUserSql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81418B0483400643189 /* KUserSql.cpp */; };
-		81BAA81A18B0487900643189 /* KShopPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81818B0487900643189 /* KShopPanel.cpp */; };
 		81BF26941930E6B6007B2A28 /* KCrcAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */; };
 		81BF26951930E6B6007B2A28 /* KPlayerDBMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26921930E6B6007B2A28 /* KPlayerDBMgr.cpp */; };
 		81BF269F1930E6E1007B2A28 /* KGameRecordMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26971930E6E1007B2A28 /* KGameRecordMgr.cpp */; };
@@ -433,12 +429,12 @@
 		81BF26AE1930E73D007B2A28 /* KHeroSkillStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26AB1930E73D007B2A28 /* KHeroSkillStatic.cpp */; };
 		81BF26B11930E855007B2A28 /* KClickCardMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26AF1930E855007B2A28 /* KClickCardMgr.cpp */; };
 		81BF26B41930E868007B2A28 /* KGameRecordPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */; };
-		81BF26B71930E87B007B2A28 /* KQuestAwardPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */; };
 		81BF26BD1930E895007B2A28 /* StageWaitScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */; };
-		81BF26C01930E8A2007B2A28 /* KQuestFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */; };
 		81BF26C31930EB3C007B2A28 /* tea.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26C11930EB3C007B2A28 /* tea.cpp */; };
 		81BF26C61930EB7F007B2A28 /* KBattleEventAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26C41930EB7F007B2A28 /* KBattleEventAssist.cpp */; };
 		81BF26C91930EBAD007B2A28 /* KHeroSkillMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26C71930EBAD007B2A28 /* KHeroSkillMgr.cpp */; };
+		81BF26CF1930EFA8007B2A28 /* KCardStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26CD1930EFA8007B2A28 /* KCardStatic.cpp */; };
+		81BF26D21930F003007B2A28 /* KTouchDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26D01930F003007B2A28 /* KTouchDispatcher.cpp */; };
 		81CB43D6185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */; };
 		81CB43DA185DDF9000D9E774 /* FBattleGuy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D8185DDF9000D9E774 /* FBattleGuy.cpp */; };
 		81CB43F0185DDF9C00D9E774 /* KLogAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43DD185DDF9C00D9E774 /* KLogAssist.cpp */; };
@@ -468,10 +464,8 @@
 		81CB4452185DDFEC00D9E774 /* KCardActor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB443C185DDFEC00D9E774 /* KCardActor.cpp */; };
 		81CB4453185DDFEC00D9E774 /* KFightAreaPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB443E185DDFEC00D9E774 /* KFightAreaPanel.cpp */; };
 		81CB4454185DDFEC00D9E774 /* KIndicatePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB4440185DDFEC00D9E774 /* KIndicatePanel.cpp */; };
-		81CB4455185DDFEC00D9E774 /* KNotifyPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB4442185DDFEC00D9E774 /* KNotifyPanel.cpp */; };
 		81CB4456185DDFEC00D9E774 /* KResPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB4444185DDFEC00D9E774 /* KResPanel.cpp */; };
 		81CB4457185DDFEC00D9E774 /* KSelectBeginCardPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB4446185DDFEC00D9E774 /* KSelectBeginCardPanel.cpp */; };
-		81CB4458185DDFEC00D9E774 /* KUIAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB4448185DDFEC00D9E774 /* KUIAssist.cpp */; };
 		81CB4459185DDFEC00D9E774 /* PlayerGuide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB444A185DDFEC00D9E774 /* PlayerGuide.cpp */; };
 		81CD49F91896495E00D6DB43 /* KBattleCtrlBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CD49F71896495E00D6DB43 /* KBattleCtrlBase.cpp */; };
 		81CD49FE189649AE00D6DB43 /* KBattleGuyAttr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CD49FA189649AE00D6DB43 /* KBattleGuyAttr.cpp */; };
@@ -493,7 +487,6 @@
 		81D4AF0018AF735900D2A630 /* KStoreCreate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AEFE18AF735900D2A630 /* KStoreCreate.cpp */; };
 		81D4AF0318AF73CF00D2A630 /* VirtualService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AF0118AF73CF00D2A630 /* VirtualService.cpp */; };
 		81D4AF0A18AF740700D2A630 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 81D4AF0618AF740700D2A630 /* sqlite3.c */; };
-		81D6FDF41869E033000D53A7 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FDEF1869E033000D53A7 /* ProgressBar.cpp */; };
 		81D6FDF51869E033000D53A7 /* StartScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FDF21869E033000D53A7 /* StartScene.cpp */; };
 		81D6FE2F1869E63E000D53A7 /* JgPacketSpecific.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE191869E63E000D53A7 /* JgPacketSpecific.cpp */; };
 		81D6FE301869E63E000D53A7 /* KEpollSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE1B1869E63E000D53A7 /* KEpollSocket.cpp */; };
@@ -524,6 +517,20 @@
 		81E7DCF118E319560043CCC7 /* armature in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF018E319560043CCC7 /* armature */; };
 		81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF218E319D80043CCC7 /* Armature.txt */; };
 		81E7DCF518E319EA0043CCC7 /* anim in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF418E319EA0043CCC7 /* anim */; };
+		81F011B6194F48EF00910DB2 /* KCardGroupAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */; };
+		81F011B7194F48EF00910DB2 /* KJsonDictMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011A8194F48EF00910DB2 /* KJsonDictMgr.cpp */; };
+		81F011B8194F48EF00910DB2 /* KPopupLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011AA194F48EF00910DB2 /* KPopupLayer.cpp */; };
+		81F011B9194F48EF00910DB2 /* KQuestFacade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011AC194F48EF00910DB2 /* KQuestFacade.cpp */; };
+		81F011BA194F48EF00910DB2 /* KRadioWidget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011AE194F48EF00910DB2 /* KRadioWidget.cpp */; };
+		81F011BB194F48EF00910DB2 /* KUIAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011B0194F48EF00910DB2 /* KUIAssist.cpp */; };
+		81F011BC194F48EF00910DB2 /* ProgressBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011B3194F48EF00910DB2 /* ProgressBar.cpp */; };
+		81F011BF194F490A00910DB2 /* CardGroupScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011BD194F490A00910DB2 /* CardGroupScene.cpp */; };
+		81F011C2194F491800910DB2 /* KSceneLayerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011C0194F491800910DB2 /* KSceneLayerBase.cpp */; };
+		81F011C8194F496D00910DB2 /* KShopScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011C6194F496D00910DB2 /* KShopScene.cpp */; };
+		81F011CF194F4ABC00910DB2 /* KAttrDefine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011CA194F4ABC00910DB2 /* KAttrDefine.cpp */; };
+		81F011D0194F4ABC00910DB2 /* KAttrGroupHolder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011CC194F4ABC00910DB2 /* KAttrGroupHolder.cpp */; };
+		81F011D6194F4B1E00910DB2 /* KPlayerCardDepot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011D2194F4B1E00910DB2 /* KPlayerCardDepot.cpp */; };
+		81F011D7194F4B1E00910DB2 /* KPlayerDeck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011D4194F4B1E00910DB2 /* KPlayerDeck.cpp */; };
 		81FA0E5218D0981500F7DD22 /* KBattleFieldStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4A18D0981500F7DD22 /* KBattleFieldStatic.cpp */; };
 		81FA0E5318D0981500F7DD22 /* KDeckDefStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4C18D0981500F7DD22 /* KDeckDefStatic.cpp */; };
 		81FA0E5418D0981500F7DD22 /* KGameStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E4E18D0981500F7DD22 /* KGameStatic.cpp */; };
@@ -539,7 +546,6 @@
 		81FA0E9218D0A53B00F7DD22 /* KUserQuestSql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E9018D0A53B00F7DD22 /* KUserQuestSql.cpp */; };
 		81FA0E9718D0A60D00F7DD22 /* KGameResultPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E9318D0A60D00F7DD22 /* KGameResultPanel.cpp */; };
 		81FA0E9818D0A60D00F7DD22 /* KGenCardPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */; };
-		81FA0E9D18D0A61900F7DD22 /* KMyQuestPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E9918D0A61900F7DD22 /* KMyQuestPanel.cpp */; };
 		81FA0E9E18D0A61900F7DD22 /* KMyStorePanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0E9B18D0A61900F7DD22 /* KMyStorePanel.cpp */; };
 		81FA0EA418D0A63000F7DD22 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */; };
 		81FA0EA718D0A83A00F7DD22 /* KQuestData_S_i.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81FA0EA518D0A83A00F7DD22 /* KQuestData_S_i.cpp */; };
@@ -1320,7 +1326,6 @@
 		812E278B187AF451000567D7 /* KPacketGate_Gw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate_Gw.h; path = ../Classes/KNet/KPacketGate_Gw.h; sourceTree = "<group>"; };
 		812E278F187AF5E4000567D7 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
 		812E2790187AF5E4000567D7 /* progress_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bg.png; sourceTree = "<group>"; };
-		812E2791187AF5E4000567D7 /* static_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = static_data.plist; sourceTree = "<group>"; };
 		814347CA186FCACD00134432 /* KGatewayMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGatewayMsgDealer.cpp; sourceTree = "<group>"; };
 		814347CB186FCACD00134432 /* KGatewayMsgDealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGatewayMsgDealer.h; sourceTree = "<group>"; };
 		814347CC186FCACD00134432 /* KLoginMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLoginMsgDealer.cpp; sourceTree = "<group>"; };
@@ -1336,8 +1341,6 @@
 		8149030B1860144000695114 /* GUI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GUI; sourceTree = "<group>"; };
 		814E9E2818D92EA2003749B2 /* KCardLayoutStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KCardLayoutStatic.cpp; sourceTree = "<group>"; };
 		814E9E2918D92EA2003749B2 /* KCardLayoutStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCardLayoutStatic.h; sourceTree = "<group>"; };
-		814E9E2C18D92EF4003749B2 /* KJsonDictMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KJsonDictMgr.cpp; sourceTree = "<group>"; };
-		814E9E2D18D92EF4003749B2 /* KJsonDictMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJsonDictMgr.h; sourceTree = "<group>"; };
 		814E9E4518D932B7003749B2 /* Item */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Item; sourceTree = "<group>"; };
 		814E9E4718D932E4003749B2 /* StringManager */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StringManager; sourceTree = "<group>"; };
 		814E9E4918D93410003749B2 /* List.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = List.txt; sourceTree = "<group>"; };
@@ -1669,13 +1672,10 @@
 		81A6A70B18966F6C0039FF68 /* KPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPlayer.h; sourceTree = "<group>"; };
 		81A6A70C18966F6C0039FF68 /* KWorldObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWorldObj.cpp; sourceTree = "<group>"; };
 		81A6A70D18966F6C0039FF68 /* KWorldObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWorldObj.h; sourceTree = "<group>"; };
-		81BAA81018B0481E00643189 /* zgc.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = zgc.dat; sourceTree = "<group>"; };
 		81BAA81218B0483400643189 /* KSqlite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSqlite.cpp; sourceTree = "<group>"; };
 		81BAA81318B0483400643189 /* KSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSqlite.h; sourceTree = "<group>"; };
 		81BAA81418B0483400643189 /* KUserSql.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KUserSql.cpp; sourceTree = "<group>"; };
 		81BAA81518B0483400643189 /* KUserSql.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KUserSql.h; sourceTree = "<group>"; };
-		81BAA81818B0487900643189 /* KShopPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KShopPanel.cpp; sourceTree = "<group>"; };
-		81BAA81918B0487900643189 /* KShopPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KShopPanel.h; sourceTree = "<group>"; };
 		81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KCrcAssist.cpp; path = ../Classes/DB/KCrcAssist.cpp; sourceTree = "<group>"; };
 		81BF26911930E6B6007B2A28 /* KCrcAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCrcAssist.h; path = ../Classes/DB/KCrcAssist.h; sourceTree = "<group>"; };
 		81BF26921930E6B6007B2A28 /* KPlayerDBMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPlayerDBMgr.cpp; path = ../Classes/DB/KPlayerDBMgr.cpp; sourceTree = "<group>"; };
@@ -1700,18 +1700,18 @@
 		81BF26B01930E855007B2A28 /* KClickCardMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KClickCardMgr.h; sourceTree = "<group>"; };
 		81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGameRecordPanel.cpp; sourceTree = "<group>"; };
 		81BF26B31930E868007B2A28 /* KGameRecordPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGameRecordPanel.h; sourceTree = "<group>"; };
-		81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KQuestAwardPanel.cpp; sourceTree = "<group>"; };
-		81BF26B61930E87B007B2A28 /* KQuestAwardPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KQuestAwardPanel.h; sourceTree = "<group>"; };
 		81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageWaitScene.cpp; sourceTree = "<group>"; };
 		81BF26BC1930E895007B2A28 /* StageWaitScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageWaitScene.h; sourceTree = "<group>"; };
-		81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KQuestFacade.cpp; sourceTree = "<group>"; };
-		81BF26BF1930E8A2007B2A28 /* KQuestFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KQuestFacade.h; sourceTree = "<group>"; };
 		81BF26C11930EB3C007B2A28 /* tea.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tea.cpp; sourceTree = "<group>"; };
 		81BF26C21930EB3C007B2A28 /* tea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tea.h; sourceTree = "<group>"; };
 		81BF26C41930EB7F007B2A28 /* KBattleEventAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleEventAssist.cpp; sourceTree = "<group>"; };
 		81BF26C51930EB7F007B2A28 /* KBattleEventAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBattleEventAssist.h; sourceTree = "<group>"; };
 		81BF26C71930EBAD007B2A28 /* KHeroSkillMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KHeroSkillMgr.cpp; sourceTree = "<group>"; };
 		81BF26C81930EBAD007B2A28 /* KHeroSkillMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHeroSkillMgr.h; sourceTree = "<group>"; };
+		81BF26CD1930EFA8007B2A28 /* KCardStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KCardStatic.cpp; sourceTree = "<group>"; };
+		81BF26CE1930EFA8007B2A28 /* KCardStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCardStatic.h; sourceTree = "<group>"; };
+		81BF26D01930F003007B2A28 /* KTouchDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KTouchDispatcher.cpp; path = ../Classes/KTouchDispatcher.cpp; sourceTree = "<group>"; };
+		81BF26D11930F003007B2A28 /* KTouchDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KTouchDispatcher.h; path = ../Classes/KTouchDispatcher.h; sourceTree = "<group>"; };
 		81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLogicModuleMsgDealer.cpp; sourceTree = "<group>"; };
 		81CB43D3185DDF8300D9E774 /* KLogicModuleMsgDealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLogicModuleMsgDealer.h; sourceTree = "<group>"; };
 		81CB43D4185DDF8300D9E774 /* KMsgDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMsgDelegate.h; sourceTree = "<group>"; };
@@ -1775,14 +1775,10 @@
 		81CB443F185DDFEC00D9E774 /* KFightAreaPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KFightAreaPanel.h; sourceTree = "<group>"; };
 		81CB4440185DDFEC00D9E774 /* KIndicatePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KIndicatePanel.cpp; sourceTree = "<group>"; };
 		81CB4441185DDFEC00D9E774 /* KIndicatePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIndicatePanel.h; sourceTree = "<group>"; };
-		81CB4442185DDFEC00D9E774 /* KNotifyPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KNotifyPanel.cpp; sourceTree = "<group>"; };
-		81CB4443185DDFEC00D9E774 /* KNotifyPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNotifyPanel.h; sourceTree = "<group>"; };
 		81CB4444185DDFEC00D9E774 /* KResPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KResPanel.cpp; sourceTree = "<group>"; };
 		81CB4445185DDFEC00D9E774 /* KResPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KResPanel.h; sourceTree = "<group>"; };
 		81CB4446185DDFEC00D9E774 /* KSelectBeginCardPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSelectBeginCardPanel.cpp; sourceTree = "<group>"; };
 		81CB4447185DDFEC00D9E774 /* KSelectBeginCardPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSelectBeginCardPanel.h; sourceTree = "<group>"; };
-		81CB4448185DDFEC00D9E774 /* KUIAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KUIAssist.cpp; sourceTree = "<group>"; };
-		81CB4449185DDFEC00D9E774 /* KUIAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KUIAssist.h; sourceTree = "<group>"; };
 		81CB444A185DDFEC00D9E774 /* PlayerGuide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerGuide.cpp; sourceTree = "<group>"; };
 		81CB444B185DDFEC00D9E774 /* PlayerGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerGuide.h; sourceTree = "<group>"; };
 		81CD49F71896495E00D6DB43 /* KBattleCtrlBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleCtrlBase.cpp; sourceTree = "<group>"; };
@@ -1829,9 +1825,6 @@
 		81D4AF0618AF740700D2A630 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		81D4AF0718AF740700D2A630 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		81D4AF0818AF740700D2A630 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
-		81D6FDEF1869E033000D53A7 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProgressBar.cpp; sourceTree = "<group>"; };
-		81D6FDF01869E033000D53A7 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
-		81D6FDF11869E033000D53A7 /* ProgressProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressProtocol.h; sourceTree = "<group>"; };
 		81D6FDF21869E033000D53A7 /* StartScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartScene.cpp; sourceTree = "<group>"; };
 		81D6FDF31869E033000D53A7 /* StartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartScene.h; sourceTree = "<group>"; };
 		81D6FE191869E63E000D53A7 /* JgPacketSpecific.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JgPacketSpecific.cpp; path = ../SockServer/JgPacketSpecific.cpp; sourceTree = "<group>"; };
@@ -1892,6 +1885,37 @@
 		81E7DCF018E319560043CCC7 /* armature */ = {isa = PBXFileReference; lastKnownFileType = folder; path = armature; sourceTree = "<group>"; };
 		81E7DCF218E319D80043CCC7 /* Armature.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Armature.txt; sourceTree = "<group>"; };
 		81E7DCF418E319EA0043CCC7 /* anim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = anim; sourceTree = "<group>"; };
+		81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KCardGroupAssist.cpp; path = assist/KCardGroupAssist.cpp; sourceTree = "<group>"; };
+		81F011A7194F48EF00910DB2 /* KCardGroupAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCardGroupAssist.h; path = assist/KCardGroupAssist.h; sourceTree = "<group>"; };
+		81F011A8194F48EF00910DB2 /* KJsonDictMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KJsonDictMgr.cpp; path = assist/KJsonDictMgr.cpp; sourceTree = "<group>"; };
+		81F011A9194F48EF00910DB2 /* KJsonDictMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KJsonDictMgr.h; path = assist/KJsonDictMgr.h; sourceTree = "<group>"; };
+		81F011AA194F48EF00910DB2 /* KPopupLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPopupLayer.cpp; path = assist/KPopupLayer.cpp; sourceTree = "<group>"; };
+		81F011AB194F48EF00910DB2 /* KPopupLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPopupLayer.h; path = assist/KPopupLayer.h; sourceTree = "<group>"; };
+		81F011AC194F48EF00910DB2 /* KQuestFacade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KQuestFacade.cpp; path = assist/KQuestFacade.cpp; sourceTree = "<group>"; };
+		81F011AD194F48EF00910DB2 /* KQuestFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KQuestFacade.h; path = assist/KQuestFacade.h; sourceTree = "<group>"; };
+		81F011AE194F48EF00910DB2 /* KRadioWidget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KRadioWidget.cpp; path = assist/KRadioWidget.cpp; sourceTree = "<group>"; };
+		81F011AF194F48EF00910DB2 /* KRadioWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KRadioWidget.h; path = assist/KRadioWidget.h; sourceTree = "<group>"; };
+		81F011B0194F48EF00910DB2 /* KUIAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KUIAssist.cpp; path = assist/KUIAssist.cpp; sourceTree = "<group>"; };
+		81F011B1194F48EF00910DB2 /* KUIAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KUIAssist.h; path = assist/KUIAssist.h; sourceTree = "<group>"; };
+		81F011B2194F48EF00910DB2 /* KUIMsgDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KUIMsgDef.h; path = assist/KUIMsgDef.h; sourceTree = "<group>"; };
+		81F011B3194F48EF00910DB2 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProgressBar.cpp; path = assist/ProgressBar.cpp; sourceTree = "<group>"; };
+		81F011B4194F48EF00910DB2 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressBar.h; path = assist/ProgressBar.h; sourceTree = "<group>"; };
+		81F011B5194F48EF00910DB2 /* ProgressProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressProtocol.h; path = assist/ProgressProtocol.h; sourceTree = "<group>"; };
+		81F011BD194F490A00910DB2 /* CardGroupScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CardGroupScene.cpp; sourceTree = "<group>"; };
+		81F011BE194F490A00910DB2 /* CardGroupScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardGroupScene.h; sourceTree = "<group>"; };
+		81F011C0194F491800910DB2 /* KSceneLayerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSceneLayerBase.cpp; sourceTree = "<group>"; };
+		81F011C1194F491800910DB2 /* KSceneLayerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSceneLayerBase.h; sourceTree = "<group>"; };
+		81F011C6194F496D00910DB2 /* KShopScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KShopScene.cpp; sourceTree = "<group>"; };
+		81F011C7194F496D00910DB2 /* KShopScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KShopScene.h; sourceTree = "<group>"; };
+		81F011CA194F4ABC00910DB2 /* KAttrDefine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KAttrDefine.cpp; path = Attribute/KAttrDefine.cpp; sourceTree = "<group>"; };
+		81F011CB194F4ABC00910DB2 /* KAttrDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAttrDefine.h; path = Attribute/KAttrDefine.h; sourceTree = "<group>"; };
+		81F011CC194F4ABC00910DB2 /* KAttrGroupHolder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KAttrGroupHolder.cpp; path = Attribute/KAttrGroupHolder.cpp; sourceTree = "<group>"; };
+		81F011CD194F4ABC00910DB2 /* KAttrGroupHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAttrGroupHolder.h; path = Attribute/KAttrGroupHolder.h; sourceTree = "<group>"; };
+		81F011CE194F4ABC00910DB2 /* KAttrHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAttrHolder.h; path = Attribute/KAttrHolder.h; sourceTree = "<group>"; };
+		81F011D2194F4B1E00910DB2 /* KPlayerCardDepot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPlayerCardDepot.cpp; path = ../Classes/PlayerCard/KPlayerCardDepot.cpp; sourceTree = "<group>"; };
+		81F011D3194F4B1E00910DB2 /* KPlayerCardDepot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPlayerCardDepot.h; path = ../Classes/PlayerCard/KPlayerCardDepot.h; sourceTree = "<group>"; };
+		81F011D4194F4B1E00910DB2 /* KPlayerDeck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPlayerDeck.cpp; path = ../Classes/PlayerCard/KPlayerDeck.cpp; sourceTree = "<group>"; };
+		81F011D5194F4B1E00910DB2 /* KPlayerDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPlayerDeck.h; path = ../Classes/PlayerCard/KPlayerDeck.h; sourceTree = "<group>"; };
 		81FA0E4A18D0981500F7DD22 /* KBattleFieldStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleFieldStatic.cpp; sourceTree = "<group>"; };
 		81FA0E4B18D0981500F7DD22 /* KBattleFieldStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBattleFieldStatic.h; sourceTree = "<group>"; };
 		81FA0E4C18D0981500F7DD22 /* KDeckDefStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KDeckDefStatic.cpp; sourceTree = "<group>"; };
@@ -1926,8 +1950,6 @@
 		81FA0E9418D0A60D00F7DD22 /* KGameResultPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGameResultPanel.h; sourceTree = "<group>"; };
 		81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGenCardPanel.cpp; sourceTree = "<group>"; };
 		81FA0E9618D0A60D00F7DD22 /* KGenCardPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGenCardPanel.h; sourceTree = "<group>"; };
-		81FA0E9918D0A61900F7DD22 /* KMyQuestPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KMyQuestPanel.cpp; sourceTree = "<group>"; };
-		81FA0E9A18D0A61900F7DD22 /* KMyQuestPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMyQuestPanel.h; sourceTree = "<group>"; };
 		81FA0E9B18D0A61900F7DD22 /* KMyStorePanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KMyStorePanel.cpp; sourceTree = "<group>"; };
 		81FA0E9C18D0A61900F7DD22 /* KMyStorePanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMyStorePanel.h; sourceTree = "<group>"; };
 		81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuScene.cpp; sourceTree = "<group>"; };
@@ -2484,6 +2506,9 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				81F011D1194F4B0D00910DB2 /* PlayCard */,
+				81BF26D01930F003007B2A28 /* KTouchDispatcher.cpp */,
+				81BF26D11930F003007B2A28 /* KTouchDispatcher.h */,
 				81BF26961930E6CB007B2A28 /* GameRecord */,
 				81BF268F1930E69F007B2A28 /* DB */,
 				81FA0EB418D0A94400F7DD22 /* ClientLogic */,
@@ -2967,10 +2992,8 @@
 				814E9E4918D93410003749B2 /* List.txt */,
 				814E9E4718D932E4003749B2 /* StringManager */,
 				814E9E4518D932B7003749B2 /* Item */,
-				81BAA81018B0481E00643189 /* zgc.dat */,
 				812E278F187AF5E4000567D7 /* progress_bar.png */,
 				812E2790187AF5E4000567D7 /* progress_bg.png */,
-				812E2791187AF5E4000567D7 /* static_data.plist */,
 				8120F62B1869DCBE000FDB17 /* data */,
 				8149030B1860144000695114 /* GUI */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
@@ -3337,6 +3360,7 @@
 		8121435F187AE4400053FC18 /* CommonLogic */ = {
 			isa = PBXGroup;
 			children = (
+				81F011C9194F4AAA00910DB2 /* Attribute */,
 				81686240189697F200789DE8 /* KMoney.cpp */,
 				81686241189697F200789DE8 /* KMoney.h */,
 				81CD4A2818964AC400D6DB43 /* Quest */,
@@ -3489,14 +3513,22 @@
 		814E9E2B18D92EC8003749B2 /* assist */ = {
 			isa = PBXGroup;
 			children = (
-				81BF26BE1930E8A2007B2A28 /* KQuestFacade.cpp */,
-				81BF26BF1930E8A2007B2A28 /* KQuestFacade.h */,
-				814E9E2C18D92EF4003749B2 /* KJsonDictMgr.cpp */,
-				814E9E2D18D92EF4003749B2 /* KJsonDictMgr.h */,
-				81CB4448185DDFEC00D9E774 /* KUIAssist.cpp */,
-				81D6FDEF1869E033000D53A7 /* ProgressBar.cpp */,
-				81D6FDF01869E033000D53A7 /* ProgressBar.h */,
-				81CB4449185DDFEC00D9E774 /* KUIAssist.h */,
+				81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */,
+				81F011A7194F48EF00910DB2 /* KCardGroupAssist.h */,
+				81F011A8194F48EF00910DB2 /* KJsonDictMgr.cpp */,
+				81F011A9194F48EF00910DB2 /* KJsonDictMgr.h */,
+				81F011AA194F48EF00910DB2 /* KPopupLayer.cpp */,
+				81F011AB194F48EF00910DB2 /* KPopupLayer.h */,
+				81F011AC194F48EF00910DB2 /* KQuestFacade.cpp */,
+				81F011AD194F48EF00910DB2 /* KQuestFacade.h */,
+				81F011AE194F48EF00910DB2 /* KRadioWidget.cpp */,
+				81F011AF194F48EF00910DB2 /* KRadioWidget.h */,
+				81F011B0194F48EF00910DB2 /* KUIAssist.cpp */,
+				81F011B1194F48EF00910DB2 /* KUIAssist.h */,
+				81F011B2194F48EF00910DB2 /* KUIMsgDef.h */,
+				81F011B3194F48EF00910DB2 /* ProgressBar.cpp */,
+				81F011B4194F48EF00910DB2 /* ProgressBar.h */,
+				81F011B5194F48EF00910DB2 /* ProgressProtocol.h */,
 			);
 			name = assist;
 			sourceTree = "<group>";
@@ -4246,6 +4278,8 @@
 		81CB442F185DDFEC00D9E774 /* StaticTable */ = {
 			isa = PBXGroup;
 			children = (
+				81BF26CD1930EFA8007B2A28 /* KCardStatic.cpp */,
+				81BF26CE1930EFA8007B2A28 /* KCardStatic.h */,
 				81BF26A91930E73D007B2A28 /* KHelpStringStatic.cpp */,
 				81BF26AA1930E73D007B2A28 /* KHelpStringStatic.h */,
 				81BF26AB1930E73D007B2A28 /* KHeroSkillStatic.cpp */,
@@ -4277,7 +4311,6 @@
 				81BF26AF1930E855007B2A28 /* KClickCardMgr.cpp */,
 				81BF26B01930E855007B2A28 /* KClickCardMgr.h */,
 				814E9E2B18D92EC8003749B2 /* assist */,
-				81D6FDF11869E033000D53A7 /* ProgressProtocol.h */,
 				81D6FDEB1869DFF6000D53A7 /* Panel */,
 				81CB4438185DDFEC00D9E774 /* KActor.cpp */,
 				81CB4439185DDFEC00D9E774 /* KActor.h */,
@@ -4396,10 +4429,14 @@
 		81D6FDEB1869DFF6000D53A7 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
+				81F011C6194F496D00910DB2 /* KShopScene.cpp */,
+				81F011C7194F496D00910DB2 /* KShopScene.h */,
+				81F011C0194F491800910DB2 /* KSceneLayerBase.cpp */,
+				81F011C1194F491800910DB2 /* KSceneLayerBase.h */,
+				81F011BD194F490A00910DB2 /* CardGroupScene.cpp */,
+				81F011BE194F490A00910DB2 /* CardGroupScene.h */,
 				81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */,
 				81BF26BC1930E895007B2A28 /* StageWaitScene.h */,
-				81BF26B51930E87B007B2A28 /* KQuestAwardPanel.cpp */,
-				81BF26B61930E87B007B2A28 /* KQuestAwardPanel.h */,
 				81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */,
 				81BF26B31930E868007B2A28 /* KGameRecordPanel.h */,
 				81CB4435185DDFEC00D9E774 /* BattleFieldScene.cpp */,
@@ -4408,21 +4445,15 @@
 				81D6FDF31869E033000D53A7 /* StartScene.h */,
 				81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */,
 				81FA0EA318D0A63000F7DD22 /* MainMenuScene.h */,
-				81FA0E9918D0A61900F7DD22 /* KMyQuestPanel.cpp */,
-				81FA0E9A18D0A61900F7DD22 /* KMyQuestPanel.h */,
 				81FA0E9B18D0A61900F7DD22 /* KMyStorePanel.cpp */,
 				81FA0E9C18D0A61900F7DD22 /* KMyStorePanel.h */,
 				81FA0E9318D0A60D00F7DD22 /* KGameResultPanel.cpp */,
 				81FA0E9418D0A60D00F7DD22 /* KGameResultPanel.h */,
 				81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */,
 				81FA0E9618D0A60D00F7DD22 /* KGenCardPanel.h */,
-				81BAA81818B0487900643189 /* KShopPanel.cpp */,
-				81BAA81918B0487900643189 /* KShopPanel.h */,
 				81CB4446185DDFEC00D9E774 /* KSelectBeginCardPanel.cpp */,
 				81CB4447185DDFEC00D9E774 /* KSelectBeginCardPanel.h */,
 				81CB4440185DDFEC00D9E774 /* KIndicatePanel.cpp */,
-				81CB4442185DDFEC00D9E774 /* KNotifyPanel.cpp */,
-				81CB4443185DDFEC00D9E774 /* KNotifyPanel.h */,
 				81CB4444185DDFEC00D9E774 /* KResPanel.cpp */,
 				81CB4445185DDFEC00D9E774 /* KResPanel.h */,
 				81CB4441185DDFEC00D9E774 /* KIndicatePanel.h */,
@@ -4512,6 +4543,29 @@
 			path = ../Classes/common;
 			sourceTree = "<group>";
 		};
+		81F011C9194F4AAA00910DB2 /* Attribute */ = {
+			isa = PBXGroup;
+			children = (
+				81F011CA194F4ABC00910DB2 /* KAttrDefine.cpp */,
+				81F011CB194F4ABC00910DB2 /* KAttrDefine.h */,
+				81F011CC194F4ABC00910DB2 /* KAttrGroupHolder.cpp */,
+				81F011CD194F4ABC00910DB2 /* KAttrGroupHolder.h */,
+				81F011CE194F4ABC00910DB2 /* KAttrHolder.h */,
+			);
+			name = Attribute;
+			sourceTree = "<group>";
+		};
+		81F011D1194F4B0D00910DB2 /* PlayCard */ = {
+			isa = PBXGroup;
+			children = (
+				81F011D2194F4B1E00910DB2 /* KPlayerCardDepot.cpp */,
+				81F011D3194F4B1E00910DB2 /* KPlayerCardDepot.h */,
+				81F011D4194F4B1E00910DB2 /* KPlayerDeck.cpp */,
+				81F011D5194F4B1E00910DB2 /* KPlayerDeck.h */,
+			);
+			name = PlayCard;
+			sourceTree = "<group>";
+		};
 		81FA0E5618D09EF000F7DD22 /* game */ = {
 			isa = PBXGroup;
 			children = (
@@ -4598,7 +4652,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "zgc" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -4644,7 +4698,6 @@
 			files = (
 				814E9E4A18D93410003749B2 /* List.txt in Resources */,
 				810C389F185F28DD00F03DFA /* KTPStreamPartitioner.inl in Resources */,
-				812E2796187AF5E4000567D7 /* static_data.plist in Resources */,
 				814E9E4618D932B7003749B2 /* Item in Resources */,
 				81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */,
 				810C387D185F28DD00F03DFA /* KRefObject.inl in Resources */,
@@ -4663,7 +4716,6 @@
 				81E7DCF118E319560043CCC7 /* armature in Resources */,
 				379BB9CC17F03F3700829B88 /* json_internalarray.inl in Resources */,
 				379BB9CD17F03F3700829B88 /* json_internalmap.inl in Resources */,
-				81BAA81118B0481E00643189 /* zgc.dat in Resources */,
 				810C389D185F28DD00F03DFA /* KTPStream.inl in Resources */,
 				810C389B185F28DD00F03DFA /* KTPObjPool.inl in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
@@ -4693,16 +4745,13 @@
 				15A3D9031682F7D5002FB0C5 /* b2Collision.cpp in Sources */,
 				81CB444C185DDFEC00D9E774 /* KAbilityStatic.cpp in Sources */,
 				81D6FE5F1869E881000D53A7 /* KUserData.cpp in Sources */,
-				81FA0E9D18D0A61900F7DD22 /* KMyQuestPanel.cpp in Sources */,
 				15A3D9041682F7D5002FB0C5 /* b2Distance.cpp in Sources */,
-				81CB4455185DDFEC00D9E774 /* KNotifyPanel.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
 				15A3D9061682F7D5002FB0C5 /* b2TimeOfImpact.cpp in Sources */,
 				15A3D9071682F7D5002FB0C5 /* b2ChainShape.cpp in Sources */,
 				810C3865185F28DD00F03DFA /* KTabFile.cpp in Sources */,
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,
-				814E9E2E18D92EF4003749B2 /* KJsonDictMgr.cpp in Sources */,
 				81D4AF0018AF735900D2A630 /* KStoreCreate.cpp in Sources */,
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
 				81D6FE301869E63E000D53A7 /* KEpollSocket.cpp in Sources */,
@@ -4718,7 +4767,6 @@
 				15A3D90F1682F7D5002FB0C5 /* b2StackAllocator.cpp in Sources */,
 				15A3D9101682F7D5002FB0C5 /* b2Timer.cpp in Sources */,
 				810C3891185F28DD00F03DFA /* KWin32ThreadImpl.cpp in Sources */,
-				81BAA81A18B0487900643189 /* KShopPanel.cpp in Sources */,
 				81D6FE5E1869E881000D53A7 /* KSocketDefine.cpp in Sources */,
 				81CB4453185DDFEC00D9E774 /* KFightAreaPanel.cpp in Sources */,
 				810C38AF185F28DD00F03DFA /* xmltok_ns.c in Sources */,
@@ -4747,6 +4795,7 @@
 				812143CB187AE4400053FC18 /* KObjectFactory.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				810C389E185F28DD00F03DFA /* KTPStreamPartitioner.cpp in Sources */,
+				81F011B6194F48EF00910DB2 /* KCardGroupAssist.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
@@ -4780,6 +4829,7 @@
 				81CD4A3318964AC400D6DB43 /* KQuestArray.cpp in Sources */,
 				81BF26951930E6B6007B2A28 /* KPlayerDBMgr.cpp in Sources */,
 				15A3D9291682F7D5002FB0C5 /* b2WeldJoint.cpp in Sources */,
+				81BF26D21930F003007B2A28 /* KTouchDispatcher.cpp in Sources */,
 				810C38AE185F28DD00F03DFA /* xmltok_impl.c in Sources */,
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
 				15A3D9391682F7D5002FB0C5 /* b2Rope.cpp in Sources */,
@@ -4787,6 +4837,8 @@
 				15A3D9951682F7F9002FB0C5 /* chipmunk.c in Sources */,
 				810C385C185F28DD00F03DFA /* jgencryptor.cpp in Sources */,
 				812143C9187AE4400053FC18 /* KGlobalFunction.cpp in Sources */,
+				81F011D7194F4B1E00910DB2 /* KPlayerDeck.cpp in Sources */,
+				81F011B7194F48EF00910DB2 /* KJsonDictMgr.cpp in Sources */,
 				810C3881185F28DD00F03DFA /* md5c_opt.c in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
 				15A3D9981682F7F9002FB0C5 /* cpDampedRotarySpring.c in Sources */,
@@ -4806,6 +4858,7 @@
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
+				81F011BF194F490A00910DB2 /* CardGroupScene.cpp in Sources */,
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				81FA0E8018D09F4C00F7DD22 /* KEventSystem.cpp in Sources */,
 				15A3D9A01682F7F9002FB0C5 /* cpSimpleMotor.c in Sources */,
@@ -4836,6 +4889,7 @@
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				81BAA81718B0483400643189 /* KUserSql.cpp in Sources */,
 				81A6A6D118966F260039FF68 /* KBlockGroup.cpp in Sources */,
+				81BF26CF1930EFA8007B2A28 /* KCardStatic.cpp in Sources */,
 				810C3886185F28DD00F03DFA /* KRandomGroup.cpp in Sources */,
 				810C3887185F28DD00F03DFA /* KProcessMutex.cpp in Sources */,
 				810C3877185F28DD00F03DFA /* KCheckSum.cpp in Sources */,
@@ -4858,7 +4912,6 @@
 				15A3DA321682F826002FB0C5 /* CCBFileLoader.cpp in Sources */,
 				81CB4454185DDFEC00D9E774 /* KIndicatePanel.cpp in Sources */,
 				81A6A70F18966F6C0039FF68 /* KMainPlayer.cpp in Sources */,
-				81CB4458185DDFEC00D9E774 /* KUIAssist.cpp in Sources */,
 				15A3DA331682F826002FB0C5 /* CCBKeyframe.cpp in Sources */,
 				81A6A6DB18966F540039FF68 /* KBag.cpp in Sources */,
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
@@ -4932,6 +4985,7 @@
 				81D4AEFC18AF734500D2A630 /* KItem.cpp in Sources */,
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
 				81A6A6CF18966F260039FF68 /* KBlockBox.cpp in Sources */,
+				81F011B8194F48EF00910DB2 /* KPopupLayer.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				81CD49FE189649AE00D6DB43 /* KBattleGuyAttr.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
@@ -4945,6 +4999,7 @@
 				810C385A185F28DD00F03DFA /* KCharsetConvert.cpp in Sources */,
 				810C3879185F28DD00F03DFA /* KDatetime.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
+				81F011D0194F4ABC00910DB2 /* KAttrGroupHolder.cpp in Sources */,
 				81D6FE361869E63E000D53A7 /* KSelectSockServer.cpp in Sources */,
 				81BF26C31930EB3C007B2A28 /* tea.cpp in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
@@ -4972,7 +5027,6 @@
 				810C3855185F28DD00F03DFA /* KCharset_Ascii.cpp in Sources */,
 				81A6A70E18966F6C0039FF68 /* KCharacter.cpp in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
-				81BF26B71930E87B007B2A28 /* KQuestAwardPanel.cpp in Sources */,
 				810C3852185F28DD00F03DFA /* AngleComputer.cpp in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
@@ -4994,6 +5048,7 @@
 				1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */,
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
+				81F011D6194F4B1E00910DB2 /* KPlayerCardDepot.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
 				81D6FDF51869E033000D53A7 /* StartScene.cpp in Sources */,
 				812143BB187AE4400053FC18 /* KCommonSession.cpp in Sources */,
@@ -5042,6 +5097,7 @@
 				810C387A185F28DD00F03DFA /* KEncoding.cpp in Sources */,
 				379BB99C17F03F3700829B88 /* CCTween.cpp in Sources */,
 				81CD4A0518964A0200D6DB43 /* KNetMsgFacade.cpp in Sources */,
+				81F011C2194F491800910DB2 /* KSceneLayerBase.cpp in Sources */,
 				81A6A71018966F6C0039FF68 /* KPlayer.cpp in Sources */,
 				81A6A6D518966F490039FF68 /* KBusinessManager.cpp in Sources */,
 				81BF26C61930EB7F007B2A28 /* KBattleEventAssist.cpp in Sources */,
@@ -5072,12 +5128,14 @@
 				81E7DCEF18E318FA0043CCC7 /* KGameDef.cpp in Sources */,
 				379BB9A917F03F3700829B88 /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				379BB9AA17F03F3700829B88 /* CCTransformHelp.cpp in Sources */,
+				81F011CF194F4ABC00910DB2 /* KAttrDefine.cpp in Sources */,
 				379BB9AB17F03F3700829B88 /* CCTweenFunction.cpp in Sources */,
 				81A6A6D018966F260039FF68 /* KBlockBoxManager.cpp in Sources */,
 				379BB9AC17F03F3700829B88 /* CCUtilMath.cpp in Sources */,
 				379BB9AD17F03F3700829B88 /* CCComAttribute.cpp in Sources */,
 				379BB9AE17F03F3700829B88 /* CCComAudio.cpp in Sources */,
 				810C3896185F28DD00F03DFA /* KThreadProcessorUnit.cpp in Sources */,
+				81F011BC194F48EF00910DB2 /* ProgressBar.cpp in Sources */,
 				379BB9AF17F03F3700829B88 /* CCComController.cpp in Sources */,
 				810C38AC185F28DD00F03DFA /* xmlstream.cpp in Sources */,
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
@@ -5093,6 +5151,8 @@
 				379BB9B417F03F3700829B88 /* UILayout.cpp in Sources */,
 				379BB9B617F03F3700829B88 /* UILayoutParameter.cpp in Sources */,
 				81D6FE351869E63E000D53A7 /* KSelectSocket.cpp in Sources */,
+				81F011BA194F48EF00910DB2 /* KRadioWidget.cpp in Sources */,
+				81F011C8194F496D00910DB2 /* KShopScene.cpp in Sources */,
 				379BB9B717F03F3700829B88 /* UILayoutDefine.cpp in Sources */,
 				810C3875185F28DD00F03DFA /* KThreadLocalStorage.cpp in Sources */,
 				810C387F185F28DD00F03DFA /* KStream.cpp in Sources */,
@@ -5107,9 +5167,9 @@
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
 				379BB9C117F03F3700829B88 /* UICheckBox.cpp in Sources */,
+				81F011BB194F48EF00910DB2 /* KUIAssist.cpp in Sources */,
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				812143CF187AE4400053FC18 /* KLogicTimer.cpp in Sources */,
-				81D6FDF41869E033000D53A7 /* ProgressBar.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
 				810C3864185F28DD00F03DFA /* KMMap.cpp in Sources */,
 				81FA0E9718D0A60D00F7DD22 /* KGameResultPanel.cpp in Sources */,
@@ -5133,7 +5193,7 @@
 				810C3869185F28DD00F03DFA /* KTextReader.cpp in Sources */,
 				ED35BF4C183230FC002A0750 /* UIListViewEx.cpp in Sources */,
 				81CD4A3518964AC400D6DB43 /* KQuestCommon.cpp in Sources */,
-				81BF26C01930E8A2007B2A28 /* KQuestFacade.cpp in Sources */,
+				81F011B9194F48EF00910DB2 /* KQuestFacade.cpp in Sources */,
 				81FA0E8F18D0A51900F7DD22 /* KWorldMsgHub.cpp in Sources */,
 				81FA0E7F18D09F4C00F7DD22 /* KEventRegistry.cpp in Sources */,
 				810C3870185F28DD00F03DFA /* KDataBuffer.cpp in Sources */,
@@ -5316,7 +5376,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5358,7 +5417,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5393,7 +5451,6 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = _IOS;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -5419,7 +5476,8 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
-				SDKROOT = iphoneos7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -5431,7 +5489,6 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = _IOS;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -5450,7 +5507,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = 2;

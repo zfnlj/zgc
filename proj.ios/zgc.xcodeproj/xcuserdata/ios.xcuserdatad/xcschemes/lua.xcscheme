@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81A6A504189663770039FF68"
+               BlueprintIdentifier = "8168635A18969AE100789DE8"
                BuildableName = "liblua.a"
                BlueprintName = "lua"
                ReferencedContainer = "container:zgc.xcodeproj">

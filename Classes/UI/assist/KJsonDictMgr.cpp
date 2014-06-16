@@ -1,5 +1,5 @@
 #include "KJsonDictMgr.h"
-#include "../Inc/KTypeDef.h"
+#include "../../Inc/KTypeDef.h"
 
 IMPLEMENT_SINGLETON(KJsonDictMgr)
 
