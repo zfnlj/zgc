@@ -41,6 +41,7 @@ public:
 	static void _switch2BattleScene();
 	static void _switch2MainMenu();
 	static void _switch2StageWaitScene();
+	static void _switch2ShopScene();
 	static void _switch2CardGroupScene();
 	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig);
 	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig);

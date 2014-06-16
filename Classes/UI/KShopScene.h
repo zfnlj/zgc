@@ -1,29 +1,30 @@
-#ifndef _KSHOPPANEL_H
-#define _KSHOPPANEL_H
+#ifndef _KShopScene_H
+#define _KShopScene_H
 
 #include "cocos2d.h"
 #include "UILayer.h"
-
+#include "KSceneLayerBase.h"
 USING_NS_CC;
 
 namespace KStoreAbout{
 	class KStoreCreateInfo;
 };
 
-class KShopPanel :public CCObject
+class KShopScene :public KSceneLayerBase
 {
 public:
-	KShopPanel();
-	~KShopPanel();
+	KShopScene();
+	~KShopScene();
 
-	void init(cocos2d::extension::UILayer* layer);
+	static cocos2d::CCScene* scene();
+	virtual bool init();  
+
+	CREATE_FUNC(KShopScene);
+	virtual void update(float dt);
 	void DoClickClose(CCObject* sender);
 	void UpdateMoney();
 	void UpdateNormalBag();
 private:
-	cocos2d::extension::UILayer* m_layer;
-	cocos2d::extension::UIWidget* m_Panel;
-
 	void InitItem();
 	
 	void DoClickBuy(CCObject* sender);

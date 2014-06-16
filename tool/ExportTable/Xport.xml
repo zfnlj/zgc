@@ -2,102 +2,102 @@
 <Settings>
 	<Item Sheet="Soldier" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\SoldierCard.txt</File>
+      <File>d:\zgc_excel\data\card\SoldierCard.txt</File>
     </Export>
   </Item>
   <Item Sheet="Hero" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\HeroCard.txt</File>
+      <File>d:\zgc_excel\data\card\HeroCard.txt</File>
     </Export>
   </Item>
   <Item Sheet="Skill" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\SkillCard.txt</File>
+      <File>d:\zgc_excel\data\card\SkillCard.txt</File>
     </Export>
   </Item>
   <Item Sheet="Ability" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\Ability.txt</File>
+      <File>d:\zgc_excel\data\card\Ability.txt</File>
     </Export>
   </Item>
   <Item Sheet="Attr" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\Attr.txt</File>
+      <File>d:\zgc_excel\data\card\Attr.txt</File>
     </Export>
   </Item>
   <Item Sheet="Secret" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\Secret.txt</File>
+      <File>d:\zgc_excel\data\card\Secret.txt</File>
     </Export>
   </Item>
   <Item Sheet="hero_skill" Workbook="CardInfo.xls" Discription="卡牌" Method="Text" Export="False">
     <Export>
-      <File>d:\card\hero_skill.txt</File>
+      <File>d:\zgc_excel\data\card\hero_skill.txt</File>
     </Export>
   </Item>
   <Item Sheet="StateStore" Workbook="CardInfo.xls" Discription="商店" Method="Text" Export="False">
     <Export>
-      <File>d:\StateStores.txt</File>
+      <File>d:\zgc_excel\data\StateStores.txt</File>
     </Export>
   </Item>
   <Item Sheet="ItemDesc" Workbook="CardInfo.xls" Discription="ItemDesc" Method="Text" Export="False">
     <Export>
-      <File>d:\ItemDesc.txt</File>
+      <File>d:\zgc_excel\StringManager\ItemDesc.txt</File>
     </Export>
   </Item> 
   <Item Sheet="DeckDef" Workbook="CardInfo.xls" Discription="DeckDef" Method="Text" Export="False">
     <Export>
-      <File>d:\DeckDef.txt</File>
+      <File>d:\zgc_excel\data\DeckDef.txt</File>
     </Export>
   </Item> 
   <Item Sheet="BattleField" Workbook="CardInfo.xls" Discription="BattleField" Method="Text" Export="False">
     <Export>
-      <File>d:\BattleField.txt</File>
+      <File>d:\zgc_excel\data\BattleField.txt</File>
     </Export>
   </Item> 
   <Item Sheet="Rank" Workbook="CardInfo.xls" Discription="Rank" Method="Text" Export="False">
     <Export>
-      <File>d:\Rank.txt</File>
+      <File>d:\zgc_excel\data\Rank.txt</File>
     </Export>
   </Item> 
   <Item Sheet="List" Workbook="BaseInfo.xls" Discription="base" Method="Text" Export="False">
     <Export>
-      <File>d:\List.txt</File>
+      <File>d:\zgc_excel\data\List.txt</File>
     </Export>
   </Item>
   <Item Sheet="card_layout" Workbook="BaseInfo.xls" Discription="card_layout" Method="Text" Export="False">
     <Export>
-      <File>d:\card_layout.txt</File>
+      <File>d:\zgc_excel\data\card_layout.txt</File>
     </Export>
   </Item>
   <Item Sheet="Armature" Workbook="BaseInfo.xls" Discription="armature" Method="Text" Export="False">
     <Export>
-      <File>d:\Armature.txt</File>
+      <File>d:\zgc_excel\data\Armature.txt</File>
     </Export>
   </Item>
 	<Item Sheet="help_string" Workbook="BaseInfo.xls" Discription="help_string" Method="Text" Export="False">
     <Export>
-      <File>d:\string\HelpStr.txt</File>
+      <File>d:\zgc_excel\StringManager\HelpStr.txt</File>
     </Export>
   </Item>
   <Item Sheet="tipStr" Workbook="BaseInfo.xls" Discription="tipStr" Method="Text" Export="False">
     <Export>
-      <File>d:\string\TipStr.txt</File>
+      <File>d:\zgc_excel\StringManager\TipStr.txt</File>
     </Export>
   </Item>
   <Item Sheet="storyStr" Workbook="BaseInfo.xls" Discription="storyStr" Method="Text" Export="False">
     <Export>
-      <File>d:\string\StoryStr.txt</File>
+      <File>d:\zgc_excel\StringManager\StoryStr.txt</File>
     </Export>
   </Item>
 	<Item Sheet="AcceptQuestList" Workbook="BaseInfo.xls" Discription="AcceptQuestList" Method="Text" Export="False">
     <Export>
-      <File>d:\AcceptQuestList.txt</File>
+      <File>d:\zgc_excel\data\AcceptQuestList.txt</File>
     </Export>
   </Item>
    <Item Sheet="ItemInfo" Workbook="BaseInfo.xls" Discription="ItemInfo" Method="Text" Export="False">
     <Export>
-      <File>d:\ItemInfo.txt</File>
+      <File>d:\zgc_excel\data\ItemInfo.txt</File>
     </Export>
   </Item>
 </Settings>

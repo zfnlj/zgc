@@ -1,4 +1,4 @@
-#include "KShopPanel.h"
+#include "KShopScene.h"
 
 #include "../GameLogic/KDynamicWorld.h"
 #include "../GameLogic/KCardInst.h"
@@ -24,45 +24,76 @@ using namespace KItemAbout;
 #define MAX_SHOP_ITEM 8
 #define MAX_BAG_ITEM 10
 
-KShopPanel::KShopPanel():m_Panel(NULL),m_store(NULL)
+CCScene* KShopScene::scene()
+{
+    // 'scene' is an autorelease object
+    CCScene *scene = CCScene::create();
+    
+    // 'layer' is an autorelease object
+    KShopScene *layer = KShopScene::create();
+    // add layer as a child to scene
+    scene->addChild(layer,0,1977);
+	
+    // return the scene
+    return scene;
+}
+
+KShopScene::KShopScene():m_store(NULL)
 {
 }
 
-KShopPanel::~KShopPanel()
+KShopScene::~KShopScene()
 {
-	CC_SAFE_RELEASE_NULL(m_Panel);
 }
-void KShopPanel::init(cocos2d::extension::UILayer* layer)
-{
-	if(!m_Panel){
-		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/shop.json");
-		CC_SAFE_RETAIN(m_Panel);
 
-		UIWidget* pBut = UIHelper::seekWidgetByName(m_Panel, "but_close");
+void KShopScene::update(float dt)
+{
+	KSceneLayerBase::update(dt);
+}
+
+bool KShopScene::init()
+{
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KShopScene::update),this,0.033f,false);
+    //////////////////////////////
+    // 1. super init first
+    if ( !KSceneLayerBase::init() )
+    {
+        return false;
+    }
+  
+    // add "BattleFieldScene" splash screen"
+
+	if(!m_ui){
+		m_ui = GUIReader::shareReader()->widgetFromJsonFile("GUI/shop.json");
+		CC_SAFE_RETAIN(m_ui);
+		addWidget(m_ui);
+
+		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui, "but_close");
 		pBut->setTouchEnable(true);
-		KShopPanel* me = this;
-		pBut->addPushDownEvent(me, coco_pushselector(KShopPanel::DoClickClose));
+		KShopScene* me = this;
+		pBut->addPushDownEvent(me, coco_pushselector(KShopScene::DoClickClose));
+		m_actor.init(m_ui);
 	}
+
 	m_buyProduct = 0;
-	m_layer = layer;
-	m_layer->addWidget(m_Panel);
 	InitItem();
 	UpdateNormalBag();
 	UpdateMoney();
+    return true;
 }
 
-void KShopPanel::UpdateMoney()
+void KShopScene::UpdateMoney()
 {
-	UILabelBMFont* pLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel, "money_txt");
+	UILabelBMFont* pLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, "money_txt");
 	pLabel->setText(KMainPlayer::RealPlayer()->GetMoney());
 }
 
-void KShopPanel::DoClickClose(CCObject* sender)
+void KShopScene::DoClickClose(CCObject* sender)
 {
-	m_layer->removeWidget(m_Panel);
+	KUIAssist::_switch2MainMenu();
 }
 
-void KShopPanel::onClickBuy(CCObject* sender)
+void KShopScene::onClickBuy(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
 	m_buyProduct = pBut->getTag();
@@ -75,10 +106,10 @@ void KShopPanel::onClickBuy(CCObject* sender)
 
 	KHelpStringStatic* titleString = KGameStaticMgr::getSingleton().GetHelpString(UI_NOTIFY_STR);
 
-	KPopupLayer::DoModal(titleString->GetString(),sz,KPopupLayer::DT_Yes_No,coco_pushselector(KShopPanel::DoClickBuy),this);
+	KPopupLayer::DoModal(titleString->GetString(),sz,KPopupLayer::DT_Yes_No,coco_pushselector(KShopScene::DoClickBuy),this);
 }
 
-void KShopPanel::DoClickBuy(CCObject* sender)
+void KShopScene::DoClickBuy(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
 	if(pBut->getTag()!=KPopupLayer::RT_YES) return;
@@ -90,11 +121,18 @@ void KShopPanel::DoClickBuy(CCObject* sender)
 	KBagNormal* pBag = pBagMgr->FindNormalBag();
 	if(!pBag) return;
 
+	int pos = pBag->GetFirstPos(m_buyProduct);
+	if(pos<0) return;
 
+	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+		pBagMgr->TryToUse(pBag,pos,0);
+	}else{
+		//TBD
+	}
 	
 }
 
-void KShopPanel::DoClickUseItem(CCObject* sender)
+void KShopScene::DoClickUseItem(CCObject* sender)
 {
 	UIWidget* pWidget = (UIWidget*)sender;
 	KItemAbout::KBagManager* pBagMgr = KMainPlayer::Instance()->GetBagManagerPtr();
@@ -109,7 +147,7 @@ void KShopPanel::DoClickUseItem(CCObject* sender)
 	}
 }
 
-void KShopPanel::InitItem()
+void KShopScene::InitItem()
 {
 	m_store =KStoreCreateInfoManager::GetInstancePtr()->GetStoreCreateInfo(1);
 	if(!m_store) return;
@@ -117,12 +155,12 @@ void KShopPanel::InitItem()
 	for(int i=0;i<MAX_SHOP_ITEM;i++){
 		char slot_name[64];
 		sprintf(slot_name,"item_%d",i);
-		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
 		KUIAssist::_setButVisible(slotWidget,false);
-		slotWidget->addPushDownEvent(this, coco_pushselector(KShopPanel::onClickBuy));
+		slotWidget->addPushDownEvent(this, coco_pushselector(KShopScene::onClickBuy));
 
 		sprintf(slot_name,"cost_%d",i);
-		UILabelBMFont* pPriceLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UILabelBMFont* pPriceLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, slot_name);
 		pPriceLabel->setVisible(false);
 	}
 
@@ -132,7 +170,7 @@ void KShopPanel::InitItem()
 	{
 		char slot_name[64];
 		sprintf(slot_name,"item_%d",index);
-		UIImageView* slotWidget = (UIImageView*)UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UIImageView* slotWidget = (UIImageView*)UIHelper::seekWidgetByName(m_ui, slot_name);
 		KUIAssist::_setButVisible(slotWidget,true);
 		
 		slotWidget->setTag(index+1);
@@ -147,7 +185,7 @@ void KShopPanel::InitItem()
 		
 	
 		sprintf(slot_name,"cost_%d",index);
-		UILabelBMFont* pPriceLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UILabelBMFont* pPriceLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, slot_name);
 		char buf[10];
 		sprintf(buf,"%d",item->GetPrice());
 		pPriceLabel->setText(buf);
@@ -157,12 +195,12 @@ void KShopPanel::InitItem()
 	}
 }
 
-void KShopPanel::UpdateNormalBag()
+void KShopScene::UpdateNormalBag()
 {
 	for(int i=1;i<=MAX_BAG_ITEM;i++){
 		char slot_name[64];
 		sprintf(slot_name,"my_slot%d",i);
-		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
 		if(slotWidget) slotWidget->setVisible(false);
 	}
 
@@ -180,11 +218,11 @@ void KShopPanel::UpdateNormalBag()
 
 		char slot_name[64];
 		sprintf(slot_name,"my_slot%d",index);
-		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_Panel, slot_name);
+		UIWidget* slotWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
 		if(!slotWidget) continue;
 		slotWidget->setVisible(true);
 		slotWidget->setTag(itorTmp->first);
-		slotWidget->addPushDownEvent(this, coco_pushselector(KShopPanel::DoClickUseItem));
+		slotWidget->addPushDownEvent(this, coco_pushselector(KShopScene::DoClickUseItem));
 
 		
 		

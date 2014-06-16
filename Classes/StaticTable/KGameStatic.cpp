@@ -52,9 +52,9 @@ void KGameStaticMgr::LoadStaticData()
 	InitRank("data/HeroRank.txt",m_heroExpMgr);
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
-	InitHelpString("data/string/HelpStr.txt");
-	InitTipString("data/string/TipStr.txt");
-	InitStoryString("data/string/StoryStr.txt");
+	InitHelpString("StringManager/HelpStr.txt");
+	InitTipString("StringManager/TipStr.txt");
+	InitStoryString("StringManager/StoryStr.txt");
 	InitDeckDef("data/DeckDef.txt");
 }
 

@@ -9,7 +9,6 @@
 #include "KFightAreaPanel.h"
 #include "KNotifyPanel.h"
 #include "KActor.h"
-#include "KShopPanel.h"
 #include "KGenCardPanel.h"
 #include "KGameResultPanel.h"
 #include "KGameRecordPanel.h"

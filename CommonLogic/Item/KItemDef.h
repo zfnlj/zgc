@@ -176,7 +176,7 @@ enum ITEM_EVENT_TYPE
 // 配置信息
 
 #define ITEMGEAR_TAB_FILENAME		"item/GearInfo.txt"			// 客户端服务器端物品共用数据文件
-#define ITEM_TAB_FILENAME			"item/ItemInfo.txt"			// 客户端服务器端物品共用数据文件
+#define ITEM_TAB_FILENAME			"data/ItemInfo.txt"			// 客户端服务器端物品共用数据文件
 #define ITEM_MATERIAL_TAB_FILENAME	"item/ItemMaterial.txt"		// 客户端服务器端物品共用数据文件
 #define ITEMGEM_TAB_FILENAME		"item/GemInfo.txt"			// 客户端服务器端物品宝石数据文件
 #define ITEMHAMMER_TAB_FILENAME		"item/HammerInfo.txt"		// 客户端服务器端物品榔头数据文件
@@ -190,7 +190,7 @@ enum ITEM_EVENT_TYPE
 
 #define ITEM_TAB_DISPLAY_FILENAME	"item/ItemDisplayInfo.txt"	// 客户端物品显示数据文件
 #define DROP_GROUP_TAB_FILENAME		"item/DropGroup.txt"		// 服务器端物品掉落配置表
-#define STORE_TAB_FILENAME			"item/StateStores.txt"		// 服务器端npc出售商品配置表
+#define STORE_TAB_FILENAME			"data/StateStores.txt"		// 服务器端npc出售商品配置表
 
 #define ITEM_TAB_VIPITEM_FILENAME	"item/VIPCreateInfo.txt"	// 客户端物品显示数据文件
 

@@ -4,7 +4,6 @@
 #include "cocos2d.h"
 #include "UILayer.h"
 #include "KActor.h"
-#include "KShopPanel.h"
 #include "KGenCardPanel.h"
 #include "KGameResultPanel.h"
 
@@ -48,7 +47,6 @@ private:
 	cocos2d::extension::UILayer* m_ui;
 	void InitTest();
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
-	KShopPanel	m_shopPanel;
 	KGenCardPanel m_genCardPanel;
 	KGameResultPanel m_gameResultPanel;
 };

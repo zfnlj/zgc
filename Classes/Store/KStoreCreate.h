@@ -17,7 +17,7 @@ copyright:	Aurora Interactive, 2012
 #include "Inc/Lua/KLuaWrap.h"
 #include "CommonLogic/Store/KStoreProduct.h"
 
-#define DEF_STORE_PRODUCT_TAB_FILENAME "item/StateStores.txt"
+#define DEF_STORE_PRODUCT_TAB_FILENAME "data/StateStores.txt"
 #define DEF_STORE_PRODUCT	(KStoreAbout::KStoreCreateInfoManager::Instance())
 
 namespace KStoreAbout

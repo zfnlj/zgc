@@ -14,6 +14,7 @@
 #include "../CardGroupScene.h"
 #include "KPopupLayer.h"
 #include "KUIMsgDef.h"
+#include "../KShopScene.h"
 
 #define SHOW_CARD_OFFSET 6
 #define MAX_BUF_SLOT_NUM 5
@@ -189,7 +190,12 @@ UIWidget* KUIAssist::GetIndexWidget(UIWidget* panel,const char* baseName,int pos
 	return  UIHelper::seekWidgetByName(panel,sz);
 }
 
-;
+void KUIAssist::_switch2ShopScene()
+{
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, KShopScene::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+
+}
 
 void KUIAssist::_switch2StageWaitScene()
 {

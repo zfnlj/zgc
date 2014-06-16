@@ -251,9 +251,6 @@
     <ClCompile Include="..\Classes\Item\KItem.cpp">
       <Filter>game\Item</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KShopPanel.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\sqlite\KSqlite.cpp">
       <Filter>sqlite</Filter>
     </ClCompile>
@@ -421,6 +418,9 @@
       <Filter>UI\assist</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI\KSceneLayerBase.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KShopScene.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
   </ItemGroup>
@@ -718,9 +718,6 @@
     <ClInclude Include="..\Classes\Item\KItem.h">
       <Filter>game\Item</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\KShopPanel.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\sqlite\KSqlite.h">
       <Filter>sqlite</Filter>
     </ClInclude>
@@ -894,6 +891,9 @@
       <Filter>UI\assist</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\KSceneLayerBase.h">
+      <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KShopScene.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
   </ItemGroup>

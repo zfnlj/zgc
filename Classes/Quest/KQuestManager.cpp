@@ -254,7 +254,7 @@ bool KQuestManager::syncAvailQuests()
 
 bool KQuestManager::LoadAvailQuestList(void)
 {
-	std::string fullPath = "data/Quest/AcceptQuestList.txt";
+	std::string fullPath = "data/AcceptQuestList.txt";
 #ifdef _USE_COCOS2DX
 	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(fullPath.c_str());
 #endif

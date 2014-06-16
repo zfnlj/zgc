@@ -182,7 +182,7 @@ void MainMenuScene::UpdateLockStatus()
 
 void MainMenuScene::DoClickShopBut(CCObject* sender)
 {
-	m_shopPanel.init(m_ui);
+	KUIAssist::_switch2ShopScene();
 }
 
 void MainMenuScene::InitTest()
@@ -191,12 +191,10 @@ void MainMenuScene::InitTest()
 
 void MainMenuScene::onUpdateMoney()
 {
-	m_shopPanel.UpdateMoney();
 }
 
 void MainMenuScene::onUpdateBag()
 {
-	m_shopPanel.UpdateNormalBag();
 }
 
 void MainMenuScene::onGenPlayerCard(unsigned long long p1)
