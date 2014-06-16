@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "UILayer.h"
 #include "KSceneLayerBase.h"
+#include "KGenCardPanel.h"
 USING_NS_CC;
 
 namespace KStoreAbout{
@@ -24,6 +25,7 @@ public:
 	void DoClickClose(CCObject* sender);
 	void UpdateMoney();
 	void UpdateNormalBag();
+	virtual void onGenPlayerCard(unsigned long long p1);
 private:
 	void InitItem();
 	
@@ -32,6 +34,7 @@ private:
 	void DoClickUseItem(CCObject* sender);
 	KStoreAbout::KStoreCreateInfo* m_store;
 	int m_buyProduct;
+	KGenCardPanel m_genCardPanel;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

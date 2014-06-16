@@ -22,17 +22,22 @@ KGenCardPanel::~KGenCardPanel()
 }
 void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p1)
 {
-	m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/genCard.json");
-	CC_SAFE_RETAIN(m_Panel);
+	for(int i=0;i<MAX_GEN_CARD_NUM;i++){
+		m_GenCard[i].init();
+	}
 
-	m_layer = layer;
+	if(!m_Panel){
+		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/select.json");
+		CC_SAFE_RETAIN(m_Panel);
+		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KGenCardPanel::update),this,0.033f,false);
+		m_layer = layer;
+		
+
+		UIWidget* pBut = UIHelper::seekWidgetByName(m_Panel,"panel");
+		pBut->addPushDownEvent(this, coco_pushselector(KGenCardPanel::DoClickOK));
+	}
 	m_layer->addWidget(m_Panel);
 
-	UIWidget* pBut = m_layer->getWidgetByName("Button_ok");
-	KGenCardPanel* me = this;
-    
-	pBut->addPushDownEvent(me, coco_pushselector(KGenCardPanel::DoClickOK));
-	
 	SC_GenPlayerCard* pGen = (SC_GenPlayerCard*)p1;
 	for(int i=0;i<pGen->count;i++){
 		char slotName[20];
@@ -41,9 +46,25 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		if(!slotView) continue;
 
 		m_GenCard[i].init(0,NULL,KGameStaticMgr::getSingleton().GetCard(pGen->cardID[i]));
-		KCardActor* actor = KCardActor::create(&m_GenCard[i]);
+		KCardActor* actor = KCardActor::create(&m_GenCard[i],true);
 		actor->GetUI()->setPosition(slotView->getWorldPosition());
+		actor->GetUI()->setVisible(false);
 		m_Panel->addChild(actor->GetUI());
+
+		UIImageView* pNewSlot = (UIImageView*) UIHelper::seekWidgetByName(actor->GetUI(),"buf_slot_0");
+		pNewSlot->loadTexture("new_icon.png",UI_TEX_TYPE_PLIST);
+		pNewSlot->setVisible(pGen->newFlag[i]>0);
+		
+		KAction* pAction = actor->GetActionMgr().PlayAction("gen_card");
+		pAction->SetDelayTime(i*1.5);
+	}
+}
+
+void KGenCardPanel::update(float dt)
+{
+	for(int i=0;i<MAX_GEN_CARD_NUM;i++){
+		KCardActor* actor = (KCardActor*)m_GenCard[i].getActor();
+		if(actor) actor->update(dt);
 	}
 }
 

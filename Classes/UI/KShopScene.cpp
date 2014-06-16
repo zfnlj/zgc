@@ -246,3 +246,7 @@ void KShopScene::UpdateNormalBag()
 	}
 }
 
+void KShopScene::onGenPlayerCard(unsigned long long p1)
+{
+	m_genCardPanel.init(this,p1);
+}

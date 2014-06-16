@@ -3,6 +3,7 @@
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
 #include "../UI/MainMenuScene.h"
+#include "../UI//assist/KUIAssist.h"
 
 KWorldMsgHub::KWorldMsgHub()
 {
@@ -25,7 +26,7 @@ void KWorldMsgHub::UseItem(unsigned long long Param1, unsigned long long Param2)
 void KWorldMsgHub::GenPlayerCard(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	GameRoot::getSingleton().getMainMenuScene()->onGenPlayerCard(Param1);
+	KUIAssist::_activeSceneLayer()->onGenPlayerCard(Param1);
 #else
 	
 #endif

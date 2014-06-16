@@ -72,7 +72,7 @@ void KCardActor::Deactive()
 	m_ui->removeRenderer(m_ActiveGreenSprite,false);
 }
 
-KCardActor* KCardActor::create(KCardInst* pCardInst)
+KCardActor* KCardActor::create(KCardInst* pCardInst,bool bBig)
 {
 	if(!pCardInst->GetST()) return NULL;
 	if(pCardInst->getActor()){
@@ -80,7 +80,7 @@ KCardActor* KCardActor::create(KCardInst* pCardInst)
 	}
 	KCardActor* actor = new KCardActor;
 	actor->autorelease();
-	actor->init(pCardInst);
+	actor->init(pCardInst,bBig);
 	return actor;
 }
 
@@ -116,7 +116,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 
 }
 
-void KCardActor::init(KCardInst* pInst)
+void KCardActor::init(KCardInst* pInst,bool bBig)
 {
 	m_ui = NULL;
 	m_bigPhoto = NULL;
@@ -132,7 +132,7 @@ void KCardActor::init(KCardInst* pInst)
 		m_ui->setScale(0.8f);
 		m_bBack = true;
 	}else{
-		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),false);
+		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),bBig);
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));

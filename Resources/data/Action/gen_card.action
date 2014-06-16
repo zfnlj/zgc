@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action class="null">
+  <affect_body> 
+   	<affector class="visible" createtime="0" iVal="1" life="0.01" />
+   	<affector class="scale" createtime="0" fVal="0.01" life="0.01" />
+   	<affector class="eff" slot="card_center" obj="card_use" createtime="0.0" fVal="1.2" iVal="90"  life="2.0" />
+  	<affector class="scale" createtime="0.1" fVal="1.0" life="0.6" />
+  </affect_body>
+</action>
+</ag>
+		

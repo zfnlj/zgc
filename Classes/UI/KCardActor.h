@@ -16,7 +16,7 @@ class KCardActor :public KActor
 public:
 	KCardActor(){}
 	~KCardActor();
-	static KCardActor* create(KCardInst*);
+	static KCardActor* create(KCardInst*,bool bBig=false);
 
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual void update(float dt);
@@ -50,7 +50,7 @@ public:
 	virtual CCNode* GetCNode(const char* obj);
 	void Clear();
 private:
-	void init(KCardInst*);
+	void init(KCardInst*,bool bBig=false);
 	bool DoSelectBeginCard(CCObject* sender);
 	KCardInst* m_card;
 	cocos2d::extension::UIWidget* m_bigPhoto;

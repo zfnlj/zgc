@@ -197,11 +197,6 @@ void MainMenuScene::onUpdateBag()
 {
 }
 
-void MainMenuScene::onGenPlayerCard(unsigned long long p1)
-{
-	m_genCardPanel.init(m_ui,p1);
-}
-
 void MainMenuScene::onQuestUpdate()
 {
 }

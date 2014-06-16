@@ -32,7 +32,6 @@ public:
 	void DoClickQuestBut(CCObject* sender);
 	void DoClickStoreBut(CCObject* sender);
 
-	void onGenPlayerCard(unsigned long long p1);
 
 	void OnSelectCard(KCardActor*);
 	void onUpdateMoney();
@@ -47,7 +46,6 @@ private:
 	cocos2d::extension::UILayer* m_ui;
 	void InitTest();
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
-	KGenCardPanel m_genCardPanel;
 	KGameResultPanel m_gameResultPanel;
 };
 
