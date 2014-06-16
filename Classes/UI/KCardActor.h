@@ -49,14 +49,16 @@ public:
 	virtual void updateSecret();
 	virtual CCNode* GetCNode(const char* obj);
 	void Clear();
+	CCSprite* GetActiveRedSprite();
+	CCSprite* GetActiveGreenSprite();
 private:
 	void init(KCardInst*,bool bBig=false);
 	bool DoSelectBeginCard(CCObject* sender);
 	KCardInst* m_card;
 	cocos2d::extension::UIWidget* m_bigPhoto;
 	K3DActionParam m_tombAction;
-	CCSprite* m_ActiveRedSprite;
-	CCSprite* m_ActiveGreenSprite;
+	CCSprite* m_activeRedSprite;
+	CCSprite* m_activeGreenSprite;
 	int m_curSlot;
 	
 };

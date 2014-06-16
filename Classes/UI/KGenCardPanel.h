@@ -16,6 +16,7 @@ public:
 
 	void init(cocos2d::extension::UILayer* layer,unsigned long long p1);
 	void DoClickOK(CCObject* sender);
+	void onClickCard(CCObject* sender);
 	virtual void update(float dt);
 private:
 	cocos2d::extension::UILayer* m_layer;

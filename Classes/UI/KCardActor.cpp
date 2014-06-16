@@ -42,34 +42,34 @@ void KCardActor::Clear()
 	if(m_bigPhoto){
 		m_bigPhoto->removeFromParent();
 	}
-	CC_SAFE_RELEASE(m_ActiveRedSprite);
-	CC_SAFE_RELEASE(m_ActiveGreenSprite);
+	CC_SAFE_RELEASE(m_activeRedSprite);
+	CC_SAFE_RELEASE(m_activeGreenSprite);
 	CC_SAFE_RELEASE(m_ui);
 	CC_SAFE_RELEASE(m_bigPhoto);
 }
 
 void KCardActor::ActiveGreen()
 {
-	if(!m_ActiveGreenSprite->getParent()) m_ui->addRenderer(m_ActiveGreenSprite,100);
+	if(!GetActiveGreenSprite()->getParent()) m_ui->addRenderer(GetActiveGreenSprite(),100);
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
-	m_ActiveGreenSprite->setPosition(pt);
-	m_ActiveGreenSprite->setScale(1.02f);
-	m_ui->removeRenderer(m_ActiveRedSprite,false);
+	GetActiveGreenSprite()->setPosition(pt);
+	GetActiveGreenSprite()->setScale(1.02f);
+	m_ui->removeRenderer(GetActiveRedSprite(),false);
 }
 
 void KCardActor::ActiveRed()
 {
-	if(!m_ActiveRedSprite->getParent()) m_ui->addRenderer(m_ActiveRedSprite,100);
+	if(!GetActiveRedSprite()->getParent()) m_ui->addRenderer(GetActiveRedSprite(),100);
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
-	m_ActiveRedSprite->setPosition(pt);
-	m_ActiveRedSprite->setScale(1.02f);
-	m_ui->removeRenderer(m_ActiveGreenSprite,false);
+	GetActiveRedSprite()->setPosition(pt);
+	GetActiveRedSprite()->setScale(1.02f);
+	m_ui->removeRenderer(GetActiveGreenSprite(),false);
 }
 
 void KCardActor::Deactive()
 {
-	m_ui->removeRenderer(m_ActiveRedSprite,false);
-	m_ui->removeRenderer(m_ActiveGreenSprite,false);
+	m_ui->removeRenderer(GetActiveRedSprite(),false);
+	m_ui->removeRenderer(GetActiveGreenSprite(),false);
 }
 
 KCardActor* KCardActor::create(KCardInst* pCardInst,bool bBig)
@@ -138,13 +138,29 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
 		m_ui->addMoveEvent(this, coco_moveselector(KCardActor::onMoveEvent));
 	}
-	m_ActiveRedSprite = KUIAssist::CreateAnimationSprite("active_red");
-	CC_SAFE_RETAIN(m_ActiveRedSprite);
-	m_ActiveGreenSprite = KUIAssist::CreateAnimationSprite("active_green");
-	CC_SAFE_RETAIN(m_ActiveGreenSprite);
+	m_activeRedSprite = NULL;
+	m_activeGreenSprite = NULL;
 	CC_SAFE_RETAIN(m_ui);
 	m_ui->setPosition(ccp(-500.0f,-500.0f));
 	KActor::init(m_ui);
+}
+
+CCSprite* KCardActor::GetActiveRedSprite()
+{
+	if(!m_activeRedSprite){
+		m_activeRedSprite = KUIAssist::CreateAnimationSprite("active_red");
+		CC_SAFE_RETAIN(m_activeRedSprite);
+	}
+	return m_activeRedSprite;
+}
+
+CCSprite* KCardActor::GetActiveGreenSprite()
+{
+	if(!m_activeGreenSprite){
+		m_activeGreenSprite = KUIAssist::CreateAnimationSprite("active_green");
+		CC_SAFE_RETAIN(m_activeGreenSprite);
+	}
+	return m_activeGreenSprite;
 }
 
 bool KCardActor::DoSelectBeginCard(CCObject* sender)

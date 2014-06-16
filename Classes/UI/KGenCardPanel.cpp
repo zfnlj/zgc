@@ -49,6 +49,8 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		KCardActor* actor = KCardActor::create(&m_GenCard[i],true);
 		actor->GetUI()->setPosition(slotView->getWorldPosition());
 		actor->GetUI()->setVisible(false);
+		actor->GetUI()->addPushDownEvent(this, coco_pushselector(KGenCardPanel::onClickCard));
+
 		m_Panel->addChild(actor->GetUI());
 
 		UIImageView* pNewSlot = (UIImageView*) UIHelper::seekWidgetByName(actor->GetUI(),"buf_slot_0");
@@ -58,6 +60,11 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		KAction* pAction = actor->GetActionMgr().PlayAction("gen_card");
 		pAction->SetDelayTime(i*1.5);
 	}
+}
+
+void KGenCardPanel::onClickCard(CCObject* sender)
+{
+
 }
 
 void KGenCardPanel::update(float dt)
