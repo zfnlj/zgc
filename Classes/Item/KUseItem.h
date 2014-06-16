@@ -111,7 +111,12 @@ public:
 	EndDef
 };
 
-DECLARE_SIMPLE_TYPE(KUseItem::EvtReg);
+
+template <> struct _is_simple_type_<KUseItem::EvtReg> 
+{ 
+	static const bool value = true; 
+};
+
 };
 #endif
 
