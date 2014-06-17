@@ -2,6 +2,7 @@
 #include "KJsonDictMgr.h"
 #include "KUIAssist.h"
 #include "../../StaticTable/KGameStatic.h"
+#include "../../common/KUIMsgDef.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -106,6 +107,16 @@ bool KPopupLayer::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 {
 	if (m_pInputManager) m_pInputManager->onTouchBegan(touch);
 	return true;
+}
+
+void KPopupLayer::DoNotifyDlg(int contentId)
+{
+	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(UI_NOTIFY_STR);
+	if(!helpString) return;
+
+	KHelpStringStatic* contentString = KGameStaticMgr::getSingleton().GetHelpString(contentId);
+	if(!contentString) return;
+	DoModal(helpString->GetString(),contentString->GetString(),DT_Ok,NULL,NULL);
 }
 
 void KPopupLayer::DoModal(const char* szTitle,const char* szContent,DialogueType type,SEL_PushEvent p,CCObject* pListener)

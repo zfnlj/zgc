@@ -13,7 +13,7 @@
 #include "../StageWaitScene.h"
 #include "../CardGroupScene.h"
 #include "KPopupLayer.h"
-#include "KUIMsgDef.h"
+#include "../../common/KUIMsgDef.h"
 #include "../KShopScene.h"
 
 #define SHOW_CARD_OFFSET 6

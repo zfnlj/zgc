@@ -307,8 +307,7 @@ BOOL KPlayerQuestManager::SetQuestHistory(int qid, int val, time_t t)
 	KDBQuestHistoryDataUnit* pu = this->GetQuestHistoryUnit_force(qid);
 
 	pu->val = val;
-	pu->time_h = KQuestCommon::GetHourTime(t);
-
+	pu->time_h = _GetSystemTimeVal();
 	return TRUE;
 }
 

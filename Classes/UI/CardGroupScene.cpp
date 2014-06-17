@@ -21,7 +21,7 @@
 #include "assist/KQuestFacade.h"
 #include "assist/KPopupLayer.h"
 #include "../WorldObject/KMainPlayer.h"
-#include "assist/KUIMsgDef.h"
+#include "../common/KUIMsgDef.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"

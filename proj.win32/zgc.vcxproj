@@ -285,6 +285,7 @@
     <ClInclude Include="..\Classes\common\KCommonObj.h" />
     <ClInclude Include="..\Classes\common\KPlayerRecordAssist.h" />
     <ClInclude Include="..\Classes\common\KStreamWrapper.h" />
+    <ClInclude Include="..\Classes\common\KUIMsgDef.h" />
     <ClInclude Include="..\Classes\common\KVirtualServerAssist.h" />
     <ClInclude Include="..\Classes\common\OgreDataStream.h" />
     <ClInclude Include="..\Classes\DB\KCrcAssist.h" />
@@ -399,7 +400,6 @@
     <ClInclude Include="..\Classes\UI\assist\KQuestFacade.h" />
     <ClInclude Include="..\Classes\UI\assist\KRadioWidget.h" />
     <ClInclude Include="..\Classes\UI\assist\KUIAssist.h" />
-    <ClInclude Include="..\Classes\UI\assist\KUIMsgDef.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressBar.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressProtocol.h" />
     <ClInclude Include="..\Classes\UI\BattleFieldScene.h" />

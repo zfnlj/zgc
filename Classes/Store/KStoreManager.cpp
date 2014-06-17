@@ -18,6 +18,7 @@
 #include "../GameRoot.h"
 #include "../KNet/KNetMsgFacade.h"
 #include "VirtualService.h"
+#include "../common/KUIMsgDef.h"
 
 using namespace KWorldObjAbout;
 using namespace KItemAbout;
@@ -390,7 +391,7 @@ namespace KStoreAbout
 				if(!KMainPlayer::RealPlayer()->HasMoney(nCost))
 				{
 					// 1403957	背包金钱不足，无法购买
-					KDynamicWorld::getSingleton().ShowSystemMsg(1403957);
+					KDynamicWorld::getSingleton().onSystemMsg(MONEY_LOW_STR);
 					return false;
 				}
 			}
@@ -418,7 +419,7 @@ namespace KStoreAbout
 		//			{
 		//				sprintf_k(buff, sizeof(buff), pInfo, pCIIB->GetName());
 		//			}
-		//			KDynamicWorld::getSingleton().ShowSystemMsg(buff);
+		//			KDynamicWorld::getSingleton().onSystemMsg(buff);
 		//			return false;
 		//		}
 		//	}
@@ -484,7 +485,7 @@ namespace KStoreAbout
 		//{
 		//	// 1405230 背包金钱不足
 		//	const char* pInfo = KStringManager::Instance()->GetStringByID(1405230);
-		//	g_DynamicWorld.ShowSystemMsg(pInfo);
+		//	g_DynamicWorld.onSystemMsg(pInfo);
 		//	return false;
 		//}
 

@@ -19,6 +19,7 @@ public:
 	KActor& GetActor(){ return m_actor;}
 	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
 	virtual void onGenPlayerCard(unsigned long long p1){}
+	virtual void onSystemMsg(int id){}
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActor m_actor;

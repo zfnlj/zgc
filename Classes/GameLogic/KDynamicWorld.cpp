@@ -4,6 +4,8 @@
 #include "../Inc/KTypeDef.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../EventSystem/KEventDefine.h"
+#include "../UI/assist/KPopupLayer.h"
+#include "../common/KUIMsgDef.h"
 
 template<> KDynamicWorld* Singleton<KDynamicWorld>::mSingleton = 0;
 
@@ -51,9 +53,9 @@ const char* KDynamicWorld::GetStringByID(int id)
     return "";
 }
 
-void KDynamicWorld::ShowSystemMsg(int id)
+void KDynamicWorld::onSystemMsg(int id)
 {
-
+	KPopupLayer::DoNotifyDlg(id);
 }
 
 

@@ -57,7 +57,7 @@ namespace KBusinessAbout
 		//		{
 		//			sprintf_k(BMBP.szMsg, sizeof(BMBP.szMsg), pMsg, pRequestName);
 		//		}
-		//		g_DynamicWorld.ShowSystemMsg(BMBP.szMsg);
+		//		g_DynamicWorld.onSystemMsg(BMBP.szMsg);
 		//		g_DynamicWorld.SendWorldMsg(LOGIC_WORLD_BUSINESS_MSGBOX, 0, (unsigned long)(&BMBP));
 		//	}
 		//	return;
@@ -120,7 +120,7 @@ namespace KBusinessAbout
 		//		if(pInfo && pOtherName)
 		//		{
 		//			sprintf_k(szTmp, sizeof(szTmp), pInfo, pOtherName);
-		//			g_DynamicWorld.ShowSystemMsg(szTmp);
+		//			g_DynamicWorld.onSystemMsg(szTmp);
 		//		}
 		//	}
 		//	else
@@ -132,7 +132,7 @@ namespace KBusinessAbout
 		//		if(pInfo && pOtherName)
 		//		{
 		//			sprintf_k(szTmp, sizeof(szTmp), pInfo, pOtherName);
-		//			g_DynamicWorld.ShowSystemMsg(szTmp);
+		//			g_DynamicWorld.onSystemMsg(szTmp);
 		//		}
 		//	}
 		//	BusinessDialogParam BDP;
@@ -154,7 +154,7 @@ namespace KBusinessAbout
 		//	{
 		//		char szTmp[1024];
 		//		sprintf_k(szTmp, sizeof(szTmp), pMsg, pOtherName);
-		//		g_DynamicWorld.ShowSystemMsg(szTmp);
+		//		g_DynamicWorld.onSystemMsg(szTmp);
 		//	}
 		//}
 	}
@@ -310,7 +310,7 @@ namespace KBusinessAbout
 		//default:
 		//	return;
 		//}
-		//g_DynamicWorld.ShowSystemMsg(szTmp);
+		//g_DynamicWorld.onSystemMsg(szTmp);
 	}
 	
 	void KBusinessManager::BusinessLock(const SC_BusinessLock* pBL)
@@ -326,7 +326,7 @@ namespace KBusinessAbout
 		//		{
 		//			// 1403337	对方已点击锁定，等待交易
 		//			const char* pInfo = KStringManager::Instance()->GetStringByID(1403337);
-		//			g_DynamicWorld.ShowSystemMsg(pInfo);
+		//			g_DynamicWorld.onSystemMsg(pInfo);
 		//		}
 		//		m_bMyLockState = pBL->bMyLockState;
 		//		m_bOtherLockState = pBL->bOtherLockState;
@@ -346,7 +346,7 @@ namespace KBusinessAbout
 		//	}
 		//	break;
 		//}
-		//g_DynamicWorld.ShowSystemMsg(pInfo);
+		//g_DynamicWorld.onSystemMsg(pInfo);
 	}
 
 	void KBusinessManager::BusinessStart(const SC_BusinessStart* pBS)
@@ -356,7 +356,7 @@ namespace KBusinessAbout
 		//{
 		//	// 1403338	对方已点击交易，等待交易
 		//	const char* pInfo = KStringManager::Instance()->GetStringByID(1403338);
-		//	g_DynamicWorld.ShowSystemMsg(pInfo);
+		//	g_DynamicWorld.onSystemMsg(pInfo);
 		//}
 
 		//BusinessStartState BSS;
@@ -387,7 +387,7 @@ namespace KBusinessAbout
 
 		//	// 1403344	交易成功
 		//	const char* pInfo = KStringManager::Instance()->GetStringByID(1403344);
-		//	g_DynamicWorld.ShowSystemMsg(pInfo);
+		//	g_DynamicWorld.onSystemMsg(pInfo);
 		//}
 		//else
 		//{
@@ -405,7 +405,7 @@ namespace KBusinessAbout
 		//		break;
 		//	}
 
-		//	g_DynamicWorld.ShowSystemMsg(pInfo);
+		//	g_DynamicWorld.onSystemMsg(pInfo);
 		//}
 	}
 
@@ -422,7 +422,7 @@ namespace KBusinessAbout
 		//{
 		//	char szInfo[100];
 		//	sprintf_k(szInfo, sizeof(szInfo), pInfo, pName);
-		//	g_DynamicWorld.ShowSystemMsg(szInfo);
+		//	g_DynamicWorld.onSystemMsg(szInfo);
 		//}
 
 		//CS_BusinessRequest BR;
@@ -646,7 +646,7 @@ namespace KBusinessAbout
 		//{
 		//	// 1405230 背包金钱不足
 		//	const char* pInfo = KStringManager::Instance()->GetStringByID(1405230);
-		//	g_DynamicWorld.ShowSystemMsg(pInfo);
+		//	g_DynamicWorld.onSystemMsg(pInfo);
 		//	return;
 		//}
 

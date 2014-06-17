@@ -16,7 +16,7 @@
 #include "../Item/KBag.h"
 #include "../Item/KBagManager.h"
 #include "assist/KPopupLayer.h"
-#include "assist/KUIMsgDef.h"
+#include "../common/KUIMsgDef.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -249,4 +249,19 @@ void KShopScene::UpdateNormalBag()
 void KShopScene::onGenPlayerCard(unsigned long long p1)
 {
 	m_genCardPanel.init(this,p1);
+}
+
+void KShopScene::onSystemMsg(int id)
+{
+	if(id==MONEY_LOW_STR){
+		KPopupLayer::DoModal(UI_NOTIFY_STR,MONEY_LOW_STR,KPopupLayer::DT_Yes_No,coco_pushselector(KShopScene::DoBuyMoney),this);
+	}
+}
+
+void KShopScene::DoBuyMoney(CCObject* sender)
+{
+	UIWidget* pBut = (UIWidget*)sender;
+	if(pBut->getTag()==KPopupLayer::RT_YES){
+		//TBD
+	}
 }

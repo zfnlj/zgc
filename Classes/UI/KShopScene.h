@@ -26,6 +26,8 @@ public:
 	void UpdateMoney();
 	void UpdateNormalBag();
 	virtual void onGenPlayerCard(unsigned long long p1);
+	virtual void onSystemMsg(int id);
+	void DoBuyMoney(CCObject* sender);
 private:
 	void InitItem();
 	

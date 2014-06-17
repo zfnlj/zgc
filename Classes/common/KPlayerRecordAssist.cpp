@@ -7,6 +7,7 @@
 #include "../Quest/KClientQuestSession.h"
 #include "../Quest/KQuestNew.h"
 #include "../PlayerCard/KPlayerDeck.h"
+#include "KCommonObj.h"
 
 using namespace KItemAbout;
 namespace KPlayerRecordAssist
@@ -210,6 +211,7 @@ bool QuestOk(tb_playerquest_record* record,int qid,int accepttime)
 	KDBQuestHistoryDataUnit history;
 	history.qid = qid;
 	history.val = (int)KQ_QuestOver;
+	history.time_h = _GetSystemTimeVal();
 	record->qhistory.Append(&history,sizeof(KDBQuestHistoryDataUnit));
 	record->updateMask(tb_playerquest_record::_QHISTORY);
 	CancelQuest(record,qid);

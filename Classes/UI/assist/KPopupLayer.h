@@ -39,6 +39,7 @@ private:
 	virtual bool init();
 
 public:
+	static void DoNotifyDlg(int contentId);
 	static void DoModal(int titleId,int contentId,DialogueType type=DT_Normal,SEL_PushEvent p=NULL,CCObject* pListener=NULL);
 	static void DoModal(const char* szTitle,const char* szContent,DialogueType type=DT_Normal,SEL_PushEvent p=NULL,CCObject* pListener=NULL);
 	static void HideModal();
@@ -48,7 +49,7 @@ public:
 private:
 	void updateLayer(const char* szTitle,const char* szContent,DialogueType type,SEL_PushEvent p);
 	void btn_Click( cocos2d::CCObject* pSender );
-
+	
 private:
 	static KPopupLayer* s_pInstance;
 

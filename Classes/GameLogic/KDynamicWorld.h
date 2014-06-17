@@ -37,7 +37,7 @@ public:
 	void SendWorldMsg(int msgID, unsigned long long Param1, unsigned long long Param2);
 	KLogicModuleMsgDealer m_LogicMsgDealer;
     const char* GetStringByID(int id);
-	void ShowSystemMsg(int id);
+	void onSystemMsg(int id);
 	KWorldObjAbout::KPlayer* GetPlayer(int id);
 #ifdef _USE_COCOS2DX
 	KLoginMsgDealer m_LoginMsgDealer;

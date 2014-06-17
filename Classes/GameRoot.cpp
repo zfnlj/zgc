@@ -40,6 +40,12 @@ void GameRoot::init()
 	srand(val);//
 	//KEventAbout::KEDKillMonster evt;
 	//KDynamicWorld::getSingleton().FireEvent(evt);
+
+	//tm interval;
+	//time_t t1 = 0;
+	//time_t t2 = _GetSystemTimeVal();
+	//_GetTimeInterval(t1,t2,interval);
+	//int kk=0;
 }
 
 void GameRoot::InitializeResource()
