@@ -200,11 +200,6 @@ bool KQuestManager::IsDynTalkQuest( int qid )
 
 bool KQuestManager::IsDynTalkQuest( KQuestNew* pQuest )
 {
-	if (pQuest && pQuest->m_type > enum_dyntalk_quest_begin
-		&& pQuest->m_type < enum_dyntalk_quest_end)
-	{
-		return true;
-	}
 	return false;
 }
 

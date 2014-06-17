@@ -1226,8 +1226,7 @@ const char* KQuestNew::GetTypeText_lua( int qtype )
 
 bool KQuestNew::IsDailyQuest( BYTE qtype )
 {
-	if ((qtype >= enum_daily_quest_begin && qtype <= enum_daily_quest_end)
-		|| (qtype >= enum_dyntalk_quest_begin && qtype <= enum_dyntalk_quest_end))
+	if (qtype == enum_daily_quest)
 	{
 		return true;
 	}

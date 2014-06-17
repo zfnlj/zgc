@@ -73,8 +73,8 @@ namespace KAttributeAbout
 		ca_3End
 	};
 	
-	int CompactIndex(int idx, int param);
-	void DecompackIndex(int compackedIdx, int& idx, int& param);
+	int CompactIndex2(int idx, int param);
+	void DecompackIndex2(int compackedIdx, int& idx, int& param);
 
 template <int x> void export_gameserver_attribute_to_lua()
 {

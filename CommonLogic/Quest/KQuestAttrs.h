@@ -43,15 +43,10 @@ enum enumQuestType
 {
 	enum_normal_quest = 1,		// 主线任务
 	enum_zhixian_quest = 2,		// 支线任务
-	enum_daily_quest_begin = 2,	
-	enum_Profession_quest = 3,	// 宗门任务暂定3
-	enum_daily_quest_end = 8,
-	enum_quest_singlecamp = 8,	// 单人营地任务
-	enum_quest_teamcamp = 9,	// 多人营地任务
+	enum_daily_quest = 3,	
 	enum_daily_mutil_times_quest = 16,
 	enum_dyntalk_quest_begin = 100,	// 动态刷新的任务开始
 	enum_dyntalk_quest_triberandom,	// 部落随机任务
-	enum_dyntalk_quest_end	 = 200,	
 };
 
 // 任务4种状态

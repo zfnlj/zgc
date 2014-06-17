@@ -9,6 +9,7 @@
 #include "../PlayerCard/KPlayerDeck.h"
 #include "KCommonObj.h"
 
+#define  SECOND_OF_DAY 24*60*60
 using namespace KItemAbout;
 namespace KPlayerRecordAssist
 {
@@ -136,6 +137,47 @@ bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	return true;
 }
 
+int  getDailyAwardNum(tb_playerquest_record* record)
+{
+	void* buf;
+	time_t curTime = _GetSystemTimeVal();
+	int num = record->qdaily.Get(buf)/sizeof(time_t);
+	int count = MAX_DAILY_AWARD_SLOT - num;
+	if(count<0) count=0;
+
+	time_t* dailyTime = (time_t*)buf;
+	for(int i=0;i<num;i++,dailyTime++){
+		if( (curTime - *dailyTime)>SECOND_OF_DAY){
+			count++;
+		}
+	}
+	return count;
+}
+
+bool pickDailyAwardSlot(tb_playerquest_record* record)
+{
+	bool ok=false;
+	time_t curTime = _GetSystemTimeVal();
+	void* buf;
+	int num = record->qdaily.Get(buf)/sizeof(time_t);
+	if(num<MAX_DAILY_AWARD_SLOT){
+		record->qdaily.Append(&curTime,sizeof(curTime));
+		ok=true;
+	}else{
+		time_t* dailyTime = (time_t*)buf;
+		for(int i=0;i<num;i++,dailyTime++){
+			if( (curTime - *dailyTime)>SECOND_OF_DAY){
+				*dailyTime = curTime;
+				ok = true;
+				break;
+			}
+		}
+		
+	}
+	if(ok) record->updateMask(tb_playerquest_record::f_QDaily);
+	return ok;
+}
+
 bool syncQuestFromRecord(KPlayerQuestManager* playerQuestMgr,tb_playerquest_record* record)
 {
 	playerQuestMgr->Reset();
@@ -206,7 +248,7 @@ void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest)
 	}
 }
 
-bool QuestOk(tb_playerquest_record* record,int qid,int accepttime)
+bool QuestOk(tb_playerquest_record* record,int qid)
 {
 	KDBQuestHistoryDataUnit history;
 	history.qid = qid;

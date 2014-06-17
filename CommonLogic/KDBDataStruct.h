@@ -14,7 +14,8 @@ template <typename BinaryStruct, int size> class DatabaseBinaryStruct : public B
 
 
 #define MAX_DECK_NUM 5
-#define MAX_PLAYER_QUEST_NUM 5
+#define MAX_PLAYER_QUEST_NUM 3
+#define MAX_DAILY_AWARD_SLOT 3
 struct tb_player_record
 {
 	enum MaskBit
@@ -95,12 +96,8 @@ struct tb_playerquest_record
 		f_Qstate1,
 		f_Qid2,
 		f_Qstate2,
-		f_Qid3,
-		f_Qstate3,
-		f_Qid4,
-		f_Qstate4,
 		f_QHistory,
-		f_QPersist,
+		f_QDaily,
 	};
 	enum MaskBit
 	{
@@ -110,12 +107,8 @@ struct tb_playerquest_record
 		_QSTATE1		= BIT(3),	//
 		_QID2			= BIT(4),	
 		_QSTATE2		= BIT(5),
-		_QID3			= BIT(6),
-		_QSTATE3		= BIT(7),
-		_QID4			= BIT(8),
-		_QSTATE4        = BIT(9),
-		_QHISTORY       = BIT(10),
-		_QPERSIST       = BIT(11),
+		_QHISTORY       = BIT(6),
+		_QDAILY	        = BIT(7),
 	};
 	tb_playerquest_record(){
 		mUpdateMask = 0;
@@ -153,13 +146,13 @@ struct tb_playerquest_record
 			qstate[i].actualLength = 0;
 		}
 		qhistory.actualLength = 0;
-		qpersist.actualLength = 0;
+		qdaily.actualLength = 0;
 	}
 	KObjectID playerID;
 	int qid[MAX_PLAYER_QUEST_NUM];
-	KDBBinary<160> qstate[MAX_PLAYER_QUEST_NUM];
-	KDBBinary<2000> qhistory;
-	KDBBinary<1024> qpersist;
+	KDBBinary<120> qstate[MAX_PLAYER_QUEST_NUM];
+	KDBBinary<1024> qhistory;
+	KDBBinary<40> qdaily;
 	System::Sync::KSync_CS m_lock;
 };
 

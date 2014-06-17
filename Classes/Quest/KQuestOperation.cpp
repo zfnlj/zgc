@@ -192,11 +192,13 @@ bool KQuestHolderBase::QuestOk(KQuestNew* pQuest)
 	//pQuest->OnUninit();
 
 	int qid = pQuest->m_qid;
-	KPlayerRecordAssist::QuestOk(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest->m_qid,0/*acceptTime*/);
+	KPlayerRecordAssist::QuestOk(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest->m_qid);
+
+
+	KPlayerQuestManager& playerQuestManager = m_pPlayer->m_questManager;
+	playerQuestManager.SetQuestHistory(qid,1,1);
 
 	// sync questhistory to client
-	int doTimes;
-	time_t lastDo;
 
 	//if(!this->GetQuestHistory(qid, doTimes, lastDo)) 
 	//{
@@ -330,10 +332,6 @@ DWORD KQuestHolderBase::GetQuestViewIconStrID( DWORD qState, DWORD qType )
 			{
 				return 1412012;
 			}
-			else if(qType == enum_quest_singlecamp || qType == enum_quest_teamcamp)
-			{
-				return 1412014;
-			}
 			else
 				return 1412013;
 		}
@@ -347,10 +345,6 @@ DWORD KQuestHolderBase::GetQuestViewIconStrID( DWORD qState, DWORD qType )
 			else if(qType == enum_zhixian_quest)
 			{
 				return 1412022;
-			}
-			else if(qType == enum_quest_singlecamp || qType == enum_quest_teamcamp)
-			{
-				return 1412024;
 			}
 			else
 				return 1412023;
@@ -366,10 +360,6 @@ DWORD KQuestHolderBase::GetQuestViewIconStrID( DWORD qState, DWORD qType )
 			else if(qType == enum_zhixian_quest)
 			{
 				return 1412032;
-			}
-			else if(qType == enum_quest_singlecamp || qType == enum_quest_teamcamp)
-			{
-				return 1412034;
 			}
 			else
 				return 1412033;
@@ -387,10 +377,6 @@ DWORD KQuestHolderBase::GetQuestTypeStrID( DWORD qType )
 		return 1412001;
 	case enum_zhixian_quest:	// 支线任务
 		return 1412002;
-	case enum_quest_singlecamp:	// 单人营地任务
-		return 1412004;
-	case enum_quest_teamcamp:	// 多人营地任务
-		return 1412005;
 	}
 	if (qType > enum_zhixian_quest)
 	{
