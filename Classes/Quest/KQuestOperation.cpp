@@ -192,11 +192,18 @@ bool KQuestHolderBase::QuestOk(KQuestNew* pQuest)
 	//pQuest->OnUninit();
 
 	int qid = pQuest->m_qid;
-	KPlayerRecordAssist::QuestOk(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest->m_qid);
+
+	if(pQuest->m_type == enum_daily_quest){
+		KPlayerRecordAssist::UseDailyAwardSlot(KMainPlayer::RealPlayer()->GetQuestRecord());
+		m_pPlayer->m_questManager.onDailyOk();
+	}else if(pQuest->m_type == enum_normal_quest){
+		KPlayerRecordAssist::QuestOk(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest->m_qid);
+		m_pPlayer->m_questManager.SetQuestHistory(qid,1,1);
+	}
+	
 
 
-	KPlayerQuestManager& playerQuestManager = m_pPlayer->m_questManager;
-	playerQuestManager.SetQuestHistory(qid,1,1);
+	
 
 	// sync questhistory to client
 

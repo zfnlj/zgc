@@ -255,5 +255,11 @@ namespace KWorldObjAbout
 		int power = m_cardDepot.ConsumeExp(val);
 		KPlayerRecordAssist::AddExp(&m_playerRecord,val,power);
 	}
+
+	KQuestNew* KPlayer::RndQueryAdventureQuest()
+	{
+		int num = KPlayerRecordAssist::getDailyAwardNum(&m_questRecord);
+		return m_questManager.RndQueryAdventureQuest(num>0);
+	}
 }
 

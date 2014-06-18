@@ -154,7 +154,7 @@ int  getDailyAwardNum(tb_playerquest_record* record)
 	return count;
 }
 
-bool pickDailyAwardSlot(tb_playerquest_record* record)
+bool UseDailyAwardSlot(tb_playerquest_record* record)
 {
 	bool ok=false;
 	time_t curTime = _GetSystemTimeVal();
@@ -259,6 +259,7 @@ bool QuestOk(tb_playerquest_record* record,int qid)
 	CancelQuest(record,qid);
 	return true;
 }
+
 
 bool CancelQuest(tb_playerquest_record* record,int qid)
 {

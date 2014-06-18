@@ -93,6 +93,7 @@ namespace KWorldObjAbout
 		const char* GetMoney() const;
 
 	
+		KQuestNew* RndQueryAdventureQuest();
 			// 记录玩家的钱数
 		KMoneyAbout::KMoney m_money;
 		tb_player_record m_playerRecord;

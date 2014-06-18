@@ -43,7 +43,7 @@ namespace KPlayerRecordAssist
 	bool CancelQuest(tb_playerquest_record* record,int qid);
 	void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest);
 	int  getDailyAwardNum(tb_playerquest_record* record);
-	bool pickDailyAwardSlot(tb_playerquest_record* record);
+	bool UseDailyAwardSlot(tb_playerquest_record* record);
 }
 
 #endif // __HELLOWORLD_SCENE_H__
