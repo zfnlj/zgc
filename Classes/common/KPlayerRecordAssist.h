@@ -39,9 +39,11 @@ namespace KPlayerRecordAssist
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);
 	bool AddQuest(tb_playerquest_record* record,KQuestNew* pQuest);
-	bool QuestOk(tb_playerquest_record* record,int qid,int accepttime);
+	bool QuestOk(tb_playerquest_record* record,int qid);
 	bool CancelQuest(tb_playerquest_record* record,int qid);
 	void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest);
+	int  getDailyAwardNum(tb_playerquest_record* record);
+	bool pickDailyAwardSlot(tb_playerquest_record* record);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

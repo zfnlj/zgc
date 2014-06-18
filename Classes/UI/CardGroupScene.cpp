@@ -687,7 +687,7 @@ void CardGroupScene::UpdateSelectHeroBut()
 {
 	if(m_mainType==type_cardgroup){
 		for(int i=0;i<PAGE_CARD_NUM;i++){
-			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget);
+			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget!=NULL);
 		}
 	}else if(m_mainType==type_card){
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){

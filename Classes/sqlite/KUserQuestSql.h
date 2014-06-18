@@ -13,6 +13,7 @@ public:
 	static bool UpdateQuestState(const char* userName,int index,tb_playerquest_record* record);
 	static bool UpdateIntegerVal(const char* userName,const char* field,int val);
 	static bool UpdateQuestHistory(const char* userName,tb_playerquest_record* record);
+	static bool UpdateQuestDaily(const char* userName,tb_playerquest_record* record);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

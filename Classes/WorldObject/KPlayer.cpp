@@ -214,8 +214,6 @@ namespace KWorldObjAbout
 		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID0,"Qid_0",m_questRecord.qid[0])
 		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID1,"Qid_1",m_questRecord.qid[1])
 		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID2,"Qid_2",m_questRecord.qid[2])
-		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID3,"Qid_3",m_questRecord.qid[3])
-		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID4,"Qid_4",m_questRecord.qid[4])
 
 	#define  QUEST_RECORD_STATE_UPDATE( mask,i)			\
 		if(m_questRecord.mUpdateMask&mask){				\
@@ -225,13 +223,17 @@ namespace KWorldObjAbout
 		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate0,0)
 		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate1,1)
 		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate2,2)
-		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate3,3)
-		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate4,4)
 
 		if(m_questRecord.mUpdateMask&tb_playerquest_record::_QHISTORY){
 			KUserQuestSql::UpdateQuestHistory(GetName(),&m_questRecord);
 			m_questRecord.updateUnMask(tb_playerquest_record::_QHISTORY);
 		}
+
+		if(m_questRecord.mUpdateMask&tb_playerquest_record::_QDAILY){
+			KUserQuestSql::UpdateQuestDaily(GetName(),&m_questRecord);
+			m_questRecord.updateUnMask(tb_playerquest_record::_QDAILY);
+		}
+
 	}
 	
 	void KPlayer::IncreaseMoney(int val)
