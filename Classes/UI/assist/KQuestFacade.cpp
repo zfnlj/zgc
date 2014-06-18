@@ -41,3 +41,27 @@ bool KQuestFacade::_startMainQuestBattle()
 	GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
 	return true;
 }
+
+
+bool KQuestFacade::_startAdventureBattle(int qId)
+{
+
+	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
+
+	KQuestNew* pQuest = playerQuestManager.GetAdventureQuest();
+
+	if(pQuest &&pQuest->GetQuestStatus()==KQ_PreStepOver){
+		if(pQuest->IsSelectGift()){
+			GameRoot::getSingleton().getBattleScene()->GameResult().onQuestPreOver(pQuest);
+			return false;
+		}else{
+			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
+			return _startAdventureBattle(qId);
+		}
+
+	}
+	KNetMsgFacade::onAcceptQuest(qId);
+	pQuest = playerQuestManager.GetQuest(qId);
+	GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+	return true;
+}

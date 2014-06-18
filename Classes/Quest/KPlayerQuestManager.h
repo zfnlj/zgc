@@ -143,6 +143,8 @@ public:
 	KQuestNew* QueryNormalQuest();
 	KQuestNew* RndQueryQuest(enumQuestType questType);
 	KQuestNew* RndQueryAdventureQuest(bool bDaily);
+	KQuestNew* GetAdventureQuest(){ return m_adventureQuest;}
+	void SetAdventureQuest(KQuestNew* quest){ m_adventureQuest = quest;}
 	void onDailyOk(){ m_adventureQuest = NULL;}
 public:
 	KQuestNew* m_adventureQuest;

@@ -63,6 +63,7 @@ public:
 	
 private:
 	KPlayer * m_pPlayer;
+	void _SetAdventureQuest(KQuestNew* quest);
 	KPlayerQuestManager::QuestSortArray& _GetPlayerQuestArray();
 	KPlayerQuestManager::QuestSortArray& _GetPlayerActiveQuestArray();
 	DWORD GetQuestViewIconStrID(DWORD qState, DWORD qType);	// 根据任务状态和任务类型得到任务图标stringid

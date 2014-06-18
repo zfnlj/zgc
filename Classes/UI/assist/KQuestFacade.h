@@ -5,6 +5,7 @@ class KQuestFacade
 {
 public:
 	static bool _startMainQuestBattle(); 
+	static bool _startAdventureBattle(int qId);
 };
 
 #endif // 	

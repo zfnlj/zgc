@@ -10,6 +10,10 @@ class KHelpStringStatic;
 class StageWaitScene : public cocos2d::CCLayer
 {
 public:
+	enum Scene_type{
+		scene_battle,
+		scene_adventure,
+	};
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();  
 
@@ -25,10 +29,12 @@ public:
 
 	void DoClickClose(CCObject* sender);
 	void SetTip(KHelpStringStatic* tip);
+	static void SetSceneType(Scene_type tp){ m_sceneType = tp;}
 private:
 	CCLabelTTF* m_InfoLabel;
-
+	static Scene_type m_sceneType;
 	cocos2d::extension::UILayer* m_ui;
+	int m_qId;
 
 };
 

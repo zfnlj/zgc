@@ -36,6 +36,11 @@ KPlayerQuestManager::QuestSortArray& KQuestHolderBase::_GetPlayerQuestArray()
 	return KMainPlayer::RealPlayer()->m_questManager.m_quests;
 }
 
+void KQuestHolderBase::_SetAdventureQuest(KQuestNew* quest)
+{
+	KMainPlayer::RealPlayer()->m_questManager.SetAdventureQuest(quest);
+}
+
 KPlayerQuestManager::QuestSortArray& KQuestHolderBase::_GetPlayerActiveQuestArray()
 {
 	return KMainPlayer::RealPlayer()->m_questManager.m_availQuests;
@@ -87,10 +92,13 @@ bool KQuestHolderBase::_AcceptQuestForce(KQuestNew* pQuest)
 	//宗门任务接取前处理
 
 	pQuest->m_pPlayer = m_pPlayer;
-	if(!KPlayerRecordAssist::AddQuest(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest))
-		return false;
-
-	ASSERT(_GetPlayerQuestArray().insert_unique(pQuest) >= 0);
+	if(pQuest->m_type==enum_normal_quest){
+		if(!KPlayerRecordAssist::AddQuest(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest))
+			return false;
+		ASSERT(_GetPlayerQuestArray().insert_unique(pQuest) >= 0);
+	}else{
+		ASSERT(_GetPlayerQuestArray().insert_unique(pQuest) >= 0);
+	}
 
 	//KServerQuestSession* pSession = KServerQuestSession::Alloc();
 	//pSession->Initialize(m_pPlayer, pQuest->m_qid);

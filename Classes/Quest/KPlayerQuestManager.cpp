@@ -395,21 +395,21 @@ bool KPlayerQuestManager::OnEventImp(KEventAbout::KEventID id, const KEventAbout
 
 KQuestNew* KPlayerQuestManager::RndQueryAdventureQuest(bool bDaily)
 {
-	if(bDaily) m_adventureQuest = RndQueryQuest(enum_daily_quest);
-	if(m_adventureQuest) return m_adventureQuest;
-
-	m_adventureQuest = RndQueryQuest(enum_zhixian_quest);
-	return m_adventureQuest;
+	KQuestNew* quest = NULL;
+	if(bDaily) quest = RndQueryQuest(enum_daily_quest);
+	if(quest) return quest;
+	return RndQueryQuest(enum_zhixian_quest);
 }
 
 KQuestNew* KPlayerQuestManager::RndQueryQuest(enumQuestType questType)
 {
 	QuestSortArray dailyQuestArr;
-	for(int i=0; i<m_quests.size(); i++)
+	for(int i=0; i<m_availQuests.size(); i++)
 	{
-		KQuestNew* pQuest = m_quests[i];
+		KQuestNew* pQuest = m_availQuests[i];
 		if(pQuest->m_type == questType) dailyQuestArr.insert_unique(pQuest);
 	}
+	if(dailyQuestArr.empty()) return NULL;
 	int nRand = g_rnd.GetRandom(0,dailyQuestArr.size());
 	KQuestNew* pQuest = dailyQuestArr[nRand];
 	return pQuest;

@@ -29,7 +29,7 @@ public:
 	cocos2d::extension::UILayer* GetUILayer();
 	void DoClickShopBut(CCObject* sender);
 	void DoClickBattleBut(CCObject* sender);
-	void DoClickQuestBut(CCObject* sender);
+	void DoClickAdventureBut(CCObject* sender);
 	void DoClickStoreBut(CCObject* sender);
 
 

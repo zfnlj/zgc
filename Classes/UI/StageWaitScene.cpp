@@ -28,6 +28,7 @@
 USING_NS_CC;
 using namespace cocos2d::extension;
 
+StageWaitScene::Scene_type StageWaitScene::m_sceneType = StageWaitScene::scene_battle;
 CCScene* StageWaitScene::scene()
 {
     // 'scene' is an autorelease object
@@ -73,7 +74,13 @@ bool StageWaitScene::init()
 
 	KQuestManager::GetInstance()->syncAvailQuests();
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
-	KQuestNew* pQuest = playerQuestManager.QueryNormalQuest();
+	KQuestNew* pQuest = NULL;
+	if(m_sceneType==scene_battle){
+		pQuest = playerQuestManager.QueryNormalQuest();
+	}else if(m_sceneType==scene_adventure){
+		pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
+	}
+	m_qId = pQuest->GetID();
 	if(pQuest && pQuest->GetQuestStatus()!=KQ_PreStepOver){
 		UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 		char stageName[64]={0};
@@ -122,5 +129,11 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 void StageWaitScene::DoClickClose(CCObject* sender)
 {
 	KUIAssist::_switch2BattleScene();
-	KQuestFacade::_startMainQuestBattle();
+	
+
+	if(m_sceneType==scene_battle){
+		KQuestFacade::_startMainQuestBattle();
+	}else if(m_sceneType==scene_adventure){
+		KQuestFacade::_startAdventureBattle(m_qId);
+	}
 }

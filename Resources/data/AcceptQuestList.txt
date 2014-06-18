@@ -13,3 +13,4 @@ QuestID	Level	MinLevelLimit	MaxLevelLimit
 10012	1	1	5
 101	1	1	5
 102	1	1	5
+501	1	1	5

@@ -174,7 +174,7 @@ bool UseDailyAwardSlot(tb_playerquest_record* record)
 		}
 		
 	}
-	if(ok) record->updateMask(tb_playerquest_record::f_QDaily);
+	if(ok) record->updateMask(tb_playerquest_record::_QDAILY);
 	return ok;
 }
 

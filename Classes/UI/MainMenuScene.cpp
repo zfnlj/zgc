@@ -22,6 +22,7 @@
 #include "assist/KQuestFacade.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../StaticTable/StaticData.h"
+#include "StageWaitScene.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -125,7 +126,7 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickBattleBut));
 
 		pBut = m_ui->getWidgetByName("but_quest");
-		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickQuestBut));
+		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickAdventureBut));
 
 		pBut = m_ui->getWidgetByName("but_cardgroup");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickStoreBut));
@@ -141,12 +142,15 @@ void MainMenuScene::DoClickStoreBut(CCObject* sender)
 	KUIAssist::_switch2CardGroupScene();
 }
 
-void MainMenuScene::DoClickQuestBut(CCObject* sender)
+void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
+	StageWaitScene::SetSceneType(StageWaitScene::scene_adventure);
+	KUIAssist::_switch2StageWaitScene();
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
+	StageWaitScene::SetSceneType(StageWaitScene::scene_battle);
 	KUIAssist::_switch2StageWaitScene();
 	/*if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		if(!KQuestFacade::_startMainQuestBattle())
@@ -174,7 +178,7 @@ void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const c
 
 void MainMenuScene::UpdateLockStatus()
 {
-	UpdateLockStatus("open_quest","but_quest","lock_quest");
+	UpdateLockStatus("open_adventure","but_quest","lock_quest");
 	UpdateLockStatus("open_cardgroup","but_cardgroup","lock_cardgroup");
 	UpdateLockStatus("open_shop","but_shop","lock_shop");
 
