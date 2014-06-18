@@ -30,7 +30,7 @@ void KPlayerQuestManager::Reset()
 		KQuestNew::Free(pQuest);
 		m_quests.erase(i);
 	}
-
+	m_dailyQuest = NULL;
 	m_questHistory.clear();	// 清空任务历史
 	m_availQuests.clear();
 	m_tmpQuests.clear();
@@ -391,6 +391,19 @@ bool KPlayerQuestManager::OnEventImp(KEventAbout::KEventID id, const KEventAbout
 	}
 
 	return false;
+}
+
+KQuestNew* KPlayerQuestManager::RndQueryDailyQuest()
+{
+	QuestSortArray dailyQuestArr;
+	for(int i=0; i<m_quests.size(); i++)
+	{
+		KQuestNew* pQuest = m_quests[i];
+		if(pQuest->m_type == enum_daily_quest) dailyQuestArr.insert_unique(pQuest);
+	}
+	int nRand = g_rnd.GetRandom(0,dailyQuestArr.size());
+	m_dailyQuest = dailyQuestArr[nRand];
+	return m_dailyQuest;
 }
 
 KQuestNew* KPlayerQuestManager::QueryNormalQuest()

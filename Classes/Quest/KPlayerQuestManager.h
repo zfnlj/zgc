@@ -141,7 +141,9 @@ public:
 	bool IsQuestEverDone(int qid, int dayOffset);
 
 	KQuestNew* QueryNormalQuest();
+	KQuestNew* RndQueryDailyQuest();
 public:
+	KQuestNew* m_dailyQuest;
 	QuestSortArray m_quests;
 	QuestSortArray m_availQuests;
 
