@@ -15,9 +15,11 @@ public:
 	void init(cocos2d::extension::UILayer* layer);
 	void DoClickOK(CCObject* sender);
 	void onSelectCardOK(FBattleGuy* guy);
+
+	void onClickCard(CCObject* sender);
 private:
 	cocos2d::extension::UILayer* m_layer;
-	cocos2d::extension::UIWidget* m_selectPanel;
+	cocos2d::extension::UIWidget* m_ui;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

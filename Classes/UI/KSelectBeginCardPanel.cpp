@@ -11,28 +11,26 @@
 
 using namespace cocos2d::extension;
 
-KSelectBeginCardPanel::KSelectBeginCardPanel():m_selectPanel(NULL)
+KSelectBeginCardPanel::KSelectBeginCardPanel():m_ui(NULL)
 {
 }
 
 KSelectBeginCardPanel::~KSelectBeginCardPanel()
 {
-	CC_SAFE_RELEASE_NULL(m_selectPanel);
+	CC_SAFE_RELEASE_NULL(m_ui);
 }
 void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 {
-	m_selectPanel = GUIReader::shareReader()->widgetFromJsonFile("GUI/select.json");
-	CC_SAFE_RETAIN(m_selectPanel);
+	m_ui = GUIReader::shareReader()->widgetFromJsonFile("GUI/select_card.json");
+	CC_SAFE_RETAIN(m_ui);
 
 	m_layer = layer;
-	m_layer->addWidget(m_selectPanel);
+	m_layer->addWidget(m_ui);
 	
-	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("my_slot_base");
+	UIImageView* base = (UIImageView*)UIHelper::seekWidgetByName(m_ui,"my_slot_base");
 
-	UIWidget* pBut = m_layer->getWidgetByName("but_ok");
-	KSelectBeginCardPanel* me = this;
-    
-	pBut->addPushDownEvent(me, coco_pushselector(KSelectBeginCardPanel::DoClickOK));
+	UIWidget* pPanel = UIHelper::seekWidgetByName(m_ui,"main_panel");
+	pPanel->addPushDownEvent(this, coco_pushselector(KSelectBeginCardPanel::DoClickOK));
 	
 
 	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
@@ -43,6 +41,12 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 		actor->GetUI()->setScale(base->getScale());
 	}
 	KUIAssist::_moveCardSet(lst,"go_select");
+}
+
+
+void KSelectBeginCardPanel::onClickCard(CCObject* sender)
+{
+
 }
 
 void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
@@ -78,6 +82,6 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 			actor->GetUI()->setScale(base->getScale());
 			actor->GetActionMgr().PlayAction("select_to_hand");
 		}
-		m_layer->removeWidget(m_selectPanel);
+		m_layer->removeWidget(m_ui);
 	}
 }
