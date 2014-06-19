@@ -166,7 +166,7 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 		CCAssert(false , "Error to Create Action!");
 		return NULL;
 	}
-	KCardInst* card = m_Actor->GetCard();
+
 	if(pST->GetSlot()>0){
 		m_slotAction.cache(*param);
 		return NULL;

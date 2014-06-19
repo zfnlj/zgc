@@ -35,7 +35,6 @@ void KHeroDef::rndGenerate(int cardId)
 
 void KPlayerDeck::CreateOnDeckDef(int id)
 {
-	int n = sizeof(KHeroDef);
 	m_cardList.clear();
 	KDeckDefStatic* deck = KGameStaticMgr::getSingleton().GetDeckDef(id);
 	deck->GenCardList(m_cardList);

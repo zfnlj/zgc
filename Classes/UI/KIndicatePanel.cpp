@@ -162,7 +162,6 @@ void KIndicatePanel::OnSelectSrcCard(KCardActor* actor)
 		return;
 	}
 	
-	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("big_photo");
 	if(m_selActor){
 		m_selActor->GetActionMgr().LimitAlive("card_breathe");
 		//m_selActor->GetActionMgr().LimitAlive("fire");

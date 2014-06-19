@@ -34,7 +34,7 @@ sqlite3* KSqlite::prepareTableInDB(const char* table,const char* dbFileName,cons
     char* errorMsg = NULL;
 	std::string writablePath = cocos2d::CCFileUtils::sharedFileUtils()->getWritablePath();
 	char fullPath[256];
-	sprintf(fullPath,"%s\\%s",writablePath.c_str(),dbFileName);
+	sprintf(fullPath,"%s%s",writablePath.c_str(),dbFileName);
     if(SQLITE_OK!= sqlite3_open(fullPath,&pDB)){
         CCLOG("open sql file failed");
         return NULL;

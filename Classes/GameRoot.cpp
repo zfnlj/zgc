@@ -38,11 +38,6 @@ void GameRoot::init()
 
 	unsigned long long val = time(NULL);
 	srand(val);//
-	tm interval;
-	time_t t1 = _GetSystemTimeVal();
-	int n = sizeof(t1);
-	
-	int kk = 0;
 	//KEventAbout::KEDKillMonster evt;
 	//KDynamicWorld::getSingleton().FireEvent(evt);
 

@@ -247,7 +247,6 @@ void BattleFieldScene::onCardDuelResult(strCardDuelResult* result)
 {
 	KClickCardMgr::getSingleton().HideBigCard();
 	KCardActor* atk = (KCardActor*)result->_atker->getActor();
-	KCardActor* def = (KCardActor*)result->_defender->getActor();
 
 	K3DActionParam param;
 	param.init("duel");

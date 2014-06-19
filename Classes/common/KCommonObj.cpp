@@ -53,8 +53,8 @@ time_t _GetSystemTimeVal()
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)  
     time(&timep); 
 #else  
-    struct cc_timeval now;  
-    CCTime::gettimeofdayCocos2d(&now, NULL);  
+    struct cocos2d::cc_timeval now;
+    cocos2d::CCTime::gettimeofdayCocos2d(&now, NULL);
     timep = now.tv_sec; 
 #endif  
 	return timep;
@@ -67,20 +67,4 @@ void _GetTimeInterval(time_t& t1,time_t& t2,tm& interval)
 	memcpy(&interval,tm,sizeof(interval));
 }
 
-void _GetTime(int level) 
-{ 
-	time_t timep = _GetSystemTimeVal();
-    struct tm *tm; 
-
- 
- 
-    tm = localtime(&timep); 
-    int year = tm->tm_year + 1900; 
-    int month = tm->tm_mon + 1; 
-    int day = tm->tm_mday; 
-    int hour=tm->tm_hour; 
-    int min=tm->tm_min; 
-    int second=tm->tm_sec; 
-	int kk = 0;
-} 
 

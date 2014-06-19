@@ -373,7 +373,6 @@ int KTraceTextResolve::Resolve(char* s, int len)
 
 LuaString KTraceTextResolve::ResolveToNpc(char** ss, int c)
 {
-	DWORD npcType = str2int(ss[0]);
 	
 	// todo:
 	//const char* npcName = GetNpcName(npcType, true);

@@ -27,7 +27,6 @@ enum quest_field_enum
 int loadUserQuest(void* para,int n_cloumn,char** column_value,char** column_name)
 {
 	char buf[2048];
-	int len = 0;
 	tb_playerquest_record* record = (tb_playerquest_record*)para;
 
 	for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){

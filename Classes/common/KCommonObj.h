@@ -17,7 +17,6 @@ void _CopyIntegerList(KIntegerList& src,KIntegerList& des,int rate =1);
 void _RndIntegerList(KIntegerList& src,KIntegerList& des);
 void _RndPick(KIntegerList& src,KIntegerList& des,int num);
 
-void _GetTime(int level);
 time_t _GetSystemTimeVal();
 void _GetTimeInterval(time_t& t1,time_t& t2,tm& interval);
 #endif

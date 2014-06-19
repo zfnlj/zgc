@@ -377,7 +377,6 @@ void CardGroupScene::UpdateSmartCardGroupBut()
 
 void CardGroupScene::UpdateDeckCardCount()
 {
-	int showPos = 0;
 	for(int i=0;i<PAGE_CARD_NUM;i++){
 		char sz[32];
 		int deckCardCount =KCardGroupAssist::GetDeckMiniCardNum(m_miniCardList,m_slotElem[i]._id);

@@ -244,7 +244,6 @@ bool KGameStaticMgr::InitCard(const char* m_FileName)
 		int nRet = fileReader->ReadLine();
 		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
 		if(nRet == 0) break;
-		char buf[128]={0};
 		KCardStatic* pCard = KCardStatic::create();
 		pCard->Init(fileReader);
 		m_cardMap[pCard->GetID()] = pCard;

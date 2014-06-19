@@ -584,7 +584,6 @@ CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 	KCardActor* desActor = (KCardActor*)desCard->getActor();
 	CCPoint pt1 = widgetSrc->getPosition();
 	CCPoint pt2;
-	CCPointArray *arr = CCPointArray::create(10);
 	
 	CCPoint ptLast = desActor->GetUI()->getPosition();
 	CCPoint centerPt = KUIAssist::_getScreenCenter();
@@ -873,8 +872,6 @@ void KUIAssist::_stopClickAction()
 	actor.GetActionMgr().LimitClassAction(KActionStatic::class_click);
 	actor.GetActionMgr().breathe(0.1f);
 }
-
-static int lastAdviceId =0;
 
 void KUIAssist::_stopAdviceMsg()
 {
