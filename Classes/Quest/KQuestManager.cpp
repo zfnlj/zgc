@@ -98,7 +98,7 @@ bool KQuestManager::ReloadQuest(int qid)
 	}
 
 	static char achQuestFileName[256];
-	sprintf(achQuestFileName, "data/Quest/QuestScripts/q_%d.lua", qid);
+	sprintf(achQuestFileName, "data/Quest/QuestScripts/Q_%d.lua", qid);
 
 	//sprintf(achQuestFileName, "../../data/configs/Quest/QuestScripts/Q_%d.lua", qid);
 	std::string fullPath;
