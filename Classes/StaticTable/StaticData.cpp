@@ -33,7 +33,7 @@ StaticData::~StaticData()
 void StaticData::init(const char* userName,const char* pwd)
 {
 	std::string writablePath = CCFileUtils::sharedFileUtils()->getWritablePath();
-	sprintf(m_fullPath,"%s/%s_%s",writablePath.c_str(),userName,STATIC_DATA_NAME);
+	sprintf(m_fullPath,"%s%s_%s",writablePath.c_str(),userName,STATIC_DATA_NAME);
 
 	if(!CCFileUtils::sharedFileUtils()->isFileExist(m_fullPath)){
 		_dictionary = CCDictionary::create();
