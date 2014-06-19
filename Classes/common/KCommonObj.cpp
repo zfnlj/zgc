@@ -8,10 +8,12 @@ System::Random::KRandom g_rnd;
 KMsgOutputStream g_ostream;
 
 
-void _CopyIntegerList(KIntegerList& src,KIntegerList& des)
+void _CopyIntegerList(KIntegerList& src,KIntegerList& des,int rate)
 {
 	for(KIntegerList::iterator it=src.begin();it!=src.end();it++){
-		des.push_back(*it);
+		for(int i=0;i<rate;i++){
+			des.push_back(*it);
+		}
 	}
 }
 

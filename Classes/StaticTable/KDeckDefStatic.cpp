@@ -13,9 +13,9 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 	char* ss[64];
 	int ns = split(strBuf, "*", ss, 64);
 	if(ns!=4) return false;
-	if(strcmp(ss[0],"soldier")==0){
+	if(strcmp(ss[0],"S")==0){
 		_def = KCardStatic::card_soldier;
-	}else if(strcmp(ss[0],"skill")==0){
+	}else if(strcmp(ss[0],"C")==0){
 		_def = KCardStatic::card_skill;
 	}else{
 		CCAssert(false , "Parse dynamic def error!");
@@ -23,6 +23,7 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 	_race = KCardStatic::getCardRace(ss[1]);
 	_rank = atoi(ss[2]);
 	_num = atoi(ss[3]);
+	_rate = atoi(ss[4]);
 	return true;
 }
 
@@ -148,11 +149,7 @@ void KDeckDefStatic::FillOnDynamicCardDef(DynamicCardDef* def,KIntegerList& lst)
 	KGameStaticMgr::getSingleton().FilterCards(tmpLst,def->_def,def->_race,def->_rank); //选找出符合条件的卡牌
 	_RndPick(tmpLst,tmpLst2,def->_num);
 	CCAssert(tmpLst2.size()==def->_num , "Parse dynamic def error!");
-	for(KIntegerList::iterator it=tmpLst2.begin();it!=tmpLst2.end();it++)
-	{
-		lst.push_back(*it);
-		lst.push_back(*it);
-	}
+	_CopyIntegerList(tmpLst2,lst,def->_rate);
 }
 
 int KDeckDefStatic::RndPickSummonSoldier(int maxCost)

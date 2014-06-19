@@ -19,6 +19,7 @@ public:
 		KCardStatic::CardRace _race;
 		int _rank;
 		int _num;
+		int _rate;
 		static DynamicCardDef* create(){
 			DynamicCardDef* pDef = new DynamicCardDef;
 			pDef->init();
@@ -31,6 +32,7 @@ public:
 			memset(this,0,sizeof(DynamicCardDef));
 		}
 		bool init(char* sz);
+		int size(){ return _num*_rate;}
 	};
 	typedef std::list<DynamicCardDef*> DynamicCardDefList;
     virtual bool init();
