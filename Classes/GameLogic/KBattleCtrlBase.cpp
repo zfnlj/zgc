@@ -219,8 +219,14 @@ void KBattleCtrlBase::SelectHandCard(float dt)
 			}
 		}
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_HANDCARD_READY,0,(unsigned long long)m_world);
-		StateJump(battle_turn_begin);
+		StateDelayJump(battle_turn_begin,2.0f);
 	}
+}
+
+void KBattleCtrlBase::StateDelayJump(BattleState newState,float delay)
+{
+	m_waitDramaElapsed = delay;
+	JumpOnDrama(battle_play);
 }
 
 void KBattleCtrlBase::SelectTurnPlayer()

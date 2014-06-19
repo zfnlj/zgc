@@ -16,8 +16,8 @@ public:
 	void DoClickOK(CCObject* sender);
 	void onSelectCardOK(FBattleGuy* guy);
 
-	void onClickCard(CCObject* sender);
 private:
+	void onMeSelectEnd(float);
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_ui;
 };

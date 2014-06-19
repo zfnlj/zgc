@@ -51,6 +51,8 @@ public:
 	void Clear();
 	CCSprite* GetActiveRedSprite();
 	CCSprite* GetActiveGreenSprite();
+
+	void RemoveSelectImg();
 private:
 	void init(KCardInst*,bool bBig=false);
 	bool DoSelectBeginCard(CCObject* sender);

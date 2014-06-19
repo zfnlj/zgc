@@ -116,5 +116,6 @@ void _clearCardList(KCardInstList* lst);
 int _getDirtyCardCount(KCardInstList* lst);
 void _fillDirtyCardList(KCardInstList& src,KCardInstList& des);
 void _removeFromCardList(KCardInstList& src,KCardInst* card);
+void _replaceFromCardList(KCardInstList& lst,KCardInst* card,KCardInst* newcard);
 void _rndPickCard(KCardInstList& src,KCardInstList& des,int num,KCardStatic::CardDef cardDef);
 #endif // __HELLOWORLD_SCENE_H__

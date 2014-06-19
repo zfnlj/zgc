@@ -8,6 +8,7 @@
 #include "cocos-ext.h"
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
+#include "KSceneLayerBase.h"
 
 using namespace cocos2d::extension;
 
@@ -43,12 +44,6 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 	KUIAssist::_moveCardSet(lst,"go_select");
 }
 
-
-void KSelectBeginCardPanel::onClickCard(CCObject* sender)
-{
-
-}
-
 void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
 {
 	KCardInstList skiplst;
@@ -57,7 +52,7 @@ void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardActor* actor = KCardActor::create(*it);
 		if(actor->m_bSelected){
-
+			actor->RemoveSelectImg();
 			skiplst.push_back(*it);
 			(*it)->releaseActor();
 		}
@@ -75,13 +70,38 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 	if(guy==GameRoot::getSingleton().BattleCtrl().GetMainPlayer()){
 		//KUIAssist::_showCardSet(lst);
-
+		bool bShowRefresh = false;
 		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 			KCardInst* card = *it;
-			KCardActor* actor = KCardActor::create(card);
-			actor->GetUI()->setScale(base->getScale());
-			actor->GetActionMgr().PlayAction("select_to_hand");
+			if(!card->getActor()){
+				KCardActor* actor = KCardActor::create(card);
+				if(!actor->GetUI()->getParent()) KUIAssist::_activeScene->addWidget(actor->GetUI());
+
+				cocos2d::CCPoint pt = KUIAssist::_queryCardPos(lst,card,base);
+				actor->GetUI()->setPosition(pt);
+				actor->GetActionMgr().PlayAction("gen_card");
+				bShowRefresh = true;
+			}
 		}
-		m_layer->removeWidget(m_ui);
+		if(bShowRefresh){
+			CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KSelectBeginCardPanel::onMeSelectEnd),this,1.6f,1,0,false);
+		}else{
+			onMeSelectEnd(0);
+		}
 	}
+}
+
+void KSelectBeginCardPanel::onMeSelectEnd(float dt)
+{
+	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("select_base");
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardInst* card = *it;
+		KCardActor* actor = KCardActor::create(card);
+		actor->GetUI()->setScale(base->getScale());
+		actor->RemoveSelectImg();
+		actor->GetActionMgr().PlayAction("select_to_hand");
+	}
+	m_layer->removeWidget(m_ui);
 }

@@ -379,12 +379,11 @@ void KBattleDeck::onSelectHandCardOK(KCardInstList* lst)
 			KCardInst* card = *it;
 			card->m_attr.setSlot(KCardInst::enum_slot_slot);
 			m_SlotCardSet.push_back(card);
-			_removeFromCardList(m_HandCardSet,card);
-		}
-		for(size_t i=0;i<lst->size();i++){
-			KCardInst* card = m_SlotCardSet.front();
+			
+			KCardInst* newcard = m_SlotCardSet.front();
 			m_SlotCardSet.pop_front();
-			m_HandCardSet.push_back(card);
+
+			_replaceFromCardList(m_HandCardSet,card,newcard);
 		}
 	}
 	for(KCardInstList::iterator it = m_HandCardSet.begin(); it!=m_HandCardSet.end();++it){

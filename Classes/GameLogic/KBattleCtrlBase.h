@@ -124,6 +124,7 @@ protected:
 	void TurnEnd();
 	void GameEnd(float);
 	bool IsGameEnd();
+	void StateDelayJump(BattleState newState,float delay);
 	void SelectHandCard(float dt);
 	void UpdateDirtyInfo();
 	void QuestBattleInit(KQuestNew* pQuest);

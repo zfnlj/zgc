@@ -16,7 +16,7 @@
 #include "../../common/KUIMsgDef.h"
 #include "../KShopScene.h"
 
-#define SHOW_CARD_OFFSET 6
+#define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
 
 static char* raceIcon[]={"null","gold","tree","water","fire","mud"};
@@ -90,10 +90,10 @@ void KUIAssist::_showCardSet(KCardInstList* lst)
 	}
 }
 
-cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card)
+cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIWidget* base)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
-	UIImageView* base = (UIImageView*)_activeScene->getWidgetByName(_getBasePosName(card));
+	if(!base) base = _activeScene->getWidgetByName(_getBasePosName(card));
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
 		if(!lst) lst = GameRoot::getSingleton().BattleCtrl().GetCardSet(card);

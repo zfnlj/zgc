@@ -22,7 +22,7 @@ USING_NS_CC_EXT;
 class KUIAssist
 {
 public:
-	static cocos2d::CCPoint _queryCardPos(KCardInstList* lst,KCardInst* card);
+	static cocos2d::CCPoint _queryCardPos(KCardInstList* lst,KCardInst* card,UIWidget* base=NULL);
 	static const char* _getBasePosName(KCardInst* card);
 	static void _showCardSet(KCardInstList* lst);
 	static void _removeCardSet(KCardInstList* lst);

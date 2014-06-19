@@ -14,6 +14,14 @@ void _removeFromCardList(KCardInstList& lst,KCardInst* card)
 	if(it!=lst.end()) lst.erase(it);
 }
 
+void _replaceFromCardList(KCardInstList& lst,KCardInst* card,KCardInst* newcard)
+{
+	KCardInstList::iterator it = _findCardIt(&lst,card);
+	if(it!=lst.end()){
+		*it = newcard;
+	}
+}
+
 void _rndPickCard(KCardInstList& src,KCardInstList& des,int num,KCardStatic::CardDef cardDef)
 {
 	KCardInstList tmpLst;

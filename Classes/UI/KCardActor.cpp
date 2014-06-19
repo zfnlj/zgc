@@ -135,6 +135,7 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),bBig);
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
+		RemoveSelectImg();
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
 		m_ui->addMoveEvent(this, coco_moveselector(KCardActor::onMoveEvent));
 	}
@@ -163,11 +164,27 @@ CCSprite* KCardActor::GetActiveGreenSprite()
 	return m_activeGreenSprite;
 }
 
+void KCardActor::RemoveSelectImg()
+{
+	UIImageView* pRemoveImage = (UIImageView*)UIHelper::seekWidgetByName((UIWidget*)m_ui,"remove_x");
+	if(pRemoveImage) pRemoveImage->removeFromParent();
+}
+
 bool KCardActor::DoSelectBeginCard(CCObject* sender)
 {
 	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()!=KBattleCtrlBase::battle_select_handcard) return false;
 	m_bSelected = !m_bSelected;
 
+	UIImageView* pRemoveImage = (UIImageView*)UIHelper::seekWidgetByName((UIWidget*)m_ui,"remove_x");
+	if(!pRemoveImage){
+		pRemoveImage = UIImageView::create();
+		pRemoveImage->loadTexture("card_x.png",UI_TEX_TYPE_PLIST);
+		pRemoveImage->setAnchorPoint(CCPoint(0.0f,0.0f));
+		pRemoveImage->setName("remove_x");
+		pRemoveImage->setWidgetZOrder(100);
+		m_ui->addChild(pRemoveImage);
+	}
+	pRemoveImage->setVisible(m_bSelected);
 	return true;
 }
 
