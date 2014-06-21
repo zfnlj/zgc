@@ -12,7 +12,7 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 
 	char* ss[64];
 	int ns = split(strBuf, "*", ss, 64);
-	if(ns!=4) return false;
+	if(ns!=5) return false;
 	if(strcmp(ss[0],"S")==0){
 		_def = KCardStatic::card_soldier;
 	}else if(strcmp(ss[0],"C")==0){

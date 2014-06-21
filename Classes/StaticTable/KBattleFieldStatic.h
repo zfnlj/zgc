@@ -10,6 +10,11 @@
 class KBattleFieldStatic
 {
 public:
+	enum enum_select_first{
+		select_your=0,
+		select_my=1,
+		select_rnd=2,
+	};
 	enum enum_npc_ai{
 		npc_ai_null,
 		npc_ai_normal,
@@ -19,9 +24,8 @@ public:
 	int GetMyDeck(){ return m_myDeck;}
 	int GetYourDeck(){ return m_yourDeck;}
 	bool IsSelectCard(){ return m_selectCard>0;}
-	bool IsMyFirst(){ return m_myFirst>0;}
+	int GetFirstType(){ return m_myFirst;}
 	int GetMonster(){ return m_monster;}
-	int GetQuestId(){ return m_questId;}
 	void Init(System::File::KTabFile2* fileReader);
 	bool IsRecEmpty(){ return strlen(m_rec)<2;}
 	const char* GetRec(){ return m_rec;}
@@ -33,7 +37,6 @@ private:
 	int m_selectCard;
 	int m_myFirst;
 	int m_monster;
-	int m_questId;
 	char m_rec[64];
 	friend class KGameStaticMgr;
 };

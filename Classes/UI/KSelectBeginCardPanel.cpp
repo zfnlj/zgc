@@ -84,7 +84,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 			}
 		}
 		if(bShowRefresh){
-			CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KSelectBeginCardPanel::onMeSelectEnd),this,1.6f,1,0,false);
+			CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KSelectBeginCardPanel::onMeSelectEnd),this,1.6f,0,0,false);
 		}else{
 			onMeSelectEnd(0);
 		}

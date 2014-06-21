@@ -180,8 +180,7 @@ KBattleGuy* KBattleCtrlBase::GetGuy(UINT64 id)
 
 void KBattleCtrlBase::BattleInit()
 {
-	
-	m_CurPlayGuy = m_BattleGuyList.front();
+	RndSelectFirstPlayer();
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		(*it)->onBattleInit(*it==m_CurPlayGuy,0);
 	}
@@ -226,7 +225,7 @@ void KBattleCtrlBase::SelectHandCard(float dt)
 void KBattleCtrlBase::StateDelayJump(BattleState newState,float delay)
 {
 	m_waitDramaElapsed = delay;
-	JumpOnDrama(battle_play);
+	JumpOnDrama(newState);
 }
 
 void KBattleCtrlBase::SelectTurnPlayer()
@@ -686,20 +685,39 @@ bool KBattleCtrlBase::IsServerSide()
 	return (m_world!=NULL||!m_bNetReady);
 }
 
+void KBattleCtrlBase::RndSelectFirstPlayer()
+{
+	int nRand = g_rnd.GetRandom(0,m_BattleGuyList.size());
+	int pos=0;
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++,pos++){
+		if(pos==nRand){
+			m_CurPlayGuy = *it;
+			break;
+		}
+	}
+}
+
 void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 {
 
 	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
 	if(!pBattleStatic) return;
-	if(pBattleStatic->IsMyFirst()){
+	KBattleFieldStatic::enum_select_first select_enum = (KBattleFieldStatic::enum_select_first)pBattleStatic->GetFirstType();
+	switch(select_enum){
+	case KBattleFieldStatic::select_my:
 		m_CurPlayGuy = m_pMainPlayer;
-	}else{
+		break;
+	case KBattleFieldStatic::select_your:
 		for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 			if(*it!=m_pMainPlayer){
 				m_CurPlayGuy = *it;
 				break;
 			}
 		}
+		break;
+	default:
+		RndSelectFirstPlayer();
+		break;
 	}
 
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){

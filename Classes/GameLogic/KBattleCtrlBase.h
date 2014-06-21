@@ -128,6 +128,7 @@ protected:
 	void SelectHandCard(float dt);
 	void UpdateDirtyInfo();
 	void QuestBattleInit(KQuestNew* pQuest);
+	void RndSelectFirstPlayer();
 	void JumpOnDrama(BattleState newState)
 	{
 		m_nextState = newState;
