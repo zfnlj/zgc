@@ -7,17 +7,17 @@ Initialize = function(quest)
 	quest:SetAttrs("nameId=102;talk=0;desc=102;finishDesc=1500511;");
 	quest:SetAttrs("type=3;sheetType=1;reuse=0;hardDegree=1;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=1;");
+	quest:SetAttrs("battleField=102;");
 	
 	-- Group 0
 	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=10001;count=1;");
+        group0:CreateTarget("KillMonster", "npc=102;count=1;");
   -- end groups
 	return true;
 end,
 
 QName = function (quest , player)
-	return "daily mission";
+	return "daily mission2";
 end,  
 
 
