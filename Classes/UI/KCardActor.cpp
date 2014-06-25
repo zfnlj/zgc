@@ -50,11 +50,12 @@ void KCardActor::Clear()
 
 void KCardActor::ActiveGreen()
 {
-	if(!GetActiveGreenSprite()->getParent()) m_ui->addRenderer(GetActiveGreenSprite(),100);
+	if(!GetActiveGreenSprite()->getParent()){
+		m_ui->addRenderer(GetActiveGreenSprite(),100);
+	}
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
 	GetActiveGreenSprite()->setPosition(pt);
 	GetActiveGreenSprite()->setScale(1.02f);
-	m_ui->removeRenderer(GetActiveRedSprite(),false);
 }
 
 void KCardActor::ActiveRed()
@@ -63,7 +64,6 @@ void KCardActor::ActiveRed()
 	CCPoint pt(m_ui->getContentSize().width*0.5,m_ui->getContentSize().height*0.5);
 	GetActiveRedSprite()->setPosition(pt);
 	GetActiveRedSprite()->setScale(1.02f);
-	m_ui->removeRenderer(GetActiveGreenSprite(),false);
 }
 
 void KCardActor::Deactive()

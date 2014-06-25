@@ -107,10 +107,8 @@ void KIndicatePanel::Update(float dt)
     default:
         break;
 	}
-	DeactiveActor(&m_ActiveGreenArr);
-	DeactiveActor(&m_ActiveRedArr);
-	ActiveArr(&curActiveGreen,true);
-	ActiveArr(&curActiveRed,false);
+	ActiveArr(&curActiveGreen,&m_ActiveGreenArr,true);
+	ActiveArr(&curActiveRed,&m_ActiveRedArr,false);
 
 	m_ActiveGreenArr.clear();
 	m_ActiveRedArr.clear();
@@ -138,7 +136,7 @@ void KIndicatePanel::DeactiveActor(KCardInstList* actived)
 	}
 }
 
-void KIndicatePanel::ActiveArr(KCardInstList* lst,bool bGreen)
+void KIndicatePanel::ActiveArr(KCardInstList* lst,KCardInstList* oldLst,bool bGreen)
 {
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardActor* actor = KCardActor::create(*it);
@@ -148,6 +146,15 @@ void KIndicatePanel::ActiveArr(KCardInstList* lst,bool bGreen)
 			actor->ActiveRed();
 		}
 	}
+
+	for(KCardInstList::iterator it = oldLst->begin();it!=oldLst->end();++it){
+		KCardInstList::iterator itFind = find(lst->begin(),lst->end(),*it);
+		if(itFind==lst->end()) {
+			KCardActor* actor = (KCardActor*)((*it)->getActor());
+			if(actor) actor->Deactive();
+		}
+	}
+
 }
 
 void KIndicatePanel::OnSelectCardOK()

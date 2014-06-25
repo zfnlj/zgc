@@ -21,7 +21,7 @@ public:
 	bool IsActiveCard(KCardInst*);
 	void onBattleRefresh();
 private:
-	void ActiveArr(KCardInstList* arr,bool bGreen);
+	void ActiveArr(KCardInstList* arr,KCardInstList* oldLst,bool bGreen);
 	void DeactiveActor(KCardInstList* actived);
 	void DoCardSleep(KCardInst* card,bool flag);
 	cocos2d::extension::UILayer* m_layer;
