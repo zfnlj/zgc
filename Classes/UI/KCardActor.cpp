@@ -42,6 +42,7 @@ void KCardActor::Clear()
 	if(m_bigPhoto){
 		m_bigPhoto->removeFromParent();
 	}
+	Deactive();
 	CC_SAFE_RELEASE(m_activeRedSprite);
 	CC_SAFE_RELEASE(m_activeGreenSprite);
 	CC_SAFE_RELEASE(m_ui);
