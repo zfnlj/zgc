@@ -210,7 +210,6 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 			return (val1 -2*val2) >= pCard->GetCost(); //¶ÔµÐ·½ÉËº¦´ó
 		}
 		break;
-	
 	case KAbilityStatic::what_control:
 		{
 			return CalcControlBenefit(pAbility,lst,target) >=  pCard->GetCost();
@@ -238,6 +237,11 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 		{
 			int pos = m_Deck.GetEmptyFightSlot();
 			return (pos >=0);
+		}
+		break;
+	case KAbilityStatic::what_damage_atkadd:
+		{
+
 		}
 		break;
     default:
