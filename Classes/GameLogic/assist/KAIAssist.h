@@ -13,6 +13,7 @@ namespace KAIAssist
 {
 	int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef);
 	KCardInst* _BestAttackTarget(KCardInst* pSrc,KCardInstList& enemyLst);
+	KCardInst* _MostValuableTarget(KCardInstList& lst);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

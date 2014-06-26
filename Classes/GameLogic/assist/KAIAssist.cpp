@@ -22,7 +22,7 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 {
 	KCardInst* pBest = NULL;
-	int val = 0;
+	int val = -1;
 	for(KCardInstList::iterator it= enemyLst.begin();it!=enemyLst.end();++it){
 		KCardInst* pCur = *it;
 		int curVal = _calcAttackVal(pAtk,pCur);
@@ -31,7 +31,22 @@ KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 			pBest = pCur;
 		}
 	}
-	return NULL;
+	return pBest;
+}
+
+KCardInst* _MostValuableTarget(KCardInstList& lst)
+{
+	KCardInst* pBest = NULL;
+	int val = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		int curVal = pCur->GetAtk()*5 + pCur->GetHp()*4 + pCur->GetCost()*2;
+		if(curVal > val){
+			val = curVal;
+			pBest = pCur;
+		}
+	}
+	return pBest;
 }
 
 }

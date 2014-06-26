@@ -86,11 +86,18 @@ bool KBattleAI::SoldierToAttack()
 	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
 	KCardInstList enemyGuider;
 	KCardInst* target = NULL;
-	pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
-	enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
 
-	target = KAIAssist::_BestAttackTarget(pSelectCard,enemyGuider);
-	if(!target) return false;
+	if(enemyGuider.size()>0){
+		target = enemyGuider.front();
+	}else{
+		pDefGuy->GetDeck().GetDefenderSet(&enemyGuider);
+		enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
+
+		target = KAIAssist::_BestAttackTarget(pSelectCard,enemyGuider);
+		if(!target) return false;
+	}
+
+
 
 	m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),target->GetRealId(),0);
 	return true;
