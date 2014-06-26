@@ -4,6 +4,7 @@
 #include "KDynamicWorld.h"
 #include "../StaticTable/KAbilityStatic.h"
 #include "assist/KSkillAssist.h"
+#include "assist/KAIAssist.h"
 
 KBattleAI::KBattleAI()
 {
@@ -55,8 +56,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	//if(UseHeroSkill())
 	//	return;
 	
-    if(UseSecretCard())
-        return;
+    /*if(UseSecretCard())
+        return;*/
 	if(SoldierToAttack())
 		return;
 
@@ -86,17 +87,11 @@ bool KBattleAI::SoldierToAttack()
 	KCardInstList enemyGuider;
 	KCardInst* target = NULL;
 	pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
-	if(enemyGuider.size()>0){
-		target = enemyGuider.front();
-	}else{
-		KCardInstList lst;
-		pDefGuy->GetDeck().GetDefenderSet(&lst);
-		if(lst.empty()){
-			target = pDefGuy->GetDeck().GetHero();
-		}else{
-			target = lst.front();
-		}
-	}
+	enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
+
+	target = KAIAssist::_BestAttackTarget(pSelectCard,enemyGuider);
+	if(!target) return false;
+
 	m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),target->GetRealId(),0);
 	return true;
 }
@@ -208,6 +203,7 @@ bool KBattleAI::IsUseSkillGood(KCardInst* pCard,int& target)
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
+	case KAbilityStatic::what_kill:
 		{
 			int val1 = CalcTotalDamage(pAbility,lst,target);
 			int val2 = CalcTotalDamage(pAbility,lstMy,target);
@@ -297,7 +293,17 @@ int KBattleAI::CalcTotalDamage(KAbilityStatic* pAbility,KCardInstList& lst,int& 
 	int totalDamage = 0;
 	for(KCardInstList::iterator it = lst.begin();it!=lst.end();++it){
 		KCardInst* pCard = *it;
-		int val = (pCard->GetHp()>pAbility->GetNormalVal())? pAbility->GetNormalVal():pCard->GetHp();
+		int val=0;
+		switch(pAbility->GetWhat()){
+			case KAbilityStatic::what_damage:
+				val = (pCard->GetHp()>pAbility->GetNormalVal())? pAbility->GetNormalVal():pCard->GetHp();
+				break;
+			case KAbilityStatic::what_kill:
+				val = pCard->GetHp();
+				break;
+			default:
+				break;
+		}
 		if(pAbility->IsArea()){
 			totalDamage += val;
 		}else{

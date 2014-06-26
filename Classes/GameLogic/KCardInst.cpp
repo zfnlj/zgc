@@ -260,6 +260,15 @@ void KCardInst::AddHp(int val)
 	m_attr.setMaxHp(m_attr.getMaxHp()+val);
 }
 
+int KCardInst::GetAtkedVal(int damage)
+{
+	KAbilityStatic* pEmmune = FindRealBuf(KAbilityStatic::what_immune);
+	if(pEmmune) return GetAtk();
+	int hp = m_attr.getCurHp();
+	if(hp>damage) return damage;
+	return hp +GetAtk();
+}
+
 int KCardInst::Heal(KCardInst* pSrc,int val)
 {
 	KAbilityStatic* pEmmune = FindRealBuf(KAbilityStatic::what_immune);

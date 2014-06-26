@@ -43,9 +43,6 @@
     <ClCompile Include="..\Classes\GameLogic\KDynamicWorld.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.cpp">
       <Filter>commonLogic</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\KNet\KUserData.cpp">
       <Filter>KNet</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp">
-      <Filter>GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\common\OgreDataStream.cpp">
       <Filter>common</Filter>
@@ -345,9 +339,6 @@
     <ClCompile Include="..\Classes\StaticTable\KConditionStruct.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameLogic\assist\KBattleEventAssist.cpp">
-      <Filter>GameLogic</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\StaticTable\KHeroSkillStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
@@ -423,6 +414,18 @@
     <ClCompile Include="..\Classes\UI\KShopScene.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KAIAssist.cpp">
+      <Filter>GameLogic\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KBattleEventAssist.cpp">
+      <Filter>GameLogic\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp">
+      <Filter>GameLogic\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp">
+      <Filter>GameLogic\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -474,9 +477,6 @@
     <ClInclude Include="..\Classes\GameLogic\KDynamicWorld.h">
       <Filter>GameLogic</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\CommonLogic\KLogicModuleMsgDealer.h">
       <Filter>commonLogic</Filter>
     </ClInclude>
@@ -509,9 +509,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\KNet\KUserData.h">
       <Filter>KNet</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h">
-      <Filter>GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\common\OgreDataStream.h">
       <Filter>common</Filter>
@@ -812,9 +809,6 @@
     <ClInclude Include="..\Classes\StaticTable\KConditionStruct.h">
       <Filter>staticTable</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameLogic\assist\KBattleEventAssist.h">
-      <Filter>GameLogic</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KHeroSkillStatic.h">
       <Filter>staticTable</Filter>
     </ClInclude>
@@ -895,6 +889,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\common\KUIMsgDef.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KAIAssist.h">
+      <Filter>GameLogic\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KBattleEventAssist.h">
+      <Filter>GameLogic\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h">
+      <Filter>GameLogic\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h">
+      <Filter>GameLogic\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -984,6 +990,9 @@
     </Filter>
     <Filter Include="PlayerCard">
       <UniqueIdentifier>{e01cada3-6abe-4075-9188-e0f1961b99f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameLogic\assist">
+      <UniqueIdentifier>{92d73356-a89b-4bf8-abd4-99c3f0b36c98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
