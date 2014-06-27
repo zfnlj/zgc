@@ -265,8 +265,8 @@ int KCardInst::GetAtkedVal(int damage)
 	KAbilityStatic* pEmmune = FindRealBuf(KAbilityStatic::what_immune);
 	if(pEmmune) return GetAtk();
 	int hp = m_attr.getCurHp();
-	if(hp>damage) return damage;
-	return hp +GetAtk();
+	if(hp>damage) return damage*8;
+	return hp*8 +GetAtk()*10;
 }
 
 int KCardInst::Heal(KCardInst* pSrc,int val)

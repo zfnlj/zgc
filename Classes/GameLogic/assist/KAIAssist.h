@@ -14,6 +14,9 @@ namespace KAIAssist
 	int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef);
 	KCardInst* _BestAttackTarget(KCardInst* pSrc,KCardInstList& enemyLst);
 	KCardInst* _MostValuableTarget(KCardInstList& lst);
+	KCardInst* _MostHpTarget(KCardInstList& lst);
+	int _calcCardValue(KCardInst* pCard);
+	int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes);
 }
 
 #endif // __HELLOWORLD_SCENE_H__
