@@ -276,7 +276,9 @@ void KBattleCtrlBase::TurnEndHero()
 }
 void KBattleCtrlBase::WaitDrama()
 {
-	if(IsWaitDrama()) return;
+	if(IsWaitDrama()){
+		return;
+	}
 	StateJump(m_nextState);
 }
 

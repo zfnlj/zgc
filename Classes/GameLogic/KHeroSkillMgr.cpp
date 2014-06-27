@@ -63,6 +63,7 @@ void KHeroSkillMgr::ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When 
 	HeroSkill* skill = RndSelectSkill(when);
 	if(!skill) return;
 	skill->GenDynAbility(m_dynAbility);
+	ctrl->AddDramaElapsed(2.0f);
 	KBattleGod::getSingleton().DoCardAbility(ctrl,&m_dynAbility,m_Owner->GetDeck().GetHero());
 	m_bDone = true;
 }

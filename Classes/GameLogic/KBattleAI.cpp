@@ -73,6 +73,7 @@ bool KBattleAI::SoldierToAttack()
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardInst* pCard = *it;
 		if(!pCard->m_attr.getReady()) continue;
+		if(pCard->GetAtk()==0) continue;
 		if(pCard->FindRealBuf(KAbilityStatic::what_dist)){
 			pSelectCard = pCard;
 			break;
@@ -86,7 +87,7 @@ bool KBattleAI::SoldierToAttack()
 	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
 	KCardInstList enemyGuider;
 	KCardInst* target = NULL;
-
+	pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
 	if(enemyGuider.size()>0){
 		target = enemyGuider.front();
 	}else{
@@ -179,6 +180,12 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	switch(pAbility->GetWhat()){
+	case KAbilityStatic::what_summon:
+	case KAbilityStatic::what_summon_guider:
+		{
+			return true;
+		}
+		break;
 	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_control:
 	case KAbilityStatic::what_stun:
@@ -202,12 +209,32 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 			}
 		}
 		break;
+	case KAbilityStatic::what_damage_atkadd:
+		{
+			return PickDamageAtkAdd(pCard,pAbility,lstMy,lst,target);
+		}
+		break;
 	default:
 		CCAssert(false , "TBD!");
         break;
 	}
 	return false;
 
+}
+
+bool KBattleAI::PickDamageAtkAdd(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target)
+{
+	KCardInst* pMySoldier =KAIAssist::_MostValuableTarget(lstMy,99,pAbility->GetNormalVal()+2);
+	if(pMySoldier){
+		target = pMySoldier->GetRealId();
+		return true;
+	}
+	KCardInst* pYourSoldier =KAIAssist::_MostValuableTarget(lstMy,pAbility->GetNormalVal());
+	if(pYourSoldier){
+		target = pYourSoldier->GetRealId();
+		return  KAIAssist::_calcCardValue(pYourSoldier)>pSrc->GetCost()*8;
+	}
+	return false;
 }
 
 bool KBattleAI::IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility)
@@ -239,9 +266,13 @@ bool KBattleAI::IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility)
 			return lst.size()>lstMy.size();
 		}
 		break;
+	case KAbilityStatic::what_draw_card:
+		{
+			 return KSkillAssist::_calcValDef(m_battleCtrl,this,pCard,pAbility->GetVal())>0;
+		}
+		break;
 	case KAbilityStatic::what_copy_hand:
 	case KAbilityStatic::what_res_add:
-	case KAbilityStatic::what_draw_card:
 		{
 			return true;
 		}
@@ -294,6 +325,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_atk_add:
 	case KAbilityStatic::what_add_atk_hp:
 	case KAbilityStatic::what_immune:
+	case KAbilityStatic::what_rush:
 		{
 			KCardInst* pBest = KAIAssist::_MostValuableTarget(lstMy);
 			if(!pBest) return false;
@@ -313,10 +345,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 		break;
 	case KAbilityStatic::what_damage_atkadd:
 		{
-			KCardInst* pBest = KAIAssist::_MostHpTarget(lstMy);
-			if(!pBest) return false;
-			target = pBest->GetRealId();
-			return (pBest->GetHp()>= (pAbility->GetNormalVal()+2));
+			return PickDamageAtkAdd(pCard,pAbility,lstMy,lst,target);
 		}
 		break;
     default:
@@ -326,9 +355,25 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	return false;
 }
 
-KCardInst* KBattleAI::PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target)
+bool KBattleAI::PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target)
 {
-	return NULL;
+	KCardInst* pMyBest = KAIAssist::_MostHpTarget(lstMy);
+	int v1 = KAIAssist::_calcAbilityDoVal(m_battleCtrl,pAbility,pSrc,pMyBest);
+
+	KCardInst* pYourBest =KAIAssist::_MostValuableTarget(lst,1);
+	int v2 = -KAIAssist::_calcAbilityDoVal(m_battleCtrl,pAbility,pSrc,pYourBest);
+	if( v1 > v2 ){
+		if( v1 > pSrc->GetCost()*8){
+			target = pMyBest->GetRealId();
+			return true;
+		}
+	}else{
+		if( v2 > pSrc->GetCost()*8){
+			target = pYourBest->GetRealId();
+			return true;
+		}
+	}
+	return false;
 }
 
 bool KBattleAI::PickAtkSetTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target)
@@ -453,21 +498,10 @@ bool KBattleAI::HandCardToField()
 	}
 
 	if(pSelectCard){
-		KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pSelectCard->GetCardId(),KAbilityStatic::when_enter);
 		int dest = 0;
-		if(pAbility&& !pAbility->IsArea()){
+		if(KSkillAssist::_needEnterFightTarget(pSelectCard->GetCardId())){
 			if(!IsUseSoldierAbilityGood(pSelectCard,dest)) dest=0;
-		/*	KCardInstList lst;
-			KCardInstList lstMy;
-			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lst);
-			KSkillAssist::_fillAbilityTarget(m_battleCtrl,pSelectCard,NULL,pAbility,&lstMy,true);
-			if(lst.size()>0){
-				dest = (*lst.begin())->GetRealId();
-			}else if(lstMy.size()>0){
-				dest = (*lstMy.begin())->GetRealId();
-			}*/
 		}
-		
 
 		m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),dest,pos);
 		return true;

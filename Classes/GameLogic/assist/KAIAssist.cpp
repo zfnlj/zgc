@@ -65,12 +65,15 @@ KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 	return pBest;
 }
 
-KCardInst* _MostValuableTarget(KCardInstList& lst)
+
+KCardInst* _MostValuableTarget(KCardInstList& lst,int maxHp,int minHp)
 {
 	KCardInst* pBest = NULL;
 	int val = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
+		if(pCur->GetHp()>maxHp) continue;
+		if(pCur->GetHp()<minHp) continue;
 		int curVal = _calcCardValue(pCur);
 		if(curVal > val){
 			val = curVal;
