@@ -42,7 +42,7 @@ private:
 	int CalcTotalHpDouble(KAbilityStatic* pAbility,KCardInstList& lst,int& target);
 	int CalcControlBenefit(KCardInstList& lst,int& target);
 	bool PickAtkSetTarget(KCardInst* pCard,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target);
-	KCardInst* PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst);
+	KCardInst* PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -22,7 +22,7 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 
 int _calcCardValue(KCardInst* pCard)
 {
-	return pCard->GetAtk() + pCard->GetHp();
+	return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->GetCost();
 }
 
 int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
@@ -42,7 +42,6 @@ KCardInst* _MostHpTarget(KCardInstList& lst)
 	KCardInst* pBest = NULL;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
-		int curVal = pCur->GetAtk()*5 + pCur->GetHp()*4 + pCur->GetCost()*2;
 		if(!pBest ||
 			pBest->GetHp() < pCur->GetHp()){
 			pBest = pCur;
@@ -72,7 +71,7 @@ KCardInst* _MostValuableTarget(KCardInstList& lst)
 	int val = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
-		int curVal = pCur->GetAtk()*5 + pCur->GetHp()*4 + pCur->GetCost()*2;
+		int curVal = _calcCardValue(pCur);
 		if(curVal > val){
 			val = curVal;
 			pBest = pCur;

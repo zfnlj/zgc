@@ -280,7 +280,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 			KCardInst* pBest = KAIAssist::_MostValuableTarget(lst);
 			if(!pBest) return false;
 			target = pBest->GetRealId();
-			return  KAIAssist::_calcCardValue(pBest)*10>pCard->GetCost()*15;
+			return  KAIAssist::_calcCardValue(pBest)>pCard->GetCost()*8;
 		}
 		break;
 	case KAbilityStatic::what_heal:
@@ -298,7 +298,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 			KCardInst* pBest = KAIAssist::_MostValuableTarget(lstMy);
 			if(!pBest) return false;
 			target = pBest->GetRealId();
-			return  KAIAssist::_calcCardValue(pBest)*10>pCard->GetCost()*15;
+			return  KAIAssist::_calcCardValue(pBest)>pCard->GetCost()*8;
 		}
 		break;
 	case KAbilityStatic::what_atk_set:
@@ -308,6 +308,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 		break;
 	case KAbilityStatic::what_atk_equ_hp:
 		{
+			return PicAtkEquHpTarget(pCard,pAbility,lstMy,lst,target);
 		}
 		break;
 	case KAbilityStatic::what_damage_atkadd:
@@ -325,7 +326,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	return false;
 }
 
-KCardInst* KBattleAI::PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst)
+KCardInst* KBattleAI::PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target)
 {
 	return NULL;
 }
@@ -338,12 +339,12 @@ bool KBattleAI::PickAtkSetTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardI
 	KCardInst* pYourBest = KAIAssist::_MostHpTarget(lst);
 	int v2 = -KAIAssist::_calcAbilityDoVal(m_battleCtrl,pAbility,pSrc,pYourBest);
 	if( v1 > v2 ){
-		if( v1 *10 > pSrc->GetCost()*15){
+		if( v1 > pSrc->GetCost()*8){
 			target = pMyBest->GetRealId();
 			return true;
 		}
 	}else{
-		if( v2 *10 > pSrc->GetCost()*15){
+		if( v2 > pSrc->GetCost()*8){
 			target = pYourBest->GetRealId();
 			return true;
 		}
