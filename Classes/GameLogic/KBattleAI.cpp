@@ -175,17 +175,13 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pCard->GetCardId(),KAbilityStatic::when_enter);
 
 	if(!pAbility) return false;
+	if(pAbility->GetWhich()==KAbilityStatic::which_owner) return true;
+
 	KCardInstList lst;
 	KCardInstList lstMy;
 	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	switch(pAbility->GetWhat()){
-	case KAbilityStatic::what_summon:
-	case KAbilityStatic::what_summon_guider:
-		{
-			return true;
-		}
-		break;
 	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_control:
 	case KAbilityStatic::what_stun:
