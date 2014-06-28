@@ -54,7 +54,7 @@ public:
 	void onFighterBackHand(KCardInst* card);
 	void onUseSecretCard(KCardInst* card);
 	void onUseRes();
-
+	void onSkillInterrupt(KCardInst*);
 	
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();

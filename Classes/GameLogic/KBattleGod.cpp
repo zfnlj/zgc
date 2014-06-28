@@ -406,8 +406,12 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 	}
 
 	KAbilityStatic* pTmpAbility = KSkillAssist::_findStaticAbility(pSrc->GetCardId(),KAbilityStatic::when_des_alive);
-	if(pTmpAbility && pDes && !pDes->IsDead()){
-		DoCardAbility(ctrl,pTmpAbility,pSrc,NULL);
+	if(pTmpAbility && pDes){
+		if(!pDes->IsDead()){
+			DoCardAbility(ctrl,pTmpAbility,pSrc,NULL);
+		}else{
+			KSkillAssist::_sendSkillInterrupt(ctrl,pSrc);
+		}
 	}
 
 	guy->UseRes(pSrc->GetRealCost());

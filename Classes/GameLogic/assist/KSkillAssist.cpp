@@ -456,6 +456,11 @@ int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,i
 	return id;
 }
 
+void _sendSkillInterrupt(KBattleCtrlBase* ctrl,KCardInst* card)
+{
+	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SKILLINTERRUPT,(unsigned long long)card,(unsigned long long)ctrl->GetWorld());
+}
+
 void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result)
 {
 	if(!result._pAbility->ActionIsEmpty()) ctrl->AddDramaElapsed(4.0f);

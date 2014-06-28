@@ -310,6 +310,12 @@ void BattleFieldScene::DeactiveMyFightArea()
 	m_myFightAreaPanel.Hide();
 }
 
+void BattleFieldScene::onSkillInterrupt(KCardInst* card)
+{
+	KCardActor* actor = KCardActor::create(card); 
+	actor->GetActionMgr().PlayAction("skill_interrupt");
+}
+
 void BattleFieldScene::onCardMove(KCardInst* pCard)
 {
 	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(pCard);

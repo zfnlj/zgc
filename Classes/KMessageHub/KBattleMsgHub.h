@@ -18,6 +18,7 @@ public:
 	virtual void HandCardReady(unsigned long long Param1, unsigned long long Param2);
 	virtual void SelectCardOK(unsigned long long Param1, unsigned long long Param2);
 	virtual void AbilityResult(unsigned long long Param1, unsigned long long Param2);
+	virtual void SkillInterrupt(unsigned long long Param1, unsigned long long Param2);
 	virtual void Card2Tomb(unsigned long long Param1, unsigned long long Param2);
 	virtual void BattleDirty(unsigned long long Param1, unsigned long long Param2);
 	virtual void BattleOpDone(unsigned long long Param1, unsigned long long Param2);

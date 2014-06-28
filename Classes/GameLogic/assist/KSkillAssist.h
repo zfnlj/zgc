@@ -32,6 +32,7 @@ namespace KSkillAssist
 	void _abilityGenCard(KBattleCtrlBase* ctrl,KBattleDeck* deck,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _filterAbility(KCardAbilityList* srcLst,KCardAbilityList* desLst,KAbilityStatic::Enum_When when);
 	bool _needEnterFightTarget(int cardId);
+	void _sendSkillInterrupt(KBattleCtrlBase* ctrl,KCardInst* card);
 }
 
 #endif // __HELLOWORLD_SCENE_H__
