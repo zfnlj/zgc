@@ -16,6 +16,9 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 {
 	int total = 0;
 	total += pDef->GetAtkedVal(pAtk->GetAtk())*10;
+	if(pDef->IsKindOf(KCardStatic::card_hero)&& pDef->GetHp()<10){
+		total += (10-pDef->GetHp())*5;
+	}
 	total -= pAtk->GetAtkedVal((pAtk->FindRealBuf(KAbilityStatic::what_dist))?0:pDef->GetAtk())*8;
 	return total;
 }

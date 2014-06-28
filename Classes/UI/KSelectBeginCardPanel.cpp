@@ -88,6 +88,8 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 		}else{
 			onMeSelectEnd(0);
 		}
+	}else{
+		KUIAssist::_moveCardSet(guy->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
 }
 

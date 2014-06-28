@@ -105,10 +105,12 @@ void BattleFieldScene::onBattleInit()
 
 	FBattleGuy* pOtherPlayer = KClientBattleCtrl::getInstance()->GetOtherPlayer();
 	KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hero));
-	KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
+	//KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 
 	if(KClientBattleCtrl::getInstance()->IsSelectCard()){
 		m_selectCardPanel.init(this);
+	}else{
+		KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
 	InitTest();
 }

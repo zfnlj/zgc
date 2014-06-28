@@ -735,9 +735,9 @@ void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 	m_WaitTime = 0;
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_INIT,(unsigned long long)&m_BattleGuyList,(unsigned long long)m_world);
 	if(pBattleStatic->IsSelectCard()){
-		StateJump(battle_select_handcard);
+		StateDelayJump(battle_select_handcard,2);
 	}else{
-		StateJump(battle_turn_begin);
+		StateDelayJump(battle_turn_begin,2);
 	}
 	m_bDirty = true;
 }
