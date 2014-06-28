@@ -151,9 +151,6 @@ protected:
 	KDoCardWhenAbilityList m_cardWhenList;
 
 public:
-	BeginDefLuaClass(KBattleCtrlBase)
-		DefMemberFunc(GetMyHero);
-	EndDef
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -6,6 +6,7 @@
 #include "System/Memory/KStepObjectPool.h"
 #include <System/Collections/KList.h>
 #include "KCardAttr.h"
+#include "Inc/Lua/KLuaWrap.h"
 #ifdef _USE_COCOS2DX
 #include "cocos2d.h"
 
@@ -106,6 +107,10 @@ public:
 private:
 	KCardStatic* m_pST;
 	KBattleGuy* m_Owner;
+public:
+BeginDefLuaClass(KCardInst)
+	DefMemberFunc(GetHp);
+EndDef
 };
 
 typedef std::list<KCardInst*> KCardInstList;

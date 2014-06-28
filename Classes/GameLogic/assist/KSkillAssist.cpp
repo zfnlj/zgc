@@ -538,6 +538,9 @@ int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card,KValDef& v
 	case KValDef::val_getHp:
 		ret = card->GetHp();
 		break;
+	case KValDef::val_lua:
+		ret = LuaWraper.Call<int>(valDef._luaStr,"",card->GetRealId());
+		break;
 	default:
 		ret = valDef.GetVal();
 		break;

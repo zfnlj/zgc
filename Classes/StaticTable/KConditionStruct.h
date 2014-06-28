@@ -26,13 +26,15 @@ struct KValDef{
 		val_mySoldierNum,
 		val_rnd,
 		val_getHp,
+		val_lua,
 	};
-	KValDef():_def(val_normal),_val(0),_val2(0){}
+	KValDef();
 	void ParseString(char* str);
 	val_def GetDef(){ return _def;}
 	int GetVal(){ return _val;}
 	val_def _def;
 	int _val;
 	int _val2;
+	char _luaStr[24];
 };
 #endif // __HELLOWORLD_SCENE_H__

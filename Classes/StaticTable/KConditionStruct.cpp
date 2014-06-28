@@ -24,9 +24,17 @@ void KConditionDef::ParseString(const char* str)
 	}
 }
 
-
+KValDef::KValDef():_def(val_normal),_val(0),_val2(0)
+{
+	memset(_luaStr,0,sizeof(_luaStr));
+}
 void KValDef::ParseString(char* str)
 {
+	if(strstr(str,"PlayCardUtil")){
+		_def = val_lua;
+		strcpy(_luaStr,str);
+		return;
+	}
 	char* ss[64];
 	int ns = split(str, ";", ss, 64);
 	if(ns>=2){

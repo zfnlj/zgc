@@ -12,7 +12,11 @@ public:
 	KClientBattleCtrl(){ m_pBattleQuest = NULL;}
 	~KClientBattleCtrl(){}
 	void onTurnBegin(KBattleGuy*);
-	
+
+
+BeginDefLuaClass(KClientBattleCtrl)
+	DefMemberFunc(GetMyHero);
+EndDef
 };
 
 #endif // __HELLOWORLD_SCENE_H__

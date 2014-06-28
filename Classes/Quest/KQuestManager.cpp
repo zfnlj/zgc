@@ -44,6 +44,7 @@ bool KQuestManager::Initialize(void)
 	doDirQuest("Quest");
 	LoadAvailQuestList();
 	m_initFlag = true;	// 设置初始化标志
+
 	return true;
 }
 
