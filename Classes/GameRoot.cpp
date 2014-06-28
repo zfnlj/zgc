@@ -27,7 +27,7 @@ void GameRoot::init()
 	sqlite3_config(SQLITE_CONFIG_SERIALIZED); //sqlite使用串行方式
 	KClientGateListener::getSingleton().init();
 	InitializeResource();
-	m_battleCtrl.init(NULL);
+	KClientBattleCtrl::getInstance()->init(NULL);
 	_battleScene = NULL;
 	m_inc = 1;
 	VirtualService::getSingleton().init();
@@ -65,7 +65,7 @@ void GameRoot::InitializeResource()
 void GameRoot::update(float dt)
 {
 	KClientGateListener::getSingleton().update(dt);
-	m_battleCtrl.update(dt);
+	KClientBattleCtrl::getInstance()->update(dt);
 }
 
 void GameRoot::LoadStringDef(const char* filename)
@@ -77,4 +77,7 @@ void GameRoot::LoadStringDef(const char* filename)
 	//int kk=0;
 }
 
-
+KBattleCtrlBase* GameRoot::BattleCtrl()
+{
+	return KClientBattleCtrl::getInstance();
+}

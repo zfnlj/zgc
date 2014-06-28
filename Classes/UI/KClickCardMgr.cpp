@@ -24,9 +24,9 @@ void KClickCardMgr::init()
 
 void KClickCardMgr::onClickCard(KCardActor* actor)
 {
-	if(GameRoot::getSingleton().BattleCtrl().IsWaitDrama()) return;
+	if(GameRoot::getSingleton().BattleCtrl()->IsWaitDrama()) return;
 
-	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
+	if(GameRoot::getSingleton().BattleCtrl()->GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
 	KActor& mainActor =  KUIAssist::_activeSceneActor();
 	if(mainActor.GetActionMgr().ExistAction("bigCard_switch")){
 		m_cacheActor = actor;

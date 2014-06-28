@@ -24,7 +24,7 @@ void KResPanel::init(cocos2d::extension::UILayer* layer)
 void KResPanel::UpdateRes()
 {
 	char msg[64]={0};
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl()->GetMainPlayer();
 	if(!pMainPlayer) return;
 	pMainPlayer->QueryResInfo(msg);
 
@@ -39,7 +39,7 @@ void KResPanel::UpdateRes()
 		m_myResFont->setString(msg);
 	}
 
-	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
+	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl()->GetOtherPlayer();
 	if(!pOtherPlayer) return;
 	pOtherPlayer->QueryResInfo(msg);
 	if(!m_yourResFont){

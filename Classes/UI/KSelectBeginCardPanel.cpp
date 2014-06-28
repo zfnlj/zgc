@@ -34,7 +34,7 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 	pPanel->addPushDownEvent(this, coco_pushselector(KSelectBeginCardPanel::DoClickOK));
 	
 
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KCardInstList* lst = pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand);
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardActor* actor = KCardActor::create(*it);
@@ -47,7 +47,7 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
 {
 	KCardInstList skiplst;
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KCardInstList* lst = pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand);
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardActor* actor = KCardActor::create(*it);
@@ -57,8 +57,8 @@ void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
 			(*it)->releaseActor();
 		}
 	}
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
-		GameRoot::getSingleton().BattleCtrl().DoSelectBeginCard(pMainPlayer->GetImp(),&skiplst);
+	if(KClientBattleCtrl::getInstance()->IsServerSide()){
+		KClientBattleCtrl::getInstance()->DoSelectBeginCard(pMainPlayer->GetImp(),&skiplst);
 	}else{
 		KSocketFacade::DoSelectBeginCard(&skiplst);
 	}
@@ -68,7 +68,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 {
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("select_base");
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-	if(guy==GameRoot::getSingleton().BattleCtrl().GetMainPlayer()){
+	if(guy==KClientBattleCtrl::getInstance()->GetMainPlayer()){
 		//KUIAssist::_showCardSet(lst);
 		bool bShowRefresh = false;
 		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
@@ -94,7 +94,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 void KSelectBeginCardPanel::onMeSelectEnd(float dt)
 {
 	UIImageView* base = (UIImageView*)m_layer->getWidgetByName("select_base");
-	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardInst* card = *it;

@@ -49,7 +49,7 @@ bool KUIAssist::_queryScreenPos(const char* name,cocos2d::CCPoint& pt)
 
 cocos2d::CCPoint KUIAssist::_querySecretShowPos(KCardInst* card)
 {
-	if(GameRoot::getSingleton().BattleCtrl().IsMyCard(card)){
+	if(KClientBattleCtrl::getInstance()->IsMyCard(card)){
 		UIWidget* widget = _activeScene->getWidgetByName("my_secret_show");
 		if(widget) return widget->getWorldPosition();
 	}else{
@@ -61,7 +61,7 @@ cocos2d::CCPoint KUIAssist::_querySecretShowPos(KCardInst* card)
 
 cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
 {
-	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
+	bool bMy = KClientBattleCtrl::getInstance()->IsMyCard(card);
 	const char* sz = card->GetBasePosName(bMy);
 	UIWidget* obj =  _activeScene->getWidgetByName(sz);
 	return obj->getWorldPosition();
@@ -69,7 +69,7 @@ cocos2d::CCPoint KUIAssist::_querySecretPos(KCardInst* card)
 
 cocos2d::CCPoint KUIAssist::_queryFighterPos(KCardInst* card)
 {
-	bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(card);
+	bool bMy = KClientBattleCtrl::getInstance()->IsMyCard(card);
 	char sz[64];
 	if(bMy){
 		sprintf(sz,"my_fight_slot_%d",card->m_attr.getPos());
@@ -96,7 +96,7 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIW
 	if(!base) base = _activeScene->getWidgetByName(_getBasePosName(card));
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
-		if(!lst) lst = GameRoot::getSingleton().BattleCtrl().GetCardSet(card);
+		if(!lst) lst = KClientBattleCtrl::getInstance()->GetCardSet(card);
 		KCardActor* cardActor = (KCardActor*)card->getActor();
 		cardActor->GetUI()->setZOrder(50+_getIndexOfCard(lst,card));
 		return base->getWorldPosition();
@@ -105,7 +105,7 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIW
 			return base->getWorldPosition();;
 	}
 
-	if(!lst) lst = GameRoot::getSingleton().BattleCtrl().GetCardSet(card);
+	if(!lst) lst = KClientBattleCtrl::getInstance()->GetCardSet(card);
 
 	
 	float realWidth = base->getSize().width*base->getScale();
@@ -132,7 +132,7 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIW
 
 const char* KUIAssist::_getBasePosName(KCardInst* card)
 {
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	bool bMy = (pMainPlayer->GetCard(card->GetRealId()))?true:false;
 	return card->GetBasePosName(bMy);
 }
@@ -152,7 +152,7 @@ void KUIAssist::_showCard(KCardInst* card)
 	if(!actor->GetUI()->getParent()) _activeScene->addWidget(actor->GetUI());
 
 	
-	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(card);
+	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCardOwner(card);
 	KCardInstList* lst = guy->QueryCardSet(card->GetSlot());
 	KUIAssist::_moveCardSet(lst,"card_move");
 	
@@ -551,7 +551,7 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 
 void KUIAssist::_createAffectAction(int actorId,const char* action,K3DActionParam* p,KAction* parent,int key)
 {
-	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(actorId);
+	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(actorId);
 	if(!card) return;
 
 	KCardActor* actor = KCardActor::create(card);
@@ -580,7 +580,7 @@ CCPoint KUIAssist::_getScreenCenter()
 
 CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 {
-	KCardInst* desCard = GameRoot::getSingleton().BattleCtrl().GetCard(des);
+	KCardInst* desCard = KClientBattleCtrl::getInstance()->GetCard(des);
 	KCardActor* desActor = (KCardActor*)desCard->getActor();
 	CCPoint pt1 = widgetSrc->getPosition();
 	CCPoint pt2;
@@ -630,7 +630,7 @@ CCParticleSystem* KUIAssist::_createParticle(const char* name)
 
 KCardActor* KUIAssist::_getCardActor(int realId)
 {
-	 KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	 KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
 	 if(!card) return NULL;
 	 return KCardActor::create(card);
 }
@@ -736,10 +736,10 @@ void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 
 void KUIAssist::_setActionParamSlot(K3DActionParam* param)
 {
-	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(param->_srcID);
+	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(param->_srcID);
 	if(card) param->_srcSlot = card->GetSlot();
 	for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
-		card = GameRoot::getSingleton().BattleCtrl().GetCard(param->_desArr[i]);
+		card = KClientBattleCtrl::getInstance()->GetCard(param->_desArr[i]);
 		if(!card) break;
 		param->_destSlot[i] = card->GetSlot();
 	}
@@ -748,20 +748,20 @@ void KUIAssist::_setActionParamSlot(K3DActionParam* param)
 
 bool KUIAssist::_IsPlayCardAble()
 {
-	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return false;
 	if(KAction::GetTotalClassActionNum()>0){
 		return false;
 	}
-	if(GameRoot::getSingleton().BattleCtrl().IsWaitDrama()) return false;
+	if(KClientBattleCtrl::getInstance()->IsWaitDrama()) return false;
 	return true;
 }
 
 bool KUIAssist::_IsValidateSrcCard(KCardInst* card)
 {
-	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return false;
 	KCardInstList curActive;
 
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	pMainPlayer->QueryValidateHandCards(&curActive);
 	pMainPlayer->QueryValidateFightCards(&curActive);
 	
@@ -770,23 +770,23 @@ bool KUIAssist::_IsValidateSrcCard(KCardInst* card)
 
 bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 {
-	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return false;
-	KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return false;
+	KCardInst* pSrc = KClientBattleCtrl::getInstance()->GetCurSrcCard();
 	if(!pSrc) return false;
 
 	KCardInstList curActiveGreen;
 	KCardInstList curActiveRed;
-	KBattleGuy* defGuy = GameRoot::getSingleton().BattleCtrl().GetDefGuy();
+	KBattleGuy* defGuy = KClientBattleCtrl::getInstance()->GetDefGuy();
 	if(pSrc->IsKindOf(KCardStatic::card_soldier)){
 
 
 
-		GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+		KClientBattleCtrl::getInstance()->QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 		if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
 			defGuy->QueryActiveDefendCards(&curActiveRed);
 		}
 	}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
-		GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
+		KClientBattleCtrl::getInstance()->QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
 	}
 	if(_getIndexOfCard(&curActiveGreen,card)>=0)  return true;
 	if(_getIndexOfCard(&curActiveRed,card)>=0)  return true;

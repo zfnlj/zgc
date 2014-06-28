@@ -95,7 +95,7 @@ bool VirtualService::StartQuestBattle()
 {
 	{ //TMP
 		KQuestNew* pQuest = KQuestManager::GetInstance()->GetQuest(10001);
-		GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+		GameRoot::getSingleton().BattleCtrl()->PlayQuestBattle(pQuest);
 		return true;
 	}
 	bool ret = false;
@@ -105,7 +105,7 @@ bool VirtualService::StartQuestBattle()
 	{
 		KQuestNew* pQuest = playerQuestManager.m_quests[i];
 		if(pQuest->GetQuestStatus()==KQ_QuestRuning && pQuest->m_battleField>0){
-			GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+			GameRoot::getSingleton().BattleCtrl()->PlayQuestBattle(pQuest);
 			ret = true;
 			break;
 		}

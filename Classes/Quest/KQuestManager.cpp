@@ -40,6 +40,7 @@ bool KQuestManager::Initialize(void)
 
 	// 临时通过读取所有任务的
 	LoadLuaScript("QuestUtils.lua");
+	LoadLuaScript("PlayCardUtil.lua");
 	doDirQuest("Quest");
 	LoadAvailQuestList();
 	m_initFlag = true;	// 设置初始化标志

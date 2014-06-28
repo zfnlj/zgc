@@ -128,7 +128,7 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 
 	pInst->retainActor(this);
 
-	if(GameRoot::getSingleton().BattleCtrl().IsShowBack(pInst)){ //对方手牌，不显示牌信息
+	if(KClientBattleCtrl::getInstance()->IsShowBack(pInst)){ //对方手牌，不显示牌信息
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardBack.json");
 		m_ui->setScale(0.8f);
 		m_bBack = true;
@@ -173,7 +173,7 @@ void KCardActor::RemoveSelectImg()
 
 bool KCardActor::DoSelectBeginCard(CCObject* sender)
 {
-	if(GameRoot::getSingleton().BattleCtrl().GetBattleState()!=KBattleCtrlBase::battle_select_handcard) return false;
+	if(KClientBattleCtrl::getInstance()->GetBattleState()!=KBattleCtrlBase::battle_select_handcard) return false;
 	m_bSelected = !m_bSelected;
 
 	UIImageView* pRemoveImage = (UIImageView*)UIHelper::seekWidgetByName((UIWidget*)m_ui,"remove_x");
@@ -200,20 +200,20 @@ void KCardActor::DoSelect(CCObject* sender)
 	if(DoSelectBeginCard(sender)) return;
 	if(!KUIAssist::_IsPlayCardAble()) return;
 
-	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return;
 	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();
 
-	if(GameRoot::getSingleton().BattleCtrl().GetCurOp().IsEmpty()){
+	if(KClientBattleCtrl::getInstance()->GetCurOp().IsEmpty()){
 		if(KUIAssist::_IsValidateSrcCard(m_card)) GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(this);
 	}else{
-		int srcID = GameRoot::getSingleton().BattleCtrl().GetCurOp()._src;
+		int srcID = KClientBattleCtrl::getInstance()->GetCurOp()._src;
 		if(srcID==m_card->GetRealId()){
 			GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(NULL);
 
 			return;
 		}
 		if(KUIAssist::_IsValidateDesCard(m_card)){
-			GameRoot::getSingleton().BattleCtrl().DoSelectCard(m_card);
+			KClientBattleCtrl::getInstance()->DoSelectCard(m_card);
 		}else{
 			if(KUIAssist::_IsValidateSrcCard(m_card)){
 				GameRoot::getSingleton().getBattleScene()->DoSelectSrcCard(this);
@@ -300,7 +300,7 @@ void KCardActor::MoveBack(float speed)
 				param.init("go_tomb");	
 			}
 			/*if(m_card->IsKindOf(KCardStatic::card_skill)){
-				FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCardOwner(m_card);
+				FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCardOwner(m_card);
 				KUIAssist::_resortHandCardSet(guy);
 			}*/
 		}
@@ -387,7 +387,7 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 	}else if(strcmp(slot,"secret_show")==0){
 		return KUIAssist::_querySecretShowPos(m_card);
 	}else if(strcmp(slot,"res")==0){
-		bool bMy = GameRoot::getSingleton().BattleCtrl().IsMyCard(m_card);
+		bool bMy = KClientBattleCtrl::getInstance()->IsMyCard(m_card);
 		UIWidget* widget = (bMy)?KUIAssist::_activeScene->getWidgetByName("my_res"):KUIAssist::_activeScene->getWidgetByName("your_res");
 		if(widget) return widget->getWorldPosition();
 	}
@@ -447,7 +447,7 @@ void KCardActor::delWidget(const char* obj)
 void KCardActor::updateSecret()
 {
 	KCardInstList* cardLst = m_card->GetOwner()->QueryCardSet(KCardInst::enum_slot_secret);
-	bool bMy  = GameRoot::getSingleton().BattleCtrl().GetMainPlayer()== m_card->GetOwner()->GetFacade();
+	bool bMy  = KClientBattleCtrl::getInstance()->GetMainPlayer()== m_card->GetOwner()->GetFacade();
 	KUIAssist::_updateSecretIcon(bMy,cardLst);
 }
 

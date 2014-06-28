@@ -23,14 +23,13 @@ public :
 	int GetInc(){ return m_inc++;}
 	void update(float dt);
 	void init();
-	KClientBattleCtrl& BattleCtrl(){return m_battleCtrl;}
 	const char* GetRootPath(){return m_rootPath;}
+	KBattleCtrlBase* BattleCtrl();
 private :
 	void LoadStringDef(const char* filename);
 	BattleFieldScene* _battleScene;
 	MainMenuScene* _mainMenuScene;
 	int m_inc;
-	KClientBattleCtrl m_battleCtrl;
 	char m_rootPath[256];
 };
 

@@ -6,6 +6,9 @@
 class KClientBattleCtrl : public KBattleCtrlBase
 {
 public:
+
+	static KClientBattleCtrl* getInstance(void);
+
 	KClientBattleCtrl(){ m_pBattleQuest = NULL;}
 	~KClientBattleCtrl(){}
 	void onTurnBegin(KBattleGuy*);

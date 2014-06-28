@@ -133,7 +133,7 @@ void KPacketGate_SC::Process_SC_PlayerDisappear(KGameSocket* pSock, const void* 
 void KPacketGate_SC::Process_SC_BattleCtrlInfo(KGameSocket* pSock, const void* pData, int len)
 {
 	KMsgInputStream si(pData,len);
-	GameRoot::getSingleton().BattleCtrl().deserialize(&si);
+	GameRoot::getSingleton().BattleCtrl()->deserialize(&si);
 }
 
 void KPacketGate_SC::Process_SC_BattleInit(KGameSocket* pSock, const void* pData, int len)
@@ -150,7 +150,7 @@ void KPacketGate_SC::Process_SC_BattleInit(KGameSocket* pSock, const void* pData
 		PlayerData* player = KUserData::GetInstancePtr()->get(0);
 		bool bMainPlayer =false;
 		if(player&& player->playerID==id) bMainPlayer = true;
-		GameRoot::getSingleton().BattleCtrl().deserializeBattleGuy(id,&si,bMainPlayer);
+		GameRoot::getSingleton().BattleCtrl()->deserializeBattleGuy(id,&si,bMainPlayer);
 	}
 	KNetMsgFacade::onBattleInit();
 }
@@ -177,7 +177,7 @@ void KPacketGate_SC::Process_SC_BattleWorldUpdate(KGameSocket* pSock, const void
 		UINT64 id;
 		if(!si.ReadUint64(id))
 			return;
-		GameRoot::getSingleton().BattleCtrl().deserializeDirty(id,&si);
+		GameRoot::getSingleton().BattleCtrl()->deserializeDirty(id,&si);
 	}
 	GameRoot::getSingleton().getBattleScene()->onUseRes();
 }
@@ -217,7 +217,7 @@ void KPacketGate_SC::Process_SC_BattleDrawCard(KGameSocket* pSock, const void* p
 		int realId;
 		if(!si.ReadInt(realId))
 			return;
-		KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+		KCardInst* card = GameRoot::getSingleton().BattleCtrl()->GetCard(realId);
 		if(card) drawList.push_back(card);
 	}
 	KNetMsgFacade::onBattleDrawCard(&drawList);

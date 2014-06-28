@@ -325,10 +325,10 @@ bool KAffectorActionExecutor::IsTargetFlagMatch(int id,int index)
 {
     KAffectorActionStatic* pStatic = (KAffectorActionStatic*)m_AffectorStatic;
 
-    KClientBattleCtrl& battleCtrl = GameRoot::getSingleton().BattleCtrl();
+    KClientBattleCtrl* battleCtrl = KClientBattleCtrl::getInstance();
     KCardActor* actor = dynamic_cast<KCardActor*>(m_action->GetActor());
-    FBattleGuy* me = (actor)?battleCtrl.GetCardOwner(actor->GetCard()):NULL;
-    FBattleGuy* you = battleCtrl.GetCardOwner(id);
+    FBattleGuy* me = (actor)?battleCtrl->GetCardOwner(actor->GetCard()):NULL;
+    FBattleGuy* you = battleCtrl->GetCardOwner(id);
     bool ret = false;
     switch(pStatic->GetTarFlag()){
         case KAffectorActionStatic::tar_des:

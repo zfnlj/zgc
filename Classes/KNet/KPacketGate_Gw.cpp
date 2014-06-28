@@ -104,12 +104,12 @@ void KPacketGate_Gw::Process_GwClient_Connect(KGatewaySocket* pSock, const void*
 	//pSock->AddRef(); cgl->m_pGatewaySocket = pSock;
 
 	//KDynamicWorld::getSingleton().SendGatewayMsg(LOGIC_GW_CONNECTED,0,0);
-	GameRoot::getSingleton().BattleCtrl().m_bNetReady = true;
+	GameRoot::getSingleton().BattleCtrl()->m_bNetReady = true;
 }
 
 void KPacketGate_Gw::Process_GwClient_Close(KGatewaySocket* pSock, const void* pData, int len)
 {
-	GameRoot::getSingleton().BattleCtrl().onNetClose();
+	GameRoot::getSingleton().BattleCtrl()->onNetClose();
 
 	CCLog("Disconnected from gateway:%s", pSock->ToString().c_str());
 

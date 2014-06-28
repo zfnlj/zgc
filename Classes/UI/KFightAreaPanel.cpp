@@ -59,8 +59,8 @@ void KFightAreaPanel::Hide()
 	for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
 		ActiveSlot(i,false);
 	}
-	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
-		KBattleCtrlBase::BattleOp& op = GameRoot::getSingleton().BattleCtrl().GetCurOp();
+	if(KClientBattleCtrl::getInstance()->IsMyTurn()){
+		KBattleCtrlBase::BattleOp& op = KClientBattleCtrl::getInstance()->GetCurOp();
 		if(op._src && op._slot>=0) ActiveSlot(op._slot,true);
 	}
 }
@@ -80,7 +80,7 @@ void KFightAreaPanel::update(float dt)
 {
 	
 	if(m_bShowActive){
-		FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+		FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 		for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
 			if(pMainPlayer&& pMainPlayer->IsEmptyFightSlot(i)){
 				ActiveSlot(i,true);
@@ -98,18 +98,18 @@ void KFightAreaPanel::onClickFightArea(CCObject* sender)
 	UIWidget* pBut = (UIWidget*)sender;
 	int index = pBut->getTag();
 	if(!KGameRecordMgr::getSingleton().IsClickFightAreaValidate(index)) return;
-	if(!GameRoot::getSingleton().BattleCtrl().IsMyTurn()) return;
-	KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return;
+	KCardInst* pSrc = KClientBattleCtrl::getInstance()->GetCurSrcCard();
 	if(!pSrc) return;
 
 	if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 		switch(pSrc->GetKind()){
 		case KCardStatic::card_soldier:
 		case KCardStatic::card_secret:
-			GameRoot::getSingleton().BattleCtrl().OpSetSlot(index);
+			KClientBattleCtrl::getInstance()->OpSetSlot(index);
 			break;
 		case KCardStatic::card_skill:
-			if(pSrc->IsTargetLess(KAbilityStatic::when_use)) GameRoot::getSingleton().BattleCtrl().OpDone();
+			if(pSrc->IsTargetLess(KAbilityStatic::when_use)) KClientBattleCtrl::getInstance()->OpDone();
 			break;
         default:
             break;

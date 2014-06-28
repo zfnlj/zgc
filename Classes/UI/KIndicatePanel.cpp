@@ -27,8 +27,8 @@ void KIndicatePanel::init(cocos2d::extension::UILayer* layer)
 void KIndicatePanel::UpdateSleepAnim()
 {
 	KCardInstList tmpList;
-	if(GameRoot::getSingleton().BattleCtrl().IsMyTurn()){
-		FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	if(KClientBattleCtrl::getInstance()->IsMyTurn()){
+		FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 		pMainPlayer->QuerySleepFightCards(&tmpList);
 	}
 	for(KCardInstList::iterator it=m_SleepArr.begin();it!=m_SleepArr.end();++it){
@@ -64,9 +64,9 @@ void KIndicatePanel::Update(float dt)
 		return;
 	}
 
-	KBattleCtrlBase::BattleState state = GameRoot::getSingleton().BattleCtrl().GetBattleState();
-	FBattleGuy* pMainPlayer = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
-	FBattleGuy* pOtherPlayer = GameRoot::getSingleton().BattleCtrl().GetOtherPlayer();
+	KBattleCtrlBase::BattleState state = KClientBattleCtrl::getInstance()->GetBattleState();
+	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
+	FBattleGuy* pOtherPlayer = KClientBattleCtrl::getInstance()->GetOtherPlayer();
 
 	KCardInstList curActiveGreen;
 	KCardInstList curActiveRed;
@@ -83,10 +83,10 @@ void KIndicatePanel::Update(float dt)
 		{
 			if(!KUIAssist::_IsPlayCardAble())
 				break;
-			KCardInst* pSrc = GameRoot::getSingleton().BattleCtrl().GetCurSrcCard();
+			KCardInst* pSrc = KClientBattleCtrl::getInstance()->GetCurSrcCard();
 			if(pSrc){
 				if(pSrc->IsKindOf(KCardStatic::card_soldier)){
-					GameRoot::getSingleton().BattleCtrl().QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+					KClientBattleCtrl::getInstance()->QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
 					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 						
 						bShowMyFightArea = true;
@@ -95,7 +95,7 @@ void KIndicatePanel::Update(float dt)
 						pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
 					}
 				}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
-					GameRoot::getSingleton().BattleCtrl().QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
+					KClientBattleCtrl::getInstance()->QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
 				}
 			}else{
 				pMainPlayer->QueryValidateHandCards(&curActiveGreen);
@@ -116,7 +116,7 @@ void KIndicatePanel::Update(float dt)
 	_copyCardSet(&curActiveGreen,&m_ActiveGreenArr);
 	_copyCardSet(&curActiveRed,&m_ActiveRedArr);
 
-	KBattleCtrlBase::BattleOp& op = GameRoot::getSingleton().BattleCtrl().GetCurOp();
+	KBattleCtrlBase::BattleOp& op = KClientBattleCtrl::getInstance()->GetCurOp();
 	if(op._slot>=0){
 		bShowMyFightArea= false;
 	}

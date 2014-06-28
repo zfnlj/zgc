@@ -24,14 +24,14 @@ void KNetMsgFacade::onBattleInit()
 
 void KNetMsgFacade::onTurnBegin(const void* pData)
 {
-	KBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetCurGuy();
-	GameRoot::getSingleton().BattleCtrl().onTurnBegin(guy);
+	KBattleGuy* guy = GameRoot::getSingleton().BattleCtrl()->GetCurGuy();
+	KClientBattleCtrl::getInstance()->onTurnBegin(guy);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)guy->GetFacade(),0);
 }
 
 void KNetMsgFacade::onSelectHandCardOK(UINT64 playerId)
 {
-	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl().GetGuy(playerId)->GetFacade();
+	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl()->GetGuy(playerId)->GetFacade();
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SELECTCARD_OK,(unsigned long long)guy,0);
 }
 
@@ -44,8 +44,8 @@ void KNetMsgFacade::onCardMove(int realId)
 void KNetMsgFacade::onCardDuelResult(int atk,int def,int val1,int val2)
 {
 	strCardDuelResult result;
-	result._atker = GameRoot::getSingleton().BattleCtrl().GetCard(atk);
-	result._defender = GameRoot::getSingleton().BattleCtrl().GetCard(def);
+	result._atker = GameRoot::getSingleton().BattleCtrl()->GetCard(atk);
+	result._defender = GameRoot::getSingleton().BattleCtrl()->GetCard(def);
 	result._val1 = val1;
 	result._val2 = val2;
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DUELRESULT,(unsigned long long)&result,0);
@@ -67,9 +67,9 @@ void KNetMsgFacade::onBattleDrawCard(KCardInstList* list)
 
 void KNetMsgFacade::onCard2Tomb(int realId)
 {
-	KCardInst* card  = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	KCardInst* card  = KClientBattleCtrl::getInstance()->GetCard(realId);
 	if(card){
-		GameRoot::getSingleton().BattleCtrl().onCard2Tomb(card);
+		KClientBattleCtrl::getInstance()->onCard2Tomb(card);
 	}
 }
 
@@ -92,7 +92,7 @@ void KNetMsgFacade::onBagOperation(const void* pData,int len)
 	KItemAbout::KBagManager* pBagMgr = KMainPlayer::Instance()->GetBagManagerPtr();
 	pBagMgr->ItemOperator(pBO);
 	GameRoot::getSingleton().getMainMenuScene()->onUpdateBag();
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 		KMainPlayer::RealPlayer()->GetPlayerRecord()->updateMask(tb_player_record::_NORMALITEM);
 	}
 }
@@ -107,7 +107,7 @@ void KNetMsgFacade::onChangeMoney(const void* pData, int len)
 {
 	KMainPlayer::RealPlayer()->m_money.m_money = (const char*)pData;
 	GameRoot::getSingleton().getMainMenuScene()->onUpdateMoney();
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 		KMainPlayer::RealPlayer()->GetPlayerRecord()->updateMask(tb_player_record::_MONEY);
 	}
 }

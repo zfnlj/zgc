@@ -4,6 +4,7 @@
 #include "System/Singleton.h"
 #include "KBattleGuy.h"
 #include "assist/KBattleEventAssist.h"
+#include "Inc/Lua/KLuaWrap.h"
 class KBattleGuy;
 class KCardInst;
 class KQuestNew;
@@ -88,6 +89,7 @@ public:
 	FBattleGuy* GetOtherPlayer();
 	FBattleGuy* GetMainPlayer();
 	FBattleGuy* GetCurPlayer();
+	KCardInst* GetMyHero(int id);
 	void* GetWorld(){ return m_world;}
 	bool IsServerSide();
 	bool IsSelectCard(){ return m_bSelectCard;}
@@ -147,6 +149,11 @@ protected:
 	bool m_bDirty;
 	float m_waitDramaElapsed;
 	KDoCardWhenAbilityList m_cardWhenList;
+
+public:
+	BeginDefLuaClass(KBattleCtrlBase)
+		DefMemberFunc(GetMyHero);
+	EndDef
 };
 
 #endif // __HELLOWORLD_SCENE_H__

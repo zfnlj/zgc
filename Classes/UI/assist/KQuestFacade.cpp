@@ -31,14 +31,14 @@ bool KQuestFacade::_startMainQuestBattle()
 	}
 
 	if(!playerQuestManager.GetQuest(pQuest->GetID())){  // 任务不未接
-		if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+		if(KClientBattleCtrl::getInstance()->IsServerSide()){
 			KNetMsgFacade::onAcceptQuest(pQuest->GetID());
 		}else{
 			KSocketFacade::DoAcceptQuest(pQuest->GetID());
 		}
 	}
 
-	GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+	KClientBattleCtrl::getInstance()->PlayQuestBattle(pQuest);
 	return true;
 }
 
@@ -62,6 +62,6 @@ bool KQuestFacade::_startAdventureBattle(int qId)
 	}
 	KNetMsgFacade::onAcceptQuest(qId);
 	pQuest = playerQuestManager.GetQuest(qId);
-	GameRoot::getSingleton().BattleCtrl().PlayQuestBattle(pQuest);
+	KClientBattleCtrl::getInstance()->PlayQuestBattle(pQuest);
 	return true;
 }

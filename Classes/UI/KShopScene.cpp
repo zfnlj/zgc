@@ -126,7 +126,7 @@ void KShopScene::DoClickBuy(CCObject* sender)
 	int pos = pBag->GetFirstPos(item->s_nItemID);
 	if(pos<0) return;
 
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 		pBagMgr->TryToUse(pBag,pos,0);
 	}else{
 		//TBD
@@ -142,7 +142,7 @@ void KShopScene::DoClickUseItem(CCObject* sender)
 	KBagNormal* pBag = pBagMgr->FindNormalBag();
 	if(!pBag) return;
 
-	if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 		pBagMgr->TryToUse(pBag,pWidget->getTag(),0);
 	}else{
 		//TBD

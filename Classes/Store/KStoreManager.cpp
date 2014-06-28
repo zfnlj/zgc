@@ -426,7 +426,7 @@ namespace KStoreAbout
 		//	break;
 		}
 		
-		if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+		if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 			KMoneyAbout::KMoney curMoney = KMainPlayer::RealPlayer()->m_money;
 			curMoney.Increase(-pProduct->GetNumOfMoney());
 			std::string s = curMoney.m_money.toString();

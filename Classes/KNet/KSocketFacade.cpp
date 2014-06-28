@@ -16,7 +16,7 @@ void KSocketFacade::DoBattleOpDone(KBattleCtrlBase::BattleOp* p)
 	CS_BattleOpDone op;
 	op._src = p->_src;
 	op._des = p->_des;
-	GameRoot::getSingleton().BattleCtrl().GetCurOp().Empty();
+	GameRoot::getSingleton().BattleCtrl()->GetCurOp().Empty();
 	KClientGateListener::getSingleton().SendToGameServer( op.s_nCode,&op,sizeof(op));
 }
 

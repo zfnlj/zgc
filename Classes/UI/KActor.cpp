@@ -310,13 +310,13 @@ void KActor::ParticleFire(float elapse)
 
 void KActor::SummonCard(int realId)
 {
-	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
 	KUIAssist::_showCard(card);
 }
 
 void KActor::ShowCard(int realId)
 {
-	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
 	KUIAssist::_updateCard(card);
 }
 

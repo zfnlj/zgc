@@ -58,7 +58,7 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 {
 	strGameResult* result = (strGameResult*)Param1;
 	memcpy(&m_result,result,sizeof(strGameResult));
-	if(result->_winner==GameRoot::getSingleton().BattleCtrl().GetMainPlayer()){
+	if(result->_winner==GameRoot::getSingleton().BattleCtrl()->GetMainPlayer()){
 		m_resultType = result_win;
 	}else if(result->_winner){
 		m_resultType = result_lost;
@@ -71,7 +71,7 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 void KGameResultPanel::onQuestPreOver(KQuestNew* pQuest)
 {
 	m_result._questId = pQuest->GetID();
-	m_result._winner = GameRoot::getSingleton().BattleCtrl().GetMainPlayer();
+	m_result._winner = GameRoot::getSingleton().BattleCtrl()->GetMainPlayer();
 	m_resultType = result_win;
 	ShowPanel();
 }

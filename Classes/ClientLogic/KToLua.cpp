@@ -21,7 +21,7 @@
 #include "CommonLogic/StringManager/KStringManager.h"
 #include "../Quest/KQuestManager.h"
 #include "../GameLogic/KDynamicWorld.h"
-
+#include "../GameLogic/KBattleCtrlBase.h"
 using namespace KAttributeAbout;
 
 static void InitScriptDirectory()
@@ -308,6 +308,8 @@ namespace KScriptAbout
 		ObjToLua("CPP.stringMgr", KStringManager::Instance());
 		ObjToLua("CPP.questMgr", KQuestManager::GetInstance());
 
+		ObjToLua("CPP.questMgr", KQuestManager::GetInstance());
+
 	
 		// ¶ÀÓÐµÄ----------------------------------------------------------------------------------
 		//ObjToLua("CPP.mainPlayer", KMainPlayer::Instance());
@@ -341,6 +343,9 @@ namespace KScriptAbout
 		REGISTER_LUA_CLASS(KQuestNew);
 		REGISTER_LUA_CLASS(KTargetGroup);
 		REGISTER_LUA_CLASS(KQuestTarget);
+
+		//card
+		REGISTER_LUA_CLASS(KBattleCtrlBase);
 	}
 
 	struct KItemListInfo 

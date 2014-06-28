@@ -101,7 +101,7 @@ void KBattleMsgHub::UseRes(unsigned long long Param1, unsigned long long Param2)
 void KBattleMsgHub::CardMove(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	KCardInst* pCard = GameRoot::getSingleton().BattleCtrl().GetCard(Param1);
+	KCardInst* pCard = KClientBattleCtrl::getInstance()->GetCard(Param1);
 	GameRoot::getSingleton().getBattleScene()->onCardMove(pCard);
 #else
 	KWorldFacade::onWorldDirty((KWorld*)Param2);
@@ -154,7 +154,7 @@ void KBattleMsgHub::BattleOpDone(unsigned long long Param1, unsigned long long P
 {
 #ifdef _USE_COCOS2DX
 	KUIAssist::_stopAdviceMsg();
-	if(!GameRoot::getSingleton().BattleCtrl().IsServerSide()){
+	if(!GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
 		KSocketFacade::DoBattleOpDone((KBattleCtrlBase::BattleOp*)Param1);
 	}
 #else
@@ -193,7 +193,7 @@ void KBattleMsgHub::GameEnd(unsigned long long Param1, unsigned long long Param2
 void KBattleMsgHub::UseSecret(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	KCardInst* pCard = GameRoot::getSingleton().BattleCtrl().GetCard(Param1);
+	KCardInst* pCard = GameRoot::getSingleton().BattleCtrl()->GetCard(Param1);
 	GameRoot::getSingleton().getBattleScene()->onUseSecretCard(pCard);
 #else
 	

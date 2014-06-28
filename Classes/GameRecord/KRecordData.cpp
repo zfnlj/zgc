@@ -15,7 +15,7 @@ enum Cur_OP_Step{
 Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot)
 {
 	if(op._src != src) return step_src;
-	KCardInst* card = GameRoot::getSingleton().BattleCtrl().GetCard(src);
+	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(src);
 	if(card->IsKindOf(KCardStatic::card_skill)){
 		if(des>0){
 			return step_des;
@@ -69,19 +69,19 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 {
 	if(timeline<m_elapsed) return false;
 
-	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
-	if(ctrl.GetCurState()!=KBattleCtrlBase::battle_play) return false;
-	if(ctrl.IsWaitDrama()) return false;
-	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	KClientBattleCtrl* ctrl = (KClientBattleCtrl*)KClientBattleCtrl::getInstance();
+	if(ctrl->GetCurState()!=KBattleCtrlBase::battle_play) return false;
+	if(ctrl->IsWaitDrama()) return false;
+	KBattleCtrlBase::BattleOp& op = ctrl->GetCurOp();
 	KBattleCtrlBase::BattleOp tar;
 	tar.Set(m_data._src,m_data._des,m_data._slot);
 
-	if(!ctrl.IsMyTurn()|| mode==0){
+	if(!ctrl->IsMyTurn()|| mode==0){
 		
 		op.Set(m_data._src,m_data._des,m_data._slot);
 		return true;
 	}
-	if(ctrl.GetCardOwner(m_data._src)!=ctrl.GetMainPlayer()) return false;// cur op isn't my
+	if(ctrl->GetCardOwner(m_data._src)!=ctrl->GetMainPlayer()) return false;// cur op isn't my
 
 	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
 	switch(step){
@@ -112,7 +112,7 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 
 void KRecordPlayOpData::ActiveCard(int realId)
 {
- 	KCardInst* pCard= GameRoot::getSingleton().BattleCtrl().GetCard(realId);
+ 	KCardInst* pCard= KClientBattleCtrl::getInstance()->GetCard(realId);
 	KUIAssist::_playClickCardAction(pCard);
 }
 
@@ -120,8 +120,7 @@ bool KRecordPlayOpData::IsClickFightAreaValidate(DWORD timeline,int slot)
 {
 	if(timeline<m_elapsed) return false;
 
-	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
-	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	KBattleCtrlBase::BattleOp& op = KClientBattleCtrl::getInstance()->GetCurOp();
 	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
 	if(step==step_slot){
 		return (m_data._slot==slot);
@@ -136,8 +135,7 @@ bool KRecordPlayOpData::IsClickCardValidate(DWORD timeline,KCardInst* card)
 	if(timeline<m_elapsed) return false;
 
 	bool ret =false;
-	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
-	KBattleCtrlBase::BattleOp& op = ctrl.GetCurOp();
+	KBattleCtrlBase::BattleOp& op = KClientBattleCtrl::getInstance()->GetCurOp();
 	Cur_OP_Step step = _GetCurOpStep(op,m_data._src,m_data._des,m_data._slot);
 	switch(step){
 	case step_src:
@@ -181,14 +179,14 @@ bool KRecordUIMouseData::Replay(DWORD timeline,int mode)
 {
 	if(timeline<m_elapsed) return false;
 
-	KClientBattleCtrl& ctrl = GameRoot::getSingleton().BattleCtrl();
-	if(ctrl.GetCurState()!=KBattleCtrlBase::battle_play) return false;
-	if(ctrl.IsWaitDrama()) return false;
-	if(!ctrl.IsMyTurn()|| mode==0){
+	KClientBattleCtrl* ctrl = KClientBattleCtrl::getInstance();
+	if(ctrl->GetCurState()!=KBattleCtrlBase::battle_play) return false;
+	if(ctrl->IsWaitDrama()) return false;
+	if(!ctrl->IsMyTurn()|| mode==0){
 		switch(m_evt){
 		case evt_turn_end:
 			KGameRecordMgr::getSingleton().onPlayStepOn();
-			GameRoot::getSingleton().BattleCtrl().DoEndTurn();
+			ctrl->DoEndTurn();
 			break;
 		}
 		return true;

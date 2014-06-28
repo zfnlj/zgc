@@ -782,3 +782,15 @@ void KBattleCtrlBase::AddDramaElapsed(float val)
 { 
 	m_waitDramaElapsed+=val;
 }
+
+KCardInst* KBattleCtrlBase::GetMyHero(int id)
+{
+	if(id<=0) return NULL;
+	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
+		KCardInst* pCard = (*it)->GetDeck().GetCard(id);
+		if(pCard){
+			return (*it)->GetDeck().GetHero();
+		}
+	}
+	return NULL;
+}
