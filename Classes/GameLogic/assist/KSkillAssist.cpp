@@ -120,12 +120,18 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes
 		break;
 	case KAbilityStatic::which_src_nearby:
 		{
-			pSrc->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pSrc);
+			if(pSrc){
+				if(pAbility->ToSelfEnable()) tmpLst.push_back(pSrc);
+				pSrc->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pSrc);
+			}
 		}
 		break;
 	case KAbilityStatic::which_des_nearby:
 		{
-			if(pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+			if(pDes){
+				if(pAbility->ToSelfEnable()) tmpLst.push_back(pDes);
+				pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+			}
 		}
 		break;
 	case KAbilityStatic::which_soldier:

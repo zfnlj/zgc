@@ -71,7 +71,7 @@
     <key>rotatePerSecondVariance</key>
     <real>0</real>
     <key>sourcePositionVariancex</key>
-    <real>120</real>
+    <real>160</real>
     <key>sourcePositionVariancey</key>
     <real>0</real>
     <key>sourcePositionx</key>

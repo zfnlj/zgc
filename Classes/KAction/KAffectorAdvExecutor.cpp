@@ -321,7 +321,7 @@ void KAffectorMissileExecutor::OnStop(void)
 	//	KObjEffAlgorithm::_setBright(m_pChar->GetEntity(),Ogre::ColourValue::ZERO);
 }
 
-bool KAffectorActionExecutor::IsTargetFlagMatch(int id)
+bool KAffectorActionExecutor::IsTargetFlagMatch(int id,int index)
 {
     KAffectorActionStatic* pStatic = (KAffectorActionStatic*)m_AffectorStatic;
 
@@ -333,6 +333,9 @@ bool KAffectorActionExecutor::IsTargetFlagMatch(int id)
     switch(pStatic->GetTarFlag()){
         case KAffectorActionStatic::tar_des:
             ret = true;
+            break;
+		case KAffectorActionStatic::tar_des0:
+            ret = (index==0);
             break;
         case KAffectorActionStatic::tar_my:
             ret = (me==you);
@@ -362,7 +365,7 @@ float KAffectorActionExecutor::Breathe(float frameTime)
 				for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
 					int actorId = param->GetDesId(i);
 					if(actorId==0) break;
-                    if(!IsTargetFlagMatch(actorId)) continue;;
+                    if(!IsTargetFlagMatch(actorId,i)) continue;;
 					bFound = true;
 					KUIAssist::_createAffectAction(actorId,pStatic->GetObj(),param,m_action,pStatic->GetIntVal());
 				}

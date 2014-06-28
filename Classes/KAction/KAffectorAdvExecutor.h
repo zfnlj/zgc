@@ -74,7 +74,7 @@ public:
 	KAffectorActionExecutor(){}
 	~KAffectorActionExecutor(){}
 	virtual float Breathe(float frameTime);
-    bool IsTargetFlagMatch(int id);
+    bool IsTargetFlagMatch(int id,int index);
 
 };
 

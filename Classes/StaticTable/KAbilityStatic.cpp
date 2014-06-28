@@ -135,6 +135,8 @@ KAbilityStatic::Enum_When KAbilityStatic::Str2When(const char* str)
 		when = when_atked;
 	}else if(strcmp(str,"WHEN_DO_DAMAGE")==0){
 		when = when_do_damage;
+	}else if(strcmp(str,"WHEN_DES_ALIVE")==0){
+		when = when_des_alive;
 	}else if(strcmp(str,"WHEN_DAMAGED")==0){
 		when = when_damaged;
 	}else if(strcmp(str,"WHEN_USE_SKILL")==0){

@@ -120,7 +120,6 @@ void KBattleGod::PostCardDuel(KBattleCtrlBase* ctrl,KCardInst* pCard1,int val1,K
 		if(pAbility && !pCard2->IsDead() && val2<0){
 			DoCardAbility(ctrl,pAbility,pCard1,pCard2);
 		}
-
 	}
 	if(pCard1&& pCard1->IsDead()){
 		KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pCard2,pCard1);
@@ -405,6 +404,12 @@ bool KBattleGod::DoUseSkillCard(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst*
 		result.init(pSrc->GetRealId(),pSrc->GetRealId(),*abilityLst.begin());
 		KSkillAssist::_sendAbilityResult(ctrl,result);
 	}
+
+	KAbilityStatic* pTmpAbility = KSkillAssist::_findStaticAbility(pSrc->GetCardId(),KAbilityStatic::when_des_alive);
+	if(pTmpAbility && pDes && !pDes->IsDead()){
+		DoCardAbility(ctrl,pTmpAbility,pSrc,NULL);
+	}
+
 	guy->UseRes(pSrc->GetRealCost());
 	ctrl->onCard2Tomb(pSrc);
 	ctrl->AddDramaElapsed(2.0f);

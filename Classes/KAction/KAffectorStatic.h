@@ -163,6 +163,7 @@ public:
         tar_des,
         tar_my,
         tar_your,
+		tar_des0,
 		tar_null,
     };
 	KAffectorActionStatic()										;

@@ -45,6 +45,7 @@ public:
 		when_hero_healed,
 		when_ever,
 		when_all,
+		when_des_alive,
 		when_null,
 	};
 	enum Enum_Which{
