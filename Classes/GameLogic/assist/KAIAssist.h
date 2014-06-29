@@ -17,6 +17,9 @@ namespace KAIAssist
 	KCardInst* _MostHpTarget(KCardInstList& lst);
 	int _calcCardValue(KCardInst* pCard);
 	int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes);
+	KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& maxVal);
+	KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lstMy,KCardInstList& lst);
+	KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& minVal);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

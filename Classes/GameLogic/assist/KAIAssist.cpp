@@ -25,7 +25,11 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 
 int _calcCardValue(KCardInst* pCard)
 {
-	return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->GetCost();
+	if(pCard->GetHp()>0){
+		return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->GetCost();
+	}else{
+		return 0;
+	}
 }
 
 int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
@@ -38,6 +42,56 @@ int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* 
 	KBattleGod::getSingleton().DoCardAbility2Des(ctrl,pAbility,pSrc,&card,&result);
 	int v2 = _calcCardValue(&card);
 	return v2-v1;
+}
+
+KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& minVal)
+{
+	KCardInst* pBest = NULL;
+	minVal = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		int val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
+		if(val<minVal){
+			minVal = val;
+			pBest = pCur;
+		}
+	}
+	return pBest;
+}
+
+KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lstMy,KCardInstList& lst)
+{
+	int maxVal = 0;
+	int minVal = 0;
+	KCardInst* pBest1 = _MostAbilityDoValTarget(ctrl,pAbility,pSrc,lstMy,maxVal);
+	KCardInst* pBest2 = _LestAbilityDoValTarget(ctrl,pAbility,pSrc,lst,minVal);
+	if(pBest1&& pBest2){
+		if(minVal<0) minVal = -minVal;
+		if(maxVal >minVal){
+			return pBest1;
+		}else{
+			return pBest2;
+		}
+	}else{
+		if(pBest1) return pBest1;
+		if(pBest2) return pBest2;
+	}
+	return NULL;
+}
+
+KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& maxVal)
+{
+	KCardInst* pBest = NULL;
+	maxVal = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		int val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
+		if(val>maxVal){
+			maxVal = val;
+			pBest = pCur;
+		}
+	}
+	return pBest;
 }
 
 KCardInst* _MostHpTarget(KCardInstList& lst)

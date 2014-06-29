@@ -199,28 +199,56 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	KCardInstList lstMy;
 	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
+	KCardInst* pBest = NULL;
+	int maxVal = 0;
 	switch(pAbility->GetWhat()){
 	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_control:
 	case KAbilityStatic::what_stun:
 	case KAbilityStatic::what_return:
 	case KAbilityStatic::what_kill:
-		if(lst.size()>0){
-			PickMaxValTarget(lst,target);
-			return true;
+	case KAbilityStatic::what_hp_set:
+	case KAbilityStatic::what_atk_set:
+		pBest = KAIAssist::_MostValuableTarget(lst);
+		if(!pBest) return false;
+		target = pBest->GetRealId();
+		return  true;
+		break;
+	case KAbilityStatic::what_dispel_buf:
+		{
+			CCAssert(false , "TBD!");
 		}
 		break;
 	case KAbilityStatic::what_heal:
+	case KAbilityStatic::what_atk_set:
+	case KAbilityStatic::what_atk_equ_hp:
+		{
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,maxVal);
+			if(!pBest) return false;
+			target = pBest->GetRealId();
+			return  true;
+		}
+		break;
+	case KAbilityStatic::what_atkhp_sw:
+		{
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,lst);
+			if(!pBest) return false;
+			target = pBest->GetRealId();
+			return  true;
+		}
+		break;
 	case KAbilityStatic::what_atk_add:
 	case KAbilityStatic::what_add_atk_hp:
 	case KAbilityStatic::what_hp_add:
+	case KAbilityStatic::what_hp_double:
 	case KAbilityStatic::what_immune:
 	case KAbilityStatic::what_dist:
 		{
-			if(lstMy.size()>0){
-				PickMaxValTarget(lstMy,target);
-				return true;
-			}
+			KCardInst* pBest = KAIAssist::_MostValuableTarget(lstMy);
+			if(!pBest) return false;
+			target = pBest->GetRealId();
+			return  true;
+			break;
 		}
 		break;
 	case KAbilityStatic::what_damage_atkadd:
