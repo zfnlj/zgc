@@ -208,15 +208,18 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	case KAbilityStatic::what_return:
 	case KAbilityStatic::what_kill:
 	case KAbilityStatic::what_hp_set:
-	case KAbilityStatic::what_atk_set:
 		pBest = KAIAssist::_MostValuableTarget(lst);
-		if(!pBest) return false;
-		target = pBest->GetRealId();
-		return  true;
 		break;
 	case KAbilityStatic::what_dispel_buf:
 		{
 			CCAssert(false , "TBD!");
+		}
+		break;
+	case KAbilityStatic::what_guide:
+	case KAbilityStatic::what_hide:
+	case KAbilityStatic::what_dist:
+		{
+			pBest = KAIAssist::_MostValuableTargetNoBuf(lstMy, pAbility->GetWhat());
 		}
 		break;
 	case KAbilityStatic::what_heal:
@@ -224,17 +227,11 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	case KAbilityStatic::what_atk_equ_hp:
 		{
 			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,maxVal);
-			if(!pBest) return false;
-			target = pBest->GetRealId();
-			return  true;
 		}
 		break;
 	case KAbilityStatic::what_atkhp_sw:
 		{
 			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,lst);
-			if(!pBest) return false;
-			target = pBest->GetRealId();
-			return  true;
 		}
 		break;
 	case KAbilityStatic::what_atk_add:
@@ -242,12 +239,8 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	case KAbilityStatic::what_hp_add:
 	case KAbilityStatic::what_hp_double:
 	case KAbilityStatic::what_immune:
-	case KAbilityStatic::what_dist:
 		{
-			KCardInst* pBest = KAIAssist::_MostValuableTarget(lstMy);
-			if(!pBest) return false;
-			target = pBest->GetRealId();
-			return  true;
+			pBest = KAIAssist::_MostValuableTarget(lstMy);
 			break;
 		}
 		break;
@@ -260,7 +253,12 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 		CCAssert(false , "TBD!");
         break;
 	}
-	return false;
+	if(pBest){
+		target = pBest->GetRealId();
+		return  true;
+	}else{
+		return false;
+	}
 
 }
 

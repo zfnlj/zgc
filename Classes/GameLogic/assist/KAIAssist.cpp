@@ -122,6 +122,21 @@ KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 	return pBest;
 }
 
+KCardInst* _MostValuableTargetNoBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
+{
+	KCardInst* pBest = NULL;
+	int val = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		if(pCur->FindRealBuf(buf)) continue;
+		int curVal = _calcCardValue(pCur);
+		if(curVal > val){
+			val = curVal;
+			pBest = pCur;
+		}
+	}
+	return pBest;
+}
 
 KCardInst* _MostValuableTarget(KCardInstList& lst,int maxHp,int minHp)
 {
