@@ -135,6 +135,7 @@ public:
 	KConditionDef& GetCond(){ return m_cond;}
 	KValDef& GetVal(){ return m_val;}
 	int GetNormalVal(){ return m_val._val;}
+	int GetBufVal();
 	bool IsTargetSure();
 	void Clone(KAbilityStatic&);
 	int GetSummonId();

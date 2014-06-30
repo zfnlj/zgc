@@ -32,6 +32,16 @@ int _calcCardValue(KCardInst* pCard)
 	}
 }
 
+int _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst)
+{
+	int totalVal = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		totalVal += _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
+	}
+	return totalVal;
+}
+
 int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
 	if(!pDes) return 0;
@@ -155,4 +165,35 @@ KCardInst* _MostValuableTarget(KCardInstList& lst,int maxHp,int minHp)
 	return pBest;
 }
 
+KCardInst* _MostValuableBufTarget(KCardInstList& lst)
+{
+	KCardInst* pBest = NULL;
+	int val = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		int curVal = pCur->m_attr.GetBufVal();
+		if(curVal > val){
+			val = curVal;
+			pBest = pCur;
+		}
+	}
+	return pBest;
 }
+
+KCardInst* _MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
+{
+	KCardInst* pBest = NULL;
+	int val = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		if(!pCur->FindRealBuf(buf)) continue;
+		int curVal = _calcCardValue(pCur);
+		if(curVal > val){
+			val = curVal;
+			pBest = pCur;
+		}
+	}
+	return pBest;
+}
+}
+

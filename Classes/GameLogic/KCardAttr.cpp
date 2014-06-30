@@ -369,6 +369,18 @@ bool KCardAttr::HasBuf(KAbilityStatic* pBuf)
 	return false;
 }
 
+int KCardAttr::GetBufVal()
+{
+	int val = 0;
+	KCardBufferList::iterator it = m_bufList.begin();
+	while(it != m_bufList.end()){
+		KCardBuffer& buf = *it;
+		val += buf._pST->GetBufVal();
+		it++;
+	}
+	return val;
+}
+
 KAbilityStatic* KCardAttr::FindRealBuf(KAbilityStatic::Enum_What what)
 {
 	KCardBufferList::iterator it = m_bufList.begin();

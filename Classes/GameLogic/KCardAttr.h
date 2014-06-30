@@ -131,4 +131,5 @@ public: // IAttrSet
 	int getReady(){ return getAttrValue(ca_ready);}
 	void setCardId(int val){ setAttrValue(ca_cardId,val);}
 	int getCardId(){ return getAttrValue(ca_cardId);}
+	int GetBufVal();
 };

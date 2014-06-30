@@ -27,7 +27,6 @@ public:
 	bool IsUseSoldierAbilityGood(KCardInst* pCard,int& target);
 	virtual void onBattleInit(bool bFirst);
 private:
-	void PickMaxValTarget(KCardInstList& lst,int& target);
 	void ThinkToPlay(float dt);
 	virtual void SelectHandCard();
 	bool HandCardToField();
@@ -37,13 +36,6 @@ private:
     bool UseSecretCard();
 	float m_thinkElapsed;
 
-	int CalcTotalDamage(KAbilityStatic* pAbility,KCardInstList& arr,int& target);
-	int CalcTotalHeal(KAbilityStatic* pAbility,KCardInstList& arr,int& target);
-	int CalcTotalHpDouble(KAbilityStatic* pAbility,KCardInstList& lst,int& target);
-	int CalcControlBenefit(KCardInstList& lst,int& target);
-	bool PickAtkSetTarget(KCardInst* pCard,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target);
-	bool PicAtkEquHpTarget(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target);
-	bool PickDamageAtkAdd(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList& lstMy,KCardInstList& lst,int& target);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
