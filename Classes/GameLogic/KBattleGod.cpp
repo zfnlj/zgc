@@ -253,7 +253,7 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			int damageVal = KSkillAssist::_calcValDef(ctrl,guy,pSrc,pAbility->GetVal());
 			int val = pSrc->IsKindOf(KCardStatic::card_skill)?guy->calcHurtVal(damageVal):damageVal;
 			val = pDes->Heal(pSrc,-val);
-			PostCardDuel(ctrl,pDes,val,NULL,0);
+			if(!pDes->IsClone()) PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),val);
 			CCLog("Skill:%s:%d do damage:%d to:%s:%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),val,pDes->GetST()->GetName(),pDes->GetRealId());
 		}
@@ -344,9 +344,13 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_kill:
 		{
-			KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pSrc,pDes);
-			ctrl->onCard2Tomb(pDes);
-			result->SetDestVal(pDes->GetRealId(),0);
+			if(pDes->IsClone()){ 
+				pDes->HpSet(0);
+			}else{
+				KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_dead,ctrl,pSrc,pDes);
+				ctrl->onCard2Tomb(pDes);
+				result->SetDestVal(pDes->GetRealId(),0);
+			}
 		}
 		break;
 	case KAbilityStatic::what_hp_double:

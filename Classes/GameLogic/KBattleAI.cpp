@@ -67,9 +67,10 @@ void KBattleAI::ThinkToPlay(float dt)
 	if(m_battleCtrl->IsWaitDrama())
 		return;
 	m_thinkElapsed = 0;
-	if(HandCardToField())
-		return;
+	
 	if(UseSkillCard())
+		return;
+	if(HandCardToField())
 		return;
 	//if(UseHeroSkill())
 	//	return;
@@ -281,7 +282,7 @@ bool KBattleAI::IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility)
 		{
 			int v1 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lst); 
 			int v2 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lstMy);
-			return (v2 -v1) >= pCard->GetCost()*2; //对敌方伤害大
+			return (v2 -v1) >= pCard->GetCost()*8; //对敌方伤害大
 		}
 		break;
 	case KAbilityStatic::what_stun:

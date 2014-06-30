@@ -9,6 +9,7 @@
 #include "GameRoot.h"
 #include "../KNet/KSocketFacade.h"
 #include "KSceneLayerBase.h"
+#include "BattleFieldScene.h"
 
 using namespace cocos2d::extension;
 
@@ -89,7 +90,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 			onMeSelectEnd(0);
 		}
 	}else{
-		KUIAssist::_moveCardSet(guy->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
+		GameRoot::getSingleton().getBattleScene()->onDrawCard(guy->QueryCardSet(KCardInst::enum_slot_hand));
 	}
 }
 

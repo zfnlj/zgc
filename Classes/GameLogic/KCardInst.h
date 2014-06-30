@@ -104,9 +104,11 @@ public:
 	size_t serializeDirty(KMemoryStream* so);
 	BOOL deserialize(KMemoryStream* si);
 	KCardAttr m_attr;
+	bool IsClone(){ return m_bClone;}
 private:
 	KCardStatic* m_pST;
 	KBattleGuy* m_Owner;
+	bool m_bClone;
 public:
 BeginDefLuaClass(KCardInst)
 	DefMemberFunc(GetHp);

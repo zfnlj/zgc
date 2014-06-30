@@ -100,6 +100,7 @@ bool KCardInst::init()
 #ifdef _USE_COCOS2DX
 	m_actor = NULL;
 #endif
+	m_bClone = false;
 	return true;
 }
 
@@ -108,6 +109,9 @@ void KCardInst::clone(KCardInst* card)
 	m_attr.clone(&card->m_attr);
 	m_pST = card->m_pST;
 	m_attr.clearBit();
+	m_actor = card->m_actor;
+	m_Owner = card->m_Owner;
+	m_bClone = true;
 }
 
 KCardInst::~KCardInst()
@@ -287,10 +291,10 @@ int KCardInst::Heal(KCardInst* pSrc,int val)
 	int ret = hp - m_attr.getCurHp();
 	m_attr.setCurHp(hp);
 	if(ret<0){
-		KBattleEvtAssist::_onBattleEvt(battle_evt_hurted,m_Owner->GetBattleCtrl(),pSrc,this);
+		if(!m_bClone) KBattleEvtAssist::_onBattleEvt(battle_evt_hurted,m_Owner->GetBattleCtrl(),pSrc,this);
 		AddBuf(BUF_HURTED_ID);
 	}else if(ret>0){
-		KBattleEvtAssist::_onBattleEvt(battle_evt_healed,m_Owner->GetBattleCtrl(),pSrc,this);
+		if(!m_bClone) KBattleEvtAssist::_onBattleEvt(battle_evt_healed,m_Owner->GetBattleCtrl(),pSrc,this);
 	}
 
 	return ret;

@@ -282,6 +282,7 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 	if(guy==KClientBattleCtrl::getInstance()->GetMainPlayer()){
 		base = (UIImageView*)getWidgetByName("my_slot_base");
 	}else{
+		if(guy->IsSelectHandCard()) return;
 		base = (UIImageView*)getWidgetByName("your_slot_base");
 	}
 	for(it=cardList->begin();it!=cardList->end();++it){

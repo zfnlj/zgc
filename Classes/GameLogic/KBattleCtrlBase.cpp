@@ -119,7 +119,7 @@ void KBattleCtrlBase::onCard2Tomb(KCardInst* card)
 	if(card->IsKindOf(KCardStatic::card_hero)){
 		card->m_attr.setSlot(KCardInst::enum_slot_tomb);
 		CCLog("Hero is dead! %s ,id=%d",card->GetST()->GetName(),card->GetRealId());
-		StateJump(battle_game_end);
+		if(!card->IsClone())StateJump(battle_game_end);
 		return;
 	}
 	FBattleGuy* guy = GetCardOwner(card);
