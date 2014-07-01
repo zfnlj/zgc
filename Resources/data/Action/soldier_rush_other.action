@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action  slot="5" class="cast">
+  <affect_body> 
+   	<affector class="action" obj="soldier_cast_show" tarFlag="0" pre="0" createtime="0.0" iVal="1" life="1.0" />
+  	<affector class="action" obj="rush_other_show" tarFlag="1" pre="1" createtime="1.0" iVal="2" life="3.0" />
+  </affect_body>
+</action>
+
+<action name="rush_other_show" class="null">
+  <affect_body>
+  		<affector class="armature" slot="card_center" obj="rush" createtime="0.0" fVal="1.2" iVal="90"  life="1.5" />
+  </affect_body>
+</action> 
+
+</ag>
+		

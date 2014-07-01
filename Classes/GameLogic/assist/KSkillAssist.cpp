@@ -29,7 +29,8 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 				when==KAbilityStatic::when_hero_hurted||
 				when==KAbilityStatic::when_soldier_healed||
 				when==KAbilityStatic::when_use_skill||
-				when==KAbilityStatic::when_use_card){
+				when==KAbilityStatic::when_use_card||
+				when==KAbilityStatic::when_soldier_enter){
 				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
 			}
 			pAbility = card->FindBufAbility(realWhen);
@@ -168,6 +169,9 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes
 	}
 	for(KCardInstList::iterator it = tmpLst.begin(); it!=tmpLst.end();++it){
 		KCardInst* card = *it;
+		if(card==skip) continue;
+		if(pAbility->GetWhat()== KAbilityStatic::what_rush &&
+			!card->FindRealBuf(KAbilityStatic::what_can_rush)) continue;
 		if(pAbility->GetWhat()== KAbilityStatic::what_buf){
 			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(card->HasBuf(pBuf)) continue; //same buf only one..
