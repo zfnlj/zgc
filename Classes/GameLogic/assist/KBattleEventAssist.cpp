@@ -15,6 +15,11 @@ namespace KBattleEvtAssist
 				KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,KAbilityStatic::when_soldier_dead);
 			}
 			break;
+		case battle_evt_soldier_enter:
+			{
+				KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,KAbilityStatic::when_soldier_enter);
+			}
+			break;
 		case battle_evt_use_skill:
 			KSkillAssist::_fillCtrlCardEvt(ctrl,pSrc,KAbilityStatic::when_use_skill);
 			break;

@@ -182,6 +182,10 @@ KAbilityStatic::Enum_When KAbilityStatic::Str2When(const char* str)
 		when = when_soldier_dead;
 	}else if(strcmp(str,"WHEN_MYSOLDIER_DEAD")==0){
 		when = when_mysoldier_dead;
+	}else if(strcmp(str,"WHEN_SOLDIER_ENTER")==0){
+		when = when_soldier_enter;
+	}else if(strcmp(str,"WHEN_MYSOLDIER_ENTER")==0){
+		when = when_mysoldier_enter;
 	}else if(strcmp(str,"WHEN_SOLDIER_HURTED")==0){
 		when = when_soldier_hurted;
 	}else if(strcmp(str,"WHEN_MYSOLDIER_HURTED")==0){

@@ -27,6 +27,8 @@ public:
 		when_turn_end,
 		when_damaged,
 		when_dead,
+		when_soldier_enter,
+		when_mysoldier_enter,
 		when_soldier_dead,
 		when_mysoldier_dead,
 		when_soldier_hurted,

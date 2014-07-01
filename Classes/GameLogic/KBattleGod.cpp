@@ -480,6 +480,7 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 		ctrl->AddDramaElapsed(1.0f);
 		if(pCard->GetST()->IsShow()) ctrl->AddDramaElapsed(2.0f);
 	}
+	KBattleEvtAssist::_onBattleEvt(battle_evt_soldier_enter,ctrl,NULL,pCard);
 	return true;
 }
 
