@@ -466,8 +466,8 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 	char sz[24];
 	UIImageView* widgetBg =(UIImageView*)ui->getChildByName("background");
 	sprintf(sz,"pic_%d.jpg",pST->GetID());
-	if(widgetBg && strlen(pST->GetPhoto())>0){
-		widgetBg->loadTexture(pST->GetPhoto(),UI_TEX_TYPE_PLIST);
+	if(widgetBg){
+		widgetBg->loadTexture(sz,UI_TEX_TYPE_PLIST);
 	}
 	UIImageView* widgetRace = (UIImageView*)ui->getChildByName("race_icon");
 

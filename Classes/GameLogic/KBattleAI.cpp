@@ -351,31 +351,31 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_stun:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_return:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(KAIAssist::_calcCardValue(pBest)<12*pCard->GetCost()) pBest=NULL;
+			if(pBest &&KAIAssist::_calcCardValue(pBest)<12*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_replace:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(KAIAssist::_calcCardValue(pBest)<10*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<10*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_kill:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_control:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(KAIAssist::_calcCardValue(pBest)<5*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<5*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_hp_set:

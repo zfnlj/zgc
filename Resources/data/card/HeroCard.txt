@@ -1,4 +1,4 @@
-ID	Name	Atk	Hp	Race	Desc	Detail	Photo
-10001	齐桓公	0	30	gold	0	0	pic_10001.jpg
-10002	太子丹	0	30	water	0	0	pic_10002.jpg
-10003	赵武灵王	0	30	fire	0	0	pic_10003.jpg
+ID	Name	Atk	Hp	Race	Desc	Detail
+10001	齐桓公	0	30	gold	0	0
+10002	太子丹	0	30	water	0	0
+10003	赵武灵王	0	30	fire	0	0

@@ -45,7 +45,6 @@ public:
 	char* GetDesc(){ return m_Desc;}
 	char* GetDetail(){ return m_Detail;}
 	const char* GetShow(){ return m_Show;}
-	const char* GetPhoto(){ return m_Photo;}
 	bool IsShow() { return (strlen(m_Show)>2);}
 	static KCardStatic* create();
 	void Init(System::File::KTabFile2* fileReader);
@@ -63,7 +62,6 @@ private:
 	char m_Desc[MAX_CARD_DESC_LEN];
 	char m_Detail[MAX_CARD_DETAIL_LEN];
 	char m_Show[32];
-	char m_Photo[MAX_CARD_NAME];
 	CardDef m_type;
 	friend class KGameStaticMgr;
 };
