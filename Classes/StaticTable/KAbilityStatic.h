@@ -139,6 +139,7 @@ public:
 	bool IsTargetSure();
 	void Clone(KAbilityStatic&);
 	int GetSummonId();
+	int GetPriority();
 private:
 	int m_AbilityId;
 	Enum_When m_when;

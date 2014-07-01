@@ -44,7 +44,7 @@ public:
 	virtual bool init();
 	void clone(KCardInst*);
 	int GetRealId(){ return m_attr.getRealID();}
-	int GetCardId(){ return m_pST->GetID();}
+	int GetCardId() const { return m_pST->GetID();}
 	int GetCost(); //·ÑÓÃ
 	int GetRealCost();
 	int GetAtk(); //¹¥»÷Á¦

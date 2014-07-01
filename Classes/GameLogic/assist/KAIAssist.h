@@ -24,6 +24,8 @@ namespace KAIAssist
 	int _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst);
 	KCardInst* _MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf);
 	KCardInst* _MostValuableBufTarget(KCardInstList& lst);
+	int _calcTotalCardVal(KCardInstList& lst);
+	void _sortOnAbilityPriority(KCardInstList& lst);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

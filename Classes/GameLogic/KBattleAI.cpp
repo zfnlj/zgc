@@ -58,6 +58,24 @@ void KBattleAI::onPlayCard(float dt,bool bOK)
 	KBattleGuy::onPlayCard(dt,bOK);
 }
 
+bool KBattleAI::ThinkePlayCard()
+{
+	KCardInstList* myFightLst = QueryCardSet(KCardInst::enum_slot_fight);
+	int myVal = KAIAssist::_calcTotalCardVal(*myFightLst);
+
+	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
+	KCardInstList* yourFightLst = pDefGuy->QueryCardSet(KCardInst::enum_slot_fight);
+	int yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
+	if(myVal<=yourVal){
+		if(HandCardToField()) return true;
+		if(UseSkillCard()) return true;
+	}else{
+		if(UseSkillCard()) return true;
+		if(HandCardToField()) return true;
+	}
+	
+	return false;
+}
 
 void KBattleAI::ThinkToPlay(float dt)
 {
@@ -68,10 +86,7 @@ void KBattleAI::ThinkToPlay(float dt)
 		return;
 	m_thinkElapsed = 0;
 	
-	if(UseSkillCard())
-		return;
-	if(HandCardToField())
-		return;
+	if(ThinkePlayCard()) return;
 	//if(UseHeroSkill())
 	//	return;
 	
@@ -167,11 +182,19 @@ bool KBattleAI::UseSkillCard()
 {
 	KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
 
+	KCardInstList skillLst;
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){
 		KCardInst* pCard = *it;
 		int target = 0;
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;
 		if(!pCard->IsKindOf(KCardStatic::card_skill)) continue;
+		skillLst.push_back(pCard);
+	}
+	KAIAssist::_sortOnAbilityPriority(skillLst);
+
+	for(KCardInstList::iterator it = skillLst.begin();it!=skillLst.end();++it){
+		KCardInst* pCard = *it;
+		int target = 0;
 		KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10); 
 		if(pAbility->IsArea()){
 			if(IsUseRangeSkillGood(pCard,pAbility)){
@@ -184,7 +207,6 @@ bool KBattleAI::UseSkillCard()
 				return true;
 			}
 		}
-		
 	}
 	return false;
 }
@@ -329,6 +351,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_stun:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
+			if(KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_return:

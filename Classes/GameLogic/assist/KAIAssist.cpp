@@ -12,6 +12,18 @@
 namespace KAIAssist
 {
 
+bool compOnAbilityPriority(const KCardInst* lhs, const KCardInst* rhs)
+{
+	KAbilityStatic* pAbility1 = KGameStaticMgr::getSingleton().GetAbilityOnId(lhs->GetCardId()*10); 
+	KAbilityStatic* pAbility2 = KGameStaticMgr::getSingleton().GetAbilityOnId(rhs->GetCardId()*10); 
+
+	return (pAbility1->GetPriority()< pAbility2->GetPriority());
+}
+
+void _sortOnAbilityPriority(KCardInstList& lst)
+{
+}
+
 int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 {
 	int total = 0;
@@ -38,6 +50,15 @@ int _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardI
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
 		totalVal += _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
+	}
+	return totalVal;
+}
+
+int _calcTotalCardVal(KCardInstList& lst)
+{
+	int totalVal = 0;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		totalVal += _calcCardValue(*it);
 	}
 	return totalVal;
 }

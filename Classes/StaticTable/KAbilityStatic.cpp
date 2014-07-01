@@ -327,6 +327,35 @@ int KAbilityStatic::GetSummonId()
 	}
 }
 
+int KAbilityStatic::GetPriority()
+{
+	int ret = 0;
+	switch(m_what){
+	case what_control:
+	case what_kill:
+	case what_return:
+	case what_replace:
+		ret = 10;
+		break;
+	case what_atk_equ_hp:
+	case what_atkhp_sw:
+	case what_atk_set:
+		ret = 8;
+		break;
+	case what_damage:
+		ret = 5;
+		break;
+	case what_stun:
+	case what_dispel_buf:
+		ret = 2;
+		break;
+	default:
+		ret =5;
+		break;
+	}
+	return ret;
+}
+
 bool KAttrStatic::init()
 {
 	m_CardId = m_guide= m_rush = m_hide = m_dist = 0;

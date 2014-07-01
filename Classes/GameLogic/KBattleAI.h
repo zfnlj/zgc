@@ -28,6 +28,7 @@ public:
 	virtual void onBattleInit(bool bFirst);
 private:
 	void ThinkToPlay(float dt);
+	bool ThinkePlayCard();
 	virtual void SelectHandCard();
 	bool HandCardToField();
 	bool SoldierToAttack();
