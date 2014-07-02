@@ -243,13 +243,14 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	case KAbilityStatic::what_atk_set:
 	case KAbilityStatic::what_atk_equ_hp:
 		{
-			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,maxVal);
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,maxVal);
 		}
 		break;
 	case KAbilityStatic::what_atkhp_sw:
 	case KAbilityStatic::what_damage_atkadd:
 		{
-			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,lst);
+			int val = 0;
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,&lst,val);
 		}
 		break;
 	case KAbilityStatic::what_atk_add:
@@ -304,7 +305,7 @@ bool KBattleAI::IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility)
 		{
 			int v1 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lst); 
 			int v2 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lstMy);
-			return (v2 -v1) >= pCard->GetCost()*8; //对敌方伤害大
+			return (v2 -v1) >= pCard->GetCost()*10; //对敌方伤害大
 		}
 		break;
 	case KAbilityStatic::what_stun:
@@ -347,7 +348,6 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	KCardInst* pBest = NULL;
 	switch(pAbility->GetWhat()){
-	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_stun:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
@@ -357,25 +357,25 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_return:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(pBest &&KAIAssist::_calcCardValue(pBest)<12*pCard->GetCost()) pBest=NULL;
+			if(pBest &&KAIAssist::_calcCardValue(pBest)<10*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_replace:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(pBest && KAIAssist::_calcCardValue(pBest)<10*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<9*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_kill:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(pBest && KAIAssist::_calcCardValue(pBest)<8*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<7*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_control:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			if(pBest && KAIAssist::_calcCardValue(pBest)<5*pCard->GetCost()) pBest=NULL;
+			if(pBest && KAIAssist::_calcCardValue(pBest)<4*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_hp_set:
@@ -383,14 +383,12 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_atk_equ_hp:
 	case KAbilityStatic::what_damage_atkadd:
 	case KAbilityStatic::what_atkhp_sw:
-		{
-			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,lst);
-		}
-		break;
+	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_heal:
 		{
-			int maxVal = 0;
-			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,lstMy,maxVal);
+			int val = 0;
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,NULL,val);
+			if(pBest && val < 8*pCard->GetCost()) pBest = NULL;
 		}
 		break;
 	case KAbilityStatic::what_rush:

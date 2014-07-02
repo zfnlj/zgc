@@ -38,7 +38,7 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 int _calcCardValue(KCardInst* pCard)
 {
 	if(pCard->GetHp()>0){
-		return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->GetCost();
+		return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->m_attr.GetBufVal()*5;
 	}else{
 		return 0;
 	}
@@ -75,11 +75,15 @@ int _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* 
 	return v2-v1;
 }
 
-KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& minVal)
+KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,int& minVal)
 {
+	if(!lst){
+		minVal = 0;
+		return NULL;
+	}
 	KCardInst* pBest = NULL;
 	minVal = 0;
-	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+	for(KCardInstList::iterator it= lst->begin();it!=lst->end();++it){
 		KCardInst* pCur = *it;
 		int val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
 		if(val<minVal){
@@ -90,7 +94,7 @@ KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	return pBest;
 }
 
-KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lstMy,KCardInstList& lst)
+KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lstMy,KCardInstList* lst,int& retVal)
 {
 	int maxVal = 0;
 	int minVal = 0;
@@ -99,8 +103,10 @@ KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	if(pBest1&& pBest2){
 		if(minVal<0) minVal = -minVal;
 		if(maxVal >minVal){
+			retVal = maxVal;
 			return pBest1;
 		}else{
+			retVal = minVal;
 			return pBest2;
 		}
 	}else{
@@ -110,28 +116,19 @@ KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	return NULL;
 }
 
-KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst,int& maxVal)
+KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,int& maxVal)
 {
+	if(!lst){
+		maxVal = 0;
+		return NULL;
+	}
 	KCardInst* pBest = NULL;
 	maxVal = 0;
-	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+	for(KCardInstList::iterator it= lst->begin();it!=lst->end();++it){
 		KCardInst* pCur = *it;
 		int val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
 		if(val>maxVal){
 			maxVal = val;
-			pBest = pCur;
-		}
-	}
-	return pBest;
-}
-
-KCardInst* _MostHpTarget(KCardInstList& lst)
-{
-	KCardInst* pBest = NULL;
-	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
-		KCardInst* pCur = *it;
-		if(!pBest ||
-			pBest->GetHp() < pCur->GetHp()){
 			pBest = pCur;
 		}
 	}

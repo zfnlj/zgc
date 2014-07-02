@@ -46,24 +46,25 @@ int KAbilityStatic::GetBufVal()
 	int ret = 0;
 	switch(m_what){
 	case what_immune:
-		ret = 5;
+		ret = 2;
 		break;
 	case what_cast_add:
-		ret = 3;
+		ret = 2;
 		break;
 	case what_sp_rate:
-		ret = 6;
+		ret = 3;
 		break;
 	case what_mp_cost:
-		ret = 3;
+		ret = 2;
 		break;
 	case what_hide:
 	case what_dist:
 	case what_guide:
+	case what_rush:
 		ret =1;
 		break;
 	case what_angry:
-		ret =3;
+		ret =2;
 		break;
 	}
 	return ret;

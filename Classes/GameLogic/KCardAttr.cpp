@@ -375,7 +375,12 @@ int KCardAttr::GetBufVal()
 	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
 		KCardBuffer& buf = *it;
-		val += buf._pST->GetBufVal();
+		if(buf._pST->GetWhat()==KAbilityStatic::what_buf){
+			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(buf._pST->GetNormalVal());
+			val += pBuf->GetBufVal();
+		}else{
+			val += buf._pST->GetBufVal();
+		}
 		it++;
 	}
 	return val;
