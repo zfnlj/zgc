@@ -14,7 +14,7 @@
   <affect_body> 
    	<affector class="summonSelf" createtime="0" fVal="0" life="0.1" />
    	<affector class="scale" createtime="0" fVal="0.01" life="0.01" />
-   	<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="gen_circle" life="0.8" />
+   	<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="gen_circle" life="1.0" />
   	<affector class="scale" createtime="0.1" fVal="0.8" life="0.6" />
   	
   </affect_body>

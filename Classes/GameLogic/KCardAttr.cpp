@@ -363,7 +363,12 @@ bool KCardAttr::HasBuf(KAbilityStatic* pBuf)
 	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
 		KCardBuffer& buf = *it;
-		if(buf._pST == pBuf) return true;
+		if(buf._pST->GetWhat()==KAbilityStatic::what_buf){
+			if(buf._pST == pBuf) return true;
+		}else if(buf._pST->GetWhat()==pBuf->GetWhat()){
+			return true;
+		}
+		
 		it++;
 	}
 	return false;

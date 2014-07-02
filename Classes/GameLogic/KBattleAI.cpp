@@ -387,7 +387,7 @@ bool KBattleAI::IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,i
 	case KAbilityStatic::what_heal:
 		{
 			int val = 0;
-			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,NULL,val);
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,&lst,val);
 			if(pBest && val < 8*pCard->GetCost()) pBest = NULL;
 		}
 		break;

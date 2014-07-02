@@ -112,7 +112,7 @@ void BattleFieldScene::onBattleInit()
 	}else{
 		KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
-	InitTest();
+	//InitTest();
 }
 
 void BattleFieldScene::InitTest()

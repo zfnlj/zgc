@@ -132,8 +132,9 @@ K3DActionParam* KActionMgr::FindActionParam(const char* name)
 
 void KActionMgr::PlaySlotAction()
 {
-	if(FoundClassAction()) return;
 	if(m_slotAction.IsEmpty()) return;
+	if(FoundClassAction()) return;
+	
 
 	K3DActionParam* param = m_slotAction.firstParam();
 	if(!param) return;
