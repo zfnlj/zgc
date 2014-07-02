@@ -305,7 +305,7 @@ bool KBattleAI::IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility)
 		{
 			int v1 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lst); 
 			int v2 = KAIAssist::_calcTotalAbilityDoVal(m_battleCtrl,pAbility,pCard,lstMy);
-			return (v2 -v1) >= pCard->GetCost()*10; //对敌方伤害大
+			return (v2 -v1) > pCard->GetCost()*10; //对敌方伤害大
 		}
 		break;
 	case KAbilityStatic::what_stun:

@@ -37,11 +37,22 @@ int _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 
 int _calcCardValue(KCardInst* pCard)
 {
-	if(pCard->GetHp()>0){
-		return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->m_attr.GetBufVal()*5;
+	if(pCard->IsKindOf(KCardStatic::card_hero)){
+		if(pCard->GetHp()<=0){
+			return -9999;
+		}else if(pCard->GetHp()<10){
+			return pCard->GetHp()*pCard->GetHp();
+		}else{
+			return pCard->GetHp()*10;
+		}
 	}else{
-		return 0;
+		if(pCard->GetHp()>0){
+			return pCard->GetAtk()*5 + pCard->GetHp()*4 + pCard->m_attr.GetBufVal()*5;
+		}else{
+			return 0;
+		}
 	}
+	
 }
 
 int _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst)
@@ -110,8 +121,15 @@ KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			return pBest2;
 		}
 	}else{
-		if(pBest1) return pBest1;
-		if(pBest2) return pBest2;
+		if(pBest1){
+			retVal = maxVal;
+			return pBest1;
+		}
+		if(pBest2){
+			if(minVal<0) minVal = -minVal;
+			retVal = minVal;
+			return pBest2;
+		}
 	}
 	return NULL;
 }

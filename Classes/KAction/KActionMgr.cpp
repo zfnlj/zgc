@@ -171,7 +171,7 @@ KAction* KActionMgr::PlayAction(K3DActionParam* param,int key,bool bCached)//Éú³
 		m_slotAction.cache(*param);
 		return NULL;
 	}
-	//if(MergeCastAction(pST,param)) return NULL;
+	if(MergeCastAction(pST,param)) return NULL;
 	LimitSameClassAction(pST);
 
 	if( (pST->GetClass()!=KActionStatic::class_null&& FoundClassAction())||
