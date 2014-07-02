@@ -17,6 +17,10 @@
 #include "System/Cipher/tea.h"
 #include "DB/KPlayerDBMgr.h"
 #include "sqlite/KUserSql.h"
+#include "ui/assist/KQuestFacade.h"
+#include "WorldObject/KMainPlayer.h"
+#include "Quest/KPlayerQuestManager.h"
+#include "WorldObject/KPlayer.h"
 
 IMPLEMENT_SIMPLE_SINGLETON(GameRoot)
 using namespace System::File;
@@ -80,4 +84,40 @@ void GameRoot::LoadStringDef(const char* filename)
 KBattleCtrlBase* GameRoot::BattleCtrl()
 {
 	return KClientBattleCtrl::getInstance();
+}
+
+void GameRoot::RunAutoTest()
+{
+	if(!m_autoTest) return ;
+	KUIAssist::_switch2BattleScene();
+
+	KQuestManager::GetInstance()->syncAvailQuests();
+	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
+	KQuestNew* pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
+	KClientBattleCtrl::getInstance()->PlayAutoQuestBattle(pQuest);
+}
+
+void GameRoot::ParseCmd(char* cmdLine)
+{
+	m_autoTest = false;
+	char* ss[64];
+	int ns = split(cmdLine, " ", ss, 64);
+	for(int i=0;i<ns;i++){
+		char* cmd = ss[i];
+		if(strcmp(cmd,"-AT")==0){
+			m_autoTest = true;
+		}
+	}
+}
+
+void GameRoot::onGameEnd(unsigned long long Param1)
+{
+	if(m_autoTest){
+		KQuestManager::GetInstance()->syncAvailQuests();
+		KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
+		KQuestNew* pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
+		KClientBattleCtrl::getInstance()->PlayAutoQuestBattle(pQuest);
+	}else{
+		getBattleScene()->GameResult().onGameEnd(Param1);
+	}
 }

@@ -25,12 +25,18 @@ public :
 	void init();
 	const char* GetRootPath(){return m_rootPath;}
 	KBattleCtrlBase* BattleCtrl();
+
+	void ParseCmd(char* cmdLine);
+	void RunAutoTest();
+	void onGameEnd(unsigned long long Param1);
+	bool m_autoTest;
 private :
 	void LoadStringDef(const char* filename);
 	BattleFieldScene* _battleScene;
 	MainMenuScene* _mainMenuScene;
 	int m_inc;
 	char m_rootPath[256];
+
 };
 
 #endif

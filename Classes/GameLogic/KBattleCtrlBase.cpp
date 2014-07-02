@@ -360,11 +360,13 @@ void KBattleCtrlBase::GameEnd(float dt)
 		KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
 	}
 #endif
+	StateJump(battle_null);
+
 	result._winner = winner->GetFacade();
 	result._questId = (m_pBattleQuest)? m_pBattleQuest->GetID():0;
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_GAMEEND,(unsigned long long)&result,(unsigned long long)m_world);
 
-	StateJump(battle_null);
+	
 }
 
 
@@ -478,6 +480,16 @@ void KBattleCtrlBase::PlayWithAI()
 	StartGame(battle_init,m_pMainPlayer,pAI);
 }
 
+void KBattleCtrlBase::PlayAutoQuestBattle(KQuestNew* pQuest)
+{
+	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
+	m_pBattleQuest = pQuest;
+	m_pMainPlayer = KBattleAI::create();
+	KBattleAI* pAI = KBattleAI::create();
+	m_bSelectCard =pBattleStatic->IsSelectCard();
+	StartGame(quest_battle_init,m_pMainPlayer,pAI);
+}
+
 void KBattleCtrlBase::PlayQuestBattle(KQuestNew* pQuest)
 {
 	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
@@ -485,7 +497,6 @@ void KBattleCtrlBase::PlayQuestBattle(KQuestNew* pQuest)
 #ifdef _USE_COCOS2DX
 	if(KGameRecordMgr::getSingleton().StartPlay(pBattleStatic->GetRec())) return;
 #endif
-
 	m_pMainPlayer = KBattleGuy::create();
 	KBattleAI* pAI = KBattleAI::create();
 	m_bSelectCard =pBattleStatic->IsSelectCard();

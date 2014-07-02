@@ -47,6 +47,7 @@ private:
 	void InitTest();
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
 	KGameResultPanel m_gameResultPanel;
+	void runAutoTest(float dt);
 };
 
 #endif // __MainMenuScene_SCENE_H__

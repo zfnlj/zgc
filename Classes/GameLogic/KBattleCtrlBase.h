@@ -78,6 +78,7 @@ public:
 	void TurnEndHero();
 	void PlayWithAI();
 	void PlayQuestBattle(KQuestNew* pQuest);
+	void PlayAutoQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);
 	bool IsMyCard(KCardInst* obj);
 	bool IsMyTurn();

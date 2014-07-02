@@ -46,6 +46,10 @@ void MainMenuScene::update(float dt)
 {
 }
 
+void MainMenuScene::runAutoTest(float dt)
+{
+	GameRoot::getSingleton().RunAutoTest();
+}
 
 // on "init" you need to initialize your instance
 bool MainMenuScene::init()
@@ -54,6 +58,10 @@ bool MainMenuScene::init()
 	m_ui = NULL;
 
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MainMenuScene::update),this,0.1f,false);
+
+	if(GameRoot::getSingleton().m_autoTest){
+		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MainMenuScene::runAutoTest),this,5.0f,0,0,false);
+	}
     //////////////////////////////
     // 1. super init first
     if ( !CCLayer::init() )
