@@ -77,6 +77,7 @@ private:
 	KIndicatePanel m_indicatePanel;
 	KFightAreaPanel m_myFightAreaPanel;
 	KGameResultPanel m_gameResultPanel;
+
 };
 
 #endif // __BattleFieldScene_SCENE_H__

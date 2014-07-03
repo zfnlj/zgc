@@ -22,18 +22,18 @@ public:
 	 static KBattleAI* create(void);
 	virtual void onPlayCard(float dt,bool );
 	virtual bool init(void);
-	bool IsUseRangeSkillGood(KCardInst* pCard,KAbilityStatic*);
-	bool IsUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,int& target);
+	float CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic*,KCardInst* pDes=NULL);
+	float CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,int& target);
 	bool IsUseSoldierAbilityGood(KCardInst* pCard,int& target);
 	virtual void onBattleInit(bool bFirst);
 private:
+	KCardInst* ThinkUseSkillCard(KCardInst* card,float& retVal);
 	void ThinkToPlay(float dt);
 	bool ThinkePlayCard();
 	virtual void SelectHandCard();
 	bool HandCardToField();
 	bool SoldierToAttack();
 	bool UseSkillCard();
-	bool UseHeroSkill();
     bool UseSecretCard();
 	float m_thinkElapsed;
 

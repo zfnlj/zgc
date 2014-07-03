@@ -63,7 +63,7 @@ public:
 	int GetHp();
 	void AddHp(int val);
 	int Heal(KCardInst* pSrc,int val);
-	int GetAtkedVal(int damage);
+	float GetAtkedVal(int damage);
 	void HpSet(int val);
 	void CurHpSet(int cur);
 	void AtkSet(int val);

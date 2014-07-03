@@ -36,6 +36,7 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 	
 
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
+
 	KCardInstList* lst = pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand);
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardActor* actor = KCardActor::create(*it);
@@ -43,6 +44,7 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 		actor->GetUI()->setScale(base->getScale());
 	}
 	KUIAssist::_moveCardSet(lst,"go_select");
+	_copyCardSet(lst,&m_initSelectLst);
 }
 
 void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
@@ -63,6 +65,18 @@ void KSelectBeginCardPanel::DoClickOK(CCObject* sender)
 	}else{
 		KSocketFacade::DoSelectBeginCard(&skiplst);
 	}
+}
+
+void KSelectBeginCardPanel::onSelectCardOK_AutoTest()
+{
+	if(!GameRoot::getSingleton().m_autoTest) return;
+	KCardInstList* handLst = KClientBattleCtrl::getInstance()->GetMainPlayer()->QueryCardSet(KCardInst::enum_slot_hand);
+
+	for(KCardInstList::iterator it = m_initSelectLst.begin();it!=m_initSelectLst.end();++it){
+		KCardInst* card = *it;
+		if(_getIndexOfCard(handLst,card)<0) (*it)->releaseActor();
+	}
+	m_initSelectLst.clear();
 }
 
 void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
@@ -89,6 +103,7 @@ void KSelectBeginCardPanel::onSelectCardOK(FBattleGuy* guy)
 		}else{
 			onMeSelectEnd(0);
 		}
+		onSelectCardOK_AutoTest();
 	}else{
 		GameRoot::getSingleton().getBattleScene()->onDrawCard(guy->QueryCardSet(KCardInst::enum_slot_hand));
 	}

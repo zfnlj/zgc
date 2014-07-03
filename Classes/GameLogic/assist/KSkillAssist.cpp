@@ -290,7 +290,10 @@ void _fillYourAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDe
 		break;
 	case KAbilityStatic::which_des_nearby:
 		{
-			if(pDes) pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+			if(pDes){
+ 				pDes->GetOwner()->GetDeck().PickFighterNearby(&tmpLst,pDes);
+				if(pAbility->ToSelfEnable()) tmpLst.push_back(pDes);
+			}
 		}
 		break;
 	case KAbilityStatic::which_hero:
