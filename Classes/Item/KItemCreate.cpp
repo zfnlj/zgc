@@ -5,8 +5,12 @@
 #include "CommonLogic/StringManager/KStringManager.h"
 //#include "KItemPrefix.h"
 #include <System/File/KTabfileLoader.h>
+#include <string>
 //#include <KServerTabfileLoader.h>
-
+#ifdef _USE_COCOS2DX
+#include "platform/CCFileUtils.h"
+#include "ccMacros.h"
+#endif
 using namespace System::File;
 
 #if !defined(max)
@@ -34,8 +38,15 @@ namespace KItemAbout
 
 	bool KItemCreate::LoadCreateInfo_Item(const char* pFileName)
 	{
+		std::string fullPath;
+#ifdef _USE_COCOS2DX
+		fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(pFileName);
+#else
+		fullPath = pFileName;
+#endif
+
 		m_mapCreateInfoItem.clear();
-		return _LoadCreateInfo<MAP_CREATE_ITEM>(m_mapCreateInfoItem, pFileName);
+		return _LoadCreateInfo<MAP_CREATE_ITEM>(m_mapCreateInfoItem, fullPath.c_str());
 	}
 
 	// 根据物品ID获得物品属性
