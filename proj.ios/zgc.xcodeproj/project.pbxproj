@@ -348,7 +348,6 @@
 		814E9E2A18D92EA2003749B2 /* KCardLayoutStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814E9E2818D92EA2003749B2 /* KCardLayoutStatic.cpp */; };
 		814E9E4618D932B7003749B2 /* Item in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4518D932B7003749B2 /* Item */; };
 		814E9E4818D932E4003749B2 /* StringManager in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4718D932E4003749B2 /* StringManager */; };
-		814E9E4A18D93410003749B2 /* List.txt in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4918D93410003749B2 /* List.txt */; };
 		81686242189697F200789DE8 /* KMoney.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81686240189697F200789DE8 /* KMoney.cpp */; };
 		8168635C18969AE100789DE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		8168636118969AE100789DE8 /* lua.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8168636018969AE100789DE8 /* lua.h */; };
@@ -436,6 +435,7 @@
 		81BF26C91930EBAD007B2A28 /* KHeroSkillMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26C71930EBAD007B2A28 /* KHeroSkillMgr.cpp */; };
 		81BF26CF1930EFA8007B2A28 /* KCardStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26CD1930EFA8007B2A28 /* KCardStatic.cpp */; };
 		81BF26D21930F003007B2A28 /* KTouchDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26D01930F003007B2A28 /* KTouchDispatcher.cpp */; };
+		81C2645D1967D03F0098AEFF /* KDBDataStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81C2645C1967D03F0098AEFF /* KDBDataStruct.cpp */; };
 		81CB43D6185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */; };
 		81CB43DA185DDF9000D9E774 /* FBattleGuy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43D8185DDF9000D9E774 /* FBattleGuy.cpp */; };
 		81CB43F0185DDF9C00D9E774 /* KLogAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81CB43DD185DDF9C00D9E774 /* KLogAssist.cpp */; };
@@ -516,7 +516,6 @@
 		81E786CE185DC38A00829E82 /* OgreDataStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E786CA185DC38A00829E82 /* OgreDataStream.cpp */; };
 		81E7DCEF18E318FA0043CCC7 /* KGameDef.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E7DCEE18E318FA0043CCC7 /* KGameDef.cpp */; };
 		81E7DCF118E319560043CCC7 /* armature in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF018E319560043CCC7 /* armature */; };
-		81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF218E319D80043CCC7 /* Armature.txt */; };
 		81E7DCF518E319EA0043CCC7 /* anim in Resources */ = {isa = PBXBuildFile; fileRef = 81E7DCF418E319EA0043CCC7 /* anim */; };
 		81F011B6194F48EF00910DB2 /* KCardGroupAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */; };
 		81F011B7194F48EF00910DB2 /* KJsonDictMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81F011A8194F48EF00910DB2 /* KJsonDictMgr.cpp */; };
@@ -1344,7 +1343,6 @@
 		814E9E2918D92EA2003749B2 /* KCardLayoutStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCardLayoutStatic.h; sourceTree = "<group>"; };
 		814E9E4518D932B7003749B2 /* Item */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Item; sourceTree = "<group>"; };
 		814E9E4718D932E4003749B2 /* StringManager */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StringManager; sourceTree = "<group>"; };
-		814E9E4918D93410003749B2 /* List.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = List.txt; sourceTree = "<group>"; };
 		81686240189697F200789DE8 /* KMoney.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KMoney.cpp; sourceTree = "<group>"; };
 		81686241189697F200789DE8 /* KMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMoney.h; sourceTree = "<group>"; };
 		8168635B18969AE100789DE8 /* liblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1715,6 +1713,7 @@
 		81BF26CE1930EFA8007B2A28 /* KCardStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCardStatic.h; sourceTree = "<group>"; };
 		81BF26D01930F003007B2A28 /* KTouchDispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KTouchDispatcher.cpp; path = ../Classes/KTouchDispatcher.cpp; sourceTree = "<group>"; };
 		81BF26D11930F003007B2A28 /* KTouchDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KTouchDispatcher.h; path = ../Classes/KTouchDispatcher.h; sourceTree = "<group>"; };
+		81C2645C1967D03F0098AEFF /* KDBDataStruct.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KDBDataStruct.cpp; sourceTree = "<group>"; };
 		81CB43D2185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLogicModuleMsgDealer.cpp; sourceTree = "<group>"; };
 		81CB43D3185DDF8300D9E774 /* KLogicModuleMsgDealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLogicModuleMsgDealer.h; sourceTree = "<group>"; };
 		81CB43D4185DDF8300D9E774 /* KMsgDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMsgDelegate.h; sourceTree = "<group>"; };
@@ -1886,7 +1885,6 @@
 		81E786CB185DC38A00829E82 /* OgreDataStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OgreDataStream.h; sourceTree = "<group>"; };
 		81E7DCEE18E318FA0043CCC7 /* KGameDef.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGameDef.cpp; sourceTree = "<group>"; };
 		81E7DCF018E319560043CCC7 /* armature */ = {isa = PBXFileReference; lastKnownFileType = folder; path = armature; sourceTree = "<group>"; };
-		81E7DCF218E319D80043CCC7 /* Armature.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Armature.txt; sourceTree = "<group>"; };
 		81E7DCF418E319EA0043CCC7 /* anim */ = {isa = PBXFileReference; lastKnownFileType = folder; path = anim; sourceTree = "<group>"; };
 		81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KCardGroupAssist.cpp; path = assist/KCardGroupAssist.cpp; sourceTree = "<group>"; };
 		81F011A7194F48EF00910DB2 /* KCardGroupAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KCardGroupAssist.h; path = assist/KCardGroupAssist.h; sourceTree = "<group>"; };
@@ -2990,9 +2988,7 @@
 			isa = PBXGroup;
 			children = (
 				81E7DCF418E319EA0043CCC7 /* anim */,
-				81E7DCF218E319D80043CCC7 /* Armature.txt */,
 				81E7DCF018E319560043CCC7 /* armature */,
-				814E9E4918D93410003749B2 /* List.txt */,
 				814E9E4718D932E4003749B2 /* StringManager */,
 				814E9E4518D932B7003749B2 /* Item */,
 				812E278F187AF5E4000567D7 /* progress_bar.png */,
@@ -3363,6 +3359,7 @@
 		8121435F187AE4400053FC18 /* CommonLogic */ = {
 			isa = PBXGroup;
 			children = (
+				81C2645C1967D03F0098AEFF /* KDBDataStruct.cpp */,
 				81F011C9194F4AAA00910DB2 /* Attribute */,
 				81686240189697F200789DE8 /* KMoney.cpp */,
 				81686241189697F200789DE8 /* KMoney.h */,
@@ -4702,10 +4699,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				814E9E4A18D93410003749B2 /* List.txt in Resources */,
 				810C389F185F28DD00F03DFA /* KTPStreamPartitioner.inl in Resources */,
 				814E9E4618D932B7003749B2 /* Item in Resources */,
-				81E7DCF318E319D80043CCC7 /* Armature.txt in Resources */,
 				810C387D185F28DD00F03DFA /* KRefObject.inl in Resources */,
 				814E9E4818D932E4003749B2 /* StringManager in Resources */,
 				8149030C1860144000695114 /* GUI in Resources */,
@@ -4970,6 +4965,7 @@
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
 				15A3DA3F1682F826002FB0C5 /* CCLayerLoader.cpp in Sources */,
 				810C389A185F28DD00F03DFA /* KTPObjPool.cpp in Sources */,
+				81C2645D1967D03F0098AEFF /* KDBDataStruct.cpp in Sources */,
 				15A3DA401682F826002FB0C5 /* CCMenuItemImageLoader.cpp in Sources */,
 				15A3DA411682F826002FB0C5 /* CCMenuItemLoader.cpp in Sources */,
 				15A3DA421682F826002FB0C5 /* CCNode+CCBRelativePositioning.cpp in Sources */,

@@ -44,7 +44,7 @@ template <size_t size> struct KDBString // size 可容纳的数据长度
 };
 struct KDBBaseBinary
 {
-	WORD actualLength;  // 实际数据长度
+	DWORD actualLength;  // 实际数据长度
 	char binData[1];
 };
 template <int size> struct KDBBinary : public KDBBaseBinary// size 可容纳的数据长度
@@ -82,7 +82,7 @@ struct KDbBinaryHead
 {
 	WORD length;
 	WORD crc;
-	WORD dumpLen;
+	DWORD dumpLen;
 };
 
 #pragma pack(pop)
