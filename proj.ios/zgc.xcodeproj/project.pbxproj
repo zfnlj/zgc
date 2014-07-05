@@ -1898,7 +1898,6 @@
 		81F011AF194F48EF00910DB2 /* KRadioWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KRadioWidget.h; path = assist/KRadioWidget.h; sourceTree = "<group>"; };
 		81F011B0194F48EF00910DB2 /* KUIAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KUIAssist.cpp; path = assist/KUIAssist.cpp; sourceTree = "<group>"; };
 		81F011B1194F48EF00910DB2 /* KUIAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KUIAssist.h; path = assist/KUIAssist.h; sourceTree = "<group>"; };
-		81F011B2194F48EF00910DB2 /* KUIMsgDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KUIMsgDef.h; path = assist/KUIMsgDef.h; sourceTree = "<group>"; };
 		81F011B3194F48EF00910DB2 /* ProgressBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProgressBar.cpp; path = assist/ProgressBar.cpp; sourceTree = "<group>"; };
 		81F011B4194F48EF00910DB2 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressBar.h; path = assist/ProgressBar.h; sourceTree = "<group>"; };
 		81F011B5194F48EF00910DB2 /* ProgressProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressProtocol.h; path = assist/ProgressProtocol.h; sourceTree = "<group>"; };
@@ -3525,7 +3524,6 @@
 				81F011AF194F48EF00910DB2 /* KRadioWidget.h */,
 				81F011B0194F48EF00910DB2 /* KUIAssist.cpp */,
 				81F011B1194F48EF00910DB2 /* KUIAssist.h */,
-				81F011B2194F48EF00910DB2 /* KUIMsgDef.h */,
 				81F011B3194F48EF00910DB2 /* ProgressBar.cpp */,
 				81F011B4194F48EF00910DB2 /* ProgressBar.h */,
 				81F011B5194F48EF00910DB2 /* ProgressProtocol.h */,

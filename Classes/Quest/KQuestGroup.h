@@ -30,6 +30,15 @@ public:
 	KTargetGroup();
 	~KTargetGroup();
 
+    static KTargetGroup* Alloc()
+    {
+        return System::Memory::KPortableStepPool<KTargetGroup,128>::Alloc();
+    }
+    static void Free(KTargetGroup* p)
+    {
+
+        System::Memory::KPortableStepPool<KTargetGroup,128>::Free(p);
+    }
 public:
 	KTargetGroup* Clone();
 
