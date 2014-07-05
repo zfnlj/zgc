@@ -415,6 +415,7 @@
 		81A6A70F18966F6C0039FF68 /* KMainPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70818966F6C0039FF68 /* KMainPlayer.cpp */; };
 		81A6A71018966F6C0039FF68 /* KPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70A18966F6C0039FF68 /* KPlayer.cpp */; };
 		81A6A71118966F6C0039FF68 /* KWorldObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A70C18966F6C0039FF68 /* KWorldObj.cpp */; };
+		81ABA3C31966C7DF00F318DE /* KAIAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81ABA3C11966C7DF00F318DE /* KAIAssist.cpp */; };
 		81BAA81618B0483400643189 /* KSqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81218B0483400643189 /* KSqlite.cpp */; };
 		81BAA81718B0483400643189 /* KUserSql.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BAA81418B0483400643189 /* KUserSql.cpp */; };
 		81BF26941930E6B6007B2A28 /* KCrcAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81BF26901930E6B6007B2A28 /* KCrcAssist.cpp */; };
@@ -1672,6 +1673,8 @@
 		81A6A70B18966F6C0039FF68 /* KPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPlayer.h; sourceTree = "<group>"; };
 		81A6A70C18966F6C0039FF68 /* KWorldObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KWorldObj.cpp; sourceTree = "<group>"; };
 		81A6A70D18966F6C0039FF68 /* KWorldObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KWorldObj.h; sourceTree = "<group>"; };
+		81ABA3C11966C7DF00F318DE /* KAIAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KAIAssist.cpp; sourceTree = "<group>"; };
+		81ABA3C21966C7DF00F318DE /* KAIAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAIAssist.h; sourceTree = "<group>"; };
 		81BAA81218B0483400643189 /* KSqlite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSqlite.cpp; sourceTree = "<group>"; };
 		81BAA81318B0483400643189 /* KSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSqlite.h; sourceTree = "<group>"; };
 		81BAA81418B0483400643189 /* KUserSql.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KUserSql.cpp; sourceTree = "<group>"; };
@@ -4218,6 +4221,8 @@
 		81CB43DC185DDF9C00D9E774 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				81ABA3C11966C7DF00F318DE /* KAIAssist.cpp */,
+				81ABA3C21966C7DF00F318DE /* KAIAssist.h */,
 				81BF26C41930EB7F007B2A28 /* KBattleEventAssist.cpp */,
 				81BF26C51930EB7F007B2A28 /* KBattleEventAssist.h */,
 				81CB43DD185DDF9C00D9E774 /* KLogAssist.cpp */,
@@ -4618,6 +4623,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				81ABA3C41966D23F00F318DE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -4725,6 +4731,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81ABA3C41966D23F00F318DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -5005,6 +5027,7 @@
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
 				812143BF187AE4400053FC18 /* KGatewaySetting.cpp in Sources */,
+				81ABA3C31966C7DF00F318DE /* KAIAssist.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
 				81CD49F91896495E00D6DB43 /* KBattleCtrlBase.cpp in Sources */,
@@ -5270,8 +5293,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -5327,8 +5350,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5451,6 +5474,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = _IOS;
@@ -5490,6 +5514,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = _IOS;
