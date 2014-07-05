@@ -136,6 +136,7 @@
     <ClCompile Include="Attribute\KAttrGroupHolder.cpp">
       <Filter>Attribute</Filter>
     </ClCompile>
+    <ClCompile Include="KDBDataStruct.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configure\KCoordinateTable.h">

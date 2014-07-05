@@ -114,21 +114,9 @@ struct tb_playerquest_record
 		mUpdateMask = 0;
 	}
 	DWORD mUpdateMask;
-	void updateMask( DWORD v )
-	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=mUpdateMask|v;
-	}
-	void clearMask()
-	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=0;
-	}
-	void updateUnMask(DWORD v)
-	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=mUpdateMask&~v;
-	}
+	void updateMask( DWORD v );
+	void clearMask();
+	void updateUnMask(DWORD v);
 	int getQuestSlot(int id){
 		int slot = -1;
 		for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++)
@@ -153,7 +141,6 @@ struct tb_playerquest_record
 	KDBBinary<120> qstate[MAX_PLAYER_QUEST_NUM];
 	KDBBinary<1024> qhistory;
 	KDBBinary<40> qdaily;
-	System::Sync::KSync_CS m_lock;
 };
 
 struct tb_worldState_record

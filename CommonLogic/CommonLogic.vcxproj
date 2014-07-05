@@ -87,6 +87,7 @@
     <ClCompile Include="Configure\KServerSetting.cpp" />
     <ClCompile Include="Configure\KServerTabfileLoader.cpp" />
     <ClCompile Include="Item\KDropGroupStaticData.cpp" />
+    <ClCompile Include="KDBDataStruct.cpp" />
     <ClCompile Include="KMoney.cpp" />
     <ClCompile Include="Quest\KQuestArray.cpp" />
     <ClCompile Include="Quest\KQuestAttrs.cpp" />
