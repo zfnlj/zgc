@@ -110,7 +110,8 @@ void BattleFieldScene::onBattleInit()
 	if(KClientBattleCtrl::getInstance()->IsSelectCard()){
 		m_selectCardPanel.init(this);
 	}else{
-		KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
+		KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
+		//KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
 	//InitTest();
 }

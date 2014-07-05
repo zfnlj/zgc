@@ -339,6 +339,7 @@ bool KQuestTarget::OnGameEvent( int evtId, void* evtData, int len )
 	{
 		return false;	// target已完成直接返回
 	}
+
 	return this->_OnGameEvent(evtId, evtData, len);
 }
 
