@@ -97,23 +97,8 @@ protected:
 class KSync_CSAuto
 {
 public:
-	KSync_CSAuto(KSync_CS &cCS)
-	{
-		m_pCS = &cCS.GetCS();
-		#ifdef WINDOWS
-			EnterCriticalSection( m_pCS );
-		#else
-			pthread_mutex_lock( m_pCS );
-		#endif
-	}
-	~KSync_CSAuto()
-	{
-		#ifdef WINDOWS
-			LeaveCriticalSection( m_pCS );
-		#else
-			pthread_mutex_unlock( m_pCS );
-		#endif
-	}
+	KSync_CSAuto(KSync_CS &cCS);
+	~KSync_CSAuto();
 
 protected:
 	#ifdef WINDOWS
