@@ -97,8 +97,9 @@ protected:
 class KSync_CSAuto
 {
 public:
-	KSync_CSAuto(KSync_CS &cCS) : m_pCS(&cCS.GetCS())
+	KSync_CSAuto(KSync_CS &cCS)
 	{
+		m_pCS = &cCS.GetCS();
 		#ifdef WINDOWS
 			EnterCriticalSection( m_pCS );
 		#else
