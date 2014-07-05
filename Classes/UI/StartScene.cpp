@@ -88,7 +88,7 @@ void StartScene::cacheInit()
 
 	LoadArmature();
 
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("List.txt");
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("data/List.txt");
 	
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
 	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
@@ -164,7 +164,7 @@ void StartScene::update(float delta)
 
 bool StartScene::LoadRes()
 {
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("List.txt");
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("data/List.txt");
 	
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
 	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
@@ -191,7 +191,7 @@ bool StartScene::LoadRes()
 
 void StartScene::LoadArmature()
 {
-	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("Armature.txt");
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("data/Armature.txt");
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
 	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
 	if(!fileReader)	return;
