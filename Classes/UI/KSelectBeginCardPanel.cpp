@@ -74,7 +74,11 @@ void KSelectBeginCardPanel::onSelectCardOK_AutoTest()
 
 	for(KCardInstList::iterator it = m_initSelectLst.begin();it!=m_initSelectLst.end();++it){
 		KCardInst* card = *it;
-		if(_getIndexOfCard(handLst,card)<0) (*it)->releaseActor();
+		if(_getIndexOfCard(handLst,card)<0){
+			KCardActor* actor = (KCardActor*)card->getActor();
+			actor->GetUI()->removeFromParent();
+			(*it)->releaseActor();
+		}
 	}
 	m_initSelectLst.clear();
 }

@@ -180,7 +180,7 @@ bool KBattleAI::UseSkillCard()
 {
 	KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
 
-	float maxVal = 0.1f;
+	float maxVal = 0.9f;
 	KCardInst* pBest = NULL;
 	KCardInst* pBestDes = NULL;
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){

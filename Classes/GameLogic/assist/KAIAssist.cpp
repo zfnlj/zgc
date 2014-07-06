@@ -99,7 +99,7 @@ KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	minVal = 0;
 	for(KCardInstList::iterator it= lst->begin();it!=lst->end();++it){
 		KCardInst* pCur = *it;
-		int val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
+		float val = _calcAbilityDoVal(ctrl,pAbility,pSrc,pCur);
 		if(val<minVal){
 			minVal = val;
 			pBest = pCur;
@@ -195,7 +195,7 @@ KCardInst* _MostValuableTarget(KCardInstList& lst,float maxHp,float minHp)
 		KCardInst* pCur = *it;
 		if(pCur->GetHp()>maxHp) continue;
 		if(pCur->GetHp()<minHp) continue;
-		int curVal = _calcCardValue(pCur);
+		float curVal = _calcCardValue(pCur);
 		if(curVal > val){
 			val = curVal;
 			pBest = pCur;

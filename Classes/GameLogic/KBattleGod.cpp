@@ -308,8 +308,9 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		break;
 	case KAbilityStatic::what_damage_atkadd:
 		{
-			pDes->Heal(pSrc,-pAbility->GetNormalVal());
+			int val = pDes->Heal(pSrc,-pAbility->GetNormalVal());
 			pDes->AddAtk(pAbility->GetVal2());
+			if(!pDes->IsClone()) PostCardDuel(ctrl,pDes,val,NULL,0);
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
