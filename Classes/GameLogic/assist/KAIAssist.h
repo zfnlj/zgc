@@ -33,10 +33,11 @@ public:
 	static float _calcTotalCardVal(KCardInstList& lst);
 	static float _getCardValueRate(KCardInst* pCard);
 
-	static KCardInst* _AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp=99.0f,float minHp=-1.0f);
+	static KCardInst* AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp=99.0f,float minHp=-1.0f);
+	static float CalcAbilityDoVal(KBattleCtrlBase* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes);
 BeginDefLuaClass(KAIAssist)
-	DefMemberFunc(_getCardValueRate)
-	//DefMemberFunc(GetMyHero);
+	DefMemberFunc(AbilityMostValuableTarget)
+	DefMemberFunc(CalcAbilityDoVal)
 EndDef
 
 };

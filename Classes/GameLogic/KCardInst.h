@@ -111,7 +111,8 @@ private:
 	bool m_bClone;
 public:
 BeginDefLuaClass(KCardInst)
-	DefMemberFunc(GetHp);
+	DefMemberFunc(GetHp)
+	DefMemberFunc(GetRealId)
 EndDef
 };
 

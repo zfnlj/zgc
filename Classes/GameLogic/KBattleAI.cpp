@@ -160,7 +160,7 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 	char f[256];
 	sprintf_k(f, sizeof(f), "AIUtil:ai_%d", card->GetCardId());
 	if(LuaWraper.hasFunction(f)){
-		const char* tmpStr =  LuaWraper.Call<const char*>(f, card->GetRealId());
+		const char* tmpStr =  LuaWraper.Call<const char*>(f, (void*)m_battleCtrl,card);
 	}
 	retVal = 0.0f;
 	KCardAbilityList abilityLst;

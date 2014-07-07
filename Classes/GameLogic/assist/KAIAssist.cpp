@@ -237,7 +237,7 @@ KCardInst* KAIAssist::_MostValuableTargetExistBuf(KCardInstList& lst, KAbilitySt
 	return pBest;
 }
 
-KCardInst* KAIAssist::_AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp,float minHp)
+KCardInst* KAIAssist::AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp,float minHp)
 {
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
 	KCardInstList lst;
@@ -250,3 +250,8 @@ KCardInst* KAIAssist::_AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst
 	return _MostValuableTarget(lstMy,maxHp,minHp);
 }
 
+float KAIAssist::CalcAbilityDoVal(KBattleCtrlBase* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes)
+{
+	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
+	return _calcAbilityDoVal(ctrl,pAbility,pSrc,pDes);
+}
