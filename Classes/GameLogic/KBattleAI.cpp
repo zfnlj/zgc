@@ -157,6 +157,11 @@ bool KBattleAI::UseSecretCard()
 
 KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 {
+	char f[256];
+	sprintf_k(f, sizeof(f), "AIUtil:ai_%d", card->GetCardId());
+	if(LuaWraper.hasFunction(f)){
+		const char* tmpStr =  LuaWraper.Call<const char*>(f, card->GetRealId());
+	}
 	retVal = 0.0f;
 	KCardAbilityList abilityLst;
 	KGameStaticMgr::getSingleton().GetAbilityList(card->GetCardId(),abilityLst,KAbilityStatic::when_use);
@@ -175,6 +180,7 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 	if(card->GetCost()>0) retVal = retVal/(float)card->GetCost();
 	return des;
 }
+
 
 bool KBattleAI::UseSkillCard()
 {

@@ -147,6 +147,7 @@
     <ClCompile Include="..\Classes\GameLogic\assist\KAIAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\assist\KBattleEventAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\assist\KLogAssist.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\assist\KScriptAICtrl.cpp" />
     <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KBattleAI.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KBattleCtrlBase.cpp" />
@@ -299,6 +300,7 @@
     <ClInclude Include="..\Classes\GameLogic\assist\KAIAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\assist\KBattleEventAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h" />
+    <ClInclude Include="..\Classes\GameLogic\assist\KScriptAICtrl.h" />
     <ClInclude Include="..\Classes\GameLogic\assist\KSkillAssist.h" />
     <ClInclude Include="..\Classes\GameLogic\KBattleAI.h" />
     <ClInclude Include="..\Classes\GameLogic\KBattleCtrlBase.h" />

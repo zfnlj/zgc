@@ -8,9 +8,14 @@
 #include "../KDynamicWorld.h"
 #include "../../Inc/KLogicMsg.h"
 #include "../KBattleGod.h"
+#include "KSkillAssist.h"
 
-namespace KAIAssist
+KAIAssist* KAIAssist::getInstance(void)
 {
+	static KAIAssist sKAIAssist;
+	return &sKAIAssist;
+}
+
 
 bool compOnAbilityPriority(const KCardInst* lhs, const KCardInst* rhs)
 {
@@ -20,11 +25,8 @@ bool compOnAbilityPriority(const KCardInst* lhs, const KCardInst* rhs)
 	return (pAbility1->GetPriority()< pAbility2->GetPriority());
 }
 
-void _sortOnAbilityPriority(KCardInstList& lst)
-{
-}
 
-float _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
+float KAIAssist::_calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 {
 	float total = 0;
 	total += pDef->GetAtkedVal(pAtk->GetAtk())*_getCardValueRate(pDef);
@@ -33,7 +35,7 @@ float _calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
 	return total;
 }
 
-float _getCardValueRate(KCardInst* pCard)
+float KAIAssist::_getCardValueRate(KCardInst* pCard)
 {
 	if(pCard->IsKindOf(KCardStatic::card_hero)){
 		if(pCard->GetHp()>20){
@@ -49,7 +51,7 @@ float _getCardValueRate(KCardInst* pCard)
 		return 1.0f;
 	}
 }
-float _calcCardValue(KCardInst* pCard)
+float KAIAssist::_calcCardValue(KCardInst* pCard)
 {
 	if(pCard && pCard->GetHp()>0){
 		return pCard->GetAtk()*0.5 + pCard->GetHp()*0.4 + pCard->m_attr.GetBufVal();
@@ -58,7 +60,7 @@ float _calcCardValue(KCardInst* pCard)
 	}
 }
 
-float _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst)
+float KAIAssist::_calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList& lst)
 {
 	float totalVal = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
@@ -68,7 +70,7 @@ float _calcTotalAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCar
 	return totalVal;
 }
 
-float _calcTotalCardVal(KCardInstList& lst)
+float KAIAssist::_calcTotalCardVal(KCardInstList& lst)
 {
 	float totalVal = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
@@ -77,7 +79,7 @@ float _calcTotalCardVal(KCardInstList& lst)
 	return totalVal;
 }
 
-float _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
+float KAIAssist::_calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
 	if(!pDes) return 0;
 	KCardInst card;
@@ -89,7 +91,7 @@ float _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst
 	return (v2-v1)*_getCardValueRate(&card);
 }
 
-KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,float& minVal)
+KCardInst* KAIAssist::_LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,float& minVal)
 {
 	if(!lst){
 		minVal = 0;
@@ -108,7 +110,7 @@ KCardInst* _LestAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	return pBest;
 }
 
-KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lstMy,KCardInstList* lst,float& retVal)
+KCardInst* KAIAssist::_MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lstMy,KCardInstList* lst,float& retVal)
 {
 	float maxVal = 0;
 	float minVal = 0;
@@ -137,7 +139,7 @@ KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	return NULL;
 }
 
-KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,float& maxVal)
+KCardInst* KAIAssist::_MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInstList* lst,float& maxVal)
 {
 	if(!lst){
 		maxVal = 0;
@@ -156,7 +158,7 @@ KCardInst* _MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 	return pBest;
 }
 
-KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
+KCardInst* KAIAssist::_BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 {
 	KCardInst* pBest = NULL;
 	float val = -1;
@@ -171,7 +173,7 @@ KCardInst* _BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
 	return pBest;
 }
 
-KCardInst* _MostValuableTargetNoBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
+KCardInst* KAIAssist::_MostValuableTargetNoBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
 {
 	KCardInst* pBest = NULL;
 	float val = 0;
@@ -187,7 +189,7 @@ KCardInst* _MostValuableTargetNoBuf(KCardInstList& lst, KAbilityStatic::Enum_Wha
 	return pBest;
 }
 
-KCardInst* _MostValuableTarget(KCardInstList& lst,float maxHp,float minHp)
+KCardInst* KAIAssist::_MostValuableTarget(KCardInstList& lst,float maxHp,float minHp)
 {
 	KCardInst* pBest = NULL;
 	float val = 0;
@@ -204,7 +206,7 @@ KCardInst* _MostValuableTarget(KCardInstList& lst,float maxHp,float minHp)
 	return pBest;
 }
 
-KCardInst* _MostValuableBufTarget(KCardInstList& lst)
+KCardInst* KAIAssist::_MostValuableBufTarget(KCardInstList& lst)
 {
 	KCardInst* pBest = NULL;
 	float val = 0;
@@ -219,7 +221,7 @@ KCardInst* _MostValuableBufTarget(KCardInstList& lst)
 	return pBest;
 }
 
-KCardInst* _MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
+KCardInst* KAIAssist::_MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf)
 {
 	KCardInst* pBest = NULL;
 	float val = 0;
@@ -234,5 +236,17 @@ KCardInst* _MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_
 	}
 	return pBest;
 }
+
+KCardInst* KAIAssist::_AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp,float minHp)
+{
+	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
+	KCardInstList lst;
+	KCardInstList lstMy;
+	KSkillAssist::_fillYourAbilityTarget(ctrl,card,NULL,pAbility,&lst);
+	KSkillAssist::_fillMyAbilityTarget(ctrl,card,NULL,pAbility,&lstMy);
+
+	KCardInst* pBest =_MostValuableTarget(lst,maxHp,minHp);
+	if(pBest) return pBest;
+	return _MostValuableTarget(lstMy,maxHp,minHp);
 }
 

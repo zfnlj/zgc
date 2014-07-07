@@ -22,6 +22,8 @@
 #include "../Quest/KQuestManager.h"
 #include "../GameLogic/KDynamicWorld.h"
 #include "../GameLogic/KClientBattleCtrl.h"
+#include "../GameLogic/assist/KAIAssist.h"
+
 using namespace KAttributeAbout;
 
 static void InitScriptDirectory()
@@ -309,6 +311,7 @@ namespace KScriptAbout
 		ObjToLua("CPP.questMgr", KQuestManager::GetInstance());
 
 		ObjToLua("CPP.battleCtrl", KClientBattleCtrl::getInstance());
+		ObjToLua("CPP.AIAssist", KAIAssist::getInstance());
 
 	
 		// ¶ÀÓÐµÄ----------------------------------------------------------------------------------
@@ -346,6 +349,7 @@ namespace KScriptAbout
 
 		//card
 		REGISTER_LUA_CLASS(KClientBattleCtrl);
+		REGISTER_LUA_CLASS(KAIAssist);
 		REGISTER_LUA_CLASS(KCardInst);
 	}
 
