@@ -200,7 +200,11 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 			des = m_battleCtrl->GetCard(target);
 		}
 	}
-	if(card->GetCost()>0) retVal = retVal/(float)card->GetCost();
+	if(card->GetCost()>0){
+		retVal = retVal/(float)card->GetCost();
+	}else{
+		retVal = retVal*2.0f;
+	}
 	return des;
 }
 
@@ -359,6 +363,11 @@ float KBattleAI::CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility
 			if(pos>0) return 5.0f;
 		}
 		break;
+	case KAbilityStatic::what_bless_hp:
+		{
+			return CalcBlessHp(pCard,pAbility,&lstMy);
+		}
+		break;
     default:
 		CCAssert(false , "TBD!");
         break;
@@ -486,3 +495,15 @@ bool KBattleAI::HandCardToField()
 	}
 }
 
+float KBattleAI::CalcBlessHp(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst)
+{
+	KCardInstList tmpLst;
+	float retVal = 0.0f;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardInst* pCard = *it;
+		if(!pCard->m_attr.getReady()) continue;
+		if(pCard->GetHp() > pAbility->GetNormalVal()) continue;
+		retVal += KAIAssist::_calcCardValue(pCard);
+	}
+	return retVal/(float)pSrc->GetCost();
+}

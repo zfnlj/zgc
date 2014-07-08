@@ -24,6 +24,7 @@ public:
 	virtual bool init(void);
 	float CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic*,KCardInst* pDes=NULL);
 	float CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbility,int& target);
+	float CalcBlessHp(KCardInst* pCard,KAbilityStatic* pAbility,KCardInstList* lstMy);
 	bool IsUseSoldierAbilityGood(KCardInst* pCard,int& target);
 	virtual void onBattleInit(bool bFirst);
 private:
