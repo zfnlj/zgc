@@ -112,6 +112,7 @@ private:
 public:
 BeginDefLuaClass(KCardInst)
 	DefMemberFunc(GetHp)
+	DefMemberFunc(GetAtk)
 	DefMemberFunc(GetRealId)
 EndDef
 };

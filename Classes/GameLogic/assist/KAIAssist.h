@@ -19,7 +19,7 @@ public:
 	~KAIAssist(){}
 
 	static float _calcAttackVal(KCardInst* pAtk,KCardInst* pDef);
-	static KCardInst* _BestAttackTarget(KCardInst* pSrc,KCardInstList& enemyLst);
+	static KCardInst* _BestAttackTarget(KCardInst* pSrc,KCardInstList* enemyLst,float maxAtk=99.0f,float minAtk=-1.0f);
 	static KCardInst* _MostValuableTarget(KCardInstList& lst,float maxHp=99.0f,float minHp=-1.0f);
 	static float _calcCardValue(KCardInst* pCard);
 	static float _calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes);
@@ -35,9 +35,11 @@ public:
 
 	KCardInst* AbilityMostValuableTarget(void* ctrl,KCardInst* card,int abilityId,float maxHp=99.0f,float minHp=-1.0f);
 	float CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes);
+	KCardInst* BestAttackTarget(KCardInst* pAtk,void* lst,float maxAtk=99.0f,float minAtk=-1.0f);
 BeginDefLuaClass(KAIAssist)
 	DefMemberFunc(AbilityMostValuableTarget)
 	DefMemberFunc(CalcAbilityDoVal)
+	DefMemberFunc(BestAttackTarget)
 EndDef
 
 };

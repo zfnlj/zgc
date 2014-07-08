@@ -42,14 +42,14 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 {
 	m_bFirstHand = bFirst;
 	m_attr.clearAttrs();
-	m_bSelectHandCard = true;
+	m_bSelectHandCard = bSelectCard;
 	m_Deck.Clear();
 	//m_heroSkillMgr.tmpInit(this);
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DECKINIT,(unsigned long long)&m_FacadeObj,(unsigned long long)m_battleCtrl->GetWorld());
 
 	KPlayerCardDepot* playerCardDepot = NULL;
 	if(m_battleCtrl->GetMainPlayer()->GetImp()==this) playerCardDepot = KMainPlayer::RealPlayer()->GetCardDepot();
-	KDeckDefStatic* pDeckDef = NULL;//KGameStaticMgr::getSingleton().GetDeckDef(deckId);
+	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 
 	if(pDeckDef){
 		m_Deck.initDeck(pDeckDef,bSelectCard);
@@ -62,7 +62,8 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 		playerCardDepot->PickCurHero(heroDef);
 		m_Deck.m_heroSkillMgr.SetHero(&heroDef);
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
-	}else{
+	}else
+	{
 		m_Deck.createTestDeck();
 		m_attr.setMaxRes(6);
 		m_attr.setCurRes(6);

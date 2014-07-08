@@ -158,12 +158,14 @@ KCardInst* KAIAssist::_MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStat
 	return pBest;
 }
 
-KCardInst* KAIAssist::_BestAttackTarget(KCardInst* pAtk,KCardInstList& enemyLst)
+KCardInst* KAIAssist::_BestAttackTarget(KCardInst* pAtk,KCardInstList* enemyLst,float maxAtk,float minAtk)
 {
 	KCardInst* pBest = NULL;
 	float val = -1;
-	for(KCardInstList::iterator it= enemyLst.begin();it!=enemyLst.end();++it){
+	for(KCardInstList::iterator it= enemyLst->begin();it!=enemyLst->end();++it){
 		KCardInst* pCur = *it;
+		if(pCur->GetAtk()>maxAtk) continue;
+		if(pCur->GetAtk()<minAtk) continue;
 		float curVal = _calcAttackVal(pAtk,pCur);
 		if(curVal > val){
 			val = curVal;
@@ -254,4 +256,10 @@ float KAIAssist::CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCard
 {
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
 	return _calcAbilityDoVal((KBattleCtrlBase*)ctrl,pAbility,pSrc,pDes);
+}
+
+
+KCardInst* KAIAssist::BestAttackTarget(KCardInst* pAtk,void* lst,float maxAtk,float minAtk)
+{
+	return _BestAttackTarget(pAtk,(KCardInstList*)lst,maxAtk,minAtk);
 }

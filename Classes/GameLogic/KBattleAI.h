@@ -28,6 +28,7 @@ public:
 	virtual void onBattleInit(bool bFirst);
 private:
 	KCardInst* ThinkUseSkillCard(KCardInst* card,float& retVal);
+	KCardInst* SoldierScriptAtk(KCardInst* pAtk,KCardInstList* lst);
 	void ThinkToPlay(float dt);
 	bool ThinkePlayCard();
 	virtual void SelectHandCard();

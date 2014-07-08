@@ -125,10 +125,12 @@ bool KBattleAI::SoldierToAttack()
 	if(enemyGuider.size()>0){
 		target = enemyGuider.front();
 	}else{
+
+
 		pDefGuy->GetDeck().GetDefenderSet(&enemyGuider);
 		enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
-
-		target = KAIAssist::_BestAttackTarget(pSelectCard,enemyGuider);
+		target = SoldierScriptAtk(pSelectCard,&enemyGuider);
+		if(!target) target = KAIAssist::_BestAttackTarget(pSelectCard,&enemyGuider);
 		if(!target) return false;
 	}
 
@@ -136,6 +138,16 @@ bool KBattleAI::SoldierToAttack()
 
 	m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),target->GetRealId(),0);
 	return true;
+}
+
+KCardInst* KBattleAI::SoldierScriptAtk(KCardInst* pAtk,KCardInstList* lst)
+{
+	char f[256];
+	sprintf_k(f, sizeof(f), "AIUtil:SoldierAtk_%d", pAtk->GetCardId());
+	if(!LuaWraper.hasFunction(f)) return NULL;
+
+	int targetId =  LuaWraper.Call<int>(f, (void*)m_battleCtrl,pAtk,(void*)lst);
+	return m_battleCtrl->GetCard(targetId);
 }
 
 bool KBattleAI::UseSecretCard()
@@ -158,7 +170,7 @@ bool KBattleAI::UseSecretCard()
 KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 {
 	char f[256];
-	sprintf_k(f, sizeof(f), "AIUtil:ai_%d", card->GetCardId());
+	sprintf_k(f, sizeof(f), "AIUtil:UseSkill_%d", card->GetCardId());
 	if(LuaWraper.hasFunction(f)){
 		const char* tmpStr =  LuaWraper.Call<const char*>(f, (void*)m_battleCtrl,card);
 		char sz[64];
@@ -409,7 +421,7 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_rush:
 		{
 			pBest = KAIAssist::_MostValuableTargetExistBuf(lstMy,KAbilityStatic::what_can_rush);
-			ret = pBest->GetAtk()*0.4;
+			if(pBest) ret = pBest->GetAtk()*0.4;
 		}
 		break;
 	case KAbilityStatic::what_hp_double:
@@ -431,7 +443,7 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_dispel_buf:
 		{
 			pBest = KAIAssist::_MostValuableBufTarget(lst);
-			ret = pBest->m_attr.GetBufVal();
+			if(pBest) ret = pBest->m_attr.GetBufVal();
 		}
 		break;
     default:
