@@ -161,6 +161,17 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 	sprintf_k(f, sizeof(f), "AIUtil:ai_%d", card->GetCardId());
 	if(LuaWraper.hasFunction(f)){
 		const char* tmpStr =  LuaWraper.Call<const char*>(f, (void*)m_battleCtrl,card);
+		char sz[64];
+		strcpy(sz,tmpStr);
+		char* ss[64];
+		int ns = split(sz, "*", ss, 64);
+		if(ns==2){
+			int desId = atoi(ss[0]);
+			retVal = atof(ss[1])/(float)card->GetCost();
+			return m_battleCtrl->GetCard(desId);
+		}else{
+			return NULL;
+		}
 	}
 	retVal = 0.0f;
 	KCardAbilityList abilityLst;
@@ -195,7 +206,7 @@ bool KBattleAI::UseSkillCard()
 		if(pCard->GetCost()> m_attr.getCurRes()) continue;
 		if(!pCard->IsKindOf(KCardStatic::card_skill)) continue;
 
-		float val;
+		float val=0.0f;
 		KCardInst* pDes = ThinkUseSkillCard(pCard,val);
 		if(val>maxVal){
 			pBest = pCard;

@@ -237,21 +237,21 @@ KCardInst* KAIAssist::_MostValuableTargetExistBuf(KCardInstList& lst, KAbilitySt
 	return pBest;
 }
 
-KCardInst* KAIAssist::AbilityMostValuableTarget(KBattleCtrlBase* ctrl,KCardInst* card,int abilityId,float maxHp,float minHp)
+KCardInst* KAIAssist::AbilityMostValuableTarget(void* ctrl,KCardInst* card,int abilityId,float maxHp,float minHp)
 {
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
 	KCardInstList lst;
 	KCardInstList lstMy;
-	KSkillAssist::_fillYourAbilityTarget(ctrl,card,NULL,pAbility,&lst);
-	KSkillAssist::_fillMyAbilityTarget(ctrl,card,NULL,pAbility,&lstMy);
+	KSkillAssist::_fillYourAbilityTarget((KBattleCtrlBase*)ctrl,card,NULL,pAbility,&lst);
+	KSkillAssist::_fillMyAbilityTarget((KBattleCtrlBase*)ctrl,card,NULL,pAbility,&lstMy);
 
 	KCardInst* pBest =_MostValuableTarget(lst,maxHp,minHp);
 	if(pBest) return pBest;
 	return _MostValuableTarget(lstMy,maxHp,minHp);
 }
 
-float KAIAssist::CalcAbilityDoVal(KBattleCtrlBase* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes)
+float KAIAssist::CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes)
 {
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
-	return _calcAbilityDoVal(ctrl,pAbility,pSrc,pDes);
+	return _calcAbilityDoVal((KBattleCtrlBase*)ctrl,pAbility,pSrc,pDes);
 }

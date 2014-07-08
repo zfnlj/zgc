@@ -5,7 +5,7 @@ AIUtil ={
 					if (des==nil) then
 						return ""
 					else
-						local val = CPP.AIAssist:CalcAbilityDoVal(ctrl,330090,card,des) + 1.5
+						local val = 1.5 - CPP.AIAssist:CalcAbilityDoVal(ctrl,330090,card,des)
 						local str = des:GetRealId() .. '*' .. val
 						return str
 					end
