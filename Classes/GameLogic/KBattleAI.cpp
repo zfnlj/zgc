@@ -58,14 +58,14 @@ void KBattleAI::onPlayCard(float dt,bool bOK)
 	KBattleGuy::onPlayCard(dt,bOK);
 }
 
-bool KBattleAI::ThinkePlayCard()
+bool KBattleAI::ThinkPlayCard()
 {
 	KCardInstList* myFightLst = QueryCardSet(KCardInst::enum_slot_fight);
-	int myVal = KAIAssist::_calcTotalCardVal(*myFightLst);
+	float myVal = KAIAssist::_calcTotalCardVal(*myFightLst);
 
 	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
 	KCardInstList* yourFightLst = pDefGuy->QueryCardSet(KCardInst::enum_slot_fight);
-	int yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
+	float yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
 	if(myVal<=yourVal){
 		if(HandCardToField()) return true;
 		if(UseSkillCard()) return true;
@@ -86,7 +86,7 @@ void KBattleAI::ThinkToPlay(float dt)
 		return;
 	m_thinkElapsed = 0;
 	
-	if(ThinkePlayCard()) return;
+	if(ThinkPlayCard()) return;
 	//if(UseHeroSkill())
 	//	return;
 	
@@ -119,9 +119,14 @@ bool KBattleAI::SoldierToAttack()
 		if(!pSrc->m_attr.getReady()) continue;
 		if(pSrc->GetAtk()==0) continue;
 
+		pDef = SoldierScriptAtk(pSrc,&enemyGuider);
+		if(pDef) break;
+		float adjustVal = (lst->size()>=enemyGuider.size())?0: enemyGuider.size()-lst->size();
+		adjustVal = adjustVal*adjustVal*0.1;
 		for(KCardInstList::iterator it2 = enemyGuider.begin();it2!=enemyGuider.end();++it2){
 			KCardInst* pDes = *it2;
 			float val = KAIAssist::_calcCardDuelVal(m_battleCtrl,pSrc,pDes);
+			if(pDes->IsKindOf(KCardStatic::card_soldier)) val += adjustVal;
 			if(val>maxVal){
 				pAtk = pSrc;
 				pDef = pDes;
