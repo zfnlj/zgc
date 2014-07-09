@@ -25,7 +25,7 @@ public:
 	bool DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes=NULL,int actor=0);
 	bool DoCardAbilityOnWhen(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic::Enum_When when,int actor=0);
 	void DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,strCardAbilityResult* result);
-
+	bool DoCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int& v1,int& v2);
 private:
 	KBattleGuy* m_TurnPlayer;
 

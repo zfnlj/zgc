@@ -102,41 +102,35 @@ void KBattleAI::ThinkToPlay(float dt)
 bool KBattleAI::SoldierToAttack()
 {
 	KCardInstList* lst = QueryCardSet(KCardInst::enum_slot_fight);
-
-	KCardInst* pSelectCard = NULL;
-	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
-		KCardInst* pCard = *it;
-		if(!pCard->m_attr.getReady()) continue;
-		if(pCard->GetAtk()==0) continue;
-		if(pCard->FindRealBuf(KAbilityStatic::what_dist)){
-			pSelectCard = pCard;
-			break;
-		}
-		if(pSelectCard && pSelectCard->GetAtk() >=pCard->GetAtk()) continue;
-		pSelectCard = pCard;
-	}
-
-	if(!pSelectCard) return false;
-
+	if(lst->empty()) return false;
 	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
 	KCardInstList enemyGuider;
-	KCardInst* target = NULL;
 	pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
-	if(enemyGuider.size()>0){
-		target = enemyGuider.front();
-	}else{
-
-
+	if(enemyGuider.empty()){
 		pDefGuy->GetDeck().GetDefenderSet(&enemyGuider);
 		enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
-		target = SoldierScriptAtk(pSelectCard,&enemyGuider);
-		if(!target) target = KAIAssist::_BestAttackTarget(pSelectCard,&enemyGuider);
-		if(!target) return false;
 	}
 
+	KCardInst* pAtk = NULL;
+	KCardInst* pDef = NULL;
+	float maxVal=0.0f;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardInst* pSrc = *it;
+		if(!pSrc->m_attr.getReady()) continue;
+		if(pSrc->GetAtk()==0) continue;
 
-
-	m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),target->GetRealId(),0);
+		for(KCardInstList::iterator it2 = enemyGuider.begin();it2!=enemyGuider.end();++it2){
+			KCardInst* pDes = *it2;
+			float val = KAIAssist::_calcCardDuelVal(m_battleCtrl,pSrc,pDes);
+			if(val>maxVal){
+				pAtk = pSrc;
+				pDef = pDes;
+				maxVal = val;
+			}
+		}
+	}
+	if(!pDef) return false;
+	m_battleCtrl->DoPlayerOpOK(pAtk->GetRealId(),pDef->GetRealId(),0);
 	return true;
 }
 

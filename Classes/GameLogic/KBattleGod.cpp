@@ -57,15 +57,14 @@ bool KBattleGod::ProcSecretCardAbility(KBattleCtrlBase* ctrl,KCardInst** pSrc,KC
 	return KSkillAssist::_doSecretAbility(ctrl,pSecret,pSrc,pDes);
 }
 
-
-bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
+bool KBattleGod::DoCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,int& v1,int& v2)
 {
 	if(!pSrc->m_attr.getReady()){
-		CCAssert(false , "Duel Card Need to be Ready!");
+		//CCAssert(false , "Duel Card Need to be Ready!");
 		return false;
 	}
 	if(pDes->FindRealBuf(KAbilityStatic::what_hide)){
-		CCAssert(false , "Defender can't be hiding!");
+		//CCAssert(false , "Defender can't be hiding!");
 		return false;
 	}
 	if(!pDes->FindRealBuf(KAbilityStatic::what_guide)){
@@ -73,19 +72,24 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 		KCardInstList enemyGuider;
 		pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
 		if(!enemyGuider.empty()){
-			CCAssert(false , "Need to Duel Guider!");
+			//CCAssert(false , "Need to Duel Guider!");
 			return false;
 		}
 	}
-	if(ProcSecretCardAbility(ctrl, &pSrc, &pDes,KAbilityStatic::when_atked)) return true;
+	//if(ProcSecretCardAbility(ctrl, &pSrc, &pDes,KAbilityStatic::when_atked)) return true;
     
-	bool ret = false;
 	int atkSrc = pSrc->GetAtk();
 	int atkDes = pDes->GetAtk();
-	int v2 = (pSrc->FindRealBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(pDes,-atkDes);
-	int v1 = pDes->Heal(pSrc,-atkSrc);
+	v2 = (pSrc->FindRealBuf(KAbilityStatic::what_dist))?0:pSrc->Heal(pDes,-atkDes);
+	v1 = pDes->Heal(pSrc,-atkSrc);
 	CCLog("ProcCardDuel=%s:%d,HP:%d->%d, VS %s:%d,HP:%d->%d",pSrc->GetST()->GetName(),pSrc->GetRealId(),pSrc->GetHp()-v2,pSrc->GetHp(),
 													pDes->GetST()->GetName(),pDes->GetRealId(),pDes->GetHp()-v1,pDes->GetHp());
+	return true;
+}
+bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
+{
+	int v1,v2;
+	if(!DoCardDuel(ctrl,pSrc,pDes,v1,v2)) return false;
 
 	pSrc->m_attr.setReady(0);
 	if(pSrc->IsDead()) pSrc->m_attr.setSlot(KCardInst::enum_slot_tomb);
@@ -94,7 +98,7 @@ bool KBattleGod::ProcCardDuel(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* p
 	SendDuelResult(ctrl,pSrc,pDes,v2,v1);
 	PostCardDuel(ctrl,pSrc,v2,pDes,v1);
 	ctrl->AddDramaElapsed(4.0f);
-	return ret;
+	return true;
 }
 
 

@@ -31,6 +31,7 @@ public:
 	static KCardInst* _MostValuableTargetExistBuf(KCardInstList& lst, KAbilityStatic::Enum_What buf);
 	static KCardInst* _MostValuableBufTarget(KCardInstList& lst);
 	static float _calcTotalCardVal(KCardInstList& lst);
+	static float _calcCardDuelVal(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes);
 	static float _getCardValueRate(KCardInst* pCard);
 
 	KCardInst* AbilityMostValuableTarget(void* ctrl,KCardInst* card,int abilityId,float maxHp=99.0f,float minHp=-1.0f);

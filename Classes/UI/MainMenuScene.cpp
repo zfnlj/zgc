@@ -60,7 +60,7 @@ bool MainMenuScene::init()
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MainMenuScene::update),this,0.1f,false);
 
 	if(GameRoot::getSingleton().m_autoTest){
-		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MainMenuScene::runAutoTest),this,5.0f,0,0,false);
+		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(MainMenuScene::runAutoTest),this,10.0f,0,0,false);
 	}
     //////////////////////////////
     // 1. super init first

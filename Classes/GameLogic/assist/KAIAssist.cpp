@@ -79,6 +79,20 @@ float KAIAssist::_calcTotalCardVal(KCardInstList& lst)
 	return totalVal;
 }
 
+float KAIAssist::_calcCardDuelVal(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes)
+{
+	int v1,v2;
+	KCardInst atk,def;
+	atk.clone(pSrc);
+	def.clone(pDes);
+	float atkV1 = _calcCardValue(&atk);
+	float defV1 = _calcCardValue(&def);
+	if(!KBattleGod::getSingleton().DoCardDuel(ctrl,&atk,&def,v1,v2)) return -1.0f;
+	float atkV2 = _calcCardValue(&atk);
+	float defV2 = _calcCardValue(&def);
+	return (atkV2 - atkV1 + defV1 -defV2);
+}
+
 float KAIAssist::_calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
 {
 	if(!pDes) return 0;
