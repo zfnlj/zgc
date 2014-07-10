@@ -21,6 +21,11 @@ AIUtil ={
 					else
 						des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,99,0)
 					end
-					return des
+					
+					if (des==nil) then
+						return 0
+					else
+						return des:GetRealId()
+					end
 			end,
 }

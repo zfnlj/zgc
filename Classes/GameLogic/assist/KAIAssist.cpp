@@ -80,7 +80,11 @@ float KAIAssist::_calcCardDuelVal(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardIns
 	if(!KBattleGod::getSingleton().DoCardDuel(ctrl,&atk,&def,v1,v2)) return -1.0f;
 	float atkV2 = _calcCardValue(&atk);
 	float defV2 = _calcCardValue(&def);
-	return (atkV2 - atkV1 + defV1 -defV2);
+	float adjustVal = 0.0f;
+	if(def.GetAtk()>4){
+		adjustVal = ( def.GetAtk()-4)*( def.GetAtk()-4)*0.1f;
+	}
+	return (atkV2 - atkV1 + defV1 -defV2+def.GetCost()*0.01)+adjustVal;
 }
 
 float KAIAssist::_calcAbilityDoVal(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes)
@@ -261,7 +265,6 @@ float KAIAssist::CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCard
 	KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
 	return _calcAbilityDoVal((KBattleCtrlBase*)ctrl,pAbility,pSrc,pDes);
 }
-
 
 KCardInst* KAIAssist::BestAttackTarget(void* ctrl,KCardInst* pAtk,void* lst,float maxAtk,float minAtk)
 {

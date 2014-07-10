@@ -119,8 +119,12 @@ bool KBattleAI::SoldierToAttack()
 		if(!pSrc->m_attr.getReady()) continue;
 		if(pSrc->GetAtk()==0) continue;
 
-		pDef = SoldierScriptAtk(pSrc,&enemyGuider);
-		if(pDef) break;
+		KCardInst* pScriptDef = SoldierScriptAtk(pSrc,&enemyGuider);
+		if(pScriptDef){
+			pAtk = pSrc;
+			pDef = pScriptDef;
+			break;
+		}
 		float adjustVal = (lst->size()>=enemyGuider.size())?0: enemyGuider.size()-lst->size();
 		adjustVal = adjustVal*adjustVal*0.1;
 		for(KCardInstList::iterator it2 = enemyGuider.begin();it2!=enemyGuider.end();++it2){
