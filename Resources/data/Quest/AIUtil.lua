@@ -14,12 +14,12 @@ AIUtil ={
 			SoldierAtk_20007 = function(self,ctrl,card,lst)
 					local des
 					if ( card:GetAtk() < 5) then
-					  des = CPP.AIAssist:BestAttackTarget(card,lst,1,2)
+					  des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,2,1)
 					  if (des==nil) then
-							des = CPP.AIAssist:BestAttackTarget(card,lst,card:GetHp()-1,0)
+							des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,card:GetHp()-1,0)
 						end
 					else
-						des = CPP.AIAssist:BestAttackTarget(card,lst,99,0)
+						des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,99,0)
 					end
 					return des
 			end,

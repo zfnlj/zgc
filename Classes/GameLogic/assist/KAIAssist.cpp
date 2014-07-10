@@ -25,16 +25,6 @@ bool compOnAbilityPriority(const KCardInst* lhs, const KCardInst* rhs)
 	return (pAbility1->GetPriority()< pAbility2->GetPriority());
 }
 
-
-float KAIAssist::_calcAttackVal(KCardInst* pAtk,KCardInst* pDef)
-{
-	float total = 0;
-	total += pDef->GetAtkedVal(pAtk->GetAtk())*_getCardValueRate(pDef);
-
-	total -= pAtk->GetAtkedVal((pAtk->FindRealBuf(KAbilityStatic::what_dist))?0:pDef->GetAtk())*0.5;
-	return total;
-}
-
 float KAIAssist::_getCardValueRate(KCardInst* pCard)
 {
 	if(pCard->IsKindOf(KCardStatic::card_hero)){
@@ -172,7 +162,7 @@ KCardInst* KAIAssist::_MostAbilityDoValTarget(KBattleCtrlBase* ctrl,KAbilityStat
 	return pBest;
 }
 
-KCardInst* KAIAssist::_BestAttackTarget(KCardInst* pAtk,KCardInstList* enemyLst,float maxAtk,float minAtk)
+KCardInst* KAIAssist::_BestAttackTarget(KBattleCtrlBase* ctrl,KCardInst* pAtk,KCardInstList* enemyLst,float maxAtk,float minAtk)
 {
 	KCardInst* pBest = NULL;
 	float val = -1;
@@ -180,7 +170,7 @@ KCardInst* KAIAssist::_BestAttackTarget(KCardInst* pAtk,KCardInstList* enemyLst,
 		KCardInst* pCur = *it;
 		if(pCur->GetAtk()>maxAtk) continue;
 		if(pCur->GetAtk()<minAtk) continue;
-		float curVal = _calcAttackVal(pAtk,pCur);
+		float curVal = _calcCardDuelVal(ctrl,pAtk,pCur);
 		if(curVal > val){
 			val = curVal;
 			pBest = pCur;
@@ -273,7 +263,7 @@ float KAIAssist::CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCard
 }
 
 
-KCardInst* KAIAssist::BestAttackTarget(KCardInst* pAtk,void* lst,float maxAtk,float minAtk)
+KCardInst* KAIAssist::BestAttackTarget(void* ctrl,KCardInst* pAtk,void* lst,float maxAtk,float minAtk)
 {
-	return _BestAttackTarget(pAtk,(KCardInstList*)lst,maxAtk,minAtk);
+	return _BestAttackTarget((KBattleCtrlBase*)ctrl,pAtk,(KCardInstList*)lst,maxAtk,minAtk);
 }
