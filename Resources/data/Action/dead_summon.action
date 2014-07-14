@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action slot="7" class="cast">
+  <affect_body>
+  	 <affector class="action" obj="use_good_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
+  	 
+  		<affector class="action" obj="dead_summon_show" tarFlag="2" pre="1" createtime="0.0" iVal="3" life="5" />
+  </affect_body>
+</action>
+
+<action name="dead_summon_show" class="null">
+  <affect_body> 
+   	<affector class="summonSelf" createtime="0" fVal="0" life="0.1" />
+   	<affector class="scale" createtime="0" fVal="0.01" life="0.01" />
+   	<affector class="eff" slot="card_center" obj="card_use" createtime="0.0" fVal="1.2" iVal="90"  life="2.0" />
+  	<affector class="scale" createtime="0.1" fVal="0.8" life="0.6" />
+  	
+  </affect_body>
+</action>
+</ag>
