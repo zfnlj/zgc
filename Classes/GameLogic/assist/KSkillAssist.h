@@ -22,6 +22,7 @@ namespace KSkillAssist
 	bool _doSecretAbility(KBattleCtrlBase* ctrl,KCardInst* pSecret,KCardInst** pSrc,KCardInst** pDes);
 	int _summonCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
+	void _clearHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	void _sendAbilityResult(KBattleCtrlBase* ctrl,strCardAbilityResult& result);
 	bool _IsMatch(KConditionDef& con,KCardInst* card);

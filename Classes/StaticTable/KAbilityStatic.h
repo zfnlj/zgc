@@ -107,6 +107,7 @@ public:
 		what_bless_hp,
 		what_angry,
 		what_noready,
+		what_clear_hand,
 		what_null,
 		
 	};

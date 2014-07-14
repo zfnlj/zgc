@@ -491,6 +491,23 @@ void _copyHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbilit
 	_sendAbilityResult(ctrl,result);
 }
 
+void _clearHandCard(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
+{
+	if(actor==0) actor = pSrc->GetRealId();
+	KBattleGuy* pPlayer = ctrl->GetCurGuy();
+	KCardInstList* handSet = pPlayer->GetDeck().QueryCardSet(KCardInst::enum_slot_hand);
+	KCardInstList tmpLst;
+	_copyCardSet(handSet,&tmpLst);
+
+	strCardAbilityResult result;
+	result.init(actor,pSrc->GetRealId(),pAbility);
+	for(KCardInstList::iterator it = tmpLst.begin();it!=tmpLst.end();++it){
+		pPlayer->GetDeck().onCard2Tomb(*it);
+		result.SetDestVal((*it)->GetRealId(),0);
+	}
+	_sendAbilityResult(ctrl,result);
+}
+
 void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor)
 {
 	if(actor==0) actor = pSrc->GetRealId();

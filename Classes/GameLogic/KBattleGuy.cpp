@@ -280,6 +280,11 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 			KSkillAssist::_copyHandCard(ctrl,pSrc,pAbility,actor);
 		}
 		break;
+	case KAbilityStatic::what_clear_hand:
+		{
+			KSkillAssist::_clearHandCard(ctrl,pSrc,pAbility,actor);
+		}
+		break;
 	case KAbilityStatic::what_res_add:
 		{
 			AddRes(pAbility->GetNormalVal());
