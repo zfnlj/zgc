@@ -32,6 +32,7 @@ private:
 	KCardInst* SoldierScriptAtk(KCardInst* pAtk,KCardInstList* lst);
 	void ThinkToPlay(float dt);
 	bool ThinkPlayCard();
+	int  ThinkFightPos(KCardInst* card);
 	virtual void SelectHandCard();
 	bool HandCardToField();
 	bool SoldierToAttack();

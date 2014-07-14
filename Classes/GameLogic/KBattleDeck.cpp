@@ -335,6 +335,16 @@ KCardInstList* KBattleDeck::QueryCardSet(int slot)
 	return NULL;
 }
 
+bool KBattleDeck::IsEmptyFightPos(int pos)
+{
+	if(pos<0) return false;
+	if(pos>=MAX_FIGHT_POS_NUM) return false;
+	for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
+		KCardInst* card = *it;
+		if(card->m_attr.getPos()==pos) return false;
+	}
+	return true;
+}
 void KBattleDeck::PickFighterNearby(KCardInstList* lst,KCardInst* me)
 {
 	if(me->GetSlot()!= KCardInst::enum_slot_fight) return;

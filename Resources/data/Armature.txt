@@ -15,8 +15,6 @@ armature/cost_reduce.json
 armature/burn_buf.json
 armature/anim_hide.json
 armature/burned_buf.json
-armature/secret_enter.json
-armature/to_rush.json
 armature/damage_atkadd.json
 armature/angry_buf.json
 armature/absorb.json

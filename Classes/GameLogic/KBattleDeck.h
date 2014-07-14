@@ -52,6 +52,7 @@ public:
 	void PickFighterNearby(KCardInstList* lst,KCardInst* card);
 	void PickCard(KCardInstList* arr,KCardInst::CardSlot slot,KCardInst* skip);
 	void onSelectHandCardOK(KCardInstList* lst);
+	bool IsEmptyFightPos(int pos);
 	void UpdateActor(float dt);
 	void UpdateActor(KCardInstList* arr,float dt);
 	void QueryValidateHandCards(KCardInstList* lst,int curRes);

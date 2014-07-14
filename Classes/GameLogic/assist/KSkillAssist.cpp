@@ -572,7 +572,6 @@ int _calcValDef(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardInst* card,KValDef& v
 	return ret;
 }
 
-
 KAbilityStatic* _findStaticAbility(int cardId,KAbilityStatic::Enum_When when)
 {
 	KCardAbilityList abilityList;

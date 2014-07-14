@@ -482,13 +482,29 @@ bool KBattleAI::HandCardToField()
 		if(!pCard->IsKindOf(KCardStatic::card_soldier)) continue;
 		if(pSelectCard && pSelectCard->GetCost()>=pCard->GetCost()) continue;
 
-		pSelectCard = pCard;
+		char f[64];
+		sprintf_k(f, sizeof(f), "AIUtil:EnterFight_%d", pCard->GetCardId());
+		bool bOk = false;
+		if(LuaWraper.hasFunction(f)){
+			bOk =  LuaWraper.Call<bool>(f, (void*)m_battleCtrl,pCard);
+			if(bOk){
+				pSelectCard = pCard;
+				break;
+			}
+		}
+		if(!pSelectCard ||
+			pSelectCard->GetST()->GetRank() <pCard->GetST()->GetRank()){
+			pSelectCard = pCard;
+		}
 	}
 
 	if(pSelectCard){
 		int dest = 0;
 		if(KSkillAssist::_needEnterFightTarget(pSelectCard->GetCardId())){
 			if(!IsUseSoldierAbilityGood(pSelectCard,dest)) dest=0;
+		}else{
+			int newPos = ThinkFightPos(pSelectCard);
+			if(newPos>=0) pos = newPos;
 		}
 
 		m_battleCtrl->DoPlayerOpOK(pSelectCard->GetRealId(),dest,pos);
@@ -496,6 +512,33 @@ bool KBattleAI::HandCardToField()
 	}else{
 		return false;
 	}
+}
+
+int KBattleAI::ThinkFightPos(KCardInst* card)
+{
+	KCardAbilityList abilityList;
+	KGameStaticMgr::getSingleton().GetAbilityList(card->GetCardId(),abilityList,KAbilityStatic::when_enter);
+
+	for(KCardAbilityList::iterator it = abilityList.begin();it!=abilityList.end();++it){
+		KAbilityStatic* pAbility = *it;
+		if(pAbility->GetWhich()==KAbilityStatic::which_src_nearby){
+			
+			KCardInstList* fightSet = m_Deck.QueryCardSet(KCardInst::enum_slot_fight);
+			for(KCardInstList::iterator it = fightSet->begin(); it!=fightSet->end();++it){
+				KCardInst* card = *it;
+				if(pAbility->GetWhat()==KAbilityStatic::what_buf){
+					KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
+					if(card->HasBuf(pBuf)) continue; 
+				}
+				int cardPos = card->m_attr.getPos();
+				int newPos = cardPos-1;
+				if( m_Deck.IsEmptyFightPos(newPos)) return newPos;
+				newPos = cardPos+1;
+				if( m_Deck.IsEmptyFightPos(newPos)) return newPos;
+			}
+		}
+	}
+	return -1;
 }
 
 float KBattleAI::CalcBlessHp(KCardInst* pSrc,KAbilityStatic* pAbility,KCardInstList* lst)
