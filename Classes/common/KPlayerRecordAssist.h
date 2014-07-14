@@ -35,6 +35,7 @@ namespace KPlayerRecordAssist
 
 	//money
 	void AddExp(tb_player_record* record,int val,int power);
+	void AddMercy(tb_player_record* record,int val);
 	//quest
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);

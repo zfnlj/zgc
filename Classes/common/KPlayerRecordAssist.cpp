@@ -279,4 +279,9 @@ void AddExp(tb_player_record* record,int val,int power)
 	record->updateMask(tb_player_record::_CRI);
 }
 
+void AddMercy(tb_player_record* record,int val)
+{
+	record->mercy += val;
+	record->updateMask(tb_player_record::_CRI);
+}
 }
