@@ -11,9 +11,9 @@ AIUtil ={
 					end
 			end,
 			
-			EnterFight_20035 = function(self,ctrl,card)
+			EnterFight_20053 = function(self,ctrl,card)
 					local val1 = CPP.AIAssist:CalcFighterSetVal(ctrl,0)-CPP.AIAssist:CalcFighterSetVal(ctrl,1)
-					local val2 = CPP.AIAssist:CalcHandSetVal(ctlr,1) - 10;
+					local val2 = CPP.AIAssist:CalcHandSetVal(ctrl,1) - 10;
 					return (val1 - val2*0.8)> 0;
 			end,
 			

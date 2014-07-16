@@ -30,11 +30,11 @@ void KBattleAI::SelectHandCard()
 	KCardInstList* handList = m_Deck.QueryCardSet(KCardInst::enum_slot_hand);
 	KCardInstList tmpLst;
 	for(KCardInstList::iterator it = handList->begin(); it!=handList->end();++it){
-		if((*it)->GetCost()>3) tmpLst.push_back(*it);
+		//if((*it)->GetCost()>3) tmpLst.push_back(*it);
 	}
 	KCardInstList* slotList = m_Deck.QueryCardSet(KCardInst::enum_slot_slot); // move cost>3 card to the end of slot list;
 	int n=0;
-	for(KCardInstList::iterator it = slotList->begin(); it!=slotList->end();n++){
+	/*for(KCardInstList::iterator it = slotList->begin(); it!=slotList->end();n++){
 		KCardInst* card = *it;
 		if(n>=3) break;
 		if((*it)->GetCost()>3){
@@ -43,7 +43,7 @@ void KBattleAI::SelectHandCard()
 		}else{
 			++it;
 		}
-	}
+	}*/
 
 	DoSelectBeginCard(&tmpLst);
 }

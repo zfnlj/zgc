@@ -275,7 +275,7 @@ float KAIAssist::CalcHandSetVal(void* ctrl,int myFlag)
 	KBattleDeck& deck = (myFlag>0)?((KBattleCtrlBase*)ctrl)->GetCurGuy()->GetDeck():((KBattleCtrlBase*)ctrl)->GetDefGuy()->GetDeck();
 	KCardInstList* cardSet = deck.QueryCardSet(KCardInst::enum_slot_hand);
 	
-	float val;
+	float val=0.0f;
 	for(KCardInstList::iterator it= cardSet->begin();it!=cardSet->end();++it){
 		val += (*it)->GetCost();
 	}
@@ -287,9 +287,10 @@ float KAIAssist::CalcFighterSetVal(void* ctrl,int myFlag)
 	KBattleDeck& deck = (myFlag>0)?((KBattleCtrlBase*)ctrl)->GetCurGuy()->GetDeck():((KBattleCtrlBase*)ctrl)->GetDefGuy()->GetDeck();
 	KCardInstList* cardSet = deck.QueryCardSet(KCardInst::enum_slot_fight);
 
-	float val;
+	float val=0.0f;
 	for(KCardInstList::iterator it= cardSet->begin();it!=cardSet->end();++it){
-		val += _calcCardValue(*it);
+		KCardInst* card = *it;
+		val += _calcCardValue(card);
 	}
 	return val;
 }
