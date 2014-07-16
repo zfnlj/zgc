@@ -331,8 +331,12 @@ void KBattleCtrlBase::TurnEnd()
 {
 	CCLog("TurnEnd");
 	m_CurPlayGuy->onTurnEnd(this);
-	StateJump(battle_turn_end_hero);
-	DoCardEvtList(NULL);
+	if(IsGameEnd()){
+		return;
+	}else{
+		StateJump(battle_turn_end_hero);
+		DoCardEvtList(NULL);
+	}
 }
 
 void KBattleCtrlBase::GameEnd(float dt)

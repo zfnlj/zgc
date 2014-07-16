@@ -15,3 +15,43 @@
 	AbilityMostValuableTarget(C) at =[C]
 	 at ? line:4
 
+2014-07-16 22:25:13 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:25:30 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:28:09 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:28:26 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:31:10 [1872] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:32:07 [1872] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:36:14 [4776] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:38:57 [4776] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:44:52 [4732] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+
+2014-07-16 22:45:49 [4732] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+

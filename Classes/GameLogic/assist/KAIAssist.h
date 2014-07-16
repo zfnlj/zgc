@@ -38,12 +38,14 @@ public:
 	KCardInst* BestAttackTarget(void* ctrl,KCardInst* pAtk,void* lst,float maxAtk=99.0f,float minAtk=-1.0f);
 	float CalcFighterSetVal(void* ctrl,int myFlag);
 	float CalcHandSetVal(void* ctrl,int myFlag);
+	int CalcFighterNum(void* ctrl,int myFlag);
 BeginDefLuaClass(KAIAssist)
 	DefMemberFunc(AbilityMostValuableTarget)
 	DefMemberFunc(CalcAbilityDoVal)
 	DefMemberFunc(BestAttackTarget)
 	DefMemberFunc(CalcFighterSetVal)
 	DefMemberFunc(CalcHandSetVal)
+	DefMemberFunc(CalcFighterNum)
 EndDef
 
 };

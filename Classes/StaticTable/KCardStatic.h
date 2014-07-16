@@ -39,6 +39,7 @@ public:
 	int GetCost(){return m_Cost;}
 	int GetDef(){ return m_Def;}
 	int GetRank(){ return m_Rank;}
+	bool IsRare(){ return m_Rank>=4;}
 	int GetRace(){ return m_Race;}
 	CardDef GetType(){ return m_type;}
 	char* GetName(){ return m_Name;}

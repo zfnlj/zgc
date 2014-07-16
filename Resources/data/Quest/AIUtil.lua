@@ -17,6 +17,11 @@ AIUtil ={
 					return (val1 - val2*0.8)> 0;
 			end,
 			
+			EnterFight_20059 = function(self,ctrl,card)
+					local val1 = CPP.AIAssist:CalcFighterNum(ctrl,0)-CPP.AIAssist:CalcFighterNum(ctrl,1)
+					return val1 >= 0
+			end,
+			
 			SoldierAtk_20007 = function(self,ctrl,card,lst)
 					local des
 					if ( card:GetAtk() < 5) then

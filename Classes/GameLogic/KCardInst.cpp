@@ -228,7 +228,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 
 void KCardInst::OnTurnEnd(KBattleCtrlBase* ctrl)
 {
-	if(!FindRealBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_end);
+	if(!FindRealBuf(KAbilityStatic::what_stun)|| m_pST->IsRare()) onCardAbility(ctrl,KAbilityStatic::when_turn_end);
 	m_attr.updateBufList();
 }
 
@@ -383,6 +383,12 @@ void KCardInst::onCard2Tomb()
 void KCardInst::onCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when)
 {
 	KAbilityStatic* pAbility = FindBufAbility(when);
+	if(!pAbility && m_pST->IsRare()){
+		KCardAbilityList abilityLst;
+		KGameStaticMgr::getSingleton().GetAbilityList(GetCardId(),abilityLst,when);
+		if(abilityLst.size()>0)
+			pAbility = abilityLst.front();
+	}
 	if(pAbility){
 		KBattleGod::getSingleton().DoCardAbility(ctrl,pAbility,this);
 	}
