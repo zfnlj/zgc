@@ -196,6 +196,7 @@ void KCardInst::EnterFightField(int pos)
 		KAbilityStatic* pNoReady = KSkillAssist::_findStaticAbility(GetCardId(),KAbilityStatic::what_noready);
 		if(!pNoReady) AddBuf(BUF_CAN_RUSH_ID);
 	}
+
 }
 
 void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
