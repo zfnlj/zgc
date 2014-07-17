@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action slot="5" class="cast">
+  <affect_body>
+  		<affector class="armature" slot="card_center" obj="rush" createtime="0.0" fVal="1.2" iVal="90"  life="1.5" />
+  		<affector class="armature"  slot="card_center" createtime="0.6" fVal="1.0" obj="guider" life="1.2" />
+  		<affector class="armature"  slot="card_center" createtime="0.6" fVal="1.0" obj="absolute_def" life="1.2" />
+    	<affector class="updateBuf" createtime="2.0"  life="0.001" />  
+  </affect_body>
+</action>
+</ag>
+		
