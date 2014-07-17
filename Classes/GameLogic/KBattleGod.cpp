@@ -469,18 +469,15 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 	guy->UseRes(pCard->GetCost());
 	guy->GetDeck().Hand2Fight(pCard,pos);
 	
-	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(pCard->GetCardId(),KAbilityStatic::when_enter);
-	bool doAbilityOk = false;
-	if(pAbility){
-		if(pDes){
-			DoCardAbility(ctrl,pAbility,pCard,pDes);
-			doAbilityOk = true;
-		}else{
-			doAbilityOk = DoCardAbilityOnWhen(ctrl,pCard,KAbilityStatic::when_enter);
-		}
+	KCardAbilityList abilityList;
+	KGameStaticMgr::getSingleton().GetAbilityList(pCard->GetCardId(),abilityList,KAbilityStatic::when_enter);
+	bool bAbilityActionOk = false;
+	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
+		KAbilityStatic* pAbility = *it;
+		DoCardAbility(ctrl,pAbility,pCard,pDes);
+		if(!pAbility->ActionIsEmpty()) bAbilityActionOk = true;
 	}
-	
-	if(!doAbilityOk || !pAbility ||pAbility->ActionIsEmpty()){
+	if(!bAbilityActionOk){
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());
 		ctrl->AddDramaElapsed(1.0f);
 		if(pCard->GetST()->IsShow()) ctrl->AddDramaElapsed(2.0f);
