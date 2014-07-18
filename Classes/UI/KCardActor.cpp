@@ -380,7 +380,7 @@ CCNode* KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,b
 
 CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int index)
 {
-	if(strcmp(slot,"card_pos")==0){
+	if(strcmp(slot,"card_pos")==0 ){
 		return KUIAssist::_queryCardPos(NULL,m_card);
 	}else if(strcmp(slot,"secret_pos")==0){
 		return KUIAssist::_querySecretPos(m_card);

@@ -331,8 +331,17 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 		addWidget(actor->GetUI());
 	}
 	if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.
-		KUIAssist::_resortHandCardSet(guy);
+
+		if(pCard->GetST()->IsRare()&&
+		pCard->GetSlot()==KCardInst::enum_slot_fight &&
+		pCard->IsKindOf(KCardStatic::card_soldier)){
+			actor->GetActionMgr().PlayAction("rare_enterfight");
+			KUIAssist::_delayResortHandCardSet(guy);
+		}else{
+			KUIAssist::_resortHandCardSet(guy);
+		}
 	}
+	
 	actor->GetActionMgr().PlayAction("card_move");
 	m_indicatePanel.OnSelectCardOK();
 	KUIAssist::_soldierShow(pCard); // soldier enter fight movie.

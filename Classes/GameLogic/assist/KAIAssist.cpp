@@ -266,6 +266,18 @@ float KAIAssist::CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCard
 	return _calcAbilityDoVal((KBattleCtrlBase*)ctrl,pAbility,pSrc,pDes);
 }
 
+int KAIAssist::_calcTotalAtk(KCardInstList* lst)
+{
+	int atkVal = 0;
+	for(KCardInstList::iterator it= lst->begin();it!=lst->end();++it){
+		KCardInst* card = *it;
+		KAbilityStatic* pNoReady = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::what_noready);
+		if(pNoReady) continue;
+		atkVal += card->GetAtk();
+	}
+	return atkVal;
+}
+
 KCardInst* KAIAssist::BestAttackTarget(void* ctrl,KCardInst* pAtk,void* lst,float maxAtk,float minAtk)
 {
 	return _BestAttackTarget((KBattleCtrlBase*)ctrl,pAtk,(KCardInstList*)lst,maxAtk,minAtk);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+
+<action class="move">
+  <affect_body>
+  		<affector class="anim"  slot="card_pos" createtime="0" fVal="1.0" obj="rare_enter" life="1.6" />
+  </affect_body>
+</action>
+</ag>
+		

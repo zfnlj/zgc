@@ -82,8 +82,9 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* card,KAbilityStatic*
 
 void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,KAbilityStatic* pAbility,KCardInstList* lst)
 {
-	KBattleDeck& MyDeck = ctrl->GetCurGuy()->GetDeck();
-	KBattleDeck& YourDeck = ctrl->GetDefGuy()->GetDeck();
+	
+	KBattleDeck& MyDeck = pSrc->GetOwner()->GetDeck();
+	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pSrc->GetOwner()->GetGuyId())->GetDeck();
 	KCardInst* skip = (pAbility->ToSelfEnable())?NULL:pSrc;
 	KCardInstList tmpLst;
 	switch(pAbility->GetWhich()){

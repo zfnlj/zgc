@@ -719,7 +719,7 @@ void KUIAssist::_resortCardSet(FBattleGuy* guy,int slot)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	KUIAssist::_moveCardSet(&tmpLst,"card_move");
+	_moveCardSet(&tmpLst,"card_move");
 }
 
 
@@ -731,7 +731,18 @@ void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	KUIAssist::_moveCardSet(&tmpLst,"card_move");
+	_moveCardSet(&tmpLst,"card_move");
+}
+
+void KUIAssist::_delayResortHandCardSet(FBattleGuy* guy)
+{
+	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
+	KCardInstList tmpLst;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
+	}
+	_moveCardSet(&tmpLst,"card_delayMove");
 }
 
 void KUIAssist::_setActionParamSlot(K3DActionParam* param)
