@@ -1,61 +1,8 @@
-2014-06-28 17:41:20 [7532] LuaTinker::call() attempt a table `PlayCardUtil' (not a table)
-2014-06-28 17:41:20 [7532] 
-
-2014-06-28 17:44:43 [6968] LuaTinker::call() attempt to call table function `card_33014' (not a function)
-2014-06-28 17:44:43 [6968] 
-
-2014-06-28 17:45:31 [8112] LuaTinker::call() attempt to call table function `c_33014' (not a function)
-2014-06-28 17:45:31 [8112] 
-
-2014-07-07 22:47:31 [3476] [string "?"]:4: attempt to call method 'AbilityMostValuableTarget' (a nil value)
-	AbilityMostValuableTarget(C) at =[C]
-	 at ? line:4
-
-2014-07-07 22:51:44 [1000] [string "?"]:4: attempt to call method 'AbilityMostValuableTarget' (a nil value)
-	AbilityMostValuableTarget(C) at =[C]
-	 at ? line:4
-
-2014-07-16 22:25:13 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+2014-07-18 23:09:54 [5256] [string "?"]:15: attempt to call method 'CalcFighterNum' (a nil value)
 	CalcFighterNum(C) at =[C]
-	 at ? line:21
+	 at ? line:15
 
-2014-07-16 22:25:30 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+2014-07-18 23:10:46 [5256] [string "?"]:15: attempt to call method 'CalcFighterNum' (a nil value)
 	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:28:09 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:28:26 [4740] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:31:10 [1872] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:32:07 [1872] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:36:14 [4776] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:38:57 [4776] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:44:52 [4732] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-16 22:45:49 [4732] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
-
-2014-07-17 23:06:44 [2992] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
-	CalcFighterNum(C) at =[C]
-	 at ? line:21
+	 at ? line:15
 

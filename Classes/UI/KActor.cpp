@@ -127,12 +127,17 @@ UIWidget* KActor::GetWidget(const char* obj)
 	return m_ui;
 }
 
+CCPoint KActor::GetDestPosition()
+{
+	return GetUI()->getPosition();
+}
+
 CCPoint KActor::GetDestPosition(K3DActionParam* param,const char* obj,int index)
 {
 	CCPoint pt;
 	if(strcmp(obj,"dest")==0){
 		KActor* actor =  (KActor*)KUIAssist::_getCardActor(param->_desArr[index]);
-		return actor->GetUI()->getPosition();
+		return actor->GetDestPosition();
 	}else if(strcmp(obj,"my_fight_slot")==0){
 		char sz[32];
 		sprintf(sz,"%s_%d",obj,param->_desArr[index]);

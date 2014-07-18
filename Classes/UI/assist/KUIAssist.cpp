@@ -632,7 +632,11 @@ KCardActor* KUIAssist::_getCardActor(int realId)
 {
 	 KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
 	 if(!card) return NULL;
-	 return KCardActor::create(card);
+	 KCardActor* actor = KCardActor::create(card);
+	 if(!actor->GetUI()->getParent()){
+		 actor->GetUI()->setPosition(_queryCardPos(NULL,card));
+	 }
+	 return actor;
 }
 
 void KUIAssist::_updateSecretIcon(bool bMy,KCardInstList* lst)

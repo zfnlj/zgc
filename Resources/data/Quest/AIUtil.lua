@@ -11,6 +11,11 @@ AIUtil ={
 					end
 			end,
 			
+			UseSkill_32011 = function(self,ctrl,card)
+					local str = 0 .. '*' .. CPP.AIAssist:CalcFighterNum(ctrl,0)
+					return str
+			end,
+			
 			EnterFight_20053 = function(self,ctrl,card)
 					local val1 = CPP.AIAssist:CalcFighterSetVal(ctrl,0)-CPP.AIAssist:CalcFighterSetVal(ctrl,1)
 					local val2 = CPP.AIAssist:CalcHandSetVal(ctrl,1) - 10;
