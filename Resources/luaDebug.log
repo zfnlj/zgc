@@ -55,3 +55,7 @@
 	CalcFighterNum(C) at =[C]
 	 at ? line:21
 
+2014-07-17 23:06:44 [2992] [string "?"]:21: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:21
+

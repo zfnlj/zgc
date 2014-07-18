@@ -65,8 +65,8 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	}else*/
 	{
 		m_Deck.createTestDeck();
-		m_attr.setMaxRes(6);
-		m_attr.setCurRes(6);
+		m_attr.setMaxRes(9);
+		m_attr.setCurRes(9);
 		if(bFirst){ //先手抓三张，后手抓四张
 			m_Deck.DrawCard(3,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 		}else{
