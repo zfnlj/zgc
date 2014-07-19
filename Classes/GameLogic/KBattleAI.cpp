@@ -308,6 +308,11 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 			pBest = KAIAssist::_MostValuableBufTarget(lst);
 		}
 		break;
+	case KAbilityStatic::what_return:
+		{
+			pBest = KAIAssist::_MostValuableTarget(lst);
+		}
+		break;
 	default:
 		CCAssert(false , "TBD!");
         break;
@@ -413,13 +418,12 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
 			ret = KAIAssist::_calcCardValue(pBest)*1.0f;
-			if(pBest && KAIAssist::_calcCardValue(pBest)<7*pCard->GetCost()) pBest=NULL;
 		}
 		break;
 	case KAbilityStatic::what_control:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);
-			ret = KAIAssist::_calcCardValue(pBest)*1.2f;
+			ret = KAIAssist::_calcCardValue(pBest)*1.4f;
 		}
 		break;
 	case KAbilityStatic::what_hp_set:
@@ -443,9 +447,14 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_hp_add:
 	case KAbilityStatic::what_atk_add:
 	case KAbilityStatic::what_add_atk_hp:
+		{
+			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,NULL,ret);
+		}
+		break;
 	case KAbilityStatic::what_immune:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lstMy);
+			ret = KAIAssist::_calcCardValue(pBest)*0.4;
 		}
 		break;
 	case KAbilityStatic::what_hide:

@@ -474,8 +474,7 @@ bool KBattleGod::DoCardToFightField(KBattleCtrlBase* ctrl,KBattleGuy* guy,KCardI
 	bool bAbilityActionOk = false;
 	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
 		KAbilityStatic* pAbility = *it;
-		DoCardAbility(ctrl,pAbility,pCard,pDes);
-		if(!pAbility->ActionIsEmpty()) bAbilityActionOk = true;
+		if(DoCardAbility(ctrl,pAbility,pCard,pDes) && !pAbility->ActionIsEmpty())  bAbilityActionOk = true;
 	}
 	if(!bAbilityActionOk){
 		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_CARDMOVE,pCard->GetRealId(),(unsigned long long)ctrl->GetWorld());

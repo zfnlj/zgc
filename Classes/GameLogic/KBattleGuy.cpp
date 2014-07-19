@@ -51,7 +51,7 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	if(m_battleCtrl->GetMainPlayer()->GetImp()==this) playerCardDepot = KMainPlayer::RealPlayer()->GetCardDepot();
 	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 
-	/*if(pDeckDef){
+	if(pDeckDef){
 		m_Deck.initDeck(pDeckDef,bSelectCard);
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
@@ -62,11 +62,11 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 		playerCardDepot->PickCurHero(heroDef);
 		m_Deck.m_heroSkillMgr.SetHero(&heroDef);
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
-	}else*/
+	}else
 	{
 		m_Deck.createTestDeck();
-		m_attr.setMaxRes(9);
-		m_attr.setCurRes(9);
+		m_attr.setMaxRes(1);
+		m_attr.setCurRes(1);
 		if(bFirst){ //先手抓三张，后手抓四张
 			m_Deck.DrawCard(3,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 		}else{
