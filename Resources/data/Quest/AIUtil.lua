@@ -11,9 +11,12 @@ AIUtil ={
 					end
 			end,
 			
-			UseSkill_32011 = function(self,ctrl,card)
-					local str = 0 .. '*' .. CPP.AIAssist:CalcFighterNum(ctrl,0)
-					return str
+			UseSkill_32011_ = function(self,ctrl,card)
+					if(CPP.AIAssist:CalcFighterNum(ctrl,0)>=2) then
+						return 0 .. '*' .. CPP.AIAssist:CalcFighterNum(ctrl,0)
+					else
+						return ""
+					end
 			end,
 			
 			EnterFight_20053 = function(self,ctrl,card)

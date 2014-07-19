@@ -6,3 +6,15 @@
 	CalcFighterNum(C) at =[C]
 	 at ? line:15
 
+2014-07-19 08:41:27 [4584] [string "?"]:15: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:15
+
+2014-07-19 08:50:11 [2648] [string "?"]:15: attempt to call method 'CalcFighterNum2' (a nil value)
+	CalcFighterNum2(C) at =[C]
+	 at ? line:15
+
+2014-07-19 08:53:02 [532] [string "?"]:15: attempt to call method 'CalcFighterNum' (a nil value)
+	CalcFighterNum(C) at =[C]
+	 at ? line:15
+
