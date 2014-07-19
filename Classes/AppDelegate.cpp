@@ -23,11 +23,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 	CCSize designSize = CCSizeMake(1024, 768);
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
-	 CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionShowAll);
-#else
-	 CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
-#endif
+
 
 	KTouchDispatcher* pTouchDispatcher = new KTouchDispatcher();
 	pTouchDispatcher->init();
@@ -36,6 +32,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionShowAll);
+#else
+	CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
+#endif
+
 	GameRoot::getSingleton().init();
     // turn on display FPS
    // pDirector->setDisplayStats(true);
