@@ -17,6 +17,18 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
+
+
+	CCSize screenSize = CCEGLView::sharedOpenGLView()->getFrameSize();
+
+	CCSize designSize = CCSizeMake(1024, 768);
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
+	 CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionShowAll);
+#else
+	 CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
+#endif
+
 	KTouchDispatcher* pTouchDispatcher = new KTouchDispatcher();
 	pTouchDispatcher->init();
 	pDirector->setTouchDispatcher(pTouchDispatcher);
