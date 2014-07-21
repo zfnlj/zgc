@@ -51,6 +51,7 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 	//m_layer->addWidget(m_Panel);
 	m_Panel->setZOrder(999);
 	m_bSelectGift = false;
+	m_expBar.init(NULL,0,0,0.0f);
 	updatePanel();
 }
 
@@ -214,6 +215,7 @@ void KGameResultPanel::updatePanel()
 	}else{
 		pExpVal->setVisible(false);
 	}
+	ShowGuyLevAndMoney();
 }
 
 bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
@@ -251,3 +253,22 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 	return true;
 }
 
+void KGameResultPanel::ShowGuyLevAndMoney()
+{
+	KPlayer* pPlayer = KMainPlayer::RealPlayer();
+	int oldExp = pPlayer->m_playerRecord.GetExp()-m_result._exp;
+	int oldLev = KGameStaticMgr::getSingleton().PlayerExpToLevel(oldExp);
+	float rate1 =KGameStaticMgr::getSingleton().GetLevRate(oldExp);
+	float rate2 =KGameStaticMgr::getSingleton().GetLevRate(pPlayer->m_playerRecord.GetExp());
+	char sz[64];
+	sprintf(sz,"Lev%d",oldLev);
+	UILabel* pLevWidget = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"Lev_txt");
+	pLevWidget->setText(sz);
+	UILoadingBar* pBar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"exp_bar");
+	m_expBar.init(pBar,rate1,rate2,2);
+}
+
+void KGameResultPanel::update(float dt)
+{
+	m_expBar.update(dt);
+}

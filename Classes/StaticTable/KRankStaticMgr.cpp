@@ -99,6 +99,19 @@ bool KRankStaticDataManager::Reload(System::File::KTabFile2* fileReader )
 	return true;
 }
 
+float KRankStaticDataManager::GetLevRate(int exp)
+{
+	BOOL bFind = FALSE;
+	int pos = m_expToLevelMap.find(exp, bFind);
+	if(pos==0){
+		return (float)exp/m_expToLevelMap[pos].m_exp;
+	}else{
+		exp -= m_expToLevelMap[pos-1].m_exp;
+		int needExp = m_expToLevelMap[pos].m_exp -m_expToLevelMap[pos-1].m_exp;
+		return (float)exp/(float)needExp;
+	}
+}
+
 int KRankStaticDataManager::ExpToLevel( int exp )
 {
 	BOOL bFind = FALSE;

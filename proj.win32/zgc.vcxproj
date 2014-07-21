@@ -236,6 +236,7 @@
     <ClCompile Include="..\Classes\Store\KStoreManager.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KCardGroupAssist.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KJsonDictMgr.cpp" />
+    <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KPopupLayer.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KQuestFacade.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KRadioWidget.cpp" />
@@ -398,6 +399,7 @@
     <ClInclude Include="..\Classes\Store\KStoreManager.h" />
     <ClInclude Include="..\Classes\UI\assist\KCardGroupAssist.h" />
     <ClInclude Include="..\Classes\UI\assist\KJsonDictMgr.h" />
+    <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h" />
     <ClInclude Include="..\Classes\UI\assist\KPopupLayer.h" />
     <ClInclude Include="..\Classes\UI\assist\KQuestFacade.h" />
     <ClInclude Include="..\Classes\UI\assist\KRadioWidget.h" />

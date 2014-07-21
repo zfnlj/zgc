@@ -26,6 +26,7 @@ struct strReplaceCardResult{
 };
 
 struct strGameResult{
+	strGameResult():_winner(0),_questId(0),_money(0),_exp(0){}
 	FBattleGuy* _winner;
 	int _questId;
 	int _money;

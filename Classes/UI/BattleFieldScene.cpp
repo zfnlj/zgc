@@ -48,6 +48,7 @@ void BattleFieldScene::update(float dt)
 		m_myFightAreaPanel.update(dt);
 		m_indicatePanel.Update(dt);
 		KClickCardMgr::getSingleton().update(dt);
+		m_gameResultPanel.update(dt);
 	}
 
 }

@@ -36,6 +36,7 @@ public:
 	bool InitStoryString(const char* m_FileName);
 
 	int  PlayerExpToLevel(int exp);
+	float GetLevRate(int exp);
 	int  HeroExpToLevel(int exp);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);

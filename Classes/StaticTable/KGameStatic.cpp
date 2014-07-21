@@ -445,6 +445,11 @@ KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank)
 	return tmpMap[nRand];
 }
 
+float KGameStaticMgr::GetLevRate(int exp)
+{
+	return m_playerExpMgr.GetLevRate(exp);
+}
+
 int KGameStaticMgr::PlayerExpToLevel(int exp)
 {
 	return m_playerExpMgr.ExpToLevel(exp);

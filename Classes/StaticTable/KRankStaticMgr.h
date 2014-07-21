@@ -33,6 +33,7 @@ class KRankStaticDataManager
 		virtual bool Reload(System::File::KTabFile2* fileReader);
 		// 根据当前的exp计算等级
 		int ExpToLevel(int exp);
+		float GetLevRate(int exp);
 		// 得到等级对应的字符串描述
 		const char* GetLevelDesp(int level);
 	private:

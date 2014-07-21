@@ -426,6 +426,9 @@
     <ClCompile Include="..\Classes\GameLogic\assist\KSkillAssist.cpp">
       <Filter>GameLogic\assist</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -901,6 +904,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameLogic\assist\KLogAssist.h">
       <Filter>GameLogic\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h">
+      <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

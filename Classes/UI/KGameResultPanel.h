@@ -5,6 +5,8 @@
 #include "cocos-ext.h"
 #include "UILayer.h"
 #include "../GameLogic/KGameDef.h"
+#include "assist/KLoadingBar.h"
+
 USING_NS_CC;
 using namespace cocos2d::extension;
 #define MAX_QUEST_SLOT_NUM 3
@@ -29,15 +31,18 @@ public:
 
 	void onGameEnd(unsigned long long Param1);
 	void onQuestPreOver(KQuestNew* pQuest);
+	void update(float dt);
 private:
 	bool ShowSelectGift(KQuestNew* pQuest);
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
 	void DoClickSlot(CCObject* sender);
+	void ShowGuyLevAndMoney();
 	CCPoint m_pt;
 	strGameResult m_result;
 	result_type m_resultType;
 	bool m_bSelectGift;
+	KLoadingBar m_expBar;
 };
 
 #endif // __BattleFieldScene_SCENE_H__
