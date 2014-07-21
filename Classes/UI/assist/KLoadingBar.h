@@ -17,13 +17,17 @@ class KLoadingBar
 {
 public:
 	KLoadingBar():m_widget(NULL){}
-	void init(UILoadingBar* widget,int p1,int p2,float elapsed);
-	void update(float dt);
+	void init(UILoadingBar* widget,float p1,float p2,float interval,float delay=0.0f);
+	bool update(float dt);
+	
 protected:
 	UILoadingBar* m_widget;
-	int m_p1;
-	int m_p2;
+	float m_p1;
+	float m_p2;
 	float m_elapsed;
+	float m_interval;
+	float m_lastp;
+	float m_delay;
 };
 
 #endif /* defined(__FishingJoy__ProgressBar__) */

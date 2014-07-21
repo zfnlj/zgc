@@ -265,10 +265,17 @@ void KGameResultPanel::ShowGuyLevAndMoney()
 	UILabel* pLevWidget = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"Lev_txt");
 	pLevWidget->setText(sz);
 	UILoadingBar* pBar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"exp_bar");
-	m_expBar.init(pBar,rate1,rate2,2);
+	m_expBar.init(pBar,rate1,rate2,2,2);
 }
 
 void KGameResultPanel::update(float dt)
 {
-	m_expBar.update(dt);
+	bool bLevUpdate = m_expBar.update(dt);
+	if(bLevUpdate){
+		int lev = KGameStaticMgr::getSingleton().PlayerExpToLevel(KMainPlayer::RealPlayer()->m_playerRecord.GetExp());
+		char sz[64];
+		sprintf(sz,"Lev%d",lev);
+		UILabel* pLevWidget = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"Lev_txt");
+		pLevWidget->setText(sz);
+	}
 }
