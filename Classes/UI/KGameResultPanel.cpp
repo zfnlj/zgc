@@ -190,9 +190,9 @@ void KGameResultPanel::updatePanel()
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
 	}
 
-	sprintf(buf,"%d",m_result._money);
+	sprintf(buf,"+%d",m_result._money);
 	pMoneyTxt->setText(buf);
-	sprintf(buf,"%d",m_result._exp);
+	sprintf(buf,"+%d",m_result._exp);
 	pExpTxt->setText(buf);
 
 	for(int i=0; i<3; i++)
@@ -265,7 +265,7 @@ void KGameResultPanel::ShowGuyLevAndMoney()
 	UILabel* pLevWidget = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"Lev_txt");
 	pLevWidget->setText(sz);
 	UILoadingBar* pBar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"exp_bar");
-	m_expBar.init(pBar,rate1,rate2,2,2);
+	m_expBar.init(pBar,rate1,rate2,1.6,0);
 }
 
 void KGameResultPanel::update(float dt)

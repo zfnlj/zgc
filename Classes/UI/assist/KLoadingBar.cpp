@@ -20,8 +20,9 @@ bool KLoadingBar::update(float dt)
 	bool ret = false;
 	if(m_widget){
 		m_elapsed += dt;
-		float dist = m_p2 - m_p1;
-		if(dist<0) dist = -dist;
+		if(m_elapsed>m_interval) m_elapsed = m_interval;
+
+		float dist = (m_p2>m_p1)? m_p2 - m_p1: (1-m_p1+m_p2);
 		float p = m_p1+ dist*m_elapsed/m_interval;
 		if(p>1.0f) p -= 1.0f;
 		m_widget->setPercent(p*100);
