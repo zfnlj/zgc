@@ -1388,18 +1388,35 @@ void KQuestNew::OnFinish()
 	// ¼ÇÂ¼log
 }
 
+int KQuestNew::GetAwardMoney()
+{
+	if(m_type == enum_daily_quest &&
+		KPlayerRecordAssist::getDailyAwardNum(&m_pPlayer->m_questRecord)==0){
+		return m_money*0.2;
+	}else{
+		return m_money;
+	}
+}
+int KQuestNew::GetAwardExp()
+{
+	if(m_type == enum_daily_quest &&
+		KPlayerRecordAssist::getDailyAwardNum(&m_pPlayer->m_questRecord)==0){
+		return m_exp*0.2;
+	}else{
+		return m_exp;
+	}
+}
 void KQuestNew::OnGift()
 {
-
 	// ½±Àø
 	if (m_exp != 0)
 	{
-		m_pPlayer->IncreaseExp(m_exp);
+		m_pPlayer->IncreaseExp(GetAwardExp());
 	}
 
 	if (m_money != 0)
 	{
-		m_pPlayer->IncreaseMoney(m_money);
+		m_pPlayer->IncreaseMoney(GetAwardMoney());
 	}
 
 	if (m_achieveId != 0)

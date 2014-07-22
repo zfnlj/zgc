@@ -231,6 +231,8 @@ public:
 	System::Collections::KSDSelfList<KQuestCustomEvent> m_evtList;
 
 	EvtRegArray m_evtArray;
+	int GetAwardMoney();
+	int GetAwardExp();
 public:// timer
 	KQuestTimer* m_pQuestTimer;
 

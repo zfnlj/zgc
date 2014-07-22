@@ -183,8 +183,8 @@ void KGameResultPanel::updatePanel()
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
 	if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
-		m_result._money = pQuest->m_money;
-		m_result._exp = pQuest->m_exp;
+		m_result._money = pQuest->GetAwardMoney();
+		m_result._exp = pQuest->GetAwardExp();
 
 		if(ShowSelectGift(pQuest)) return;
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());

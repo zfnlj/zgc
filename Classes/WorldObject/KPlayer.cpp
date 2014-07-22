@@ -258,8 +258,8 @@ namespace KWorldObjAbout
 
 	KQuestNew* KPlayer::RndQueryAdventureQuest()
 	{
-		int num = KPlayerRecordAssist::getDailyAwardNum(&m_questRecord);
-		return m_questManager.RndQueryAdventureQuest(num>0);
+		//int num = KPlayerRecordAssist::getDailyAwardNum(&m_questRecord);
+		return m_questManager.RndQueryAdventureQuest(true);
 	}
 }
 
