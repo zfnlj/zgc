@@ -24,11 +24,11 @@ ID	HeroID	HeroHp	HeroSkill	Res	DECK	Dynamic	DrawNum	Rnd
 601	10001	30	1001*2;1104*1;1201*1	1	0	S*gold*0*2*2;S*gold*1*1*2;C*gold*0*4*1;C*gold*1*3*2;S*null*0*7*1;S*null*1*7*1;	3	1
 602	10001	30	1001*2;1104*2;1201*2	1	0	S*gold*0*1*2;S*gold*1*1*2;S*gold*2*1*2;C*gold*0*4*1;C*gold*1*4*1;C*gold*2*1*2;S*null*0*5*1;S*null*1*5*1;S*null*2*2*2	3	1
 603	10001	30	1001*3;1104*3;1201*2	1	0	S*gold*0*1*2;S*gold*1*1*1;S*gold*2*1*1;S*gold*4*1*2;C*gold*0*3*1;C*gold*1*4*1;C*gold*2*1*1;C*gold*3*1*1;S*null*0*3*1;S*null*1*5*1;S*null*2*5*1;S*null*3*1*2;	3	1
-603	10001	30	1001*3;1104*3;1201*3	1	20054	S*gold*0*1*2;S*gold*1*1*1;S*gold*2*1*1;S*gold*4*1*2;C*gold*0*3*1;C*gold*1*4*1;C*gold*2*1*1;C*gold*3*1*1;S*null*0*2*1;S*null*1*5*1;S*null*2*5*1;S*null*3*1*2;	0	0
+604	10001	30	1001*3;1104*3;1201*3	1	20054	S*gold*0*1*2;S*gold*1*1*1;S*gold*2*1*1;S*gold*4*1*2;C*gold*0*3*1;C*gold*1*4*1;C*gold*2*1*1;C*gold*3*1*1;S*null*0*2*1;S*null*1*5*1;S*null*2*5*1;S*null*3*1*2;	0	0
 701	10002	30	1002*2;1205*1;1204*1;	1	0	S*water*0*1*2;S*water*1*2*2;C*water*0*4*1;C*water*1*3*2;S*null*0*7*1;S*null*1*7*1;	3	1
 702	10002	30	1002*2;1205*2;1204*2;	1	0	S*water*0*1*2;S*water*1*2*2;C*water*0*4*1;C*water*1*4*1;C*water*2*2*1;S*null*0*5*1;S*null*1*5*1;S*null*2*2*2;	3	1
 703	10002	30	1002*3;1205*3;1204*2;	1	0	S*water*0*1*2;S*water*1*2*1;S*water*4*1*2;C*water*0*4*1;C*water*1*4*1;C*water*2*1*1;C*water*3*1*1;S*null*0*3*1;S*null*1*5*1;S*null*2*2*2;S*null*3*1*2;	3	1
-703	10002	30	1002*3;1205*3;1204*3;	1	20062	S*water*0*1*2;S*water*1*2*1;S*water*4*1*2;C*water*0*4*1;C*water*1*4*1;C*water*2*1*1;C*water*3*1*1;S*null*0*2*1;S*null*1*5*1;S*null*2*2*2;S*null*3*1*2;	0	0
+704	10002	30	1002*3;1205*3;1204*3;	1	20062	S*water*0*1*2;S*water*1*2*1;S*water*4*1*2;C*water*0*4*1;C*water*1*4*1;C*water*2*1*1;C*water*3*1*1;S*null*0*2*1;S*null*1*5*1;S*null*2*2*2;S*null*3*1*2;	0	0
 5001	10002	30	0	1	0	S*water*0*1*2;S*water*1*2*2;S*null*0*4*2;S*null*1*3*2;C*water*0*3*2;C*water*1*2*2;	0	0
 5002	10001	30	0	1	0	S*gold*0*2*2;S*gold*1*1*2;C*gold*0*2*2;C*gold*1*2*2;S*null*0*5*2;S*null*1*3*2;	0	0
 5003	10003	30	0	1	0	S*fire*0*1*2;S*fire*1*2*2;C*fire*0*3*2;C*fire*1*2*2;S*null*0*4*2;S*null*1*3*2;	0	0

@@ -68,6 +68,6 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show
 22004	苏秦(巫师学徒)	1	2	3	2	fire	节能	使你的法术值消耗减少1。	soldier_cost_reduce
 23001	冷酷的监军(严酷的监工）	1	2	2	2	gold	攻击狂热	对一名勇士造成1点伤害，并使其获得+2攻击。	0
 23002	胡服骑（库卡隆精英）	0	4	4	3	gold	突袭	突袭	soldier_rush
-23003	少年蒙恬（战歌指挥官）	0	3	2	3	gold	号角	进场：其他随从获得冲锋效果。	soldier_pray_other_ability
+23003	少年蒙恬（战歌指挥官）	0	3	2	3	gold	号角	其他随从获得冲锋效果。	soldier_pray_other_ability
 23004	勇猛的先锋官（暴乱狂战士）	2	3	2	4	gold	0	当一名我方勇士受到伤害时，获得+1攻击。	soldier_courage
 23005	屠夫-白起(格罗玛什）	4	8	4	9	gold	突袭	突袭，易怒：+6攻击力。	soldier_yinu
