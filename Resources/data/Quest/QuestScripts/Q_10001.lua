@@ -21,6 +21,22 @@ QName = function (quest , player)
 end,  
 
 
+UseGift = function(quest,player)
+	local item
+	if player:GetAttrValue(88)==0 then
+		item = "5001" -- 任务奖励物品
+	elseif player:GetAttrValue(88)==1 then
+	  item = "5002" -- 任务奖励物品
+	else -- 默认奖励信息为0，一般不要改
+	  item = "5003" -- 任务奖励物品
+	end 
+	return item; 
+end,  
+
+SelectGiftList = function(quest)
+	return "5001;5002;5003";
+end,  
+
 GiftDesc = function (quest , player)
   local exp
 	local money

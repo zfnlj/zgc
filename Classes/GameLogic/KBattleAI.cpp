@@ -130,6 +130,7 @@ bool KBattleAI::SoldierToAttack()
 		float adjustVal = (totalMyAtk>totalYourAtk)?0: totalYourAtk-totalMyAtk;
 		adjustVal = adjustVal*adjustVal*0.1;
 		if(totalYourAtk >=GetDeck().GetHero()->GetHp()) adjustVal =999;
+		if(totalMyAtk >=pDefGuy->GetDeck().GetHero()->GetHp()) adjustVal = 0.0f;
 		for(KCardInstList::iterator it2 = enemyGuider.begin();it2!=enemyGuider.end();++it2){
 			KCardInst* pDes = *it2;
 			float val = KAIAssist::_calcCardDuelVal(m_battleCtrl,pSrc,pDes);

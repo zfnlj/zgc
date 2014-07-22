@@ -77,7 +77,7 @@ bool StageWaitScene::init()
 	}else if(m_sceneType==scene_adventure){
 		pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
 	}
-	m_qId = pQuest->GetID();
+	m_qId = (pQuest)?pQuest->GetID():0;
 	if(pQuest && pQuest->GetQuestStatus()!=KQ_PreStepOver){
 		UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 		char stageName[64]={0};
@@ -125,6 +125,10 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 
 void StageWaitScene::DoClickClose(CCObject* sender)
 {
+	if(m_qId==0){
+		KUIAssist::_switch2MainMenu();
+		return;
+	}
 	KUIAssist::_switch2BattleScene();
 	
 
