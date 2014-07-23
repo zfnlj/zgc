@@ -124,17 +124,3 @@ int StaticData::GetInc()
 	setKeyVal("Inc",val+1);
 	return val;
 }
-
-void StaticData::OnQuestOk(int questId)
-{
-	switch(questId){
-	case 10004: //10012
-		setKeyVal("open_cardgroup",1);
-		KDynamicWorld::getSingleton().onSystemMsg(OPEN_CARDSTORE);
-		break;
-	/*case 10003:
-		setKeyVal("open_quest",1);
-		setKeyVal("open_shop",1);
-		break;*/
-	}
-}

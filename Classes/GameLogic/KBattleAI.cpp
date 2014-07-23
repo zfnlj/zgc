@@ -113,10 +113,14 @@ bool KBattleAI::SoldierToAttack()
 
 	KCardInst* pAtk = NULL;
 	KCardInst* pDef = NULL;
-	float maxVal=0.0f;
+	float maxVal=-9.0f;
+	int atkTmp = 0;
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardInst* pSrc = *it;
-		if(!pSrc->m_attr.getReady()) continue;
+		if(!pSrc->m_attr.getReady()) {
+			atkTmp += pSrc->GetAtk();
+			continue;
+		}
 		if(pSrc->GetAtk()==0) continue;
 
 		KCardInst* pScriptDef = SoldierScriptAtk(pSrc,&enemyGuider);
@@ -125,7 +129,7 @@ bool KBattleAI::SoldierToAttack()
 			pDef = pScriptDef;
 			break;
 		}
-		int totalMyAtk = KAIAssist::_calcTotalAtk(lst);
+		int totalMyAtk = KAIAssist::_calcTotalAtk(lst)-atkTmp;
 		int totalYourAtk = KAIAssist::_calcTotalAtk(&enemyGuider);
 		float adjustVal = (totalMyAtk>totalYourAtk)?0: totalYourAtk-totalMyAtk;
 		adjustVal = adjustVal*adjustVal*0.1;

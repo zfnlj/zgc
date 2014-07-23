@@ -16,6 +16,7 @@
 #include "../Quest/KQuestOperation.h"
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"
+#include "../common/KUIMsgDef.h"
 
 void KNetMsgFacade::onBattleInit()
 {
@@ -144,8 +145,21 @@ void KNetMsgFacade::onQuestFinished(int qId)
 
 	/*KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	playerQuestManager.SetQuestHistory(qId,1,1);*/
-	STATIC_DATA_QUEST_OK(qId);
 	//GameRoot::getSingleton().getMainMenuScene()->onQuestFinished(qId);
+	switch(qId){
+	case 10004:
+		STATIC_DATA_SET_KEYVAL("open_cardgroup");
+		KDynamicWorld::getSingleton().onSystemMsg(OPEN_CARDGROUP);
+		break;
+	case 10008:
+		STATIC_DATA_SET_KEYVAL("open_shop");
+		KDynamicWorld::getSingleton().onSystemMsg(OPEN_SHOP);
+		break;
+	case 10011:
+		STATIC_DATA_SET_KEYVAL("open_adventure");
+		KDynamicWorld::getSingleton().onSystemMsg(OPEN_ADVENTURE);
+		break;
+	}
 }
 
 void KNetMsgFacade::onCancleQuest(int qId)

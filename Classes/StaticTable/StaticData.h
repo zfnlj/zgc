@@ -20,7 +20,7 @@
 #define STATIC_DATA_SIZE(key) StaticData::sharedStaticData()->sizeFromKey(key)
 #define STATIC_DATA_SET(key,val) StaticData::sharedStaticData()->setKeyVal(key,val)
 #define STATIC_DATA_INC() StaticData::sharedStaticData()->GetInc()
-#define STATIC_DATA_QUEST_OK(id) StaticData::sharedStaticData()->OnQuestOk(id)
+#define STATIC_DATA_SET_KEYVAL(str) StaticData::sharedStaticData()->setKeyVal(str,1)
 class StaticData : public cocos2d::CCObject
 {
 public:    
@@ -52,7 +52,6 @@ public:
 	int GetInc();
 	void createDefault(const char* userName,const char* pwd);
 	void init(const char* userName,const char* pwd);
-	void OnQuestOk(int questId);
 protected:
     cocos2d::CCDictionary* _dictionary;
 private:

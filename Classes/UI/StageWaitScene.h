@@ -35,6 +35,7 @@ private:
 	static Scene_type m_sceneType;
 	cocos2d::extension::UILayer* m_ui;
 	int m_qId;
+	float m_delayCloseTime;
 
 };
 

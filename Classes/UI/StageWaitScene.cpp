@@ -45,6 +45,11 @@ CCScene* StageWaitScene::scene()
 
 void StageWaitScene::update(float dt)
 {
+	m_delayCloseTime -= dt;
+	if(m_delayCloseTime<0) {
+		m_delayCloseTime = 99999.0f;
+		DoClickClose(NULL);
+	}
 }
 
 // on "init" you need to initialize your instance
@@ -94,6 +99,7 @@ bool StageWaitScene::init()
 
 	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
 	SetTip(tip);
+	m_delayCloseTime = 4;
     return true;
 }
 
