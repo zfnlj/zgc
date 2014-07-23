@@ -128,8 +128,9 @@ int StaticData::GetInc()
 void StaticData::OnQuestOk(int questId)
 {
 	switch(questId){
-	case 10003: //10012
+	case 10004: //10012
 		setKeyVal("open_cardgroup",1);
+		KDynamicWorld::getSingleton().onSystemMsg(OPEN_CARDSTORE);
 		break;
 	/*case 10003:
 		setKeyVal("open_quest",1);

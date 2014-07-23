@@ -78,8 +78,8 @@ bool StageWaitScene::init()
 		pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
 	}
 	m_qId = (pQuest)?pQuest->GetID():0;
+	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 	if(pQuest && pQuest->GetQuestStatus()!=KQ_PreStepOver){
-		UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 		char stageName[64]={0};
 		pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
 		if(strlen(stageName)>0){
@@ -88,6 +88,8 @@ bool StageWaitScene::init()
 		}else{
 			labelName->setVisible(false);
 		}
+	}else{
+		labelName->setVisible(false);
 	}
 
 	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
