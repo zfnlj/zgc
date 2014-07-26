@@ -265,6 +265,7 @@
     <ClCompile Include="..\Classes\WorldObject\KMainPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KWorldObj.cpp" />
+    <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -430,6 +431,8 @@
     <ClInclude Include="..\Classes\WorldObject\KMainPlayer.h" />
     <ClInclude Include="..\Classes\WorldObject\KPlayer.h" />
     <ClInclude Include="..\Classes\WorldObject\KWorldObj.h" />
+    <ClInclude Include="..\platform\KPlatformProtocol.h" />
+    <ClInclude Include="..\platform\win32\KPlatformDelegate.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

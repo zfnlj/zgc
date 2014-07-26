@@ -429,6 +429,9 @@
     <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp">
       <Filter>UI\assist</Filter>
     </ClCompile>
+    <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -908,6 +911,12 @@
     <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h">
       <Filter>UI\assist</Filter>
     </ClInclude>
+    <ClInclude Include="..\platform\KPlatformProtocol.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platform\win32\KPlatformDelegate.h">
+      <Filter>platform\win32</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="KAction">
@@ -999,6 +1008,12 @@
     </Filter>
     <Filter Include="GameLogic\assist">
       <UniqueIdentifier>{92d73356-a89b-4bf8-abd4-99c3f0b36c98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform">
+      <UniqueIdentifier>{e1edb916-59e7-4436-ac66-da2b0088a8b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\win32">
+      <UniqueIdentifier>{c5c229bb-9605-4217-8b74-8cbddb329009}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

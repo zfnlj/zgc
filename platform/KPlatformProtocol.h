@@ -22,26 +22,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-#ifndef __CC_APPLICATION_PROTOCOL_H__
-#define __CC_APPLICATION_PROTOCOL_H__
+#ifndef _KPLATFORMPROTOCOL_H_
+#define _KPLATFORMPROTOCOL_H_
 
-NS_CC_BEGIN
-
-enum TargetPlatform
-{
-    kTargetWindows,
-    kTargetLinux,
-    kTargetMacOS,
-    kTargetAndroid,
-    kTargetIphone,
-    kTargetIpad,
-    kTargetBlackBerry,
-    kTargetNaCl,
-    kTargetEmscripten,
-    kTargetTizen,
-    kTargetWinRT,
-    kTargetWP8
-};
 
 /**
  * @addtogroup platform
@@ -50,52 +33,20 @@ enum TargetPlatform
  * @lua NA
  */
 
-class CC_DLL CCApplicationProtocol
+class KPlatformProtocol
 {
 public:
 
-    virtual ~CCApplicationProtocol() {}
+    virtual ~KPlatformProtocol() {}
 
     /**
     @brief    Implement CCDirector and CCScene init code here.
     @return true    Initialize success, app continue.
     @return false   Initialize failed, app terminate.
     */
-    virtual bool applicationDidFinishLaunching() = 0;
+    virtual void OpenFeedback() = 0;
 
-    /**
-    @brief  The function be called when the application enter background
-    @param  the pointer of the application
-    */
-    virtual void applicationDidEnterBackground() = 0;
-
-    /**
-    @brief  The function be called when the application enter foreground
-    @param  the pointer of the application
-    */
-    virtual void applicationWillEnterForeground() = 0;
-
-    /**
-    @brief    Callback by CCDirector for limit FPS.
-    @interval       The time, expressed in seconds, between current frame and next. 
-    */
-    virtual void setAnimationInterval(double interval) = 0;
-
-    /**
-    @brief Get current language config
-    @return Current language config
-    */
-    virtual ccLanguageType getCurrentLanguage() = 0;
-    
-    /**
-     @brief Get target platform
-     */
-    virtual TargetPlatform getTargetPlatform() = 0;
 };
 
-// end of platform group
-/// @}
-
-NS_CC_END
 
 #endif    // __CC_APPLICATION_PROTOCOL_H__
