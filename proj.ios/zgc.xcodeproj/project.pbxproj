@@ -391,6 +391,7 @@
 		816863F218969B0E00789DE8 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 816863C218969B0E00789DE8 /* Makefile */; };
 		816863F318969B0E00789DE8 /* luacompiler.c in Sources */ = {isa = PBXBuildFile; fileRef = 816863CB18969B0E00789DE8 /* luacompiler.c */; };
 		816863F518969C5A00789DE8 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168635B18969AE100789DE8 /* liblua.a */; };
+		8196524D1983560300EC457C /* KLoadingBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8196524B1983560300EC457C /* KLoadingBar.cpp */; };
 		81A6A6B218966E120039FF68 /* KInteger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6B018966E110039FF68 /* KInteger.cpp */; };
 		81A6A6CE18966F260039FF68 /* KBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C618966F260039FF68 /* KBlock.cpp */; };
 		81A6A6CF18966F260039FF68 /* KBlockBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C818966F260039FF68 /* KBlockBox.cpp */; };
@@ -1417,6 +1418,8 @@
 		816863C218969B0E00789DE8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		816863CB18969B0E00789DE8 /* luacompiler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = luacompiler.c; sourceTree = "<group>"; };
 		816863CC18969B0E00789DE8 /* luacompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luacompiler.h; sourceTree = "<group>"; };
+		8196524B1983560300EC457C /* KLoadingBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KLoadingBar.cpp; path = assist/KLoadingBar.cpp; sourceTree = "<group>"; };
+		8196524C1983560300EC457C /* KLoadingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLoadingBar.h; path = assist/KLoadingBar.h; sourceTree = "<group>"; };
 		81A6A513189663770039FF68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		81A6A5A31896655F0039FF68 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		81A6A5A41896655F0039FF68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3512,6 +3515,8 @@
 		814E9E2B18D92EC8003749B2 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				8196524B1983560300EC457C /* KLoadingBar.cpp */,
+				8196524C1983560300EC457C /* KLoadingBar.h */,
 				81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */,
 				81F011A7194F48EF00910DB2 /* KCardGroupAssist.h */,
 				81F011A8194F48EF00910DB2 /* KJsonDictMgr.cpp */,
@@ -5138,6 +5143,7 @@
 				379BB9A517F03F3700829B88 /* CCColliderDetector.cpp in Sources */,
 				81CD4A0818964A2100D6DB43 /* KSocketFacade.cpp in Sources */,
 				810C3889185F28DD00F03DFA /* RWMutex.cpp in Sources */,
+				8196524D1983560300EC457C /* KLoadingBar.cpp in Sources */,
 				379BB9A617F03F3700829B88 /* CCArmatureDataManager.cpp in Sources */,
 				379BB9A717F03F3700829B88 /* CCArmatureDefine.cpp in Sources */,
 				379BB9A817F03F3700829B88 /* CCDataReaderHelper.cpp in Sources */,
