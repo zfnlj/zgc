@@ -6,3 +6,6 @@
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
 #endif
+
+
+#define UMENG_APPKEY @"53d1bf2756240b9ab401f19d"

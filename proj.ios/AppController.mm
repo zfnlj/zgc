@@ -3,6 +3,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "UMFeedback.h"
 
 @implementation AppController
 
@@ -48,6 +49,9 @@ static AppDelegate s_sharedApplication;
     [window makeKeyAndVisible];
     
     [[UIApplication sharedApplication] setStatusBarHidden:true];
+
+    
+    [UMFeedback showFeedback:viewController withAppkey:UMENG_APPKEY];
     
     cocos2d::CCApplication::sharedApplication()->run();
 
