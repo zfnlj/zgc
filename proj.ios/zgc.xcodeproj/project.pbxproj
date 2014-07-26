@@ -336,6 +336,7 @@
 		812143D1187AE4400053FC18 /* KCharacterAttr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812143AF187AE4400053FC18 /* KCharacterAttr.cpp */; };
 		812143D2187AE4400053FC18 /* KObjectState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812143B2187AE4400053FC18 /* KObjectState.cpp */; };
 		812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 812D955A19839753004F6DD8 /* libUMFeedback.a */; };
+		812D9564198398CF004F6DD8 /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 812D9562198398CF004F6DD8 /* umFeedback.bundle */; };
 		812E278C187AF451000567D7 /* KPacketGate_Gw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */; };
 		812E2794187AF5E4000567D7 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E278F187AF5E4000567D7 /* progress_bar.png */; };
 		812E2795187AF5E4000567D7 /* progress_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E2790187AF5E4000567D7 /* progress_bg.png */; };
@@ -1325,6 +1326,8 @@
 		812143B3187AE4400053FC18 /* KObjectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KObjectState.h; sourceTree = "<group>"; };
 		812143B4187AE4400053FC18 /* KStateDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KStateDefine.h; sourceTree = "<group>"; };
 		812D955A19839753004F6DD8 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMFeedback.a; path = ../UM/UMFeedback/libUMFeedback.a; sourceTree = "<group>"; };
+		812D9562198398CF004F6DD8 /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = umFeedback.bundle; path = ../UM/UMFeedback/umFeedback.bundle; sourceTree = "<group>"; };
+		812D9563198398CF004F6DD8 /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UMFeedback.h; path = ../UM/UMFeedback/UMFeedback.h; sourceTree = "<group>"; };
 		812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPacketGate_Gw.cpp; path = ../Classes/KNet/KPacketGate_Gw.cpp; sourceTree = "<group>"; };
 		812E278B187AF451000567D7 /* KPacketGate_Gw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate_Gw.h; path = ../Classes/KNet/KPacketGate_Gw.h; sourceTree = "<group>"; };
 		812E278F187AF5E4000567D7 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
@@ -3509,6 +3512,8 @@
 		812D956119839802004F6DD8 /* UMFeedback */ = {
 			isa = PBXGroup;
 			children = (
+				812D9562198398CF004F6DD8 /* umFeedback.bundle */,
+				812D9563198398CF004F6DD8 /* UMFeedback.h */,
 			);
 			name = UMFeedback;
 			sourceTree = "<group>";
@@ -4730,6 +4735,7 @@
 				81E7DCF518E319EA0043CCC7 /* anim in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
+				812D9564198398CF004F6DD8 /* umFeedback.bundle in Resources */,
 				810C387E185F28DD00F03DFA /* KSmartPointer.inl in Resources */,
 				812E2794187AF5E4000567D7 /* progress_bar.png in Resources */,
 				810C38A4185F28DD00F03DFA /* KTPWorkload.inl in Resources */,
