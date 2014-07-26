@@ -72,7 +72,7 @@ KTmpSession::~KTmpSession()
 
 BOOL KTmpSession::SetSession(DWORD key, int val)
 {
-	KQuestSessionItem u = {key, val};
+	KQuestSessionItem u = {key, static_cast<DWORD>(val)};
 	int pos = m_sessions.find(u);
 
 	if(pos < 0)

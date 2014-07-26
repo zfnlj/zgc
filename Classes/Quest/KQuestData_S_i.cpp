@@ -97,7 +97,7 @@ int KPlayerQuestData_S_i::GetQuestIndex(int qid, int* pArrPos) const
 
 KDBQuestHistoryDataUnit* KPlayerQuestData_S_i::GetQuestHistoryUnit(int qid)
 {
-	KDBQuestHistoryDataUnit u = {qid, 0, 0};
+	KDBQuestHistoryDataUnit u = {static_cast<DWORD>(qid), 0, 0};
 	int pos = m_questHistory.find(u);
 	if(pos < 0) return NULL;
 

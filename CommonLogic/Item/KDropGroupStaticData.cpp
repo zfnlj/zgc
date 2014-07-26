@@ -148,7 +148,7 @@ namespace KItemAbout
 				tabFile->GetInteger(colName, 0, &nItemWeight);
 				if(nItemID > 0 && nItemWeight > 0)
 				{
-					KDropGroupStaticData::KDropItemInfo dropItemInfo = {nItemID, nItemWeight};
+					KDropGroupStaticData::KDropItemInfo dropItemInfo = {(DWORD)nItemID, nItemWeight};
 					lpInfo->m_DropItemList.push_back(dropItemInfo);
 				}
 			}

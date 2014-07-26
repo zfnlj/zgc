@@ -263,7 +263,7 @@ void KPlayerQuestManager::HistorySync(int qid, int val, time_t lastDo)
 
 KDBQuestHistoryDataUnit* KPlayerQuestManager::GetQuestHistoryUnit(int qid)
 {
-	KDBQuestHistoryDataUnit u = {qid, 0, 0};
+	KDBQuestHistoryDataUnit u = {static_cast<DWORD>(qid), 0, 0};
 	int pos = m_questHistory.find(u);
 	if(pos < 0) return NULL;
 
@@ -273,7 +273,7 @@ KDBQuestHistoryDataUnit* KPlayerQuestManager::GetQuestHistoryUnit(int qid)
 
 KDBQuestHistoryDataUnit* KPlayerQuestManager::GetQuestHistoryUnit_force(int qid)
 {
-	KDBQuestHistoryDataUnit u = {qid, 0, 0};
+	KDBQuestHistoryDataUnit u = {static_cast<DWORD>(qid), 0, 0};
 	int pos = m_questHistory.find(u);
 	if(pos < 0)
 	{
@@ -313,7 +313,7 @@ BOOL KPlayerQuestManager::SetQuestHistory(int qid, int val, time_t t)
 
 BOOL KPlayerQuestManager::ClearHistory(int qid)
 {
-	KDBQuestHistoryDataUnit u = {qid, 0, 0};
+	KDBQuestHistoryDataUnit u = {static_cast<DWORD>(qid), 0, 0};
 	int pos = m_questHistory.find(u);
 
 	if(pos >= 0)

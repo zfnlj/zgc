@@ -335,6 +335,7 @@
 		812143D0187AE4400053FC18 /* KAttrDefines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812143AC187AE4400053FC18 /* KAttrDefines.cpp */; };
 		812143D1187AE4400053FC18 /* KCharacterAttr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812143AF187AE4400053FC18 /* KCharacterAttr.cpp */; };
 		812143D2187AE4400053FC18 /* KObjectState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812143B2187AE4400053FC18 /* KObjectState.cpp */; };
+		812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 812D955A19839753004F6DD8 /* libUMFeedback.a */; };
 		812E278C187AF451000567D7 /* KPacketGate_Gw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */; };
 		812E2794187AF5E4000567D7 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E278F187AF5E4000567D7 /* progress_bar.png */; };
 		812E2795187AF5E4000567D7 /* progress_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E2790187AF5E4000567D7 /* progress_bg.png */; };
@@ -1323,6 +1324,7 @@
 		812143B2187AE4400053FC18 /* KObjectState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KObjectState.cpp; sourceTree = "<group>"; };
 		812143B3187AE4400053FC18 /* KObjectState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KObjectState.h; sourceTree = "<group>"; };
 		812143B4187AE4400053FC18 /* KStateDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KStateDefine.h; sourceTree = "<group>"; };
+		812D955A19839753004F6DD8 /* libUMFeedback.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUMFeedback.a; path = ../UM/UMFeedback/libUMFeedback.a; sourceTree = "<group>"; };
 		812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KPacketGate_Gw.cpp; path = ../Classes/KNet/KPacketGate_Gw.cpp; sourceTree = "<group>"; };
 		812E278B187AF451000567D7 /* KPacketGate_Gw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate_Gw.h; path = ../Classes/KNet/KPacketGate_Gw.h; sourceTree = "<group>"; };
 		812E278F187AF5E4000567D7 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
@@ -1988,6 +1990,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */,
 				816863F518969C5A00789DE8 /* liblua.a in Frameworks */,
 				81E786C4185DBE6A00829E82 /* libiconv.2.4.0.dylib in Frameworks */,
 				15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */,
@@ -2646,6 +2649,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				812D9560198397FA004F6DD8 /* UM */,
 				8168637E18969B0E00789DE8 /* lua */,
 				8121435F187AE4400053FC18 /* CommonLogic */,
 				81D6FE181869E61A000D53A7 /* SockServer */,
@@ -2669,6 +2673,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				812D955A19839753004F6DD8 /* libUMFeedback.a */,
 				81A6A5A21896655F0039FF68 /* Classes */,
 				81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */,
 				1ACB3243164770DE00914215 /* libcurl.a */,
@@ -3491,6 +3496,21 @@
 				812143B4187AE4400053FC18 /* KStateDefine.h */,
 			);
 			path = WorldObject;
+			sourceTree = "<group>";
+		};
+		812D9560198397FA004F6DD8 /* UM */ = {
+			isa = PBXGroup;
+			children = (
+				812D956119839802004F6DD8 /* UMFeedback */,
+			);
+			name = UM;
+			sourceTree = "<group>";
+		};
+		812D956119839802004F6DD8 /* UMFeedback */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UMFeedback;
 			sourceTree = "<group>";
 		};
 		812E2789187AF42A000567D7 /* Hub */ = {
@@ -5334,6 +5354,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				OTHER_CFLAGS = "-O2";
 				PRODUCT_NAME = zgc;
@@ -5384,6 +5405,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
+					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				PRODUCT_NAME = zgc;
 				PROVISIONING_PROFILE = "";
