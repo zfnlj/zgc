@@ -22,62 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#ifndef __CC_APPLICATION_IOS_H__
-#define __CC_APPLICATION_IOS_H__
+#ifndef _KPLATFORMDELEGATE_H_
+#define _KPLATFORMDELEGATE_H_
 
-#include "platform/CCCommon.h"
-#include "platform/CCApplicationProtocol.h"
+#include "../KPlatformProtocol.h"
 
-NS_CC_BEGIN
 
-class CCRect;
 
-class CC_DLL CCApplication : public CCApplicationProtocol
+class KPlatformDelegate : public KPlatformProtocol
 {
 public:
-    CCApplication();
-    /**
-     *  @js NA
-     *  @lua NA
-     */
-    virtual ~CCApplication();
-        
-    /**
-     @brief    Run the message loop.
-     @js NA
-     @lua NA
-    */
-    int run();
-        
-    /**
-    @brief    Get the current application instance.
-    @return Current application instance pointer.
-    @js getInstance
-    */
-    static CCApplication* sharedApplication();
-    
-    /**
-     @brief    Callback by CCDirector for limit FPS.
-     @interval       The time, expressed in seconds, between current frame and next. 
-     @lua NA
-     */
-    virtual void setAnimationInterval(double interval);
+	KPlatformDelegate(){};
+	virtual ~KPlatformDelegate(){}
 
-    /**
-    @brief Get current language config
-    @return Current language config
-    */
-    virtual ccLanguageType getCurrentLanguage();
-    
-    /**
-     @brief Get target platform
-     */
-    virtual TargetPlatform getTargetPlatform();
-
-protected:
-    static CCApplication * sm_pSharedApplication;
+    virtual void OpenFeedback();
 };
-
-NS_CC_END
 
 #endif    // end of __CC_APPLICATION_IOS_H__

@@ -40,6 +40,7 @@ public:
 	void onQuestFinished(int qId);
 	void UpdateLockStatus();
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
+	void DoClickFeedback(CCObject* sender);
 private:
 	CCLabelTTF* m_InfoLabel;
 

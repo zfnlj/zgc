@@ -1,5 +1,5 @@
-#ifndef __CC_APPLICATION_WIN32_H__
-#define __CC_APPLICATION_WIN32_H__
+#ifndef _K_PLATFORMDELEGATE_H_
+#define _K_PLATFORMDELEGATE_H_
 
 
 #include "../KPlatformProtocol.h"
