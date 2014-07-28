@@ -17,7 +17,7 @@
 #include "../Item/KBagManager.h"
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
-#include "../platform/KIOSiAP_Bridge.h"
+#include "platform/KIOSiAP_Bridge.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;

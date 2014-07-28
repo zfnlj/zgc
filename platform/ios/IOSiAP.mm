@@ -114,8 +114,8 @@
 @end
 
 IOSiAP::IOSiAP():
-skProducts(nullptr),
-delegate(nullptr)
+skProducts(nil),
+delegate(nil)
 {
     skTransactionObserver = [[iAPTransactionObserver alloc] init];
     ((iAPTransactionObserver *)skTransactionObserver).iosiap = this;
@@ -148,7 +148,7 @@ IOSProduct *IOSiAP::iOSProductByIdentifier(std::string &identifier)
         }
     }
 
-    return nullptr;
+    return nil;
 }
 
 void IOSiAP::requestProducts(std::vector <std::string> &productIdentifiers)

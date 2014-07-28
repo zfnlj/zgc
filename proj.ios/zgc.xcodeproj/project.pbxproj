@@ -315,6 +315,10 @@
 		810C38AD185F28DD00F03DFA /* xmltok.c in Sources */ = {isa = PBXBuildFile; fileRef = 810C3849185F28DD00F03DFA /* xmltok.c */; };
 		810C38AE185F28DD00F03DFA /* xmltok_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = 810C384B185F28DD00F03DFA /* xmltok_impl.c */; };
 		810C38AF185F28DD00F03DFA /* xmltok_ns.c in Sources */ = {isa = PBXBuildFile; fileRef = 810C384D185F28DD00F03DFA /* xmltok_ns.c */; };
+		81159E0319869867009D325F /* IOSFunc_Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81159DFD19869867009D325F /* IOSFunc_Bridge.cpp */; };
+		81159E0419869867009D325F /* KIOSiAP_Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */; };
+		81159E0919869884009D325F /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0619869884009D325F /* IOSiAP.mm */; };
+		81159E0A19869884009D325F /* IOSFunc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0819869884009D325F /* IOSFunc.mm */; };
 		8120F62C1869DCBE000FDB17 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 8120F62B1869DCBE000FDB17 /* data */; };
 		812143BB187AE4400053FC18 /* KCommonSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214367187AE4400053FC18 /* KCommonSession.cpp */; };
 		812143BC187AE4400053FC18 /* KStreamSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214369187AE4400053FC18 /* KStreamSession.cpp */; };
@@ -1270,6 +1274,14 @@
 		810C384B185F28DD00F03DFA /* xmltok_impl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xmltok_impl.c; sourceTree = "<group>"; };
 		810C384C185F28DD00F03DFA /* xmltok_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xmltok_impl.h; sourceTree = "<group>"; };
 		810C384D185F28DD00F03DFA /* xmltok_ns.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = xmltok_ns.c; sourceTree = "<group>"; };
+		81159DFD19869867009D325F /* IOSFunc_Bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IOSFunc_Bridge.cpp; path = ../platform/IOSFunc_Bridge.cpp; sourceTree = "<group>"; };
+		81159DFE19869867009D325F /* IOSFunc_Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSFunc_Bridge.h; path = ../platform/IOSFunc_Bridge.h; sourceTree = "<group>"; };
+		81159DFF19869867009D325F /* IOSFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSFunc.h; path = ../platform/IOSFunc.h; sourceTree = "<group>"; };
+		81159E0019869867009D325F /* IOSiAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSiAP.h; path = ../platform/IOSiAP.h; sourceTree = "<group>"; };
+		81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KIOSiAP_Bridge.cpp; path = ../platform/KIOSiAP_Bridge.cpp; sourceTree = "<group>"; };
+		81159E0219869867009D325F /* KIOSiAP_Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIOSiAP_Bridge.h; path = ../platform/KIOSiAP_Bridge.h; sourceTree = "<group>"; };
+		81159E0619869884009D325F /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSiAP.mm; path = ../platform/ios/IOSiAP.mm; sourceTree = "<group>"; };
+		81159E0819869884009D325F /* IOSFunc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSFunc.mm; path = ../platform/ios/IOSFunc.mm; sourceTree = "<group>"; };
 		8120F62B1869DCBE000FDB17 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		81214367187AE4400053FC18 /* KCommonSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KCommonSession.cpp; sourceTree = "<group>"; };
 		81214368187AE4400053FC18 /* KCommonSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCommonSession.h; sourceTree = "<group>"; };
@@ -2652,6 +2664,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				81159DFC19869850009D325F /* platform */,
 				812D9560198397FA004F6DD8 /* UM */,
 				8168637E18969B0E00789DE8 /* lua */,
 				8121435F187AE4400053FC18 /* CommonLogic */,
@@ -3364,6 +3377,29 @@
 				810C384D185F28DD00F03DFA /* xmltok_ns.c */,
 			);
 			path = tinyxml;
+			sourceTree = "<group>";
+		};
+		81159DFC19869850009D325F /* platform */ = {
+			isa = PBXGroup;
+			children = (
+				81159E051986986C009D325F /* ios */,
+				81159DFD19869867009D325F /* IOSFunc_Bridge.cpp */,
+				81159DFE19869867009D325F /* IOSFunc_Bridge.h */,
+				81159DFF19869867009D325F /* IOSFunc.h */,
+				81159E0019869867009D325F /* IOSiAP.h */,
+				81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */,
+				81159E0219869867009D325F /* KIOSiAP_Bridge.h */,
+			);
+			name = platform;
+			sourceTree = "<group>";
+		};
+		81159E051986986C009D325F /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				81159E0619869884009D325F /* IOSiAP.mm */,
+				81159E0819869884009D325F /* IOSFunc.mm */,
+			);
+			name = ios;
 			sourceTree = "<group>";
 		};
 		8121435F187AE4400053FC18 /* CommonLogic */ = {
@@ -4934,6 +4970,7 @@
 				81686242189697F200789DE8 /* KMoney.cpp in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				81BAA81718B0483400643189 /* KUserSql.cpp in Sources */,
+				81159E0319869867009D325F /* IOSFunc_Bridge.cpp in Sources */,
 				81A6A6D118966F260039FF68 /* KBlockGroup.cpp in Sources */,
 				81BF26CF1930EFA8007B2A28 /* KCardStatic.cpp in Sources */,
 				810C3886185F28DD00F03DFA /* KRandomGroup.cpp in Sources */,
@@ -4969,6 +5006,7 @@
 				81A6A6FC18966F5C0039FF68 /* KQuestParamParser.cpp in Sources */,
 				814347D3186FCACD00134432 /* KLoginMsgDealer.cpp in Sources */,
 				81BAA81618B0483400643189 /* KSqlite.cpp in Sources */,
+				81159E0A19869884009D325F /* IOSFunc.mm in Sources */,
 				810C3874185F28DD00F03DFA /* KMemoryRecordset.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
 				810C38A2185F28DD00F03DFA /* KTPWorkflow.cpp in Sources */,
@@ -5031,6 +5069,7 @@
 				810C3856185F28DD00F03DFA /* KCharset_Big5.cpp in Sources */,
 				81D4AEFC18AF734500D2A630 /* KItem.cpp in Sources */,
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
+				81159E0419869867009D325F /* KIOSiAP_Bridge.cpp in Sources */,
 				81A6A6CF18966F260039FF68 /* KBlockBox.cpp in Sources */,
 				81F011B8194F48EF00910DB2 /* KPopupLayer.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
@@ -5254,6 +5293,7 @@
 				379BB9CF17F03F3700829B88 /* json_value.cpp in Sources */,
 				379BB9D117F03F3700829B88 /* json_writer.cpp in Sources */,
 				379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */,
+				81159E0919869884009D325F /* IOSiAP.mm in Sources */,
 				379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
