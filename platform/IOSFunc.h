@@ -36,7 +36,7 @@ THE SOFTWARE.
 class IOSFunc
 {
 public:
-	IOSFunc();
+	IOSFunc(){}
     virtual ~IOSFunc() {}
 
     /**
