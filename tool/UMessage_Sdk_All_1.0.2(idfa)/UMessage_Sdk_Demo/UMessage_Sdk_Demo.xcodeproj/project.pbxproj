@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C417846181E4C72001E54DB /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C41783F181E4C72001E54DB /* icon_57.png */; };
+		2C417847181E4C72001E54DB /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417840181E4C72001E54DB /* icon_72.png */; };
+		2C417848181E4C72001E54DB /* icon_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417841181E4C72001E54DB /* icon_76.png */; };
+		2C417849181E4C72001E54DB /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417842181E4C72001E54DB /* icon_114.png */; };
+		2C41784A181E4C72001E54DB /* icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417843181E4C72001E54DB /* icon_120.png */; };
+		2C41784B181E4C72001E54DB /* icon_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417844181E4C72001E54DB /* icon_144.png */; };
+		2C41784C181E4C72001E54DB /* icon_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C417845181E4C72001E54DB /* icon_152.png */; };
+		2C41784E181E4D06001E54DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C41784D181E4D06001E54DB /* Default-568h@2x.png */; };
+		2C9643D61973F7CD00EDA986 /* libUMessage_Sdk_1.0.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9643D41973F7CD00EDA986 /* libUMessage_Sdk_1.0.2.a */; };
+		2C9BBEC9181A6590004E5226 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBEC8181A6590004E5226 /* Foundation.framework */; };
+		2C9BBECB181A6590004E5226 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBECA181A6590004E5226 /* CoreGraphics.framework */; };
+		2C9BBECD181A6590004E5226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBECC181A6590004E5226 /* UIKit.framework */; };
+		2C9BBED3181A6590004E5226 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BBED1181A6590004E5226 /* InfoPlist.strings */; };
+		2C9BBED5181A6590004E5226 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BBED4181A6590004E5226 /* main.m */; };
+		2C9BBED9181A6590004E5226 /* UMPDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BBED8181A6590004E5226 /* UMPDAppDelegate.m */; };
+		2C9BBEDC181A6590004E5226 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BBEDA181A6590004E5226 /* Main_iPhone.storyboard */; };
+		2C9BBEDF181A6590004E5226 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BBEDD181A6590004E5226 /* Main_iPad.storyboard */; };
+		2C9BBEE2181A6590004E5226 /* UMPDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BBEE1181A6590004E5226 /* UMPDViewController.m */; };
+		2C9BBEE4181A6590004E5226 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BBEE3181A6590004E5226 /* Images.xcassets */; };
+		2C9BBEEB181A6590004E5226 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBEEA181A6590004E5226 /* XCTest.framework */; };
+		2C9BBEEC181A6590004E5226 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBEC8181A6590004E5226 /* Foundation.framework */; };
+		2C9BBEED181A6590004E5226 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9BBECC181A6590004E5226 /* UIKit.framework */; };
+		2C9BBEF5181A6590004E5226 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C9BBEF3181A6590004E5226 /* InfoPlist.strings */; };
+		2C9BBEF7181A6590004E5226 /* UMessage_Sdk_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9BBEF6181A6590004E5226 /* UMessage_Sdk_DemoTests.m */; };
+		2CE894D818FD1BF7005BD790 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CE894D718FD1BF7005BD790 /* CoreLocation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C9BBEEE181A6590004E5226 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C9BBEBD181A6590004E5226 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C9BBEC4181A6590004E5226;
+			remoteInfo = UMessage_Sdk_Demo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2C41783F181E4C72001E54DB /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
+		2C417840181E4C72001E54DB /* icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_72.png; sourceTree = "<group>"; };
+		2C417841181E4C72001E54DB /* icon_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_76.png; sourceTree = "<group>"; };
+		2C417842181E4C72001E54DB /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
+		2C417843181E4C72001E54DB /* icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120.png; sourceTree = "<group>"; };
+		2C417844181E4C72001E54DB /* icon_144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_144.png; sourceTree = "<group>"; };
+		2C417845181E4C72001E54DB /* icon_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_152.png; sourceTree = "<group>"; };
+		2C41784D181E4D06001E54DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2C9643D41973F7CD00EDA986 /* libUMessage_Sdk_1.0.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.0.2.a; sourceTree = "<group>"; };
+		2C9643D51973F7CD00EDA986 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		2C9BBEC5181A6590004E5226 /* UMessage_Sdk_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UMessage_Sdk_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C9BBEC8181A6590004E5226 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2C9BBECA181A6590004E5226 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2C9BBECC181A6590004E5226 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2C9BBED0181A6590004E5226 /* UMessage_Sdk_Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UMessage_Sdk_Demo-Info.plist"; sourceTree = "<group>"; };
+		2C9BBED2181A6590004E5226 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C9BBED4181A6590004E5226 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2C9BBED6181A6590004E5226 /* UMessage_Sdk_Demo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UMessage_Sdk_Demo-Prefix.pch"; sourceTree = "<group>"; };
+		2C9BBED7181A6590004E5226 /* UMPDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMPDAppDelegate.h; sourceTree = "<group>"; };
+		2C9BBED8181A6590004E5226 /* UMPDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMPDAppDelegate.m; sourceTree = "<group>"; };
+		2C9BBEDB181A6590004E5226 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		2C9BBEDE181A6590004E5226 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		2C9BBEE0181A6590004E5226 /* UMPDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMPDViewController.h; sourceTree = "<group>"; };
+		2C9BBEE1181A6590004E5226 /* UMPDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMPDViewController.m; sourceTree = "<group>"; };
+		2C9BBEE3181A6590004E5226 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2C9BBEE9181A6590004E5226 /* UMessage_Sdk_DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UMessage_Sdk_DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C9BBEEA181A6590004E5226 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2C9BBEF2181A6590004E5226 /* UMessage_Sdk_DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UMessage_Sdk_DemoTests-Info.plist"; sourceTree = "<group>"; };
+		2C9BBEF4181A6590004E5226 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C9BBEF6181A6590004E5226 /* UMessage_Sdk_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMessage_Sdk_DemoTests.m; sourceTree = "<group>"; };
+		2CE894D718FD1BF7005BD790 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C9BBEC2181A6590004E5226 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CE894D818FD1BF7005BD790 /* CoreLocation.framework in Frameworks */,
+				2C9BBECB181A6590004E5226 /* CoreGraphics.framework in Frameworks */,
+				2C9BBECD181A6590004E5226 /* UIKit.framework in Frameworks */,
+				2C9BBEC9181A6590004E5226 /* Foundation.framework in Frameworks */,
+				2C9643D61973F7CD00EDA986 /* libUMessage_Sdk_1.0.2.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9BBEE6181A6590004E5226 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9BBEEB181A6590004E5226 /* XCTest.framework in Frameworks */,
+				2C9BBEED181A6590004E5226 /* UIKit.framework in Frameworks */,
+				2C9BBEEC181A6590004E5226 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C9643D31973F7CD00EDA986 /* UMessage_Sdk_1.0.2 */ = {
+			isa = PBXGroup;
+			children = (
+				2C9643D41973F7CD00EDA986 /* libUMessage_Sdk_1.0.2.a */,
+				2C9643D51973F7CD00EDA986 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.0.2;
+			sourceTree = "<group>";
+		};
+		2C9BBEBC181A6590004E5226 = {
+			isa = PBXGroup;
+			children = (
+				2C41784D181E4D06001E54DB /* Default-568h@2x.png */,
+				2C9BBECE181A6590004E5226 /* UMessage_Sdk_Demo */,
+				2C9BBEF0181A6590004E5226 /* UMessage_Sdk_DemoTests */,
+				2C9BBEC7181A6590004E5226 /* Frameworks */,
+				2C9BBEC6181A6590004E5226 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C9BBEC6181A6590004E5226 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BBEC5181A6590004E5226 /* UMessage_Sdk_Demo.app */,
+				2C9BBEE9181A6590004E5226 /* UMessage_Sdk_DemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C9BBEC7181A6590004E5226 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CE894D718FD1BF7005BD790 /* CoreLocation.framework */,
+				2C9BBEC8181A6590004E5226 /* Foundation.framework */,
+				2C9BBECA181A6590004E5226 /* CoreGraphics.framework */,
+				2C9BBECC181A6590004E5226 /* UIKit.framework */,
+				2C9BBEEA181A6590004E5226 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C9BBECE181A6590004E5226 /* UMessage_Sdk_Demo */ = {
+			isa = PBXGroup;
+			children = (
+				2C9643D31973F7CD00EDA986 /* UMessage_Sdk_1.0.2 */,
+				2C9BBED7181A6590004E5226 /* UMPDAppDelegate.h */,
+				2C9BBED8181A6590004E5226 /* UMPDAppDelegate.m */,
+				2C9BBEDA181A6590004E5226 /* Main_iPhone.storyboard */,
+				2C9BBEDD181A6590004E5226 /* Main_iPad.storyboard */,
+				2C9BBEE0181A6590004E5226 /* UMPDViewController.h */,
+				2C9BBEE1181A6590004E5226 /* UMPDViewController.m */,
+				2C9BBEE3181A6590004E5226 /* Images.xcassets */,
+				2C9BBECF181A6590004E5226 /* Supporting Files */,
+			);
+			path = UMessage_Sdk_Demo;
+			sourceTree = "<group>";
+		};
+		2C9BBECF181A6590004E5226 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C41783F181E4C72001E54DB /* icon_57.png */,
+				2C417840181E4C72001E54DB /* icon_72.png */,
+				2C417841181E4C72001E54DB /* icon_76.png */,
+				2C417842181E4C72001E54DB /* icon_114.png */,
+				2C417843181E4C72001E54DB /* icon_120.png */,
+				2C417844181E4C72001E54DB /* icon_144.png */,
+				2C417845181E4C72001E54DB /* icon_152.png */,
+				2C9BBED0181A6590004E5226 /* UMessage_Sdk_Demo-Info.plist */,
+				2C9BBED1181A6590004E5226 /* InfoPlist.strings */,
+				2C9BBED4181A6590004E5226 /* main.m */,
+				2C9BBED6181A6590004E5226 /* UMessage_Sdk_Demo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2C9BBEF0181A6590004E5226 /* UMessage_Sdk_DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BBEF6181A6590004E5226 /* UMessage_Sdk_DemoTests.m */,
+				2C9BBEF1181A6590004E5226 /* Supporting Files */,
+			);
+			path = UMessage_Sdk_DemoTests;
+			sourceTree = "<group>";
+		};
+		2C9BBEF1181A6590004E5226 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C9BBEF2181A6590004E5226 /* UMessage_Sdk_DemoTests-Info.plist */,
+				2C9BBEF3181A6590004E5226 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2C9BBEC4181A6590004E5226 /* UMessage_Sdk_Demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9BBEFA181A6590004E5226 /* Build configuration list for PBXNativeTarget "UMessage_Sdk_Demo" */;
+			buildPhases = (
+				2C9BBEC1181A6590004E5226 /* Sources */,
+				2C9BBEC2181A6590004E5226 /* Frameworks */,
+				2C9BBEC3181A6590004E5226 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UMessage_Sdk_Demo;
+			productName = UMessage_Sdk_Demo;
+			productReference = 2C9BBEC5181A6590004E5226 /* UMessage_Sdk_Demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2C9BBEE8181A6590004E5226 /* UMessage_Sdk_DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C9BBEFD181A6590004E5226 /* Build configuration list for PBXNativeTarget "UMessage_Sdk_DemoTests" */;
+			buildPhases = (
+				2C9BBEE5181A6590004E5226 /* Sources */,
+				2C9BBEE6181A6590004E5226 /* Frameworks */,
+				2C9BBEE7181A6590004E5226 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C9BBEEF181A6590004E5226 /* PBXTargetDependency */,
+			);
+			name = UMessage_Sdk_DemoTests;
+			productName = UMessage_Sdk_DemoTests;
+			productReference = 2C9BBEE9181A6590004E5226 /* UMessage_Sdk_DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C9BBEBD181A6590004E5226 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = UMPD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = umeng.com;
+				TargetAttributes = {
+					2C9BBEE8181A6590004E5226 = {
+						TestTargetID = 2C9BBEC4181A6590004E5226;
+					};
+				};
+			};
+			buildConfigurationList = 2C9BBEC0181A6590004E5226 /* Build configuration list for PBXProject "UMessage_Sdk_Demo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2C9BBEBC181A6590004E5226;
+			productRefGroup = 2C9BBEC6181A6590004E5226 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2C9BBEC4181A6590004E5226 /* UMessage_Sdk_Demo */,
+				2C9BBEE8181A6590004E5226 /* UMessage_Sdk_DemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2C9BBEC3181A6590004E5226 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9BBEDF181A6590004E5226 /* Main_iPad.storyboard in Resources */,
+				2C41784A181E4C72001E54DB /* icon_120.png in Resources */,
+				2C41784C181E4C72001E54DB /* icon_152.png in Resources */,
+				2C417847181E4C72001E54DB /* icon_72.png in Resources */,
+				2C417848181E4C72001E54DB /* icon_76.png in Resources */,
+				2C41784E181E4D06001E54DB /* Default-568h@2x.png in Resources */,
+				2C9BBEE4181A6590004E5226 /* Images.xcassets in Resources */,
+				2C9BBEDC181A6590004E5226 /* Main_iPhone.storyboard in Resources */,
+				2C41784B181E4C72001E54DB /* icon_144.png in Resources */,
+				2C417849181E4C72001E54DB /* icon_114.png in Resources */,
+				2C417846181E4C72001E54DB /* icon_57.png in Resources */,
+				2C9BBED3181A6590004E5226 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9BBEE7181A6590004E5226 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9BBEF5181A6590004E5226 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C9BBEC1181A6590004E5226 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9BBEE2181A6590004E5226 /* UMPDViewController.m in Sources */,
+				2C9BBED9181A6590004E5226 /* UMPDAppDelegate.m in Sources */,
+				2C9BBED5181A6590004E5226 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C9BBEE5181A6590004E5226 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C9BBEF7181A6590004E5226 /* UMessage_Sdk_DemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C9BBEEF181A6590004E5226 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C9BBEC4181A6590004E5226 /* UMessage_Sdk_Demo */;
+			targetProxy = 2C9BBEEE181A6590004E5226 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2C9BBED1181A6590004E5226 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C9BBED2181A6590004E5226 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2C9BBEDA181A6590004E5226 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C9BBEDB181A6590004E5226 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		2C9BBEDD181A6590004E5226 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C9BBEDE181A6590004E5226 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		2C9BBEF3181A6590004E5226 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C9BBEF4181A6590004E5226 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2C9BBEF8181A6590004E5226 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C9BBEF9181A6590004E5226 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2C9BBEFB181A6590004E5226 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Prefix.pch";
+				INFOPLIST_FILE = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UMessage_Sdk_Demo/UMessage_Sdk_1.0.2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		2C9BBEFC181A6590004E5226 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Prefix.pch";
+				INFOPLIST_FILE = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UMessage_Sdk_Demo/UMessage_Sdk_1.0.2",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		2C9BBEFE181A6590004E5226 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UMessage_Sdk_Demo.app/UMessage_Sdk_Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "UMessage_Sdk_DemoTests/UMessage_Sdk_DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2C9BBEFF181A6590004E5226 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/UMessage_Sdk_Demo.app/UMessage_Sdk_Demo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UMessage_Sdk_Demo/UMessage_Sdk_Demo-Prefix.pch";
+				INFOPLIST_FILE = "UMessage_Sdk_DemoTests/UMessage_Sdk_DemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C9BBEC0181A6590004E5226 /* Build configuration list for PBXProject "UMessage_Sdk_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9BBEF8181A6590004E5226 /* Debug */,
+				2C9BBEF9181A6590004E5226 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C9BBEFA181A6590004E5226 /* Build configuration list for PBXNativeTarget "UMessage_Sdk_Demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9BBEFB181A6590004E5226 /* Debug */,
+				2C9BBEFC181A6590004E5226 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C9BBEFD181A6590004E5226 /* Build configuration list for PBXNativeTarget "UMessage_Sdk_DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C9BBEFE181A6590004E5226 /* Debug */,
+				2C9BBEFF181A6590004E5226 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C9BBEBD181A6590004E5226 /* Project object */;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3A0C2DE8-75B3-4753-8522-96CB2D28B923</string>
+	<key>IDESourceControlProjectName</key>
+	<string>UMessage_Sdk_Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C12C096B-F9D2-4C5B-9C40-8210E76A5752</key>
+		<string>ssh://github.umeng.com/luyiyuan/UMessage_Sdk_Demo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>UMessage_Sdk_Demo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C12C096B-F9D2-4C5B-9C40-8210E76A5752</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.umeng.com/luyiyuan/UMessage_Sdk_Demo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C12C096B-F9D2-4C5B-9C40-8210E76A5752</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C12C096B-F9D2-4C5B-9C40-8210E76A5752</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UMessage_Sdk_Demo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

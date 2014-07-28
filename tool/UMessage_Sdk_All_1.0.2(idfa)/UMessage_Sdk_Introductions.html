@@ -1,0 +1,579 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>**iOS 消息推送 (Message) SDK使用指南**</title>
+
+</head>
+<body>
+<h1><strong>iOS 消息推送 (Message) SDK使用指南</strong></h1>
+
+<p>本文档包括:</p>
+
+<ol>
+<li>介绍</li>
+<li>基本功能集成指南</li>
+<li>高级功能集成指南</li>
+<li>测试与调试</li>
+<li>技术支持</li>
+</ol>
+
+
+<h2>1. 介绍</h2>
+
+<p>友盟消息推送组件帮助您实时的推送消息给用户。</p>
+
+<p>下载的压缩包中将包括以下内容:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">文件名称 </th>
+<th align="left"> 介绍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">UMessage_Sdk_Introductions.html </td>
+<td align="left"> 该文件介绍如何使用友盟消息推送SDK</td>
+</tr>
+<tr>
+<td align="left">UMessage_Sdk_ReleaseNotes.html </td>
+<td align="left"> 该文件记录了友盟消息推送SDK的更新日志</td>
+</tr>
+<tr>
+<td align="left">UMessage_Sdk_Api_Reference/ </td>
+<td align="left"> 该文件夹中包含了友盟消息推送的API文档</td>
+</tr>
+<tr>
+<td align="left">UMessage_Sdk_x.x.x/ </td>
+<td align="left"> 该文件夹中包含了SDK的库文件</td>
+</tr>
+<tr>
+<td align="left">UMessage_Sdk_Demo/ </td>
+<td align="left"> 该文件夹中包含了示例工程</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>集成之前， 请在<a href="http://message.umeng.com/">http://message.umeng.com/</a>申请开通友盟消息推送服务。</p>
+
+<h2>2. 基本功能集成指南</h2>
+
+<blockquote><p><strong>提示</strong><br/>
+请先在友盟的消息推送管理后台中创建App，获得AppKey和AppSecret</p></blockquote>
+
+<ul>
+<li>导入SDK
+
+<ul>
+<li><p><a href="http://dev.umeng.com/sdkdownload/sdkdownload_ios.html">下载</a> UMessage_Sdk_All_x.x.x.zip并解压缩</p></li>
+<li><p>导入插件</p>
+
+<p>所需SDK文件夹：<code>UMessage_Sdk_x.x.x</code><br/>
+请在你的工程目录结构中，右键选择<code>Add-&gt;Existing Files…</code>，选择这个文件夹。或者将这个文件夹拖入XCode工程目录结构中，在弹出的界面中勾选<code>Copy items into destination group's folder(if needed)</code>, 并确保<code>Add To Targets</code>勾选相应的target。</p></li>
+<li><p>配置（可选）</p>
+
+<ol>
+<li><p>SDK采用ARC管理内存，非ARC项目请在<code>Build Settings</code>中的<code>Other Linker Flags</code>中添加<code>-fobjc-arc</code></p></li>
+<li><p>如果您使用了<code>-all_load</code>，需要添加<code>libz</code>的库：<br/>
+<code>TARGETS</code>--><code>Build Phases</code>--><code>Link Binary With Libraries</code>--> <code>+</code> --><code>libz.dylib</code></p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+
+<blockquote><p><strong>说明</strong><br/>
+SDK支持iOS 4.3+</p></blockquote>
+
+<ul>
+<li>添加代码<br/>
+打开<code>*AppDelegate.m</code>，依次按照以下步骤集成：
+
+<ul>
+<li><code>didFinishLaunchingWithOptions</code>中的设置：</li>
+</ul>
+</li>
+</ul>
+
+
+<pre><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+    //set AppKey and AppSecret
+    [UMessage startWithAppkey:@"5266458d56240bc298027071" launchOptions:launchOptions];
+
+    //register remoteNotification types
+    [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
+                                                |UIRemoteNotificationTypeSound
+                                                |UIRemoteNotificationTypeAlert];
+
+    //for log（optional）
+    [UMessage setLogEnabled:NO];
+
+    return YES;
+}
+</code></pre>
+
+<ul>
+<li><code>didRegisterForRemoteNotificationsWithDeviceToken</code>中设置</li>
+</ul>
+
+
+<pre><code>- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [UMessage registerDeviceToken:deviceToken];   
+}
+</code></pre>
+
+<ul>
+<li> <code>didReceiveRemoteNotification</code>中设置</li>
+</ul>
+
+
+<pre><code>- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [UMessage didReceiveRemoteNotification:userInfo];
+}
+</code></pre>
+
+<blockquote><p><strong>说明</strong></p></blockquote>
+
+<p>至此，消息推送基本功能的集成已经完成。</p>
+
+<h2>3. 高级功能集成指南</h2>
+
+<h3>3.1 使用标签</h3>
+
+<ul>
+<li>添加tag</li>
+</ul>
+
+
+<blockquote><p><strong>示例：</strong>将标签“男”绑定至该设备:</p></blockquote>
+
+<pre><code>[UMessage addTag:@"男"
+            response:^(id responseObject, NSInteger remain, NSError *error) {
+         //add your codes
+  }];
+</code></pre>
+
+<blockquote><p><strong>小提示：</strong>tag参数既可以是<code>NSString</code>的单个tag，也可以是<code>NSArray</code>,<code>NSSet</code>的tag集合哦！</p></blockquote>
+
+<ul>
+<li>删除tag：</li>
+</ul>
+
+
+<blockquote><p><strong>示例：</strong>将标签"男"从设备绑定中删除:</p></blockquote>
+
+<pre><code>[UMessage removeTag:@"男"
+           response:^(id responseObject, NSInteger remain, NSError *error) {
+         //add your codes            
+  }];
+</code></pre>
+
+<blockquote><p><strong>小提示：</strong>tag参数既可以是<code>NSString</code>的单个tag，也可以是<code>NSArray</code>,<code>NSSet</code>的tag集合哦！</p></blockquote>
+
+<ul>
+<li>获取tag列表</li>
+</ul>
+
+
+<blockquote><p><strong>示例：</strong> 获取tag列表</p></blockquote>
+
+<pre><code>[UMessage getTags:^(NSSet *responseTags, NSInteger remain, NSError *error) {
+        //add your codes
+  }];
+</code></pre>
+
+<ul>
+<li>重置tag列表</li>
+</ul>
+
+
+<blockquote><p><strong>示例：</strong> 重置tag列表</p></blockquote>
+
+<pre><code>[UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
+
+  }];
+</code></pre>
+
+<blockquote><p><strong>注意</strong><br/>
+1.  可以为单个tag（NSString）也可以为tag集合（NSArray、NSSet）<br/>
+2.  每台设备最多绑定64个tag，超过64个，绑定tag不再成功<br/>
+3.  单个tag最大允许长度50字节，编码UTF-8，超过长度自动截取</p></blockquote>
+
+<h3>3.2 使用别名</h3>
+
+<p>当需要将设备标记为别名时，可用。</p>
+
+<ul>
+<li>绑定别名</li>
+</ul>
+
+
+<blockquote><p><strong>示例：</strong> 将新浪微博的某用户绑定至设备</p></blockquote>
+
+<pre><code>[UMessage addAlias:@"test@test.com" type:kUMessageAliasTypeSina response:^(id responseObject, NSError *error) {
+    }];
+</code></pre>
+
+<blockquote><p><strong>注意：</strong><br/>
+    1.  <code>type</code>的类型已经默认枚举好平台类型，在<code>UMessage.h</code>最上侧，形如:<code>kUMessageAliasTypeSina</code></p></blockquote>
+
+<h3>3.3 其他设置</h3>
+
+<ul>
+<li><p>设置地理位置信息<br/>
+<code>
+[UMessage setLocation:location];
+</code></p></li>
+<li><p>设置是否允许SDK自动清空角标（默认开启）<br/>
+<code>
+[UMessage setBadgeClear:NO];
+</code></p></li>
+<li><p>设置是否允许SDK当应用在前台运行收到Push时弹出Alert框（默认开启）<br/>
+<code>
+[UMessage setAutoAlert:NO];
+</code></p></li>
+<li><p>设置当前 App 的发布渠道（默认"App Store"）<br/>
+<code>
+[UMessage setChannel:@"App Store"]
+</code></p></li>
+</ul>
+
+
+<h2>4. 测试与调试</h2>
+
+<h3>1. 开启调试模式</h3>
+
+<ul>
+<li>打开调试日志
+<code>
+[UMessage setLogEnabled:YES];
+</code></li>
+</ul>
+
+
+<h3>2. 调试步骤</h3>
+
+<ol>
+<li>确认证书设置正确。参见 <code>iOS 证书设置指南</code></li>
+<li>确认<code>Provisioning Profile</code>配置正确，并已更新</li>
+<li>在友盟消息推送后台上传正确的 <code>Push 证书</code></li>
+<li>启动应用程序，并在选择接受推送通知</li>
+<li>确认 App 是开启 Push 权限的</li>
+<li>在网站后台选择对应的<code>Device Token</code>进行推送测试</li>
+<li><a href="http://dev.umeng.com/faq/faq_com.html">常见错误汇集</a></li>
+</ol>
+
+
+<h2>5. 技术支持</h2>
+
+<p>请发邮件至<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#115;&#117;&#x70;&#x70;&#111;&#x72;&#x74;&#64;&#117;&#109;&#x65;&#110;&#x67;&#x2e;&#99;&#111;&#109;">&#x73;&#117;&#112;&#112;&#x6f;&#114;&#x74;&#64;&#117;&#x6d;&#x65;&#110;&#103;&#x2e;&#x63;&#111;&#109;</a>，我们会尽快回复您。</p>
+</body>
+</html>
