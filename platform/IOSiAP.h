@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef __iAP_JSBinding__IOSiAP__
-#define __iAP_JSBinding__IOSiAP__
+#ifndef _IOSIAP_H_
+#define _IOSIAP_H_
 
 #include <iostream>
 #include <vector>

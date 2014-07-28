@@ -17,6 +17,7 @@
 #include "../Item/KBagManager.h"
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
+#include "../platform/IOSiAP.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -264,4 +265,9 @@ void KShopScene::DoBuyMoney(CCObject* sender)
 	if(pBut->getTag()==KPopupLayer::RT_YES){
 		//TBD
 	}
+}
+
+void TestIAP()
+{
+	IOSiAP iap;
 }

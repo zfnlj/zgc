@@ -432,6 +432,9 @@
     <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\platform\win32\IOSiAP.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />

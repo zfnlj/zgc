@@ -265,6 +265,7 @@
     <ClCompile Include="..\Classes\WorldObject\KMainPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KWorldObj.cpp" />
+    <ClCompile Include="..\platform\win32\IOSiAP.cpp" />
     <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
