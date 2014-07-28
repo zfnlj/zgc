@@ -319,6 +319,7 @@
 		81159E0419869867009D325F /* KIOSiAP_Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */; };
 		81159E0919869884009D325F /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0619869884009D325F /* IOSiAP.mm */; };
 		81159E0A19869884009D325F /* IOSFunc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0819869884009D325F /* IOSFunc.mm */; };
+		81159E0C19869B5D009D325F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81159E0B19869B5D009D325F /* StoreKit.framework */; };
 		8120F62C1869DCBE000FDB17 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 8120F62B1869DCBE000FDB17 /* data */; };
 		812143BB187AE4400053FC18 /* KCommonSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214367187AE4400053FC18 /* KCommonSession.cpp */; };
 		812143BC187AE4400053FC18 /* KStreamSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214369187AE4400053FC18 /* KStreamSession.cpp */; };
@@ -1282,6 +1283,7 @@
 		81159E0219869867009D325F /* KIOSiAP_Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIOSiAP_Bridge.h; path = ../platform/KIOSiAP_Bridge.h; sourceTree = "<group>"; };
 		81159E0619869884009D325F /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSiAP.mm; path = ../platform/ios/IOSiAP.mm; sourceTree = "<group>"; };
 		81159E0819869884009D325F /* IOSFunc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSFunc.mm; path = ../platform/ios/IOSFunc.mm; sourceTree = "<group>"; };
+		81159E0B19869B5D009D325F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8120F62B1869DCBE000FDB17 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		81214367187AE4400053FC18 /* KCommonSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KCommonSession.cpp; sourceTree = "<group>"; };
 		81214368187AE4400053FC18 /* KCommonSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCommonSession.h; sourceTree = "<group>"; };
@@ -2005,6 +2007,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81159E0C19869B5D009D325F /* StoreKit.framework in Frameworks */,
 				812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */,
 				816863F518969C5A00789DE8 /* liblua.a in Frameworks */,
 				81E786C4185DBE6A00829E82 /* libiconv.2.4.0.dylib in Frameworks */,
@@ -2689,6 +2692,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81159E0B19869B5D009D325F /* StoreKit.framework */,
 				812D955A19839753004F6DD8 /* libUMFeedback.a */,
 				81A6A5A21896655F0039FF68 /* Classes */,
 				81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */,

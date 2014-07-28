@@ -110,6 +110,9 @@ bool MainMenuScene::init()
 
 void MainMenuScene::menuCloseCallback(CCObject* pSender)
 {
+    IOSFunc_Bridge IOSFunc;
+	IOSFunc.OpenFeedback();
+/*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
 #else
@@ -118,7 +121,8 @@ void MainMenuScene::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 #endif
-}
+*/
+ }
 
 
 cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
@@ -221,6 +225,5 @@ void MainMenuScene::onQuestFinished(int qId)
 
 void MainMenuScene::DoClickFeedback(CCObject* sender)
 {
-	IOSFunc_Bridge IOSFunc;
-	IOSFunc.OpenFeedback();
+
 }
