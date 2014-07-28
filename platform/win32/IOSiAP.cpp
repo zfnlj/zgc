@@ -1,7 +1,5 @@
 #include "../IOSiAP.h"
-#include "cocos-ext.h"
 
-USING_NS_CC;
 
 IOSiAP::IOSiAP()
 {

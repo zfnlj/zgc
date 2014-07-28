@@ -17,7 +17,7 @@
 #include "../Item/KBagManager.h"
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
-#include "../platform/IOSiAP.h"
+#include "../platform/KIOSiAP_Bridge.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -269,5 +269,6 @@ void KShopScene::DoBuyMoney(CCObject* sender)
 
 void TestIAP()
 {
-	IOSiAP iap;
+	IOSiAP_Bridge iap;
+	iap.requestProducts();
 }

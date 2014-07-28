@@ -265,8 +265,10 @@
     <ClCompile Include="..\Classes\WorldObject\KMainPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KPlayer.cpp" />
     <ClCompile Include="..\Classes\WorldObject\KWorldObj.cpp" />
+    <ClCompile Include="..\platform\IOSFunc_Bridge.cpp" />
+    <ClCompile Include="..\platform\KIOSiAP_Bridge.cpp" />
+    <ClCompile Include="..\platform\win32\IOSFunc.cpp" />
     <ClCompile Include="..\platform\win32\IOSiAP.cpp" />
-    <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -432,8 +434,10 @@
     <ClInclude Include="..\Classes\WorldObject\KMainPlayer.h" />
     <ClInclude Include="..\Classes\WorldObject\KPlayer.h" />
     <ClInclude Include="..\Classes\WorldObject\KWorldObj.h" />
-    <ClInclude Include="..\platform\KPlatformProtocol.h" />
-    <ClInclude Include="..\platform\win32\KPlatformDelegate.h" />
+    <ClInclude Include="..\platform\IOSFunc_Bridge.h" />
+    <ClInclude Include="..\platform\IOSiAP.h" />
+    <ClInclude Include="..\platform\KIOSiAP_Bridge.h" />
+    <ClInclude Include="..\platform\IOSFunc.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

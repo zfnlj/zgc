@@ -23,7 +23,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../StaticTable/StaticData.h"
 #include "StageWaitScene.h"
-#include "../common/KCommonObj.h"
+#include "platform/IOSFunc_Bridge.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -221,6 +221,6 @@ void MainMenuScene::onQuestFinished(int qId)
 
 void MainMenuScene::DoClickFeedback(CCObject* sender)
 {
-	KPlatformDelegate platform;
-	platform.OpenFeedback();
+	IOSFunc_Bridge IOSFunc;
+	IOSFunc.OpenFeedback();
 }

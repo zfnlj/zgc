@@ -33,18 +33,18 @@ THE SOFTWARE.
  * @lua NA
  */
 
-class KPlatformProtocol
+class IOSFunc
 {
 public:
-
-    virtual ~KPlatformProtocol() {}
+	IOSFunc();
+    virtual ~IOSFunc() {}
 
     /**
     @brief    Implement CCDirector and CCScene init code here.
     @return true    Initialize success, app continue.
     @return false   Initialize failed, app terminate.
     */
-    virtual void OpenFeedback() = 0;
+    virtual void OpenFeedback();
 
 };
 

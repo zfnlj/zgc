@@ -429,10 +429,16 @@
     <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp">
       <Filter>UI\assist</Filter>
     </ClCompile>
-    <ClCompile Include="..\platform\win32\KPlatformDelegate.cpp">
-      <Filter>platform\win32</Filter>
+    <ClCompile Include="..\platform\KIOSiAP_Bridge.cpp">
+      <Filter>platform</Filter>
     </ClCompile>
     <ClCompile Include="..\platform\win32\IOSiAP.cpp">
+      <Filter>platform\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\platform\IOSFunc_Bridge.cpp">
+      <Filter>platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\platform\win32\IOSFunc.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
   </ItemGroup>
@@ -914,11 +920,17 @@
     <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h">
       <Filter>UI\assist</Filter>
     </ClInclude>
-    <ClInclude Include="..\platform\KPlatformProtocol.h">
+    <ClInclude Include="..\platform\IOSiAP.h">
       <Filter>platform</Filter>
     </ClInclude>
-    <ClInclude Include="..\platform\win32\KPlatformDelegate.h">
-      <Filter>platform\win32</Filter>
+    <ClInclude Include="..\platform\KIOSiAP_Bridge.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platform\IOSFunc.h">
+      <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platform\IOSFunc_Bridge.h">
+      <Filter>platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

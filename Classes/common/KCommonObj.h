@@ -5,14 +5,6 @@
 #include <list>
 #include "System/Misc/KStream.h"
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	#include "platform/win32/KPlatformDelegate.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    #include "platform/ios/KPlatformDelegate.h"
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-
 extern System::Random::KRandom g_rnd;
 
 typedef std::list<int > KIntegerList;
