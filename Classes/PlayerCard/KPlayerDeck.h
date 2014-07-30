@@ -4,6 +4,7 @@
 #include "../common/KCommonObj.h"
 
 #define MAX_HERO_SKILL_LEV 3
+
 struct KHeroDef{
 	struct skillDef{
 		int _skillId;
@@ -14,11 +15,17 @@ struct KHeroDef{
 	int _cardId;
 	int _id;
 	int _exp;
+	int _strong; //дма╕
+	int _lucky;  //пртк
+
 	void rndGenerate(int id);
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));
 	}
 	int GetRace();
+	int GetRank();
+	int GetLucky(){ return _lucky;}
+	int GetStrong(){return _strong;}
 };
 
 class KPlayerDeck

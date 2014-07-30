@@ -60,6 +60,10 @@ bool KBattleDeck::createDeck(KPlayerCardDepot* pDepot)
 	KIntegerList tmpLst;
 	if(!pDepot->PickCurDeck(heroId,tmpLst)) return false;
 	createDeck(heroId,tmpLst);
+	KCardInst* pHero = GetHero();
+	KHeroDef heroDef;
+	pDepot->PickCurHero(heroDef);
+	pHero->AddHp(heroDef.GetStrong());
 	return true;
 }
 
@@ -708,9 +712,9 @@ bool KBattleDeck::ExistCards()
 
 void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
 {
-	m_heroSkillMgr.SetSkill(pDeckDef);
+	m_heroSkillMgr.Init(pDeckDef);
 	if(!pDeckDef) return;
 	createDeck(pDeckDef);
-	GetHero()->CurHpSet(pDeckDef->getHeroHp());
+	GetHero()->CurHpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
 	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 }
