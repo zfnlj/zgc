@@ -34,6 +34,7 @@ namespace KSkillAssist
 	void _filterAbility(KCardAbilityList* srcLst,KCardAbilityList* desLst,KAbilityStatic::Enum_When when);
 	bool _needEnterFightTarget(int cardId);
 	void _sendSkillInterrupt(KBattleCtrlBase* ctrl,KCardInst* card);
+	int _calcHeroRank(int lucky,int strong);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

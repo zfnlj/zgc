@@ -23,7 +23,6 @@ struct KHeroDef{
 		memset(this,0,sizeof(KHeroDef));
 	}
 	int GetRace();
-	int GetRank();
 	int GetLucky(){ return _lucky;}
 	int GetStrong(){return _strong;}
 };

@@ -10,6 +10,7 @@
 #include "System/Misc/KStream.h"
 #include "../common/KCommonObj.h"
 #include "../PlayerCard/KPlayerCardDepot.h"
+#include "assist/KSkillAssist.h"
 
 #define  MAX_DECK_CARD_NUM 30
 int tmpCard[MAX_GAME_PLAY_CARD]={10002,20061,20002,20002,20002,32011,
@@ -64,6 +65,7 @@ bool KBattleDeck::createDeck(KPlayerCardDepot* pDepot)
 	KHeroDef heroDef;
 	pDepot->PickCurHero(heroDef);
 	pHero->AddHp(heroDef.GetStrong());
+	pHero->SetHeroRank(KSkillAssist::_calcHeroRank(heroDef.GetLucky(),heroDef.GetStrong()));
 	return true;
 }
 
@@ -716,5 +718,6 @@ void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
 	if(!pDeckDef) return;
 	createDeck(pDeckDef);
 	GetHero()->CurHpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
+	GetHero()->SetHeroRank(KSkillAssist::_calcHeroRank(pDeckDef->getHeroLucky(),pDeckDef->getHeroStrong()));
 	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 }

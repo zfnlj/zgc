@@ -109,7 +109,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 	char name[64]={0};
 	sprintf(name,"card_%d",m_card->GetRealId());
 
-	m_bigPhoto =  KUIAssist::_createCardLayout(m_card->GetST(),true);
+	m_bigPhoto =  KUIAssist::_createCardLayout(m_card->GetST(),true,m_card);
 
 	UpdateCardAttr(m_bigPhoto,true);
 	CC_SAFE_RETAIN(m_bigPhoto);
@@ -133,7 +133,7 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 		m_ui->setScale(0.8f);
 		m_bBack = true;
 	}else{
-		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),bBig);
+		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),bBig,m_card);
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		RemoveSelectImg();

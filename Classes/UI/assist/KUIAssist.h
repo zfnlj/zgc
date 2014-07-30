@@ -43,8 +43,8 @@ public:
 	static void _switch2StageWaitScene();
 	static void _switch2ShopScene();
 	static void _switch2CardGroupScene();
-	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig);
-	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig);
+	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
+	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig,KCardInst* card = NULL);
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);
 	static CCSize _getRealSize(UIWidget* widget);
 	static CCAction* _createAtkMove(UIWidget* widgetSrc,int des,float val);

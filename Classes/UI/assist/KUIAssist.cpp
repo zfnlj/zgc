@@ -445,18 +445,18 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 	}
 }
 
-UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig)
+UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* card)
 {
 	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
 	if(!pST) return NULL;
-	UIWidget* widget = _createCardLayout(pST,bBig);
+	UIWidget* widget = _createCardLayout(pST,bBig,card);
 	_showHeroSkill(widget,hero);
 	UILabel* labelDesc = (UILabel*)widget->getChildByName("detail");
 	labelDesc->setVisible(false);
 	return widget;
 }
 
-UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
+UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card)
 {
 	int idx = ((int)pST->GetType())*10 + pST->GetRace();
 	KCardLayoutStatic* pLayout = KGameStaticMgr::getSingleton().GetCardLayout(idx);
@@ -501,7 +501,9 @@ UIWidget* KUIAssist::_createCardLayout(KCardStatic* pST,bool bBig)
 		labelCost->setVisible(false);
 	}
 	UIImageView* widgetStone = (UIImageView*)ui->getChildByName("stone_pos");
-	if(pST->GetRank()>0){
+	int cardRank = pST->GetRank();
+	if(card && card->GetHeroRank()>=0) cardRank = card->GetHeroRank();
+	if(cardRank>0){
 		sprintf(sz,"stone_%d.png",pST->GetRank());
 		widgetStone->loadTexture(sz,UI_TEX_TYPE_PLIST);
 		widgetStone->setVisible(true);

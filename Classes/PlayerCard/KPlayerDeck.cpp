@@ -35,13 +35,6 @@ void KHeroDef::rndGenerate(int cardId)
 	}
 }
 
-int KHeroDef::GetRank()
-{
-	float rankVal = _lucky*0.2;
-	rankVal += ((float)_lucky/100.0f)*0.4;
-	return (int)rankVal;
-}
-
 void KPlayerDeck::CreateOnDeckDef(int id)
 {
 	m_cardList.clear();
