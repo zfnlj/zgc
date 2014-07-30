@@ -25,6 +25,9 @@ struct KHeroDef{
 	int GetRace();
 	int GetLucky(){ return _lucky;}
 	int GetStrong(){return _strong;}
+	int rndGenStrong();
+	int rndGenLucky();
+	void Evolute();
 };
 
 class KPlayerDeck

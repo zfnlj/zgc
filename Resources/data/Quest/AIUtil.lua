@@ -11,6 +11,16 @@ AIUtil ={
 					end
 			end,
 			
+			UseSkill_30011 = function(self,ctrl,card)
+					local des = CPP.AIAssist:AbilityMostValuableTarget(ctrl,card,300110)
+					if (des==nil) then
+						return ""
+					else
+						local str = des:GetRealId() .. '*' .. 1
+						return str
+					end
+			end,
+			
 			UseSkill_32011_ = function(self,ctrl,card)
 					if(CPP.AIAssist:CalcFighterNum(ctrl,0)>=2) then
 						return 0 .. '*' .. CPP.AIAssist:CalcFighterNum(ctrl,0)

@@ -77,6 +77,8 @@ public:
 	int GetHurtedSoldierNum();
 	int GetSoldierNum();
 	KHeroSkillMgr m_heroSkillMgr;
+
+
 private:
 	KCardInstList m_HeroCardSet;
 	KCardInstList m_HandCardSet;	// ÷≈∆
