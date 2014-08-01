@@ -123,17 +123,19 @@ bool KBattleAI::SoldierToAttack()
 		if(!pSrc->m_attr.getReady()) continue;
 		if(pSrc->GetAtk()==0) continue;
 
+		if(totalMyAtk>=pDefGuy->GetDeck().GetHero()->GetHp()){
+			pAtk = pSrc;
+			pDef = pDefGuy->GetDeck().GetHero();
+			break;
+		}
+
 		KCardInst* pScriptDef = SoldierScriptAtk(pSrc,&enemyGuider);
 		if(pScriptDef){
 			pAtk = pSrc;
 			pDef = pScriptDef;
 			break;
 		}
-		if(totalMyAtk>=pDefGuy->GetDeck().GetHero()->GetHp()){
-			pAtk = pSrc;
-			pDef = pDefGuy->GetDeck().GetHero();
-			break;
-		}
+		
 
 		float adjustVal = (totalMyAtk>totalYourAtk)?0: totalYourAtk-totalMyAtk;
 		adjustVal = adjustVal*adjustVal*0.1;

@@ -67,4 +67,16 @@ void _GetTimeInterval(time_t& t1,time_t& t2,tm& interval)
 	memcpy(&interval,tm,sizeof(interval));
 }
 
-
+int _RndNormal(int low,int height)
+{
+	int rndVal = 0;
+	int num=0;
+	while(num<20){
+		int val = g_rnd.GetRandom(1,11);
+		if(val>=5){
+			rndVal += val;
+			num++;
+		}
+	}
+	return rndVal-100;
+}

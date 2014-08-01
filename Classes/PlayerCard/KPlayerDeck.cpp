@@ -39,23 +39,36 @@ void KHeroDef::rndGenerate(int cardId)
 void KHeroDef::Evolute()
 {
 	int newLucky = rndGenLucky();
-	if(newLucky>_lucky) _lucky = newLucky;
+	if(newLucky>_lucky){
+		_lucky = newLucky;
+	}
 	int newStrong = rndGenStrong();
-	if(newStrong>_strong) _strong = newStrong;
+	if(newStrong>_strong){
+		_strong = newStrong;
+	}
 }
 
 int KHeroDef::rndGenLucky()
 {
-	float rndVal = (float)g_rnd.GetRandom(1,101);
-	return rndVal*rndVal/100.0f;
+	int rndVal = 0;
+	int num=0;
+	for(int i=0;i<4;i++){
+		rndVal  += g_rnd.GetRandom(0,56);
+	}
+	if(rndVal>200) rndVal=200;
+	return (rndVal>100)? (rndVal-100):(100-rndVal);
 }
 
 int KHeroDef::rndGenStrong()
 {
-	float rndVal = (float)g_rnd.GetRandom(0,11);
-	int strong = rndVal*rndVal/10.0f - 5;
-	if(strong<0) strong = 0;
-	return strong;
+	float rndVal = 0;
+	int num=0;
+	for(int i=0;i<5;i++){
+		rndVal += g_rnd.GetRandom(0,23);
+	}
+	if(rndVal>100) rndVal=100;
+	float ret = (rndVal>50)? (rndVal-50):(50-rndVal);
+	return ret/10.0f +0.5f;
 }
 
 void KPlayerDeck::CreateOnDeckDef(int id)
