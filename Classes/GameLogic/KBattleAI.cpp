@@ -114,13 +114,13 @@ bool KBattleAI::SoldierToAttack()
 	KCardInst* pAtk = NULL;
 	KCardInst* pDef = NULL;
 	float maxVal=-9.0f;
-	int atkTmp = 0;
+
+	int totalMyAtk = KAIAssist::_calcTotalActiveAtk(lst);
+	int totalYourAtk = KAIAssist::_calcTotalAtk(&enemyGuider);
+
 	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
 		KCardInst* pSrc = *it;
-		if(!pSrc->m_attr.getReady()) {
-			atkTmp += pSrc->GetAtk();
-			continue;
-		}
+		if(!pSrc->m_attr.getReady()) continue;
 		if(pSrc->GetAtk()==0) continue;
 
 		KCardInst* pScriptDef = SoldierScriptAtk(pSrc,&enemyGuider);
@@ -129,12 +129,18 @@ bool KBattleAI::SoldierToAttack()
 			pDef = pScriptDef;
 			break;
 		}
-		int totalMyAtk = KAIAssist::_calcTotalAtk(lst)-atkTmp;
-		int totalYourAtk = KAIAssist::_calcTotalAtk(&enemyGuider);
+		if(totalMyAtk>=pDefGuy->GetDeck().GetHero()->GetHp()){
+			pAtk = pSrc;
+			pDef = pDefGuy->GetDeck().GetHero();
+			break;
+		}
+
 		float adjustVal = (totalMyAtk>totalYourAtk)?0: totalYourAtk-totalMyAtk;
 		adjustVal = adjustVal*adjustVal*0.1;
-		if(totalYourAtk >=GetDeck().GetHero()->GetHp()) adjustVal =999;
-		if(totalMyAtk >=pDefGuy->GetDeck().GetHero()->GetHp()) adjustVal = 0.0f;
+		if(totalYourAtk >=GetDeck().GetHero()->GetHp()){
+			adjustVal =999;
+		}
+
 		for(KCardInstList::iterator it2 = enemyGuider.begin();it2!=enemyGuider.end();++it2){
 			KCardInst* pDes = *it2;
 			float val = KAIAssist::_calcCardDuelVal(m_battleCtrl,pSrc,pDes);
