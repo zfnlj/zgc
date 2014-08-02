@@ -97,6 +97,10 @@ bool StageWaitScene::init()
 		labelName->setVisible(false);
 	}
 
+	UIWidget* pBut = m_ui->getWidgetByName("bk");
+	pBut->addPushDownEvent(this, coco_pushselector(StageWaitScene::DoClickClose));
+	pBut->setTouchEnable(true);
+
 	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
 	SetTip(tip);
 	m_delayCloseTime = 4;
@@ -123,8 +127,7 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 		m_ui->addWidget(KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/stage_wait.json"));
 		//m_ui->addWidget(GUIReader::shareReader()->widgetFromJsonFile("GUI/MainMenu.json"));
 		
-		UIWidget* pBut = m_ui->getWidgetByName("bk");
-		pBut->addPushDownEvent(this, coco_pushselector(StageWaitScene::DoClickClose));
+		
 
 	}
 	return m_ui;
@@ -133,6 +136,8 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 
 void StageWaitScene::DoClickClose(CCObject* sender)
 {
+	UIWidget* pBut = m_ui->getWidgetByName("bk");
+	pBut->setTouchEnable(false);
 	if(m_qId==0){
 		KUIAssist::_switch2MainMenu();
 		return;
