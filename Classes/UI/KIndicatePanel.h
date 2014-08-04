@@ -24,11 +24,13 @@ private:
 	void ActiveArr(KCardInstList* arr,KCardInstList* oldLst,bool bGreen);
 	void DeactiveActor(KCardInstList* actived);
 	void DoCardSleep(KCardInst* card,bool flag);
+	void UpdateTimeOutEff();
 	cocos2d::extension::UILayer* m_layer;
 	KCardInstList m_SleepArr;
 	KCardInstList m_ActiveGreenArr;
 	KCardInstList m_ActiveRedArr;
 	KCardActor* m_selActor;
+	CCParticleSystem* m_timeoutEff;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

@@ -80,6 +80,7 @@ void KBattleMsgHub::SkillInterrupt(unsigned long long Param1, unsigned long long
 #endif
 }
 
+
 void KBattleMsgHub::CardDuelResult(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
@@ -199,3 +200,4 @@ void KBattleMsgHub::UseSecret(unsigned long long Param1, unsigned long long Para
 	
 #endif
 }
+

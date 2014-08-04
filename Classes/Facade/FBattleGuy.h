@@ -25,6 +25,7 @@ public:
 	void QueryValidateFightCards(KCardInstList* arr);
 	void QuerySleepFightCards(KCardInstList* lst);
 	bool IsEmptyFightSlot(int pos);
+	float GetRemainPlayTime();
 private:
 	KBattleGuy* m_Impl;
 };

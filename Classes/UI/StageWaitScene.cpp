@@ -47,7 +47,6 @@ void StageWaitScene::update(float dt)
 {
 	m_delayCloseTime -= dt;
 	if(m_delayCloseTime<0) {
-		m_delayCloseTime = 99999.0f;
 		DoClickClose(NULL);
 	}
 }
@@ -136,6 +135,7 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 
 void StageWaitScene::DoClickClose(CCObject* sender)
 {
+	m_delayCloseTime = 99999.0f;
 	UIWidget* pBut = m_ui->getWidgetByName("bk");
 	pBut->setTouchEnable(false);
 	if(m_qId==0){

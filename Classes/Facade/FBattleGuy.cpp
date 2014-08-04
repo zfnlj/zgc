@@ -25,6 +25,14 @@ bool FBattleGuy::IsFirstHand()
 		return false;
 }
 
+float FBattleGuy::GetRemainPlayTime()
+{
+	if(m_Impl)
+		return m_Impl->GetRemainPlayTime();
+	else
+		return 0.0f;
+}
+
 bool FBattleGuy::IsEmptyFightSlot(int pos)
 {
 	if(m_Impl)

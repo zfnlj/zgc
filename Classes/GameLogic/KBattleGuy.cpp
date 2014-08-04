@@ -11,7 +11,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
 
-#define MAX_TURN_PLAY_TIME 2*60
+#define MAX_TURN_PLAY_TIME  30.0f //120.0f
 
 KBattleGuy::KBattleGuy()
 {
@@ -128,6 +128,11 @@ bool KBattleGuy::IsPlayTimeOut()
 {
 
 	return (m_TurnPlayTime >=MAX_TURN_PLAY_TIME);
+}
+
+float KBattleGuy::GetRemainPlayTime()
+{
+	return (MAX_TURN_PLAY_TIME-m_TurnPlayTime);
 }
 
 int  KBattleGuy::QuerySlotCardNum()

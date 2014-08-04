@@ -32,6 +32,7 @@ public:
 	 bool init(void);
 	 virtual void onBattleInit(bool bFirst,int deckId,bool bSelectCard=true);
 	 bool IsPlayTimeOut();
+	 float GetRemainPlayTime();
 	 void SetPlayTimeOut();
 	 void ClearPlayTimeOut();
 	 void onDrawCard();

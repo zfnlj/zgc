@@ -11,6 +11,7 @@
 #include "BattleFieldScene.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../GameLogic/assist/KSkillAssist.h"
+#include "assist/KJsonDictMgr.h"
 
 using namespace cocos2d::extension;
 
@@ -22,6 +23,7 @@ void KIndicatePanel::init(cocos2d::extension::UILayer* layer)
 {
 	m_selActor = NULL;
 	m_layer = layer;
+	m_timeoutEff = NULL;
 }
 
 void KIndicatePanel::UpdateSleepAnim()
@@ -63,6 +65,7 @@ void KIndicatePanel::Update(float dt)
 		GameRoot::getSingleton().getBattleScene()->DeactiveMyFightArea();
 		return;
 	}
+	UpdateTimeOutEff();
 
 	KBattleCtrlBase::BattleState state = KClientBattleCtrl::getInstance()->GetBattleState();
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
@@ -193,4 +196,28 @@ void KIndicatePanel::onBattleRefresh()
 	m_ActiveGreenArr.clear();
 	m_ActiveRedArr.clear();
 	m_selActor = NULL;
+}
+
+void KIndicatePanel::UpdateTimeOutEff()
+{
+	if(!m_timeoutEff){
+		m_timeoutEff = KParticleCacheMgr::getSingleton().CreateParticle("ui_timeout_fire");
+		m_layer->addChild(m_timeoutEff,10);
+	}
+	m_timeoutEff->setPosition(ccp(-100.0f,-100.0f));
+	//m_timeoutEff->setVisible(false);
+	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return;
+	KBattleCtrlBase::BattleState state = KClientBattleCtrl::getInstance()->GetBattleState();
+	if(state !=KBattleCtrlBase::battle_play) return;
+
+	FBattleGuy* pCurPlayer = KClientBattleCtrl::getInstance()->GetCurPlayer();
+	int warningTime = 10.0f;
+	float remain = pCurPlayer->GetRemainPlayTime();
+	if(remain>warningTime) return;
+
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	float screenWidth = visibleSize.width;
+	float x = (1-remain/warningTime)*0.8*screenWidth + 0.1*screenWidth;
+	float y = visibleSize.height/2 + 10;
+	m_timeoutEff->setPosition(ccp(x,y));
 }

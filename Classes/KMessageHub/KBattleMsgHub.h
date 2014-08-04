@@ -26,4 +26,6 @@ public:
 	virtual void DeckInit(unsigned long long Param1, unsigned long long Param2);
 	virtual void GameEnd(unsigned long long Param1, unsigned long long Param2);
 	virtual void UseSecret(unsigned long long Param1, unsigned long long Param2);
+	
 };
+
