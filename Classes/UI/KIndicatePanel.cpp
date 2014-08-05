@@ -213,11 +213,11 @@ void KIndicatePanel::UpdateTimeOutEff()
 	FBattleGuy* pCurPlayer = KClientBattleCtrl::getInstance()->GetCurPlayer();
 	int warningTime = 10.0f;
 	float remain = pCurPlayer->GetRemainPlayTime();
-	if(remain>warningTime) return;
+	if(remain>warningTime||remain<0.0f) return;
 
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	float screenWidth = visibleSize.width;
 	float x = (1-remain/warningTime)*0.8*screenWidth + 0.1*screenWidth;
-	float y = visibleSize.height/2 + 10;
+	float y = visibleSize.height/2 + 16;
 	m_timeoutEff->setPosition(ccp(x,y));
 }

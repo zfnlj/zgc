@@ -809,3 +809,12 @@ KCardInst* KBattleCtrlBase::GetMyHero(int id)
 	}
 	return NULL;
 }
+
+void KBattleCtrlBase::ForceWin()
+{
+	FBattleGuy* pEnemy = GetOtherPlayer();
+	KBattleGuy* pGuy = pEnemy->GetImp();
+	KCardInst* pHero = pGuy->GetDeck().GetHero();
+	pHero->m_attr.setSlot(KCardInst::enum_slot_tomb);
+	StateJump(battle_game_end);
+}

@@ -16,7 +16,6 @@ KLoginMsgHub::~KLoginMsgHub()
 
 void KLoginMsgHub::onLoginServerConnected(unsigned long long p1, unsigned long long p2)
 {
-	//GameRoot::getSingleton().getBattleScene()->onBattleInit();
 	KClientGateListener::getSingleton().SendLogin();
 }
 

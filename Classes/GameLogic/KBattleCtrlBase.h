@@ -112,6 +112,7 @@ public:
 	void DoCardEvtList(KCardInst* actor);
 	int GetFighterNum();
 	void Clear();
+	void ForceWin();
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;

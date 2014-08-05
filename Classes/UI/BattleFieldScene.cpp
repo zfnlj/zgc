@@ -114,7 +114,7 @@ void BattleFieldScene::onBattleInit()
 		KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
 		//KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
-	//InitTest();
+	InitTest();
 }
 
 void BattleFieldScene::InitTest()
@@ -167,7 +167,8 @@ void BattleFieldScene::onTurnEnd()
 
 void BattleFieldScene::RunTest(CCObject* sender)
 {
-	m_gameResultPanel.ShowPanel();
+	KClientBattleCtrl::getInstance()->ForceWin();
+	//m_gameResultPanel.ShowPanel();
 	/*FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	CCLabelBMFont* bmFont = CCLabelBMFont::create("-23","GUI/num_1.fnt");
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();

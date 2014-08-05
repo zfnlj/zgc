@@ -425,10 +425,12 @@ cocos2d::extension::UIWidget* KActor::CreateTalk(const char* obj,const char* slo
 	sprintf(sz,"id=%d",msgId);
 	UILabel* labelDesc = (UILabel*)widget->getChildByName("text_str");
 	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(msgId);
+	labelDesc->setVisible(true);
 	if(helpString){
 		labelDesc->setText(helpString->GetString());
 	}else{
 		labelDesc->setText(sz);
+		labelDesc->setVisible(false);
 	}
 
 	KUIAssist::_activeSceneLayer()->addWidget(widget);

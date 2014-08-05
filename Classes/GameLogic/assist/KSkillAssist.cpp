@@ -607,7 +607,7 @@ bool _needEnterFightTarget(int cardId)
 int _calcHeroRank(int lucky,int strong)
 {
 	float rankVal = strong*0.2;
-	rankVal += ((float)lucky/100.0f)*0.4;
-	return rankVal;
+	rankVal += ((float)lucky/100.0f)*4;
+	return rankVal+0.5;
 }
 }
