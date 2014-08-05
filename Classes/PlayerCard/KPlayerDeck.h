@@ -5,6 +5,7 @@
 
 #define MAX_HERO_SKILL_LEV 3
 
+class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
 		int _skillId;
@@ -28,6 +29,8 @@ struct KHeroDef{
 	int rndGenStrong();
 	int rndGenLucky();
 	void Evolute();
+	int GetAtkVal();
+	void init(KDeckDefStatic*);
 };
 
 class KPlayerDeck

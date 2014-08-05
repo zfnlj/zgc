@@ -34,7 +34,8 @@ void HeroSkill::GenDynAbility(KAbilityStatic& dynAbility)
 
 int KHeroSkillStatic::GetRateVal(int lev)
 { 
-	if(lev>MAX_HERO_SKILL_LEV) return 0;
+	if(lev>MAX_HERO_SKILL_LEV||
+		lev<=0.0f) return 0;
 	return m_rate[lev-1];
 }
 
@@ -88,6 +89,8 @@ void KHeroSkillStatic::Init(System::File::KTabFile2* fileReader)
 
 	fileReader->GetInteger("RANK", 0, (int*)&m_rank);
 	
+	fileReader->GetFloat("Power", 0, (float*)&m_power);
+
 	fileReader->GetString("RATE", "", sz, 63);
 	SetArrIntVal(m_rate,MAX_HERO_SKILL_LEV,sz);
 	

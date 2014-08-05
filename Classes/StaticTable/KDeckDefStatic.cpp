@@ -141,7 +141,7 @@ void KDeckDefStatic::GenCardList(KIntegerList& lst,bool bRnd)
 		DynamicCardDef* def=*it;
 		FillOnDynamicCardDef(def,tmpLst);
 	}
-	if(bRnd>0){
+	if(bRnd){
 		_RndIntegerList(tmpLst,lst);
 	}else{
 		_CopyIntegerList(tmpLst,lst);
@@ -177,4 +177,20 @@ int KDeckDefStatic::RndPickSummonSoldier(int maxCost)
 	}else{
 		return 0;
 	}
+}
+
+int KDeckDefStatic::GetAtkVal()
+{
+	float val = 0.0f;
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(m_skill[i]._id);
+		if(!skill) continue;
+		float luckyVal = (m_heroLucky>i*33)?m_heroLucky -i*33:0;
+		luckyVal += skill->GetRateVal(m_skill[i]._lev);
+		if(luckyVal<=0.0f) luckyVal = 0.0f;
+		if(luckyVal>100.0f) luckyVal = 100.0f;
+		val += skill->GetPower()*luckyVal;
+	}
+	val = val*10.0f;
+	return (int)(val+0.5f);
 }

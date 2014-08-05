@@ -36,6 +36,14 @@ void KHeroDef::rndGenerate(int cardId)
 	}
 }
 
+void KHeroDef::init(KDeckDefStatic* pDef)
+{
+	_id = 0;
+	_lucky = pDef->getHeroLucky();
+	_strong = pDef->getHeroStrong();
+	_cardId = pDef->getHero();
+}
+
 void KHeroDef::Evolute()
 {
 	int newLucky = rndGenLucky();
@@ -69,6 +77,24 @@ int KHeroDef::rndGenStrong()
 	if(rndVal>100) rndVal=100;
 	float ret = (rndVal>50)? (rndVal-50):(50-rndVal);
 	return ret/10.0f +0.5f;
+}
+
+
+int KHeroDef::GetAtkVal()
+{
+	float val = 0.0f;
+
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(_skill[i]._skillId);
+		if(!skill) continue;
+		float luckyVal = (_lucky>i*33)?_lucky -i*33:0;
+		luckyVal += skill->GetRateVal(GetSkillLev(i));
+		if(luckyVal<=0.0f) luckyVal = 0.0f;
+		if(luckyVal>100.0f) luckyVal = 100.0f;
+		val += skill->GetPower()*luckyVal;
+	}
+	val = val*10.0f;
+	return (int)(val+0.5f);
 }
 
 void KPlayerDeck::CreateOnDeckDef(int id)

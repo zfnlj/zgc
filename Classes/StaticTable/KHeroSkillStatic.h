@@ -40,11 +40,13 @@ public:
 	int GetRank(){ return m_rank;}
 	int GetId(){ return m_Id;}
 	const char* GetName(){ return m_Name;}
+	float GetPower(){ return m_power;}
 private:
 	void SetAbilityArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);
 	int m_Id;
 	int m_rank;
+	float m_power;
 	char m_Name[32];
 	KAbilityStatic::Enum_When m_when;
 	int m_rate[MAX_HERO_SKILL_LEV];

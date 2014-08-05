@@ -44,6 +44,7 @@ public:
 	int getDrawNum(){return m_drawNum;}
 	int getHeroStrong(){ return m_heroStrong;}
 	int getHeroLucky(){ return m_heroLucky;}
+	int GetAtkVal();
 	void Init(System::File::KTabFile2* fileReader);
 	void GenCardList(KIntegerList& lst,bool bRnd=false);
 	bool IsRnd(){ return m_rnd>0;}
