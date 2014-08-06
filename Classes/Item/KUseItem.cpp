@@ -15,6 +15,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../Inc/KLogicMsg.h"
 #include "../../Inc/PacketGate/c_game_packet.h"
+#include "../common/KCommonObj.h"
 
 using namespace KAttributeAbout;
 using namespace System::Collections;
@@ -297,6 +298,17 @@ void KUseItem::GenerateCardDeck(UINT64 playerId,int deckId)
 {
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
 	pPlayer->m_cardDepot.CreateOnDeckDef(deckId);
+}
+
+int KUseItem::GenerateHero(UINT64 playerId)
+{
+	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
+	return pPlayer->m_cardDepot.CreateHero();
+}
+
+int KUseItem::RndVal()
+{
+	return _RndNormal(1,100);
 }
 
 };

@@ -169,6 +169,7 @@
     <ClCompile Include="..\Classes\Item\KBagManager.cpp" />
     <ClCompile Include="..\Classes\Item\KItem.cpp" />
     <ClCompile Include="..\Classes\Item\KItemCreate.cpp" />
+    <ClCompile Include="..\Classes\Item\KPlayerTmpBag.cpp" />
     <ClCompile Include="..\Classes\Item\KUseItem.cpp" />
     <ClCompile Include="..\Classes\Item\KUseItemAttrs.cpp" />
     <ClCompile Include="..\Classes\Item\KUseItemManager.cpp" />
@@ -330,6 +331,7 @@
     <ClInclude Include="..\Classes\Item\KBagManager.h" />
     <ClInclude Include="..\Classes\Item\KItem.h" />
     <ClInclude Include="..\Classes\Item\KItemCreate.h" />
+    <ClInclude Include="..\Classes\Item\KPlayerTmpBag.h" />
     <ClInclude Include="..\Classes\Item\KUseItem.h" />
     <ClInclude Include="..\Classes\Item\KUseItemAttrs.h" />
     <ClInclude Include="..\Classes\Item\KUseItemManager.h" />

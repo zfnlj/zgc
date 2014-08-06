@@ -8,6 +8,7 @@
 #include "CommonLogic/KMoney.h"
 #include "../Quest/KQuestOperation.h"
 #include "../PlayerCard/KPlayerCardDepot.h"
+#include "../Item/KPlayerTmpBag.h"
 namespace KItemAbout
 {
 	class KBagManager;
@@ -101,6 +102,8 @@ namespace KWorldObjAbout
 		KPlayerQuestManager m_questManager;
 		KQuestHolderBase m_questOperation;
 		KPlayerCardDepot m_cardDepot;
+
+		KPlayerTmpBag m_battleResultBag;
 private:
 		// ²¿Âäid
 		UINT64 m_tribeID;

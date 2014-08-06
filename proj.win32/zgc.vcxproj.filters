@@ -441,6 +441,9 @@
     <ClCompile Include="..\platform\win32\IOSFunc.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Item\KPlayerTmpBag.cpp">
+      <Filter>game\Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -931,6 +934,9 @@
     </ClInclude>
     <ClInclude Include="..\platform\IOSFunc_Bridge.h">
       <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Item\KPlayerTmpBag.h">
+      <Filter>game\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,9 @@ QName = function (quest , player)
 	return "daily mission1_2";
 end,  
 
+UseGift = function(quest,player)
+	return "5010"; 
+end, 
 
 GiftDesc = function (quest , player)
   local exp

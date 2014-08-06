@@ -21,6 +21,10 @@ QName = function (quest , player)
 end,  
 
 
+UseGift = function(quest,player)
+	return "5010"; 
+end, 
+
 GiftDesc = function (quest , player)
   local exp
 	local money
