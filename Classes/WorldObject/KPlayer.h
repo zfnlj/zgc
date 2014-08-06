@@ -103,7 +103,7 @@ namespace KWorldObjAbout
 		KQuestHolderBase m_questOperation;
 		KPlayerCardDepot m_cardDepot;
 
-		KPlayerTmpBag m_battleResultBag;
+		KPlayerTmpBag m_resultBag;
 private:
 		// ²¿Âäid
 		UINT64 m_tribeID;

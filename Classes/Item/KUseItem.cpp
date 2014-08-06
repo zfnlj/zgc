@@ -300,10 +300,11 @@ void KUseItem::GenerateCardDeck(UINT64 playerId,int deckId)
 	pPlayer->m_cardDepot.CreateOnDeckDef(deckId);
 }
 
-int KUseItem::GenerateHero(UINT64 playerId)
+void KUseItem::GenerateHero(UINT64 playerId)
 {
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
-	return pPlayer->m_cardDepot.CreateHero();
+	int id = pPlayer->m_cardDepot.CreateHero();
+	pPlayer->m_resultBag.Add(1,id,1);
 }
 
 int KUseItem::RndVal()

@@ -103,7 +103,7 @@ public:
 	void GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate);
 	void GenerateCardDeck(UINT64 playerId,int deckId);
 	int  RndVal();
-	int GenerateHero();
+	void GenerateHero(UINT64 playerId);
 public:
 	BeginDefLuaClass(KUseItem)
 		DefMemberFunc(SetFlag);
