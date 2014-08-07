@@ -34,6 +34,7 @@ public:
 	int ConsumeExp(int val);
 	void SetCurDeck(int index);
 	bool IsDeckReady(int index);
+	int CreateHero(int heroId);
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;

@@ -23,8 +23,8 @@ public:
 	};
 	typedef std::list<ItemDef>  ItemDefList;
 public:
-	KPlayerTmpBag();
-	~KPlayerTmpBag();
+	KPlayerTmpBag(){};
+	~KPlayerTmpBag(){};
 
 	void Add(int tp,int id,int count);
 	void Reset();

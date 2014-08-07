@@ -24,6 +24,14 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 	return true;
 }
 
+int KPlayerCardDepot::CreateHero(int heroId)
+{
+	KHeroDef hero;
+	hero.rndGenerate(heroId);
+	KPlayerRecordAssist::addHero(m_record,&hero);
+	return hero._id;
+}
+
 bool KPlayerCardDepot::FillHeroDef(int id,KHeroDef& hero)
 {
 	KHeroDef* pCurHero = (KHeroDef*)m_record->heroData.binData;
