@@ -45,7 +45,7 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		UIImageView* slotView = (UIImageView*)m_layer->getWidgetByName(slotName);
 		if(!slotView) continue;
 
-		m_GenCard[i].init(0,NULL,KGameStaticMgr::getSingleton().GetCard(pGen->cardID[i]));
+		m_GenCard[i].init(0,NULL,pGen->cardID[i]);
 		KCardActor* actor = KCardActor::create(&m_GenCard[i],true);
 		actor->GetUI()->setPosition(slotView->getWorldPosition());
 		actor->GetUI()->setVisible(false);

@@ -189,6 +189,7 @@ void KGameResultPanel::updatePanel()
 		if(ShowSelectGift(pQuest)) return;
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
 	}
+	
 
 	sprintf(buf,"+%d",m_result._money);
 	pMoneyTxt->setText(buf);
@@ -215,7 +216,37 @@ void KGameResultPanel::updatePanel()
 	}else{
 		pExpVal->setVisible(false);
 	}
-	ShowGuyLevAndMoney();
+	ShowObtainGift();
+	ShowGuyLevAndExp();
+}
+
+void KGameResultPanel::ShowObtainGift()
+{
+	KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
+	if(pBag->m_itemList.empty()) return;
+	KPlayerTmpBag::ItemDefList::iterator it = pBag->m_itemList.begin();
+	int index = 0;
+	for(it;it!=pBag->m_itemList.end();++it){
+		UIWidget* widget = KUIAssist::_createBagItemWidget(*it);
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",index++);
+		widget->setPosition(pSlot->getPosition());
+		widget->setVisible(true);
+		//pSlot->addChild(widget);
+		m_Panel->addChild(widget);
+	}
+	
+	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
+	pMoneyVal->setVisible(false);
+	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
+	pExpVal->setVisible(false);
+
+
+	UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
+	pMoneyIcon->setVisible(false);
+
+	UIWidget* pExpIcon = UIHelper::seekWidgetByName(m_Panel,"exp_icon");
+	pExpIcon->setVisible(false);
+
 }
 
 bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
@@ -253,7 +284,7 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 	return true;
 }
 
-void KGameResultPanel::ShowGuyLevAndMoney()
+void KGameResultPanel::ShowGuyLevAndExp()
 {
 	KPlayer* pPlayer = KMainPlayer::RealPlayer();
 	int oldExp = pPlayer->m_playerRecord.GetExp()-m_result._exp;
@@ -265,7 +296,7 @@ void KGameResultPanel::ShowGuyLevAndMoney()
 	UILabel* pLevWidget = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"Lev_txt");
 	pLevWidget->setText(sz);
 	UILoadingBar* pBar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"exp_bar");
-	if(m_result._exp>0.0f) m_expBar.init(pBar,rate1,rate2,1.6,0);
+	if(m_result._exp>0.0f) m_expBar.init(pBar,rate1,rate2,1.6f,0.0f);
 }
 
 void KGameResultPanel::update(float dt)

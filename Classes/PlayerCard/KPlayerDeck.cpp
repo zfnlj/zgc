@@ -80,7 +80,7 @@ int KHeroDef::rndGenStrong()
 }
 
 
-int KHeroDef::GetAtkVal()
+int KHeroDef::GetAtkVal() const
 {
 	float val = 0.0f;
 

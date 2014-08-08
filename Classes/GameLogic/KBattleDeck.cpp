@@ -81,8 +81,7 @@ void KBattleDeck::createDeck(int heroId,KIntegerList& cardLst)
 	Clear();
 
 	KCardInst* pHero = KCardInst::create();
-	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(heroId);
-	pHero->init(g_inc++,m_Owner,pST);
+	pHero->init(g_inc++,m_Owner,heroId);
 	pHero->m_attr.setSlot(KCardInst::enum_slot_hero);
 	AddCard(&m_HeroCardSet,pHero);
 
@@ -105,11 +104,9 @@ bool KBattleDeck::createTestDeck(void)
 
 KCardInst* KBattleDeck::CreateCard(int id,KCardInst::CardSlot slot)
 {
-	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(id);
-	CCAssert(pST , "testInit--Not find the card!");
 	KCardInst* pCard = KCardInst::create();
 
-	pCard->init(g_inc++,m_Owner,pST);
+	pCard->init(g_inc++,m_Owner,id);
 	pCard->m_attr.setSlot(slot);
 	KCardInstList* list = QueryCardSet(slot);
 	AddCard(list,pCard);

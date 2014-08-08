@@ -102,11 +102,12 @@ namespace KWorldObjAbout
 		KPlayerQuestManager m_questManager;
 		KQuestHolderBase m_questOperation;
 		KPlayerCardDepot m_cardDepot;
-
-		KPlayerTmpBag m_resultBag;
+		KPlayerTmpBag* GetResultBag(){ return &m_resultBag;}
+		
 private:
 		// ²¿Âäid
 		UINT64 m_tribeID;
+		KPlayerTmpBag m_resultBag;
 	public:
 		UINT64 GetTribeID() const { return m_tribeID; }
 		void SetTribeID(UINT64 val) { m_tribeID = val; }

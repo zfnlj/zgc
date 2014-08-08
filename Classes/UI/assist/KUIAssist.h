@@ -5,6 +5,7 @@
 #include "UILayer.h"
 #include "../../GameLogic/KCardInst.h"
 #include "../../PlayerCard/KPlayerDeck.h"
+#include "../../Item/KPlayerTmpBag.h"
 
 #define  ADVICE_TURN_END 3
 #define  ADVICE_ENTER_OR_CAST 4
@@ -86,6 +87,7 @@ public:
 	static KActor& _activeSceneActor();
 	static void _hideBufIcon(UIWidget* panel);
 	static void _popNotifyMsg(int dlgId);
+	static UIWidget* _createBagItemWidget(KPlayerTmpBag::ItemDef item);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 	static KGameRecordPanel& _recordPanel();

@@ -28,6 +28,7 @@ public:
 	void DoClickContinue(CCObject* sender);
 	void updatePanel();
 	void ShowPanel();
+	void ShowObtainGift();
 
 	void onGameEnd(unsigned long long Param1);
 	void onQuestPreOver(KQuestNew* pQuest);
@@ -37,7 +38,7 @@ private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
 	void DoClickSlot(CCObject* sender);
-	void ShowGuyLevAndMoney();
+	void ShowGuyLevAndExp();
 	CCPoint m_pt;
 	strGameResult m_result;
 	result_type m_resultType;

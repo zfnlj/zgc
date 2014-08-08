@@ -15,6 +15,9 @@
 #include "KPopupLayer.h"
 #include "../../common/KUIMsgDef.h"
 #include "../KShopScene.h"
+#include "../WorldObject/KMainPlayer.h"
+#include "../WorldObject/KPlayer.h"
+#include "../../GameLogic/assist/KSkillAssist.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -449,7 +452,16 @@ UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* card
 {
 	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
 	if(!pST) return NULL;
-	UIWidget* widget = _createCardLayout(pST,bBig,card);
+	UIWidget* widget = NULL; 
+	if(card){
+		widget = _createCardLayout(pST,bBig,card);
+	}else{
+		KCardInst tmpCard;
+		tmpCard.init(0,NULL,hero._cardId);
+		tmpCard.CurHpSet(pST->GetHp()+hero.GetStrong());
+		tmpCard.SetHeroRank(KSkillAssist::_calcHeroRank(hero.GetLucky(),hero.GetStrong()),hero.GetAtkVal());
+		widget = _createCardLayout(pST,bBig,&tmpCard);
+	}
 	_showHeroSkill(widget,hero);
 	UILabel* labelDesc = (UILabel*)widget->getChildByName("detail");
 	labelDesc->setVisible(false);
@@ -955,4 +967,22 @@ KGameRecordPanel& KUIAssist::_recordPanel()
 void KUIAssist::_popNotifyMsg(int dlgId)
 {
 	KPopupLayer::DoModal(UI_NOTIFY_STR,dlgId,KPopupLayer::DT_Ok);
+}
+
+UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
+{
+
+	UIWidget* widget = NULL;
+	switch(item._type){
+	case KPlayerTmpBag::item_hero_card:
+		{
+			const KHeroDef* heroDef = KMainPlayer::RealPlayer()->m_cardDepot.FindHero(item._id);
+			widget = KUIAssist::_createHero(*heroDef,true);
+		}
+		break;
+	default:
+		break;
+	}
+	return widget;
+	//UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* card)
 }

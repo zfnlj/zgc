@@ -24,12 +24,12 @@ struct KHeroDef{
 		memset(this,0,sizeof(KHeroDef));
 	}
 	int GetRace();
-	int GetLucky(){ return _lucky;}
-	int GetStrong(){return _strong;}
+	int GetLucky() const { return _lucky;}
+	int GetStrong() const {return _strong;}
 	int rndGenStrong();
 	int rndGenLucky();
 	void Evolute();
-	int GetAtkVal();
+	int GetAtkVal() const;
 	void init(KDeckDefStatic*);
 };
 

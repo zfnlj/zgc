@@ -141,8 +141,8 @@ void KNetMsgFacade::syncAvailQuests(const void* pData, int len)
 
 void KNetMsgFacade::onQuestFinished(int qId)
 {
+	KMainPlayer::RealPlayer()->GetResultBag()->Reset();
 	KMainPlayer::RealPlayer()->GetQuestHolder().SubmitQuest(qId,0);
-
 	/*KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
 	playerQuestManager.SetQuestHistory(qId,1,1);*/
 	//GameRoot::getSingleton().getMainMenuScene()->onQuestFinished(qId);

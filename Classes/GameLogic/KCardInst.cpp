@@ -136,8 +136,9 @@ void KCardInst::Clear()
 #endif
 }
 
-void KCardInst::init(int realId,KBattleGuy* owner,KCardStatic* st)
+void KCardInst::init(int realId,KBattleGuy* owner,int cardId)
 {
+	KCardStatic* st = KGameStaticMgr::getSingleton().GetCard(cardId);
 	init();
 	m_Owner = owner;
 	m_pST = st;
