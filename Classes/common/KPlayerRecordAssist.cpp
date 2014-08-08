@@ -137,7 +137,7 @@ bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	return true;
 }
 
-int  getDailyAwardNum(tb_playerquest_record* record)
+int  RemainDailyQuestNum(tb_playerquest_record* record)
 {
 	void* buf;
 	time_t curTime = _GetSystemTimeVal();

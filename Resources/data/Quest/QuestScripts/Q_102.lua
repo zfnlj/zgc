@@ -21,7 +21,11 @@ QName = function (quest , player)
 end,  
 
 UseGift = function(quest,player)
-	return "5010"; 
+	if quest:RemainDailyQuestNum()>0 then
+			return "5010"; 
+	else
+			return "";
+	end
 end, 
 
 GiftDesc = function (quest , player)

@@ -233,6 +233,7 @@ public:
 	EvtRegArray m_evtArray;
 	int GetAwardMoney();
 	int GetAwardExp();
+	int RemainDailyQuestNum();
 public:// timer
 	KQuestTimer* m_pQuestTimer;
 
@@ -274,6 +275,7 @@ public:
 		DefMemberFunc(CreateAchieve);
 		DefMemberFunc(CreateTimer);
 		DefMemberFunc(GetCurTimer);
+		DefMemberFunc(RemainDailyQuestNum);
 	EndDef
 };
 

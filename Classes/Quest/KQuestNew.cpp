@@ -1391,7 +1391,7 @@ void KQuestNew::OnFinish()
 int KQuestNew::GetAwardMoney()
 {
 	if(m_type == enum_daily_quest &&
-		KPlayerRecordAssist::getDailyAwardNum(&m_pPlayer->m_questRecord)==0){
+		KPlayerRecordAssist::RemainDailyQuestNum(&m_pPlayer->m_questRecord)==0){
 		return m_money*0.2;
 	}else{
 		return m_money;
@@ -1400,7 +1400,7 @@ int KQuestNew::GetAwardMoney()
 int KQuestNew::GetAwardExp()
 {
 	if(m_type == enum_daily_quest &&
-		KPlayerRecordAssist::getDailyAwardNum(&m_pPlayer->m_questRecord)==0){
+		KPlayerRecordAssist::RemainDailyQuestNum(&m_pPlayer->m_questRecord)==0){
 		return m_exp*0.2;
 	}else{
 		return m_exp;
@@ -1436,4 +1436,8 @@ void KQuestNew::OnGift()
 	}
 
 	// 任务成就的额外奖励
+}
+int KQuestNew::RemainDailyQuestNum()
+{
+	return KPlayerRecordAssist::RemainDailyQuestNum(&m_pPlayer->m_questRecord);
 }
