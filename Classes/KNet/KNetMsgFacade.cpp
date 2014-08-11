@@ -109,7 +109,7 @@ void KNetMsgFacade::onChangeMoney(const void* pData, int len)
 	KMainPlayer::RealPlayer()->m_money.m_money = (const char*)pData;
 	GameRoot::getSingleton().getMainMenuScene()->onUpdateMoney();
 	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
-		KMainPlayer::RealPlayer()->GetPlayerRecord()->updateMask(tb_player_record::_MONEY);
+		KMainPlayer::RealPlayer()->GetPlayerRecord()->updateMask(tb_player_record::_CRI);
 	}
 }
 
