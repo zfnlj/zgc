@@ -439,7 +439,7 @@ void KUIAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 		UILabel* pLabel = (UILabel*)GetIndexWidget(widget,"hero_skill",i);
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(heroDef._skill[i]._skillId);
 		if(heroDef.GetSkillLev(i)>0 && skill){
-			sprintf(sz,"%s:  lev(%d)",skill->GetName(),heroDef.GetSkillLev(i));
+			sprintf(sz,"%s: lev.%d",skill->GetName(),heroDef.GetSkillLev(i));
 			pLabel->setText(sz);
 			pLabel->setVisible(true);
 		}else{
@@ -977,7 +977,7 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 	case KPlayerTmpBag::item_hero_card:
 		{
 			const KHeroDef* heroDef = KMainPlayer::RealPlayer()->m_cardDepot.FindHero(item._id);
-			widget = KUIAssist::_createHero(*heroDef,true);
+			widget = KUIAssist::_createHero(*heroDef,false);
 		}
 		break;
 	default:

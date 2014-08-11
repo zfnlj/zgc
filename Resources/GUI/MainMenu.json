@@ -516,6 +516,52 @@
           "scale9Height": 112,
           "scale9Width": 130
         }
+      },
+      {
+        "classname": "LabelBMFont",
+        "name": null,
+        "children": [],
+        "options": {
+          "__type": "ComGUILabelBMFontSurrogate:#EditorCommon.JsonModel.Component.GUI",
+          "classname": "LabelBMFont",
+          "name": "daily_num_txt",
+          "ZOrder": 2,
+          "actiontag": 32,
+          "anchorPointX": 0.5,
+          "anchorPointY": 0.5,
+          "classType": null,
+          "colorB": 255,
+          "colorG": 255,
+          "colorR": 255,
+          "flipX": false,
+          "flipY": false,
+          "height": 37,
+          "ignoreSize": true,
+          "layoutParameter": null,
+          "opacity": 255,
+          "positionPercentX": 0.390625,
+          "positionPercentY": 0.386553764,
+          "positionType": 0,
+          "rotation": 0,
+          "scaleX": 1,
+          "scaleY": 1,
+          "sizePercentX": 0.229492188,
+          "sizePercentY": 0.0481770821,
+          "sizeType": 0,
+          "tag": 11,
+          "touchAble": false,
+          "useMergedTexture": false,
+          "visible": true,
+          "width": 71,
+          "x": 400,
+          "y": 296,
+          "fileNameData": {
+            "path": "GUI/missing-font.fnt",
+            "plistFile": null,
+            "resourceType": 0
+          },
+          "text": "3/3"
+        }
       }
     ],
     "options": {

@@ -24,6 +24,7 @@
 #include "../StaticTable/StaticData.h"
 #include "StageWaitScene.h"
 #include "platform/IOSFunc_Bridge.h"
+#include "../common/KPlayerRecordAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -195,6 +196,18 @@ void MainMenuScene::UpdateLockStatus()
 	UpdateLockStatus("open_cardgroup","but_cardgroup","lock_cardgroup");
 	UpdateLockStatus("open_shop","but_shop","lock_shop");
 
+	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("daily_num_txt");
+	int openVal = STATIC_DATA_INT("open_adventure");
+	if(openVal){
+		labelName->setVisible(true);
+
+		int dailyQuestNum = KPlayerRecordAssist::RemainDailyQuestNum(&KMainPlayer::RealPlayer()->m_questRecord);
+		char sz[64];
+		sprintf(sz,"%d/3",dailyQuestNum);
+		labelName->setText(sz);
+	}else{
+		labelName->setVisible(false);
+	}
 }
 
 void MainMenuScene::DoClickShopBut(CCObject* sender)
@@ -227,3 +240,5 @@ void MainMenuScene::DoClickFeedback(CCObject* sender)
 {
 
 }
+
+//

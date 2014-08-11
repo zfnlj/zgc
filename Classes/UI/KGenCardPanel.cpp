@@ -82,5 +82,6 @@ void KGenCardPanel::DoClickOK(CCObject* sender)
 		m_Panel->removeChild(actor->GetUI());
 		m_GenCard[i].releaseActor();
 	}
+	CCDirector::sharedDirector()->getScheduler()->unscheduleAllForTarget(this);
 	m_layer->removeWidget(m_Panel);
 }
