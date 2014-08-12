@@ -19,6 +19,13 @@ UIWidget* KJsonDictMgr::CreateCardWidget()
 		UIWidget* pRet = *it;
 		m_cacheCardWidget.erase(it);
 		pRet->setScale(1.0f);
+
+		for(int i=0;i<3;i++){
+			char sz[64]={0};
+			sprintf(sz,"%s_%d","hero_skill",i);
+			UILabel* pLabel = (UILabel*)UIHelper::seekWidgetByName(pRet,sz);
+			if(pLabel) pLabel->setVisible(false);
+		}
 		return pRet;
 	}else{
 		return widgetFromJsonFile("GUI/card_elem.json");

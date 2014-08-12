@@ -132,7 +132,7 @@ void KShopScene::DoClickBuy(CCObject* sender)
 	}else{
 		//TBD
 	}
-	
+	UpdateMoney();
 }
 
 void KShopScene::DoClickUseItem(CCObject* sender)
