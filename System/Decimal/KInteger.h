@@ -8,6 +8,7 @@ copyright:	Aurora Interactive, 2013
 #include "../KType.h"
 #include "../KMacro.h"
 #include <string>
+#include <limits.h>
 
 /**
  * 整数类
