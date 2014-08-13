@@ -101,6 +101,7 @@ void GameRoot::ParseCmd(char* cmdLine)
 {
 	m_autoTest = false;
 	m_bRecMode = false;
+	m_bDebug = false;
 	char* ss[64];
 	int ns = split(cmdLine, " ", ss, 64);
 	for(int i=0;i<ns;i++){
@@ -108,7 +109,10 @@ void GameRoot::ParseCmd(char* cmdLine)
 		if(strcmp(cmd,"-AT")==0){
 			m_autoTest = true;
 		}
-		if(strcmp(cmd,"-REC")==0){
+		else if(strcmp(cmd,"-debug")==0){
+			m_bDebug = true;
+		}
+		else if(strcmp(cmd,"-REC")==0){
 			m_bRecMode = true;
 		}
 	}

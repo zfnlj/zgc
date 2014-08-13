@@ -30,6 +30,7 @@ public :
 	void RunAutoTest();
 	void onGameEnd(unsigned long long Param1);
 	bool m_autoTest;
+	bool m_bDebug;
 	bool m_bRecMode;
 private :
 	void LoadStringDef(const char* filename);

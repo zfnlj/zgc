@@ -146,8 +146,11 @@ int  RemainDailyQuestNum(tb_playerquest_record* record)
 	if(count<0) count=0;
 
 	time_t* dailyTime = (time_t*)buf;
+	struct tm *cur_tm = localtime(&curTime);
 	for(int i=0;i<num;i++,dailyTime++){
-		if( (curTime - *dailyTime)>SECOND_OF_DAY){
+
+		struct tm *old_tm = localtime(dailyTime);
+		if(old_tm->tm_mday!=cur_tm->tm_mday){
 			count++;
 		}
 	}

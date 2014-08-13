@@ -167,7 +167,7 @@ void BattleFieldScene::onTurnEnd()
 
 void BattleFieldScene::RunTest(CCObject* sender)
 {
-	KClientBattleCtrl::getInstance()->ForceWin();
+	if(GameRoot::getSingleton().m_bDebug) KClientBattleCtrl::getInstance()->ForceWin();
 	//m_gameResultPanel.ShowPanel();
 	/*FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	CCLabelBMFont* bmFont = CCLabelBMFont::create("-23","GUI/num_1.fnt");
