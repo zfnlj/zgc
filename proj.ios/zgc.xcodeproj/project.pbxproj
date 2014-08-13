@@ -519,6 +519,8 @@
 		81D6FE5D1869E881000D53A7 /* KPacketToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE4F1869E881000D53A7 /* KPacketToString.cpp */; };
 		81D6FE5E1869E881000D53A7 /* KSocketDefine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE511869E881000D53A7 /* KSocketDefine.cpp */; };
 		81D6FE5F1869E881000D53A7 /* KUserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE531869E881000D53A7 /* KUserData.cpp */; };
+		81DB558D199AFAAC0076CE95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DB558C199AFAAC0076CE95 /* Images.xcassets */; };
+		81DB558F199B37C80076CE95 /* assest in Resources */ = {isa = PBXBuildFile; fileRef = 81FEECDB1996043D00B5E6BE /* assest */; };
 		81E786C4185DBE6A00829E82 /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */; };
 		81E786CC185DC38A00829E82 /* KClientTabfileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E786C6185DC38A00829E82 /* KClientTabfileLoader.cpp */; };
 		81E786CD185DC38A00829E82 /* KStreamWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E786C8185DC38A00829E82 /* KStreamWrapper.cpp */; };
@@ -1900,6 +1902,8 @@
 		81D6FE781869E8AD000D53A7 /* KPacket_Segment_Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacket_Segment_Define.h; path = ../Classes/KNet/PacketGate/KPacket_Segment_Define.h; sourceTree = "<group>"; };
 		81D6FE791869E8AD000D53A7 /* KPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacket.h; path = ../Classes/KNet/PacketGate/KPacket.h; sourceTree = "<group>"; };
 		81D6FE7A1869E8AD000D53A7 /* KPacketGate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate.h; path = ../Classes/KNet/PacketGate/KPacketGate.h; sourceTree = "<group>"; };
+		81DB558C199AFAAC0076CE95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = zgc/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		81DB558E199B37430076CE95 /* zgc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = zgc.entitlements; path = zgc/zgc.entitlements; sourceTree = "<group>"; };
 		81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
 		81E786C6185DC38A00829E82 /* KClientTabfileLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KClientTabfileLoader.cpp; sourceTree = "<group>"; };
 		81E786C7185DC38A00829E82 /* KClientTabfileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KClientTabfileLoader.h; sourceTree = "<group>"; };
@@ -2668,6 +2672,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				81DB558E199B37430076CE95 /* zgc.entitlements */,
 				81FEECDB1996043D00B5E6BE /* assest */,
 				81159DFC19869850009D325F /* platform */,
 				812D9560198397FA004F6DD8 /* UM */,
@@ -3016,6 +3021,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81DB558C199AFAAC0076CE95 /* Images.xcassets */,
 				81E7DCF418E319EA0043CCC7 /* anim */,
 				81E7DCF018E319560043CCC7 /* armature */,
 				814E9E4718D932E4003749B2 /* StringManager */,
@@ -4774,7 +4780,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DB558F199B37C80076CE95 /* assest in Resources */,
 				810C389F185F28DD00F03DFA /* KTPStreamPartitioner.inl in Resources */,
+				81DB558D199AFAAC0076CE95 /* Images.xcassets in Resources */,
 				814E9E4618D932B7003749B2 /* Item in Resources */,
 				810C387D185F28DD00F03DFA /* KRefObject.inl in Resources */,
 				814E9E4818D932E4003749B2 /* StringManager in Resources */,
@@ -5370,8 +5378,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
+				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -5415,8 +5424,8 @@
 				);
 				OTHER_CFLAGS = "-O2";
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -5428,8 +5437,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
+				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5465,8 +5475,8 @@
 					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -5573,7 +5583,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -5586,8 +5596,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
+				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5623,8 +5634,8 @@
 					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -5698,7 +5709,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -5731,7 +5742,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "74EC669B-B57C-4AE4-A08D-FC76E6DC2042";
+				PROVISIONING_PROFILE = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";

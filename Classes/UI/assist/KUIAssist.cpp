@@ -15,8 +15,8 @@
 #include "KPopupLayer.h"
 #include "../../common/KUIMsgDef.h"
 #include "../KShopScene.h"
-#include "../WorldObject/KMainPlayer.h"
-#include "../WorldObject/KPlayer.h"
+#include "../../WorldObject/KMainPlayer.h"
+#include "../../WorldObject/KPlayer.h"
 #include "../../GameLogic/assist/KSkillAssist.h"
 
 #define SHOW_CARD_OFFSET 10
