@@ -4,18 +4,19 @@
 #include "../common/KCommonObj.h"
 
 #define MAX_HERO_SKILL_LEV 3
-
+#define MAX_HERO_LEV_INDEX 3
 class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
 		int _skillId;
+		int _exp;
 	};
 	int GetLev() const ;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
 	int GetSkillLev(int skillIndex) const ;
 	int _cardId;
 	int _id;
-	int _exp;
+	int _lev;
 	int _strong; //дма╕
 	int _lucky;  //пртк
 
@@ -28,6 +29,7 @@ struct KHeroDef{
 	int GetStrong() const {return _strong;}
 	int rndGenStrong();
 	int rndGenLucky();
+	int GetLevUpStoneNum();
 	void Evolute();
 	int GetAtkVal() const;
 	void init(KDeckDefStatic*);

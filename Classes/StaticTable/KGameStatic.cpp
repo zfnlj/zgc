@@ -49,6 +49,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitAttr("data/card/Attr.txt");
 	InitBattleField("data/BattleField.txt");
 	InitRank("data/Rank.txt",m_playerExpMgr);
+	InitRank("data/SkillRank.txt",m_skillExpMgr);
 	InitRank("data/HeroRank.txt",m_heroExpMgr);
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
@@ -453,6 +454,11 @@ float KGameStaticMgr::GetLevRate(int exp)
 int KGameStaticMgr::PlayerExpToLevel(int exp)
 {
 	return m_playerExpMgr.ExpToLevel(exp);
+}
+
+int KGameStaticMgr::SkillExpToLevel(int exp)
+{
+	return m_skillExpMgr.ExpToLevel(exp);
 }
 
 int KGameStaticMgr::HeroExpToLevel(int exp)

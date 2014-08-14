@@ -30,8 +30,6 @@ namespace KPlayerRecordAssist
 	bool addHero(tb_player_record* record,KHeroDef* hero);
 	bool insertCardDeck(tb_player_record* record,KIntegerList& lst);
 	bool setCurDeck(tb_player_record* record,int index);
-	//hero
-	bool updateHeroExp(tb_player_record* record,int id,int exp);
 
 	//money
 	void AddExp(tb_player_record* record,int val,int power);

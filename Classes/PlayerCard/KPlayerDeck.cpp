@@ -4,7 +4,7 @@
 
 int KHeroDef::GetLev() const 
 {
-	return KGameStaticMgr::getSingleton().HeroExpToLevel(_exp);
+	return _lev;
 }
 
 int KHeroDef::GetRace()
@@ -16,24 +16,29 @@ int KHeroDef::GetRace()
 
 int KHeroDef::GetSkillLev(int skillIndex) const
 {
-	int curLev = GetLev()- skillIndex*MAX_HERO_SKILL_LEV;
-	return (curLev >MAX_HERO_SKILL_LEV)? MAX_HERO_SKILL_LEV: curLev;
+	return  KGameStaticMgr::getSingleton().SkillExpToLevel(_skill[skillIndex]._exp/(skillIndex+1));
+}
+
+int KHeroDef::GetLevUpStoneNum()
+{
+	if(_lev==MAX_HERO_LEV_INDEX) return -1;
+	return (2*_lev+1)*10;
 }
 
 void KHeroDef::rndGenerate(int cardId)
 {
 	_cardId = cardId;
 	_id = STATIC_DATA_INC();
-	_exp = 0;
+	_lev = 0;
 
 	_lucky = rndGenLucky();
 	_strong = rndGenStrong();
 	if(_strong<0) _strong = 0;
 	memset(_skill,0,sizeof(_skill));
-	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+	/*for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);
 		_skill[i]._skillId = skill->GetId();
-	}
+	}*/
 }
 
 void KHeroDef::init(KDeckDefStatic* pDef)

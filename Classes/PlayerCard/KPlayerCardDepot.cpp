@@ -163,9 +163,9 @@ int KPlayerCardDepot::ConsumeExp(int val)
 	if(!PickCurHero(heroDef)) return val;
 	int oldHeroLev = heroDef.GetLev();
 	if(oldHeroLev==9) return val; // max lev
-	heroDef._exp += val;
+	//heroDef._exp += val;
 	//int curHeroLev = heroDef.GetLev();
-	KPlayerRecordAssist::updateHeroExp(m_record,heroDef._id,heroDef._exp);
+	//KPlayerRecordAssist::updateHeroExp(m_record,heroDef._id,heroDef._exp);
 	
 	return 0;
 }

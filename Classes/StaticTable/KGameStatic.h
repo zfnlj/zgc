@@ -38,6 +38,7 @@ public:
 	int  PlayerExpToLevel(int exp);
 	float GetLevRate(int exp);
 	int  HeroExpToLevel(int exp);
+	int SkillExpToLevel(int exp);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
@@ -74,6 +75,7 @@ private:
 	KHelpStringMap m_storyStringMap;
 	KRankStaticDataManager m_playerExpMgr;
 	KRankStaticDataManager m_heroExpMgr;
+	KRankStaticDataManager m_skillExpMgr;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
