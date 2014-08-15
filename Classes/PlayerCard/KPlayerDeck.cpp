@@ -16,7 +16,22 @@ int KHeroDef::GetRace()
 
 int KHeroDef::GetSkillLev(int skillIndex) const
 {
-	return  KGameStaticMgr::getSingleton().SkillExpToLevel(_skill[skillIndex]._exp/(skillIndex+1));
+	return  _skill[skillIndex]._lev;
+}
+
+int KHeroDef::GetSkillLevUpMoney(int skillIndex)
+{
+	if(_skill[skillIndex]._lev>=_lev) return -1;
+	return KGameStaticMgr::getSingleton().GetSkillLevUpExp(skillIndex*10+_skill[skillIndex]._lev+1);
+}
+
+int KHeroDef::SkillLevUp(int skillIndex,int money)
+{
+	if(_skill[skillIndex]._lev>=_lev) return money;
+	int needMoney = GetSkillLevUpMoney(skillIndex);
+	if(needMoney>money) return money;
+	_skill[skillIndex]._lev = _skill[skillIndex]._lev +1;
+	return money - needMoney;
 }
 
 int KHeroDef::LevUp(int stoneNum)
@@ -27,7 +42,7 @@ int KHeroDef::LevUp(int stoneNum)
 
 	KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(_lev);
 	_skill[_lev-1]._skillId = skill->GetId();
-	_skill[_lev-1]._exp = 0;
+	_skill[_lev-1]._lev = 0;
 
 	_lucky += rndGenLevLucky()+10;
 	if(_lucky>100) _lucky = 100;
@@ -37,7 +52,7 @@ int KHeroDef::LevUp(int stoneNum)
 int KHeroDef::GetLevUpStoneNum()
 {
 	if(_lev==MAX_HERO_LEV_INDEX) return -1;
-	return (3*_lev+1)*10;
+	return KGameStaticMgr::getSingleton().GetHeroLevUpExp(_lev+1);
 }
 
 void KHeroDef::rndGenerate(int cardId)

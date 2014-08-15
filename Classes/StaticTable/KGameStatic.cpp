@@ -50,13 +50,14 @@ void KGameStaticMgr::LoadStaticData()
 	InitBattleField("data/BattleField.txt");
 	InitRank("data/Rank.txt",m_playerExpMgr);
 	InitRank("data/SkillRank.txt",m_skillExpMgr);
-	InitRank("data/HeroRank.txt",m_heroExpMgr);
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
 	InitHelpString("StringManager/HelpStr.txt");
 	InitTipString("StringManager/TipStr.txt");
 	InitStoryString("StringManager/StoryStr.txt");
 	InitDeckDef("data/DeckDef.txt");
+	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
+	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)
@@ -456,15 +457,6 @@ int KGameStaticMgr::PlayerExpToLevel(int exp)
 	return m_playerExpMgr.ExpToLevel(exp);
 }
 
-int KGameStaticMgr::SkillExpToLevel(int exp)
-{
-	return m_skillExpMgr.ExpToLevel(exp);
-}
-
-int KGameStaticMgr::HeroExpToLevel(int exp)
-{
-	return m_heroExpMgr.ExpToLevel(exp);
-}
 
 void KGameStaticMgr::RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int rank3Rate,
 									  int heroRate,KIntegerList& outLst)
@@ -479,4 +471,48 @@ void KGameStaticMgr::RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int 
 	RndGetHeroCard(heroRate,tmpLst);
 
 	_RndPick(tmpLst,outLst,count);
+}
+
+bool KGameStaticMgr::InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr)
+{
+	std::string pathKey = m_FileName;
+
+	std::string fullPath;
+#ifdef _USE_COCOS2DX
+	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(pathKey.c_str());
+#else
+	fullPath = pathKey;
+#endif
+
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
+	if(!fileReader)	return false;
+	
+	while(true)
+	{
+		int nRet = fileReader->ReadLine();
+		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
+		if(nRet == 0) break;
+		KLevUpStatic* pLevUp = KLevUpStatic::create();
+		pLevUp->Init(fileReader);
+		mgr[pLevUp->GetLev()] = pLevUp;
+	}
+
+	loader.CloseFileReader(fileReader);
+	return true;
+
+}
+
+int KGameStaticMgr::GetSkillLevUpExp(int lev)
+{
+	KLevUpStaticMap::iterator it = m_skillLevUpMgr.find(lev);
+	if(it==m_skillLevUpMgr.end()) return 0;
+	return it->second->GetExp();
+}
+
+int KGameStaticMgr::GetHeroLevUpExp(int lev)
+{
+	KLevUpStaticMap::iterator it = m_heroLevUpMgr.find(lev);
+	if(it==m_heroLevUpMgr.end()) return 0;
+	return it->second->GetExp();
 }

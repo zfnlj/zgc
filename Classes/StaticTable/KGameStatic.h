@@ -14,6 +14,7 @@
 #include "KHelpStringStatic.h"
 #include "KCardStatic.h"
 #include "KRankStaticMgr.h"
+#include "KLevUpStatic.h"
 class KGameStaticMgr : public Singleton<KGameStaticMgr>
 {
 public:
@@ -34,11 +35,10 @@ public:
 	bool InitHeroSkill(const char* m_FileName);
 	bool InitTipString(const char* m_FileName);
 	bool InitStoryString(const char* m_FileName);
+	bool InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr);
 
 	int  PlayerExpToLevel(int exp);
 	float GetLevRate(int exp);
-	int  HeroExpToLevel(int exp);
-	int SkillExpToLevel(int exp);
 	KCardStatic* GetCard(int id);
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
@@ -46,6 +46,8 @@ public:
 	KDeckDefStatic* GetDeckDef(int id);
 	KBattleFieldStatic* GetBattleField(int id);
 	KCardLayoutStatic* GetCardLayout(int idx);
+	int GetSkillLevUpExp(int lev);
+	int GetHeroLevUpExp(int lev);
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 	KHelpStringStatic* GetHelpString(int id);
@@ -74,8 +76,10 @@ private:
 	KHelpStringMap m_tipStringMap;
 	KHelpStringMap m_storyStringMap;
 	KRankStaticDataManager m_playerExpMgr;
-	KRankStaticDataManager m_heroExpMgr;
 	KRankStaticDataManager m_skillExpMgr;
+
+	KLevUpStaticMap m_skillLevUpMgr;
+	KLevUpStaticMap m_heroLevUpMgr;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

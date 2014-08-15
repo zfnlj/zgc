@@ -9,7 +9,7 @@ class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
 		int _skillId;
-		int _exp;
+		int _lev;
 	};
 	int GetLev() const ;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
@@ -29,7 +29,9 @@ struct KHeroDef{
 	int GetStrong() const;
 	int rndGenLevLucky();
 	int GetLevUpStoneNum();
+	int GetSkillLevUpMoney(int skillIndex);
 	int LevUp(int stoneNum);
+	int SkillLevUp(int skillIndex,int money);
 	int GetAtkVal() const;
 	void init(KDeckDefStatic*);
 };

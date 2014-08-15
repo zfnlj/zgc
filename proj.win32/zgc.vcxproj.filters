@@ -444,6 +444,9 @@
     <ClCompile Include="..\Classes\Item\KPlayerTmpBag.cpp">
       <Filter>game\Item</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\StaticTable\KLevUpStatic.cpp">
+      <Filter>staticTable</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -937,6 +940,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Item\KPlayerTmpBag.h">
       <Filter>game\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\StaticTable\KLevUpStatic.h">
+      <Filter>staticTable</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
