@@ -17,8 +17,8 @@ struct KHeroDef{
 	int _cardId;
 	int _id;
 	int _lev;
-	int _strong; //дма╕
 	int _lucky;  //пртк
+	int _strong;
 
 	void rndGenerate(int id);
 	void Clear(){
@@ -26,11 +26,10 @@ struct KHeroDef{
 	}
 	int GetRace();
 	int GetLucky() const { return _lucky;}
-	int GetStrong() const {return _strong;}
-	int rndGenStrong();
-	int rndGenLucky();
+	int GetStrong() const;
+	int rndGenLevLucky();
 	int GetLevUpStoneNum();
-	void Evolute();
+	int LevUp(int stoneNum);
 	int GetAtkVal() const;
 	void init(KDeckDefStatic*);
 };

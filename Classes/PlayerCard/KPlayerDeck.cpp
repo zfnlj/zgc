@@ -19,10 +19,25 @@ int KHeroDef::GetSkillLev(int skillIndex) const
 	return  KGameStaticMgr::getSingleton().SkillExpToLevel(_skill[skillIndex]._exp/(skillIndex+1));
 }
 
+int KHeroDef::LevUp(int stoneNum)
+{
+	int needStone = GetLevUpStoneNum();
+	if(needStone<0|| needStone>stoneNum) return stoneNum;
+	_lev++;
+
+	KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(_lev);
+	_skill[_lev-1]._skillId = skill->GetId();
+	_skill[_lev-1]._exp = 0;
+
+	_lucky += rndGenLevLucky()+10;
+	if(_lucky>100) _lucky = 100;
+	return stoneNum-needStone;
+}
+
 int KHeroDef::GetLevUpStoneNum()
 {
 	if(_lev==MAX_HERO_LEV_INDEX) return -1;
-	return (2*_lev+1)*10;
+	return (3*_lev+1)*10;
 }
 
 void KHeroDef::rndGenerate(int cardId)
@@ -30,10 +45,8 @@ void KHeroDef::rndGenerate(int cardId)
 	_cardId = cardId;
 	_id = STATIC_DATA_INC();
 	_lev = 0;
-
-	_lucky = rndGenLucky();
-	_strong = rndGenStrong();
-	if(_strong<0) _strong = 0;
+	_lucky = 0;
+	_strong = 0;
 	memset(_skill,0,sizeof(_skill));
 	/*for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);
@@ -49,41 +62,15 @@ void KHeroDef::init(KDeckDefStatic* pDef)
 	_cardId = pDef->getHero();
 }
 
-void KHeroDef::Evolute()
-{
-	int newLucky = rndGenLucky();
-	if(newLucky>_lucky){
-		_lucky = newLucky;
-	}
-	int newStrong = rndGenStrong();
-	if(newStrong>_strong){
-		_strong = newStrong;
-	}
-}
-
-int KHeroDef::rndGenLucky()
+int KHeroDef::rndGenLevLucky()
 {
 	int rndVal = 0;
-	int num=0;
-	for(int i=0;i<4;i++){
-		rndVal  += g_rnd.GetRandom(0,56);
+	for(int i=0;i<3;i++){
+		rndVal  += g_rnd.GetRandom(0,10);
 	}
-	if(rndVal>200) rndVal=200;
-	return (rndVal>100)? (rndVal-100):(100-rndVal);
+	if(rndVal >24) rndVal = 24;
+	return rndVal;
 }
-
-int KHeroDef::rndGenStrong()
-{
-	float rndVal = 0;
-	int num=0;
-	for(int i=0;i<5;i++){
-		rndVal += g_rnd.GetRandom(0,23);
-	}
-	if(rndVal>100) rndVal=100;
-	float ret = (rndVal>50)? (rndVal-50):(50-rndVal);
-	return ret/10.0f +0.5f;
-}
-
 
 int KHeroDef::GetAtkVal() const
 {
@@ -102,6 +89,27 @@ int KHeroDef::GetAtkVal() const
 	return (int)(val+0.5f);
 }
 
+int KHeroDef::GetStrong() const 
+{
+	if(_strong>0) return _strong;
+	int ret = 0;
+	switch(_lev){
+	case 1:
+		ret = 2;
+		break;
+	case 2:
+		ret = 5;
+		break;
+	case 3: 
+		ret = 10;
+		break;
+	default:
+		break;
+	}
+	return ret;
+}
+
+
 void KPlayerDeck::CreateOnDeckDef(int id)
 {
 	m_cardList.clear();
@@ -110,3 +118,4 @@ void KPlayerDeck::CreateOnDeckDef(int id)
 	m_heroDef.rndGenerate(deck->getHero());
 	
 }
+
