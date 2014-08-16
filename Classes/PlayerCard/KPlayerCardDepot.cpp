@@ -14,7 +14,7 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 		KPlayerRecordAssist::addStoreCard(m_record,*it,1,bNew);
 	}
 	KHeroDef hero;
-	hero.rndGenerate(deck->getHero());
+	hero.Generate(deck->getHero());
 	KPlayerRecordAssist::addHero(m_record,&hero);
 
 	if(m_record->GetCurDeck()<0) m_record->SetCurDeck(0);
@@ -27,7 +27,7 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 int KPlayerCardDepot::CreateHero(int heroId)
 {
 	KHeroDef hero;
-	hero.rndGenerate(heroId);
+	hero.Generate(heroId);
 	KPlayerRecordAssist::addHero(m_record,&hero);
 	return hero._id;
 }

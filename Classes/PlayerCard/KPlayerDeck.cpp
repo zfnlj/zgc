@@ -55,7 +55,7 @@ int KHeroDef::GetLevUpStoneNum()
 	return KGameStaticMgr::getSingleton().GetHeroLevUpExp(_lev+1);
 }
 
-void KHeroDef::rndGenerate(int cardId)
+void KHeroDef::Generate(int cardId)
 {
 	_cardId = cardId;
 	_id = STATIC_DATA_INC();
@@ -130,7 +130,7 @@ void KPlayerDeck::CreateOnDeckDef(int id)
 	m_cardList.clear();
 	KDeckDefStatic* deck = KGameStaticMgr::getSingleton().GetDeckDef(id);
 	deck->GenCardList(m_cardList);
-	m_heroDef.rndGenerate(deck->getHero());
+	m_heroDef.Generate(deck->getHero());
 	
 }
 

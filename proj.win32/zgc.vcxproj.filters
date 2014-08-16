@@ -447,6 +447,9 @@
     <ClCompile Include="..\Classes\StaticTable\KLevUpStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\KHeroLevUpPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -943,6 +946,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KLevUpStatic.h">
       <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KHeroLevUpPanel.h">
+      <Filter>UI\Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

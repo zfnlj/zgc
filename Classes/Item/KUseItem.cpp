@@ -284,7 +284,7 @@ void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int ran
 		KCardStatic* pCardStatic = KGameStaticMgr::getSingleton().GetCard(*it);
 		if(pCardStatic->GetType()==KCardStatic::card_hero){
 			KHeroDef hero;
-			hero.rndGenerate(*it);
+			hero.Generate(*it);
 			KPlayerRecordAssist::addHero(pPlayer->GetPlayerRecord(),&hero);
 		}else{
 			KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),*it,1,bNew);

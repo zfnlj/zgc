@@ -50,20 +50,6 @@ void GameRoot::init()
 	//time_t t2 = _GetSystemTimeVal();
 	//_GetTimeInterval(t1,t2,interval);
 	//int kk=0;
-	int maxVal = 0;
-	int k=100;
-	for(int i=0;i<k;i++){
-		KHeroDef hero;
-		hero.rndGenerate(10001);
-		for(int i=0;i<3;i++){
-			hero.LevUp(1000);
-		}
-		if(maxVal <hero.GetLucky())
-			maxVal = hero.GetLucky();
-	}
-	
-	int kk=0;
-
 }
 
 void GameRoot::InitializeResource()

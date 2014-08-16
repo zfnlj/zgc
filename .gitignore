@@ -202,3 +202,11 @@
 /tool/zgc_ui/select_card/Backup
 /tool/zgc_ui/select_card/Export
 /tool/zgc_ui/select_card/Resources/battle_elem_PList.Dir
+
+/tool/zgc_ui/HeroLevUp/Backup
+
+/tool/zgc_ui/HeroLevUp/Export
+
+/tool/zgc_ui/HeroLevUp/Resources/ui_elem_PList.Dir
+
+/tool/zgc_ui/HeroLevUp/Resources/heroLevUp_PList.Dir

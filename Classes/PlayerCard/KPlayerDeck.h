@@ -20,7 +20,7 @@ struct KHeroDef{
 	int _lucky;  //пртк
 	int _strong;
 
-	void rndGenerate(int id);
+	void Generate(int id);
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));
 	}
