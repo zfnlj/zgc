@@ -124,10 +124,6 @@ cocos2d::extension::UILayer* StageWaitScene::GetUILayer()
 	if(!m_ui){
 		m_ui =cocos2d::extension::UILayer::create();
 		m_ui->addWidget(KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/stage_wait.json"));
-		//m_ui->addWidget(GUIReader::shareReader()->widgetFromJsonFile("GUI/MainMenu.json"));
-		
-		
-
 	}
 	return m_ui;
 }

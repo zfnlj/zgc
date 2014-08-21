@@ -18,6 +18,7 @@
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
 #include "platform/KIOSiAP_Bridge.h"
+#include "assist/KJsonDictMgr.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -65,7 +66,7 @@ bool KShopScene::init()
     // add "BattleFieldScene" splash screen"
 
 	if(!m_ui){
-		m_ui = GUIReader::shareReader()->widgetFromJsonFile("GUI/shop.json");
+		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/shop.json"); 
 		CC_SAFE_RETAIN(m_ui);
 		addWidget(m_ui);
 

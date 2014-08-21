@@ -12,6 +12,7 @@
 #include "assist/KQuestFacade.h"
 #include "../Item/KItemCreate.h"
 #include "../WorldObject/KPlayer.h"
+#include "assist/KJsonDictMgr.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -28,7 +29,7 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 {
 	UIWidget* pBut;
 	if(!m_Panel){
-		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/HeroLevUp.json");
+		m_Panel = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/HeroLevUp.json");
 		CC_SAFE_RETAIN(m_Panel);
 		pBut = UIHelper::seekWidgetByName(m_Panel, "close_but");
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickClose));

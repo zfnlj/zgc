@@ -10,7 +10,7 @@
 #include "../KNet/KSocketFacade.h"
 #include "KSceneLayerBase.h"
 #include "BattleFieldScene.h"
-
+#include "assist/KJsonDictMgr.h"
 using namespace cocos2d::extension;
 
 KSelectBeginCardPanel::KSelectBeginCardPanel():m_ui(NULL)
@@ -23,7 +23,7 @@ KSelectBeginCardPanel::~KSelectBeginCardPanel()
 }
 void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 {
-	m_ui = GUIReader::shareReader()->widgetFromJsonFile("GUI/select_card.json");
+	m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/select_card.json"); 
 	CC_SAFE_RETAIN(m_ui);
 
 	m_layer = layer;

@@ -12,6 +12,7 @@
 #include "assist/KQuestFacade.h"
 #include "../Item/KItemCreate.h"
 #include "../WorldObject/KPlayer.h"
+#include "assist/KJsonDictMgr.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -28,7 +29,7 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 {
 	UIWidget* pBut;
 	if(!m_Panel){
-		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/GameResult.json");
+		m_Panel =KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/GameResult.json");
 		CC_SAFE_RETAIN(m_Panel);
 		pBut = UIHelper::seekWidgetByName(m_Panel, "bk");
 		pBut->addPushDownEvent(this, coco_pushselector(KGameResultPanel::DoClickClose));

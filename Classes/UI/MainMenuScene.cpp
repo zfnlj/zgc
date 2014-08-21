@@ -131,7 +131,6 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 	if(!m_ui){
 		m_ui =cocos2d::extension::UILayer::create();
 		m_ui->addWidget(KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/MainMenu.json"));
-		//m_ui->addWidget(GUIReader::shareReader()->widgetFromJsonFile("GUI/MainMenu.json"));
 
 		UIWidget* pBut = m_ui->getWidgetByName("but_shop");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickShopBut));

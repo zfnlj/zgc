@@ -87,9 +87,8 @@ cocos2d::extension::UIWidget* CardGroupScene::GetPanel()
 {
 	if(!m_ui){
 		m_ui =  KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/cardGroup.json");
-		//m_ui->setAnchorPoint(CCPoint(0.5f,0.5f));
-		//m_ui->addWidget(GUIReader::shareReader()->widgetFromJsonFile("GUI/MainMenu.json"));
-
+		
+		
 		m_radioMain.AddGroupBut("check_main",3,m_ui,this,coco_pushselector(CardGroupScene::onClickMainType),1);
 
 		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui,"back_but");
