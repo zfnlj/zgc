@@ -60,7 +60,7 @@ bool CardGroupScene::init()
 	}
 
 	addWidget(GetPanel());
-
+	m_heroLevUpPanel.init(this);
 	m_pMiniHeroWidget = NULL;
 	memset(m_slotElem,0,sizeof(m_slotElem));
 	m_depot = KMainPlayer::RealPlayer()->GetCardDepot();
@@ -119,6 +119,10 @@ cocos2d::extension::UIWidget* CardGroupScene::GetPanel()
 			pBut->setTag(i);
 			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickSlot));
 
+			sprintf(sz,"Levup_but_%d",i);
+			pBut = UIHelper::seekWidgetByName(m_ui,sz);
+			pBut->setTag(i);
+			pBut->addPushDownEvent(this,coco_pushselector(CardGroupScene::onClickHeroLevUp));
 
 			sprintf(sz,"slot_add_%d",i);
 			pBut = UIHelper::seekWidgetByName(m_ui,sz);
@@ -355,6 +359,7 @@ void CardGroupScene::UpdateUI()
 		ShowCardBrowse();
 	}
 	UpdateAddSubBut();
+	UpdateHeroLevUpBut();
 	UpdateSelectHeroBut();
 	UpdateMiniCardNumInfo();
 	UpdateSmartCardGroupBut();
@@ -523,6 +528,14 @@ void CardGroupScene::onClickCard(CCObject* sender)
 	}
 }
 
+void CardGroupScene::onClickHeroLevUp(CCObject* sender)
+{
+	UIWidget* widget = (UIWidget*)sender;
+	const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[widget->getTag()]._id);
+	
+	m_heroLevUpPanel.ShowPanel(pHeroDef);
+}
+
 void CardGroupScene::onClickSlot(CCObject* sender)
 {
 	KGameRecordMgr::getSingleton().onClickWidget(sender);
@@ -608,6 +621,20 @@ void CardGroupScene::onClickSlotSub(CCObject* sender)
 	onMiniCardChanged();
 }
 
+void CardGroupScene::UpdateHeroLevUpBut()
+{
+	for(int i=0;i<PAGE_CARD_NUM;i++){
+		 UIWidget* pBut = KUIAssist::GetIndexWidget(m_ui,"Levup_but",i);
+
+		 if( (m_mainType==type_card && 
+			 m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero)&& 
+			 m_slotElem[i]._widget){
+			 KUIAssist::ShowButton(pBut,true);
+		 }else{
+			 KUIAssist::ShowButton(pBut,false);
+		 }
+	}
+}
 
 void CardGroupScene::UpdateAddSubBut()
 {

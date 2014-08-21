@@ -10,7 +10,10 @@
   <JsonList>
     <string>HeroLevUp_1.json</string>
   </JsonList>
-  <imageFileList />
+  <imageFileList>
+    <string>ui_elem.plist</string>
+    <string>heroLevUp.plist</string>
+  </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>HeroLevUp_1.json</CurrentUIJson>
   <CanvasSize>

@@ -16,7 +16,7 @@
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
-KHeroLevUpPanel::KHeroLevUpPanel():m_Panel(NULL)
+KHeroLevUpPanel::KHeroLevUpPanel():m_Panel(NULL),m_pHeroDef(NULL)
 {
 }
 
@@ -30,10 +30,7 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 	if(!m_Panel){
 		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/HeroLevUp.json");
 		CC_SAFE_RETAIN(m_Panel);
-		pBut = UIHelper::seekWidgetByName(m_Panel, "bk");
-		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickClose));
-
-		pBut = UIHelper::seekWidgetByName(m_Panel, "but_exit");
+		pBut = UIHelper::seekWidgetByName(m_Panel, "close_but");
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickClose));
 
 	}
@@ -43,11 +40,17 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 	updatePanel();
 }
 
+void KHeroLevUpPanel::ShowPanel(const KHeroDef* hero)
+{
+	m_pHeroDef = hero;
+	m_layer->addWidget(m_Panel);
+}
+
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)
 {
 	m_Panel->removeFromParent();
 	
-	KUIAssist::_switch2MainMenu();
+	//KUIAssist::_switch2MainMenu();
 
 	/*   CCPoint pt(m_pt.x,m_pt.y+600);
 	switch(m_panelType){

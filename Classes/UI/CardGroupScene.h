@@ -6,7 +6,7 @@
 #include "assist/KCardGroupAssist.h"
 #include "cocos-ext.h"
 #include "assist/KRadioWidget.h"
-
+#include "KHeroLevUpPanel.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -64,6 +64,7 @@ protected:
 	void onClickSaveDeck(CCObject* sender);
 	void onClickClearDeck(CCObject* sender);
 	void onClickSmartCardGroup(CCObject* sender);
+	void onClickHeroLevUp(CCObject* sender);
 
 	void UpdateUI();
 	void ShowCardGroup();
@@ -72,6 +73,7 @@ protected:
 	void HideNewGroupIcon();
 	void UpdateAddSubBut();
 	void UpdateSelectHeroBut();
+	void UpdateHeroLevUpBut();
 	void UpdatePageInfo(int moreNum);
 	void onMiniCardChanged();
 	void SetMiniHeroWidget(UIWidget* newHero);
@@ -95,6 +97,7 @@ protected:
 	UIWidget* m_pSaveWidget;
 	UIWidget* m_pClearWidget;
 	UIWidget* m_pSmartCardGroup;
+	KHeroLevUpPanel m_heroLevUpPanel;
 	int m_curCardGroup;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];
