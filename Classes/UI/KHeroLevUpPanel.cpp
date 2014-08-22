@@ -13,11 +13,12 @@
 #include "../Item/KItemCreate.h"
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
+#include "../common/KPlayerBagAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
-KHeroLevUpPanel::KHeroLevUpPanel():m_Panel(NULL),m_pHeroDef(NULL)
+KHeroLevUpPanel::KHeroLevUpPanel():m_Panel(NULL),m_pHeroDef(NULL),m_pHeroWidget(NULL)
 {
 }
 
@@ -36,6 +37,8 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 
 	}
 	m_layer = layer;
+	m_pHeroWidget = NULL;
+	m_pHeroDef = NULL;
 	//m_layer->addWidget(m_Panel);
 	m_Panel->setZOrder(999);
 	updatePanel();
@@ -45,10 +48,53 @@ void KHeroLevUpPanel::ShowPanel(const KHeroDef* hero)
 {
 	m_pHeroDef = hero;
 	m_layer->addWidget(m_Panel);
+
+	m_pHeroWidget = KUIAssist::_createHero(*hero,true);
+	UIWidget* slot = UIHelper::seekWidgetByName(m_Panel,"hero_slot");
+	m_pHeroWidget->setPosition(slot->getPosition());
+	m_pHeroWidget->setZOrder(100);
+	m_Panel->addChild(m_pHeroWidget);
+
+	for(int i=0;i<MAX_HERO_LEV_INDEX;i++){
+		SetLevUpWidgetsVisible(i,i<m_pHeroDef->GetLev());
+	}
+	UpdateHeroLevUpInfo();
+
+}
+
+void KHeroLevUpPanel::UpdateHeroLevUpInfo()
+{
+	UILabel* levUpText = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"hero_levup_txt");
+	char sz[64];
+	int curChipNum = KPlayerBagAssist::GetPlayerItemNum(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10);
+	int needChipNum = m_pHeroDef->GetLevUpStoneNum();
+	sprintf(sz,"%d/%d",curChipNum,needChipNum);
+	levUpText->setText(sz);
+	UILoadingBar* bar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"levUp_bar");
+	bar->setPercent((float)curChipNum*100.0f/(float)needChipNum);
+}
+
+void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
+{
+	UIWidget* skilTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_txt",index);
+	skilTxt->setVisible(bVisible);
+
+	UIWidget* skilLevTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_lev_txt",index);
+	skilLevTxt->setVisible(bVisible);
+
+	UIWidget* skilLevUpBut = KUIAssist::GetIndexWidget(m_Panel,"skill_levup_but",index);
+	KUIAssist::ShowButton(skilLevUpBut,bVisible);
+
+	UIWidget* goldIcon = KUIAssist::GetIndexWidget(m_Panel,"gold_icon",index);
+	goldIcon->setVisible(bVisible);
+
+	UIWidget* moneyTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_money_txt",index);
+	moneyTxt->setVisible(bVisible);
 }
 
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)
 {
+	m_pHeroWidget->removeFromParent();
 	m_Panel->removeFromParent();
 	
 	//KUIAssist::_switch2MainMenu();

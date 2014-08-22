@@ -24,11 +24,13 @@ struct KHeroDef{
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));
 	}
+	int GetCardId()const { return _cardId;}
+	int GetLev(){ return _lev;}
 	int GetRace();
 	int GetLucky() const { return _lucky;}
 	int GetStrong() const;
 	int rndGenLevLucky();
-	int GetLevUpStoneNum();
+	int GetLevUpStoneNum()const;
 	int GetSkillLevUpMoney(int skillIndex);
 	int LevUp(int stoneNum);
 	int SkillLevUp(int skillIndex,int money);

@@ -49,7 +49,7 @@ int KHeroDef::LevUp(int stoneNum)
 	return stoneNum-needStone;
 }
 
-int KHeroDef::GetLevUpStoneNum()
+int KHeroDef::GetLevUpStoneNum() const
 {
 	if(_lev==MAX_HERO_LEV_INDEX) return -1;
 	return KGameStaticMgr::getSingleton().GetHeroLevUpExp(_lev+1);
