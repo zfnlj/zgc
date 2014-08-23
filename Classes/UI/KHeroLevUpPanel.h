@@ -28,6 +28,7 @@ private:
 	const KHeroDef* m_pHeroDef;
 	UIWidget*	m_pHeroWidget;
 
+	void DoClickHeroLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();
 };

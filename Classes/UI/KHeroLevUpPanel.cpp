@@ -15,6 +15,9 @@
 #include "assist/KJsonDictMgr.h"
 #include "../common/KPlayerBagAssist.h"
 #include "assist/KUICardAssist.h"
+#include "assist/KPopupLayer.h"
+#include "../common/KUIMsgDef.h"
+
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
@@ -34,6 +37,10 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 		CC_SAFE_RETAIN(m_Panel);
 		pBut = UIHelper::seekWidgetByName(m_Panel, "close_but");
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickClose));
+
+		pBut = UIHelper::seekWidgetByName(m_Panel, "Lev_up_but");
+		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickHeroLevUp));
+		
 
 	}
 	m_layer = layer;
@@ -90,6 +97,19 @@ void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
 
 	UIWidget* moneyTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_money_txt",index);
 	moneyTxt->setVisible(bVisible);
+}
+
+void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
+{
+	int curChipNum = KPlayerBagAssist::GetPlayerItemNum(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10);
+	int needChipNum = m_pHeroDef->GetLevUpStoneNum();
+
+	if(curChipNum<needChipNum){
+		KPopupLayer::DoModal(UI_WARNING_STR,CHIP_NO_ENOUGH,KPopupLayer::DT_Ok);
+		return;
+	}
+	if(m_pHeroDef->GetLev()==4) return;
+
 }
 
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)

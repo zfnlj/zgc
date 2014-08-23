@@ -13,4 +13,5 @@
 #define OPEN_CARDGROUP 14
 #define OPEN_SHOP 15
 #define OPEN_ADVENTURE 16
+#define CHIP_NO_ENOUGH 17
 #endif // __HELLOWORLD_SCENE_H__	
