@@ -244,6 +244,7 @@
     <ClCompile Include="..\Classes\UI\assist\KQuestFacade.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KRadioWidget.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KUIAssist.cpp" />
+    <ClCompile Include="..\Classes\UI\assist\KUICardAssist.cpp" />
     <ClCompile Include="..\Classes\UI\assist\ProgressBar.cpp" />
     <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp" />
     <ClCompile Include="..\Classes\UI\CardGroupScene.cpp" />
@@ -415,6 +416,7 @@
     <ClInclude Include="..\Classes\UI\assist\KQuestFacade.h" />
     <ClInclude Include="..\Classes\UI\assist\KRadioWidget.h" />
     <ClInclude Include="..\Classes\UI\assist\KUIAssist.h" />
+    <ClInclude Include="..\Classes\UI\assist\KUICardAssist.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressBar.h" />
     <ClInclude Include="..\Classes\UI\assist\ProgressProtocol.h" />
     <ClInclude Include="..\Classes\UI\BattleFieldScene.h" />

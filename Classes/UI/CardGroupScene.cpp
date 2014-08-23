@@ -25,6 +25,7 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"
+#include "assist/KUICardAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -229,9 +230,9 @@ void CardGroupScene::ShowMiniHero()
 	UIWidget* slot = UIHelper::seekWidgetByName(m_ui,"mini_card_pos");
 	CCPoint pt = slot->getPosition();
 	UIImageView* raceSlot = (UIImageView*)UIHelper::seekWidgetByName(m_ui,"race_slot");
-	UIWidget* pWidgetHero = KUIAssist::_createMiniHero(m_miniHero);
+	UIWidget* pWidgetHero = KUICardAssist::_createMiniHero(m_miniHero);
 
-	KUIAssist::SetRaceIcon(raceSlot, KCardGroupAssist::GetCurDeckRace(m_miniHero,m_miniCardList));
+	KUICardAssist::SetRaceIcon(raceSlot, KCardGroupAssist::GetCurDeckRace(m_miniHero,m_miniCardList));
 	if(pWidgetHero){
 		pWidgetHero->setPosition(pt);
 		pWidgetHero->setTouchEnable(true);
@@ -250,7 +251,7 @@ void CardGroupScene::ShowMiniCardList()
 	for(KMiniCardList::iterator it=m_miniCardList.begin();it!=m_miniCardList.end();++it)
 	{
 		KMiniCardWidget& elem = *it;
-		UIWidget* pWidget = KUIAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
+		UIWidget* pWidget = KUICardAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
 		if(!pWidget) continue;
 
 		elem._pWidget = pWidget;
@@ -314,7 +315,7 @@ void CardGroupScene::FreshMiniCardList()
 	{
 		KMiniCardWidget& elem = *it;
 		if(!elem._pWidget){
-			elem._pWidget = KUIAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
+			elem._pWidget = KUICardAssist::_createMiniCard(elem.GetCardID(),elem.GetCount());
 			elem._pWidget->setTag(elem.GetCardID());
 			if(!elem._pWidget) continue;
 			this->addWidget(elem._pWidget);
@@ -420,7 +421,7 @@ void CardGroupScene::ShowAllHero()
 	int curPos = 0;
 	for(int i=0;i<heroNum;i++){
 		const KHeroDef*  pHeroDef = m_depot->FindHeroOnIndex(i);
-		UIWidget* widget = KUIAssist::_createHero(*pHeroDef,true);
+		UIWidget* widget = KUICardAssist::_createHero(*pHeroDef,true);
 		if(!widget) continue;
 
 		this->addWidget(widget);
@@ -452,7 +453,7 @@ void CardGroupScene::ShowCardBrowse()
 		if(showPos==PAGE_CARD_NUM) break;
 		KDBBagItemUnit& unit = *it;
 		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(unit._id);
-		UIWidget* widget = KUIAssist::_createCardLayout(pST,true);
+		UIWidget* widget = KUICardAssist::_createCardLayout(pST,true);
 		char sz[64];
 		widget->setTag(unit._id);
 		widget->addPushDownEvent(this, coco_pushselector(CardGroupScene::onClickCard));
@@ -486,7 +487,7 @@ void CardGroupScene::ShowCardGroup()
 		m_depot->GetCardDeck(i,tmpList,hero);
 		UIWidget* widget = NULL;
 		if(tmpList.size()>0 &&hero._cardId>0){
-			widget = KUIAssist::_createHero(hero,true);
+			widget = KUICardAssist::_createHero(hero,true);
 		}
 		if(widget){
 			this->addWidget(widget);

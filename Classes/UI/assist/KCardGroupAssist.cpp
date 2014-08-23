@@ -2,6 +2,8 @@
 #include "../../StaticTable/KGameStatic.h"
 #include "KJsonDictMgr.h"
 #include "KUIAssist.h"
+#include "KUICardAssist.h"
+
 static KCardGroupAssist::sort_enum g_sortType= KCardGroupAssist::sort_null;
 bool comp(const KMiniCardWidget &lhs, const KMiniCardWidget &rhs)
 {
@@ -144,7 +146,7 @@ void KCardGroupAssist::AddMiniCard(KMiniCardList& lst,int cardId,int count)
 				}
 				lst.erase(it);
 			}else{
-				if(elem._pWidget) KUIAssist::UpdateMiniCardWidgetNum(elem._pWidget,elem._count);
+				if(elem._pWidget) KUICardAssist::UpdateMiniCardWidgetNum(elem._pWidget,elem._count);
 			}
 			return;
 		}

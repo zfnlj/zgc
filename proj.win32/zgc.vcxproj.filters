@@ -453,6 +453,9 @@
     <ClCompile Include="..\Classes\common\KPlayerBagAssist.cpp">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KUICardAssist.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -955,6 +958,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\common\KPlayerBagAssist.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KUICardAssist.h">
+      <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

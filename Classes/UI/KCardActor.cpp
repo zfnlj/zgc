@@ -11,7 +11,7 @@
 #include "assist/KJsonDictMgr.h"
 #include "KClickCardMgr.h"
 #include "../GameRecord/KGameRecordMgr.h"
-
+#include "assist/KUICardAssist.h"
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -33,7 +33,7 @@ void KCardActor::update(float dt)
 
 void KCardActor::Clear()
 {
-	KUIAssist::_hideBufIcon(m_ui);
+	KUICardAssist::_hideBufIcon(m_ui);
 	KJsonDictMgr::getSingleton().OnCardWidgetDestory(m_ui);
 	m_ActionMgr.onDestory();
 	if(m_ui){
@@ -109,7 +109,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 	char name[64]={0};
 	sprintf(name,"card_%d",m_card->GetRealId());
 
-	m_bigPhoto =  KUIAssist::_createCardLayout(m_card->GetST(),true,m_card);
+	m_bigPhoto =  KUICardAssist::_createCardLayout(m_card->GetST(),true,m_card);
 
 	UpdateCardAttr(m_bigPhoto,true);
 	CC_SAFE_RETAIN(m_bigPhoto);
@@ -133,7 +133,7 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 		m_ui->setScale(0.8f);
 		m_bBack = true;
 	}else{
-		m_ui = KUIAssist::_createCardLayout(pInst->GetST(),bBig,m_card);
+		m_ui = KUICardAssist::_createCardLayout(pInst->GetST(),bBig,m_card);
 		UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		RemoveSelectImg();
@@ -230,7 +230,7 @@ void KCardActor::UpdateCardAttr()
 void KCardActor::UpdateCardBuf()
 {
 	if(m_ui){
-		KUIAssist::_updateBufIcon(m_ui,m_card);
+		KUICardAssist::_updateBufIcon(m_ui,m_card);
 	}
 }
 

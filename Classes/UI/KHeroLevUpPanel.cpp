@@ -14,7 +14,7 @@
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
 #include "../common/KPlayerBagAssist.h"
-
+#include "assist/KUICardAssist.h"
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
@@ -49,7 +49,7 @@ void KHeroLevUpPanel::ShowPanel(const KHeroDef* hero)
 	m_pHeroDef = hero;
 	m_layer->addWidget(m_Panel);
 
-	m_pHeroWidget = KUIAssist::_createHero(*hero,true);
+	m_pHeroWidget = KUICardAssist::_createHero(*hero,true);
 	UIWidget* slot = UIHelper::seekWidgetByName(m_Panel,"hero_slot");
 	m_pHeroWidget->setPosition(slot->getPosition());
 	m_pHeroWidget->setZOrder(100);

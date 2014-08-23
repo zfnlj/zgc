@@ -29,7 +29,7 @@ public:
 	static void _removeCardSet(KCardInstList* lst);
 	static void _moveCardSet(KCardInstList* lst,const char* actionname);
 	static void _showCard(KCardInst* card);
-	static void _showHeroSkill(UIWidget* widget,const KHeroDef& heroDef);
+	
 	static void _updateCard(KCardInst* card);
 	static UIWidget* GetIndexWidget(UIWidget* panel,const char* baseName,int index);
 	static UIWidget* _setVisible(UIWidget* panel,const char* baseName,int pos ,bool);
@@ -44,8 +44,8 @@ public:
 	static void _switch2StageWaitScene();
 	static void _switch2ShopScene();
 	static void _switch2CardGroupScene();
-	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
-	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig,KCardInst* card = NULL);
+	
+	
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);
 	static CCSize _getRealSize(UIWidget* widget);
 	static CCAction* _createAtkMove(UIWidget* widgetSrc,int des,float val);
@@ -53,7 +53,7 @@ public:
 	static KCardActor* _getCardActor(int realId);
 	static CCPoint _getScreenCenter();
 	static void _soldierShow(KCardInst* card);
-    static void _updateBufIcon(UIWidget* widget , KCardInst* card);
+    
 	static void _updateSecretIcon(bool bMy,KCardInstList* lst);
 	static void _updateCardListBuf(KCardInstList* lst);
 	static bool _queryScreenPos(const char* name,cocos2d::CCPoint& pt);
@@ -65,12 +65,12 @@ public:
 	static cocos2d::CCPoint _queryFighterPos(KCardInst*);
 	static bool _IsPlayCardAble();
 	static void _resortCardSet(FBattleGuy* guy,int slot);
-	static UIWidget* _createMiniCard(int cardId,int num);
-	static UIWidget* _createMiniHero(KHeroDef& hero);
-	static void UpdateMiniCardWidgetNum(UIWidget* ui,int num);
+	
+
+	
 	static void ShowWidgetArr(UILayer* layer,const char* name,int num,bool flag);
 	static void ShowButton(UIWidget* pBut,bool flag);
-	static void SetRaceIcon(UIWidget* widgetRace, int race);
+	
 	//record 
 	static bool _IsValidateSrcCard(KCardInst* card);
 	static bool _IsValidateDesCard(KCardInst* card);
@@ -85,13 +85,15 @@ public:
 	static void _playLessonMsg(int id);
 	static KSceneLayerBase* _activeSceneLayer();
 	static KActor& _activeSceneActor();
-	static void _hideBufIcon(UIWidget* panel);
+
 	static void _popNotifyMsg(int dlgId);
 	static UIWidget* _createBagItemWidget(KPlayerTmpBag::ItemDef item);
+	static void _showCardStar(UIWidget* ui,int starNum);
 	//shader
 	static CCGLProgram* _createGrayProgram();
 	static KGameRecordPanel& _recordPanel();
 	static KSceneLayerBase* _activeScene;
+	
 };
 
 #endif // __HELLOWORLD_SCENE_H__	
