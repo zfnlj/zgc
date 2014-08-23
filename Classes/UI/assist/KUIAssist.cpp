@@ -331,18 +331,7 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 
 
 
-void KUIAssist::_showCardStar(UIWidget* ui,int starNum)
-{
-	for(int i=0;i<5;i++)
-	{
-		UIImageView* widgetSlot = (UIImageView*)GetIndexWidget(ui,"buf_slot",i);
-		if(i<starNum){
-			widgetSlot->loadTexture("card_star.png",UI_TEX_TYPE_PLIST);
-		}else{
-			widgetSlot->loadTexture("card_star_gray.png",UI_TEX_TYPE_PLIST);
-		}
-	}
-}
+
 
 
 

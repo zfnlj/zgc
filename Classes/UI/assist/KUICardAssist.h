@@ -30,8 +30,10 @@ public:
 	static void _showHeroSkill(UIWidget* widget,const KHeroDef& heroDef);
 	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig,KCardInst* card = NULL);
 	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
+	static UIWidget* _createHeroLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
 	static void _hideBufIcon(UIWidget* panel);
 	static void _updateBufIcon(UIWidget* widget , KCardInst* card);
+	static void _showHeroStar(UIWidget* ui,int starNum);
 };
 
 #endif // __HELLOWORLD_SCENE_H__	

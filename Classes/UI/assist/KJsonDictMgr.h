@@ -27,12 +27,15 @@ public :
 	KJsonDictObj* GetJsonDict(const char *fileName);
 	UIWidget* widgetFromJsonFile(const char* fileName);
 	UIWidget* CreateCardWidget();
+	UIWidget* CreateHeroWidget();
 	void OnCardWidgetDestory(UIWidget*);
+	void OnHeroWidgetDestory(UIWidget*);
 	UIWidget* CreateMiniCardWidget();
 	void OnMiniCardWidgetDestory(UIWidget*);
 private :
 	CCDictionary m_jsonDict;
 	KCardWidgetList m_cacheCardWidget;
+	KCardWidgetList m_cacheHeroWidget;
 	KCardWidgetList m_miniCardWidget;
 };
 

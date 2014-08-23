@@ -88,7 +88,7 @@ public:
 
 	static void _popNotifyMsg(int dlgId);
 	static UIWidget* _createBagItemWidget(KPlayerTmpBag::ItemDef item);
-	static void _showCardStar(UIWidget* ui,int starNum);
+	
 	//shader
 	static CCGLProgram* _createGrayProgram();
 	static KGameRecordPanel& _recordPanel();

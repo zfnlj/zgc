@@ -32,6 +32,19 @@ UIWidget* KJsonDictMgr::CreateCardWidget()
 	}
 }
 
+UIWidget* KJsonDictMgr::CreateHeroWidget()
+{
+	KCardWidgetList::iterator it= m_cacheHeroWidget.begin();
+	if(it!=m_cacheHeroWidget.end()){
+		UIWidget* pRet = *it;
+		m_cacheHeroWidget.erase(it);
+		pRet->setScale(1.0f);
+		return pRet;
+	}else{
+		return widgetFromJsonFile("GUI/hero_elem.json");
+	}
+}
+
 void KJsonDictMgr::OnCardWidgetDestory(UIWidget* pWidget)
 {
 	if(!pWidget) return;
@@ -40,6 +53,13 @@ void KJsonDictMgr::OnCardWidgetDestory(UIWidget* pWidget)
 	if(pWidget->retainCount()<10) pWidget->retain();
 }
 
+void KJsonDictMgr::OnHeroWidgetDestory(UIWidget* pWidget)
+{
+	if(!pWidget) return;
+	if(strcmp(pWidget->getName(),"panel_card")!=0) return;
+	m_cacheHeroWidget.push_back(pWidget);
+	if(pWidget->retainCount()<10) pWidget->retain();
+}
 
 UIWidget* KJsonDictMgr::CreateMiniCardWidget()
 {

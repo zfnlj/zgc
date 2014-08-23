@@ -122,9 +122,10 @@ void KCardGroupAssist::ClearSlotElem(KCardGroupSlotElem* arr,int n)
 {
 	KCardGroupSlotElem* elem = arr;
 	for(int i=0;i<n;i++,elem++){
-		if(elem->_type==KCardGroupSlotElem::elem_card||
-			elem->_type==KCardGroupSlotElem::elem_hero){
+		if(elem->_type==KCardGroupSlotElem::elem_card){
 				KJsonDictMgr::getSingleton().OnCardWidgetDestory(elem->_widget);
+		}else if(elem->_type==KCardGroupSlotElem::elem_hero){
+			KJsonDictMgr::getSingleton().OnHeroWidgetDestory(elem->_widget);
 		}
 		if(elem->_widget) elem->_widget->removeFromParent();
 		memset(elem,0,sizeof(KCardGroupSlotElem));
