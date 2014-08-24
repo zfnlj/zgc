@@ -21,11 +21,11 @@ public:
 	void DoClickClose(CCObject* sender);
 	void updatePanel();
 	void update(float dt);
-	void ShowPanel(const KHeroDef*);
+	void ShowPanel(KHeroDef*);
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
-	const KHeroDef* m_pHeroDef;
+	KHeroDef* m_pHeroDef;
 	UIWidget*	m_pHeroWidget;
 
 	void DoClickHeroLevUp(CCObject* sender);

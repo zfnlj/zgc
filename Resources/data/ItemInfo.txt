@@ -1,7 +1,10 @@
 ID	NameID	Level	Flags	Quality	Icon	ItemType	Price	Bind	WGroup1	WProb1	SkillID	CostType	Effect1Param1	ConditionID	CParam1	MaxKeep	Stacks
 1001	1001	1	0	1	icon/item_cardgroup1.jpg	0	0	0	0	0	0	2	0	0	0	0	99
 1002	1002	1	0	1	icon/item_cardgroup2.jpg	0	200	0	0	0	0	2	0	0	0	0	99
-1003	1003	1	0	1	icon/item_cardgroup3.jpg	0	400	0	0	0	0	0	0	0	0	0	0
+1003	1003	1	0	1	icon/item_cardgroup3.jpg	0	400	0	0	0	0	2	0	0	0	0	99
+100010	100010	1	0	1	icon/chip_10001.jpg	0	400	0	0	0	0	2	0	0	0	0	99
+100020	100020	1	0	1	icon/chip_10002.jpg	0	400	0	0	0	0	2	0	0	0	0	99
+100030	100030	1	0	1	icon/chip_10003.jpg	0	400	0	0	0	0	2	0	0	0	0	99
 5001	0	1	0	1	water_group.jpg	0	0	0	0	0	0	0	0	0	0	0	0
 5002	0	1	0	1	gold_group.jpg	0	0	0	0	0	0	0	0	0	0	0	0
 5003	0	0	0	0	fire_group.jpg	0	0	0	0	0	0	0	0	0	0	0	0

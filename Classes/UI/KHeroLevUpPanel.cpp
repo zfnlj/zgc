@@ -51,7 +51,7 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 	updatePanel();
 }
 
-void KHeroLevUpPanel::ShowPanel(const KHeroDef* hero)
+void KHeroLevUpPanel::ShowPanel(KHeroDef* hero)
 {
 	m_pHeroDef = hero;
 	m_layer->addWidget(m_Panel);

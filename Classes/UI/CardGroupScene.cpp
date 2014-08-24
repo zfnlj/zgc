@@ -531,7 +531,7 @@ void CardGroupScene::onClickCard(CCObject* sender)
 void CardGroupScene::onClickHeroLevUp(CCObject* sender)
 {
 	UIWidget* widget = (UIWidget*)sender;
-	const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[widget->getTag()]._id);
+	KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[widget->getTag()]._id);
 	
 	m_heroLevUpPanel.ShowPanel(pHeroDef);
 }

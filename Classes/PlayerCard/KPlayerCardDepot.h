@@ -27,7 +27,7 @@ public:
 	int  GetDeckCardNum(int deck,int cardId);
 	int  GetHeroNum();
 	const KHeroDef* FindHeroOnIndex(int index);
-	const KHeroDef* FindHero(int id);
+	KHeroDef* FindHero(int id);
 	int GetCurDeck();
 	bool SaveDeck(int deckId,KIntegerList& tmpLst);
 	bool ClearDeck(int deckId);
