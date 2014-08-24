@@ -4,7 +4,7 @@
 #include "../common/KCommonObj.h"
 
 #define MAX_HERO_SKILL_LEV 3
-#define MAX_HERO_LEV_INDEX 3
+#define MAX_HERO_LEV_INDEX 4
 class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
@@ -32,7 +32,7 @@ struct KHeroDef{
 	int rndGenLevLucky();
 	int GetLevUpStoneNum()const;
 	int GetSkillLevUpMoney(int skillIndex);
-	int LevUp(int stoneNum);
+	bool LevUp();
 	int SkillLevUp(int skillIndex,int money);
 	int GetAtkVal() const;
 	void init(KDeckDefStatic*);

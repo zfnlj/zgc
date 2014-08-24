@@ -34,10 +34,9 @@ int KHeroDef::SkillLevUp(int skillIndex,int money)
 	return money - needMoney;
 }
 
-int KHeroDef::LevUp(int stoneNum)
+bool KHeroDef::LevUp()
 {
-	int needStone = GetLevUpStoneNum();
-	if(needStone<0|| needStone>stoneNum) return stoneNum;
+	if(_lev >=MAX_HERO_LEV_INDEX) return false;
 	_lev++;
 
 	KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(_lev);
@@ -46,7 +45,7 @@ int KHeroDef::LevUp(int stoneNum)
 
 	_lucky += rndGenLevLucky()+10;
 	if(_lucky>100) _lucky = 100;
-	return stoneNum-needStone;
+	return true;
 }
 
 int KHeroDef::GetLevUpStoneNum() const

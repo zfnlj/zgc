@@ -5,6 +5,7 @@
 namespace KPlayerBagAssist
 {
 	int GetPlayerItemNum(KWorldObjAbout::KPlayer* player,DWORD itemId);
+	bool UseItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

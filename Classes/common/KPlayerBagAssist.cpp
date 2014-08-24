@@ -16,4 +16,8 @@ int GetPlayerItemNum(KWorldObjAbout::KPlayer* player,DWORD itemId)
 	return pBag->GetItemSize(itemId);
 }
 
+bool UseItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num)
+{
+	return true;
+}
 }
