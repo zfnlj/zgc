@@ -62,7 +62,7 @@ void KHeroLevUpPanel::ShowPanel(KHeroDef* hero)
 	m_pHeroWidget->setZOrder(100);
 	m_Panel->addChild(m_pHeroWidget);
 
-	for(int i=0;i<MAX_HERO_LEV_INDEX;i++){
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		SetLevUpWidgetsVisible(i,i<m_pHeroDef->GetLev());
 	}
 	UpdateHeroLevUpInfo();

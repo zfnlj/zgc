@@ -368,8 +368,7 @@ namespace KItemAbout
 		if(itorFind == m_ListItem.end()) return false;
 		KCellBag* pCell = (KCellBag*)(itorFind->second);
 		if(pCell->GetItemStackNumber()<=0) return false;
-		KUseItemManager::GetInstance()->UseItem(pCell->GetItemID(),playerId);
-		return true;
+		return KUseItemManager::GetInstance()->UseItem(pCell->GetItemID(),playerId);
 	}
 
 	bool KBag::Unserilize(KMsgInputStream& si)
