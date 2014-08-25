@@ -170,8 +170,8 @@ namespace KItemAbout
 	{
 		e_id_range_item			= 0,		// 普通物品的ID起始
 		e_id_range_card			= 10000,	// 卡牌ID起始
-		e_id_range_gem			= 200001,	// 宝石ID起始(十进制200001开始)
-		e_id_range_hammer		= 220000,	// 榔头ID起始
+		e_id_range_card_chip	= 100000,	// 
+		e_id_range_hammer		= 200000,	// 榔头ID起始
 		e_id_range_petegg		= 300001,	// 宠物蛋ID起始
 		e_id_range_skillbook	= 400001,	// 宠物技能书ID起始
 		e_id_range_skillstar	= 500001,	// 宠物技能星ID起始
@@ -243,19 +243,19 @@ namespace KItemAbout
 		}
 		static bool IsCardItem(DWORD dwItemID)
 		{
-			return dwItemID >= e_id_range_card && dwItemID < e_id_range_gem;
+			return dwItemID >= e_id_range_card && dwItemID < e_id_range_card_chip;
 		}
 		bool IsCardItem() const
 		{
-			return s_nItemID >= e_id_range_card && s_nItemID < e_id_range_gem;
+			return s_nItemID >= e_id_range_card && s_nItemID < e_id_range_card_chip;
 		}
-		bool IsGemableItem() const
+		bool IsCardChipItem() const
 		{
-			return s_nItemID >= e_id_range_gem && s_nItemID < e_id_range_hammer;
+			return s_nItemID >= e_id_range_card_chip && s_nItemID < e_id_range_hammer;
 		}
-		static bool IsGemableItemStatic(DWORD dwItemID)
+		static bool IsCardChipItemStatic(DWORD dwItemID)
 		{
-			return dwItemID >= e_id_range_gem && dwItemID < e_id_range_hammer;
+			return dwItemID >= e_id_range_card_chip && dwItemID < e_id_range_hammer;
 		}
 
 		bool IsHammerableItem() const

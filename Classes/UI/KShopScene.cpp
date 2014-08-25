@@ -166,6 +166,14 @@ void KShopScene::InitItem()
 		sprintf(slot_name,"cost_%d",i);
 		UILabelBMFont* pPriceLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, slot_name);
 		pPriceLabel->setVisible(false);
+
+		sprintf(slot_name,"gold_icon_%d",i);
+		UIWidget* pWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
+		pWidget->setVisible(false);
+
+		sprintf(slot_name,"pile_%d",i);
+		pWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
+		pWidget->setVisible(false);
 	}
 
 	int index = 0;
@@ -194,6 +202,18 @@ void KShopScene::InitItem()
 		sprintf(buf,"%d",item->GetPrice());
 		pPriceLabel->setText(buf);
 		pPriceLabel->setVisible(true);
+
+		if(pStoreProduct->m_nPileCount>1){
+			sprintf(slot_name,"pile_%d",index);
+			UILabelBMFont* pPileLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, slot_name);
+			sprintf(buf,"X%d",pStoreProduct->m_nPileCount);
+			pPileLabel->setText(buf);
+			pPileLabel->setVisible(true);
+		}
+
+		sprintf(slot_name,"gold_icon_%d",index);
+		UIWidget* pWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
+		pWidget->setVisible(true);
 
 		index++;
 	}

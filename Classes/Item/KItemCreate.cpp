@@ -64,7 +64,8 @@ namespace KItemAbout
 	{
 		if(0 == dwItemID) return NULL;
 		// TODO:在这里添加代码的同学情注意,由于判断范围的编号规则,编号越大的必须位置越靠前
-		if(KCreateInfo_ItemBase::IsUsableItemStatic(dwItemID))
+		//TBD....
+		//if(KCreateInfo_ItemBase::IsUsableItemStatic(dwItemID))
 		{
 			return GetCreateInfo_Item(dwItemID);
 		}

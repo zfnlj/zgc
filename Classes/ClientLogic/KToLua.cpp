@@ -143,11 +143,7 @@ namespace KScriptAbout
 		return KItemAbout::KCreateInfo_ItemBase::IsUsableItemStatic(dwItemID);
 	}
 	
-	bool IsGemableItem(DWORD dwItemID)
-	{
-		return KItemAbout::KCreateInfo_ItemBase::IsGemableItemStatic(dwItemID);
-	}
-	
+
 	bool IsPetEggItem(DWORD dwItemID)
 	{
 		return KItemAbout::KCreateInfo_ItemBase::IsPetEggItemStatic(dwItemID);
@@ -291,7 +287,6 @@ namespace KScriptAbout
 		
 		
 		LuaWraper.RegFunc("IsUsableItem", IsUsableItem);
-		LuaWraper.RegFunc("IsGemableItem", IsGemableItem);
 		LuaWraper.RegFunc("IsPetEggItem", IsPetEggItem);
 		LuaWraper.RegFunc("IsSkillBookItem", IsSkillBookItem);
 		LuaWraper.RegFunc("IsSkillStarItem", IsSkillStarItem);
