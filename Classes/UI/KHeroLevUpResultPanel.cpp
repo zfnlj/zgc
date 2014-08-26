@@ -25,6 +25,9 @@ void KHeroLevUpResultPanel::init(cocos2d::extension::UILayer* layer)
 	//m_layer->addWidget(m_Panel);
 	m_Panel->setZOrder(999);
 	updatePanel();
+	// old_strong_val,strong_to,new_strong_val
+	// old_lucky_val,lucky_to,new_lucky_val
+	// skill_name,
 }
 
 void KHeroLevUpResultPanel::update(float dt)

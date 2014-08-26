@@ -20,15 +20,15 @@
             <key>arrow_to.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,175},{29,30}}</string>
+                <string>{{2,175},{29,31}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{29,30}}</string>
+                <string>{{0,0},{29,31}}</string>
                 <key>sourceSize</key>
-                <string>{29,30}</string>
+                <string>{29,31}</string>
             </dict>
             <key>gold.png</key>
             <dict>
@@ -118,7 +118,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f14ebf06ecb1c7ff34c42857cddd6128$</string>
+            <string>$TexturePacker:SmartUpdate:1a4a9f79895eebef6ca1172d844125e7$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>
