@@ -919,6 +919,14 @@ namespace KItemAbout
 			KNetMsgFacade::onBagOperation(szTmp,nSendLen);
 		}
 	}
+
+	void KBagManager::AddBagItem(KBag* bag,int nPos,int num)
+	{
+		char szTmp[1024] = "";
+		int newNum = bag->FindCell(nPos)->GetItemStackNumber()+num;
+		int nSendLen = KBagManager::GenSyncDataUpdateCell(szTmp,enum_item_BagNormal, nPos, enum_stackNumber, (BYTE*)(&newNum), sizeof(newNum), 0);
+		KNetMsgFacade::onBagOperation(szTmp,nSendLen);
+	}
 }
 
 

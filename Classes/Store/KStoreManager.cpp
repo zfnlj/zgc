@@ -431,7 +431,7 @@ namespace KStoreAbout
 			curMoney.Increase(-pProduct->GetNumOfMoney());
 			std::string s = curMoney.m_money.toString();
 			KNetMsgFacade::onChangeMoney(s.c_str(),s.size()+1);
-			VirtualService::getSingleton().AddItem(pProduct->m_dwItemID,1);
+			VirtualService::getSingleton().AddItem(pProduct->m_dwItemID,pProduct->m_nPileCount);
 			return true;
 		}else{
 			/*CS_StoreBuy SB;

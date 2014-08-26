@@ -109,7 +109,10 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 		return;
 	}
 	if(m_pHeroDef->GetLev()==4) return;
-	if(!KPlayerBagAssist::UseItem(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10,needChipNum)) return;
+	if(!KPlayerBagAssist::ConsumeItem(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10,needChipNum)) return;
+
+	KHeroDef oldHero;
+	memcpy(&oldHero,m_pHeroDef,sizeof(KHeroDef));
 	m_pHeroDef->LevUp();
 }
 

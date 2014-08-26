@@ -38,12 +38,41 @@ bool KHeroDef::LevUp()
 {
 	if(_lev >=MAX_HERO_LEV_INDEX) return false;
 	_lev++;
-
-	KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(_lev);
-	_skill[_lev-1]._skillId = skill->GetId();
-	_skill[_lev-1]._lev = 0;
-
-	_lucky += rndGenLevLucky()+10;
+	KHeroSkillStatic* skill = NULL;
+	switch(_lev){
+	case 2:
+		{
+			_strong += 1 + rndGenLevStrong();
+		}
+		break;
+	case 3:
+		{
+			_strong += 1 + rndGenLevStrong();
+			_lucky += rndGenLevLucky()+10;
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(1);
+			_skill[0]._skillId = skill->GetId();
+			_skill[0]._lev = 0;
+		}
+		break;
+	case 4:
+		{
+			_lucky += rndGenLevLucky()+10;
+			_strong += 1;
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(2);
+			_skill[1]._skillId = skill->GetId();
+			_skill[1]._lev = 0;
+		}
+		break;
+	case 5:
+		{
+			_lucky += rndGenLevLucky()+10;
+			_strong += 1;
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(3);
+			_skill[2]._skillId = skill->GetId();
+			_skill[2]._lev = 0;
+		}
+		break;
+	}
 	if(_lucky>100) _lucky = 100;
 	return true;
 }
@@ -58,7 +87,7 @@ void KHeroDef::Generate(int cardId)
 {
 	_cardId = cardId;
 	_id = STATIC_DATA_INC();
-	_lev = 0;
+	_lev = 1;
 	_lucky = 0;
 	_strong = 0;
 	memset(_skill,0,sizeof(_skill));
@@ -74,6 +103,15 @@ void KHeroDef::init(KDeckDefStatic* pDef)
 	_lucky = pDef->getHeroLucky();
 	_strong = pDef->getHeroStrong();
 	_cardId = pDef->getHero();
+}
+
+int KHeroDef::rndGenLevStrong()
+{
+	int rndVal = 0;
+	for(int i=0;i<2;i++){
+		rndVal  += g_rnd.GetRandom(0,3);
+	}
+	return rndVal;
 }
 
 int KHeroDef::rndGenLevLucky()

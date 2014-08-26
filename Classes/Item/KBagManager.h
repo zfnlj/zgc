@@ -140,7 +140,7 @@ namespace KItemAbout
 		const KCellBag* FindCell(int nBagID, int nPos) const;
 		bool IsEmpty(int nBagID, int nPos) const;
 
-
+		void AddBagItem(KBag* bag,int nPos,int num);
 	private:
 // 		bool _ChangLockStateAllGemItemInBag(bool bLock);
 

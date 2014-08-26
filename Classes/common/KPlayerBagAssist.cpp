@@ -1,7 +1,10 @@
 #include "KPlayerBagAssist.h"
 #include "../Item/KBag.h"
 #include "../Item/KBagManager.h"
+#include "../Item/KBag.h"
+#include "../Item/KBagManager.h"
 
+using namespace KItemAbout;
 
 namespace KPlayerBagAssist
 {
@@ -16,8 +19,15 @@ int GetPlayerItemNum(KWorldObjAbout::KPlayer* player,DWORD itemId)
 	return pBag->GetItemSize(itemId);
 }
 
-bool UseItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num)
+bool ConsumeItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num)
 {
+	KItemAbout::KBagManager* pBagMgr = player->GetBagManagerPtr();
+	if(!pBagMgr) return false;
+	KBagNormal* pBag = pBagMgr->FindNormalBag();
+	if(!pBag) return false;
+	int pos = pBag->GetFirstPos(itemId);
+	if(pos<0) return false;
+	pBagMgr->AddBagItem(pBag,pos,-num);
 	return true;
 }
 }
