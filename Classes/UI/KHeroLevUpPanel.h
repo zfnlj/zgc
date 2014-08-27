@@ -5,7 +5,7 @@
 #include "cocos-ext.h"
 #include "UILayer.h"
 #include "../GameLogic/KGameDef.h"
-
+#include "KHeroLevUpResultPanel.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -27,7 +27,7 @@ private:
 	cocos2d::extension::UIWidget* m_Panel;
 	KHeroDef* m_pHeroDef;
 	UIWidget*	m_pHeroWidget;
-
+	KHeroLevUpResultPanel m_resultPanel;
 	void DoClickHeroLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();

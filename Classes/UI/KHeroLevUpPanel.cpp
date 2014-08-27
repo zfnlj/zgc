@@ -40,14 +40,14 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 
 		pBut = UIHelper::seekWidgetByName(m_Panel, "Lev_up_but");
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickHeroLevUp));
-		
+		m_resultPanel.init(layer);
 
 	}
 	m_layer = layer;
 	m_pHeroWidget = NULL;
 	m_pHeroDef = NULL;
 	//m_layer->addWidget(m_Panel);
-	m_Panel->setZOrder(999);
+	m_Panel->setZOrder(900);
 	updatePanel();
 }
 
@@ -114,6 +114,8 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 	KHeroDef oldHero;
 	memcpy(&oldHero,m_pHeroDef,sizeof(KHeroDef));
 	m_pHeroDef->LevUp();
+
+	m_resultPanel.Show(oldHero,*m_pHeroDef);
 }
 
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)
