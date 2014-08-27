@@ -119,7 +119,7 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 	KHeroDef oldHero;
 	memcpy(&oldHero,m_pHeroDef,sizeof(KHeroDef));
 	m_pHeroDef->LevUp();
-
+	KMainPlayer::RealPlayer()->m_cardDepot.SaveHero(m_pHeroDef);
 	m_resultPanel.Show(oldHero,*m_pHeroDef);
 }
 

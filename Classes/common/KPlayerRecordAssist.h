@@ -8,6 +8,7 @@
 
 class KPlayerQuestManager;
 class KQuestNew;
+struct KHeroDef;
 namespace KPlayerRecordAssist
 {
 	class itemCmp
@@ -43,6 +44,9 @@ namespace KPlayerRecordAssist
 	void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest);
 	int  RemainDailyQuestNum(tb_playerquest_record* record);
 	bool UseDailyAwardSlot(tb_playerquest_record* record);
+
+	//hero
+	bool updateHero(tb_player_record* record,KHeroDef* hero);
 }
 
 #endif // __HELLOWORLD_SCENE_H__

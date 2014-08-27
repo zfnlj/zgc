@@ -274,4 +274,19 @@ void AddMercy(tb_player_record* record,int val)
 	record->mercy += val;
 	record->updateMask(tb_player_record::_CRI);
 }
+
+bool updateHero(tb_player_record* record,KHeroDef* heroDef)
+{
+	int heroNum = record->heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)record->heroData.binData;
+	for(int i=0;i<heroNum;i++,pHero++){
+		if(pHero->_id==heroDef->_id){
+			memcpy(pHero,heroDef,sizeof(KHeroDef));
+			break;
+		}
+	}
+	record->updateMask(tb_player_record::_HERODATA);
+	return true;
+}
+
 }

@@ -169,3 +169,8 @@ int KPlayerCardDepot::ConsumeExp(int val)
 	
 	return 0;
 }
+
+void KPlayerCardDepot::SaveHero(KHeroDef* hero)
+{
+	KPlayerRecordAssist::updateHero(m_record,hero);
+}
