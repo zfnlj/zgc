@@ -51,22 +51,36 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 	updatePanel();
 }
 
-void KHeroLevUpPanel::ShowPanel(KHeroDef* hero)
+void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 {
+	if(m_pHeroWidget){
+		m_pHeroWidget->removeFromParent();
+		KJsonDictMgr::getSingleton().OnHeroWidgetDestory(m_pHeroWidget);
+	}
 	m_pHeroDef = hero;
-	m_layer->addWidget(m_Panel);
-
+	
+	UIWidget* pLevUpBut = UIHelper::seekWidgetByName(m_Panel, "Lev_up_but");
+	if(m_pHeroDef->GetLev()==4){
+		KUIAssist::_setButVisible(pLevUpBut,false);
+	}else{
+		KUIAssist::_setButVisible(pLevUpBut,true);
+	}
 	m_pHeroWidget = KUICardAssist::_createHero(*hero,true);
 	UIWidget* slot = UIHelper::seekWidgetByName(m_Panel,"hero_slot");
 	m_pHeroWidget->setPosition(slot->getPosition());
 	m_pHeroWidget->setZOrder(100);
-	m_Panel->addChild(m_pHeroWidget);
 
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		SetLevUpWidgetsVisible(i,i<m_pHeroDef->GetLev());
 	}
 	UpdateHeroLevUpInfo();
+	m_Panel->addChild(m_pHeroWidget);
+}
 
+void KHeroLevUpPanel::ShowPanel(KHeroDef* hero)
+{
+	ShowHero(hero);
+	m_layer->addWidget(m_Panel);
 }
 
 void KHeroLevUpPanel::UpdateHeroLevUpInfo()
@@ -121,6 +135,8 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 	m_pHeroDef->LevUp();
 	KMainPlayer::RealPlayer()->m_cardDepot.SaveHero(m_pHeroDef);
 	m_resultPanel.Show(oldHero,*m_pHeroDef);
+
+	ShowHero(m_pHeroDef);
 }
 
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)

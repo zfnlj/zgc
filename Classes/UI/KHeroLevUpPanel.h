@@ -22,6 +22,7 @@ public:
 	void updatePanel();
 	void update(float dt);
 	void ShowPanel(KHeroDef*);
+	void ShowHero(KHeroDef* hero);
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
