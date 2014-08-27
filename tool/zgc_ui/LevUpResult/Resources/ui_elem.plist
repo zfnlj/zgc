@@ -7,7 +7,7 @@
             <key>CloseNormal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,138},{53,35}}</string>
+                <string>{{2,204},{53,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,24 +20,24 @@
             <key>arrow_to.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,175},{29,31}}</string>
+                <string>{{2,172},{29,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{29,31}}</string>
+                <string>{{0,0},{29,30}}</string>
                 <key>sourceSize</key>
-                <string>{29,31}</string>
+                <string>{29,30}</string>
             </dict>
             <key>gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,106},{54,64}}</string>
+                <string>{{196,138},{54,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{5,0},{54,64}}</string>
                 <key>sourceSize</key>
@@ -72,7 +72,7 @@
             <key>secret_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,40},{64,64}}</string>
+                <string>{{130,106},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,6 +108,19 @@
                 <key>sourceSize</key>
                 <string>{78,36}</string>
             </dict>
+            <key>star_big.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{130,40},{64,64}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -118,7 +131,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1a4a9f79895eebef6ca1172d844125e7$</string>
+            <string>$TexturePacker:SmartUpdate:eddf88a8219316f5cef3a1a21b7cdd96$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>

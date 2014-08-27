@@ -92,4 +92,7 @@ void KHeroLevUpResultPanel::Show(const KHeroDef& oldHero,const KHeroDef& newHero
 	}else{
 		lableSkill->setVisible(false);
 	}
+	for(int i=0;i<newHero.GetLev()){
+
+	}
 }
