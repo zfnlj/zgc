@@ -78,7 +78,12 @@ void KHeroLevUpPanel::UpdateHeroLevUpInfo()
 	sprintf(sz,"%d/%d",curChipNum,needChipNum);
 	levUpText->setText(sz);
 	UILoadingBar* bar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"levUp_bar");
-	bar->setPercent((float)curChipNum*100.0f/(float)needChipNum);
+	if(curChipNum>needChipNum){
+		bar->setPercent(
+			100.0f);
+	}else{
+		bar->setPercent((float)curChipNum*100.0f/(float)needChipNum);
+	}
 }
 
 void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
@@ -153,4 +158,5 @@ void KHeroLevUpPanel::updatePanel()
 
 void KHeroLevUpPanel::update(float dt)
 {
+	m_resultPanel.update(dt);
 }

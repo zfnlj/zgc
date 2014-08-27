@@ -924,6 +924,7 @@ namespace KItemAbout
 	{
 		char szTmp[1024] = "";
 		int newNum = bag->FindCell(nPos)->GetItemStackNumber()+num;
+		if(newNum<0) newNum=0;
 		int nSendLen = KBagManager::GenSyncDataUpdateCell(szTmp,enum_item_BagNormal, nPos, enum_stackNumber, (BYTE*)(&newNum), sizeof(newNum), 0);
 		KNetMsgFacade::onBagOperation(szTmp,nSendLen);
 	}

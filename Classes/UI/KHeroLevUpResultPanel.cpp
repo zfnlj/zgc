@@ -35,9 +35,16 @@ void KHeroLevUpResultPanel::update(float dt)
 {
 }
 
+void KHeroLevUpResultPanel::DoClose(float dt)
+{
+	m_Panel->removeFromParent();
+}
+
 void KHeroLevUpResultPanel::Show(const KHeroDef& oldHero,const KHeroDef& newHero)
 {
 	if(!m_Panel->getParent()) m_layer->addWidget(m_Panel);
+
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KHeroLevUpResultPanel::DoClose),this,4,0,0.0f,false);
 
 	char sz[64];
 	UILabel* labelOldStrong = (UILabel*)m_Panel->getChildByName("old_strong_val");

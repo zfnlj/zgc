@@ -18,6 +18,7 @@ public:
 	void init(cocos2d::extension::UILayer* layer);
 	void update(float dt);
 	void Show(const KHeroDef& oldHero,const KHeroDef& newHero);
+	void DoClose(float dt);
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
