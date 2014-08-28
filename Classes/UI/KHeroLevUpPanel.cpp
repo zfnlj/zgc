@@ -78,10 +78,19 @@ void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 	m_pHeroWidget->setZOrder(100);
 
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		SetLevUpWidgetsVisible(i,i<m_pHeroDef->GetLev());
+		SetLevUpWidgetsVisible(i,m_pHeroDef->_skill[i]._id>0);
 	}
 	UpdateHeroLevUpInfo();
 	m_Panel->addChild(m_pHeroWidget);
+
+	char sz[64];
+	UILabel* strongValLabel = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"strong_val");
+	sprintf(sz,"%d",m_pHeroDef->GetStrong());
+	strongValLabel->setText(sz);
+
+	UILabel* luckyValLabel = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"lucky_val");
+	sprintf(sz,"%d",m_pHeroDef->GetLucky());
+	luckyValLabel->setText(sz);
 }
 
 void KHeroLevUpPanel::ShowPanel(KHeroDef* hero)
@@ -112,7 +121,7 @@ void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
 	const KHeroDef::skillDef& skill = m_pHeroDef->_skill[index];
 	UILabel* skillTxt = (UILabel*)KUIAssist::GetIndexWidget(m_Panel,"skill_txt",index);
 	skillTxt->setVisible(bVisible);
-	skillTxt->setText(skill.GetName());
+	if(skill._id>0) skillTxt->setText(skill.GetName());
 
 	char sz[64];
 	UILabel* skilLevTxt = (UILabel*)KUIAssist::GetIndexWidget(m_Panel,"skill_lev_txt",index);

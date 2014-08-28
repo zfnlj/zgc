@@ -8,7 +8,7 @@
 class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
-		int _skillId;
+		int _id;
 		int _lev;
 		const char* GetName() const ;
 		bool IsMaxLev() const{

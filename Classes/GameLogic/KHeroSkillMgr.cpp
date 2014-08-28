@@ -90,7 +90,7 @@ void KHeroSkillMgr::SetHero(KHeroDef* pDef)
 	if(!pDef) return;
 	memcpy(&m_heroDef,pDef,sizeof(KHeroDef));
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		addSkill(pDef->_skill[i]._skillId,pDef->GetSkillLev(i));
+		addSkill(pDef->_skill[i]._id,pDef->GetSkillLev(i));
 	}
 }
 

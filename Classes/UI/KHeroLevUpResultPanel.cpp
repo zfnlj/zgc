@@ -95,7 +95,7 @@ void KHeroLevUpResultPanel::Show(const KHeroDef& oldHero,const KHeroDef& newHero
 	m_oldHero = oldHero;
 	m_newHero = newHero;
 	m_elapsed = 0.0f;
-	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KHeroLevUpResultPanel::DoClose),this,4,0,0.0f,false);
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KHeroLevUpResultPanel::DoClose),this,6,0,0.0f,false);
 
 	char sz[64];
 	UILabel* labelOldStrong = (UILabel*)m_Panel->getChildByName("old_strong_val");
@@ -121,8 +121,8 @@ void KHeroLevUpResultPanel::Show(const KHeroDef& oldHero,const KHeroDef& newHero
 
 	m_pNewSkill = NULL;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		if(newHero._skill[i]._skillId>0 && 
-			oldHero._skill[i]._skillId==0){
+		if(newHero._skill[i]._id>0 && 
+			oldHero._skill[i]._id==0){
 				m_pNewSkill = &newHero._skill[i];
 				break;
 		}

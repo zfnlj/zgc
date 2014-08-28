@@ -120,7 +120,7 @@ void KUICardAssist::_showHeroSkill(UIWidget* widget,const KHeroDef& heroDef)
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		char sz[64]={0};
 		UILabel* pLabel = (UILabel*)KUIAssist::GetIndexWidget(widget,"hero_skill",i);
-		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(heroDef._skill[i]._skillId);
+		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(heroDef._skill[i]._id);
 		if(heroDef.GetSkillLev(i)>0 && skill){
 			sprintf(sz,"%s: lev.%d",skill->GetName(),heroDef.GetSkillLev(i));
 			pLabel->setText(sz);

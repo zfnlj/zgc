@@ -4,7 +4,7 @@
 
 const char* KHeroDef::skillDef::GetName() const
 {
-	KHeroSkillStatic* skillST = KGameStaticMgr::getSingleton().GetHeroSkill(_skillId);
+	KHeroSkillStatic* skillST = KGameStaticMgr::getSingleton().GetHeroSkill(_id);
 	return skillST->GetName();
 }
 
@@ -54,7 +54,7 @@ bool KHeroDef::LevUp()
 			_strong += 1 + rndGenLevStrong();
 			_lucky += rndGenLevLucky()+10;
 			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(1);
-			_skill[0]._skillId = skill->GetId();
+			_skill[0]._id = skill->GetId();
 			_skill[0]._lev = 0;
 		}
 		break;
@@ -63,7 +63,7 @@ bool KHeroDef::LevUp()
 			_lucky += rndGenLevLucky()+10;
 			_strong += 1;
 			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(2);
-			_skill[1]._skillId = skill->GetId();
+			_skill[1]._id = skill->GetId();
 			_skill[1]._lev = 0;
 		}
 		break;
@@ -72,7 +72,7 @@ bool KHeroDef::LevUp()
 			_lucky += rndGenLevLucky()+10;
 			_strong += 1;
 			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(3);
-			_skill[2]._skillId = skill->GetId();
+			_skill[2]._id = skill->GetId();
 			_skill[2]._lev = 0;
 		}
 		break;
@@ -141,7 +141,7 @@ int KHeroDef::GetAtkVal() const
 	float val = 0.0f;
 
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(_skill[i]._skillId);
+		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(_skill[i]._id);
 		if(!skill) continue;
 		float luckyVal = (_lucky>i*33)?_lucky -i*33:0;
 		luckyVal += skill->GetRateVal(GetSkillLev(i));
