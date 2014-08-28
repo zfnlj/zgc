@@ -159,7 +159,7 @@ UIWidget*  KUICardAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* 
 		widget = _createHeroLayout(pST,bBig,&tmpCard);
 	}
 	_showHeroSkill(widget,hero);
-	_showHeroStar(widget,hero.GetLev()+1);
+	_showHeroStar(widget,hero.GetLev());
 	UILabel* labelDesc = (UILabel*)widget->getChildByName("detail");
 	labelDesc->setVisible(false);
 	return widget;

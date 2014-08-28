@@ -30,6 +30,7 @@ private:
 	UIWidget*	m_pHeroWidget;
 	KHeroLevUpResultPanel m_resultPanel;
 	void DoClickHeroLevUp(CCObject* sender);
+	void DoClickSkillLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();
 };

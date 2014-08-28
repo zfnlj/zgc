@@ -47,6 +47,7 @@ CCScene* CardGroupScene::scene()
 void CardGroupScene::update(float dt)
 {
 	KSceneLayerBase::update(dt);
+	m_heroLevUpPanel.update(dt);
 }
 
 // on "init" you need to initialize your instance

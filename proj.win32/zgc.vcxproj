@@ -204,6 +204,7 @@
     <ClCompile Include="..\Classes\KNet\KSocketFacade.cpp" />
     <ClCompile Include="..\Classes\KNet\KUserData.cpp" />
     <ClCompile Include="..\Classes\KTouchDispatcher.cpp" />
+    <ClCompile Include="..\Classes\PlayerCard\KHeroCardAssist.cpp" />
     <ClCompile Include="..\Classes\PlayerCard\KPlayerCardDepot.cpp" />
     <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp" />
     <ClCompile Include="..\Classes\Quest\FQuest.cpp" />
@@ -375,6 +376,7 @@
     <ClInclude Include="..\Classes\KNet\PacketGate\KPacketGate.h" />
     <ClInclude Include="..\Classes\KNet\PacketGate\KPacket_Segment_Define.h" />
     <ClInclude Include="..\Classes\KTouchDispatcher.h" />
+    <ClInclude Include="..\Classes\PlayerCard\KHeroCardAssist.h" />
     <ClInclude Include="..\Classes\PlayerCard\KPlayerCardDepot.h" />
     <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h" />
     <ClInclude Include="..\Classes\Quest\FQuest.h" />

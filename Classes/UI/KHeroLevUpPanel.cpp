@@ -17,6 +17,7 @@
 #include "assist/KUICardAssist.h"
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
+#include "../PlayerCard/KHeroCardAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -42,6 +43,12 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickHeroLevUp));
 		m_resultPanel.init(layer);
 
+		for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+			pBut = KUIAssist::GetIndexWidget(m_Panel,"skill_levup_but",i);
+			pBut->setTag(i);
+			pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickSkillLevUp));
+		}
+
 	}
 	m_layer = layer;
 	m_pHeroWidget = NULL;
@@ -54,13 +61,13 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 {
 	if(m_pHeroWidget){
-		m_pHeroWidget->removeFromParent();
 		KJsonDictMgr::getSingleton().OnHeroWidgetDestory(m_pHeroWidget);
+		m_pHeroWidget->removeFromParent();
 	}
 	m_pHeroDef = hero;
 	
 	UIWidget* pLevUpBut = UIHelper::seekWidgetByName(m_Panel, "Lev_up_but");
-	if(m_pHeroDef->GetLev()==4){
+	if(m_pHeroDef->IsLevMax()){
 		KUIAssist::_setButVisible(pLevUpBut,false);
 	}else{
 		KUIAssist::_setButVisible(pLevUpBut,true);
@@ -102,20 +109,52 @@ void KHeroLevUpPanel::UpdateHeroLevUpInfo()
 
 void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
 {
-	UIWidget* skilTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_txt",index);
-	skilTxt->setVisible(bVisible);
+	const KHeroDef::skillDef& skill = m_pHeroDef->_skill[index];
+	UILabel* skillTxt = (UILabel*)KUIAssist::GetIndexWidget(m_Panel,"skill_txt",index);
+	skillTxt->setVisible(bVisible);
+	skillTxt->setText(skill.GetName());
 
-	UIWidget* skilLevTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_lev_txt",index);
+	char sz[64];
+	UILabel* skilLevTxt = (UILabel*)KUIAssist::GetIndexWidget(m_Panel,"skill_lev_txt",index);
+	sprintf(sz,"lev.%d",skill._lev);
 	skilLevTxt->setVisible(bVisible);
+	skilLevTxt->setText(sz);
 
 	UIWidget* skilLevUpBut = KUIAssist::GetIndexWidget(m_Panel,"skill_levup_but",index);
-	KUIAssist::ShowButton(skilLevUpBut,bVisible);
+	if(bVisible && !skill.IsMaxLev()){
+		KUIAssist::ShowButton(skilLevUpBut,true);
+	}else{
+		KUIAssist::ShowButton(skilLevUpBut,bVisible);
+	}
 
 	UIWidget* goldIcon = KUIAssist::GetIndexWidget(m_Panel,"gold_icon",index);
-	goldIcon->setVisible(bVisible);
+	if(bVisible && !skill.IsMaxLev()){
+		goldIcon->setVisible(true);
+	}else{
+		goldIcon->setVisible(bVisible);
+	}
 
-	UIWidget* moneyTxt = KUIAssist::GetIndexWidget(m_Panel,"skill_money_txt",index);
-	moneyTxt->setVisible(bVisible);
+	int needMoney = m_pHeroDef->GetSkillLevUpMoney(index);
+	UILabel* moneyTxt = (UILabel*)KUIAssist::GetIndexWidget(m_Panel,"skill_money_txt",index);
+	if(bVisible && !skill.IsMaxLev()){
+		moneyTxt->setVisible(true);
+	}else{
+		moneyTxt->setVisible(bVisible);
+	}
+	sprintf(sz,"%d",needMoney);
+	moneyTxt->setText(sz);
+}
+
+void KHeroLevUpPanel::DoClickSkillLevUp(CCObject* sender)
+{
+	UIWidget* pBut = (UIWidget*)sender;
+	KHeroDef::skillDef& skill = m_pHeroDef->_skill[pBut->getTag()];
+	int needMoney = m_pHeroDef->GetSkillLevUpMoney(pBut->getTag());
+	if(!KMainPlayer::RealPlayer()->HasMoney(needMoney)){
+		KPopupLayer::DoModal(UI_WARNING_STR,MONEY_LOW_STR,KPopupLayer::DT_Ok);
+		return;
+	}
+	KHeroCardAssist::_SkillLevUp(m_pHeroDef,pBut->getTag(),KMainPlayer::RealPlayer());
 }
 
 void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
@@ -127,13 +166,9 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 		KPopupLayer::DoModal(UI_WARNING_STR,CHIP_NO_ENOUGH,KPopupLayer::DT_Ok);
 		return;
 	}
-	if(m_pHeroDef->GetLev()==4) return;
-	if(!KPlayerBagAssist::ConsumeItem(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10,needChipNum)) return;
-
 	KHeroDef oldHero;
 	memcpy(&oldHero,m_pHeroDef,sizeof(KHeroDef));
-	m_pHeroDef->LevUp();
-	KMainPlayer::RealPlayer()->m_cardDepot.SaveHero(m_pHeroDef);
+	if(!KHeroCardAssist::_LevUp(m_pHeroDef,KMainPlayer::RealPlayer())) return;
 	m_resultPanel.Show(oldHero,*m_pHeroDef);
 
 	ShowHero(m_pHeroDef);
@@ -143,27 +178,6 @@ void KHeroLevUpPanel::DoClickClose(CCObject* sender)
 {
 	m_pHeroWidget->removeFromParent();
 	m_Panel->removeFromParent();
-	
-	//KUIAssist::_switch2MainMenu();
-
-	/*   CCPoint pt(m_pt.x,m_pt.y+600);
-	switch(m_panelType){
-	case enum_panel_task:
-	{
-
-	KUIAssist::_moveOutWidget(m_Panel,m_pt,pt,0.8f);
-	}
-	break;
-	case enum_panel_game:
-	{
-	m_Panel->setVisible(false);
-	KUIAssist::_switch2MainMenu();
-	}
-	break;
-	default:
-	break;
-	}
-	*/
 }
 
 void KHeroLevUpPanel::updatePanel()

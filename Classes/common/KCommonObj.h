@@ -9,7 +9,7 @@ extern System::Random::KRandom g_rnd;
 
 typedef std::list<int > KIntegerList;
 #define MAX_HERO_SKILL_NUM  3
-
+#define MAX_HERO_LEV_NUM	5
 extern KMsgOutputStream g_ostream;
 
 void _CopyIntegerList(KIntegerList& src,KIntegerList& des,int rate =1);

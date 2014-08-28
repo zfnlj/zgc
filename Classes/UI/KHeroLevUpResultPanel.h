@@ -5,6 +5,7 @@
 #include "cocos-ext.h"
 #include "UILayer.h"
 #include "../GameLogic/KGameDef.h"
+#include "../PlayerCard/KPlayerDeck.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -22,6 +23,11 @@ public:
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
+	float m_elapsed;
+	KHeroDef m_oldHero;
+	KHeroDef m_newHero;
+	bool m_bPlay;
+	const KHeroDef::skillDef* m_pNewSkill;
 	
 };
 

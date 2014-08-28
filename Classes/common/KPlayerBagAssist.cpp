@@ -30,4 +30,15 @@ bool ConsumeItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num)
 	pBagMgr->AddBagItem(pBag,pos,-num);
 	return true;
 }
+
+bool ConsumeMoney(KWorldObjAbout::KPlayer* player,int moneyVal)
+{
+	if(!player->HasMoney(moneyVal)) return false;
+
+	KMoneyAbout::KMoney curMoney = player->m_money;
+	curMoney.Increase(-moneyVal);
+	player->syncToRecord();
+	return true;
+}
+
 }

@@ -10,6 +10,10 @@ struct KHeroDef{
 	struct skillDef{
 		int _skillId;
 		int _lev;
+		const char* GetName() const ;
+		bool IsMaxLev() const{
+			return _lev>=MAX_HERO_SKILL_LEV;
+		}
 	};
 	int GetLev() const ;
 	skillDef _skill[MAX_HERO_SKILL_NUM];
@@ -34,7 +38,9 @@ struct KHeroDef{
 	int GetLevUpStoneNum()const;
 	int GetSkillLevUpMoney(int skillIndex);
 	bool LevUp();
-	int SkillLevUp(int skillIndex,int money);
+	void LevZero();
+	bool IsLevMax(){ return _lev>=MAX_HERO_LEV_NUM;}
+	bool SkillLevUp(int skillIndex);
 	int GetAtkVal() const;
 	void init(KDeckDefStatic*);
 };

@@ -2,6 +2,12 @@
 #include "../StaticTable/KGameStatic.h"
 #include "../StaticTable/StaticData.h"
 
+const char* KHeroDef::skillDef::GetName() const
+{
+	KHeroSkillStatic* skillST = KGameStaticMgr::getSingleton().GetHeroSkill(_skillId);
+	return skillST->GetName();
+}
+
 int KHeroDef::GetLev() const 
 {
 	return _lev;
@@ -25,18 +31,16 @@ int KHeroDef::GetSkillLevUpMoney(int skillIndex)
 	return KGameStaticMgr::getSingleton().GetSkillLevUpExp(skillIndex*10+_skill[skillIndex]._lev+1);
 }
 
-int KHeroDef::SkillLevUp(int skillIndex,int money)
+bool KHeroDef::SkillLevUp(int skillIndex)
 {
-	if(_skill[skillIndex]._lev>=_lev) return money;
-	int needMoney = GetSkillLevUpMoney(skillIndex);
-	if(needMoney>money) return money;
+	if(_skill[skillIndex].IsMaxLev()) return false;
 	_skill[skillIndex]._lev = _skill[skillIndex]._lev +1;
-	return money - needMoney;
+	return true;
 }
 
 bool KHeroDef::LevUp()
 {
-	if(_lev >=MAX_HERO_LEV_INDEX) return false;
+	if(IsLevMax()) return false;
 	_lev++;
 	KHeroSkillStatic* skill = NULL;
 	switch(_lev){
@@ -81,6 +85,14 @@ int KHeroDef::GetLevUpStoneNum() const
 {
 	if(_lev==MAX_HERO_LEV_INDEX) return -1;
 	return KGameStaticMgr::getSingleton().GetHeroLevUpExp(_lev+1);
+}
+
+void KHeroDef::LevZero()
+{
+	_lev = 1;
+	_lucky = 0;
+	_strong = 0;
+	memset(_skill,0,sizeof(_skill));
 }
 
 void KHeroDef::Generate(int cardId)
