@@ -7,6 +7,7 @@
 #include "../../common/KCommonObj.h"
 #include "../KDynamicWorld.h"
 #include "../../Inc/KLogicMsg.h"
+#include "KBattleCtrlAssist.h"
 
 namespace KSkillAssist
 {
@@ -40,7 +41,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 		ctrl->AddCardEvtAbility(card,realWhen);
 	}
 	tmpLst.clear();
-	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pCard->GetOwner()->GetGuyId())->GetDeck();
+	KBattleDeck& YourDeck = KBattleCtrlAssist::GetOtherGuy(ctrl,pCard->GetOwner()->GetGuyId())->GetDeck();
 	YourDeck.PickCard(&tmpLst,KCardInst::enum_slot_fight,NULL);
 	tmpLst.push_back(YourDeck.GetHero());
 	
@@ -84,7 +85,7 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes
 {
 	
 	KBattleDeck& MyDeck = pSrc->GetOwner()->GetDeck();
-	KBattleDeck& YourDeck = ctrl->GetOtherGuy(pSrc->GetOwner()->GetGuyId())->GetDeck();
+	KBattleDeck& YourDeck = KBattleCtrlAssist::GetOtherGuy(ctrl,pSrc->GetOwner()->GetGuyId())->GetDeck();
 	KCardInst* skip = (pAbility->ToSelfEnable())?NULL:pSrc;
 	KCardInstList tmpLst;
 	switch(pAbility->GetWhich()){
@@ -522,7 +523,7 @@ void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAb
 	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
 	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
 		result.SetDestVal((*it)->GetRealId(),0);
-		KCardInst* card = ctrl->GetCard((*it)->GetRealId());
+		KCardInst* card = KBattleCtrlAssist::GetCard(ctrl,(*it)->GetRealId());
 		pPlayer->GetDeck().Hand2Fight(card);
 	}
 	_sendAbilityResult(ctrl,result);

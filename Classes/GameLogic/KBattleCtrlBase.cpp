@@ -10,7 +10,7 @@
 #include "../Inc/KTypeDef.h"
 #include "System/Misc/KStream.h"
 #include "../Quest/KQuestNew.h"
-
+#include "assist/KBattleCtrlAssist.h"
 #ifdef _USE_COCOS2DX
 #include "../GameRecord/KGameRecordMgr.h"
 #endif
@@ -101,17 +101,7 @@ void KBattleCtrlBase::update(float dt)
 	}
 }
 
-KCardInst* KBattleCtrlBase::GetCard(int id)
-{
-	if(id<=0) return NULL;
-	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
-		KCardInst* pCard = (*it)->GetDeck().GetCard(id);
-		if(pCard){
-			return pCard;
-		}
-	}
-	return NULL;
-}
+
 
 void KBattleCtrlBase::onCard2Tomb(KCardInst* card)
 {
@@ -156,27 +146,14 @@ void KBattleCtrlBase::DoSelectHandCard(UINT64 guyId,int n)
 {
 	if(n>3)
 		return;
-	KBattleGuy* guy = GetGuy(guyId);
+	KBattleGuy* guy = KBattleCtrlAssist::GetGuy(this,guyId);
 	if(!guy || !guy->IsSelectHandCard())
 		return;
 
 	guy->GetDeck().DrawCard(n,KCardInst::enum_slot_select);
 }
 
-KBattleGuy* KBattleCtrlBase::GetOtherGuy(UINT64 id)
-{
-	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
-		if((*it)->GetGuyId()!=id) return *it;
-	}
-	return NULL;
-}
-KBattleGuy* KBattleCtrlBase::GetGuy(UINT64 id)
-{
-	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
-		if((*it)->GetGuyId()==id) return *it;
-	}
-	return NULL;
-}
+
 
 void KBattleCtrlBase::BattleInit()
 {
@@ -391,7 +368,7 @@ int KBattleCtrlBase::GetCurSelSrc()
 
 KCardInst* KBattleCtrlBase::GetCurSrcCard()
 {
-	return GetCard(m_CurOp._src);
+	return KBattleCtrlAssist::GetCard(this,m_CurOp._src);
 }
 
 void KBattleCtrlBase::DoSelectCard(KCardInst* card)
@@ -424,7 +401,7 @@ void KBattleCtrlBase::OpSetSlot(int slot)
 		m_CurOp._slot = slot;
 		pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
 		KCardInstList arrGreen,arrRed;
-		QueryEnterFightTarget(card,&arrGreen,&arrRed);
+		KBattleCtrlAssist::QueryEnterFightTarget(this,card,&arrGreen,&arrRed);
 		n = arrGreen.size()+arrRed.size();
 	}
 	
@@ -449,30 +426,6 @@ void KBattleCtrlBase::OpDone()
 void KBattleCtrlBase::DoEndTurn()
 {
 	m_CurPlayGuy->SetPlayTimeOut();
-}
-
-bool KBattleCtrlBase::QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrGreen,KCardInstList* arrRed)
-{
-	if(!card->IsKindOf(KCardStatic::card_soldier)) return false;
-	if(card->GetSlot()!=KCardInst::enum_slot_hand) return false;
-	if(m_CurOp._slot<0) return false;
-	KAbilityStatic* pAbility = KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
-	if(!pAbility) return false;
-	KSkillAssist::_fillAllAbilityTarget(this,card,pAbility,arrGreen,arrRed);
-	return true;
-}
-
-void KBattleCtrlBase::QuerySkillTarget(KCardInst* skill,KCardInstList* arrGreen,KCardInstList* arrRed)
-{
-	if(!skill->IsKindOf(KCardStatic::card_skill) &&
-		!skill->IsKindOf(KCardStatic::card_hero))
-		return;
-	KCardAbilityList abilityList;
-	KGameStaticMgr::getSingleton().GetAbilityList(skill->GetCardId(),abilityList);
-	for(KCardAbilityList::iterator it=abilityList.begin();it!=abilityList.end();++it){
-		KAbilityStatic* pAbility = *it;
-		KSkillAssist::_fillAllAbilityTarget(this,skill,pAbility,arrGreen,arrRed);
-	}
 }
 
 void KBattleCtrlBase::PlayWithAI()
@@ -515,16 +468,7 @@ FBattleGuy* KBattleCtrlBase::GetOtherPlayer()
 	return NULL;
 }
 
-KCardInstList* KBattleCtrlBase::GetCardSet(KCardInst* card)
-{
-	KCardInstList* lst = m_pMainPlayer->GetDeck().QueryCardSet(card->GetSlot());
-	if(_findCardIt(lst,card)!=lst->end()) return lst;
 
-	lst = GetOtherPlayer()->QueryCardSet(card->GetSlot());
-	if(_findCardIt(lst,card)!=lst->end()) return lst;
-	CCAssert(false , "Error to  GetCardSet!");
-	return NULL;
-}
 
 void KBattleCtrlBase::DoPlayerOpOK(int src,int des,int slot)
 {
@@ -625,7 +569,6 @@ void KBattleCtrlBase::RndSelectFirstPlayer()
 
 void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 {
-
 	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
 	if(!pBattleStatic) return;
 	KBattleFieldStatic::enum_select_first select_enum = (KBattleFieldStatic::enum_select_first)pBattleStatic->GetFirstType();

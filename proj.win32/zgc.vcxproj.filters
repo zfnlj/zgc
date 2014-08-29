@@ -465,6 +465,9 @@
     <ClCompile Include="..\Classes\GameLogic\KSerialize.cpp">
       <Filter>GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameLogic\assist\KBattleCtrlAssist.cpp">
+      <Filter>GameLogic\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -979,6 +982,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameLogic\KSerialize.h">
       <Filter>GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameLogic\assist\KBattleCtrlAssist.h">
+      <Filter>GameLogic\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

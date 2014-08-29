@@ -13,7 +13,7 @@
 #include "../Facade/FBattleGuy.h"
 #include "../GameLogic/KDynamicWorld.h"
 #include "../GameLogic/KGameDef.h"
-
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
 
 KBattleMsgHub::KBattleMsgHub()
 {
@@ -102,7 +102,7 @@ void KBattleMsgHub::UseRes(unsigned long long Param1, unsigned long long Param2)
 void KBattleMsgHub::CardMove(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	KCardInst* pCard = KClientBattleCtrl::getInstance()->GetCard(Param1);
+	KCardInst* pCard = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),Param1);
 	GameRoot::getSingleton().getBattleScene()->onCardMove(pCard);
 #else
 	KWorldFacade::onWorldDirty((KWorld*)Param2);
@@ -194,7 +194,7 @@ void KBattleMsgHub::GameEnd(unsigned long long Param1, unsigned long long Param2
 void KBattleMsgHub::UseSecret(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	KCardInst* pCard = GameRoot::getSingleton().BattleCtrl()->GetCard(Param1);
+	KCardInst* pCard = KBattleCtrlAssist::GetCard(GameRoot::getSingleton().BattleCtrl(),Param1);
 	GameRoot::getSingleton().getBattleScene()->onUseSecretCard(pCard);
 #else
 	

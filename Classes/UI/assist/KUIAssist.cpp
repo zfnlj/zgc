@@ -19,6 +19,7 @@
 #include "../../WorldObject/KMainPlayer.h"
 #include "../../WorldObject/KPlayer.h"
 #include "../../GameLogic/assist/KSkillAssist.h"
+#include "../../GameLogic/assist/KBattleCtrlAssist.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -88,7 +89,7 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIW
 	if(!base) base = _activeScene->getWidgetByName(_getBasePosName(card));
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
-		if(!lst) lst = KClientBattleCtrl::getInstance()->GetCardSet(card);
+		if(!lst) lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),card);
 		KCardActor* cardActor = (KCardActor*)card->getActor();
 		cardActor->GetUI()->setZOrder(50+_getIndexOfCard(lst,card));
 		return base->getWorldPosition();
@@ -97,7 +98,7 @@ cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIW
 			return base->getWorldPosition();;
 	}
 
-	if(!lst) lst = KClientBattleCtrl::getInstance()->GetCardSet(card);
+	if(!lst) lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),card);
 
 	
 	float realWidth = base->getSize().width*base->getScale();
@@ -337,7 +338,7 @@ CCSprite* KUIAssist::CreateAnimationSprite(const char* animationName,bool bLoop)
 
 void KUIAssist::_createAffectAction(int actorId,const char* action,K3DActionParam* p,KAction* parent,int key)
 {
-	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(actorId);
+	KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),actorId);
 	if(!card) return;
 
 	KCardActor* actor = KCardActor::create(card);
@@ -366,7 +367,7 @@ CCPoint KUIAssist::_getScreenCenter()
 
 CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 {
-	KCardInst* desCard = KClientBattleCtrl::getInstance()->GetCard(des);
+	KCardInst* desCard = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),des);
 	KCardActor* desActor = (KCardActor*)desCard->getActor();
 	CCPoint pt1 = widgetSrc->getPosition();
 	CCPoint pt2;
@@ -416,7 +417,7 @@ CCParticleSystem* KUIAssist::_createParticle(const char* name)
 
 KCardActor* KUIAssist::_getCardActor(int realId)
 {
-	 KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
+	 KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),realId);
 	 if(!card) return NULL;
 	 KCardActor* actor = KCardActor::create(card);
 	 if(!actor->GetUI()->getParent()){
@@ -503,10 +504,10 @@ void KUIAssist::_delayResortHandCardSet(FBattleGuy* guy)
 
 void KUIAssist::_setActionParamSlot(K3DActionParam* param)
 {
-	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(param->_srcID);
+	KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),param->_srcID);
 	if(card) param->_srcSlot = card->GetSlot();
 	for(int i=0;i<MAX_ACTION_TARGET_NUM;i++){
-		card = KClientBattleCtrl::getInstance()->GetCard(param->_desArr[i]);
+		card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),param->_desArr[i]);
 		if(!card) break;
 		param->_destSlot[i] = card->GetSlot();
 	}
@@ -548,12 +549,12 @@ bool KUIAssist::_IsValidateDesCard(KCardInst* card)
 
 
 
-		KClientBattleCtrl::getInstance()->QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+		KBattleCtrlAssist::QueryEnterFightTarget(KClientBattleCtrl::getInstance(),pSrc,&curActiveGreen,&curActiveRed);
 		if(pSrc->GetSlot()==KCardInst::enum_slot_fight){
 			defGuy->QueryActiveDefendCards(&curActiveRed);
 		}
 	}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
-		KClientBattleCtrl::getInstance()->QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
+		KBattleCtrlAssist::QuerySkillTarget(KClientBattleCtrl::getInstance(),pSrc,&curActiveGreen,&curActiveRed);
 	}
 	if(_getIndexOfCard(&curActiveGreen,card)>=0)  return true;
 	if(_getIndexOfCard(&curActiveRed,card)>=0)  return true;

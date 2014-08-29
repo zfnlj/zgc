@@ -48,7 +48,7 @@ public:
     virtual bool init(void*);  
 	virtual void update(float dt);
     // implement the "static node()" method manually
-	KCardInst* GetCard(int id);
+	
 	void StartGame(BattleState st,KBattleGuy* p1,KBattleGuy* p2,KBattleGuy* p3=NULL,KBattleGuy* p4=NULL);
 	void DoPlayerOp(int src,int des);
 	void BattleInit();
@@ -59,14 +59,10 @@ public:
 	BattleState& GetCurState(){ return m_state;}
 	BattleOp& GetCurOp(){ return m_CurOp;}
 	void DoSelectHandCard(UINT64 guyId,int n);
-	KBattleGuy* GetGuy(UINT64 id);
-	KBattleGuy* GetOtherGuy(UINT64 id);
 	KBattleGuyList* GetGuyList(){ return &m_BattleGuyList;}
 	void DoSelectBeginCard(KBattleGuy* guy,KCardInstList* arr);
 	BattleState GetBattleState(){return m_state;}
 	int GetCurSelSrc();
-	void QuerySkillTarget(KCardInst*  skill,KCardInstList* arrGreen,KCardInstList* arrRed);
-	bool QueryEnterFightTarget(KCardInst*  card,KCardInstList* arrGreen,KCardInstList* arrRed);
 	void DoSelectCard(KCardInst*);
 	KCardInst* GetCurSrcCard();
 	void onCardSwitchOwner(KCardInst* pSrc,KCardInst* pDes);
@@ -86,7 +82,6 @@ public:
     FBattleGuy* GetCardOwner(int);
 	KBattleDeck* GetCardDeck(KCardInst* card);
 	void DoPlayerOpOK(int src,int des,int slot);
-	KCardInstList* GetCardSet(KCardInst* card);
 	FBattleGuy* GetOtherPlayer();
 	FBattleGuy* GetMainPlayer();
 	FBattleGuy* GetCurPlayer();
@@ -146,6 +141,7 @@ protected:
 	KDoCardWhenAbilityList m_cardWhenList;
 public:
 	friend class KSerialize;
+	friend class KBattleCtrlAssist;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

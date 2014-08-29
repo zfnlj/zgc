@@ -17,6 +17,7 @@
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"
 #include "../common/KUIMsgDef.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
 
 void KNetMsgFacade::onBattleInit()
 {
@@ -32,7 +33,7 @@ void KNetMsgFacade::onTurnBegin(const void* pData)
 
 void KNetMsgFacade::onSelectHandCardOK(UINT64 playerId)
 {
-	FBattleGuy* guy = GameRoot::getSingleton().BattleCtrl()->GetGuy(playerId)->GetFacade();
+	FBattleGuy* guy = KBattleCtrlAssist::GetGuy(GameRoot::getSingleton().BattleCtrl(),playerId)->GetFacade();
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_SELECTCARD_OK,(unsigned long long)guy,0);
 }
 
@@ -45,8 +46,8 @@ void KNetMsgFacade::onCardMove(int realId)
 void KNetMsgFacade::onCardDuelResult(int atk,int def,int val1,int val2)
 {
 	strCardDuelResult result;
-	result._atker = GameRoot::getSingleton().BattleCtrl()->GetCard(atk);
-	result._defender = GameRoot::getSingleton().BattleCtrl()->GetCard(def);
+	result._atker = KBattleCtrlAssist::GetCard(GameRoot::getSingleton().BattleCtrl(),atk);
+	result._defender = KBattleCtrlAssist::GetCard(GameRoot::getSingleton().BattleCtrl(),def);
 	result._val1 = val1;
 	result._val2 = val2;
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DUELRESULT,(unsigned long long)&result,0);
@@ -68,7 +69,7 @@ void KNetMsgFacade::onBattleDrawCard(KCardInstList* list)
 
 void KNetMsgFacade::onCard2Tomb(int realId)
 {
-	KCardInst* card  = KClientBattleCtrl::getInstance()->GetCard(realId);
+	KCardInst* card  = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),realId);
 	if(card){
 		KClientBattleCtrl::getInstance()->onCard2Tomb(card);
 	}

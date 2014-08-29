@@ -9,6 +9,7 @@
 #include "KCardActor.h"
 #include "assist/KJsonDictMgr.h"
 #include "KSceneLayerBase.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
 //#include "KAction/ParticleBase.h"
 
 USING_NS_CC;
@@ -315,13 +316,13 @@ void KActor::ParticleFire(float elapse)
 
 void KActor::SummonCard(int realId)
 {
-	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
+	KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),realId);
 	KUIAssist::_showCard(card);
 }
 
 void KActor::ShowCard(int realId)
 {
-	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(realId);
+	KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),realId);
 	KUIAssist::_updateCard(card);
 }
 

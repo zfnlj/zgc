@@ -12,6 +12,7 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #include "../GameLogic/assist/KSkillAssist.h"
 #include "assist/KJsonDictMgr.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
 
 using namespace cocos2d::extension;
 
@@ -89,7 +90,7 @@ void KIndicatePanel::Update(float dt)
 			KCardInst* pSrc = KClientBattleCtrl::getInstance()->GetCurSrcCard();
 			if(pSrc){
 				if(pSrc->IsKindOf(KCardStatic::card_soldier)){
-					KClientBattleCtrl::getInstance()->QueryEnterFightTarget(pSrc,&curActiveGreen,&curActiveRed);
+					KBattleCtrlAssist::QueryEnterFightTarget(KClientBattleCtrl::getInstance(),pSrc,&curActiveGreen,&curActiveRed);
 					if(pSrc->GetSlot()==KCardInst::enum_slot_hand){
 						
 						bShowMyFightArea = true;
@@ -98,7 +99,7 @@ void KIndicatePanel::Update(float dt)
 						pOtherPlayer->QueryActiveDefendCards(&curActiveRed);
 					}
 				}else if(pSrc->IsKindOf(KCardStatic::card_skill)){
-					KClientBattleCtrl::getInstance()->QuerySkillTarget(pSrc,&curActiveGreen,&curActiveRed);
+					KBattleCtrlAssist::QuerySkillTarget(KClientBattleCtrl::getInstance(),pSrc,&curActiveGreen,&curActiveRed);
 				}
 			}else{
 				pMainPlayer->QueryValidateHandCards(&curActiveGreen);

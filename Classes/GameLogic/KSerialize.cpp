@@ -1,17 +1,18 @@
 #include "KSerialize.h"
 #include "KBattleGuy.h"
 #include "KBattleCtrlBase.h"
+#include "assist/KBattleCtrlAssist.h"
 
 void KSerialize::deserializeDirty(KBattleCtrlBase* ctrl,UINT64 guyId,KMemoryStream* si)
 {
-	KBattleGuy* guy = ctrl->GetGuy(guyId);
+	KBattleGuy* guy = KBattleCtrlAssist::GetGuy(ctrl,guyId);
 	if(!guy) return;
 	deserializeDirty(guy,si);
 }
 
 void KSerialize::deserializeBattleGuy(KBattleCtrlBase* ctrl,UINT64 guyId,KMemoryStream* si,bool bMainPlayer)
 {
-	KBattleGuy* guy = ctrl->GetGuy(guyId);
+	KBattleGuy* guy = KBattleCtrlAssist::GetGuy(ctrl,guyId);
 	if(!guy){
 		guy = KBattleGuy::create();
 		ctrl->m_BattleGuyList.push_back(guy);
@@ -42,7 +43,7 @@ bool KSerialize::deserialize(KBattleCtrlBase* ctrl,KMemoryStream* si)
 	UINT64 playId;
 	if(!si->ReadUint64(playId))
 		return false;
-	KBattleGuy* guy = ctrl->GetGuy(playId);
+	KBattleGuy* guy = KBattleCtrlAssist::GetGuy(ctrl,playId);
 	ctrl->m_CurPlayGuy = guy;
 	ctrl->m_state = (KBattleCtrlBase::BattleState)statVal;
 	return true;

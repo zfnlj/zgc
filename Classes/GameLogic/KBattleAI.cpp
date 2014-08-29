@@ -5,6 +5,7 @@
 #include "../StaticTable/KAbilityStatic.h"
 #include "assist/KSkillAssist.h"
 #include "assist/KAIAssist.h"
+#include "assist/KBattleCtrlAssist.h"
 
 KBattleAI::KBattleAI()
 {
@@ -166,7 +167,7 @@ KCardInst* KBattleAI::SoldierScriptAtk(KCardInst* pAtk,KCardInstList* lst)
 	if(!LuaWraper.hasFunction(f)) return NULL;
 
 	int targetId =  LuaWraper.Call<int>(f, (void*)m_battleCtrl,pAtk,(void*)lst);
-	return m_battleCtrl->GetCard(targetId);
+	return KBattleCtrlAssist::GetCard(m_battleCtrl,targetId);
 }
 
 bool KBattleAI::UseSecretCard()
@@ -199,7 +200,7 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 		if(ns==2){
 			int desId = atoi(ss[0]);
 			retVal = atof(ss[1])/(float)card->GetCost();
-			return m_battleCtrl->GetCard(desId);
+			return KBattleCtrlAssist::GetCard(m_battleCtrl,desId);
 		}else{
 			return NULL;
 		}
@@ -216,7 +217,7 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 		}else{
 			int target = 0;
 			retVal += CalcUseTargetSkillGood(card,pAbility,target);
-			des = m_battleCtrl->GetCard(target);
+			des = KBattleCtrlAssist::GetCard(m_battleCtrl,target);
 		}
 	}
 	if(card->GetCost()>0){

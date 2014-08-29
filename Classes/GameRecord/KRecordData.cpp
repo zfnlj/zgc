@@ -3,6 +3,7 @@
 #include "../UI/BattleFieldScene.h"
 #include "../UI/assist/KUIAssist.h"
 #include "KGameRecordMgr.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
 
 enum Cur_OP_Step{
 	step_src,
@@ -15,7 +16,7 @@ enum Cur_OP_Step{
 Cur_OP_Step _GetCurOpStep(KBattleCtrlBase::BattleOp& op,int src,int des,int slot)
 {
 	if(op._src != src) return step_src;
-	KCardInst* card = KClientBattleCtrl::getInstance()->GetCard(src);
+	KCardInst* card = KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),src);
 	if(card->IsKindOf(KCardStatic::card_skill)){
 		if(des>0){
 			return step_des;
@@ -112,7 +113,7 @@ bool KRecordPlayOpData::Replay(DWORD timeline, int mode)
 
 void KRecordPlayOpData::ActiveCard(int realId)
 {
- 	KCardInst* pCard= KClientBattleCtrl::getInstance()->GetCard(realId);
+ 	KCardInst* pCard= KBattleCtrlAssist::GetCard(KClientBattleCtrl::getInstance(),realId);
 	KUIAssist::_playClickCardAction(pCard);
 }
 

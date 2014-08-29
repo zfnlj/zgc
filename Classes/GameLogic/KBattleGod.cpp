@@ -13,6 +13,7 @@
 #include "assist/KSkillAssist.h"
 #include "../Inc/KTypeDef.h"
 #include "assist/KBattleEventAssist.h"
+#include "assist/KBattleCtrlAssist.h"
 
 
 IMPLEMENT_SINGLETON(KBattleGod)
@@ -180,8 +181,8 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 #ifdef _USE_COCOS2DX
 		KGameRecordMgr::getSingleton().onPlayOp(op->_src,op->_des,op->_slot);
 #endif
-		KCardInst* pSrc = ctrl->GetCard(op->_src);
-		KCardInst* pDes = ctrl->GetCard(op->_des);
+		KCardInst* pSrc = KBattleCtrlAssist::GetCard(ctrl,op->_src);
+		KCardInst* pDes = KBattleCtrlAssist::GetCard(ctrl,op->_des);
 		if(!pSrc){
 			CCAssert(false , "Not Found Init Card!");
 			op->Empty();

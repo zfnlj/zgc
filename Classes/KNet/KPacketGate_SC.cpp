@@ -8,6 +8,8 @@
 #include "KNetMsgFacade.h"
 #include "../UI/BattleFieldScene.h"
 #include "../GameLogic/KSerialize.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
+
 USING_NS_CC;
 KPacketGate_SC::KPacketGate_SC()
 {
@@ -217,7 +219,7 @@ void KPacketGate_SC::Process_SC_BattleDrawCard(KGameSocket* pSock, const void* p
 		int realId;
 		if(!si.ReadInt(realId))
 			return;
-		KCardInst* card = GameRoot::getSingleton().BattleCtrl()->GetCard(realId);
+		KCardInst* card = KBattleCtrlAssist::GetCard(GameRoot::getSingleton().BattleCtrl(),realId);
 		if(card) drawList.push_back(card);
 	}
 	KNetMsgFacade::onBattleDrawCard(&drawList);
