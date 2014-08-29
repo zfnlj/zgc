@@ -58,9 +58,11 @@ bool KBattleDeck::createDeck(KPlayerCardDepot* pDepot)
 {
 	if(!pDepot) return false;
 	int heroId;
-	KIntegerList tmpLst;
+	KIntegerList tmpLst,rndLst;
 	if(!pDepot->PickCurDeck(heroId,tmpLst)) return false;
-	createDeck(heroId,tmpLst);
+
+	_RndIntegerList(tmpLst,rndLst);
+	createDeck(heroId,rndLst);
 	KCardInst* pHero = GetHero();
 	KHeroDef heroDef;
 	pDepot->PickCurHero(heroDef);
