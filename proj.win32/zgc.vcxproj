@@ -155,6 +155,7 @@
     <ClCompile Include="..\Classes\GameLogic\KBattleGod.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KBattleGuy.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KBattleGuyAttr.cpp" />
+    <ClCompile Include="..\Classes\GameLogic\KSerialize.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KCardAttr.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KCardInst.cpp" />
     <ClCompile Include="..\Classes\GameLogic\KClientBattleCtrl.cpp" />
@@ -319,6 +320,7 @@
     <ClInclude Include="..\Classes\GameLogic\KBattleGod.h" />
     <ClInclude Include="..\Classes\GameLogic\KBattleGuy.h" />
     <ClInclude Include="..\Classes\GameLogic\KBattleGuyAttr.h" />
+    <ClInclude Include="..\Classes\GameLogic\KSerialize.h" />
     <ClInclude Include="..\Classes\GameLogic\KCardAttr.h" />
     <ClInclude Include="..\Classes\GameLogic\KCardInst.h" />
     <ClInclude Include="..\Classes\GameLogic\KClientBattleCtrl.h" />

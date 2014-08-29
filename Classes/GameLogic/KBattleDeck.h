@@ -60,12 +60,7 @@ public:
 	void QueryActiveDefendCards(KCardInstList* arr);
 	void QuerySleepFightCards(KCardInstList* lst);
 
-	size_t serializeDirty(KMemoryStream* so);
-	BOOL deserializeDirty(KMemoryStream* si);
-	size_t serialize(KMemoryStream* so);
-	size_t serializeCardList(KMemoryStream* so,KCardInstList& lst,bool newCard=false);
-	BOOL deserialize(KMemoryStream* si);
-	BOOL deserializeCardList(KMemoryStream* si,KCardInstList& lst);
+	
 	void updateCardSlot(KCardInst* card);
 	void RemoveCard(KCardInst* card);
     int GetEmptyFightSlot();
@@ -88,7 +83,7 @@ private:
 	KCardInstList m_TombCardSet;  //·Ø³¡ÅÆ
     KCardInstList m_SecretCardSet;
 	KBattleGuy* m_Owner;
-	
+friend class KSerialize;	
 };
 
 #endif // __HELLOWORLD_SCENE_H__

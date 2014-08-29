@@ -5,7 +5,7 @@
 #include "../GameRoot.h"
 #include "../UI/BattleFieldScene.h"
 #include "../UI/assist/KUIAssist.h"
-
+#include "../GameLogic/KSerialize.h"
 #define DATA_BUF_SIZE 2048
 
 void KGameRecordTask::init()
@@ -134,12 +134,12 @@ void KGameRecordTask::StartRecrod(int dlgInc)
 	m_dlgInc = dlgInc;
 	Empty();
 	m_startRecordTime = GetTickCount();
-	GameRoot::getSingleton().BattleCtrl()->serializeAll(&m_deckStream);
+	KSerialize::serializeAll(GameRoot::getSingleton().BattleCtrl(),&m_deckStream);
 }
 
 void KGameRecordTask::StartPlay()
 {
-	KClientBattleCtrl::getInstance()->deserializeAll(&m_deckStream);
+	KSerialize::deserializeAll(KClientBattleCtrl::getInstance(),&m_deckStream);
 	if(KClientBattleCtrl::getInstance()->GetCurState()!=KBattleCtrlBase::battle_null){
 		GameRoot::getSingleton().getBattleScene()->ReGenerateAllCard();
 	}

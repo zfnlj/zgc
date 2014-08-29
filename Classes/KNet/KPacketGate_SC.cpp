@@ -7,7 +7,7 @@
 #include "KUserData.h"
 #include "KNetMsgFacade.h"
 #include "../UI/BattleFieldScene.h"
-
+#include "../GameLogic/KSerialize.h"
 USING_NS_CC;
 KPacketGate_SC::KPacketGate_SC()
 {
@@ -133,7 +133,7 @@ void KPacketGate_SC::Process_SC_PlayerDisappear(KGameSocket* pSock, const void* 
 void KPacketGate_SC::Process_SC_BattleCtrlInfo(KGameSocket* pSock, const void* pData, int len)
 {
 	KMsgInputStream si(pData,len);
-	GameRoot::getSingleton().BattleCtrl()->deserialize(&si);
+	KSerialize::deserialize(GameRoot::getSingleton().BattleCtrl(),&si);
 }
 
 void KPacketGate_SC::Process_SC_BattleInit(KGameSocket* pSock, const void* pData, int len)
@@ -150,7 +150,7 @@ void KPacketGate_SC::Process_SC_BattleInit(KGameSocket* pSock, const void* pData
 		PlayerData* player = KUserData::GetInstancePtr()->get(0);
 		bool bMainPlayer =false;
 		if(player&& player->playerID==id) bMainPlayer = true;
-		GameRoot::getSingleton().BattleCtrl()->deserializeBattleGuy(id,&si,bMainPlayer);
+		KSerialize::deserializeBattleGuy(GameRoot::getSingleton().BattleCtrl(),id,&si,bMainPlayer);
 	}
 	KNetMsgFacade::onBattleInit();
 }
@@ -177,7 +177,7 @@ void KPacketGate_SC::Process_SC_BattleWorldUpdate(KGameSocket* pSock, const void
 		UINT64 id;
 		if(!si.ReadUint64(id))
 			return;
-		GameRoot::getSingleton().BattleCtrl()->deserializeDirty(id,&si);
+		KSerialize::deserializeDirty(GameRoot::getSingleton().BattleCtrl(),id,&si);
 	}
 	GameRoot::getSingleton().getBattleScene()->onUseRes();
 }

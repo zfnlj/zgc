@@ -94,13 +94,6 @@ public:
 	void* GetWorld(){ return m_world;}
 	bool IsServerSide();
 	bool IsSelectCard(){ return m_bSelectCard;}
-	void deserializeBattleGuy(UINT64 guyId,KMemoryStream* si,bool bMainPlayer);
-	void deserializeDirty(UINT64 guyId,KMemoryStream* si);
-	size_t serialize(KMemoryStream* si);
-	bool deserialize(KMemoryStream* si);
-
-	size_t serializeAll(KMemoryStream* si);
-	bool deserializeAll(KMemoryStream* si);
 
 	void onNetClose();
 
@@ -151,8 +144,8 @@ protected:
 	bool m_bDirty;
 	float m_waitDramaElapsed;
 	KDoCardWhenAbilityList m_cardWhenList;
-
 public:
+	friend class KSerialize;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

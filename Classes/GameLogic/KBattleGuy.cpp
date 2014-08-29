@@ -10,6 +10,7 @@
 #include "../PlayerCard/KPlayerCardDepot.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
+#include "KSerialize.h"
 
 #define MAX_TURN_PLAY_TIME  30.0f //120.0f
 
@@ -193,43 +194,6 @@ void KBattleGuy::QueryActiveDefendCards(KCardInstList* lst)
 	m_Deck.QueryActiveDefendCards(lst);
 }
 
-size_t KBattleGuy::serialize(KMemoryStream* so)
-{
-	size_t pos = so->size();
-	if(!so->WriteUint64(m_guyId)) return 0;
-	if(!m_attr.writePacketAll(so,true)) return 0;
-
-
-	if(!m_Deck.serialize(so))
-		return 0;
-	return so->size() - pos;
-}
-
-size_t KBattleGuy::serializeDirty(KMemoryStream* so)
-{
-	size_t pos = so->size();
-	m_attr.writePacket(so);
-	m_Deck.serializeDirty(so);
-	return so->size() - pos;
-}
-
-BOOL KBattleGuy::deserializeDirty(KMemoryStream* si)
-{
-	m_attr.readPacket(si);
-	if(!m_Deck.deserializeDirty(si))
-		return FALSE;
-	return TRUE;
-}
-
-BOOL KBattleGuy::deserialize(KMemoryStream* si)
-{
-	if(!si->ReadUint64(m_guyId))
-		return FALSE;
-	m_attr.readPacket(si);
-	if(!m_Deck.deserialize(si))
-		return FALSE;
-	return TRUE;
-}
 
 void KBattleGuy::AddRes(int val)
 { 

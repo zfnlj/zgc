@@ -69,10 +69,7 @@ public:
 	 void SetBattleCtrl(KBattleCtrlBase* ctrl){ m_battleCtrl = ctrl;}
 	 KBattleCtrlBase* GetBattleCtrl(){ return m_battleCtrl;}
 
-	 size_t serialize(KMemoryStream* so);
-	 BOOL deserialize(KMemoryStream* si);
-	 size_t serializeDirty(KMemoryStream* so);
-	 BOOL deserializeDirty(KMemoryStream* si);
+
 
 	 bool DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAbility,int actor);
 	 void RemoveGuyAbility(KAbilityStatic* pAbility);
@@ -92,6 +89,7 @@ protected:
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
 friend class KClientBattleCtrl;
+friend class KSerialize;
 };
 
 typedef std::list<KBattleGuy*> KBattleGuyList;
