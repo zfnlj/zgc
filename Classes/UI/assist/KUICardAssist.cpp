@@ -173,6 +173,9 @@ UIWidget* KUICardAssist::_createHeroLayout(KCardStatic* pST,bool bBig,KCardInst*
 	UIWidget* ui = KJsonDictMgr::getSingleton().CreateHeroWidget();
 
 	char sz[24];
+	UIWidget* atkLabel = ui->getChildByName("atk");
+	atkLabel->setVisible(false);
+
 	UIImageView* widgetBg =(UIImageView*)ui->getChildByName("background");
 	sprintf(sz,"pic_%d.jpg",pST->GetID());
 	if(widgetBg){

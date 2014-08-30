@@ -58,6 +58,15 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 	updatePanel();
 }
 
+void KHeroLevUpPanel::UpdateMoney()
+{
+	UILabelBMFont* moneyLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel, "money");
+	int kk=0;
+	char sz[64];
+	sprintf(sz,"%s",KMainPlayer::RealPlayer()->GetMoney());
+	moneyLabel->setText(sz);
+}
+
 void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 {
 	if(m_pHeroWidget){
@@ -80,6 +89,7 @@ void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		SetLevUpWidgetsVisible(i,m_pHeroDef->_skill[i]._id>0);
 	}
+	UpdateMoney();
 	UpdateHeroLevUpInfo();
 	m_Panel->addChild(m_pHeroWidget);
 
@@ -105,7 +115,11 @@ void KHeroLevUpPanel::UpdateHeroLevUpInfo()
 	char sz[64];
 	int curChipNum = KPlayerBagAssist::GetPlayerItemNum(KMainPlayer::RealPlayer(),m_pHeroDef->GetCardId()*10);
 	int needChipNum = m_pHeroDef->GetLevUpStoneNum();
-	sprintf(sz,"%d/%d",curChipNum,needChipNum);
+	if(m_pHeroDef->IsLevMax()){
+		sprintf(sz,"%s","max");
+	}else{
+		sprintf(sz,"%d/%d",curChipNum,needChipNum);
+	}
 	levUpText->setText(sz);
 	UILoadingBar* bar = (UILoadingBar*)UIHelper::seekWidgetByName(m_Panel,"levUp_bar");
 	if(curChipNum>needChipNum){
@@ -185,7 +199,9 @@ void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
 
 void KHeroLevUpPanel::DoClickClose(CCObject* sender)
 {
+	KJsonDictMgr::getSingleton().OnHeroWidgetDestory(m_pHeroWidget);
 	m_pHeroWidget->removeFromParent();
+	m_pHeroWidget = NULL;
 	m_Panel->removeFromParent();
 }
 

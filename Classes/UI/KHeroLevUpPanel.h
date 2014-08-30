@@ -33,6 +33,7 @@ private:
 	void DoClickSkillLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();
+	void UpdateMoney();
 };
 
 #endif // _KHEROLEVUPPANEL_H
