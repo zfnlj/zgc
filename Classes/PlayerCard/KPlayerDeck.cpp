@@ -139,18 +139,21 @@ int KHeroDef::rndGenLevLucky()
 int KHeroDef::GetAtkVal() const
 {
 	float val = 0.0f;
+	
+	val += 30.0f *(float)_strong;
 
+	float skillVal[MAX_HERO_SKILL_NUM]={100.0f,200.0f,400.0f};
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(_skill[i]._id);
 		if(!skill) continue;
-		float luckyVal = (_lucky>i*33)?_lucky -i*33:0;
-		luckyVal += skill->GetRateVal(GetSkillLev(i));
-		if(luckyVal<=0.0f) luckyVal = 0.0f;
-		if(luckyVal>100.0f) luckyVal = 100.0f;
-		val += skill->GetPower()*luckyVal;
+		float luckyVal = (float)_lucky-i*33.0f;
+		if(luckyVal<0.0f) luckyVal = 0.0f;
+		if(luckyVal>33.0f) luckyVal = 33.0f;
+		luckyVal = luckyVal/33.0f;
+		luckyVal = 0.3f +0.7f*luckyVal;
+		val += luckyVal*(_skill[i]._lev+1)*0.25 * skill->GetPower()*skillVal[i];
 	}
-	val = val*10.0f;
-	return (int)(val+0.5f);
+	return (int)val;
 }
 
 int KHeroDef::GetStrong() const 

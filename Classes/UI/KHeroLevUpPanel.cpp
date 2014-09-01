@@ -86,9 +86,8 @@ void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 	m_pHeroWidget->setPosition(slot->getPosition());
 	m_pHeroWidget->setZOrder(100);
 
-	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
-		SetLevUpWidgetsVisible(i,m_pHeroDef->_skill[i]._id>0);
-	}
+	
+	UpdateSkillInfo();
 	UpdateMoney();
 	UpdateHeroLevUpInfo();
 	m_Panel->addChild(m_pHeroWidget);
@@ -127,6 +126,23 @@ void KHeroLevUpPanel::UpdateHeroLevUpInfo()
 			100.0f);
 	}else{
 		bar->setPercent((float)curChipNum*100.0f/(float)needChipNum);
+	}
+	UpdateHeroAtkPower();
+	
+}
+
+void KHeroLevUpPanel::UpdateHeroAtkPower()
+{
+	char sz[64];
+	UILabelBMFont* heroPowerWidget = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel,"hero_power_val");
+	sprintf(sz,"%d",m_pHeroDef->GetAtkVal());
+	heroPowerWidget->setText(sz);
+}
+
+void KHeroLevUpPanel::UpdateSkillInfo()
+{
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		SetLevUpWidgetsVisible(i,m_pHeroDef->_skill[i]._id>0);
 	}
 }
 
@@ -178,6 +194,10 @@ void KHeroLevUpPanel::DoClickSkillLevUp(CCObject* sender)
 		return;
 	}
 	KHeroCardAssist::_SkillLevUp(m_pHeroDef,pBut->getTag(),KMainPlayer::RealPlayer());
+
+	UpdateMoney();
+	UpdateSkillInfo();
+	UpdateHeroAtkPower();
 }
 
 void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)

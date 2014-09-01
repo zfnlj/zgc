@@ -34,6 +34,8 @@ private:
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();
 	void UpdateMoney();
+	void UpdateSkillInfo();
+	void UpdateHeroAtkPower();
 };
 
 #endif // _KHEROLEVUPPANEL_H
