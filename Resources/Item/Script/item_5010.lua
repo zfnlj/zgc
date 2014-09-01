@@ -7,8 +7,10 @@ Initialize = function(KUseItem)
 end,
 run = function(KUseItem,playerId )
   local rndVal = KUseItem:RndVal();
-  if rndVal <= 50 then
+  if rndVal <= 10 then	
   	KUseItem:GenerateHero(playerId,10001);
+  else if rndVal <= 30 then 
+   	KUseItem:GenerateItem(playerId,100010,2);
   end
 end,
 }

@@ -307,6 +307,14 @@ void KUseItem::GenerateHero(UINT64 playerId,int heroId)
 	pPlayer->GetResultBag()->Add(1,id,1);
 }
 
+void KUseItem::GenerateItem(UINT64 playerId,int itemId,int count)
+{
+	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
+	bool bNew=true;
+	KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),itemId,count,bNew);
+	pPlayer->GetResultBag()->Add(0,itemId,count);
+}
+
 int KUseItem::RndVal()
 {
 	return _RndNormal(1,100);

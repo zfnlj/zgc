@@ -104,6 +104,7 @@ public:
 	void GenerateCardDeck(UINT64 playerId,int deckId);
 	int  RndVal();
 	void GenerateHero(UINT64 playerId,int heroId);
+	void GenerateItem(UINT64 playerId,int itemId,int num);
 public:
 	BeginDefLuaClass(KUseItem)
 		DefMemberFunc(SetFlag);
@@ -116,6 +117,7 @@ public:
 		DefMemberFunc(GenerateCardDeck);
 		DefMemberFunc(RndVal);
 		DefMemberFunc(GenerateHero);
+		DefMemberFunc(GenerateItem);
 	EndDef
 };
 
