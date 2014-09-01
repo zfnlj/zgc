@@ -35,8 +35,7 @@ bool ConsumeMoney(KWorldObjAbout::KPlayer* player,int moneyVal)
 {
 	if(!player->HasMoney(moneyVal)) return false;
 
-	KMoneyAbout::KMoney curMoney = player->m_money;
-	curMoney.Increase(-moneyVal);
+	player->m_money.Increase(-moneyVal);
 	player->syncToRecord();
 	return true;
 }

@@ -163,14 +163,14 @@ void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
 	if(bVisible && !skill.IsMaxLev()){
 		KUIAssist::ShowButton(skilLevUpBut,true);
 	}else{
-		KUIAssist::ShowButton(skilLevUpBut,bVisible);
+		KUIAssist::ShowButton(skilLevUpBut,false);
 	}
 
 	UIWidget* goldIcon = KUIAssist::GetIndexWidget(m_Panel,"gold_icon",index);
 	if(bVisible && !skill.IsMaxLev()){
 		goldIcon->setVisible(true);
 	}else{
-		goldIcon->setVisible(bVisible);
+		goldIcon->setVisible(false);
 	}
 
 	int needMoney = m_pHeroDef->GetSkillLevUpMoney(index);
@@ -178,7 +178,7 @@ void KHeroLevUpPanel::SetLevUpWidgetsVisible(int index,bool bVisible)
 	if(bVisible && !skill.IsMaxLev()){
 		moneyTxt->setVisible(true);
 	}else{
-		moneyTxt->setVisible(bVisible);
+		moneyTxt->setVisible(false);
 	}
 	sprintf(sz,"%d",needMoney);
 	moneyTxt->setText(sz);
