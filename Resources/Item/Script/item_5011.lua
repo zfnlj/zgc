@@ -1,6 +1,6 @@
 ﻿-- 
 -- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-item_5010 = 
+item_5011 = 
 {
 Initialize = function(KUseItem)
 	return true;

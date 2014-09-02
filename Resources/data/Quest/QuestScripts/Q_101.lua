@@ -23,7 +23,7 @@ end,
 
 UseGift = function(quest,player)
 	if quest:RemainDailyQuestNum()>0 then
-			return "5010"; 
+			return "5011"; 
 	else
 			return "";
 	end

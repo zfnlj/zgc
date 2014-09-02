@@ -20,6 +20,8 @@
 #include "../../WorldObject/KPlayer.h"
 #include "../../GameLogic/assist/KSkillAssist.h"
 #include "../../GameLogic/assist/KBattleCtrlAssist.h"
+#include "../../WorldObject/KPlayer.h"
+#include "../../Item/KItemCreate.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -708,6 +710,21 @@ void KUIAssist::_popNotifyMsg(int dlgId)
 	KPopupLayer::DoModal(UI_NOTIFY_STR,dlgId,KPopupLayer::DT_Ok);
 }
 
+UIWidget* KUIAssist::_createNormalItemWidget(KPlayerTmpBag::ItemDef item)
+{
+	KItemAbout::KCreateInfo_Item* itemInfo = KItemAbout::KItemCreate::GetInstancePtr()->GetCreateInfo_Item(item._id);
+	if(!itemInfo) return NULL;
+	std::string fullPath;
+	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(itemInfo->GetIcon());
+
+	UIWidget* panel =KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/Item_normal.json");
+	UIWidget* pBkWidget = UIHelper::seekWidgetByName(panel,"bk");
+	UIWidget* pCountWidget = UIHelper::seekWidgetByName(panel,"count_txt");
+
+	//itemWidget->loadTexture(fullPath.c_str());
+	int kk=0;
+}
+
 UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 {
 
@@ -717,6 +734,11 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 		{
 			const KHeroDef* heroDef = KMainPlayer::RealPlayer()->m_cardDepot.FindHero(item._id);
 			widget = KUICardAssist::_createHero(*heroDef,false);
+		}
+		break;
+	case KPlayerTmpBag::item_normal:
+		{
+			widget = _createNormalItemWidget(item);
 		}
 		break;
 	default:

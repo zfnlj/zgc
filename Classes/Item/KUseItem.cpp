@@ -16,6 +16,7 @@
 #include "../Inc/KLogicMsg.h"
 #include "../../Inc/PacketGate/c_game_packet.h"
 #include "../common/KCommonObj.h"
+#include "../common/KPlayerBagAssist.h"
 
 using namespace KAttributeAbout;
 using namespace System::Collections;
@@ -311,13 +312,14 @@ void KUseItem::GenerateItem(UINT64 playerId,int itemId,int count)
 {
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
 	bool bNew=true;
-	KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),itemId,count,bNew);
+	//KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),itemId,count,bNew);
+	KPlayerBagAssist::AddItem(pPlayer,itemId,count);
 	pPlayer->GetResultBag()->Add(0,itemId,count);
 }
 
 int KUseItem::RndVal()
 {
-	return _RndNormal(1,100);
+	return g_rnd.GetRandom(0,101);
 }
 
 };
