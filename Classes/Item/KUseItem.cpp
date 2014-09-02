@@ -319,7 +319,8 @@ void KUseItem::GenerateItem(UINT64 playerId,int itemId,int count)
 
 int KUseItem::RndVal()
 {
-	return g_rnd.GetRandom(0,101);
+	int ret = g_rnd.GetRandom(0,101);
+	return ret;
 }
 
 };

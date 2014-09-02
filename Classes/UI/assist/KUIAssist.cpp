@@ -718,11 +718,15 @@ UIWidget* KUIAssist::_createNormalItemWidget(KPlayerTmpBag::ItemDef item)
 	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(itemInfo->GetIcon());
 
 	UIWidget* panel =KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/Item_normal.json");
-	UIWidget* pBkWidget = UIHelper::seekWidgetByName(panel,"bk");
-	UIWidget* pCountWidget = UIHelper::seekWidgetByName(panel,"count_txt");
-
+	UILayout* pBkWidget = (UILayout*)UIHelper::seekWidgetByName(panel,"bk");
+	pBkWidget->setBackGroundImage(fullPath.c_str());
+	UILabelBMFont* pCountWidget = (UILabelBMFont*)UIHelper::seekWidgetByName(panel,"count_txt");
+	char sz[64];
+	sprintf(sz,"X%d",item._count);
+	pCountWidget->setText(sz);
 	//itemWidget->loadTexture(fullPath.c_str());
-	int kk=0;
+	panel->setAnchorPoint(ccp(0.5f, 0.5f));
+	return panel;
 }
 
 UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
