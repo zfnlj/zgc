@@ -597,11 +597,16 @@ bool KBattleDeck::ExistCards()
 
 void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
 {
-	
-	m_heroSkillMgr.Init(pDeckDef);
 	if(!pDeckDef) return;
+	m_heroDef.init(pDeckDef);
+	SetHeroSkill();
 	createDeck(pDeckDef);
 	GetHero()->CurHpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
 	GetHero()->SetHeroRank(KSkillAssist::_calcHeroRank(pDeckDef->getHeroLucky(),pDeckDef->getHeroStrong()),pDeckDef->GetAtkVal());
 	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
+}
+
+void KBattleDeck::SetHeroSkill()
+{
+	m_heroSkillMgr.SetHero(&m_heroDef);
 }
