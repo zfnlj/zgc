@@ -111,10 +111,15 @@ void KHeroDef::Generate(int cardId)
 
 void KHeroDef::init(KDeckDefStatic* pDef)
 {
-	_id = 0;
+	memset(this,0,sizeof(KHeroDef));
 	_lucky = pDef->getHeroLucky();
 	_strong = pDef->getHeroStrong();
 	_cardId = pDef->getHero();
+	const HeroSkill* skillArr = pDef->GetHeroSkill();
+	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
+		_skill[i]._id = skillArr[i]._id;
+		_skill[i]._lev = skillArr[i]._lev;
+	}
 }
 
 int KHeroDef::rndGenLevStrong()
@@ -175,7 +180,6 @@ int KHeroDef::GetStrong() const
 	}
 	return ret;
 }
-
 
 void KPlayerDeck::CreateOnDeckDef(int id)
 {

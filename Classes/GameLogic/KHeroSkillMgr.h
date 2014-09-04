@@ -10,7 +10,7 @@ struct KHeroDef;
 class KHeroSkillMgr
 {
 public:
-	KHeroSkillMgr():m_bDone(false){}
+	KHeroSkillMgr():m_bDone(false),m_heroDef(NULL){}
 	~KHeroSkillMgr(){}
 
 	void onTurnBegin(KBattleCtrlBase* ctrl);
@@ -20,7 +20,7 @@ public:
 	HeroSkill* RndSelectSkill(KAbilityStatic::Enum_When when);
 
 	void SetHero(KHeroDef* pDef);
-	void Init(KDeckDefStatic* pDeckDef);
+	//void Init(KDeckDefStatic* pDeckDef);
 	size_t serialize(KMemoryStream* so);
 	BOOL deserialize(KMemoryStream* si);
 	void init(KBattleGuy* guy){ m_Owner = guy;}
@@ -30,7 +30,7 @@ private:
 	HeroSkill   m_skill[MAX_HERO_SKILL_NUM];
 	KBattleGuy* m_Owner;
 	KAbilityStatic m_dynAbility;
-	KHeroDef m_heroDef;
+	KHeroDef* m_heroDef;
 };
 
 #endif //

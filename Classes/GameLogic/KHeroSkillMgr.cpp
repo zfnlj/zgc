@@ -71,35 +71,36 @@ void KHeroSkillMgr::ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When 
 
 HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_When when)
 {
+	if(!m_heroDef) return NULL;
 	for(int i=MAX_HERO_SKILL_NUM-1;i>=0;i--){
 		int nRand = g_rnd.GetRandom(0,100);
-		if(m_skill[i].IsEmpty()) continue;
+		if(m_skill[i].getLev()==0) continue;
 		if(m_skill[i]._skill->GetWhen()!=when) continue;
 		if(i==2 && nRand> 60) continue;
-		if(i==1 && nRand> 70) continue;
-		if(i==0 && nRand> 80) continue;
-		int luckyVal = m_heroDef.GetLucky()-i*33;
-		if((m_skill[i].getRateVal()+luckyVal)>nRand) return &m_skill[i];
+		if(i==1 && nRand> 80) continue;
+		int skillLucky = m_heroDef->GetLucky()-i*33;
+		if(skillLucky>33) skillLucky = 33;
+		if(skillLucky<0) skillLucky = 0;
+		if((m_skill[i].getRateVal()+skillLucky)> g_rnd.GetRandom(0,100)) return &m_skill[i];
 	}
 	return NULL;
 }
 
 void KHeroSkillMgr::SetHero(KHeroDef* pDef)
 {
-	memset(&m_heroDef,0,sizeof(m_heroDef));
 	if(!pDef) return;
-	memcpy(&m_heroDef,pDef,sizeof(KHeroDef));
+	m_heroDef = pDef;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		addSkill(pDef->_skill[i]._id,pDef->GetSkillLev(i));
 	}
 }
 
-void KHeroSkillMgr::Init(KDeckDefStatic* pDeckDef)
-{
-	memset(&m_heroDef,0,sizeof(m_heroDef));
-	memset(m_skill,0,sizeof(m_skill));
-	if(!pDeckDef) return;
-	memcpy(m_skill,pDeckDef->GetHeroSkill(),sizeof(m_skill));
-	m_heroDef._lucky = pDeckDef->getHeroLucky();
-	m_heroDef._strong = pDeckDef->getHeroStrong();
-}
+//void KHeroSkillMgr::Init(KDeckDefStatic* pDeckDef)
+//{
+//	memset(&m_heroDef,0,sizeof(m_heroDef));
+//	memset(m_skill,0,sizeof(m_skill));
+//	if(!pDeckDef) return;
+//	memcpy(m_skill,pDeckDef->GetHeroSkill(),sizeof(m_skill));
+//	m_heroDef._lucky = pDeckDef->getHeroLucky();
+//	m_heroDef._strong = pDeckDef->getHeroStrong();
+//}

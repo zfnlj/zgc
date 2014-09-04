@@ -59,9 +59,8 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 	}else if(m_Deck.createDeck(playerCardDepot)){
 		m_attr.setMaxRes(1);
 		m_attr.setCurRes(1);
-		KHeroDef heroDef;
-		playerCardDepot->PickCurHero(heroDef);
-		m_Deck.m_heroSkillMgr.SetHero(&heroDef);
+		playerCardDepot->PickCurHero(m_Deck.GetHeroDef());
+		m_Deck.SetHeroSkill();
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 	}else
 	{

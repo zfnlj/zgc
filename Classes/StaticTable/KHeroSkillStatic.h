@@ -22,6 +22,7 @@ struct HeroSkill{
 		void init(int id,int lev);
 		KAbilityStatic* GetRndAbility();
 		int getRateVal();
+		int getLev(){ return _lev;}
 		bool IsEmpty(){ return _id==0;}
 		void GenDynAbility(KAbilityStatic& dynAbility);
 };

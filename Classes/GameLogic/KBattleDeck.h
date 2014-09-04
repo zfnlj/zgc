@@ -4,7 +4,7 @@
 #include "KCardInst.h"
 #include "KGameDef.h"
 #include "KHeroSkillMgr.h"
-
+#include "../PlayerCard/KPlayerDeck.h"
 #define MAX_FIGHT_POS_NUM 5
 #define MAX_SECRET_POS_NUM 2
 
@@ -12,6 +12,7 @@ class KCardInst;
 class KBattleGuy;
 class KMemoryStream;
 class KPlayerCardDepot;
+struct KHeroDef;
 class KBattleDeck
 {
 public:
@@ -72,7 +73,8 @@ public:
 	int GetHurtedSoldierNum();
 	int GetSoldierNum();
 	KHeroSkillMgr m_heroSkillMgr;
-
+	KHeroDef& GetHeroDef(){ return m_heroDef;}
+	void SetHeroSkill();
 
 private:
 	KCardInstList m_HeroCardSet;
@@ -83,6 +85,7 @@ private:
 	KCardInstList m_TombCardSet;  //·Ø³¡ÅÆ
     KCardInstList m_SecretCardSet;
 	KBattleGuy* m_Owner;
+	KHeroDef m_heroDef;
 friend class KSerialize;	
 };
 
