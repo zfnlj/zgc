@@ -21,12 +21,13 @@ public:
         card_secret,
 	};
 	enum CardRace{
-		race_null,
+		race_all,
 		race_gold,
 		race_tree,
 		race_water,
 		race_fire,
 		race_mud,
+		race_null,
 	};
 
 	KCardStatic(){}

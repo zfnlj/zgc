@@ -86,8 +86,8 @@ void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int brow
 		}else if(costId>0){
 			if(pST->GetCost()!=costId) continue;
 		}
-		if(raceId!=KCardStatic::race_null&& raceId!=pST->GetRace()) continue;
-		if(pST->GetRace()!=0 && heroRace>0 && pST->GetRace()!=heroRace) continue;
+		if(raceId!=KCardStatic::race_all&& raceId!=pST->GetRace()) continue;
+		if(pST->GetRace()!=KCardStatic::race_null && heroRace>0 && pST->GetRace()!=heroRace) continue;
 		if(!pST) continue;
 		switch(browse){
 		case browse_all:
@@ -235,7 +235,7 @@ void KCardGroupAssist::SmartFillCardGroup(KHeroDef& curHero,KMiniCardList& miniL
 	if(curHero._id==0) return;
 	KItemUnitList tmpList,desList;
 	depot->PickStoreCard(tmpList);
-	FilterCard(tmpList,desList,browse_all,KCardStatic::race_null,curHero.GetRace(),-1,0);
+	FilterCard(tmpList,desList,browse_all,KCardStatic::race_all,curHero.GetRace(),-1,0);
 
 	KIntegerList remainLst;
 	for(KItemUnitList::iterator it= tmpList.begin();it!=tmpList.end();++it){

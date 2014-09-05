@@ -42,6 +42,7 @@ public:
 	static void _switch2BattleScene();
 	static void _switch2MainMenu();
 	static void _switch2StageWaitScene();
+	static void _switch2StageSelectScene();
 	static void _switch2ShopScene();
 	static void _switch2CardGroupScene();
 	

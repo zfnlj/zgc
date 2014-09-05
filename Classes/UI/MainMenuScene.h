@@ -6,7 +6,7 @@
 #include "KActor.h"
 #include "KGenCardPanel.h"
 #include "KGameResultPanel.h"
-
+#include "../PlayerCard/KPlayerCardDepot.h"
 USING_NS_CC;
 class KCardInst;
 class KCardInst;
@@ -41,6 +41,9 @@ public:
 	void UpdateLockStatus();
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
 	void DoClickFeedback(CCObject* sender);
+	void ShowCollectInfo();
+
+	void SetRaceCollectInfo(KItemUnitList& tmpList,KCardStatic::CardRace race);
 private:
 	CCLabelTTF* m_InfoLabel;
 

@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\stage_scene.xml.ui</filePath>
+  <filePath>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\stage_scene.xml.ui</filePath>
   <Version>1.2.0.1</Version>
   <Name>stage_scene</Name>
-  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene</ProjectDir>
+  <ProjectDir>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene</ProjectDir>
   <JsonFileName>stage_scene.json</JsonFileName>
-  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\Resources</Resources>
-  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\Json</JsonFolder>
+  <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\stage_scene\Json</JsonFolder>
   <JsonList>
-    <string>stage_scene_1.json</string>
+    <string>stage_scene.json</string>
   </JsonList>
   <imageFileList />
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>stage_scene_1.json</CurrentUIJson>
+  <CurrentUIJson>stage_scene.json</CurrentUIJson>
   <CanvasSize>
     <Width>1024</Width>
     <Height>768</Height>

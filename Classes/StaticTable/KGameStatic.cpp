@@ -516,3 +516,25 @@ int KGameStaticMgr::GetHeroLevUpExp(int lev)
 	if(it==m_heroLevUpMgr.end()) return 0;
 	return it->second->GetExp();
 }
+
+int KGameStaticMgr::GetCardNum(KCardStatic::CardRace race)
+{
+	int count =0;
+	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
+		KCardStatic* pCard = it->second;
+		if( race==KCardStatic::race_all || pCard->GetRace()==race){
+			if(pCard->GetType()!=KCardStatic::card_hero) count++;
+		}
+	}
+	return count;
+}
+
+int KGameStaticMgr::GetNormalCardNum()
+{
+	int count =0;
+	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
+		KCardStatic* pCard = it->second;
+		if(pCard->GetType()!=KCardStatic::card_hero) count++;
+	}
+	return count;
+}

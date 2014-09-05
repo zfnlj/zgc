@@ -267,6 +267,7 @@
     <ClCompile Include="..\Classes\UI\KShopScene.cpp" />
     <ClCompile Include="..\Classes\UI\MainMenuScene.cpp" />
     <ClCompile Include="..\Classes\UI\PlayerGuide.cpp" />
+    <ClCompile Include="..\Classes\UI\StageSelectScene.cpp" />
     <ClCompile Include="..\Classes\UI\StageWaitScene.cpp" />
     <ClCompile Include="..\Classes\UI\StartScene.cpp" />
     <ClCompile Include="..\Classes\VirtualService.cpp" />
@@ -336,7 +337,6 @@
     <ClInclude Include="..\Classes\GameRoot.h" />
     <ClInclude Include="..\Classes\Inc\KBusinessDefine.h" />
     <ClInclude Include="..\Classes\Inc\KLogicMsg.h" />
-    <ClInclude Include="..\Classes\Inc\KLuaWrap.h" />
     <ClInclude Include="..\Classes\Inc\KTypeDef.h" />
     <ClInclude Include="..\Classes\Item\KBag.h" />
     <ClInclude Include="..\Classes\Item\KBagManager.h" />
@@ -445,6 +445,7 @@
     <ClInclude Include="..\Classes\UI\MainMenuScene.h" />
     <ClInclude Include="..\Classes\UI\PlayerGuide.h" />
     <ClInclude Include="..\Classes\UI\ProgressProtocol.h" />
+    <ClInclude Include="..\Classes\UI\StageSelectScene.h" />
     <ClInclude Include="..\Classes\UI\StageWaitScene.h" />
     <ClInclude Include="..\Classes\UI\StartScene.h" />
     <ClInclude Include="..\Classes\VirtualService.h" />

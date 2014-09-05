@@ -22,6 +22,7 @@
 #include "../../GameLogic/assist/KBattleCtrlAssist.h"
 #include "../../WorldObject/KPlayer.h"
 #include "../../Item/KItemCreate.h"
+#include "../StageSelectScene.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -195,6 +196,13 @@ void KUIAssist::_switch2ShopScene()
 void KUIAssist::_switch2StageWaitScene()
 {
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, StageWaitScene::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+
+}
+
+void KUIAssist::_switch2StageSelectScene()
+{
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, StageSelectScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 
 }

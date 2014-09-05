@@ -40,6 +40,9 @@ public:
 	int  PlayerExpToLevel(int exp);
 	float GetLevRate(int exp);
 	KCardStatic* GetCard(int id);
+	int GetCardNum(KCardStatic::CardRace);
+	int GetNormalCardNum();
+	int GetAllCard(){ return m_cardMap.size();}
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);
 	KAbilityStatic* GetAbilityOnId(int id);
 	KAttrStatic* GetAttr(int id);

@@ -317,12 +317,6 @@
     <ClCompile Include="..\Classes\StaticTable\KRankStaticMgr.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\MainMenuScene.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\UI\StartScene.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
@@ -375,17 +369,11 @@
     <ClCompile Include="..\Classes\sqlite\KSqlEnc.cpp">
       <Filter>sqlite</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\StageWaitScene.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PlayerCard\KPlayerCardDepot.cpp">
       <Filter>PlayerCard</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp">
       <Filter>PlayerCard</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\CardGroupScene.cpp">
-      <Filter>UI\Panel</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\UI\assist\KJsonDictMgr.cpp">
       <Filter>UI\assist</Filter>
@@ -407,12 +395,6 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UI\assist\KPopupLayer.cpp">
       <Filter>UI\assist</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\KSceneLayerBase.cpp">
-      <Filter>UI\Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\UI\KShopScene.cpp">
-      <Filter>UI\Panel</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\GameLogic\assist\KAIAssist.cpp">
       <Filter>GameLogic\assist</Filter>
@@ -467,6 +449,27 @@
     </ClCompile>
     <ClCompile Include="..\Classes\GameLogic\assist\KBattleCtrlAssist.cpp">
       <Filter>GameLogic\assist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\CardGroupScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KShopScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\KSceneLayerBase.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\StageWaitScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\MainMenuScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\StageSelectScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -693,9 +696,6 @@
     <ClInclude Include="..\Classes\Quest\KQuestTimer.h">
       <Filter>game\Quest</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\Inc\KLuaWrap.h">
-      <Filter>Inc</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\Quest\KQuestDef.h">
       <Filter>game\Quest</Filter>
     </ClInclude>
@@ -832,12 +832,6 @@
     <ClInclude Include="..\Classes\StaticTable\KRankStaticMgr.h">
       <Filter>staticTable</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\BattleFieldScene.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\MainMenuScene.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\UI\StartScene.h">
       <Filter>UI\Panel</Filter>
     </ClInclude>
@@ -887,17 +881,11 @@
     <ClInclude Include="..\Classes\sqlite\KSqlEnc.h">
       <Filter>sqlite</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\UI\StageWaitScene.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\PlayerCard\KPlayerCardDepot.h">
       <Filter>PlayerCard</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h">
       <Filter>PlayerCard</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\CardGroupScene.h">
-      <Filter>UI\Panel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\assist\KJsonDictMgr.h">
       <Filter>UI\assist</Filter>
@@ -922,12 +910,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\assist\KPopupLayer.h">
       <Filter>UI\assist</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KSceneLayerBase.h">
-      <Filter>UI\Panel</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KShopScene.h">
-      <Filter>UI\Panel</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\common\KUIMsgDef.h">
       <Filter>common</Filter>
@@ -985,6 +967,27 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GameLogic\assist\KBattleCtrlAssist.h">
       <Filter>GameLogic\assist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\BattleFieldScene.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\CardGroupScene.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KShopScene.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KSceneLayerBase.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\StageWaitScene.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\MainMenuScene.h">
+      <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\StageSelectScene.h">
+      <Filter>UI\Panel\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1083,6 +1086,9 @@
     </Filter>
     <Filter Include="platform\win32">
       <UniqueIdentifier>{c5c229bb-9605-4217-8b74-8cbddb329009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Panel\scene">
+      <UniqueIdentifier>{6ac01fdd-3ac2-4120-8c09-36c8f02cfada}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -20,6 +20,8 @@
 #include "VirtualService.h"
 #include "assist/KJsonDictMgr.h"
 #include "assist/KQuestFacade.h"
+#include "assist/KCardGroupAssist.h"
+
 #include "../WorldObject/KMainPlayer.h"
 #include "../StaticTable/StaticData.h"
 #include "StageWaitScene.h"
@@ -105,6 +107,7 @@ bool MainMenuScene::init()
 	this->addChild(GetUILayer(), 1);
 
 	UpdateLockStatus();
+	ShowCollectInfo();
     return true;
 }
 
@@ -157,8 +160,7 @@ void MainMenuScene::DoClickStoreBut(CCObject* sender)
 
 void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
-	StageWaitScene::SetSceneType(StageWaitScene::scene_adventure);
-	KUIAssist::_switch2StageWaitScene();
+	KUIAssist::_switch2StageSelectScene();
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
@@ -240,4 +242,55 @@ void MainMenuScene::DoClickFeedback(CCObject* sender)
 
 }
 
+void MainMenuScene::ShowCollectInfo()
+{
+	KItemUnitList tmpList,desList;
+	KMainPlayer::RealPlayer()->GetCardDepot()->PickStoreCard(tmpList);
+
+	SetRaceCollectInfo(tmpList,KCardStatic::race_gold);
+	SetRaceCollectInfo(tmpList,KCardStatic::race_fire);
+	SetRaceCollectInfo(tmpList,KCardStatic::race_water);
+	SetRaceCollectInfo(tmpList,KCardStatic::race_all);
+	SetRaceCollectInfo(tmpList,KCardStatic::race_null);
+}
+
+void MainMenuScene::SetRaceCollectInfo(KItemUnitList& tmpList,KCardStatic::CardRace race)
+{
+	KItemUnitList desList;
+	KCardGroupAssist::FilterCard(tmpList,desList,KCardGroupAssist::browse_all,race,0);
+	int n1 = desList.size();
+	int n2 = KGameStaticMgr::getSingleton().GetCardNum(race);
+	float rate = 100.0f*(float)desList.size()/(float)n2;
+	char sz[64];
+	sprintf(sz,"%d/%d",n1,n2);
+
+	UILoadingBar* pBarWidget = NULL; 
+	UILabel* pTxtWidget = NULL;
+	switch(race){
+	case KCardStatic::race_gold:
+		pBarWidget = (UILoadingBar*)m_ui->getWidgetByName("bar_gold_collect");
+		pTxtWidget = (UILabel*)m_ui->getWidgetByName("txt_gold_collect");
+		break;
+	case KCardStatic::race_fire:
+		pBarWidget = (UILoadingBar*)m_ui->getWidgetByName("bar_fire_collect");
+		pTxtWidget = (UILabel*)m_ui->getWidgetByName("txt_fire_collect");
+		break;
+	case KCardStatic::race_water:
+		pBarWidget = (UILoadingBar*)m_ui->getWidgetByName("bar_water_collect");
+		pTxtWidget = (UILabel*)m_ui->getWidgetByName("txt_water_collect");
+		break;
+	case KCardStatic::race_null:
+		pBarWidget = (UILoadingBar*)m_ui->getWidgetByName("bar_nor_collect");
+		pTxtWidget = (UILabel*)m_ui->getWidgetByName("txt_nor_collect");
+		break;
+	case KCardStatic::race_all:
+		pBarWidget = (UILoadingBar*)m_ui->getWidgetByName("bar_all_collect");
+		pTxtWidget = (UILabel*)m_ui->getWidgetByName("txt_all_collect");
+		break;
+	default:
+		break;
+	}
+	if(pBarWidget) pBarWidget->setPercent(rate);
+	if(pTxtWidget) pTxtWidget->setText(sz);
+}
 //
