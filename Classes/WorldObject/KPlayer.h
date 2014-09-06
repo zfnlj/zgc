@@ -104,6 +104,7 @@ namespace KWorldObjAbout
 		KPlayerCardDepot m_cardDepot;
 		KPlayerTmpBag* GetResultBag(){ return &m_resultBag;}
 		
+		int GetDailyStageLev();
 private:
 		// ²¿Âäid
 		UINT64 m_tribeID;

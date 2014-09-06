@@ -36,7 +36,7 @@ struct tb_player_record
 		mUpdateMask = 0;
 	}
 	void init(){
-		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money =  pvpVal = power = exp = mercy = 0;
+		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money =  pvpVal = power = exp = mercy = winDailyStageNum = dailyStageLev = 0 ;
 		curDeck = -1;
 		cardStore.actualLength = 0;
 		heroData.actualLength = 0;
@@ -66,6 +66,8 @@ struct tb_player_record
 	int exp;
 	int mercy;
 	int power;
+	int dailyStageLev;
+	int winDailyStageNum;
 	KDBBinary<800> normalItem;
 	System::Sync::KSync_CS m_lock;
 

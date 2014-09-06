@@ -336,9 +336,12 @@ void KBattleCtrlBase::GameEnd(float dt)
 		guy->onGameEnd();
 	}
 #ifdef _USE_COCOS2DX
-	if(m_pBattleQuest && winner==m_pMainPlayer){
-		KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
-		KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
+	if(m_pBattleQuest)
+		if( winner==m_pMainPlayer){
+			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
+			KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
+		}else{
+		}
 	}
 #endif
 	StateJump(battle_null);

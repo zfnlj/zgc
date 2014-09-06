@@ -70,6 +70,7 @@ public:
 	~KQuestNew();
 
 public:
+	bool IsDailyQuest();
 	static bool IsDailyQuest(BYTE qtype);
 
 public:

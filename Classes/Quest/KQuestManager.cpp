@@ -44,8 +44,10 @@ bool KQuestManager::Initialize(void)
 	LoadLuaScript("AIUtil.lua");
 	doDirQuest("Quest");
 	LoadAvailQuestList();
+	LoadDailyQuestMap();
 	m_initFlag = true;	// 设置初始化标志
 
+	RndDailyQuest(1);
 	return true;
 }
 
@@ -250,6 +252,53 @@ bool KQuestManager::syncAvailQuests()
 	return TRUE;
 }
 
+bool KQuestManager::LoadDailyQuestMap(void)
+{
+		std::string fullPath = "data/DailyStageQuestList.txt";
+#ifdef _USE_COCOS2DX
+	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(fullPath.c_str());
+#endif
+
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();
+
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
+	if (!fileReader)
+	{
+		AssertFile(fullPath.c_str());
+		return FALSE;
+	}
+
+	while (TRUE)
+	{
+		int nRet = fileReader->ReadLine();
+		if (nRet == -1) { loader.CloseFileReader(fileReader); return FALSE; }
+		if (nRet == 0) break;
+
+		int questId;
+		fileReader->GetInteger("QuestID", 0, (int*)&questId);
+		m_dailyQuestMap[questId] = NULL;
+	}
+
+	loader.CloseFileReader(fileReader);
+	return TRUE;
+}
+
+KQuestNew* KQuestManager::RndDailyQuest(int hardLev)
+{
+	KIntegerList lst;
+	QuestMap::iterator it = m_dailyQuestMap.begin();
+	for(; it!= m_dailyQuestMap.end(); it++)
+	{
+		KQuestNew* pQuest = it->second;
+		if(!pQuest){
+			pQuest = GetQuest(it->first);
+			it->second = pQuest;
+		}
+		if(pQuest->IsDailyQuest() &&pQuest->m_hardDegree==hardLev) lst.push_back(it->first);
+	}
+	int questId = _RndPick(lst);
+	return GetQuest(questId);
+}
 bool KQuestManager::LoadAvailQuestList(void)
 {
 	std::string fullPath = "data/AcceptQuestList.txt";

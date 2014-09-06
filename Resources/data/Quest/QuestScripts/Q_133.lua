@@ -4,7 +4,7 @@ Quest_133 =
 Initialize = function(quest)
 	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=200;money=100;");
 	quest:SetAttrs("nameId=133;talk=0;desc=133;finishDesc=1500511;");
-	quest:SetAttrs("type=3;reuse=0;hardDegree=1;achieveId=0;");
+	quest:SetAttrs("type=3;reuse=0;hardDegree=4;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
 	quest:SetAttrs("battleField=133;");
 	

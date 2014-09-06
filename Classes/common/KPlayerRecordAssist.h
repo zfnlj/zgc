@@ -47,6 +47,9 @@ namespace KPlayerRecordAssist
 
 	//hero
 	bool updateHero(tb_player_record* record,KHeroDef* hero);
+	void DailyStageLost(tb_player_record* record);
+	void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp);
+	
 }
 
 #endif // __HELLOWORLD_SCENE_H__

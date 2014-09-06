@@ -261,5 +261,10 @@ namespace KWorldObjAbout
 		//int num = KPlayerRecordAssist::getDailyAwardNum(&m_questRecord);
 		return m_questManager.RndQueryAdventureQuest(true);
 	}
+
+	int KPlayer::GetDailyStageLev()
+	{
+		return m_playerRecord.dailyStageLev;
+	}
 }
 

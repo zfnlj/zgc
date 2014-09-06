@@ -48,6 +48,8 @@ public:
 	int doDirQuest(const char* resGrpName);
 	bool LoadAvailQuestList(void);
 	void LoadLuaScript(const char* fileName);
+	bool LoadDailyQuestMap(void);
+	KQuestNew* RndDailyQuest(int hardLev);
 public:
 	void GetFigureAward(KDString<512>& GiftStr, KQuestNew* pQuest);
 
@@ -57,7 +59,7 @@ public:
 	quest_array_header* get_quest_array(DWORD npcTypeID);
 	NpcQuestMap m_npcQuestMap;
 	AvailQuestMap m_availQuestMap;
-
+	QuestMap m_dailyQuestMap;
 public:
 	QuestMap m_mapQuest;
 	KQuestLuaParser m_luaParser;

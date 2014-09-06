@@ -165,7 +165,7 @@ void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
-	StageWaitScene::SetSceneType(StageWaitScene::scene_battle);
+	StageWaitScene::SetSceneVal(StageWaitScene::scene_battle);
 	KUIAssist::_switch2StageWaitScene();
 	/*if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
 		if(!KQuestFacade::_startMainQuestBattle())

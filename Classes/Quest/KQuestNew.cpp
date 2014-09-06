@@ -1224,6 +1224,10 @@ const char* KQuestNew::GetTypeText_lua( int qtype )
 	return "";
 }
 
+bool KQuestNew::IsDailyQuest()
+{
+	return m_type==enum_daily_quest;
+}
 bool KQuestNew::IsDailyQuest( BYTE qtype )
 {
 	if (qtype == enum_daily_quest)

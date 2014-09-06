@@ -29,10 +29,11 @@ public:
 
 	void DoClickClose(CCObject* sender);
 	void SetTip(KHelpStringStatic* tip);
-	static void SetSceneType(Scene_type tp){ m_sceneType = tp;}
+	static void SetSceneVal(Scene_type tp,int val=0){ m_sceneType = tp;m_val=val;}
 private:
 	CCLabelTTF* m_InfoLabel;
 	static Scene_type m_sceneType;
+	static int m_val;
 	cocos2d::extension::UILayer* m_ui;
 	int m_qId;
 	float m_delayCloseTime;

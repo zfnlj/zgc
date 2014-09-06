@@ -29,6 +29,7 @@ USING_NS_CC;
 using namespace cocos2d::extension;
 
 StageWaitScene::Scene_type StageWaitScene::m_sceneType = StageWaitScene::scene_battle;
+int StageWaitScene::m_val = 0;
 CCScene* StageWaitScene::scene()
 {
     // 'scene' is an autorelease object
@@ -79,7 +80,7 @@ bool StageWaitScene::init()
 	if(m_sceneType==scene_battle){
 		pQuest = playerQuestManager.QueryNormalQuest();
 	}else if(m_sceneType==scene_adventure){
-		pQuest = KMainPlayer::RealPlayer()->RndQueryAdventureQuest();
+		pQuest = KQuestManager::GetInstance()->RndDailyQuest(m_val);
 	}
 	m_qId = (pQuest)?pQuest->GetID():0;
 	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");

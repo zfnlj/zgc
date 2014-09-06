@@ -34,6 +34,13 @@ void _RndIntegerList(KIntegerList& src,KIntegerList& des)
 	}
 }
 
+int  _RndPick(KIntegerList& src)
+{
+	if(src.empty()) return 0;
+	KIntegerList tmpLst;
+	_RndIntegerList(src,tmpLst);
+	return *tmpLst.begin();
+}
 void _RndPick(KIntegerList& src,KIntegerList& des,int num)
 {
 	if(src.size()<num) return;

@@ -9,8 +9,11 @@ struct CriPlayerInfo{
 	int _exp;
 	int _power;
 	int _mercy;
-	CriPlayerInfo(int money,int pvp,int power,int exp,int mercy):_money(money),_pvpVal(pvp),_exp(exp),_mercy(mercy),_power(0)
-	{}
+	int _dailyStageLev;
+	int _winDailyStageNum;
+	int _dump[20];
+	CriPlayerInfo();
+	CriPlayerInfo(tb_player_record* record);
 };
 class KUserSql
 {

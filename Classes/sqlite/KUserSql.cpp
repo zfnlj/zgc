@@ -37,7 +37,7 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 	LOAD_BLOB_FIELD(column_value[f_heroData],record->heroData,buf)
 
 	if(column_value[f_criInfo]){
-		CriPlayerInfo decInfo(0,0,0,0,0);
+		CriPlayerInfo decInfo;
 		int len = KSqlite::loadBlobBuf((char*)&decInfo,sizeof(decInfo),column_value[f_criInfo]);
 		if(len==sizeof(decInfo)){
 			record->exp = decInfo._exp;
@@ -45,6 +45,8 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 			record->pvpVal = decInfo._pvpVal;
 			record->mercy = decInfo._mercy;
 			record->power = decInfo._power;
+			record->dailyStageLev = decInfo._dailyStageLev;
+			record->winDailyStageNum = decInfo._winDailyStageNum;
 		}
 	}
 
@@ -59,10 +61,25 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 	return 0;
 }
 
+CriPlayerInfo::CriPlayerInfo()
+{
+	memset(this,0,sizeof(CriPlayerInfo));
+}
+
+CriPlayerInfo::CriPlayerInfo(tb_player_record* record)
+{
+	_money = record->money;
+	_pvpVal = record->pvpVal;
+	_exp = record->exp;
+	_power = record->power;
+	_mercy = record->mercy;
+	_dailyStageLev = record->dailyStageLev;
+	_winDailyStageNum = record->winDailyStageNum;
+}
 
 bool KUserSql::UpdateCriVal(const char* userName,tb_player_record* record)
 {
-	CriPlayerInfo criInfo(record->money,record->pvpVal,record->power,record->exp,record->mercy);
+	CriPlayerInfo criInfo(record);
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set criInfo=? where name='%s'",SQLITE_USER_TABLE,userName);
 	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,(const char *)&criInfo,sizeof(criInfo));

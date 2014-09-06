@@ -134,10 +134,11 @@ int  RemainDailyQuestNum(tb_playerquest_record* record)
 
 	time_t* dailyTime = (time_t*)buf;
 	struct tm *cur_tm = localtime(&curTime);
+	int cur_yday = cur_tm->tm_yday;
 	for(int i=0;i<num;i++,dailyTime++){
 
 		struct tm *old_tm = localtime(dailyTime);
-		if(old_tm->tm_mday!=cur_tm->tm_mday){
+		if(old_tm->tm_yday!=cur_yday){
 			count++;
 		}
 	}
@@ -260,6 +261,25 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 	record->updateMask(BIT(slot*2));
 	record->updateMask(BIT(slot*2+1));
 	return true;
+}
+
+void DailyStageLost(tb_player_record* record)
+{
+	record->winDailyStageNum=0;
+	record->updateMask(tb_player_record::_CRI);
+}
+
+void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
+{
+	bStageLevUp = false;
+	if(record->dailyStageLev != dailyStageLev) return;
+	record->winDailyStageNum++;
+	if(record->winDailyStageNum>=3 && record->dailyStageLev< 19 ){
+		record->winDailyStageNum = 0;
+		record->dailyStageLev++;
+		bStageLevUp = true;
+	}
+	record->updateMask(tb_player_record::_CRI);
 }
 
 void AddExp(tb_player_record* record,int val,int power)

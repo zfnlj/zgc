@@ -3,6 +3,8 @@
 #include "assist/KJsonDictMgr.h"
 #include "assist/KUIAssist.h"
 #include "StageWaitScene.h"
+#include "../WorldObject/KMainPlayer.h"
+#include "../WorldObject/KPlayer.h"
 
 #define MAX_PAGE_STAGE_NUM 20
 
@@ -63,17 +65,20 @@ cocos2d::extension::UILayer* StageSelectScene::GetUILayer()
 
 void StageSelectScene::InitStageBut()
 {
+	int dailyStageLev = KMainPlayer::RealPlayer()->GetDailyStageLev();
 	for(int i=0;i<MAX_PAGE_STAGE_NUM;i++){
 		char sz[64];
 		sprintf(sz,"but_stage_%d",i);
 		UIWidget* pBut = m_ui->getWidgetByName(sz);
-		pBut->setTag(i);
+		pBut->setTouchEnabled(true);
+		pBut->setTag(i+1);
 		pBut->addPushDownEvent(this, coco_pushselector(StageSelectScene::DoClickStage));
-
+		KUIAssist::_setButVisible(pBut, i<=dailyStageLev);
 		sprintf(sz,"stage_txt_%d",i);
 		UILabelAtlas* stageNumLabel = (UILabelAtlas*)m_ui->getWidgetByName(sz);
 		sprintf(sz,"%d",i+1);
 		stageNumLabel->setStringValue(sz);
+		stageNumLabel->setVisible(i<=dailyStageLev);
 	}
 }
 
@@ -87,6 +92,7 @@ void StageSelectScene::DoClickClose(CCObject* sender)
 
 void StageSelectScene::DoClickStage(CCObject* sender)
 {
-	StageWaitScene::SetSceneType(StageWaitScene::scene_adventure);
+	UIWidget* pBut = (UIWidget*)sender;
+	StageWaitScene::SetSceneVal(StageWaitScene::scene_adventure,pBut->getTag());
 	KUIAssist::_switch2StageWaitScene();
 }
