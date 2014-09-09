@@ -44,6 +44,7 @@ public:
 	int getDrawNum(){return m_drawNum;}
 	int getHeroStrong(){ return m_heroStrong;}
 	int getHeroLucky(){ return m_heroLucky;}
+	int getLuckyStone(){ return m_luckyStone;}
 	int GetAtkVal();
 	void Init(System::File::KTabFile2* fileReader);
 	void GenCardList(KIntegerList& lst,bool bRnd=false);
@@ -59,6 +60,7 @@ private:
 	int m_res;
 	int m_drawNum;
 	int m_rnd;
+	int m_luckyStone;
 	HeroSkill m_skill[MAX_HERO_SKILL_NUM];
 	void setDynamic(const char* buf);
 	void setHeroSkill(const char* buf);

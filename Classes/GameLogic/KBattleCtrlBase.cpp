@@ -233,11 +233,21 @@ void KBattleCtrlBase::TurnBegin()
 	}
 	m_bFirstTurn = false;
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
+	
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
+	if(m_CurPlayGuy->CheckLuckyStone()){
+		AddDramaElapsed(3.0f);
+		//onUseAbilityResult
+	}
 	m_CurOp.Empty();
 	
 	DoCardEvtList(NULL);
 	JumpOnDrama(battle_turn_begin_hero);
+}
+
+void CheckLuckyStone()
+{
+
 }
 
 void KBattleCtrlBase::TurnBeginHero()
@@ -336,7 +346,7 @@ void KBattleCtrlBase::GameEnd(float dt)
 		guy->onGameEnd();
 	}
 #ifdef _USE_COCOS2DX
-	if(m_pBattleQuest)
+	if(m_pBattleQuest){
 		if( winner==m_pMainPlayer){
 			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
 			KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());

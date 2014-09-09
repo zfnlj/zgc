@@ -79,6 +79,7 @@ public:
 	 //evt
 	 void onCardEnterCtrl(KBattleCtrlBase*,KCardInst* card);
 	 void onCardLeaveCtrl(KBattleCtrlBase*,KCardInst* card);
+	 bool CheckLuckyStone();
 protected:
 	float m_TurnPlayTime;
 	UINT64 m_guyId;
@@ -88,6 +89,8 @@ protected:
 	FBattleGuy m_FacadeObj;
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
+	int m_luckyStone;
+	
 friend class KClientBattleCtrl;
 friend class KSerialize;
 };

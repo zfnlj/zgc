@@ -131,7 +131,7 @@ void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 	for(KCardInstList::iterator it = tmpSet.begin();it!=tmpSet.end();it++){
 		(*it)->onTurnBegin(ctrl);
 	}
-	GetHero()->onTurnBegin(ctrl);
+	//GetHero()->onTurnBegin(ctrl);
 }
 
 void KBattleDeck::OnTurnEnd(KBattleCtrlBase* ctrl)
