@@ -92,6 +92,7 @@ void KHeroDef::LevZero()
 	_lev = 1;
 	_lucky = 0;
 	_strong = 0;
+	_resLucky = 0;
 	memset(_skill,0,sizeof(_skill));
 }
 
@@ -102,6 +103,7 @@ void KHeroDef::Generate(int cardId)
 	_lev = 1;
 	_lucky = 0;
 	_strong = 0;
+	_resLucky = 0;
 	memset(_skill,0,sizeof(_skill));
 	/*for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);
@@ -115,6 +117,7 @@ void KHeroDef::init(KDeckDefStatic* pDef)
 	_lucky = pDef->getHeroLucky();
 	_strong = pDef->getHeroStrong();
 	_cardId = pDef->getHero();
+	_resLucky = pDef->getResLucky();
 	const HeroSkill* skillArr = pDef->GetHeroSkill();
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		_skill[i]._id = skillArr[i]._id;

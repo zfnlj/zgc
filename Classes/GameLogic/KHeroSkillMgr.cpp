@@ -6,7 +6,9 @@
 void KHeroSkillMgr::onTurnBegin(KBattleCtrlBase* ctrl)
 {
 	m_bDone = false;
-	ActiveSkill(ctrl,KAbilityStatic::when_turn_begin);
+	if(!CheckLuckyStone(ctrl)){
+		ActiveSkill(ctrl,KAbilityStatic::when_turn_begin);
+	}
 }
 
 void KHeroSkillMgr::onTurnEnd(KBattleCtrlBase* ctrl)
@@ -57,9 +59,28 @@ void KHeroSkillMgr::addSkill(int id,int lev)
 	}
 }
 
+bool KHeroSkillMgr::CheckLuckyStone(KBattleCtrlBase* ctrl)
+{
+	int remainRes = m_resLucky;
+	int res = 0;
+	while(remainRes >0){
+		int val = (remainRes>80)? 80 : remainRes;
+		if( val >= g_rnd.GetRandom(0,100)) res++;
+		remainRes -= val;
+	}
+	if(res<1) return false;
+	KAbilityStatic* pLucky = KGameStaticMgr::getSingleton().GetAbilityOnId(1103);
+	pLucky->Clone(m_dynAbility);
+	m_dynAbility.GetVal()._val = res;
+	ctrl->AddDramaElapsed(2.0f);
+	KBattleGod::getSingleton().DoCardAbility(ctrl,&m_dynAbility,m_Owner->GetDeck().GetHero());
+	return true;
+}
+
 void KHeroSkillMgr::ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when)
 {
 	if(m_bDone) return;
+	if(CheckLuckyStone(ctrl)) return;
 	HeroSkill* skill = RndSelectSkill(when);
 	if(!skill) return;
 	skill->GenDynAbility(m_dynAbility);

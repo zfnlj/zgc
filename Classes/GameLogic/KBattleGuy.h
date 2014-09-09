@@ -89,7 +89,6 @@ protected:
 	FBattleGuy m_FacadeObj;
 	KBattleCtrlBase* m_battleCtrl;
 	KBattleGuyAttr m_attr;
-	int m_luckyStone;
 	
 friend class KClientBattleCtrl;
 friend class KSerialize;

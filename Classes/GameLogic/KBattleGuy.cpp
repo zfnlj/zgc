@@ -30,7 +30,6 @@ bool KBattleGuy::init(void)
 	m_attr.clearAttrs();
 	m_battleCtrl = NULL;
 	m_TurnPlayTime = 0;
-	m_luckyStone = 0;
 	m_bFirstHand = false;
 	static int guyId = 1;
 	m_guyId = guyId++;
@@ -105,8 +104,11 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 
 bool KBattleGuy::CheckLuckyStone() //幸运石，本回合增加一点资源
 {
-	if (m_luckyStone <g_rnd.GetRandom(0,100)) return false;
+	
 	m_attr.setCurRes(m_attr.getCurRes()+1);
+
+	strCardAbilityResult result;
+
 	return true;
 }
 

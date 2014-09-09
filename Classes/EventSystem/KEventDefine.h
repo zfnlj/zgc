@@ -86,6 +86,7 @@ namespace KEventAbout
 		enumWorldEvent_DestroyWorld,		// 销毁世界事件，在世界销毁前调用
 		
 		enumWorldEvent_KillMonster,
+		enumWorldEvent_BattleFailed,
 		enumWorldEvent_QuestSession,
 
 		enumWorldEvent_End,
@@ -182,6 +183,28 @@ namespace KEventAbout
 		DefMemberVar(m_pChar);
 		DefMemberVar(m_pDead);
 		DefMemberVar(m_nMonsterID);
+		EndDef
+	};
+
+	struct KEDBattleFailed : public KEventData
+	{
+		SET_ID(enumWorldEvent_BattleFailed);
+		DWORD	m_nID;
+		int GetBufString(char* buf, int len)
+		{
+			int pos = 0;
+			if ( sizeof(DWORD) >= len )
+			{
+				return pos;
+			}
+			memcpy(buf, &m_nID, sizeof(DWORD) );
+			pos += sizeof(DWORD);
+			return pos;
+		}
+
+		BeginDefLuaClassNoCon(KEDBattleFailed)
+			InheritFrom(KEventData);
+		DefMemberVar(m_nID);
 		EndDef
 	};
 

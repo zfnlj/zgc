@@ -23,6 +23,7 @@ struct KHeroDef{
 	int _lev;
 	int _lucky;  //幸运
 	int _strong;
+	int _resLucky; //资源增长力
 
 	void Generate(int id);
 	void Clear(){
@@ -33,6 +34,7 @@ struct KHeroDef{
 	int GetRace();
 	int GetLucky() const { return _lucky;}
 	int GetStrong() const;
+	int GetResLucky() const { return _resLucky;}
 	int rndGenLevLucky();
 	int rndGenLevStrong();
 	int GetLevUpStoneNum()const;

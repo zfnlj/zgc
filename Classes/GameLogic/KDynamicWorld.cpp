@@ -69,6 +69,13 @@ KWorldObjAbout::KPlayer* KDynamicWorld::GetPlayer(int id)
 //	return NULL; //TBD
 }
 
+void KDynamicWorld::onBattleFailed(int id)
+{
+	KEventAbout::KEDBattleFailed evt;
+	evt.m_nID = id;
+	FireEvent(evt);
+}
+
 #ifdef _USE_COCOS2DX
 void KDynamicWorld::onKillMonster(int id)
 {
@@ -83,4 +90,5 @@ void KDynamicWorld::onQuestSetSession(KQuestNew* pQuest)
 	evt.m_pQuest = pQuest;
 	FireEvent(evt);
 }
+
 #endif

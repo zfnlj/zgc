@@ -32,7 +32,7 @@ bool KDeckDefStatic::DynamicCardDef::init(char* buf)
 
 bool KDeckDefStatic::init()
 {
-	m_heroID = m_heroHp = m_res = m_heroStrong = m_heroLucky = m_luckyStone = 0;
+	m_heroID = m_heroHp = m_res = m_heroStrong = m_heroLucky = m_resLucky = 0;
 	memset(m_skill,0,sizeof(m_skill));
 	return true;
 }
@@ -91,7 +91,7 @@ void KDeckDefStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetInteger("Res", 0, (int*)&m_res);
 	fileReader->GetInteger("Rnd", 0, (int*)&m_rnd);
 	fileReader->GetInteger("HeroStrong", 0, (int*)&m_heroStrong);
-	fileReader->GetInteger("LuckyStone", 0, (int*)&m_luckyStone);
+	fileReader->GetInteger("ResLucky", 0, (int*)&m_resLucky);
 	fileReader->GetInteger("HeroLucky", 0, (int*)&m_heroLucky);
 	
 	fileReader->GetString("DECK", "", buf, 1023);

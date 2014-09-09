@@ -245,11 +245,6 @@ void KBattleCtrlBase::TurnBegin()
 	JumpOnDrama(battle_turn_begin_hero);
 }
 
-void CheckLuckyStone()
-{
-
-}
-
 void KBattleCtrlBase::TurnBeginHero()
 {
 	m_CurPlayGuy->GetDeck().m_heroSkillMgr.onTurnBegin(this);
@@ -351,6 +346,7 @@ void KBattleCtrlBase::GameEnd(float dt)
 			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
 			KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
 		}else{
+			KDynamicWorld::getSingleton().onBattleFailed((m_pBattleQuest)? m_pBattleQuest->GetID():0);
 		}
 	}
 #endif

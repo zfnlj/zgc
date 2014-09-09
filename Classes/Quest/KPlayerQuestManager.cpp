@@ -379,6 +379,7 @@ void KPlayerQuestManager::handleEvent(int evt, const void* data, int len)
 void KPlayerQuestManager::regAllEvent()
 {
 	KDynamicWorld::getSingleton().RegEvent(KEventAbout::enumWorldEvent_KillMonster,this,0,0);
+	KDynamicWorld::getSingleton().RegEvent(KEventAbout::enumWorldEvent_BattleFailed,this,0,0);
 }
 
 bool KPlayerQuestManager::OnEventImp(KEventAbout::KEventID id, const KEventAbout::KEventData* pData, uint_r customData)

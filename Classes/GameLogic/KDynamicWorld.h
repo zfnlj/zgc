@@ -59,6 +59,7 @@ public:
 
 	void onKillMonster(int id);
 	void onQuestSetSession(KQuestNew* pQuest);
+	void onBattleFailed(int questId);
 #endif
 
 

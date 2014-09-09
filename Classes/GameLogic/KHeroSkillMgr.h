@@ -10,7 +10,7 @@ struct KHeroDef;
 class KHeroSkillMgr
 {
 public:
-	KHeroSkillMgr():m_bDone(false),m_heroDef(NULL){}
+	KHeroSkillMgr():m_bDone(false),m_heroDef(NULL),m_resLucky(0){}
 	~KHeroSkillMgr(){}
 
 	void onTurnBegin(KBattleCtrlBase* ctrl);
@@ -26,7 +26,9 @@ public:
 	void init(KBattleGuy* guy){ m_Owner = guy;}
 private:
 	void addSkill(int id,int lev);
+	bool CheckLuckyStone(KBattleCtrlBase* ctrl);
 	bool m_bDone;   //each turn only one skill actived .
+	int  m_resLucky;
 	HeroSkill   m_skill[MAX_HERO_SKILL_NUM];
 	KBattleGuy* m_Owner;
 	KAbilityStatic m_dynAbility;
