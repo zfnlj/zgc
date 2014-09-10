@@ -26,7 +26,9 @@ public:
 
 	void DoClickClose(CCObject* sender);
 	void DoClickStage(CCObject* sender);
+	void DoClickTower(CCObject* sender);
 	void InitStageBut();
+	void InitTower();
 private:
 	cocos2d::extension::UILayer* m_ui;
 };

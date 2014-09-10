@@ -105,6 +105,7 @@ namespace KWorldObjAbout
 		KPlayerTmpBag* GetResultBag(){ return &m_resultBag;}
 		
 		int GetDailyStageLev();
+		bool IsShowTower();
 private:
 		// ²¿Âäid
 		UINT64 m_tribeID;

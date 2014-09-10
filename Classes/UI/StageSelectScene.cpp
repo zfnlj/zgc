@@ -5,6 +5,7 @@
 #include "StageWaitScene.h"
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
+#include "../PlayerCard/KTowerAssist.h"
 
 #define MAX_PAGE_STAGE_NUM 20
 
@@ -57,10 +58,24 @@ cocos2d::extension::UILayer* StageSelectScene::GetUILayer()
 	if(!m_ui){
 		m_ui =cocos2d::extension::UILayer::create();
 		m_ui->addWidget(KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/stage_scene.json"));
-
+		InitTower();
 		InitStageBut();
 	}
 	return m_ui;
+}
+
+void StageSelectScene::InitTower()
+{
+	UIWidget* pBut = m_ui->getWidgetByName("but_tower");
+	pBut->addPushDownEvent(this, coco_pushselector(StageSelectScene::DoClickTower));
+	bool bShowTower = KMainPlayer::RealPlayer()->IsShowTower();
+
+	KUIAssist::_setButVisible(pBut, bShowTower);
+	UILabelAtlas* pLayer = (UILabelAtlas*)m_ui->getWidgetByName("tower_layer_txt");
+	char sz[64];
+	sprintf(sz,"%d",  KTowerAssist::_getTowerLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
+	pLayer->setStringValue(sz);
+	pLayer->setVisible(bShowTower);
 }
 
 void StageSelectScene::InitStageBut()
@@ -95,4 +110,9 @@ void StageSelectScene::DoClickStage(CCObject* sender)
 	UIWidget* pBut = (UIWidget*)sender;
 	StageWaitScene::SetSceneVal(StageWaitScene::scene_adventure,pBut->getTag());
 	KUIAssist::_switch2StageWaitScene();
+}
+
+void StageSelectScene::DoClickTower(CCObject* sender)
+{
+
 }

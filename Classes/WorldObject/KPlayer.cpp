@@ -10,6 +10,8 @@
 #include "../sqlite/KUserQuestSql.h"
 #include "../StaticTable/KGameStatic.h"
 #include "CommonLogic/WorldObject/KAttrDefines.h"
+#include "../PlayerCard/KTowerAssist.h"
+
 using namespace KItemAbout;
 using namespace KAttributeAbout;
 
@@ -265,6 +267,11 @@ namespace KWorldObjAbout
 	int KPlayer::GetDailyStageLev()
 	{
 		return m_playerRecord._gameData._dailyStageLev;
+	}
+
+	bool KPlayer::IsShowTower()
+	{
+		return KTowerAssist::_isShowTower(&m_playerRecord);
 	}
 }
 

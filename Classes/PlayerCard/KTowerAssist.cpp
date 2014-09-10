@@ -27,4 +27,14 @@ void _stepOn(tb_player_record* record)
 	record->updateMask(tb_player_record::_CRI);
 }
 
+bool _isShowTower(tb_player_record* record)
+{
+	return record->_gameData._tower._bShow;
+}
+
+int _getTowerLayer(tb_player_record* record)
+{
+	return record->_gameData._tower._lev+1;
+}
+
 }

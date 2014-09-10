@@ -19,6 +19,8 @@ template <typename BinaryStruct, int size> class DatabaseBinaryStruct : public B
 
 struct Player_GameData{
 	struct Tower{
+		unsigned short _bShow;
+		unsigned short _pos;
 		int _lev;
 		int _strong;
 		int _lucky;
