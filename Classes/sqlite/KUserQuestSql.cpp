@@ -30,11 +30,11 @@ int loadUserQuest(void* para,int n_cloumn,char** column_value,char** column_name
 	tb_playerquest_record* record = (tb_playerquest_record*)para;
 
 	for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){
-		sscanf(column_value[f_qid0+i*2],"%d",&record->qid[i]);
-		LOAD_BLOB_FIELD(column_value[f_qstate0+i*2],record->qstate[i],buf)
+		sscanf(column_value[f_qid0+i*2],"%d",&record->_qid[i]);
+		LOAD_BLOB_FIELD(column_value[f_qstate0+i*2],record->_qstate[i],buf)
 	}
-	LOAD_BLOB_FIELD(column_value[f_qhistory],record->qhistory,buf)
-	LOAD_BLOB_FIELD(column_value[f_qdaily],record->qdaily,buf)
+	LOAD_BLOB_FIELD(column_value[f_qhistory],record->_qhistory,buf)
+	LOAD_BLOB_FIELD(column_value[f_qdaily],record->_qdaily,buf)
 	return 0;
 }
 
@@ -52,21 +52,21 @@ bool KUserQuestSql::UpdateQuestHistory(const char* userName,tb_playerquest_recor
 {
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set QHistory=? where name='%s'",SQLITE_QUEST_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->qhistory.binData,record->qhistory.actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->_qhistory.binData,record->_qhistory.actualLength);
 }
 
 bool KUserQuestSql::UpdateQuestDaily(const char* userName,tb_playerquest_record* record)
 {
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set QDaily=? where name='%s'",SQLITE_QUEST_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->qdaily.binData,record->qdaily.actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->_qdaily.binData,record->_qdaily.actualLength);
 }
 
 bool KUserQuestSql::UpdateQuestState(const char* userName,int index,tb_playerquest_record* record)
 {
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set QState_%d=? where name='%s'",SQLITE_QUEST_TABLE,index,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->qstate[index].binData,record->qstate[index].actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_QUEST_TABLE,sqlstr,record->_qstate[index].binData,record->_qstate[index].actualLength);
 }
 
 bool KUserQuestSql::LoadUserQuestData(const char* userName,tb_playerquest_record* record)

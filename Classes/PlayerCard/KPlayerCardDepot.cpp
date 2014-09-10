@@ -34,8 +34,8 @@ int KPlayerCardDepot::CreateHero(int heroId)
 
 bool KPlayerCardDepot::FillHeroDef(int id,KHeroDef& hero)
 {
-	KHeroDef* pCurHero = (KHeroDef*)m_record->heroData.binData;
-	int num = m_record->heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pCurHero = (KHeroDef*)m_record->_heroData.binData;
+	int num = m_record->_heroData.actualLength/sizeof(KHeroDef);
 	for(int i=0;i<num;i++,pCurHero++){
 		if(pCurHero->_id==id){
 			memcpy(&hero,pCurHero,sizeof(KHeroDef));
@@ -47,19 +47,19 @@ bool KPlayerCardDepot::FillHeroDef(int id,KHeroDef& hero)
 
 int  KPlayerCardDepot::GetHeroNum()
 {
-	return m_record->heroData.actualLength/sizeof(KHeroDef);
+	return m_record->_heroData.actualLength/sizeof(KHeroDef);
 }
 
 const KHeroDef* KPlayerCardDepot::FindHeroOnIndex(int index)
 {
-	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
+	KHeroDef* pHero = (KHeroDef*)m_record->_heroData.binData;
 	return &pHero[index];
 }
 
 KHeroDef* KPlayerCardDepot::FindHero(int id)
 {
-	int heroNum = m_record->heroData.actualLength/sizeof(KHeroDef);
-	KHeroDef* pHero = (KHeroDef*)m_record->heroData.binData;
+	int heroNum = m_record->_heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)m_record->_heroData.binData;
 	for(int i=0;i<heroNum;i++,pHero++){
 		if(pHero->_id==id) return pHero;
 	}
@@ -69,8 +69,8 @@ KHeroDef* KPlayerCardDepot::FindHero(int id)
 int  KPlayerCardDepot::GetDeckCardNum(int deck,int cardId)
 {
 	int count=0;
-	int cardNum = m_record->cardDeck[deck].actualLength/sizeof(int);
-	int* pCard = (int*)m_record->cardDeck[deck].binData;
+	int cardNum = m_record->_cardDeck[deck].actualLength/sizeof(int);
+	int* pCard = (int*)m_record->_cardDeck[deck].binData;
 	for(int i=0;i<cardNum;i++,pCard++){
 		if(*pCard==cardId) count++;
 	}
@@ -79,16 +79,16 @@ int  KPlayerCardDepot::GetDeckCardNum(int deck,int cardId)
 
 bool KPlayerCardDepot::PickCurHero(KHeroDef& hero)
 {
-	return PickDeckHero(m_record->curDeck,hero);
+	return PickDeckHero(m_record->_curDeck,hero);
 }
 
 bool KPlayerCardDepot::PickDeckHero(int index,KHeroDef& hero)
 {
 	memset(&hero,0,sizeof(KHeroDef));
 	if(index<0) return false;
-	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
+	int cardNum = m_record->_cardDeck[index].actualLength/sizeof(int);
 	if(cardNum<1) return false;
-	int* pDeck = (int*)m_record->cardDeck[index].binData;
+	int* pDeck = (int*)m_record->_cardDeck[index].binData;
 	const KHeroDef* pDef = FindHero(pDeck[0]);
 	if(!pDef) return false;
 	memcpy(&hero,pDef,sizeof(KHeroDef));
@@ -98,17 +98,17 @@ bool KPlayerCardDepot::PickDeckHero(int index,KHeroDef& hero)
 bool KPlayerCardDepot::IsDeckReady(int index)
 {
 	if(index <0 || index >=MAX_DECK_NUM) return false;
-	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
+	int cardNum = m_record->_cardDeck[index].actualLength/sizeof(int);
 	return (cardNum==31);
 }
 
 bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero)
 {
 	if(index <0 || index >=MAX_DECK_NUM) return false;
-	int cardNum = m_record->cardDeck[index].actualLength/sizeof(int);
+	int cardNum = m_record->_cardDeck[index].actualLength/sizeof(int);
 	if(cardNum<1) return false;
 
-	int* pDeck = (int*)m_record->cardDeck[index].binData;
+	int* pDeck = (int*)m_record->_cardDeck[index].binData;
 	PickDeckHero(index,hero);
 	int heroId = hero._cardId;
 	pDeck++;
@@ -120,7 +120,7 @@ bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero
 
 int KPlayerCardDepot::GetCurDeck()
 {
-	return m_record->curDeck;
+	return m_record->_curDeck;
 }
 
 void KPlayerCardDepot::SetCurDeck(int index)
@@ -130,17 +130,17 @@ void KPlayerCardDepot::SetCurDeck(int index)
 
 bool KPlayerCardDepot::PickCurDeck(int& heroCardId,KIntegerList& tmpLst)
 {
-	if(m_record->curDeck<0) return false;
+	if(m_record->_curDeck<0) return false;
 	KHeroDef hero;
-	bool ret = GetCardDeck(m_record->curDeck,tmpLst,hero);
+	bool ret = GetCardDeck(m_record->_curDeck,tmpLst,hero);
 	heroCardId = hero._cardId;
 	return ret;
 }
 
 bool KPlayerCardDepot::PickStoreCard(KItemUnitList& tmpLst)
 {
-	int cardNum = m_record->cardStore.actualLength/sizeof(KDBBagItemUnit);
-	KDBBagItemUnit* pUnit = (KDBBagItemUnit*)m_record->cardStore.binData;
+	int cardNum = m_record->_cardStore.actualLength/sizeof(KDBBagItemUnit);
+	KDBBagItemUnit* pUnit = (KDBBagItemUnit*)m_record->_cardStore.binData;
 	for(int i=0;i<cardNum;i++,pUnit++){
 		tmpLst.push_back(KDBBagItemUnit(pUnit->_id,pUnit->_count));
 	}

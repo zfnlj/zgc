@@ -209,6 +209,7 @@
     <ClCompile Include="..\Classes\PlayerCard\KHeroCardAssist.cpp" />
     <ClCompile Include="..\Classes\PlayerCard\KPlayerCardDepot.cpp" />
     <ClCompile Include="..\Classes\PlayerCard\KPlayerDeck.cpp" />
+    <ClCompile Include="..\Classes\PlayerCard\KTowerAssist.cpp" />
     <ClCompile Include="..\Classes\Quest\FQuest.cpp" />
     <ClCompile Include="..\Classes\Quest\KClientQuestSession.cpp" />
     <ClCompile Include="..\Classes\Quest\KPlayerQuestManager.cpp" />
@@ -383,6 +384,7 @@
     <ClInclude Include="..\Classes\PlayerCard\KHeroCardAssist.h" />
     <ClInclude Include="..\Classes\PlayerCard\KPlayerCardDepot.h" />
     <ClInclude Include="..\Classes\PlayerCard\KPlayerDeck.h" />
+    <ClInclude Include="..\Classes\PlayerCard\KTowerAssist.h" />
     <ClInclude Include="..\Classes\Quest\FQuest.h" />
     <ClInclude Include="..\Classes\Quest\KClientQuestSession.h" />
     <ClInclude Include="..\Classes\Quest\KPlayerQuestManager.h" />

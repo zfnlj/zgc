@@ -58,6 +58,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitDeckDef("data/DeckDef.txt");
 	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
 	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
+	InitLevUp("data/TowerAward.txt",m_towerLevMoney);
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)
@@ -501,6 +502,13 @@ bool KGameStaticMgr::InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr)
 	loader.CloseFileReader(fileReader);
 	return true;
 
+}
+
+int KGameStaticMgr::GetTowerLevMoney(int lev)
+{
+	KLevUpStaticMap::iterator it = m_towerLevMoney.find(lev);
+	if(it==m_towerLevMoney.end()) return 0;
+	return it->second->GetExp();
 }
 
 int KGameStaticMgr::GetSkillLevUpExp(int lev)

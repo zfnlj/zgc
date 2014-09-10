@@ -7,15 +7,15 @@ static ::System::Sync::KThreadMutex _mx_DBData;
 void tb_playerquest_record::updateMask( DWORD v )
 {
 	System::Sync::KSync_CSAuto ______(_mx_DBData);
-	mUpdateMask=mUpdateMask|v;
+	_mUpdateMask=_mUpdateMask|v;
 }
 void tb_playerquest_record::clearMask()
 {
 	System::Sync::KSync_CSAuto ______(_mx_DBData);
-	mUpdateMask=0;
+	_mUpdateMask=0;
 }
 void tb_playerquest_record::updateUnMask(DWORD v)
 {
 	System::Sync::KSync_CSAuto ______(_mx_DBData);
-	mUpdateMask=mUpdateMask&~v;
+	_mUpdateMask=_mUpdateMask&~v;
 }

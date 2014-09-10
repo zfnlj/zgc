@@ -51,6 +51,7 @@ public:
 	KCardLayoutStatic* GetCardLayout(int idx);
 	int GetSkillLevUpExp(int lev);
 	int GetHeroLevUpExp(int lev);
+	int GetTowerLevMoney(int lev);
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 	KHelpStringStatic* GetHelpString(int id);
@@ -83,6 +84,7 @@ private:
 
 	KLevUpStaticMap m_skillLevUpMgr;
 	KLevUpStaticMap m_heroLevUpMgr;
+	KLevUpStaticMap m_towerLevMoney;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

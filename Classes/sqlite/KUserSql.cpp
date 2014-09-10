@@ -32,30 +32,29 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 	char buf[2048];
 	tb_player_record* record = (tb_player_record*)para;
 
-	LOAD_BLOB_FIELD(column_value[f_cardStore],record->cardStore,buf)
-	LOAD_BLOB_FIELD(column_value[f_normalItem],record->normalItem,buf)
-	LOAD_BLOB_FIELD(column_value[f_heroData],record->heroData,buf)
+	LOAD_BLOB_FIELD(column_value[f_cardStore],record->_cardStore,buf)
+	LOAD_BLOB_FIELD(column_value[f_normalItem],record->_normalItem,buf)
+	LOAD_BLOB_FIELD(column_value[f_heroData],record->_heroData,buf)
 
 	if(column_value[f_criInfo]){
 		CriPlayerInfo decInfo;
 		int len = KSqlite::loadBlobBuf((char*)&decInfo,sizeof(decInfo),column_value[f_criInfo]);
 		if(len==sizeof(decInfo)){
-			record->exp = decInfo._exp;
-			record->money = decInfo._money;
-			record->pvpVal = decInfo._pvpVal;
-			record->mercy = decInfo._mercy;
-			record->power = decInfo._power;
-			record->dailyStageLev = decInfo._dailyStageLev;
-			record->winDailyStageNum = decInfo._winDailyStageNum;
+			record->_exp = decInfo._exp;
+			record->_money = decInfo._money;
+			record->_pvpVal = decInfo._pvpVal;
+			record->_mercy = decInfo._mercy;
+			record->_power = decInfo._power;
+			memcpy(&record->_gameData,&decInfo._gameData,sizeof(Player_GameData));
 		}
 	}
 
 
 	for(int i=0;i<MAX_DECK_NUM;i++){
-		LOAD_BLOB_FIELD(column_value[f_cardDeck0+i],record->cardDeck[i],buf)
+		LOAD_BLOB_FIELD(column_value[f_cardDeck0+i],record->_cardDeck[i],buf)
 	}
 	if(column_value[f_curDeck]){
-		sscanf(column_value[f_curDeck],"%d",&record->curDeck);
+		sscanf(column_value[f_curDeck],"%d",&record->_curDeck);
 	}
 	
 	return 0;
@@ -68,13 +67,12 @@ CriPlayerInfo::CriPlayerInfo()
 
 CriPlayerInfo::CriPlayerInfo(tb_player_record* record)
 {
-	_money = record->money;
-	_pvpVal = record->pvpVal;
-	_exp = record->exp;
-	_power = record->power;
-	_mercy = record->mercy;
-	_dailyStageLev = record->dailyStageLev;
-	_winDailyStageNum = record->winDailyStageNum;
+	_money = record->_money;
+	_pvpVal = record->_pvpVal;
+	_exp = record->_exp;
+	_power = record->_power;
+	_mercy = record->_mercy;
+	memcpy(&_gameData,&record->_gameData,sizeof(Player_GameData));
 }
 
 bool KUserSql::UpdateCriVal(const char* userName,tb_player_record* record)
@@ -99,7 +97,7 @@ bool KUserSql::UpdateDeckStore(const char* userName,tb_player_record* record)
 {
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set cardStore=? where name='%s'",SQLITE_USER_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->cardStore.binData,record->cardStore.actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->_cardStore.binData,record->_cardStore.actualLength);
 }
 
 bool KUserSql::UpdateCardDeck(const char* userName,tb_player_record* record,int index)
@@ -107,7 +105,7 @@ bool KUserSql::UpdateCardDeck(const char* userName,tb_player_record* record,int 
 	char sqlstr[128];
 
 	sprintf(sqlstr,"update %s set cardDeck%d=? where name='%s'",SQLITE_USER_TABLE,index,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->cardDeck[index].binData,record->cardDeck[index].actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->_cardDeck[index].binData,record->_cardDeck[index].actualLength);
 }
 
 bool KUserSql::UpdateHeroData(const char* userName,tb_player_record* record)
@@ -115,14 +113,14 @@ bool KUserSql::UpdateHeroData(const char* userName,tb_player_record* record)
 	char sqlstr[128];
 
 	sprintf(sqlstr,"update %s set heroData=? where name='%s'",SQLITE_USER_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->heroData.binData,record->heroData.actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->_heroData.binData,record->_heroData.actualLength);
 }
 
 bool KUserSql::UpdateNormalBag(const char* userName,tb_player_record* record)
 {
 	char sqlstr[128];
 	sprintf(sqlstr,"update %s set normalItem=? where name='%s'",SQLITE_USER_TABLE,userName);
-	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->normalItem.binData,record->normalItem.actualLength);
+	return KSqlite::updateBlobBinaryData(SQLITE_USER_TABLE,sqlstr,record->_normalItem.binData,record->_normalItem.actualLength);
 }
 
 bool KUserSql::LoadUserData(const char* userName,tb_player_record* record)

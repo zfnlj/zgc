@@ -471,6 +471,9 @@
     <ClCompile Include="..\Classes\UI\StageSelectScene.cpp">
       <Filter>UI\Panel\scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\PlayerCard\KTowerAssist.cpp">
+      <Filter>PlayerCard</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -988,6 +991,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\StageSelectScene.h">
       <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PlayerCard\KTowerAssist.h">
+      <Filter>PlayerCard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

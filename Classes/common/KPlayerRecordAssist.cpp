@@ -20,13 +20,13 @@ bool syncBagToRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 	if(!pBagMgr) return false;
 	KBagNormal* pBag = pBagMgr->FindNormalBag();
 	if(!pBag) return false;
-	record->normalItem.Set(NULL,0);
+	record->_normalItem.Set(NULL,0);
 	KBag::CellMapVec::const_iterator itorTmp = pBag->m_ListItem.begin();
 	for(;itorTmp!=pBag->m_ListItem.end();itorTmp++)
 	{
 		const KCellBag* pCell = (const KCellBag*)(itorTmp->second);
 		KDBBagItemUnit dbItem(pCell->GetItem().GetID(),pCell->GetItem().GetStackNumber());
-		record->normalItem.Append(&dbItem,sizeof(dbItem));
+		record->_normalItem.Append(&dbItem,sizeof(dbItem));
 	}
 	
 	return KUserSql::UpdateNormalBag( player->GetName(),record);
@@ -35,7 +35,7 @@ bool syncBagToRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 bool ClearCardDeck(tb_player_record* record,int index)
 {
 	if(index<0 || index>=MAX_DECK_NUM) return false;
-	record->cardDeck[index].Set(NULL,0);
+	record->_cardDeck[index].Set(NULL,0);
 	record->updateMask(tb_player_record::_CARDDECK0<<index);
 	return true;
 }
@@ -46,7 +46,7 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 
 	if(index >=MAX_DECK_NUM){
 		for(int i=0;i<MAX_DECK_NUM;i++){
-			if(record->cardDeck[i].actualLength==0){
+			if(record->_cardDeck[i].actualLength==0){
 				index = i;
 				break;
 			}
@@ -54,10 +54,10 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 	}
 	if(index>=MAX_DECK_NUM) return false;
 
-	record->cardDeck[index].Set(NULL,0);
+	record->_cardDeck[index].Set(NULL,0);
 	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it){
 		int id = *it;
-		record->cardDeck[index].Append(&id,sizeof(int));
+		record->_cardDeck[index].Append(&id,sizeof(int));
 	}
 	record->updateMask(tb_player_record::_CARDDECK0<<index);
 	return true;
@@ -65,9 +65,9 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 
 bool addHero(tb_player_record* record,KHeroDef* hero)
 {
-	if(record->heroData.actualLength>=MAX_HERO_NUM*sizeof(KHeroDef)) return false;
+	if(record->_heroData.actualLength>=MAX_HERO_NUM*sizeof(KHeroDef)) return false;
 
-	record->heroData.Append(hero,sizeof(KHeroDef));
+	record->_heroData.Append(hero,sizeof(KHeroDef));
 	record->updateMask(tb_player_record::_HERODATA);
 	return true;
 }
@@ -75,8 +75,8 @@ bool addHero(tb_player_record* record,KHeroDef* hero)
 bool setCurDeck(tb_player_record* record,int index)
 {
 	if(index >=MAX_DECK_NUM) return false;
-	if(record->cardDeck[index].actualLength==0) return false;
-	record->curDeck = index;
+	if(record->_cardDeck[index].actualLength==0) return false;
+	record->_curDeck = index;
 	record->updateMask(tb_player_record::_CURDECK);
 	return true;
 }
@@ -85,7 +85,7 @@ bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 {
 	bNew = false;
 	void* buf=NULL;
-	int len = record->cardStore.Get(buf);
+	int len = record->_cardStore.Get(buf);
 	KDBBagItemUnit* dbCard = (KDBBagItemUnit*)buf;
 	int n = len/sizeof(KDBBagItemUnit);
 	bool bFound = false;
@@ -100,7 +100,7 @@ bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 	if(!bFound){
 		bNew = true;
 		KDBBagItemUnit addCard(id,count);
-		record->cardStore.Append(&addCard,sizeof(addCard));
+		record->_cardStore.Append(&addCard,sizeof(addCard));
 	}
 	record->updateMask(tb_player_record::_CARDSTORE);
 	return true;
@@ -109,7 +109,7 @@ bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record)
 {
 	void* buf;
-	int len = record->normalItem.Get(buf);
+	int len = record->_normalItem.Get(buf);
 	KDBBagItemUnit* dbItem=(KDBBagItemUnit*)buf;
 	int num = len/sizeof(KDBBagItemUnit);
 	
@@ -128,7 +128,7 @@ int  RemainDailyQuestNum(tb_playerquest_record* record)
 {
 	void* buf;
 	time_t curTime = _GetSystemTimeVal();
-	int num = record->qdaily.Get(buf)/sizeof(time_t);
+	int num = record->_qdaily.Get(buf)/sizeof(time_t);
 	int count = MAX_DAILY_AWARD_SLOT - num;
 	if(count<0) count=0;
 
@@ -150,9 +150,9 @@ bool UseDailyAwardSlot(tb_playerquest_record* record)
 	bool ok=false;
 	time_t curTime = _GetSystemTimeVal();
 	void* buf;
-	int num = record->qdaily.Get(buf)/sizeof(time_t);
+	int num = record->_qdaily.Get(buf)/sizeof(time_t);
 	if(num<MAX_DAILY_AWARD_SLOT){
-		record->qdaily.Append(&curTime,sizeof(curTime));
+		record->_qdaily.Append(&curTime,sizeof(curTime));
 		ok=true;
 	}else{
 		time_t* dailyTime = (time_t*)buf;
@@ -173,12 +173,12 @@ bool syncQuestFromRecord(KPlayerQuestManager* playerQuestMgr,tb_playerquest_reco
 {
 	playerQuestMgr->Reset();
 	for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){
-		int qid = record->qid[i];
+		int qid = record->_qid[i];
 		KQuestNew* pQuest = KQuestManager::GetInstance()->GetQuest(qid);
 		if(!pQuest) continue;
 		KQuestNew* pAdd =playerQuestMgr->AddQuest(pQuest);
 		void* buf;
-		int len = record->qstate[i].Get(buf);
+		int len = record->_qstate[i].Get(buf);
 		int num = len/sizeof(KQuestSessionItem);
 		KQuestSessionItem * pSessionItem = (KQuestSessionItem*)buf;
 		KClientQuestSession* pSession = (KClientQuestSession*)pAdd->m_pSession;
@@ -186,7 +186,7 @@ bool syncQuestFromRecord(KPlayerQuestManager* playerQuestMgr,tb_playerquest_reco
 		pAdd->SyncStatusFromSession();
 	}
 	void* buf;
-	int num = record->qhistory.Get(buf)/sizeof(KDBQuestHistoryDataUnit);
+	int num = record->_qhistory.Get(buf)/sizeof(KDBQuestHistoryDataUnit);
 	KDBQuestHistoryDataUnit* pHistory = (KDBQuestHistoryDataUnit*)buf;
 	for(int i=0;i<num;i++,pHistory++){
 		playerQuestMgr->SetQuestHistory(pHistory->qid,pHistory->val,0);
@@ -203,17 +203,17 @@ bool AddQuest(tb_playerquest_record* record,KQuestNew* pQuest)
 {
 	int emptySlot = -1;
 	for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){
-		if(record->qid[i]==0){
+		if(record->_qid[i]==0){
 			emptySlot = i;
 			break;
 		}
 	}
 	char buf[160];
 	if(emptySlot<0) return false;
-	record->qid[emptySlot] = pQuest->m_qid;
+	record->_qid[emptySlot] = pQuest->m_qid;
 	KClientQuestSession* pClientSession = (KClientQuestSession*)pQuest->GetSessionObj();
 	int len = pClientSession->QueryData(buf);
-	record->qstate[emptySlot].Set(buf,len);
+	record->_qstate[emptySlot].Set(buf,len);
 	record->updateMask(BIT(emptySlot*2));
 	record->updateMask(BIT(emptySlot*2+1));
 	return true;
@@ -229,12 +229,12 @@ void UpdataQuestSession(tb_playerquest_record* record,KQuestNew* pQuest)
 	KClientQuestSession* pClientSession = (KClientQuestSession*)pQuest->GetSessionObj();
 	int len = pClientSession->QueryData(buf);
 	if(pQuest->GetQuestStatus()==KQ_QuestOver){
-		record->qid[slot] = 0;
-		record->qstate[slot].Set(NULL,0);
+		record->_qid[slot] = 0;
+		record->_qstate[slot].Set(NULL,0);
 		record->updateMask(BIT(slot*2));
 		record->updateMask(BIT(slot*2+1));
 	}else{
-		record->qstate[slot].Set(buf,len);
+		record->_qstate[slot].Set(buf,len);
 		record->updateMask(BIT(slot*2+1));
 	}
 }
@@ -245,7 +245,7 @@ bool QuestOk(tb_playerquest_record* record,int qid)
 	history.qid = qid;
 	history.val = (int)KQ_QuestOver;
 	history.time_h = _GetSystemTimeVal();
-	record->qhistory.Append(&history,sizeof(KDBQuestHistoryDataUnit));
+	record->_qhistory.Append(&history,sizeof(KDBQuestHistoryDataUnit));
 	record->updateMask(tb_playerquest_record::_QHISTORY);
 	CancelQuest(record,qid);
 	return true;
@@ -256,8 +256,8 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 {
 	int slot = record->getQuestSlot(qid);
 	if(slot<0) return false;
-	record->qid[slot]=0;
-	record->qstate[slot].Set(NULL,0);
+	record->_qid[slot]=0;
+	record->_qstate[slot].Set(NULL,0);
 	record->updateMask(BIT(slot*2));
 	record->updateMask(BIT(slot*2+1));
 	return true;
@@ -265,18 +265,18 @@ bool CancelQuest(tb_playerquest_record* record,int qid)
 
 void DailyStageLost(tb_player_record* record)
 {
-	record->winDailyStageNum=0;
+	record->_gameData._winDailyStageNum=0;
 	record->updateMask(tb_player_record::_CRI);
 }
 
 void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
 {
 	bStageLevUp = false;
-	if(record->dailyStageLev != dailyStageLev) return;
-	record->winDailyStageNum++;
-	if(record->winDailyStageNum>=3 && record->dailyStageLev< 19 ){
-		record->winDailyStageNum = 0;
-		record->dailyStageLev++;
+	if(record->_gameData._dailyStageLev != dailyStageLev) return;
+	record->_gameData._winDailyStageNum++;
+	if(record->_gameData._winDailyStageNum>=3 && record->_gameData._dailyStageLev< 19 ){
+		record->_gameData._winDailyStageNum = 0;
+		record->_gameData._dailyStageLev++;
 		bStageLevUp = true;
 	}
 	record->updateMask(tb_player_record::_CRI);
@@ -284,21 +284,21 @@ void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
 
 void AddExp(tb_player_record* record,int val,int power)
 {
-	record->exp += val;
-	record->power += power;
+	record->_exp += val;
+	record->_power += power;
 	record->updateMask(tb_player_record::_CRI);
 }
 
 void AddMercy(tb_player_record* record,int val)
 {
-	record->mercy += val;
+	record->_mercy += val;
 	record->updateMask(tb_player_record::_CRI);
 }
 
 bool updateHero(tb_player_record* record,KHeroDef* heroDef)
 {
-	int heroNum = record->heroData.actualLength/sizeof(KHeroDef);
-	KHeroDef* pHero = (KHeroDef*)record->heroData.binData;
+	int heroNum = record->_heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)record->_heroData.binData;
 	for(int i=0;i<heroNum;i++,pHero++){
 		if(pHero->_id==heroDef->_id){
 			memcpy(pHero,heroDef,sizeof(KHeroDef));

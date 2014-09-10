@@ -24,7 +24,7 @@ struct KHeroDef{
 	int _lucky;  //幸运
 	int _strong;
 	int _resLucky; //资源增长力
-
+	int _dump[5];
 	void Generate(int id);
 	void Clear(){
 		memset(this,0,sizeof(KHeroDef));

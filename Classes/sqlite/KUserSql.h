@@ -1,7 +1,10 @@
 #ifndef _KUSERSQL_H
 #define _KUSERSQL_H
 
-struct tb_player_record;
+#include "CommonLogic/KDBDataStruct.h"
+
+
+
 
 struct CriPlayerInfo{
 	int _money;
@@ -9,9 +12,9 @@ struct CriPlayerInfo{
 	int _exp;
 	int _power;
 	int _mercy;
-	int _dailyStageLev;
-	int _winDailyStageNum;
 	int _dump[20];
+	Player_GameData _gameData;
+
 	CriPlayerInfo();
 	CriPlayerInfo(tb_player_record* record);
 };

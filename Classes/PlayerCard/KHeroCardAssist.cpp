@@ -23,6 +23,7 @@ bool _SkillLevUp(KHeroDef* hero,int index,KPlayer* player)
 	if(!KPlayerBagAssist::ConsumeMoney(player,needMoney)) return false;
 	hero->SkillLevUp(index);
 	player->m_cardDepot.SaveHero(hero);
+	return true;
 }
 
 }

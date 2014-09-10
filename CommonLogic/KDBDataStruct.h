@@ -16,6 +16,23 @@ template <typename BinaryStruct, int size> class DatabaseBinaryStruct : public B
 #define MAX_DECK_NUM 5
 #define MAX_PLAYER_QUEST_NUM 3
 #define MAX_DAILY_AWARD_SLOT 3
+
+struct Player_GameData{
+	struct Tower{
+		int _lev;
+		int _strong;
+		int _lucky;
+		int _resLucky;
+		void reset(){
+			memset(this,0,sizeof(Tower));
+		}
+	};
+	Tower _tower;
+	int _dailyStageLev;
+	int _winDailyStageNum;
+};
+
+
 struct tb_player_record
 {
 	enum MaskBit
@@ -33,58 +50,59 @@ struct tb_player_record
 		_CRI			= BIT(10),
 	};
 	tb_player_record(){
-		mUpdateMask = 0;
+		_mUpdateMask = 0;
 	}
 	void init(){
-		playerID = lastLoginIp = lastLoginTime = lastLogoutTime = money =  pvpVal = power = exp = mercy = winDailyStageNum = dailyStageLev = 0 ;
-		curDeck = -1;
-		cardStore.actualLength = 0;
-		heroData.actualLength = 0;
+		memset(&_gameData,0,sizeof(_gameData));
+		_playerID = _lastLoginIp = _lastLoginTime = _lastLogoutTime = _money =  _pvpVal = _power = _exp = _mercy =0 ;
+		_curDeck = -1;
+		_cardStore.actualLength = 0;
+		_heroData.actualLength = 0;
 		for(int i=0;i<MAX_DECK_NUM;i++){
-			cardDeck[i].actualLength=0;
+			_cardDeck[i].actualLength=0;
 		}
-		normalItem.actualLength = 0;
+		_normalItem.actualLength = 0;
 	}
-	int GetExp(){ return exp;}
-	int GetCurDeck(){ return curDeck;}
+	int GetExp(){ return _exp;}
+	int GetCurDeck(){ return _curDeck;}
 	void SetCurDeck(int deck){
-		curDeck = deck;
+		_curDeck = deck;
 		updateMask(_CURDECK);
 	}
-	DWORD mUpdateMask;
-	KObjectID playerID;
-	DWORD lastLoginIp;
-	int lastLoginTime;
-	int lastLogoutTime;
+	DWORD _mUpdateMask;
+	KObjectID _playerID;
+	DWORD _lastLoginIp;
+	int _lastLoginTime;
+	int _lastLogoutTime;
 	
-	KDBBinary<2048> cardStore;
-	KDBBinary<128> cardDeck[MAX_DECK_NUM];
-	KDBBinary<400>  heroData; //10 hero
-	int money;
-	int curDeck;
-	int pvpVal;
-	int exp;
-	int mercy;
-	int power;
-	int dailyStageLev;
-	int winDailyStageNum;
-	KDBBinary<800> normalItem;
-	System::Sync::KSync_CS m_lock;
+	KDBBinary<2048> _cardStore;
+	KDBBinary<128> _cardDeck[MAX_DECK_NUM];
+	KDBBinary<400>  _heroData; //10 hero
+	int _money;
+	int _curDeck;
+	int _pvpVal;
+	int _exp;
+	int _mercy;
+	int _power;
+	Player_GameData _gameData;
+
+	KDBBinary<800> _normalItem;
+	System::Sync::KSync_CS _lock;
 
 	void updateMask( DWORD v )
 	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=mUpdateMask|v;
+		System::Sync::KSync_CSAuto ______(_lock);
+		_mUpdateMask=_mUpdateMask|v;
 	}
 	void clearMask()
 	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=0;
+		System::Sync::KSync_CSAuto ______(_lock);
+		_mUpdateMask=0;
 	}
 	void updateUnMask(DWORD v)
 	{
-		System::Sync::KSync_CSAuto ______(m_lock);
-		mUpdateMask=mUpdateMask&~v;
+		System::Sync::KSync_CSAuto ______(_lock);
+		_mUpdateMask=_mUpdateMask&~v;
 	}
 };
 
@@ -114,9 +132,9 @@ struct tb_playerquest_record
 		_QDAILY	        = BIT(7),
 	};
 	tb_playerquest_record(){
-		mUpdateMask = 0;
+		_mUpdateMask = 0;
 	}
-	DWORD mUpdateMask;
+	DWORD _mUpdateMask;
 	void updateMask( DWORD v );
 	void clearMask();
 	void updateUnMask(DWORD v);
@@ -124,7 +142,7 @@ struct tb_playerquest_record
 		int slot = -1;
 		for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++)
 		{
-			if(qid[i]==id){
+			if(_qid[i]==id){
 				slot = i;
 				break;
 			}
@@ -132,18 +150,18 @@ struct tb_playerquest_record
 		return slot;
 	}
 	void init(){
-		memset(qid,0,sizeof(qid));
+		memset(_qid,0,sizeof(_qid));
 		for(int i=0;i<MAX_PLAYER_QUEST_NUM;i++){
-			qstate[i].actualLength = 0;
+			_qstate[i].actualLength = 0;
 		}
-		qhistory.actualLength = 0;
-		qdaily.actualLength = 0;
+		_qhistory.actualLength = 0;
+		_qdaily.actualLength = 0;
 	}
-	KObjectID playerID;
-	int qid[MAX_PLAYER_QUEST_NUM];
-	KDBBinary<120> qstate[MAX_PLAYER_QUEST_NUM];
-	KDBBinary<1024> qhistory;
-	KDBBinary<40> qdaily;
+	KObjectID _playerID;
+	int _qid[MAX_PLAYER_QUEST_NUM];
+	KDBBinary<120> _qstate[MAX_PLAYER_QUEST_NUM];
+	KDBBinary<1024> _qhistory;
+	KDBBinary<40> _qdaily;
 };
 
 struct tb_worldState_record

@@ -159,39 +159,39 @@ namespace KWorldObjAbout
 	void KPlayer::SyncFromRecord()
 	{
 		m_questManager.m_pPlayer = this;
-		m_money.Set(m_playerRecord.money);
+		m_money.Set(m_playerRecord._money);
 		KPlayerRecordAssist::syncBagFromRecord(this,&m_playerRecord);
 		KPlayerRecordAssist::syncQuestFromRecord(&m_questManager,&m_questRecord);
 	}
 
 	void KPlayer::syncToRecord()
 	{
-		if(m_playerRecord.mUpdateMask&tb_player_record::_CRI){
-			m_playerRecord.money = m_money.m_money;
+		if(m_playerRecord._mUpdateMask&tb_player_record::_CRI){
+			m_playerRecord._money = m_money.m_money;
 			KUserSql::UpdateCriVal(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_CRI);
 		}
 		
-		if(m_playerRecord.mUpdateMask&tb_player_record::_NORMALITEM){
+		if(m_playerRecord._mUpdateMask&tb_player_record::_NORMALITEM){
 			KPlayerRecordAssist::syncBagToRecord(this,&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_NORMALITEM);
 		}
-		if(m_playerRecord.mUpdateMask&tb_player_record::_CARDSTORE){
+		if(m_playerRecord._mUpdateMask&tb_player_record::_CARDSTORE){
 			KUserSql::UpdateDeckStore(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_CARDSTORE);
 		}
 
-		if(m_playerRecord.mUpdateMask&tb_player_record::_HERODATA){
+		if(m_playerRecord._mUpdateMask&tb_player_record::_HERODATA){
 			KUserSql::UpdateHeroData(GetName(),&m_playerRecord);
 			m_playerRecord.updateUnMask(tb_player_record::_HERODATA);
 		}
-		if(m_playerRecord.mUpdateMask&tb_player_record::_CURDECK){							
-			KUserSql::UpdateIntegerVal(GetName(),"curDeck",m_playerRecord.curDeck);
+		if(m_playerRecord._mUpdateMask&tb_player_record::_CURDECK){							
+			KUserSql::UpdateIntegerVal(GetName(),"curDeck",m_playerRecord._curDeck);
 			m_playerRecord.updateUnMask(tb_player_record::_CURDECK);						
 		}
 
 	#define CARD_DECK_UPDATE(mask,i)								\
-		if(m_playerRecord.mUpdateMask&mask){						\
+		if(m_playerRecord._mUpdateMask&mask){						\
 			KUserSql::UpdateCardDeck(GetName(),&m_playerRecord,i);\
 			m_playerRecord.updateUnMask(mask);						\
 		}
@@ -203,7 +203,7 @@ namespace KWorldObjAbout
 
 
 	#define  QUEST_RECORD_ID_UPDATE( mask,fieldName,val)			\
-		if(m_questRecord.mUpdateMask&mask){							\
+		if(m_questRecord._mUpdateMask&mask){							\
 			KUserQuestSql::UpdateIntegerVal(GetName(),fieldName,val);\
 			m_questRecord.updateUnMask(mask);						\
 		}
@@ -211,12 +211,12 @@ namespace KWorldObjAbout
 		
 		
 
-		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID0,"Qid_0",m_questRecord.qid[0])
-		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID1,"Qid_1",m_questRecord.qid[1])
-		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID2,"Qid_2",m_questRecord.qid[2])
+		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID0,"Qid_0",m_questRecord._qid[0])
+		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID1,"Qid_1",m_questRecord._qid[1])
+		QUEST_RECORD_ID_UPDATE(tb_playerquest_record::_QID2,"Qid_2",m_questRecord._qid[2])
 
 	#define  QUEST_RECORD_STATE_UPDATE( mask,i)			\
-		if(m_questRecord.mUpdateMask&mask){				\
+		if(m_questRecord._mUpdateMask&mask){				\
 			KUserQuestSql::UpdateQuestState(GetName(),i,&m_questRecord);\
 			m_questRecord.updateUnMask(mask);				\
 		}
@@ -224,12 +224,12 @@ namespace KWorldObjAbout
 		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate1,1)
 		QUEST_RECORD_STATE_UPDATE(tb_playerquest_record::f_Qstate2,2)
 
-		if(m_questRecord.mUpdateMask&tb_playerquest_record::_QHISTORY){
+		if(m_questRecord._mUpdateMask&tb_playerquest_record::_QHISTORY){
 			KUserQuestSql::UpdateQuestHistory(GetName(),&m_questRecord);
 			m_questRecord.updateUnMask(tb_playerquest_record::_QHISTORY);
 		}
 
-		if(m_questRecord.mUpdateMask&tb_playerquest_record::_QDAILY){
+		if(m_questRecord._mUpdateMask&tb_playerquest_record::_QDAILY){
 			KUserQuestSql::UpdateQuestDaily(GetName(),&m_questRecord);
 			m_questRecord.updateUnMask(tb_playerquest_record::_QDAILY);
 		}
@@ -264,7 +264,7 @@ namespace KWorldObjAbout
 
 	int KPlayer::GetDailyStageLev()
 	{
-		return m_playerRecord.dailyStageLev;
+		return m_playerRecord._gameData._dailyStageLev;
 	}
 }
 
