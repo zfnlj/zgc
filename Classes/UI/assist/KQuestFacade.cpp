@@ -11,7 +11,7 @@
 #include "../../Quest/KQuestManager.h"
 #include "../BattleFieldScene.h"
 
-bool KQuestFacade::_startMainQuestBattle()
+bool KQuestFacade::_startBattle()
 {
 	
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
@@ -25,7 +25,7 @@ bool KQuestFacade::_startMainQuestBattle()
 			return false;
 		}else{
 			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
-			return _startMainQuestBattle();
+			return _startBattle();
 		}
 		
 	}
@@ -38,12 +38,12 @@ bool KQuestFacade::_startMainQuestBattle()
 		}
 	}
 
-	KClientBattleCtrl::getInstance()->PlayQuestBattle(pQuest);
+	KClientBattleCtrl::getInstance()->Play(pQuest,scene_battle);
 	return true;
 }
 
 
-bool KQuestFacade::_startAdventureBattle(int qId)
+bool KQuestFacade::_startDaily(int qId)
 {
 
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
@@ -56,12 +56,12 @@ bool KQuestFacade::_startAdventureBattle(int qId)
 			return false;
 		}else{
 			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
-			return _startAdventureBattle(qId);
+			return _startDaily(qId);
 		}
 
 	}
 	KNetMsgFacade::onAcceptQuest(qId);
 	pQuest = playerQuestManager.GetQuest(qId);
-	KClientBattleCtrl::getInstance()->PlayQuestBattle(pQuest);
+	KClientBattleCtrl::getInstance()->Play(pQuest,scene_daily);
 	return true;
 }

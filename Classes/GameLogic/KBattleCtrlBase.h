@@ -73,7 +73,7 @@ public:
 	void TurnBeginHero();
 	void TurnEndHero();
 	void PlayWithAI();
-	void PlayQuestBattle(KQuestNew* pQuest);
+	void Play(KQuestNew* pQuest,Scene_type tp=scene_battle);
 	void PlayAutoQuestBattle(KQuestNew* pQuest);
 	bool IsShowBack(KCardInst* card);
 	bool IsMyCard(KCardInst* obj);
@@ -105,6 +105,7 @@ protected:
 	BattleOp m_CurOp;
 	BattleState m_state;
 	BattleState m_nextState;
+	Scene_type m_sceneType;
 	float m_WaitTime;
 	bool m_bSelectCard;
 	void* m_world;

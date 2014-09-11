@@ -72,4 +72,10 @@ struct KQuestChangeParam
 	int qid;			// 任务id
 };
 
+enum Scene_type{
+		scene_battle, //战役
+		scene_daily,  //日常
+		scene_tower,  //魔窟
+};
+
 #endif // __HELLOWORLD_SCENE_H__

@@ -69,18 +69,18 @@ KWorldObjAbout::KPlayer* KDynamicWorld::GetPlayer(int id)
 //	return NULL; //TBD
 }
 
-void KDynamicWorld::onBattleFailed(int id)
+void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 {
 	KEventAbout::KEDBattleFailed evt;
-	evt.m_nID = id;
+	evt.m_nID = questId;
 	FireEvent(evt);
 }
 
 #ifdef _USE_COCOS2DX
-void KDynamicWorld::onKillMonster(int id)
+void KDynamicWorld::onBattleWin(int questId,int monsterId,Scene_type tp)
 {
 	KEventAbout::KEDKillMonster evt;
-	evt.m_nMonsterID = id;
+	evt.m_nMonsterID = monsterId;
 	FireEvent(evt);
 }
 

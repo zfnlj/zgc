@@ -266,12 +266,12 @@ namespace KWorldObjAbout
 
 	int KPlayer::GetDailyStageLev()
 	{
-		return m_playerRecord._gameData._dailyStageLev;
+		return m_playerRecord._gameData.GetDailyStageLev();
 	}
 
 	bool KPlayer::IsShowTower()
 	{
-		return KTowerAssist::_isShowTower(&m_playerRecord);
+		return KTowerAssist::_isShow(&m_playerRecord);
 	}
 }
 

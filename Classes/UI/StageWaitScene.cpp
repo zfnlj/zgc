@@ -28,7 +28,7 @@
 USING_NS_CC;
 using namespace cocos2d::extension;
 
-StageWaitScene::Scene_type StageWaitScene::m_sceneType = StageWaitScene::scene_battle;
+Scene_type StageWaitScene::m_sceneType = scene_battle;
 int StageWaitScene::m_val = 0;
 CCScene* StageWaitScene::scene()
 {
@@ -79,7 +79,7 @@ bool StageWaitScene::init()
 	KQuestNew* pQuest = NULL;
 	if(m_sceneType==scene_battle){
 		pQuest = playerQuestManager.QueryNormalQuest();
-	}else if(m_sceneType==scene_adventure){
+	}else if(m_sceneType==scene_daily){
 		pQuest = KQuestManager::GetInstance()->RndDailyQuest(m_val);
 	}
 	m_qId = (pQuest)?pQuest->GetID():0;
@@ -143,8 +143,8 @@ void StageWaitScene::DoClickClose(CCObject* sender)
 	
 
 	if(m_sceneType==scene_battle){
-		KQuestFacade::_startMainQuestBattle();
-	}else if(m_sceneType==scene_adventure){
-		KQuestFacade::_startAdventureBattle(m_qId);
+		KQuestFacade::_startBattle();
+	}else if(m_sceneType==scene_daily){
+		KQuestFacade::_startDaily(m_qId);
 	}
 }

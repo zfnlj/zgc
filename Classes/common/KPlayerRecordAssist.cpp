@@ -272,9 +272,9 @@ void DailyStageLost(tb_player_record* record)
 void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
 {
 	bStageLevUp = false;
-	if(record->_gameData._dailyStageLev != dailyStageLev) return;
+	if(record->_gameData.GetDailyStageLev() != dailyStageLev) return;
 	record->_gameData._winDailyStageNum++;
-	if(record->_gameData._winDailyStageNum>=3 && record->_gameData._dailyStageLev< 19 ){
+	if(record->_gameData._winDailyStageNum>=3 && record->_gameData.GetDailyStageLev()< 19 ){
 		record->_gameData._winDailyStageNum = 0;
 		record->_gameData._dailyStageLev++;
 		bStageLevUp = true;

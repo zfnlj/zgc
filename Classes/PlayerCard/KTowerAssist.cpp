@@ -7,7 +7,7 @@ namespace KTowerAssist
 
 void _reset(tb_player_record* record)
 {
-	record->_gameData._tower.reset();
+	record->_gameData._tower.Reset();
 	record->updateMask(tb_player_record::_CRI);
 }
 
@@ -27,14 +27,36 @@ void _stepOn(tb_player_record* record)
 	record->updateMask(tb_player_record::_CRI);
 }
 
-bool _isShowTower(tb_player_record* record)
+bool _isShow(tb_player_record* record)
 {
-	return record->_gameData._tower._bShow;
+	return record->_gameData._tower._bShow>0;
 }
 
-int _getTowerLayer(tb_player_record* record)
+int _getLayer(tb_player_record* record)
 {
-	return record->_gameData._tower._lev+1;
+	return record->_gameData._tower._lev;
+}
+
+void _create(tb_player_record* record)
+{
+	record->_gameData._tower.Reset();
+	record->_gameData._tower._lev = 1 + g_rnd.GetRandom(0,record->_gameData.GetDailyStageLev()+1);
+}
+
+bool _active(tb_player_record* record,int curLayer)
+{
+	if(_isShow(record)) return false;
+	if(record->_gameData._tower.GetLev()==0){ //
+		_create(record);
+	}
+	int rnd = g_rnd.GetRandom(0,100);
+	if(record->_gameData._tower.GetLev()==curLayer &&
+		rnd < 30 + record->_gameData.GetDailyStageLev()*2 ){
+		record->_gameData._tower._bShow = true;
+		return true;
+	}else{
+		return false;
+	}
 }
 
 }

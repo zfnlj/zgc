@@ -9,6 +9,7 @@ purpose:	表现与逻辑的交互类，
 
 #include "System/Singleton.h"
 #include "../CommonLogic/KLogicModuleMsgDealer.h"
+#include "KGameDef.h"
 #ifdef _USE_COCOS2DX
 #include "../CommonLogic/KLoginMsgDealer.h"
 #include "../CommonLogic/KGatewayMsgDealer.h"
@@ -57,9 +58,9 @@ public:
 	}
 	void FireEvent(const KEventAbout::KEventData& evtData){m_eventList.OnEvent(&evtData);}
 
-	void onKillMonster(int id);
+	void onBattleWin(int questId,int monsterId,Scene_type tp);
 	void onQuestSetSession(KQuestNew* pQuest);
-	void onBattleFailed(int questId);
+	void onBattleFailed(int questId,Scene_type tp);
 #endif
 
 

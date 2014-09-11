@@ -9,6 +9,7 @@
 #include "System/Misc/KDatetime.h"
 #include "../common/KUIMsgDef.h"
 #include "../GameLogic/KDynamicWorld.h"
+#include "../PlayerCard/KTowerAssist.h"
 
 using namespace System::Collections;
 //using namespace KQuestLuaAbout;
@@ -205,10 +206,15 @@ bool KQuestHolderBase::QuestOk(KQuestNew* pQuest)
 
 	if(pQuest->m_type == enum_daily_quest){
 		bool bLevUp=false;
-		KPlayerRecordAssist::UseDailyAwardSlot(KMainPlayer::RealPlayer()->GetQuestRecord());
-		KPlayerRecordAssist::DailyStageWin(KMainPlayer::RealPlayer()->GetPlayerRecord(),pQuest->m_hardDegree,bLevUp);
+		bool hasSlot = KPlayerRecordAssist::UseDailyAwardSlot(KMainPlayer::RealPlayer()->GetQuestRecord());
+		if(hasSlot)KPlayerRecordAssist::DailyStageWin(KMainPlayer::RealPlayer()->GetPlayerRecord(),pQuest->m_hardDegree,bLevUp);
 		m_pPlayer->m_questManager.onDailyOk();
-		if(bLevUp) KDynamicWorld::getSingleton().onSystemMsg(NEW_DAILY_STAGE);
+		if(bLevUp){
+			KDynamicWorld::getSingleton().onSystemMsg(NEW_DAILY_STAGE);
+		}else if(hasSlot){
+			bool bActive = KTowerAssist::_active(KMainPlayer::RealPlayer()->GetPlayerRecord(),pQuest->m_hardDegree);
+			if(bActive) KDynamicWorld::getSingleton().onSystemMsg(ACTIVE_TOWER);
+		}
 	}else if(pQuest->m_type == enum_normal_quest){
 		KPlayerRecordAssist::QuestOk(KMainPlayer::RealPlayer()->GetQuestRecord(),pQuest->m_qid);
 		m_pPlayer->m_questManager.SetQuestHistory(qid,1,1);

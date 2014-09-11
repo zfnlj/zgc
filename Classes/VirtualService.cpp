@@ -91,28 +91,6 @@ void VirtualService::SendMoney()
 
 }
 
-bool VirtualService::StartQuestBattle()
-{
-	{ //TMP
-		KQuestNew* pQuest = KQuestManager::GetInstance()->GetQuest(10001);
-		GameRoot::getSingleton().BattleCtrl()->PlayQuestBattle(pQuest);
-		return true;
-	}
-	bool ret = false;
-	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
-	int num = playerQuestManager.m_quests.size();
-	for(int i=0; i<num; i++)
-	{
-		KQuestNew* pQuest = playerQuestManager.m_quests[i];
-		if(pQuest->GetQuestStatus()==KQ_QuestRuning && pQuest->m_battleField>0){
-			GameRoot::getSingleton().BattleCtrl()->PlayQuestBattle(pQuest);
-			ret = true;
-			break;
-		}
-	}
-	return ret;
-}
-
 bool VirtualService::AddItem(int itemId,int count)
 {
 	if(KCreateInfo_ItemBase::IsCardItem(itemId)){

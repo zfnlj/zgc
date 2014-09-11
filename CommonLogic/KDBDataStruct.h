@@ -25,10 +25,12 @@ struct Player_GameData{
 		int _strong;
 		int _lucky;
 		int _resLucky;
-		void reset(){
+		int GetLev(){ return _lev;}
+		void Reset(){
 			memset(this,0,sizeof(Tower));
 		}
 	};
+	int GetDailyStageLev(){ return _dailyStageLev;}
 	Tower _tower;
 	int _dailyStageLev;
 	int _winDailyStageNum;

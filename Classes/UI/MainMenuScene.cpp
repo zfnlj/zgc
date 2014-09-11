@@ -165,16 +165,8 @@ void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
-	StageWaitScene::SetSceneVal(StageWaitScene::scene_battle);
+	StageWaitScene::SetSceneVal(scene_battle);
 	KUIAssist::_switch2StageWaitScene();
-	/*if(GameRoot::getSingleton().BattleCtrl().IsServerSide()){
-		if(!KQuestFacade::_startMainQuestBattle())
-			GameRoot::getSingleton().BattleCtrl().PlayWithAI();
-	}else{
-
-	}*/
-	
-
 }
 
 void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const char* lockImage)

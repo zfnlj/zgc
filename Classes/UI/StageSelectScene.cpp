@@ -73,7 +73,7 @@ void StageSelectScene::InitTower()
 	KUIAssist::_setButVisible(pBut, bShowTower);
 	UILabelAtlas* pLayer = (UILabelAtlas*)m_ui->getWidgetByName("tower_layer_txt");
 	char sz[64];
-	sprintf(sz,"%d",  KTowerAssist::_getTowerLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
+	sprintf(sz,"%d",  KTowerAssist::_getLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
 	pLayer->setStringValue(sz);
 	pLayer->setVisible(bShowTower);
 }
@@ -108,11 +108,13 @@ void StageSelectScene::DoClickClose(CCObject* sender)
 void StageSelectScene::DoClickStage(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
-	StageWaitScene::SetSceneVal(StageWaitScene::scene_adventure,pBut->getTag());
+	StageWaitScene::SetSceneVal(scene_daily,pBut->getTag());
 	KUIAssist::_switch2StageWaitScene();
 }
 
 void StageSelectScene::DoClickTower(CCObject* sender)
 {
-
+	UIWidget* pBut = (UIWidget*)sender;
+	StageWaitScene::SetSceneVal(scene_tower, KTowerAssist::_getLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
+	KUIAssist::_switch2StageWaitScene();
 }

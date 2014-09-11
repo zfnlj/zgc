@@ -392,5 +392,4 @@ void BattleFieldScene::onUseSecretCard(KCardInst* card)
 void BattleFieldScene::onEnterTransitionDidFinish()
 {
 	KSceneLayerBase::onEnterTransitionDidFinish();
-	//KQuestFacade::_startMainQuestBattle();
 }

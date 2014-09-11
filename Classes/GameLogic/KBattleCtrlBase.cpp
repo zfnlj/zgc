@@ -344,9 +344,9 @@ void KBattleCtrlBase::GameEnd(float dt)
 	if(m_pBattleQuest){
 		if( winner==m_pMainPlayer){
 			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
-			KDynamicWorld::getSingleton().onKillMonster(pBattleStatic->GetMonster());
+			KDynamicWorld::getSingleton().onBattleWin(m_pBattleQuest->GetID(),pBattleStatic->GetMonster(),m_sceneType);
 		}else{
-			KDynamicWorld::getSingleton().onBattleFailed((m_pBattleQuest)? m_pBattleQuest->GetID():0);
+			KDynamicWorld::getSingleton().onBattleFailed(m_pBattleQuest->GetID(),m_sceneType);
 		}
 	}
 #endif
@@ -456,8 +456,9 @@ void KBattleCtrlBase::PlayAutoQuestBattle(KQuestNew* pQuest)
 	StartGame(quest_battle_init,m_pMainPlayer,pAI);
 }
 
-void KBattleCtrlBase::PlayQuestBattle(KQuestNew* pQuest)
+void KBattleCtrlBase::Play(KQuestNew* pQuest,Scene_type tp)
 {
+	m_sceneType = tp;
 	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
 	m_pBattleQuest = pQuest;
 #ifdef _USE_COCOS2DX

@@ -17,7 +17,6 @@ public :
 	bool SubmitQuest(int qid);
 
 	bool AddItem(int itemId,int count);
-	bool StartQuestBattle();
 private :
 	void SendPlayerAllInitPacket();
 	void SendMoney();
