@@ -23,12 +23,22 @@ public:
 	};
 	typedef std::list<ItemDef>  ItemDefList;
 public:
-	KPlayerTmpBag(){};
+	KPlayerTmpBag(){
+		Reset();
+	};
 	~KPlayerTmpBag(){};
 
+	
 	void Add(int tp,int id,int count);
 	void Reset();
 	ItemDefList m_itemList;
+	void AddMoney(int val){ m_money += val;}
+	void AddExp(int val) { m_exp += val;}
+	int GetMoney() { return m_money;}
+	int GetExp(){ return m_exp;}
+private:
+	int m_money;
+	int m_exp;
 };
 
 

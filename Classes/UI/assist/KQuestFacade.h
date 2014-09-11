@@ -6,6 +6,7 @@ class KQuestFacade
 public:
 	static bool _startBattle(); 
 	static bool _startDaily(int qId);
+	static bool _startTower(int qId);
 };
 
 #endif // 	

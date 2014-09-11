@@ -51,6 +51,10 @@ public:
 	bool IsRnd(){ return m_rnd>0;}
 	const HeroSkill* GetHeroSkill(){ return m_skill;}
 	static int RndPickSummonSoldier(int maxCost);
+	void clone(KDeckDefStatic* pDef);
+	void AddHeroStrong(int val){ m_heroStrong += val;}
+	void AddHeroLucky(int val){ m_heroLucky += val;}
+	void AddResLucky(int val){ m_resLucky += val;}
 private:
 	int m_Id;
 	int m_heroID;

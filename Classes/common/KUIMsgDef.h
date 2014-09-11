@@ -16,4 +16,5 @@
 #define CHIP_NO_ENOUGH 17
 #define NEW_DAILY_STAGE 18
 #define ACTIVE_TOWER 19
+#define TOWER_CLOSE 20
 #endif // __HELLOWORLD_SCENE_H__	

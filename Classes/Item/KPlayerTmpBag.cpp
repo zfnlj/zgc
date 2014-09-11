@@ -3,6 +3,8 @@
 
 void KPlayerTmpBag::Reset()
 {
+	m_money = 0;
+	m_exp = 0;
 	m_itemList.clear();
 }
 

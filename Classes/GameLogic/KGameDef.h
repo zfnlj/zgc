@@ -25,13 +25,7 @@ struct strReplaceCardResult{
 	KCardInst* _des;
 };
 
-struct strGameResult{
-	strGameResult():_winner(0),_questId(0),_money(0),_exp(0){}
-	FBattleGuy* _winner;
-	int _questId;
-	int _money;
-	int _exp;
-};
+
 struct strCardAbilityResult{   //卡片对打的结果
 	strCardAbilityResult();
 	int  _src;	  //进攻方
@@ -76,6 +70,15 @@ enum Scene_type{
 		scene_battle, //战役
 		scene_daily,  //日常
 		scene_tower,  //魔窟
+};
+
+struct strGameResult{
+	strGameResult():_winner(0),_questId(0),_money(0),_exp(0),_type(scene_battle){}
+	FBattleGuy* _winner;
+	int _questId;
+	int _money;
+	int _exp;
+	Scene_type _type;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

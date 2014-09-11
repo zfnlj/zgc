@@ -30,7 +30,7 @@ public:
 
 	 static KBattleGuy* create(void);
 	 bool init(void);
-	 virtual void onBattleInit(bool bFirst,int deckId,bool bSelectCard=true);
+	 virtual void onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectCard=true);
 	 bool IsPlayTimeOut();
 	 float GetRemainPlayTime();
 	 void SetPlayTimeOut();

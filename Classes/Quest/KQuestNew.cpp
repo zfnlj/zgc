@@ -17,6 +17,7 @@
 #include "../Item/KBagManager.h"
 #include "../VirtualService.h"
 #include "../Item/KUseItemManager.h"
+#include "../PlayerCard/KTowerAssist.h"
 
 using namespace KAttributeAbout;
 using namespace System::Collections;
@@ -1397,6 +1398,8 @@ int KQuestNew::GetAwardMoney()
 	if(m_type == enum_daily_quest &&
 		KPlayerRecordAssist::RemainDailyQuestNum(&m_pPlayer->m_questRecord)==0){
 		return m_money*0.2;
+	}else if(m_type == enum_tower_quest){
+		return KTowerAssist::_calcMoney(m_pPlayer->GetPlayerRecord());
 	}else{
 		return m_money;
 	}
@@ -1406,6 +1409,8 @@ int KQuestNew::GetAwardExp()
 	if(m_type == enum_daily_quest &&
 		KPlayerRecordAssist::RemainDailyQuestNum(&m_pPlayer->m_questRecord)==0){
 		return m_exp*0.2;
+	}else if(m_type == enum_tower_quest){
+		return KTowerAssist::_calcExp(m_pPlayer->GetPlayerRecord());
 	}else{
 		return m_exp;
 	}

@@ -1,6 +1,7 @@
 #ifndef _KTOWERASSIST_H
 #define _KTOWERASSIST_H
 
+class KDeckDefStatic;
 struct tb_player_record;
 namespace KTowerAssist
 {
@@ -10,6 +11,12 @@ namespace KTowerAssist
 	int _getLayer(tb_player_record* record);
 	bool _active(tb_player_record* record,int curLayer);
 	void _create(tb_player_record* record);
+	void _deactive(tb_player_record* record);
+	int _calcMoney(tb_player_record* record);
+	int _calcExp(tb_player_record* record);
+	int _getPos(tb_player_record* record);
+	KDeckDefStatic* _createDeckDef(KDeckDefStatic* pDeck);
+	void _win(int questId);
 }
 
 #endif // 

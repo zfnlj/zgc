@@ -6,6 +6,8 @@
 #include "../EventSystem/KEventDefine.h"
 #include "../UI/assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
+#include "../PlayerCard/KTowerAssist.h"
+#include "../WorldObject/KPlayer.h"
 
 template<> KDynamicWorld* Singleton<KDynamicWorld>::mSingleton = 0;
 
@@ -71,17 +73,27 @@ KWorldObjAbout::KPlayer* KDynamicWorld::GetPlayer(int id)
 
 void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 {
-	KEventAbout::KEDBattleFailed evt;
-	evt.m_nID = questId;
-	FireEvent(evt);
+	
+	if(tp==scene_tower){
+		KTowerAssist::_deactive(KMainPlayer::RealPlayer()->GetPlayerRecord());
+		KDynamicWorld::getSingleton().onSystemMsg(TOWER_CLOSE);
+	}else{
+		KEventAbout::KEDBattleFailed evt;
+		evt.m_nID = questId;
+		FireEvent(evt);
+	}
 }
 
 #ifdef _USE_COCOS2DX
 void KDynamicWorld::onBattleWin(int questId,int monsterId,Scene_type tp)
 {
-	KEventAbout::KEDKillMonster evt;
-	evt.m_nMonsterID = monsterId;
-	FireEvent(evt);
+	if(tp==scene_tower){
+		KTowerAssist::_win(questId);
+	}else{
+		KEventAbout::KEDKillMonster evt;
+		evt.m_nMonsterID = monsterId;
+		FireEvent(evt);
+	}
 }
 
 void KDynamicWorld::onQuestSetSession(KQuestNew* pQuest)

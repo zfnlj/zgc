@@ -81,6 +81,8 @@ bool StageWaitScene::init()
 		pQuest = playerQuestManager.QueryNormalQuest();
 	}else if(m_sceneType==scene_daily){
 		pQuest = KQuestManager::GetInstance()->RndDailyQuest(m_val);
+	}else if(m_sceneType==scene_tower){
+		pQuest = KQuestManager::GetInstance()->GetQuest(m_val);
 	}
 	m_qId = (pQuest)?pQuest->GetID():0;
 	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
@@ -146,5 +148,7 @@ void StageWaitScene::DoClickClose(CCObject* sender)
 		KQuestFacade::_startBattle();
 	}else if(m_sceneType==scene_daily){
 		KQuestFacade::_startDaily(m_qId);
+	}else if(m_sceneType==scene_tower){
+		KQuestFacade::_startTower(m_qId);
 	}
 }

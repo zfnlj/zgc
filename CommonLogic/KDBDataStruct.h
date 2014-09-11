@@ -95,6 +95,9 @@ struct tb_player_record
 
 	void updateMask( DWORD v )
 	{
+		while(_mUpdateMask&v){
+			Sleep(10);
+		}
 		System::Sync::KSync_CSAuto ______(_lock);
 		_mUpdateMask=_mUpdateMask|v;
 	}

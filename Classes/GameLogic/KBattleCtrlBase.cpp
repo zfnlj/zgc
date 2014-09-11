@@ -11,6 +11,7 @@
 #include "System/Misc/KStream.h"
 #include "../Quest/KQuestNew.h"
 #include "assist/KBattleCtrlAssist.h"
+#include "../PlayerCard/KTowerAssist.h"
 #ifdef _USE_COCOS2DX
 #include "../GameRecord/KGameRecordMgr.h"
 #endif
@@ -324,6 +325,7 @@ void KBattleCtrlBase::TurnEnd()
 void KBattleCtrlBase::GameEnd(float dt)
 {
 	strGameResult result;
+	
 	memset(&result,0,sizeof(result));
 	if(IsWaitDrama()){
 		for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
@@ -354,6 +356,7 @@ void KBattleCtrlBase::GameEnd(float dt)
 
 	result._winner = winner->GetFacade();
 	result._questId = (m_pBattleQuest)? m_pBattleQuest->GetID():0;
+	result._type = m_sceneType;
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_GAMEEND,(unsigned long long)&result,(unsigned long long)m_world);
 
 	
@@ -601,9 +604,17 @@ void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 
 	for(KBattleGuyList::iterator it = m_BattleGuyList.begin();it!=m_BattleGuyList.end();it++){
 		if(*it==m_pMainPlayer){
-			(*it)->onBattleInit(m_CurPlayGuy==*it,pBattleStatic->GetMyDeck(),pBattleStatic->IsSelectCard());
+			KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(pBattleStatic->GetMyDeck());
+			(*it)->onBattleInit(m_CurPlayGuy==*it,pDeckDef,pBattleStatic->IsSelectCard());
 		}else{
-			(*it)->onBattleInit(m_CurPlayGuy==*it,pBattleStatic->GetYourDeck(),pBattleStatic->IsSelectCard());
+			KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(pBattleStatic->GetYourDeck());
+
+			if(m_sceneType==scene_tower){
+				KDeckDefStatic* pTowerDeck = KTowerAssist::_createDeckDef(pDeckDef);
+				(*it)->onBattleInit(m_CurPlayGuy==*it,pTowerDeck,pBattleStatic->IsSelectCard());
+			}else{
+				(*it)->onBattleInit(m_CurPlayGuy==*it,pDeckDef,pBattleStatic->IsSelectCard());
+			}
 		}
 	}
 

@@ -10,6 +10,7 @@
 #include "../../VirtualService.h"
 #include "../../Quest/KQuestManager.h"
 #include "../BattleFieldScene.h"
+#include "../../PlayerCard/KTowerAssist.h"
 
 bool KQuestFacade::_startBattle()
 {
@@ -39,6 +40,16 @@ bool KQuestFacade::_startBattle()
 	}
 
 	KClientBattleCtrl::getInstance()->Play(pQuest,scene_battle);
+	return true;
+}
+
+bool KQuestFacade::_startTower(int qId)
+{
+	KQuestNew* pTowerQuest = KQuestManager::GetInstance()->GetQuest(qId);
+	int pos = KTowerAssist::_getPos(KMainPlayer::RealPlayer()->GetPlayerRecord());
+	KQuestNew* pQuest = KQuestManager::GetInstance()->RndDailyQuest(pos);
+	if(pQuest) pTowerQuest->m_battleField = pQuest->m_battleField;
+	KClientBattleCtrl::getInstance()->Play(pTowerQuest,scene_tower);
 	return true;
 }
 

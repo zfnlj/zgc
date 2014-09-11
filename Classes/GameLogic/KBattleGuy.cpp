@@ -39,7 +39,7 @@ bool KBattleGuy::init(void)
 	return true;
 }
 
-void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
+void KBattleGuy::onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectCard)
 {
 	m_bFirstHand = bFirst;
 	m_attr.clearAttrs();
@@ -50,7 +50,7 @@ void KBattleGuy::onBattleInit(bool bFirst,int deckId,bool bSelectCard)
 
 	KPlayerCardDepot* playerCardDepot = NULL;
 	if(m_battleCtrl->GetMainPlayer()->GetImp()==this) playerCardDepot = KMainPlayer::RealPlayer()->GetCardDepot();
-	KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
+	
 
 	if(pDeckDef){
 		m_Deck.initDeck(pDeckDef,bSelectCard);

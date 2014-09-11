@@ -182,15 +182,21 @@ void KGameResultPanel::updatePanel()
 	}
 
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;
-	KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
-	if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
-		m_result._money = pQuest->GetAwardMoney();
-		m_result._exp = pQuest->GetAwardExp();
-
-		if(ShowSelectGift(pQuest)) return;
-		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
-	}
 	
+	if(m_result._type==scene_tower){
+		KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
+		m_result._money = pBag->GetMoney();
+		m_result._exp = pBag->GetExp();
+	}else{
+		KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
+		if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
+			m_result._money = pQuest->GetAwardMoney();
+			m_result._exp = pQuest->GetAwardExp();
+
+			if(ShowSelectGift(pQuest)) return;
+			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
+		}
+	}
 
 	sprintf(buf,"+%d",m_result._money);
 	pMoneyTxt->setText(buf);

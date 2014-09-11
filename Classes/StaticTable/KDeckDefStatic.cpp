@@ -195,3 +195,26 @@ int KDeckDefStatic::GetAtkVal()
 	val = val*10.0f;
 	return (int)(val+0.5f);
 }
+
+void KDeckDefStatic::clone(KDeckDefStatic* pDef)
+{
+	m_Id = -1;
+	m_heroID = pDef->m_heroID;
+	m_heroHp  = pDef->m_heroHp;
+	m_heroStrong = pDef->m_heroStrong;
+	m_heroLucky = pDef->m_heroLucky;
+	m_res = pDef->m_res;
+	m_drawNum = pDef->m_drawNum;
+	m_rnd = pDef->m_rnd;
+	m_resLucky = pDef->m_resLucky;
+	memcpy(&m_skill,pDef->m_skill,sizeof(HeroSkill)*MAX_HERO_SKILL_NUM);
+
+	for(KIntegerList::iterator it=pDef->m_cardList.begin();it!=pDef->m_cardList.end();++it)
+	{
+		m_cardList.push_back(*it);
+	}
+
+	for(DynamicCardDefList::iterator it=pDef->m_defList.begin();it!=pDef->m_defList.end();++it){
+		m_defList.push_back(*it);
+	}
+}

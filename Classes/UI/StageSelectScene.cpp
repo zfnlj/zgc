@@ -115,6 +115,6 @@ void StageSelectScene::DoClickStage(CCObject* sender)
 void StageSelectScene::DoClickTower(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
-	StageWaitScene::SetSceneVal(scene_tower, KTowerAssist::_getLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
+	StageWaitScene::SetSceneVal(scene_tower, 911);
 	KUIAssist::_switch2StageWaitScene();
 }
