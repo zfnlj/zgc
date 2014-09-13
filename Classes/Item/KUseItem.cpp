@@ -312,7 +312,6 @@ void KUseItem::GenerateItem(UINT64 playerId,int itemId,int count)
 {
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
 	bool bNew=true;
-	//KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),itemId,count,bNew);
 	KPlayerBagAssist::AddItem(pPlayer,itemId,count);
 	pPlayer->GetResultBag()->Add(0,itemId,count);
 }

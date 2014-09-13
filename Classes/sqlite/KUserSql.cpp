@@ -44,7 +44,6 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 			record->_money = decInfo._money;
 			record->_pvpVal = decInfo._pvpVal;
 			record->_mercy = decInfo._mercy;
-			record->_power = decInfo._power;
 			memcpy(&record->_gameData,&decInfo._gameData,sizeof(Player_GameData));
 		}
 	}
@@ -70,7 +69,6 @@ CriPlayerInfo::CriPlayerInfo(tb_player_record* record)
 	_money = record->_money;
 	_pvpVal = record->_pvpVal;
 	_exp = record->_exp;
-	_power = record->_power;
 	_mercy = record->_mercy;
 	memcpy(&_gameData,&record->_gameData,sizeof(Player_GameData));
 }
