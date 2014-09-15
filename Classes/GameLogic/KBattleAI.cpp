@@ -375,6 +375,10 @@ float KBattleAI::CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility
 		}
 		break;
 	case KAbilityStatic::what_copy_hand:
+		{
+			return (KAIAssist::CalcHandNum(m_battleCtrl,false)>0)?5.0f:0.0f;
+		}
+		break;
 	case KAbilityStatic::what_res_add:
 		{
 			return 5.0f;

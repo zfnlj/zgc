@@ -327,3 +327,10 @@ int KAIAssist::CalcFighterNum(void* ctrl,int myFlag)
 	KCardInstList* cardSet = deck.QueryCardSet(KCardInst::enum_slot_fight);
 	return cardSet->size();
 }
+
+int KAIAssist::CalcHandNum(void* ctrl,int myFlag)
+{
+	KBattleDeck& deck = (myFlag>0)?((KBattleCtrlBase*)ctrl)->GetCurGuy()->GetDeck():((KBattleCtrlBase*)ctrl)->GetDefGuy()->GetDeck();
+	KCardInstList* cardSet = deck.QueryCardSet(KCardInst::enum_slot_hand);
+	return cardSet->size();
+}

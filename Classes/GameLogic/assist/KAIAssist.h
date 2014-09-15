@@ -40,6 +40,7 @@ public:
 	float CalcFighterSetVal(void* ctrl,int myFlag);
 	float CalcHandSetVal(void* ctrl,int myFlag);
 	int CalcFighterNum(void* ctrl,int myFlag);
+	static int CalcHandNum(void* ctrl,int myFlag);
 BeginDefLuaClass(KAIAssist)
 	DefMemberFunc(AbilityMostValuableTarget)
 	DefMemberFunc(CalcAbilityDoVal)

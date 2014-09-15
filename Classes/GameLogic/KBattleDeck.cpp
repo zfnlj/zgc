@@ -445,6 +445,11 @@ void KBattleDeck::QueryValidateHandCards(KCardInstList* lst,int curRes)
 				int pos = GetEmptyFightSlot();
 				if(pos<0) continue;;
 			}
+			if(pAbility->GetWhat()==KAbilityStatic::what_copy_hand){
+				KBattleDeck& deck = m_Owner->GetBattleCtrl()->GetDefGuy()->GetDeck();
+				KCardInstList* cardSet = deck.QueryCardSet(KCardInst::enum_slot_hand);
+				if(cardSet->empty()) continue;
+			}
 		}
 		
 		if(pCard->GetRealCost()<=curRes) lst->push_back(pCard);
