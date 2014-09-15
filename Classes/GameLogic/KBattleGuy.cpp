@@ -97,16 +97,6 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 
 }
 
-bool KBattleGuy::CheckLuckyStone() //幸运石，本回合增加一点资源
-{
-	
-	m_attr.setCurRes(m_attr.getCurRes()+1);
-
-	strCardAbilityResult result;
-
-	return true;
-}
-
 void KBattleGuy::onPlayCard(float dt,bool bOK)
 {
 #ifdef _USE_COCOS2DX

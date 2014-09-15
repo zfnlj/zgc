@@ -78,7 +78,6 @@ public:
 	 //evt
 	 void onCardEnterCtrl(KBattleCtrlBase*,KCardInst* card);
 	 void onCardLeaveCtrl(KBattleCtrlBase*,KCardInst* card);
-	 bool CheckLuckyStone();
 protected:
 	float m_TurnPlayTime;
 	UINT64 m_guyId;

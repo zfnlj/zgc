@@ -81,6 +81,32 @@ bool setCurDeck(tb_player_record* record,int index)
 	return true;
 }
 
+bool addStoreCard(tb_player_record* record,KIntegerList& lst)
+{
+	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it){
+		void* buf=NULL;
+		int len = record->_cardStore.Get(buf);
+		int id = *it;
+		KDBBagItemUnit* dbCard = (KDBBagItemUnit*)buf;
+		int n = len/sizeof(KDBBagItemUnit);
+		bool bFound = false;
+		for(int i=0;i<n;i++){
+			if(dbCard->_id==id){
+				dbCard->_count ++;
+				bFound = true;
+				break;
+			}
+			dbCard++;
+		}
+		if(!bFound){
+			KDBBagItemUnit addCard(id,1);
+			record->_cardStore.Append(&addCard,sizeof(addCard));
+		}
+	}
+	record->updateMask(tb_player_record::_CARDSTORE);
+	return true;
+}
+
 bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 {
 	bNew = false;
@@ -282,10 +308,10 @@ void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
 	record->updateMask(tb_player_record::_CRI);
 }
 
-void AddExp(tb_player_record* record,int val,int power)
+void AddCriVal(tb_player_record* record,int money,int exp)
 {
-	record->_exp += val;
-	record->_power += power;
+	record->_exp += exp;
+	record->_money += money;
 	record->updateMask(tb_player_record::_CRI);
 }
 

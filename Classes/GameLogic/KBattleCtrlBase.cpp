@@ -236,10 +236,7 @@ void KBattleCtrlBase::TurnBegin()
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
 	
 	if(IsServerSide()) KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_TURNBEGIN,(unsigned long long)m_CurPlayGuy,(unsigned long long)m_world);
-	if(m_CurPlayGuy->CheckLuckyStone()){
-		AddDramaElapsed(3.0f);
-		//onUseAbilityResult
-	}
+	
 	m_CurOp.Empty();
 	
 	DoCardEvtList(NULL);

@@ -31,7 +31,6 @@ public:
 	int GetCurDeck();
 	bool SaveDeck(int deckId,KIntegerList& tmpLst);
 	bool ClearDeck(int deckId);
-	int ConsumeExp(int val);
 	void SetCurDeck(int index);
 	bool IsDeckReady(int index);
 	int CreateHero(int heroId);

@@ -86,11 +86,9 @@ namespace KWorldObjAbout
 		{
 			return m_money.HasMoney(val);
 		}
-		void IncreaseMoney(int val);
-		void IncreaseExp(int val);
 		// 将当前的money转成字符串。返回值如果需要保存的话要立刻copy一份保存
 		const char* MoneyToRichString() const;
-
+		void IncreaseCriVal(int money,int exp);
 		const char* GetMoney() const;
 
 	

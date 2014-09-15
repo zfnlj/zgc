@@ -9,10 +9,8 @@ bool KPlayerCardDepot::CreateOnDeckDef(int id)
 	if(!deck) return false;
 
 	deck->GenCardList(cardList);
-	for(KIntegerList::iterator it=cardList.begin();it!=cardList.end();++it){
-		bool bNew;
-		KPlayerRecordAssist::addStoreCard(m_record,*it,1,bNew);
-	}
+	KPlayerRecordAssist::addStoreCard(m_record,cardList);
+
 	KHeroDef hero;
 	hero.Generate(deck->getHero());
 	KPlayerRecordAssist::addHero(m_record,&hero);
@@ -155,19 +153,6 @@ bool KPlayerCardDepot::SaveDeck(int deckId,KIntegerList& tmpLst)
 bool KPlayerCardDepot::ClearDeck(int deckId)
 {
 	return KPlayerRecordAssist::ClearCardDeck(m_record,deckId);
-}
-
-int KPlayerCardDepot::ConsumeExp(int val)
-{
-	KHeroDef heroDef;
-	if(!PickCurHero(heroDef)) return val;
-	int oldHeroLev = heroDef.GetLev();
-	if(oldHeroLev==9) return val; // max lev
-	//heroDef._exp += val;
-	//int curHeroLev = heroDef.GetLev();
-	//KPlayerRecordAssist::updateHeroExp(m_record,heroDef._id,heroDef._exp);
-	
-	return 0;
 }
 
 void KPlayerCardDepot::SaveHero(KHeroDef* hero)

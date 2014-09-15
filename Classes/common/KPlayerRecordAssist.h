@@ -28,13 +28,14 @@ namespace KPlayerRecordAssist
 	bool syncBagFromRecord(KWorldObjAbout::KPlayer* player,tb_player_record* record);
 	bool fillDBBuf(char* des,int size,char* src,int len);
 	bool addStoreCard(tb_player_record* record,int id,int num,bool& bNew);
+	bool addStoreCard(tb_player_record* record,KIntegerList& lst);
 	bool addHero(tb_player_record* record,KHeroDef* hero);
 	bool insertCardDeck(tb_player_record* record,KIntegerList& lst);
 	bool setCurDeck(tb_player_record* record,int index);
 
 	//money
-	void AddExp(tb_player_record* record,int val,int power);
 	void AddMercy(tb_player_record* record,int val);
+	void AddCriVal(tb_player_record* record,int money,int exp);
 	//quest
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);

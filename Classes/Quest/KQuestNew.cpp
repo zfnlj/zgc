@@ -1418,15 +1418,7 @@ int KQuestNew::GetAwardExp()
 void KQuestNew::OnGift()
 {
 	// ½±Àø
-	if (m_exp != 0)
-	{
-		m_pPlayer->IncreaseExp(GetAwardExp());
-	}
-
-	if (m_money != 0)
-	{
-		m_pPlayer->IncreaseMoney(GetAwardMoney());
-	}
+	m_pPlayer->IncreaseCriVal(GetAwardMoney(),GetAwardExp());
 
 	if (m_achieveId != 0)
 	{

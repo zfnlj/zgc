@@ -238,11 +238,6 @@ namespace KWorldObjAbout
 
 	}
 	
-	void KPlayer::IncreaseMoney(int val)
-	{
-		m_money.Increase(val);
-		m_playerRecord.updateMask(tb_player_record::_CRI);
-	}
 	int KPlayer::getLevel()
 	{ 
 		return KGameStaticMgr::getSingleton().PlayerExpToLevel(m_playerRecord.GetExp());
@@ -252,10 +247,11 @@ namespace KWorldObjAbout
 	{
 		SetAttrValue(ca_selectPos,pos);
 	}
-	void KPlayer::IncreaseExp(int val)
+
+	void KPlayer::IncreaseCriVal(int money,int exp)
 	{
-		int power = m_cardDepot.ConsumeExp(val);
-		KPlayerRecordAssist::AddExp(&m_playerRecord,val,power);
+		m_money.Increase(money);
+		KPlayerRecordAssist::AddCriVal(&m_playerRecord,money,exp);
 	}
 
 	KQuestNew* KPlayer::RndQueryAdventureQuest()
