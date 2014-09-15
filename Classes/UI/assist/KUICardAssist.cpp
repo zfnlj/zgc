@@ -276,13 +276,15 @@ UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst*
 	if(widgetIconAtk) widgetIconAtk->setVisible(pLayout->IsShowAtk());
 
 	UILabelAtlas* labelCost = (UILabelAtlas*)ui->getChildByName("cost");
- 	if(pLayout->IsShowCost()){
-		char info[64]={0};
-		sprintf(info,"%d",pST->GetCost());
-		labelCost->setStringValue(info);
-		labelCost->setVisible(true);
-	}else{
-		labelCost->setVisible(false);
+	if(labelCost){
+ 		if(pLayout->IsShowCost()){
+			char info[64]={0};
+			sprintf(info,"%d",pST->GetCost());
+			labelCost->setStringValue(info);
+			labelCost->setVisible(true);
+		}else{
+			labelCost->setVisible(false);
+		}
 	}
 	UIImageView* widgetStone = (UIImageView*)ui->getChildByName("stone_pos");
 	int cardRank = pST->GetRank();

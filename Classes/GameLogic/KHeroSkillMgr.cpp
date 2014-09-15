@@ -61,10 +61,10 @@ void KHeroSkillMgr::addSkill(int id,int lev)
 
 bool KHeroSkillMgr::CheckLuckyStone(KBattleCtrlBase* ctrl)
 {
-	int remainRes = m_resLucky;
+	int remainRes = m_heroDef->GetResLucky();
 	int res = 0;
 	while(remainRes >0){
-		int val = (remainRes>80)? 80 : remainRes;
+		int val = (remainRes>60)? 60 : remainRes;
 		if( val >= g_rnd.GetRandom(0,100)) res++;
 		remainRes -= val;
 	}

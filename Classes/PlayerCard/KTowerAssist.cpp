@@ -17,17 +17,13 @@ void _reset(tb_player_record* record)
 void _stepOn(tb_player_record* record)
 {
 	record->_gameData._tower._lev++;
-	record->_gameData._tower._strong ++;
-	int val = g_rnd.GetRandom(0,100);
-	if(val <50){
-		record->_gameData._tower._strong ++;
-	}else if(val<75){
-		record->_gameData._tower._lucky +=5;
-		if(record->_gameData._tower._lucky>100) record->_gameData._tower._lucky = 100;
-	}else{
-		record->_gameData._tower._resLucky +=5;
-		if(record->_gameData._tower._resLucky>100) record->_gameData._tower._resLucky = 100;
-	}
+	record->_gameData._tower._strong++;
+	record->_gameData._tower._strong += g_rnd.GetRandom(0,2);
+	record->_gameData._tower._fate += g_rnd.GetRandom(0,5);
+	record->_gameData._tower._lucky +=g_rnd.GetRandom(0,6);
+	if(record->_gameData._tower._lucky>100) record->_gameData._tower._lucky = 100;
+	record->_gameData._tower._resLucky +=g_rnd.GetRandom(0,6);
+	if(record->_gameData._tower._resLucky>100) record->_gameData._tower._resLucky = 100;
 	record->updateMask(tb_player_record::_CRI);
 }
 

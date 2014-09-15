@@ -34,7 +34,11 @@ void KCardActor::update(float dt)
 void KCardActor::Clear()
 {
 	KUICardAssist::_hideBufIcon(m_ui);
-	KJsonDictMgr::getSingleton().OnCardWidgetDestory(m_ui);
+	if(m_card->IsKindOf(KCardStatic::card_hero)){
+		KJsonDictMgr::getSingleton().OnHeroWidgetDestory(m_ui);
+	}else{
+		KJsonDictMgr::getSingleton().OnCardWidgetDestory(m_ui);
+	}
 	m_ActionMgr.onDestory();
 	if(m_ui){
 		m_ui->removeFromParent();
