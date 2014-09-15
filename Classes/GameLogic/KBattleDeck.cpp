@@ -28,6 +28,7 @@ bool KBattleDeck::initGuy(KBattleGuy* guy)
 {
 	m_Owner = guy;
 	m_heroSkillMgr.init(guy);
+	
 	return true;
 }
 

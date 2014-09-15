@@ -147,7 +147,7 @@ void KUICardAssist::_showHeroStar(UIWidget* ui,int starNum)
 UIWidget*  KUICardAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* card,bool bShowSkill)
 {
 	KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(hero._cardId);
-	if(!pST) return NULL;
+	if(!pST) pST =  KGameStaticMgr::getSingleton().GetCard(card->GetCardId());
 	UIWidget* widget = NULL; 
 	if(card){
 		widget = _createHeroLayout(pST,bBig,card);
@@ -239,7 +239,7 @@ UIWidget* KUICardAssist::_createHeroLayout(KCardStatic* pST,bool bBig,KCardInst*
 
 UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card)
 {
-	if(pST->GetType()==KCardStatic::card_hero && card->GetOwner()->GetDeck().GetHeroDef().GetCardId()>0){
+	if(pST->GetType()==KCardStatic::card_hero){
 		return _createHero(card->GetOwner()->GetDeck().GetHeroDef(),bBig,card);
 	}
 	int idx = ((int)pST->GetType())*10 + pST->GetRace();

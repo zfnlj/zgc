@@ -142,6 +142,7 @@ size_t KSerialize::serializeCardList(KBattleDeck* deck,KMemoryStream* so,KCardIn
 
 BOOL KSerialize::deserialize(KBattleDeck* deck,KMemoryStream* si)
 {
+	deck->Clear();
 	if(!deck->m_heroSkillMgr.deserialize(si)) return FALSE;
 	if(!deserializeCardList(deck,si,deck->m_HeroCardSet))
 		return FALSE;

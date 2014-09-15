@@ -30,6 +30,19 @@
                 <key>sourceSize</key>
                 <string>{29,30}</string>
             </dict>
+            <key>fateStone.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{57,108},{64,64}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{64,64}}</string>
+                <key>sourceSize</key>
+                <string>{64,64}</string>
+            </dict>
             <key>gold.png</key>
             <dict>
                 <key>frame</key>
@@ -131,7 +144,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:eddf88a8219316f5cef3a1a21b7cdd96$</string>
+            <string>$TexturePacker:SmartUpdate:6f8c78b9612c84b56ee239369ecf994c$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>
