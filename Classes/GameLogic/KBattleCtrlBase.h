@@ -101,6 +101,7 @@ public:
 	int GetFighterNum();
 	void Clear();
 	void ForceWin();
+	static bool g_bDebug;
 protected:
 	BattleOp m_CurOp;
 	BattleState m_state;
@@ -140,6 +141,7 @@ protected:
 	bool m_bDirty;
 	float m_waitDramaElapsed;
 	KDoCardWhenAbilityList m_cardWhenList;
+	
 public:
 	friend class KSerialize;
 	friend class KBattleCtrlAssist;

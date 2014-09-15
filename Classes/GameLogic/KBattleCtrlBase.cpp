@@ -16,6 +16,7 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #endif
 
+bool KBattleCtrlBase::g_bDebug = false;
 bool KBattleCtrlBase::init(void* w)
 {
 	m_CurPlayGuy = m_pMainPlayer = NULL;
@@ -525,7 +526,7 @@ bool KBattleCtrlBase::IsMyCard(KCardInst* obj)
 
 bool KBattleCtrlBase::IsShowBack(KCardInst* card)
 {
-	return false;
+	if(g_bDebug) return false;
 	if(IsMyCard(card)){
 		return false;
 	}else{

@@ -111,6 +111,7 @@ void GameRoot::ParseCmd(char* cmdLine)
 		}
 		else if(strcmp(cmd,"-debug")==0){
 			m_bDebug = true;
+			KBattleCtrlBase::g_bDebug = true;
 		}
 		else if(strcmp(cmd,"-REC")==0){
 			m_bRecMode = true;
