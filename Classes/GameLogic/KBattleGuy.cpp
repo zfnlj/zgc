@@ -87,11 +87,6 @@ void KBattleGuy::onTurnEnd(KBattleCtrlBase* ctrl)
 	m_Deck.OnTurnEnd(ctrl);
 }
 
-void KBattleGuy::onDrawCard()
-{
-	m_Deck.DrawCard(1);
-}
-
 void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
 	

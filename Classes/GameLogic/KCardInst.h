@@ -105,18 +105,10 @@ public:
 	BOOL deserialize(KMemoryStream* si);
 	KCardAttr m_attr;
 	bool IsClone(){ return m_bClone;}
-	int GetHeroRank(){return m_heroRank;}
-	int GetHeroAtkVal(){return m_heroAtkVal;}
-	void SetHeroRank(int rank,int atk){ 
-		m_heroRank = rank;
-		m_heroAtkVal = atk;
-	}
 private:
 	KCardStatic* m_pST;
 	KBattleGuy* m_Owner;
 	bool m_bClone;
-	int m_heroRank;
-	int m_heroAtkVal;
 public:
 BeginDefLuaClass(KCardInst)
 	DefMemberFunc(GetHp)

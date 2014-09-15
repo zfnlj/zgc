@@ -757,5 +757,4 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 		break;
 	}
 	return widget;
-	//UIWidget*  KUIAssist::_createHero(const KHeroDef& hero,bool bBig,KCardInst* card)
 }

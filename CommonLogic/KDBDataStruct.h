@@ -25,6 +25,7 @@ struct Player_GameData{
 		int _strong;
 		int _lucky;
 		int _resLucky;
+		int _fate;
 		int GetLev(){ return _lev;}
 		void Reset(){
 			memset(this,0,sizeof(Tower));

@@ -97,8 +97,6 @@ bool KCardInst::init()
 	m_Owner = NULL;
 	m_attr.clearAttrs();
 	m_pST = NULL;
-	m_heroRank = -1;
-	m_heroAtkVal = 0;
 #ifdef _USE_COCOS2DX
 	m_actor = NULL;
 #endif

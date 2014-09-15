@@ -31,6 +31,11 @@ int KHeroDef::GetSkillLevUpMoney(int skillIndex)
 	return KGameStaticMgr::getSingleton().GetSkillLevUpExp(skillIndex*10+_skill[skillIndex]._lev+1);
 }
 
+void KHeroDef::FateLevUp()
+{
+	_fate++;
+}
+
 bool KHeroDef::SkillLevUp(int skillIndex)
 {
 	if(_skill[skillIndex].IsMaxLev()) return false;
@@ -47,6 +52,7 @@ bool KHeroDef::LevUp()
 	case 2:
 		{
 			_strong += 1 + rndGenLevStrong();
+
 		}
 		break;
 	case 3:
@@ -93,6 +99,7 @@ void KHeroDef::LevZero()
 	_lucky = 0;
 	_strong = 0;
 	_resLucky = 0;
+	_fate = 0;
 	memset(_skill,0,sizeof(_skill));
 }
 
@@ -104,6 +111,7 @@ void KHeroDef::Generate(int cardId)
 	_lucky = 0;
 	_strong = 0;
 	_resLucky = 0;
+	_fate = 0;
 	memset(_skill,0,sizeof(_skill));
 	/*for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(i+1);

@@ -67,7 +67,6 @@ bool KBattleDeck::createDeck(KPlayerCardDepot* pDepot)
 	KHeroDef heroDef;
 	pDepot->PickCurHero(heroDef);
 	pHero->AddHp(heroDef.GetStrong());
-	pHero->SetHeroRank(KSkillAssist::_calcHeroRank(heroDef.GetLucky(),heroDef.GetStrong()),heroDef.GetAtkVal());
 	return true;
 }
 
@@ -124,6 +123,13 @@ KCardInst* KBattleDeck::SummonCard(int id)
 	return pCard;
 }
 
+void KBattleDeck::TurnBeginDrawCard()
+{
+	int drawNum = 1;
+	if(m_heroDef.GetFate()>g_rnd.GetRandom(0,100)) drawNum++;
+	DrawCard(drawNum);
+}
+
 void KBattleDeck::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
 	KCardInstList tmpSet;
@@ -169,6 +175,7 @@ void KBattleDeck::FindFightingGuider(KCardInstList* lst)
 
 void KBattleDeck::Clear()
 {
+	m_heroDef.Clear();
 	_clearCardList(&m_HeroCardSet);
 	_clearCardList(&m_HandCardSet);
 	_clearCardList(&m_FightCardSet);
@@ -428,6 +435,7 @@ void KBattleDeck::UpdateActor(KCardInstList* lst,float dt)
 
 void KBattleDeck::QueryValidateHandCards(KCardInstList* lst,int curRes)
 {
+	if(GetEmptyFightSlotNum()==0) return;
 	for(KCardInstList::iterator it = m_HandCardSet.begin(); it!=m_HandCardSet.end();++it){
 		KCardInst* pCard = *it;
 		KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10);
@@ -602,7 +610,6 @@ void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
 	SetHeroSkill();
 	createDeck(pDeckDef);
 	GetHero()->CurHpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
-	GetHero()->SetHeroRank(KSkillAssist::_calcHeroRank(pDeckDef->getHeroLucky(),pDeckDef->getHeroStrong()),pDeckDef->GetAtkVal());
 	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 }
 

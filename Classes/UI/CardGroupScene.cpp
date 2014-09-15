@@ -422,7 +422,7 @@ void CardGroupScene::ShowAllHero()
 	int curPos = 0;
 	for(int i=0;i<heroNum;i++){
 		const KHeroDef*  pHeroDef = m_depot->FindHeroOnIndex(i);
-		UIWidget* widget = KUICardAssist::_createHero(*pHeroDef,true);
+		UIWidget* widget = KUICardAssist::_createHero(*pHeroDef,true,NULL,true);
 		if(!widget) continue;
 
 		this->addWidget(widget);
@@ -488,7 +488,7 @@ void CardGroupScene::ShowCardGroup()
 		m_depot->GetCardDeck(i,tmpList,hero);
 		UIWidget* widget = NULL;
 		if(tmpList.size()>0 &&hero._cardId>0){
-			widget = KUICardAssist::_createHero(hero,true);
+			widget = KUICardAssist::_createHero(hero,true,NULL,true);
 		}
 		if(widget){
 			this->addWidget(widget);

@@ -41,8 +41,9 @@ int _getPos(tb_player_record* record)
 	return record->_gameData._tower._pos;
 }
 
-int _getLayer(tb_player_record* record)
+int _getLayer()
 {
+	tb_player_record* record = KMainPlayer::RealPlayer()->GetPlayerRecord();
 	return record->_gameData._tower._lev;
 }
 
@@ -100,6 +101,7 @@ KDeckDefStatic* _createDeckDef(KDeckDefStatic* pDeck)
 	towerDeckDef.AddHeroStrong(record->_gameData._tower._strong);
 	towerDeckDef.AddHeroLucky(record->_gameData._tower._lucky);
 	towerDeckDef.AddResLucky(record->_gameData._tower._resLucky);
+	towerDeckDef.AddFate(record->_gameData._tower._fate);
 	return &towerDeckDef;
 }
 

@@ -55,6 +55,7 @@ public:
 	void AddHeroStrong(int val){ m_heroStrong += val;}
 	void AddHeroLucky(int val){ m_heroLucky += val;}
 	void AddResLucky(int val){ m_resLucky += val;}
+	void AddFate(int val){ m_fate += val;}
 private:
 	int m_Id;
 	int m_heroID;
@@ -65,6 +66,7 @@ private:
 	int m_drawNum;
 	int m_rnd;
 	int m_resLucky;
+	int m_fate;
 	HeroSkill m_skill[MAX_HERO_SKILL_NUM];
 	void setDynamic(const char* buf);
 	void setHeroSkill(const char* buf);

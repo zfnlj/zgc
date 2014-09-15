@@ -24,6 +24,7 @@
 #include "../Quest/KQuestManager.h"
 #include "../StaticTable/KHelpStringStatic.h"
 #include "../WorldObject/KPlayer.h"
+#include "../PlayerCard/KTowerAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -88,7 +89,11 @@ bool StageWaitScene::init()
 	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("stage_txt");
 	if(pQuest && pQuest->GetQuestStatus()!=KQ_PreStepOver){
 		char stageName[64]={0};
-		pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
+		if(m_sceneType==scene_tower){
+			sprintf(stageName,"Myst %d",KTowerAssist::_getLayer());
+		}else{
+			pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
+		}
 		if(strlen(stageName)>0){
 			labelName->setVisible(true);
 			labelName->setText(stageName);

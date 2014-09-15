@@ -73,7 +73,7 @@ void StageSelectScene::InitTower()
 	KUIAssist::_setButVisible(pBut, bShowTower);
 	UILabelAtlas* pLayer = (UILabelAtlas*)m_ui->getWidgetByName("tower_layer_txt");
 	char sz[64];
-	sprintf(sz,"%d",  KTowerAssist::_getLayer(KMainPlayer::RealPlayer()->GetPlayerRecord()));
+	sprintf(sz,"%d",  KTowerAssist::_getLayer());
 	pLayer->setStringValue(sz);
 	pLayer->setVisible(bShowTower);
 }

@@ -22,8 +22,9 @@ struct KHeroDef{
 	int _id;
 	int _lev;
 	int _lucky;  //幸运
-	int _strong;
-	int _resLucky; //资源增长力
+	int _strong; //英雄初始血量
+	int _resLucky; //回合开始多资源
+	int _fate; //回合开始可能多抽牌
 	int _dump[5];
 	void Generate(int id);
 	void Clear(){
@@ -33,6 +34,8 @@ struct KHeroDef{
 	int GetLev(){ return _lev;}
 	int GetRace();
 	int GetLucky() const { return _lucky;}
+	int GetFate() const { return _fate;}
+	void FateLevUp();
 	int GetStrong() const;
 	int GetResLucky() const { return _resLucky;}
 	int rndGenLevLucky();

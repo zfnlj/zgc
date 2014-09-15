@@ -28,7 +28,7 @@ public:
 	static UIWidget* _createMiniCard(int cardId,int num);
 	static void UpdateMiniCardWidgetNum(UIWidget* ui,int num);
 	static void _showHeroSkill(UIWidget* widget,const KHeroDef& heroDef);
-	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig,KCardInst* card = NULL);
+	static UIWidget*  _createHero(const KHeroDef& heroDef,bool bBig,KCardInst* card = NULL,bool bShowSkill=false);
 	static UIWidget* _createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
 	static UIWidget* _createHeroLayout(KCardStatic* pST,bool bBig,KCardInst* card = NULL);
 	static void _hideBufIcon(UIWidget* panel);

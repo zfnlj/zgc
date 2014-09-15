@@ -81,7 +81,7 @@ void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 	}else{
 		KUIAssist::_setButVisible(pLevUpBut,true);
 	}
-	m_pHeroWidget = KUICardAssist::_createHero(*hero,true);
+	m_pHeroWidget = KUICardAssist::_createHero(*hero,true,NULL,true);
 	UIWidget* slot = UIHelper::seekWidgetByName(m_Panel,"hero_slot");
 	m_pHeroWidget->setPosition(slot->getPosition());
 	m_pHeroWidget->setZOrder(100);

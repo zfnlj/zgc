@@ -35,7 +35,6 @@ public:
 	 float GetRemainPlayTime();
 	 void SetPlayTimeOut();
 	 void ClearPlayTimeOut();
-	 void onDrawCard();
 	 void onTurnBegin(KBattleCtrlBase*,bool bFirstTurn);
 	 void onTurnEnd(KBattleCtrlBase*);
 	 virtual void onPlayCard(float dt,bool bOK);

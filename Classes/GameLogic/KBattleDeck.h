@@ -75,7 +75,7 @@ public:
 	KHeroSkillMgr m_heroSkillMgr;
 	KHeroDef& GetHeroDef(){ return m_heroDef;}
 	void SetHeroSkill();
-
+	void TurnBeginDrawCard();
 private:
 	KCardInstList m_HeroCardSet;
 	KCardInstList m_HandCardSet;	// ÷≈∆
