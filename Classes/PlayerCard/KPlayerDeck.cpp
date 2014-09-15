@@ -126,11 +126,21 @@ void KHeroDef::init(KDeckDefStatic* pDef)
 	_strong = pDef->getHeroStrong();
 	_cardId = pDef->getHero();
 	_resLucky = pDef->getResLucky();
+	_fate = pDef->getFate();
 	const HeroSkill* skillArr = pDef->GetHeroSkill();
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		_skill[i]._id = skillArr[i]._id;
 		_skill[i]._lev = skillArr[i]._lev;
 	}
+}
+
+int KHeroDef::CalcLev()
+{
+	if(_lev>0) return _lev;
+	int atkVal = GetAtkVal();
+	_lev = atkVal/200 + 1;
+	if(_lev>5) _lev=5;
+	return _lev;
 }
 
 int KHeroDef::rndGenLevStrong()
@@ -156,9 +166,11 @@ int KHeroDef::GetAtkVal() const
 {
 	float val = 0.0f;
 	
-	val += 30.0f *(float)_strong;
+	float strongVal = 15.0f*(float)_strong;
+	if(strongVal>300.0f) strongVal = 300.0f;
 
-	float skillVal[MAX_HERO_SKILL_NUM]={100.0f,200.0f,400.0f};
+	float skillValDef[MAX_HERO_SKILL_NUM]={100.0f,150.0f,250.0f};
+	float skillVal = 0.0f;
 	for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 		KHeroSkillStatic* skill = KGameStaticMgr::getSingleton().GetHeroSkill(_skill[i]._id);
 		if(!skill) continue;
@@ -167,9 +179,15 @@ int KHeroDef::GetAtkVal() const
 		if(luckyVal>33.0f) luckyVal = 33.0f;
 		luckyVal = luckyVal/33.0f;
 		luckyVal = 0.3f +0.7f*luckyVal;
-		val += luckyVal*(_skill[i]._lev+1)*0.25 * skill->GetPower()*skillVal[i];
+		skillVal += luckyVal*(_skill[i]._lev+1)*0.25 * skill->GetPower()*skillValDef[i];
 	}
-	return (int)val;
+	float resLuckyVal = 1.5f*(float)_resLucky;
+	if(resLuckyVal>300.0f) resLuckyVal=300.0f;
+
+	float fateVal = 2.0f*(float)_fate;
+	if(fateVal>400.0f) fateVal = 400.0f;
+	
+	return (int)(strongVal + skillVal + resLuckyVal + fateVal);
 }
 
 int KHeroDef::GetStrong() const 

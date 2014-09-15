@@ -31,7 +31,7 @@ struct KHeroDef{
 		memset(this,0,sizeof(KHeroDef));
 	}
 	int GetCardId()const { return _cardId;}
-	int GetLev(){ return _lev;}
+	int CalcLev();
 	int GetRace();
 	int GetLucky() const { return _lucky;}
 	int GetFate() const { return _fate;}

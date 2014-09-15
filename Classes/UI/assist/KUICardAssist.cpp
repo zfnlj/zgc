@@ -365,7 +365,7 @@ void KUICardAssist::_updateBufIcon(UIWidget* panel , KCardInst* card)
         pos++;
 	}
     for(int i=pos;i<MAX_BUF_SLOT_NUM;i++){
-         UIImageView* widgetSlot = (UIImageView*)KUIAssist::GetIndexWidget(panel,"buf_slot",i);
-        widgetSlot->setVisible(false);
+        UIImageView* widgetSlot = (UIImageView*)KUIAssist::GetIndexWidget(panel,"buf_slot",i);
+        if(widgetSlot) widgetSlot->setVisible(false);
     }
 }
