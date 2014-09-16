@@ -20,6 +20,9 @@ public:
 	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
 	virtual void onGenPlayerCard(unsigned long long p1){}
 	virtual void onSystemMsg(int id){}
+	void CreateCloseBut();
+	void menuCloseCallback(CCObject* pSender);
+	virtual void onCloseCallback()=0;
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActor m_actor;

@@ -28,6 +28,7 @@ public:
 	virtual void onGenPlayerCard(unsigned long long p1);
 	virtual void onSystemMsg(int id);
 	void DoBuyMoney(CCObject* sender);
+	virtual void onCloseCallback(){}
 private:
 	void InitItem();
 	

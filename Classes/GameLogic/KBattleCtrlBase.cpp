@@ -39,6 +39,7 @@ void KBattleCtrlBase::Clear()
 	m_pMainPlayer = NULL;
 	m_CurPlayGuy = NULL;
 	m_CurOp.Empty();
+	m_state = battle_null;
 }
 
 void KBattleCtrlBase::UpdateBattleGuy(float dt)
@@ -687,4 +688,11 @@ void KBattleCtrlBase::ForceWin()
 	KCardInst* pHero = pGuy->GetDeck().GetHero();
 	pHero->m_attr.setSlot(KCardInst::enum_slot_tomb);
 	StateJump(battle_game_end);
+}
+
+void KBattleCtrlBase::ForceExit()
+{
+	KGameRecordMgr::getSingleton().Stop();
+	KDynamicWorld::getSingleton().onBattleFailed(m_pBattleQuest->GetID(),m_sceneType);
+	Clear();
 }

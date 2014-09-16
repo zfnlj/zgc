@@ -101,6 +101,7 @@ public:
 	int GetFighterNum();
 	void Clear();
 	void ForceWin();
+	void ForceExit();
 	static bool g_bDebug;
 protected:
 	BattleOp m_CurOp;
