@@ -84,6 +84,14 @@ int _calcMoney(tb_player_record* record)
 	return (int)money;
 }
 
+int _calcFateStone(tb_player_record* record)
+{
+	int towerLev = record->_gameData._tower.GetLev();
+	float stone = KGameStaticMgr::getSingleton().GetTowerLevFateStone(towerLev);
+	stone = stone *(1.0f + (float)record->_gameData._tower._pos *0.05f);
+	return (int)stone;
+}
+
 int _calcExp(tb_player_record* record)
 {
 	return (float)_calcMoney(record)*0.5f;

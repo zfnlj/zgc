@@ -14,6 +14,7 @@ namespace KTowerAssist
 	void _deactive(tb_player_record* record);
 	int _calcMoney(tb_player_record* record);
 	int _calcExp(tb_player_record* record);
+	int _calcFateStone(tb_player_record* record);
 	int _getPos(tb_player_record* record);
 	KDeckDefStatic* _createDeckDef(KDeckDefStatic* pDeck);
 	void _win(int questId);

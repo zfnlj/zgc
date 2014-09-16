@@ -52,6 +52,7 @@ public:
 	int GetSkillLevUpExp(int lev);
 	int GetHeroLevUpExp(int lev);
 	int GetTowerLevMoney(int lev);
+	int GetTowerLevFateStone(int lev);
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 	KHelpStringStatic* GetHelpString(int id);

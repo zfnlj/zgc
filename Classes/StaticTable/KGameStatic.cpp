@@ -504,6 +504,13 @@ bool KGameStaticMgr::InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr)
 
 }
 
+int KGameStaticMgr::GetTowerLevFateStone(int lev)
+	{
+	KLevUpStaticMap::iterator it = m_towerLevFateStone.find(lev);
+	if(it==m_towerLevFateStone.end()) return 0;
+	return it->second->GetExp();
+}
+
 int KGameStaticMgr::GetTowerLevMoney(int lev)
 {
 	KLevUpStaticMap::iterator it = m_towerLevMoney.find(lev);
