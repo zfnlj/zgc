@@ -11,7 +11,7 @@ struct CriPlayerInfo{
 	int _pvpVal;
 	int _exp;
 	int _power;
-	int _mercy;
+	int _fateStone;
 	int _dump[20];
 	Player_GameData _gameData;
 

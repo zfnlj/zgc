@@ -59,7 +59,7 @@ struct tb_player_record
 	}
 	void init(){
 		memset(&_gameData,0,sizeof(_gameData));
-		_playerID = _lastLoginIp = _lastLoginTime = _lastLogoutTime = _money =  _pvpVal = _exp = _mercy =0 ;
+		_playerID = _lastLoginIp = _lastLoginTime = _lastLogoutTime = _money =  _pvpVal = _exp = _fateStone =0 ;
 		_curDeck = -1;
 		_cardStore.actualLength = 0;
 		_heroData.actualLength = 0;
@@ -87,7 +87,7 @@ struct tb_player_record
 	int _curDeck;
 	int _pvpVal;
 	int _exp;
-	int _mercy;
+	int _fateStone;
 	Player_GameData _gameData;
 
 	KDBBinary<800> _normalItem;

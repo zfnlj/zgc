@@ -35,7 +35,7 @@ struct KHeroDef{
 	int GetRace();
 	int GetLucky() const { return _lucky;}
 	int GetFate() const { return _fate;}
-	void FateLevUp();
+	void LevUpFate();
 	int GetStrong() const;
 	int GetResLucky() const { return _resLucky;}
 	int rndGenLevLucky();

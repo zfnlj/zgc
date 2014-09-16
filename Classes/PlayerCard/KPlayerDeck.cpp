@@ -31,7 +31,7 @@ int KHeroDef::GetSkillLevUpMoney(int skillIndex)
 	return KGameStaticMgr::getSingleton().GetSkillLevUpExp(skillIndex*10+_skill[skillIndex]._lev+1);
 }
 
-void KHeroDef::FateLevUp()
+void KHeroDef::LevUpFate()
 {
 	_fate++;
 }

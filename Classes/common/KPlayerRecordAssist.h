@@ -34,8 +34,7 @@ namespace KPlayerRecordAssist
 	bool setCurDeck(tb_player_record* record,int index);
 
 	//money
-	void AddMercy(tb_player_record* record,int val);
-	void AddCriVal(tb_player_record* record,int money,int exp);
+	void AddCriVal(tb_player_record* record,int money,int exp,int fateStone=0);
 	//quest
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);

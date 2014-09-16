@@ -308,16 +308,11 @@ void DailyStageWin(tb_player_record* record,int dailyStageLev,bool& bStageLevUp)
 	record->updateMask(tb_player_record::_CRI);
 }
 
-void AddCriVal(tb_player_record* record,int money,int exp)
+void AddCriVal(tb_player_record* record,int money,int exp,int fateStone)
 {
 	record->_exp += exp;
 	record->_money += money;
-	record->updateMask(tb_player_record::_CRI);
-}
-
-void AddMercy(tb_player_record* record,int val)
-{
-	record->_mercy += val;
+	record->_fateStone += fateStone;
 	record->updateMask(tb_player_record::_CRI);
 }
 

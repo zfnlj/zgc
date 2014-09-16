@@ -43,7 +43,7 @@ int loadUserRecord(void* para,int n_cloumn,char** column_value,char** column_nam
 			record->_exp = decInfo._exp;
 			record->_money = decInfo._money;
 			record->_pvpVal = decInfo._pvpVal;
-			record->_mercy = decInfo._mercy;
+			record->_fateStone = decInfo._fateStone;
 			memcpy(&record->_gameData,&decInfo._gameData,sizeof(Player_GameData));
 		}
 	}
@@ -69,7 +69,7 @@ CriPlayerInfo::CriPlayerInfo(tb_player_record* record)
 	_money = record->_money;
 	_pvpVal = record->_pvpVal;
 	_exp = record->_exp;
-	_mercy = record->_mercy;
+	_fateStone = record->_fateStone;
 	memcpy(&_gameData,&record->_gameData,sizeof(Player_GameData));
 }
 
