@@ -58,7 +58,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitDeckDef("data/DeckDef.txt");
 	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
 	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
-	InitLevUp("data/TowerAward.txt",m_towerLevMoney);
+	InitTowerAward("data/TowerAward.txt");
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)
@@ -505,17 +505,17 @@ bool KGameStaticMgr::InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr)
 }
 
 int KGameStaticMgr::GetTowerLevFateStone(int lev)
-	{
-	KLevUpStaticMap::iterator it = m_towerLevFateStone.find(lev);
-	if(it==m_towerLevFateStone.end()) return 0;
-	return it->second->GetExp();
+{
+	KTowerAwardStaticMap::iterator it = m_towerAwardMap.find(lev);
+	if(it==m_towerAwardMap.end()) return 0;
+	return it->second->GetFateStone();
 }
 
 int KGameStaticMgr::GetTowerLevMoney(int lev)
 {
-	KLevUpStaticMap::iterator it = m_towerLevMoney.find(lev);
-	if(it==m_towerLevMoney.end()) return 0;
-	return it->second->GetExp();
+	KTowerAwardStaticMap::iterator it = m_towerAwardMap.find(lev);
+	if(it==m_towerAwardMap.end()) return 0;
+	return it->second->GetMoney();
 }
 
 int KGameStaticMgr::GetSkillLevUpExp(int lev)
@@ -552,4 +552,34 @@ int KGameStaticMgr::GetNormalCardNum()
 		if(pCard->GetType()!=KCardStatic::card_hero) count++;
 	}
 	return count;
+}
+
+bool KGameStaticMgr::InitTowerAward(const char* m_FileName)
+{
+	std::string pathKey = m_FileName;
+
+	std::string fullPath;
+#ifdef _USE_COCOS2DX
+	fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename(pathKey.c_str());
+#else
+	fullPath = pathKey;
+#endif
+
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
+	if(!fileReader)	return false;
+
+	while(true)
+	{
+		int nRet = fileReader->ReadLine();
+		if(nRet == -1) { loader.CloseFileReader(fileReader); return false; }
+		if(nRet == 0) break;
+		KTowerAwardStatic* pAward = KTowerAwardStatic::create();
+		pAward->Init(fileReader);
+		m_towerAwardMap[pAward->GetLev()] = pAward;
+	}
+
+	loader.CloseFileReader(fileReader);
+	return true;
+
 }

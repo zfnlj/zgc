@@ -15,6 +15,7 @@
 #include "KCardStatic.h"
 #include "KRankStaticMgr.h"
 #include "KLevUpStatic.h"
+#include "KTowerAwardStatic.h"
 class KGameStaticMgr : public Singleton<KGameStaticMgr>
 {
 public:
@@ -35,6 +36,7 @@ public:
 	bool InitHeroSkill(const char* m_FileName);
 	bool InitTipString(const char* m_FileName);
 	bool InitStoryString(const char* m_FileName);
+	bool InitTowerAward(const char* m_FileName);
 	bool InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr);
 
 	int  PlayerExpToLevel(int exp);
@@ -85,7 +87,7 @@ private:
 
 	KLevUpStaticMap m_skillLevUpMgr;
 	KLevUpStaticMap m_heroLevUpMgr;
-	KLevUpStaticMap m_towerLevMoney;
+	KTowerAwardStaticMap m_towerAwardMap;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
