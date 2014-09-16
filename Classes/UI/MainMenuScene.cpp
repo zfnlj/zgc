@@ -196,7 +196,7 @@ void MainMenuScene::UpdateLockStatus()
 
 		int dailyQuestNum = KPlayerRecordAssist::RemainDailyQuestNum(&KMainPlayer::RealPlayer()->m_questRecord);
 		char sz[64];
-		sprintf(sz,"%d/3",dailyQuestNum);
+		sprintf(sz,"%d/%d",dailyQuestNum,MAX_DAILY_AWARD_SLOT);
 		labelName->setText(sz);
 	}else{
 		labelName->setVisible(false);

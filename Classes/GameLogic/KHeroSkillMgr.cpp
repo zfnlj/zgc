@@ -62,12 +62,18 @@ void KHeroSkillMgr::addSkill(int id,int lev)
 bool KHeroSkillMgr::CheckLuckyStone(KBattleCtrlBase* ctrl)
 {
 	if(!m_heroDef) return false;
+	if(g_rnd.GetRandom(0,100)>50) return false;
+
 	int remainRes = m_heroDef->GetResLucky();
 	int res = 0;
 	while(remainRes >0){
-		int val = (remainRes>60)? 60 : remainRes;
-		if( val >= g_rnd.GetRandom(0,100)) res++;
-		remainRes -= val;
+		if(remainRes>50){
+			res++;
+			remainRes -=50;
+		}else{
+			if(remainRes>g_rnd.GetRandom(0,50)) res++;
+			remainRes = 0;
+		}
 	}
 	if(res<1) return false;
 	KAbilityStatic* pLucky = KGameStaticMgr::getSingleton().GetAbilityOnId(1103);

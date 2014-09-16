@@ -15,7 +15,7 @@ template <typename BinaryStruct, int size> class DatabaseBinaryStruct : public B
 
 #define MAX_DECK_NUM 5
 #define MAX_PLAYER_QUEST_NUM 3
-#define MAX_DAILY_AWARD_SLOT 3
+#define MAX_DAILY_AWARD_SLOT 6
 
 struct Player_GameData{
 	struct Tower{
