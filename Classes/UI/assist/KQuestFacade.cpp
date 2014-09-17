@@ -48,7 +48,7 @@ bool KQuestFacade::_startTower(int qId)
 	KQuestNew* pTowerQuest = KQuestManager::GetInstance()->GetQuest(qId);
 	int pos = KTowerAssist::_getPos(KMainPlayer::RealPlayer()->GetPlayerRecord());
 	KQuestNew* pQuest = KQuestManager::GetInstance()->RndDailyQuest(pos);
-	if(pQuest) pTowerQuest->m_battleField = pQuest->m_battleField;
+	if(pQuest) pTowerQuest->SetBattleField(pQuest->GetBattleField());
 	KClientBattleCtrl::getInstance()->Play(pTowerQuest,scene_tower);
 	return true;
 }

@@ -1225,6 +1225,15 @@ const char* KQuestNew::GetTypeText_lua( int qtype )
 	return "";
 }
 
+int KQuestNew::GetBattleField()
+{
+	if(m_type==enum_daily_quest){
+		return m_battleField + g_rnd.GetRandom(0,3);
+	}else{
+		return m_battleField;
+	}
+}
+
 bool KQuestNew::IsDailyQuest()
 {
 	return m_type==enum_daily_quest;

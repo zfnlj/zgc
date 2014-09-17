@@ -17,7 +17,7 @@ Initialize = function(quest)
 end,
 
 QName = function (quest , player)
-	return "daily mission1_1";
+	return "daily mission1";
 end,  
 
 

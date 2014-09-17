@@ -344,7 +344,7 @@ void KBattleCtrlBase::GameEnd(float dt)
 #ifdef _USE_COCOS2DX
 	if(m_pBattleQuest){
 		if( winner==m_pMainPlayer){
-			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->m_battleField);
+			KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(m_pBattleQuest->GetBattleField());
 			KDynamicWorld::getSingleton().onBattleWin(m_pBattleQuest->GetID(),pBattleStatic->GetMonster(),m_sceneType);
 		}else{
 			KDynamicWorld::getSingleton().onBattleFailed(m_pBattleQuest->GetID(),m_sceneType);
@@ -450,7 +450,7 @@ void KBattleCtrlBase::PlayWithAI()
 
 void KBattleCtrlBase::PlayAutoQuestBattle(KQuestNew* pQuest)
 {
-	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
+	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->GetBattleField());
 	m_pBattleQuest = pQuest;
 	m_pMainPlayer = KBattleAI::create();
 	KBattleAI* pAI = KBattleAI::create();
@@ -461,7 +461,7 @@ void KBattleCtrlBase::PlayAutoQuestBattle(KQuestNew* pQuest)
 void KBattleCtrlBase::Play(KQuestNew* pQuest,Scene_type tp)
 {
 	m_sceneType = tp;
-	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
+	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->GetBattleField());
 	m_pBattleQuest = pQuest;
 #ifdef _USE_COCOS2DX
 	if(KGameRecordMgr::getSingleton().StartPlay(pBattleStatic->GetRec())) return;
@@ -581,7 +581,7 @@ void KBattleCtrlBase::RndSelectFirstPlayer()
 
 void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 {
-	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->m_battleField);
+	KBattleFieldStatic* pBattleStatic = KGameStaticMgr::getSingleton().GetBattleField(pQuest->GetBattleField());
 	if(!pBattleStatic) return;
 	KBattleFieldStatic::enum_select_first select_enum = (KBattleFieldStatic::enum_select_first)pBattleStatic->GetFirstType();
 	switch(select_enum){

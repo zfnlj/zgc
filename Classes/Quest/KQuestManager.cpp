@@ -47,7 +47,6 @@ bool KQuestManager::Initialize(void)
 	LoadDailyQuestMap();
 	m_initFlag = true;	// 设置初始化标志
 
-	RndDailyQuest(1);
 	return true;
 }
 

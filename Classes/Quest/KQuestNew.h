@@ -164,7 +164,7 @@ private:
 	void AddGroup(KTargetGroup* pGrp);
 	LuaString _GetName(KPlayer* pPlayer);
 	LuaString _GetColorName(KPlayer* pPlayer);
-
+	int m_battleField;
 public:
 	// 客户端Npc任务状态检测
 	bool CanSee(KPlayer* pPlayer, DWORD npcId);
@@ -211,8 +211,10 @@ public:
 	int m_extraDescStrId;	// 额外任务描述字符串id
 	int m_extraDescBGPId;	// 额外任务描述资源图片字符串id, 也是stringid
 
-	int m_battleField;
+	
 
+	int GetBattleField();
+	void SetBattleField(int val){ m_battleField = val;}
 	int m_timeperiod;
 
 	BYTE m_itemGiftCount;
@@ -238,7 +240,7 @@ public:
 	int RemainDailyQuestNum();
 public:// timer
 	KQuestTimer* m_pQuestTimer;
-
+	
 public:
 	static const char* m_luaMethods[lua_Count];
 	void InitLuaFuncFlag(const char* tableName);
