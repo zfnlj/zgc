@@ -234,6 +234,7 @@ public:
 	EvtRegArray m_evtArray;
 	int GetAwardMoney();
 	int GetAwardExp();
+	int GetAwardFateStone();
 	int RemainDailyQuestNum();
 public:// timer
 	KQuestTimer* m_pQuestTimer;

@@ -73,11 +73,12 @@ enum Scene_type{
 };
 
 struct strGameResult{
-	strGameResult():_winner(0),_questId(0),_money(0),_exp(0),_type(scene_battle){}
+	strGameResult():_winner(0),_questId(0),_money(0),_exp(0),_fateStone(0),_type(scene_battle){}
 	FBattleGuy* _winner;
 	int _questId;
 	int _money;
 	int _exp;
+	int _fateStone;
 	Scene_type _type;
 };
 

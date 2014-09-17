@@ -248,10 +248,10 @@ namespace KWorldObjAbout
 		SetAttrValue(ca_selectPos,pos);
 	}
 
-	void KPlayer::IncreaseCriVal(int money,int exp)
+	void KPlayer::IncreaseCriVal(int money,int exp,int fateStone)
 	{
 		m_money.Increase(money);
-		KPlayerRecordAssist::AddCriVal(&m_playerRecord,money,exp);
+		KPlayerRecordAssist::AddCriVal(&m_playerRecord,money,exp,fateStone);
 	}
 
 	KQuestNew* KPlayer::RndQueryAdventureQuest()

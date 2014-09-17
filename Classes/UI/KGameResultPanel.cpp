@@ -192,6 +192,7 @@ void KGameResultPanel::updatePanel()
 		if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
 			m_result._money = pQuest->GetAwardMoney();
 			m_result._exp = pQuest->GetAwardExp();
+			m_result._fateStone = pQuest->GetAwardFateStone();
 
 			if(ShowSelectGift(pQuest)) return;
 			VirtualService::getSingleton().SubmitQuest(pQuest->GetID());

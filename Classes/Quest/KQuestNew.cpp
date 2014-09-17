@@ -1393,6 +1393,15 @@ void KQuestNew::OnFinish()
 	// ¼ÇÂ¼log
 }
 
+int KQuestNew::GetAwardFateStone()
+{
+	if(m_type == enum_tower_quest){
+		return KTowerAssist::_calcFateStone(m_pPlayer->GetPlayerRecord());
+	}else{
+		return 0;
+	}
+}
+
 int KQuestNew::GetAwardMoney()
 {
 	if(m_type == enum_daily_quest &&
@@ -1418,7 +1427,7 @@ int KQuestNew::GetAwardExp()
 void KQuestNew::OnGift()
 {
 	// ½±Àø
-	m_pPlayer->IncreaseCriVal(GetAwardMoney(),GetAwardExp());
+	m_pPlayer->IncreaseCriVal(GetAwardMoney(),GetAwardExp(),GetAwardFateStone());
 
 	if (m_achieveId != 0)
 	{

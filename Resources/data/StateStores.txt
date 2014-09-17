@@ -1,7 +1,7 @@
 ID	StoreID	LabelID	ItemID	PileCount	PriceType1	T1Param1	T1Param2	LimitSaleCount	CanBuyScript	CanSeeScript
-1	1	1	1001	1	0	0	1	99	0	0
-2	1	1	1002	1	0	200	1	99	0	0
-3	1	1	1003	1	0	400	1	99	0	0
+1	1	1	1001	1	0	200	1	99	0	0
+2	1	1	1002	1	0	400	1	99	0	0
+3	1	1	1003	1	0	1200	1	99	0	0
 4	1	1	100010	10	0	0	1	99	0	0
 5	1	1	100020	10	0	0	1	99	0	0
 6	1	1	100030	10	0	0	1	99	0	0
