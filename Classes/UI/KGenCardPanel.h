@@ -23,6 +23,7 @@ private:
 	cocos2d::extension::UIWidget* m_Panel;
 
 	KCardInst m_GenCard[MAX_GEN_CARD_NUM];
+	float m_delayCloseTime;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

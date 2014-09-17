@@ -12,6 +12,7 @@
 #define MAX_HERO_SKILL_LEV 3
 #define MAX_SKILL_ABILITY 6
 
+#define MAX_SKILL_RACE_DEF 5
 class KHeroSkillStatic;
 
 struct HeroSkill{
@@ -42,6 +43,7 @@ public:
 	int GetId(){ return m_Id;}
 	const char* GetName(){ return m_Name;}
 	float GetPower(){ return m_power;}
+	void SetRaceArr(int* arr,const char* str);
 private:
 	void SetAbilityArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);
@@ -53,6 +55,7 @@ private:
 	int m_rate[MAX_HERO_SKILL_LEV];
 	int m_val1[MAX_HERO_SKILL_LEV];
 	int m_val2[MAX_HERO_SKILL_LEV];
+	int m_race[MAX_SKILL_RACE_DEF];
 	KAbilityStatic* m_ability[MAX_SKILL_ABILITY];
 
 	friend class KGameStaticMgr;

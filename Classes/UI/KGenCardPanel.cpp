@@ -29,7 +29,7 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 	if(!m_Panel){
 		m_Panel = GUIReader::shareReader()->widgetFromJsonFile("GUI/select.json");
 		CC_SAFE_RETAIN(m_Panel);
-		CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KGenCardPanel::update),this,0.033f,false);
+		
 		m_layer = layer;
 		
 
@@ -37,6 +37,7 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		pBut->addPushDownEvent(this, coco_pushselector(KGenCardPanel::DoClickOK));
 	}
 	m_layer->addWidget(m_Panel);
+	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(KGenCardPanel::update),this,0.033f,false);
 
 	SC_GenPlayerCard* pGen = (SC_GenPlayerCard*)p1;
 	for(int i=0;i<pGen->count;i++){
@@ -60,6 +61,7 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		KAction* pAction = actor->GetActionMgr().PlayAction("gen_card");
 		pAction->SetDelayTime(i*1.5);
 	}
+	m_delayCloseTime = 10.0f;
 }
 
 void KGenCardPanel::onClickCard(CCObject* sender)
@@ -69,6 +71,12 @@ void KGenCardPanel::onClickCard(CCObject* sender)
 
 void KGenCardPanel::update(float dt)
 {
+	m_delayCloseTime -= dt;
+	if(m_delayCloseTime<0) {
+		DoClickOK(NULL);
+		m_delayCloseTime = 9999.0f;
+	}
+
 	for(int i=0;i<MAX_GEN_CARD_NUM;i++){
 		KCardActor* actor = (KCardActor*)m_GenCard[i].getActor();
 		if(actor) actor->update(dt);
@@ -77,6 +85,8 @@ void KGenCardPanel::update(float dt)
 
 void KGenCardPanel::DoClickOK(CCObject* sender)
 {
+	if(m_delayCloseTime>4.5f) return;
+
 	for(int i=0;i<MAX_GEN_CARD_NUM;i++){
 		KCardActor* actor = (KCardActor*)m_GenCard[i].getActor();
 		m_Panel->removeChild(actor->GetUI());

@@ -108,6 +108,7 @@ void BattleFieldScene::onBattleInit()
 		KUIAssist::_showCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand));
 		//KUIAssist::_moveCardSet(pOtherPlayer->QueryCardSet(KCardInst::enum_slot_hand),"go_hand");
 	}
+	m_resPanel.UpdateRes();
 	InitTest();
 }
 
@@ -201,6 +202,7 @@ void BattleFieldScene::ReGenerateAllCard()
 {
 	KClickCardMgr::getSingleton().onBattleRefresh();
 	m_indicatePanel.onBattleRefresh();
+	m_resPanel.UpdateRes();
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hero));
 	KUIAssist::_showCardSet(pMainPlayer->QueryCardSet(KCardInst::enum_slot_hand));

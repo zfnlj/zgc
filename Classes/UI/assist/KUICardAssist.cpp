@@ -196,6 +196,9 @@ UIWidget* KUICardAssist::_createHeroLayout(KCardStatic* pST,bool bBig,KCardInst*
 	UIImageView* widgetStone = (UIImageView*)ui->getChildByName("stone_pos");
 	widgetStone->setVisible(false);
 
+	UIImageView* pNewSlot = (UIImageView*) ui->getChildByName("buf_slot_0");
+	pNewSlot->setVisible(false);
+
 	/*int cardRank = pST->GetRank();
 	if(card && card->GetHeroRank()>=0) cardRank = card->GetHeroRank();
 	if(cardRank>0){
@@ -240,7 +243,13 @@ UIWidget* KUICardAssist::_createHeroLayout(KCardStatic* pST,bool bBig,KCardInst*
 UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst* card)
 {
 	if(pST->GetType()==KCardStatic::card_hero){
-		return _createHero(card->GetOwner()->GetDeck().GetHeroDef(),bBig,card);
+		if(card->GetOwner()){
+			return _createHero(card->GetOwner()->GetDeck().GetHeroDef(),bBig,card);
+		}else{
+			KHeroDef heroDef;
+			heroDef.Clear();
+			return _createHero(heroDef,bBig,card);
+		}
 	}
 	int idx = ((int)pST->GetType())*10 + pST->GetRace();
 	KCardLayoutStatic* pLayout = KGameStaticMgr::getSingleton().GetCardLayout(idx);

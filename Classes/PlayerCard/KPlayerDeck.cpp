@@ -192,22 +192,7 @@ int KHeroDef::GetAtkVal() const
 
 int KHeroDef::GetStrong() const 
 {
-	if(_strong>0) return _strong;
-	int ret = 0;
-	switch(_lev){
-	case 1:
-		ret = 2;
-		break;
-	case 2:
-		ret = 5;
-		break;
-	case 3: 
-		ret = 10;
-		break;
-	default:
-		break;
-	}
-	return ret;
+	return _strong;
 }
 
 void KPlayerDeck::CreateOnDeckDef(int id)

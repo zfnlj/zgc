@@ -67,6 +67,7 @@ bool KHeroSkillStatic::init()
 	memset(m_val1,0,sizeof(m_val1));
 	memset(m_val2,0,sizeof(m_val2));
 	memset(m_ability,0,sizeof(m_ability));
+	memset(m_race,0,sizeof(m_race));
 	m_Id = m_rank = 0;
 	return true;
 }
@@ -103,6 +104,9 @@ void KHeroSkillStatic::Init(System::File::KTabFile2* fileReader)
 	fileReader->GetString("WHEN", "", sz, 63);
 	m_when = KAbilityStatic::Str2When(sz);
 
+	fileReader->GetString("Race", "", sz, 63);
+	SetRaceArr(m_race,sz);
+
 }
 
 void KHeroSkillStatic::SetAbilityArr(const char* str)
@@ -118,6 +122,20 @@ void KHeroSkillStatic::SetAbilityArr(const char* str)
 		int abilityId = atoi(ss[i]);
 		m_ability[i] = KGameStaticMgr::getSingleton().GetAbilityOnId(abilityId);
 	}
+}
+
+void KHeroSkillStatic::SetRaceArr(int* arr,const char* str)
+{
+	char strBuf[1024];
+	strcpy(strBuf,str);
+
+	char* ss[64];
+	int ns = split(strBuf, ";", ss, 64);
+
+	for(int i=0;i<ns;i++){
+		arr[i] = atoi(ss[i]);
+	}
+
 }
 
 void KHeroSkillStatic::SetArrIntVal(int* arr,int size,const char* str)
