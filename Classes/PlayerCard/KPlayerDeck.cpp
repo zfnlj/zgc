@@ -59,7 +59,7 @@ bool KHeroDef::LevUp()
 		{
 			_strong += 1 + rndGenLevStrong();
 			_lucky += rndGenLevLucky()+10;
-			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(1);
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(1,GetRace());
 			_skill[0]._id = skill->GetId();
 			_skill[0]._lev = 0;
 		}
@@ -68,7 +68,7 @@ bool KHeroDef::LevUp()
 		{
 			_lucky += rndGenLevLucky()+10;
 			_strong += 1;
-			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(2);
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(2,GetRace());
 			_skill[1]._id = skill->GetId();
 			_skill[1]._lev = 0;
 		}
@@ -77,13 +77,30 @@ bool KHeroDef::LevUp()
 		{
 			_lucky += rndGenLevLucky()+10;
 			_strong += 1;
-			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(3);
+			skill = KGameStaticMgr::getSingleton().GetRndHeroSkill(3,GetRace());
 			_skill[2]._id = skill->GetId();
 			_skill[2]._lev = 0;
 		}
 		break;
 	}
 	if(_lucky>100) _lucky = 100;
+	switch(GetRace()){
+	case KCardStatic::race_gold:
+		{
+			_strong += g_rnd.GetRandom(0,3);
+		}
+		break;
+	case KCardStatic::race_water:
+		{
+			_resLucky += g_rnd.GetRandom(0,3);
+		}
+		break;
+	case KCardStatic::race_fire:
+		{
+			_lucky += g_rnd.GetRandom(0,3);
+		}
+		break;
+	}
 	return true;
 }
 

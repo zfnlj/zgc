@@ -435,13 +435,16 @@ KHelpStringStatic* KGameStaticMgr::GetRndStory()
 	return m_storyStringMap[nRand];
 }
 
-KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank)
+KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank,int race)
 {
 	KHeroSkillMap tmpMap;
 	int pos=0;
 	for(KHeroSkillMap::iterator it=m_heroSkillMap.begin();it!=m_heroSkillMap.end();++it){
 		KHeroSkillStatic* skill = it->second;
-		if(skill->GetRank()==rank) tmpMap[pos++] = skill;
+		if(skill->GetRank()==rank && 
+			skill->IsRaceMatch(race)){
+				tmpMap[pos++] = skill;
+		}
 	}
 	if(tmpMap.empty()) return NULL;
 	int nRand = g_rnd.GetRandom(0,tmpMap.size());

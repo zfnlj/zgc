@@ -44,6 +44,7 @@ public:
 	const char* GetName(){ return m_Name;}
 	float GetPower(){ return m_power;}
 	void SetRaceArr(int* arr,const char* str);
+	bool IsRaceMatch(int race);
 private:
 	void SetAbilityArr(const char* str);
 	void SetArrIntVal(int* arr,int size,const char* str);

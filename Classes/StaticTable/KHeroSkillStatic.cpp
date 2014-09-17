@@ -131,11 +131,12 @@ void KHeroSkillStatic::SetRaceArr(int* arr,const char* str)
 
 	char* ss[64];
 	int ns = split(strBuf, ";", ss, 64);
+	memset(m_race,0,sizeof(m_race));
 
 	for(int i=0;i<ns;i++){
-		arr[i] = atoi(ss[i]);
+		m_race[i] = KCardStatic::getCardRace(ss[i]);
 	}
-
+	
 }
 
 void KHeroSkillStatic::SetArrIntVal(int* arr,int size,const char* str)
@@ -151,4 +152,12 @@ void KHeroSkillStatic::SetArrIntVal(int* arr,int size,const char* str)
 	for(int i=0;i<n;i++){
 		arr[i] = atoi(ss[i]);
 	}
+}
+
+bool KHeroSkillStatic::IsRaceMatch(int race)
+{
+	for(int i=0;i<MAX_SKILL_RACE_DEF;i++){
+		if(m_race[i]== race) return true;
+	}
+	return false;
 }
