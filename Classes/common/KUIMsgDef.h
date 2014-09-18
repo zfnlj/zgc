@@ -17,4 +17,6 @@
 #define NEW_DAILY_STAGE 18
 #define ACTIVE_TOWER 19
 #define TOWER_CLOSE 20
+#define CAPTURE_HERO_CHIP 21
+#define NOTIFY_DEL_HERO 22
 #endif // __HELLOWORLD_SCENE_H__	

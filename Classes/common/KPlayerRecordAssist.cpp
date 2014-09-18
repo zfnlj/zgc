@@ -63,6 +63,24 @@ bool updateCardDeck(tb_player_record* record,KIntegerList& lst,int index)
 	return true;
 }
 
+bool delHero(tb_player_record* record,int heroId)
+{
+	KHeroDefList tmpLst;
+	int heroNum = record->_heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)record->_heroData.binData;
+	for(int i=0;i<heroNum;i++,pHero++){
+		if(pHero->_id!=heroId){
+			tmpLst.push_back(pHero);
+		}
+	}
+	record->_heroData.Set(NULL,0);
+	for(KHeroDefList::iterator it=tmpLst.begin();it!=tmpLst.end();++it){
+		record->_heroData.Append(*it,sizeof(KHeroDef));
+	}
+	record->updateMask(tb_player_record::_HERODATA);
+	return true;
+}
+
 bool addHero(tb_player_record* record,KHeroDef* hero)
 {
 	if(record->_heroData.actualLength>=MAX_HERO_NUM*sizeof(KHeroDef)) return false;

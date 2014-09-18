@@ -11,6 +11,7 @@ USING_NS_CC_EXT;
 
 
 KPopupLayer* KPopupLayer::s_pInstance = NULL;
+int KPopupLayer::m_val=0;
 CCObject*	KPopupLayer::m_pPushListener=NULL;
 KPopupLayer::KPopupLayer(void)
 {
@@ -164,4 +165,17 @@ void KPopupLayer::DoModal(int titleId,int contentId,DialogueType type,SEL_PushEv
 	if(!helpString) return;
 	const char* contentStr = helpString->GetString();
 	DoModal(titleStr,contentStr,type,p,pListener);
+}
+
+void KPopupLayer::DoModal(int titleId,int contentId,int val,DialogueType type,SEL_PushEvent p,CCObject* pListener)
+{
+	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(titleId);
+	if(!helpString) return;
+	const char* titleStr = helpString->GetString();
+	helpString = KGameStaticMgr::getSingleton().GetHelpString(contentId);
+	if(!helpString) return;
+	const char* contentStr = helpString->GetString();
+	char sz[128];
+	sprintf(sz,contentStr,val);
+	DoModal(titleStr,sz,type,p,pListener);
 }

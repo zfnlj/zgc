@@ -38,6 +38,7 @@ public:
     CREATE_FUNC(HeroBrowseScene);
 	virtual void onCloseCallback(){}
 	virtual cocos2d::extension::UIWidget* GetPanel();
+	void DoBreakHero(CCObject* sender);
 protected:
 
 	void onClickBack(CCObject* sender);

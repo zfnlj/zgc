@@ -195,6 +195,8 @@ void HeroBrowseScene::UpdateHeroLevUpBut()
 		UIWidget* pBut = KUIAssist::GetIndexWidget(m_ui,"Levup_but",i);
   		UIWidget* pSlotImage = KUIAssist::GetIndexWidget(m_ui,"card_slot",i);
 		UIWidget* pBreakBut = KUIAssist::GetIndexWidget(m_ui,"break_but",i);
+		pBut->setTag(i);
+		pBreakBut->setTag(i);
 		 if(m_slotElem[i]._widget){
 			 KUIAssist::ShowButton(pBut,true);
 			 KUIAssist::ShowButton(pBreakBut,true);
@@ -219,7 +221,18 @@ void HeroBrowseScene::onClickPageUp(CCObject* sender)
 	UpdateUI();
 }
 
+void HeroBrowseScene::DoBreakHero(CCObject* sender)
+{
+	int stoneNum = m_depot->BreakHero(m_slotElem[KPopupLayer::m_val]._id);
+	if(stoneNum>0){
+		KPopupLayer::DoModal(UI_NOTIFY_STR,CAPTURE_HERO_CHIP,stoneNum,KPopupLayer::DT_Ok);
+	}
+	UpdateUI();
+}
+
 void HeroBrowseScene::onClickBreakHero(CCObject* sender)
 {
-
+	UIWidget* widget = (UIWidget*)sender;
+	KPopupLayer::m_val = widget->getTag();
+	KPopupLayer::DoModal(UI_WARNING_STR,NOTIFY_DEL_HERO,KPopupLayer::DT_Yes_No,coco_pushselector(HeroBrowseScene::DoBreakHero),this);
 }

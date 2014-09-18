@@ -60,3 +60,5 @@ private:
 	KHeroDef m_heroDef;
 	KIntegerList m_cardList;
 };
+
+typedef std::list<KHeroDef*> KHeroDefList;

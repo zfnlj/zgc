@@ -11,15 +11,20 @@
 struct tb_player_record;
 
 typedef std::list<KDBBagItemUnit> KItemUnitList;
-typedef std::list<KHeroDef*> KHeroDefList;
+
 class KBattleDeck;
+namespace KWorldObjAbout
+{
+	class KPlayer;
+}
+
 class KPlayerCardDepot
 {
 public:
 	KPlayerCardDepot(void){}
 	~KPlayerCardDepot(void){}
 	bool CreateOnDeckDef(int id);
-	void init(tb_player_record* record){ m_record = record;}
+	void init(tb_player_record* record,KWorldObjAbout::KPlayer* player){ m_record = record; m_player=player;}
 	bool GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero);
 	bool PickCurDeck(int& hero,KIntegerList& tmpLst);
 	bool PickDeckHero(int index,KHeroDef& hero);
@@ -37,7 +42,9 @@ public:
 	bool IsDeckReady(int index);
 	int CreateHero(int heroId);
 	void SaveHero(KHeroDef* hero);
+	int BreakHero(int heroId);
 private:
 	bool FillHeroDef(int heroId,KHeroDef& hero);
 	tb_player_record* m_record;
+	KWorldObjAbout::KPlayer* m_player;
 };

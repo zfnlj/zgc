@@ -1,6 +1,7 @@
 #include "KPlayerCardDepot.h"
 #include "../StaticTable/KGameStatic.h"
 #include "../common/KPlayerRecordAssist.h"
+#include "../common/KPlayerBagAssist.h"
 
 bool KPlayerCardDepot::CreateOnDeckDef(int id)
 {
@@ -168,4 +169,15 @@ bool KPlayerCardDepot::ClearDeck(int deckId)
 void KPlayerCardDepot::SaveHero(KHeroDef* hero)
 {
 	KPlayerRecordAssist::updateHero(m_record,hero);
+}
+
+int KPlayerCardDepot::BreakHero(int heroId)
+{
+	KHeroDef* heroDef = FindHero(heroId);
+	if(!heroDef) return 0 ;
+	int stoneNum = KGameStaticMgr::getSingleton().GetHeroLevUpExp(heroDef->_lev)*0.6;
+	KPlayerBagAssist::AddItem(m_player,heroDef->GetCardId()*10,stoneNum);
+
+	KPlayerRecordAssist::delHero(m_record,heroId);
+	return stoneNum;
 }

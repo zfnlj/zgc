@@ -102,7 +102,7 @@ namespace KWorldObjAbout
 		m_pBagManager->SetMasterID(m_id);
 		m_playerRecord.init();
 		m_questRecord.init();
-		m_cardDepot.init(&m_playerRecord);
+		m_cardDepot.init(&m_playerRecord,this);
 		return true;
 	}
 
