@@ -11,6 +11,7 @@
 struct tb_player_record;
 
 typedef std::list<KDBBagItemUnit> KItemUnitList;
+typedef std::list<KHeroDef*> KHeroDefList;
 class KBattleDeck;
 class KPlayerCardDepot
 {
@@ -24,6 +25,7 @@ public:
 	bool PickDeckHero(int index,KHeroDef& hero);
 	bool PickCurHero(KHeroDef& hero);
 	bool PickStoreCard(KItemUnitList& tmpLst);
+	bool PickAllHero(KHeroDefList& lst);
 	int  GetDeckCardNum(int deck,int cardId);
 	int  GetHeroNum();
 	const KHeroDef* FindHeroOnIndex(int index);

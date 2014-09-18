@@ -75,6 +75,19 @@ int KCardGroupAssist::GetDeckMiniCardNum(KMiniCardList& list,int cardId)
 	return 0;
 }
 
+void KCardGroupAssist::FilterHero(KHeroDefList& src,KHeroDefList& des,int raceId,int skip)
+{
+	for(KHeroDefList::iterator it=src.begin();it!=src.end();++it){
+		KHeroDef* heroDef = *it;
+		if(raceId!=KCardStatic::race_all && raceId!= heroDef->GetRace()) continue;
+		if(skip>0){
+			skip--;
+		}else{
+			des.push_back(*it);
+		}
+	}
+}
+
 void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int browseId,int raceId,int heroRace,int costId,int skip)
 {
 	BrowseCard browse = (BrowseCard)browseId;

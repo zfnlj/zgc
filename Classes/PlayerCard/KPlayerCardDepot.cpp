@@ -54,6 +54,16 @@ const KHeroDef* KPlayerCardDepot::FindHeroOnIndex(int index)
 	return &pHero[index];
 }
 
+bool KPlayerCardDepot::PickAllHero(KHeroDefList& lst)
+{
+	int heroNum = m_record->_heroData.actualLength/sizeof(KHeroDef);
+	KHeroDef* pHero = (KHeroDef*)m_record->_heroData.binData;
+	for(int i=0;i<heroNum;i++,pHero++){
+		lst.push_back(pHero);
+	}
+	return true;
+}
+
 KHeroDef* KPlayerCardDepot::FindHero(int id)
 {
 	int heroNum = m_record->_heroData.actualLength/sizeof(KHeroDef);

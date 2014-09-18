@@ -60,6 +60,7 @@ public:
 	static void SortCardItem(KItemUnitList& lst);
 	static int GetCurDeckRace(KHeroDef& hero,KMiniCardList&lst);
 	static void SmartFillCardGroup(KHeroDef& curHero,KMiniCardList& miniList,KPlayerCardDepot* depot);
+	static void FilterHero(KHeroDefList& src,KHeroDefList& des,int raceId,int skip);
 };
 
 #endif // 	

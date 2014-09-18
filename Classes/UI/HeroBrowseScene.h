@@ -42,26 +42,20 @@ protected:
 
 	void onClickBack(CCObject* sender);
 	void onClickCost(CCObject* sender);
-	void onClickMainType(CCObject* sender);
 	void onClickPageDown(CCObject* sender);
 	void onClickPageUp(CCObject* sender);
 	void onClickRace(CCObject* sender);
 	void onClickHeroLevUp(CCObject* sender);
 	void onClickBreakHero(CCObject* sender);
 	void UpdateUI();
-	void ShowAllHero();
+	void ShowHeroCards();
 	void UpdateHeroLevUpBut();
 	void UpdatePageInfo(int moreNum);
 
-	void UpdateCurDeckRadio();
 	KPlayerCardDepot* m_depot;
 	
 	UILabel* m_pPageInfo;
 	KRadioWidget m_radioRace;
-	KRadioWidget m_radioMain;
-	KRadioWidget m_radioSelectHero;
-	KHeroDef m_miniHero;
-	MainType m_mainType;
 
 	KHeroLevUpPanel m_heroLevUpPanel;
 	int m_curCardGroup;

@@ -65,8 +65,6 @@ bool HeroBrowseScene::init()
 	m_heroLevUpPanel.init(this);
 	m_depot = KMainPlayer::RealPlayer()->GetCardDepot();
 	UpdateUI();
-	UpdateCurDeckRadio();
-	m_gameRecPanel.init(this);
 	m_actor.init(m_ui);
     return true;
 }
@@ -77,8 +75,6 @@ cocos2d::extension::UIWidget* HeroBrowseScene::GetPanel()
 		m_ui =  KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/heroBrowse.json");
 		
 		
-		m_radioMain.AddGroupBut("check_main",3,m_ui,this,coco_pushselector(HeroBrowseScene::onClickMainType),1);
-
 		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui,"back_but");
 		pBut->addPushDownEvent(this,coco_pushselector(HeroBrowseScene::onClickBack));
 		
@@ -107,31 +103,13 @@ cocos2d::extension::UIWidget* HeroBrowseScene::GetPanel()
 			pBut->addPushDownEvent(this,coco_pushselector(HeroBrowseScene::onClickBreakHero));
 
 		}
-		m_radioSelectHero.SetUnSelectAble(false);
 		m_radioRace.AddGroupBut("check_race",6,m_ui,this,coco_pushselector(HeroBrowseScene::onClickRace),0);
-		for(int j=1;j<8;j++){
-			sprintf(sz,"check_cost_%d",j);
-			pBut = UIHelper::seekWidgetByName(m_ui,sz);
-
-			char val[18];
-			sprintf(val,"%d",j);
-			CCLabelBMFont* bmFont = CCLabelBMFont::create(val,"GUI/num_1.fnt");
-			bmFont->setAnchorPoint(ccp(0.50f,0.50f));
-			pBut->addCCNode(bmFont);
-		}
-		m_mainType = type_cardgroup;
+		
 		m_curCardGroup = m_curPage = 0;
-		m_miniHero.Clear();
 		m_depot = NULL;
 
 	}
 	return m_ui;
-}
-
-void HeroBrowseScene::onClickMainType(CCObject* sender)
-{
-	m_curPage = 0;
-	UpdateUI();
 }
 
 void HeroBrowseScene::onClickRace(CCObject* sender)
@@ -146,34 +124,18 @@ void HeroBrowseScene::onClickCost(CCObject* sender)
 	UpdateUI();
 }
 
-void HeroBrowseScene::UpdateCurDeckRadio()
-{
-	if(m_mainType==type_cardgroup){
-		for(int i=0;i<PAGE_CARD_NUM;i++){
-			if(m_slotElem[i]._id==m_depot->GetCurDeck()){
-				m_radioSelectHero.SetSelected(i,false);
-				break;
-			}
-		}
-	}
-}
-
 void HeroBrowseScene::onClickBack(CCObject* sender)
 {
 	m_curPage = 0;
-	m_radioSelectHero.SetSelected(-1,false);
 	KUIAssist::_switch2MainMenu();
 }
 
 void HeroBrowseScene::UpdateUI()
 {
-	KUIAssist::ShowWidgetArr(this,"slot_txt", PAGE_CARD_NUM,false);
 	KCardGroupAssist::ClearSlotElem(m_slotElem,PAGE_CARD_NUM);
 
-	m_radioMain.SetVisible(true);
 	m_radioRace.SetVisible(true);
-	m_radioSelectHero.SetUnSelectAble(true);
-	ShowAllHero();
+	ShowHeroCards();
 	UpdateHeroLevUpBut();
 }
 
@@ -192,14 +154,18 @@ void HeroBrowseScene::UpdatePageInfo(int moreNum)
 	KUIAssist::_setButVisible(pPageDown, (m_curPage+1 !=totalPage) &&(totalPage>0));
 }
 
-void HeroBrowseScene::ShowAllHero()
+void HeroBrowseScene::ShowHeroCards()
 {
 	int heroNum = m_depot->GetHeroNum();
+	KHeroDefList heroLst,tmpLst;
+	m_depot->PickAllHero(heroLst);
+	
+	KCardGroupAssist::FilterHero(heroLst,tmpLst,m_radioRace.GetSelectVal(),m_curPage*PAGE_CARD_NUM);
+	UpdatePageInfo(tmpLst.size());
 
-	UpdatePageInfo(heroNum);
 	int curPos = 0;
-	for(int i=0;i<heroNum;i++){
-		const KHeroDef*  pHeroDef = m_depot->FindHeroOnIndex(i);
+	for(KHeroDefList::iterator it=tmpLst.begin();it!=tmpLst.end();++it){
+		KHeroDef* pHeroDef = *it;
 		UIWidget* widget = KUICardAssist::_createHero(*pHeroDef,true,NULL,true);
 		if(!widget) continue;
 
@@ -210,8 +176,8 @@ void HeroBrowseScene::ShowAllHero()
 		UIImageView* widgetPos =(UIImageView*)UIHelper::seekWidgetByName(m_ui,sz);
 		widget->setPosition(widgetPos->getPosition());
 		widget->setTouchEnable(false);
-		//if(pHeroDef->_id==m_miniHero._id) 	m_radioSelectHero.SetSelected(curPos,false);
 		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_id,KCardGroupSlotElem::elem_hero,widget);
+
 	}
 }
 
@@ -226,12 +192,17 @@ void HeroBrowseScene::onClickHeroLevUp(CCObject* sender)
 void HeroBrowseScene::UpdateHeroLevUpBut()
 {
 	for(int i=0;i<PAGE_CARD_NUM;i++){
-		 UIWidget* pBut = KUIAssist::GetIndexWidget(m_ui,"Levup_but",i);
-
+		UIWidget* pBut = KUIAssist::GetIndexWidget(m_ui,"Levup_but",i);
+  		UIWidget* pSlotImage = KUIAssist::GetIndexWidget(m_ui,"card_slot",i);
+		UIWidget* pBreakBut = KUIAssist::GetIndexWidget(m_ui,"break_but",i);
 		 if(m_slotElem[i]._widget){
 			 KUIAssist::ShowButton(pBut,true);
+			 KUIAssist::ShowButton(pBreakBut,true);
+			 pSlotImage->setVisible(true);
 		 }else{
 			 KUIAssist::ShowButton(pBut,false);
+			 KUIAssist::ShowButton(pBreakBut,false);
+			 pSlotImage->setVisible(false);
 		 }
 	}
 }
