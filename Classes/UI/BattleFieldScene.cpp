@@ -118,7 +118,9 @@ void BattleFieldScene::InitTest()
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();
 	KCardActor* actor = (KCardActor*)pHero->getActor();
-	actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
+	if(GameRoot::getSingleton().m_bDebug) {
+		actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
+	}
 }
 
 void BattleFieldScene::onClickBackground(CCObject* sender)

@@ -477,6 +477,9 @@
     <ClCompile Include="..\Classes\StaticTable\KTowerAwardStatic.cpp">
       <Filter>staticTable</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\HeroBrowseScene.cpp">
+      <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -1000,6 +1003,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\StaticTable\KTowerAwardStatic.h">
       <Filter>staticTable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\HeroBrowseScene.h">
+      <Filter>UI\Panel\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

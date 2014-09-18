@@ -227,7 +227,11 @@ UIWidget* KUICardAssist::_createHeroLayout(KCardStatic* pST,bool bBig,KCardInst*
 
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
 	if(pLayout->IsShowHp()){
-		sprintf(sz,"%d",pST->GetHp());
+		if(card){
+			sprintf(sz,"%d",card->GetHp());
+		}else{
+			sprintf(sz,"%d",pST->GetHp());
+		}
 		labelHp->setStringValue(sz);
 		labelHp->setVisible(true);
 	}else{

@@ -527,7 +527,8 @@ bool KBattleCtrlBase::IsMyCard(KCardInst* obj)
 
 bool KBattleCtrlBase::IsShowBack(KCardInst* card)
 {
-	if(g_bDebug) return false;
+	return false;
+	//if(g_bDebug) return false;
 	if(IsMyCard(card)){
 		return false;
 	}else{

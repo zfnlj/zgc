@@ -227,3 +227,12 @@
 /tool/zgc_ui/Item_normal/Export
 /tool/zgc_ui/stage_scene/Backup
 /tool/zgc_ui/stage_scene/Export
+
+/tool/zgc_ui/heroBrowse/Backup
+/tool/zgc_ui/heroBrowse/Export
+
+/tool/zgc_ui/heroBrowse/Resources/card_elem_PList.Dir
+
+/tool/zgc_ui/heroBrowse/Resources/card_sort_PList.Dir
+
+/tool/zgc_ui/heroBrowse/Resources/popMsg_PList.Dir

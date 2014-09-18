@@ -45,6 +45,7 @@ public:
 	static void _switch2StageSelectScene();
 	static void _switch2ShopScene();
 	static void _switch2CardGroupScene();
+	static void _switch2HeroBrowseScene();
 	
 	
 	static void _createAffectAction(int actorId,const char* action,K3DActionParam* param,KAction* parent,int key);

@@ -23,6 +23,7 @@
 #include "../../WorldObject/KPlayer.h"
 #include "../../Item/KItemCreate.h"
 #include "../StageSelectScene.h"
+#include "../HeroBrowseScene.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -188,6 +189,8 @@ UIWidget* KUIAssist::GetIndexWidget(UIWidget* panel,const char* baseName,int pos
 
 void KUIAssist::_switch2ShopScene()
 {
+	_switch2HeroBrowseScene();
+	return;
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, KShopScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 
@@ -211,6 +214,14 @@ void KUIAssist::_switch2CardGroupScene()
 {
 	//CCScene* scene = CCTransitionSplitRows::create(0.5f, RecCardGroupScene::scene());
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, CardGroupScene::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+
+}
+
+void KUIAssist::_switch2HeroBrowseScene()
+{
+	//CCScene* scene = CCTransitionSplitRows::create(0.5f, RecCardGroupScene::scene());
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, HeroBrowseScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 
 }

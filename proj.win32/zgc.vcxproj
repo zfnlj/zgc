@@ -253,6 +253,7 @@
     <ClCompile Include="..\Classes\UI\assist\ProgressBar.cpp" />
     <ClCompile Include="..\Classes\UI\BattleFieldScene.cpp" />
     <ClCompile Include="..\Classes\UI\CardGroupScene.cpp" />
+    <ClCompile Include="..\Classes\UI\HeroBrowseScene.cpp" />
     <ClCompile Include="..\Classes\UI\KActor.cpp" />
     <ClCompile Include="..\Classes\UI\KCardActor.cpp" />
     <ClCompile Include="..\Classes\UI\KFightAreaPanel.cpp" />
@@ -432,6 +433,7 @@
     <ClInclude Include="..\Classes\UI\assist\ProgressProtocol.h" />
     <ClInclude Include="..\Classes\UI\BattleFieldScene.h" />
     <ClInclude Include="..\Classes\UI\CardGroupScene.h" />
+    <ClInclude Include="..\Classes\UI\HeroBrowseScene.h" />
     <ClInclude Include="..\Classes\UI\KActor.h" />
     <ClInclude Include="..\Classes\UI\KCardActor.h" />
     <ClInclude Include="..\Classes\UI\KFightAreaPanel.h" />
