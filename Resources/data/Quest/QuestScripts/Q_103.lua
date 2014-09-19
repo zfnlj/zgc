@@ -7,7 +7,7 @@ Initialize = function(quest)
 	quest:SetAttrs("nameId=103;talk=0;desc=103;");
 	quest:SetAttrs("type=3;reuse=0;hardDegree=3;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=121;");
+	quest:SetAttrs("battleField=103;");
 	
 	-- Group 0
 	local group0 = quest:CreateTargetGroup("and");

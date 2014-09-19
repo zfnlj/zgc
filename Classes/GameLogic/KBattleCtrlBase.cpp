@@ -607,7 +607,8 @@ void KBattleCtrlBase::QuestBattleInit(KQuestNew* pQuest)
 			KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(pBattleStatic->GetMyDeck());
 			(*it)->onBattleInit(m_CurPlayGuy==*it,pDeckDef,pBattleStatic->IsSelectCard());
 		}else{
-			KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(pBattleStatic->GetYourDeck());
+			int deckId = pQuest->IsDailyQuest()?pBattleStatic->GetYourDeck():pBattleStatic->GetYourDeck()+g_rnd.GetRandom(0,3);
+			KDeckDefStatic* pDeckDef = KGameStaticMgr::getSingleton().GetDeckDef(deckId);
 
 			if(m_sceneType==scene_tower){
 				KDeckDefStatic* pTowerDeck = KTowerAssist::_createDeckDef(pDeckDef);

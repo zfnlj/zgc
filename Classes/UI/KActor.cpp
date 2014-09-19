@@ -444,3 +444,24 @@ void KActor::updateRes()
 	BattleFieldScene* layer = GameRoot::getSingleton().getBattleScene();
 	if(layer) layer->onUseRes();
 }
+
+void KActor::SetShader(const char* obj)
+{
+	CCGLProgram* pProgram = new CCGLProgram();
+	char vs[128],ps[128];
+	sprintf(vs,"shader/%s.vsh",obj);
+	sprintf(ps,"shader/%s.fsh",obj);
+	pProgram->initWithVertexShaderFilename(vs,ps);
+	m_ui->getRenderer()->setShaderProgram(pProgram);
+    pProgram->release();
+
+	pProgram->addAttribute(kCCAttributeNamePosition, kCCVertexAttrib_Position);
+    pProgram->addAttribute(kCCAttributeNameColor, kCCVertexAttrib_Color);
+    pProgram->addAttribute(kCCAttributeNameTexCoord, kCCVertexAttrib_TexCoords);
+	pProgram->link();
+	pProgram->updateUniforms();
+}
+
+void KActor::RestoreShader()
+{
+}

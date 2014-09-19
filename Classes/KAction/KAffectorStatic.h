@@ -55,6 +55,7 @@ enum AffectorType
 	Affector_timerBar,
 	Affector_talk,
 	Affector_updateRes,
+	Affector_shader,
 };
 
 

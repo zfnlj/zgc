@@ -64,6 +64,8 @@ public:
 	void updateRes();
 	void StopBreathe(const char* obj);
 	void StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef);
+	void SetShader(const char* obj);
+	void RestoreShader();
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;

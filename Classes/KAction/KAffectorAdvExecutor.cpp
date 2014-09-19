@@ -100,6 +100,9 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_replace:
 		if(GetActor()) GetActor()->ShowCard(m_param->GetDesId(0));
 		break;
+	case Affector_shader:
+		if(GetActor()) GetActor()->SetShader(m_AffectorStatic->GetObj());
+		break;
 	case Affector_move:
 		if(GetActor()) GetActor()->Move(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),m_AffectorStatic->GetFloatVal(),m_ccActionDef);
 		break;
@@ -267,6 +270,9 @@ void KAffectorExecutor::LimitAlive(float val)
 	/*case Affector_atkMove:
 		if(GetActor())  GetActor()->AtkMove(m_param->GetDesId(0),m_AffectorStatic->GetFloatVal());
 		break; */
+	case Affector_shader:
+		if(GetActor()) GetActor()->RestoreShader();
+		break;
 	case Affector_scale:
 		if(GetActor()) GetActor()->Scale(m_AffectorStatic->GetObj(),m_AffectorStatic->GetFloatVal(),0,m_ccActionDef);
 		break;
