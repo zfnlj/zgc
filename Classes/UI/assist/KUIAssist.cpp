@@ -189,8 +189,6 @@ UIWidget* KUIAssist::GetIndexWidget(UIWidget* panel,const char* baseName,int pos
 
 void KUIAssist::_switch2ShopScene()
 {
-	_switch2HeroBrowseScene();
-	return;
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, KShopScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 

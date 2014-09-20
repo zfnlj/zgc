@@ -223,6 +223,7 @@ void HeroBrowseScene::onClickPageUp(CCObject* sender)
 
 void HeroBrowseScene::DoBreakHero(CCObject* sender)
 {
+
 	int stoneNum = m_depot->BreakHero(m_slotElem[KPopupLayer::m_val]._id);
 	if(stoneNum>0){
 		KPopupLayer::DoModal(UI_NOTIFY_STR,CAPTURE_HERO_CHIP,stoneNum,KPopupLayer::DT_Ok);
@@ -232,6 +233,10 @@ void HeroBrowseScene::DoBreakHero(CCObject* sender)
 
 void HeroBrowseScene::onClickBreakHero(CCObject* sender)
 {
+	if(m_depot->IsDeckHero(m_slotElem[KPopupLayer::m_val]._id)){
+		KPopupLayer::DoModal(UI_WARNING_STR,NOTIFY_NO_DEL_DECKHERO,KPopupLayer::DT_Ok);
+		return;
+	}
 	UIWidget* widget = (UIWidget*)sender;
 	KPopupLayer::m_val = widget->getTag();
 	KPopupLayer::DoModal(UI_WARNING_STR,NOTIFY_DEL_HERO,KPopupLayer::DT_Yes_No,coco_pushselector(HeroBrowseScene::DoBreakHero),this);

@@ -111,6 +111,17 @@ bool KPlayerCardDepot::IsDeckReady(int index)
 	return (cardNum==31);
 }
 
+bool KPlayerCardDepot::IsDeckHero(int heroId)
+{
+	for(int i=0;i<MAX_DECK_NUM;i++){
+		int cardNum = m_record->_cardDeck[i].actualLength/sizeof(int);
+		if(cardNum==0) continue;
+		int* pDeck = (int*)m_record->_cardDeck[i].binData;
+		if(pDeck[0]==heroId) return true;
+	}
+	return false;
+}
+
 bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero)
 {
 	if(index <0 || index >=MAX_DECK_NUM) return false;
@@ -118,7 +129,7 @@ bool KPlayerCardDepot::GetCardDeck(int index,KIntegerList& tmpLst,KHeroDef& hero
 	if(cardNum<1) return false;
 
 	int* pDeck = (int*)m_record->_cardDeck[index].binData;
-	PickDeckHero(index,hero);
+	if(!PickDeckHero(index,hero)) return false;
 	int heroId = hero._cardId;
 	pDeck++;
 	for(int i=0;i<cardNum-1;i++,pDeck++){

@@ -68,11 +68,11 @@ bool KBattleAI::ThinkPlayCard()
 	KCardInstList* yourFightLst = pDefGuy->QueryCardSet(KCardInst::enum_slot_fight);
 	float yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
 	if(myVal<=yourVal){
-		if(HandCardToField()) return true;
+		if(HandSoldierToField()) return true;
 		if(UseSkillCard()) return true;
 	}else{
 		if(UseSkillCard()) return true;
-		if(HandCardToField()) return true;
+		if(HandSoldierToField()) return true;
 	}
 	
 	return false;
@@ -389,7 +389,7 @@ float KBattleAI::CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility
 	case KAbilityStatic::what_summon_guider:
 		{
 			int pos = m_Deck.GetEmptyFightSlot();
-			if(pos>0) return 5.0f;
+			if(pos>=0) return 5.0f;
 		}
 		break;
 	case KAbilityStatic::what_bless_hp:
@@ -453,6 +453,7 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_heal:
 		{
 			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,&lst,ret);
+			if(pBest->IsKindOf(KCardStatic::card_hero)) ret = ret* 1.2;
 		}
 		break;
 	case KAbilityStatic::what_rush:
@@ -498,7 +499,7 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	return ret;
 }
 
-bool KBattleAI::HandCardToField()
+bool KBattleAI::HandSoldierToField()
 {
     int pos = m_Deck.GetRndEmptyFightSlot();
     if(pos<0) return false;

@@ -147,6 +147,9 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut = m_ui->getWidgetByName("but_cardgroup");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickStoreBut));
 
+		pBut = m_ui->getWidgetByName("but_hero");
+		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickHeroBrowse));
+
 		m_gameResultPanel.init(m_ui);
 
 	}
@@ -161,6 +164,11 @@ void MainMenuScene::DoClickStoreBut(CCObject* sender)
 void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
 	KUIAssist::_switch2StageSelectScene();
+}
+
+void MainMenuScene::DoClickHeroBrowse(CCObject* sender)
+{
+	KUIAssist::_switch2HeroBrowseScene();
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
@@ -181,6 +189,8 @@ void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const c
 		pBut->setTouchEnable(false);
 		pLockWidget->setVisible(true);
 	}
+	pBut = m_ui->getWidgetByName("but_hero");
+	KUIAssist::ShowButton(pBut,KMainPlayer::RealPlayer()->GetCardDepot()->GetHeroNum()>0);
 }
 
 void MainMenuScene::UpdateLockStatus()

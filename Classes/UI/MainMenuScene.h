@@ -31,7 +31,7 @@ public:
 	void DoClickBattleBut(CCObject* sender);
 	void DoClickAdventureBut(CCObject* sender);
 	void DoClickStoreBut(CCObject* sender);
-
+	void DoClickHeroBrowse(CCObject* sender);
 
 	void OnSelectCard(KCardActor*);
 	void onUpdateMoney();

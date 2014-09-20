@@ -33,6 +33,7 @@ public:
 	bool PickAllHero(KHeroDefList& lst);
 	int  GetDeckCardNum(int deck,int cardId);
 	int  GetHeroNum();
+	bool IsDeckHero(int heroId);
 	const KHeroDef* FindHeroOnIndex(int index);
 	KHeroDef* FindHero(int id);
 	int GetCurDeck();

@@ -34,7 +34,7 @@ private:
 	bool ThinkPlayCard();
 	int  ThinkFightPos(KCardInst* card);
 	virtual void SelectHandCard();
-	bool HandCardToField();
+	bool HandSoldierToField();
 	bool SoldierToAttack();
 	bool UseSkillCard();
     bool UseSecretCard();
