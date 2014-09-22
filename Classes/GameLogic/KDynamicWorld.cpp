@@ -73,7 +73,7 @@ KWorldObjAbout::KPlayer* KDynamicWorld::GetPlayer(int id)
 
 void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 {
-	
+	KMainPlayer::RealPlayer()->GetResultBag()->Reset();
 	if(tp==scene_tower){
 		KTowerAssist::_deactive(KMainPlayer::RealPlayer()->GetPlayerRecord());
 		KDynamicWorld::getSingleton().onSystemMsg(TOWER_CLOSE);
@@ -87,6 +87,7 @@ void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 #ifdef _USE_COCOS2DX
 void KDynamicWorld::onBattleWin(int questId,int monsterId,Scene_type tp)
 {
+	KMainPlayer::RealPlayer()->GetResultBag()->Reset();
 	if(tp==scene_tower){
 		KTowerAssist::_win(questId);
 	}else{
