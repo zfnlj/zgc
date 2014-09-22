@@ -453,7 +453,7 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	case KAbilityStatic::what_heal:
 		{
 			pBest = KAIAssist::_MostAbilityDoValTarget(m_battleCtrl,pAbility,pCard,&lstMy,&lst,ret);
-			if(pBest->IsKindOf(KCardStatic::card_hero)) ret = ret* 1.2;
+			if(pBest && pBest->IsKindOf(KCardStatic::card_hero)) ret = ret* 1.2;
 		}
 		break;
 	case KAbilityStatic::what_rush:
