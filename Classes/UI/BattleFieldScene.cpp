@@ -300,9 +300,13 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 	}
 
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
-	KCardInstList tmpLst;
+	KCardInstList tmpLst,tmpLst2;
 	_copyCardSet(lst,&tmpLst,NULL,KCardInst::enum_slot_hand);
-	KUIAssist::_moveCardSet(&tmpLst,"go_hand");
+	for(KCardInstList::iterator it = tmpLst.begin();it!=tmpLst.end();++it){
+		if(!(*it)->getActor()) continue;
+		tmpLst2.push_back(*it);
+	}
+	KUIAssist::_moveCardSet(&tmpLst2,"go_hand");
 
 	//FreshAllCard();
 }
