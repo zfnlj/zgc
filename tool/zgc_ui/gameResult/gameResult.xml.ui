@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\gameResult.xml.ui</filePath>
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\gameResult.xml.ui</filePath>
   <Version>1.2.0.1</Version>
   <Name>gameResult</Name>
-  <ProjectDir>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult</ProjectDir>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult</ProjectDir>
   <JsonFileName>gameResult.json</JsonFileName>
-  <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\Resources</Resources>
-  <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\Json</JsonFolder>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\gameResult\Json</JsonFolder>
   <JsonList>
     <string>gameResult_1.json</string>
   </JsonList>
@@ -14,7 +14,7 @@
     <string>game_result.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson />
+  <CurrentUIJson>gameResult_1.json</CurrentUIJson>
   <CanvasSize>
     <Width>533</Width>
     <Height>560</Height>

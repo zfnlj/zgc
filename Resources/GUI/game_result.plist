@@ -46,7 +46,7 @@
             <key>exp_txt.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{128,684},{83,33}}</string>
+                <string>{{154,564},{83,33}}</string>
                 <key>offset</key>
                 <string>{2,1}</string>
                 <key>rotated</key>
@@ -94,6 +94,19 @@
                 <string>{{0,2},{122,72}}</string>
                 <key>sourceSize</key>
                 <string>{122,74}</string>
+            </dict>
+            <key>lucky_stone_icon.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{78,684},{112,31}}</string>
+                <key>offset</key>
+                <string>{5,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{19,1},{112,31}}</string>
+                <key>sourceSize</key>
+                <string>{140,33}</string>
             </dict>
             <key>money_txt.png</key>
             <dict>
@@ -144,7 +157,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:f887c1a86f197d27151f0e9111e11113$</string>
+            <string>$TexturePacker:SmartUpdate:5afc2e564ad184769802ea84c7f6f6e5$</string>
             <key>textureFileName</key>
             <string>game_result.png</string>
         </dict>
