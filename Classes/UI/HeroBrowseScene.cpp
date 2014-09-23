@@ -223,12 +223,14 @@ void HeroBrowseScene::onClickPageUp(CCObject* sender)
 
 void HeroBrowseScene::DoBreakHero(CCObject* sender)
 {
-
-	int stoneNum = m_depot->BreakHero(m_slotElem[KPopupLayer::m_val]._id);
-	if(stoneNum>0){
-		KPopupLayer::DoModal(UI_NOTIFY_STR,CAPTURE_HERO_CHIP,stoneNum,KPopupLayer::DT_Ok);
+	UIWidget* pBut = (UIWidget*)sender;
+	if(pBut->getTag()==KPopupLayer::RT_YES){
+		int stoneNum = m_depot->BreakHero(m_slotElem[KPopupLayer::m_val]._id);
+		if(stoneNum>0){
+			KPopupLayer::DoModal(UI_NOTIFY_STR,CAPTURE_HERO_CHIP,stoneNum,KPopupLayer::DT_Ok);
+		}
+		UpdateUI();
 	}
-	UpdateUI();
 }
 
 void HeroBrowseScene::onClickBreakHero(CCObject* sender)

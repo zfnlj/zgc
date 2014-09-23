@@ -7,7 +7,7 @@ Initialize = function(quest)
 	quest:SetAttrs("nameId=111;talk=0;desc=111;");
 	quest:SetAttrs("type=3;reuse=0;hardDegree=11;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=111;");
+	quest:SetAttrs("battleField=112;");
 	
 	-- Group 0
 	local group0 = quest:CreateTargetGroup("and");
@@ -18,14 +18,14 @@ end,
 
 UseGift = function(quest,player)
 	if quest:RemainDailyQuestNum()>0 then
-			return "5111"; 
+			return "5112"; 
 	else
 			return "";
 	end
 end, 
 
 QName = function (quest , player)
-	return "daily mission11";
+	return "daily mission12";
 end,  
 
 

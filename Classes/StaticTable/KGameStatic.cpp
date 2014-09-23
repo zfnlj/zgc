@@ -59,6 +59,12 @@ void KGameStaticMgr::LoadStaticData()
 	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
 	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
 	InitTowerAward("data/TowerAward.txt");
+
+	for(int i=1;i<4;i++){
+		GetRndHeroSkill(i,KCardStatic::race_gold);
+		GetRndHeroSkill(i,KCardStatic::race_water);
+		GetRndHeroSkill(i,KCardStatic::race_fire);
+	}
 }
 
 bool KGameStaticMgr::InitRank(const char* m_FileName,KRankStaticDataManager& mgr)
@@ -446,7 +452,9 @@ KHeroSkillStatic* KGameStaticMgr::GetRndHeroSkill(int rank,int race)
 				tmpMap[pos++] = skill;
 		}
 	}
-	if(tmpMap.empty()) return NULL;
+	if(tmpMap.empty()){
+		return NULL;
+	}
 	int nRand = g_rnd.GetRandom(0,tmpMap.size());
 	return tmpMap[nRand];
 }

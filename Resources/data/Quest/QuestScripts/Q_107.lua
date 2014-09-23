@@ -3,7 +3,7 @@
 Quest_107 = 
 {
 Initialize = function(quest)
-	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=180;money=20;");
+	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=32;money=16;");
 	quest:SetAttrs("nameId=107;talk=0;desc=107;");
 	quest:SetAttrs("type=3;reuse=0;hardDegree=7;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
@@ -15,6 +15,14 @@ Initialize = function(quest)
   -- end groups
 	return true;
 end,
+
+UseGift = function(quest,player)
+	if quest:RemainDailyQuestNum()>0 then
+			return "5107"; 
+	else
+			return "";
+	end
+end, 
 
 QName = function (quest , player)
 	return "daily mission7";
