@@ -216,13 +216,6 @@ void KGameResultPanel::updatePanel()
 	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
 	pSelectAward->setVisible(false);
 
-	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
-	if( m_result._money>0){
-		pMoneyVal->setVisible(true);
-	}else{
-		pMoneyVal->setVisible(false);
-	}
-	
 	ShowObtainGift();
 	ShowGuyLevAndExp();
 }

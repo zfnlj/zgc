@@ -230,10 +230,9 @@ void KBattleCtrlBase::TurnBegin()
 {
 	KLogAssist::_turnBeginLog(m_CurPlayGuy);
 
-	if(!m_bFirstTurn){
-		m_CurPlayGuy->GetDeck().TurnBeginDrawCard();
-		AddDramaElapsed(2.0f);
-	}
+	m_CurPlayGuy->GetDeck().TurnBeginDrawCard();
+	AddDramaElapsed(2.0f);
+
 	m_bFirstTurn = false;
 	m_CurPlayGuy->onTurnBegin(this,m_bFirstTurn);
 	

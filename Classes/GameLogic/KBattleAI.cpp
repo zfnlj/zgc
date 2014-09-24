@@ -221,7 +221,9 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 		}
 	}
 	if(card->GetCost()>0){
-		retVal = retVal/(float)card->GetCost();
+		float rate=1.0f;
+		if(card->GetCost()>5) rate += ((float)card->GetCost()-5.0f)/5.0f;
+		retVal = retVal*rate/(float)card->GetCost();
 	}else{
 		retVal = retVal*2.0f;
 	}
@@ -233,7 +235,7 @@ bool KBattleAI::UseSkillCard()
 {
 	KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
 
-	float maxVal = 0.9f;
+	float maxVal = 0.85f;
 	KCardInst* pBest = NULL;
 	KCardInst* pBestDes = NULL;
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){
