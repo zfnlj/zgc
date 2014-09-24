@@ -88,12 +88,12 @@ void StageSelectScene::InitStageBut()
 		pBut->setTouchEnabled(true);
 		pBut->setTag(i+1);
 		pBut->addPushDownEvent(this, coco_pushselector(StageSelectScene::DoClickStage));
-		KUIAssist::_setButVisible(pBut, i<=dailyStageLev);
+		KUIAssist::_setButVisible(pBut, i<dailyStageLev);
 		sprintf(sz,"stage_txt_%d",i);
 		UILabelAtlas* stageNumLabel = (UILabelAtlas*)m_ui->getWidgetByName(sz);
 		sprintf(sz,"%d",i+1);
 		stageNumLabel->setStringValue(sz);
-		stageNumLabel->setVisible(i<=dailyStageLev);
+		stageNumLabel->setVisible(i<dailyStageLev);
 	}
 }
 

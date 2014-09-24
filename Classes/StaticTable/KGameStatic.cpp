@@ -49,7 +49,6 @@ void KGameStaticMgr::LoadStaticData()
 	InitAttr("data/card/Attr.txt");
 	InitBattleField("data/BattleField.txt");
 	InitRank("data/Rank.txt",m_playerExpMgr);
-	InitRank("data/SkillRank.txt",m_skillExpMgr);
 	InitCardLayout("data/card_layout.txt");
 	InitHeroSkill("data/card/hero_skill.txt");
 	InitHelpString("StringManager/HelpStr.txt");

@@ -59,6 +59,7 @@ struct tb_player_record
 	}
 	void init(){
 		memset(&_gameData,0,sizeof(_gameData));
+		_gameData._dailyStageLev = 1;
 		_playerID = _lastLoginIp = _lastLoginTime = _lastLogoutTime = _money =  _pvpVal = _exp = _fateStone =0 ;
 		_curDeck = -1;
 		_cardStore.actualLength = 0;

@@ -111,7 +111,11 @@ void KGameResultPanel::DoClickContinue(CCObject* sender)
 	if(pQuest&& pQuest->GetQuestStatus()==KQ_PreStepOver){
 		VirtualService::getSingleton().SubmitQuest(pQuest->GetID());
 	}
-	KUIAssist::_switch2StageWaitScene();
+	if(m_result._type==scene_daily){
+		KUIAssist::_switch2StageSelectScene();
+	}else{
+		KUIAssist::_switch2StageWaitScene();
+	}
 }
 
 
@@ -148,7 +152,7 @@ void KGameResultPanel::updatePanel()
 	UIWidget* pLostWidget = UIHelper::seekWidgetByName(m_Panel,"lost_icon");
 	UIWidget* pEqualWidget = UIHelper::seekWidgetByName(m_Panel,"equal_icon");
 	UILabel* pMoneyTxt = (UILabel*) UIHelper::seekWidgetByName(m_Panel,"money_val");
-	UILabel* pExpTxt =  (UILabel*)UIHelper::seekWidgetByName(m_Panel,"exp_val");
+	UILabel* pStoneTxt =  (UILabel*)UIHelper::seekWidgetByName(m_Panel,"stone_val");
 
 	for(int i=0; i<3; i++)
 	{
@@ -201,8 +205,8 @@ void KGameResultPanel::updatePanel()
 
 	sprintf(buf,"+%d",m_result._money);
 	pMoneyTxt->setText(buf);
-	sprintf(buf,"+%d",m_result._exp);
-	pExpTxt->setText(buf);
+	sprintf(buf,"+%d",m_result._fateStone);
+	pStoneTxt->setText(buf);
 
 	for(int i=0; i<3; i++)
 	{
@@ -218,12 +222,7 @@ void KGameResultPanel::updatePanel()
 	}else{
 		pMoneyVal->setVisible(false);
 	}
-	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	if( m_result._exp>0){
-		pExpVal->setVisible(true);
-	}else{
-		pExpVal->setVisible(false);
-	}
+	
 	ShowObtainGift();
 	ShowGuyLevAndExp();
 }
@@ -243,17 +242,17 @@ void KGameResultPanel::ShowObtainGift()
 		m_Panel->addChild(widget);
 	}
 	
-	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
-	pMoneyVal->setVisible(false);
-	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	pExpVal->setVisible(false);
+	//UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
+	//pMoneyVal->setVisible(false);
+	//UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
+	//pExpVal->setVisible(false);
 
 
-	UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
-	pMoneyIcon->setVisible(false);
+	//UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
+	//pMoneyIcon->setVisible(false);
 
-	UIWidget* pExpIcon = UIHelper::seekWidgetByName(m_Panel,"exp_icon");
-	pExpIcon->setVisible(false);
+	//UIWidget* pExpIcon = UIHelper::seekWidgetByName(m_Panel,"exp_icon");
+	//pExpIcon->setVisible(false);
 
 }
 
@@ -276,19 +275,19 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 		pSlot->setVisible(true);
 	}
 
-	UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
+	/*UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
 	pMoneyVal->setVisible(false);
 	UIWidget* pExpVal = UIHelper::seekWidgetByName(m_Panel,"exp_val");
-	pExpVal->setVisible(false);
+	pExpVal->setVisible(false);*/
 
 	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
 	pSelectAward->setVisible(true);
 
-	UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
+	/*UIWidget* pMoneyIcon = UIHelper::seekWidgetByName(m_Panel,"money_icon");
 	pMoneyIcon->setVisible(false);
 
 	UIWidget* pExpIcon = UIHelper::seekWidgetByName(m_Panel,"exp_icon");
-	pExpIcon->setVisible(false);
+	pExpIcon->setVisible(false);*/
 	return true;
 }
 

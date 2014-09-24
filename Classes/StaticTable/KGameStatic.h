@@ -83,7 +83,6 @@ private:
 	KHelpStringMap m_tipStringMap;
 	KHelpStringMap m_storyStringMap;
 	KRankStaticDataManager m_playerExpMgr;
-	KRankStaticDataManager m_skillExpMgr;
 
 	KLevUpStaticMap m_skillLevUpMgr;
 	KLevUpStaticMap m_heroLevUpMgr;

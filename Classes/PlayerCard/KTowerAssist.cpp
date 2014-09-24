@@ -46,7 +46,7 @@ int _getLayer()
 void _create(tb_player_record* record)
 {
 	record->_gameData._tower.Reset();
-	record->_gameData._tower._pos = 1 + g_rnd.GetRandom(0,record->_gameData.GetDailyStageLev()+1);
+	record->_gameData._tower._pos = 1 + g_rnd.GetRandom(0,record->_gameData.GetDailyStageLev());
 	record->_gameData._tower._lev = 1; 
 	record->_gameData._tower._strong = 2;
 	record->updateMask(tb_player_record::_CRI);
