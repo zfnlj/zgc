@@ -35,6 +35,15 @@ AIUtil ={
 					return (val1 - val2*0.8)> 0;
 			end,
 			
+			EnterFight_20036 = function(self,ctrl,card)
+					if(CPP.AIAssist:GetCurRes(ctrl,1)>4) then
+						return false;
+					end
+					local val1 = CPP.AIAssist:CalcFighterSetVal(ctrl,0)-CPP.AIAssist:CalcFighterSetVal(ctrl,1)
+					return (val1 -2.4)>0;
+			end,
+			
+			
 			EnterFight_20059 = function(self,ctrl,card)
 					local val1 = CPP.AIAssist:CalcFighterNum(ctrl,0)-CPP.AIAssist:CalcFighterNum(ctrl,1)
 					return val1 >= 0

@@ -521,6 +521,8 @@ bool KBattleAI::HandSoldierToField()
 			if(bOk){
 				pSelectCard = pCard;
 				break;
+			}else{
+				continue;
 			}
 		}
 		if(!pSelectCard ||

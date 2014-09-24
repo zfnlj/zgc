@@ -13,7 +13,7 @@
 #include "assist/KSkillAssist.h"
 
 #define  MAX_DECK_CARD_NUM 30
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,21003,21001,21003,21001,32011,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20036,20055,21003,21001,32011,
 								 20002,20002,33003,33004,20002,20001,
 								 20007,20003,31016,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -616,7 +616,7 @@ void KBattleDeck::initDeck(KDeckDefStatic* pDeckDef,bool bSelectCard)
 	m_heroDef.init(pDeckDef);
 	m_heroDef.CalcLev();
 	SetHeroSkill();
-	GetHero()->CurHpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
+	GetHero()->HpSet(pDeckDef->getHeroHp()+pDeckDef->getHeroStrong());
 	DrawCard(pDeckDef->getDrawNum(),(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
 }
 

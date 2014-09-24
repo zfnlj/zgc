@@ -27,7 +27,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show
 20033	辎重部队	1	2	2	1	0	遗言	遗言：抽取一张牌。	soldier_drawcard_ability
 20034	虎贲	1	1	0	4	0	护卫	护卫	soldier_guide
 20035	虎贲卫士长	2	2	2	3	0	鼓舞	进场：使邻近的勇士获得护卫能力。	0
-20036	索命白无常	3	2	0	7	0	末日	在回合开始时，消灭所有勇士。	soldier_dead_curse_ability
+20036	索命白无常	3	3	0	6	0	末日	在回合开始时，消灭所有勇士。	soldier_dead_curse_ability
 20037	聂政	0	2	2	3	Vister	0	0	0
 20038	鬼谷子的门童	0	2	2	2	0	法伤+1	法术伤害+1	soldier_sp_rate
 20039	神秘的刺客	1	1	2	1	0	迷踪	迷踪：不可被攻击	soldier_hide

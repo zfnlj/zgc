@@ -6,14 +6,19 @@
 void KHeroSkillMgr::onTurnBegin(KBattleCtrlBase* ctrl)
 {
 	m_bDone = false;
-	if(!CheckLuckyStone(ctrl)){
+	int rndVal = g_rnd.GetRandom(0,100);
+	if(rndVal>50){
+		CheckLuckyStone(ctrl);
+	}else{
 		ActiveSkill(ctrl,KAbilityStatic::when_turn_begin);
 	}
 }
 
 void KHeroSkillMgr::onTurnEnd(KBattleCtrlBase* ctrl)
 {
-	ActiveSkill(ctrl,KAbilityStatic::when_turn_end);
+	if(g_rnd.GetRandom(0,100)<50){
+		ActiveSkill(ctrl,KAbilityStatic::when_turn_end);
+	}
 }
 
 void KHeroSkillMgr::tmpInit(KBattleGuy* guy)
@@ -62,8 +67,6 @@ void KHeroSkillMgr::addSkill(int id,int lev)
 bool KHeroSkillMgr::CheckLuckyStone(KBattleCtrlBase* ctrl)
 {
 	if(!m_heroDef) return false;
-	if(g_rnd.GetRandom(0,100)>50) return false;
-
 	int remainRes = m_heroDef->GetResLucky();
 	int res = 0;
 	while(remainRes >0){
@@ -87,7 +90,6 @@ bool KHeroSkillMgr::CheckLuckyStone(KBattleCtrlBase* ctrl)
 void KHeroSkillMgr::ActiveSkill(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when)
 {
 	if(m_bDone) return;
-	if(CheckLuckyStone(ctrl)) return;
 	HeroSkill* skill = RndSelectSkill(when);
 	if(!skill) return;
 	skill->GenDynAbility(m_dynAbility);
@@ -104,8 +106,9 @@ HeroSkill* KHeroSkillMgr::RndSelectSkill(KAbilityStatic::Enum_When when)
 		int nRand = g_rnd.GetRandom(0,100);
 		if(m_skill[i].getLev()==0) continue;
 		if(m_skill[i]._skill->GetWhen()!=when) continue;
-		if(i==2 && nRand> 60) continue;
-		if(i==1 && nRand> 80) continue;
+		if(i==2 && nRand> 30) continue;
+		if(i==1 && nRand> 40) continue;
+		if(i==0 && nRand> 50) continue;
 		int skillLucky = m_heroDef->GetLucky()-i*33;
 		if(skillLucky>33) skillLucky = 33;
 		if(skillLucky<0) skillLucky = 0;

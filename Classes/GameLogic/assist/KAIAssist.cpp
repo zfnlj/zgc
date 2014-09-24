@@ -328,6 +328,12 @@ int KAIAssist::CalcFighterNum(void* ctrl,int myFlag)
 	return cardSet->size();
 }
 
+int KAIAssist::GetCurRes(void* ctrl,int myFlag)
+{
+	KBattleGuy* pGuy = (myFlag>0)?((KBattleCtrlBase*)ctrl)->GetCurGuy():((KBattleCtrlBase*)ctrl)->GetDefGuy();
+	return pGuy->GetCurRes();
+}
+
 int KAIAssist::CalcHandNum(void* ctrl,int myFlag)
 {
 	KBattleDeck& deck = (myFlag>0)?((KBattleCtrlBase*)ctrl)->GetCurGuy()->GetDeck():((KBattleCtrlBase*)ctrl)->GetDefGuy()->GetDeck();
