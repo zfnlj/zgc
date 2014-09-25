@@ -110,10 +110,12 @@ bool KBattleAI::SoldierToAttack()
 	if(lst->empty()) return false;
 	KBattleGuy* pDefGuy = m_battleCtrl->GetDefGuy();
 	KCardInstList enemyGuider;
+	bool bFoundGuider = true;
 	pDefGuy->GetDeck().FindFightingGuider(&enemyGuider);
 	if(enemyGuider.empty()){
 		pDefGuy->GetDeck().GetDefenderSet(&enemyGuider);
 		enemyGuider.push_back(pDefGuy->GetDeck().GetHero());
+		bFoundGuider = false;
 	}
 
 	KCardInst* pAtk = NULL;
@@ -128,7 +130,7 @@ bool KBattleAI::SoldierToAttack()
 		if(!pSrc->m_attr.getReady()) continue;
 		if(pSrc->GetAtk()==0) continue;
 
-		if(totalMyAtk>=pDefGuy->GetDeck().GetHero()->GetHp()){
+		if(totalMyAtk>=pDefGuy->GetDeck().GetHero()->GetHp()&&!bFoundGuider){
 			pAtk = pSrc;
 			pDef = pDefGuy->GetDeck().GetHero();
 			break;
