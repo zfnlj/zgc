@@ -39,6 +39,7 @@ private:
 	bool UseSkillCard();
     bool UseSecretCard();
 	float m_thinkElapsed;
+	float m_useSkillVal;
 
 };
 

@@ -34,7 +34,7 @@ namespace KBattleEvtAssist
 			KSkillAssist::_fillCtrlCardEvt(ctrl,pDes,when);
 			break;
 		case battle_evt_use_card:
-			KSkillAssist::_fillCtrlCardEvt(ctrl,pSrc,KAbilityStatic::when_use_card);
+			KSkillAssist::_fillCtrlCardEvt(ctrl,pSrc,KAbilityStatic::when_use_card,pSrc);
 			break;
 		default:
 			return;

@@ -87,6 +87,7 @@ void KBattleAI::ThinkToPlay(float dt)
 		return;
 	m_thinkElapsed = 0;
 	
+	m_useSkillVal = 0.88f;
 	if(ThinkPlayCard()) return;
 	//if(UseHeroSkill())
 	//	return;
@@ -95,6 +96,9 @@ void KBattleAI::ThinkToPlay(float dt)
         return;*/
 	if(SoldierToAttack())
 		return;
+
+	m_useSkillVal = 0.80f;
+	if(ThinkPlayCard()) return;
 
 	SetPlayTimeOut(); //AI 无可执行操作
 
@@ -235,7 +239,6 @@ bool KBattleAI::UseSkillCard()
 {
 	KCardInstList* pHandArr = QueryCardSet(KCardInst::enum_slot_hand);
 
-	float maxVal = 0.85f;
 	KCardInst* pBest = NULL;
 	KCardInst* pBestDes = NULL;
 	for(KCardInstList::iterator it = pHandArr->begin();it!=pHandArr->end();++it){
@@ -246,10 +249,10 @@ bool KBattleAI::UseSkillCard()
 
 		float val=0.0f;
 		KCardInst* pDes = ThinkUseSkillCard(pCard,val);
-		if(val>maxVal){
+		if(val>m_useSkillVal){
 			pBest = pCard;
 			pBestDes = pDes;
-			maxVal = val;
+			m_useSkillVal = val;
 		}
 	}
 

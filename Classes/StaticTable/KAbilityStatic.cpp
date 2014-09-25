@@ -263,6 +263,8 @@ KAbilityStatic::Enum_What KAbilityStatic::Str2What(const char* str)
 		what = what_copy_fight;
 	}else if(strcmp(str,"WHAT_CLEAR_BUF")==0){
 		what = what_dispel_buf;
+	}else if(strcmp(str,"WHAT_DISPEL_GOOD_BUF")==0){
+		what = what_dispel_good_buf;
 	}else if(strcmp(str,"WHAT_CONTROL")==0){
 		what = what_control;
 	}else if(strcmp(str,"WHAT_GET_CARD")==0){
@@ -354,6 +356,7 @@ int KAbilityStatic::GetPriority()
 		break;
 	case what_stun:
 	case what_dispel_buf:
+	case what_dispel_good_buf:
 		ret = 2;
 		break;
 	default:
@@ -375,6 +378,4 @@ KAttrStatic* KAttrStatic::create()
 	attr->init();
 	return attr;
 }
-
-
 

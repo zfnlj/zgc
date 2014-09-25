@@ -94,6 +94,7 @@ public:
 		what_copy_hand,
 		what_copy_fight,
 		what_dispel_buf,
+		what_dispel_good_buf,
 		what_control,
 		what_get_card,
 		what_mp_cost,
@@ -125,6 +126,7 @@ public:
 	int GetMaxNormalVal(){ return m_max._val;}
 	int GetId(){ return m_AbilityId;}
 	bool IsLoop(){ return m_loop==0;}
+
 	int LoopNum(){ return m_loop;}
 	Enum_AblityType GetAbilityType();
 	const char* GetAction(){ return m_Action;}

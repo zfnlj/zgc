@@ -12,7 +12,7 @@
 namespace KSkillAssist
 {
 
-void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when)
+void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enum_When when,KCardInst* pSkip)
 {
 	KBattleDeck& MyDeck = pCard->GetOwner()->GetDeck();
 	
@@ -23,6 +23,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 	{
 		KAbilityStatic::Enum_When realWhen = when;
 		KCardInst* card = *it;
+		if(card==pSkip) continue;
 		KAbilityStatic* pAbility = card->FindBufAbility(when);
 		if(!pAbility){
 			if(when==KAbilityStatic::when_soldier_dead||

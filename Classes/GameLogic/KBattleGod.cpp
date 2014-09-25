@@ -325,6 +325,12 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			result->SetDestVal(pDes->GetRealId(),0);
 		}
 		break;
+	case KAbilityStatic::what_dispel_good_buf:
+		{
+			pDes->DispleGoodBuf();
+			result->SetDestVal(pDes->GetRealId(),0);
+		}
+		break;
 	case KAbilityStatic::what_atkhp_sw:
 		{
 			int newHp = pDes->GetAtk();

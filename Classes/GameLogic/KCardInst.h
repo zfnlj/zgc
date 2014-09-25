@@ -80,6 +80,7 @@ public:
 	void DelBuf(KAbilityStatic* pBuf);
 	void ClearBuf();
 	void DispleBuf();
+	void DispleGoodBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
 	KAbilityStatic* FindRealBuf(KAbilityStatic::Enum_What what);

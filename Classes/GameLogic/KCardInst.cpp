@@ -325,8 +325,22 @@ void KCardInst::AddBuf(KAbilityStatic* pBuf)
 
 void KCardInst::DelBuf(KAbilityStatic* pBuf)
 {
-	
 	m_attr.DelBuf(pBuf);
+}
+
+void KCardInst::DispleGoodBuf()
+{
+	KCardBufferList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetWhen()==KAbilityStatic::when_ever||
+			buf._pST->GetAbilityType()==KAbilityStatic::ability_bad){
+			it++;
+		}else{
+			if(buf._pST->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(buf._pST);
+			it = m_attr.m_bufList.erase(it);
+		}
+	}
 }
 
 void KCardInst::DispleBuf()
