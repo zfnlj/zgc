@@ -3,11 +3,12 @@
 
 #include "cocos2d.h"
 #include "UILayer.h"
+#include "KSceneLayerBase.h"
 
 USING_NS_CC;
 
 class KHelpStringStatic;
-class StageSelectScene : public cocos2d::CCLayer
+class StageSelectScene : public KSceneLayerBase
 {
 public:
 	
@@ -29,6 +30,7 @@ public:
 	void DoClickTower(CCObject* sender);
 	void InitStageBut();
 	void InitTower();
+	virtual void onCloseCallback();
 private:
 	cocos2d::extension::UILayer* m_ui;
 };

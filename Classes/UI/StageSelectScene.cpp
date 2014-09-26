@@ -118,3 +118,8 @@ void StageSelectScene::DoClickTower(CCObject* sender)
 	StageWaitScene::SetSceneVal(scene_tower, 911);
 	KUIAssist::_switch2StageWaitScene();
 }
+
+void StageSelectScene::onCloseCallback()
+{
+	KUIAssist::_switch2MainMenu();
+}
