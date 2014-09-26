@@ -22,17 +22,12 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(StageSelectScene);
 
-	cocos2d::extension::UILayer* GetUILayer();
-	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
-
 	void DoClickClose(CCObject* sender);
 	void DoClickStage(CCObject* sender);
 	void DoClickTower(CCObject* sender);
 	void InitStageBut();
 	void InitTower();
 	virtual void onCloseCallback();
-private:
-	cocos2d::extension::UILayer* m_ui;
 };
 
 #endif // __StageSelectScene_SCENE_H__

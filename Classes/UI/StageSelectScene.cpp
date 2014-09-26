@@ -37,41 +37,33 @@ bool StageSelectScene::init()
 	m_ui = NULL;
 
     // 1. super init first
-    if ( !CCLayer::init() )
-    {
-        return false;
-    }
-
+	if ( !KSceneLayerBase::init() )
+	{
+		return false;
+	}
+	CreateCloseBut();
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
 
     // add a "close" icon to exit the progress. it's an autorelease object
-
-	this->addChild(GetUILayer(), 1);
-
-    return true;
-}
-
-cocos2d::extension::UILayer* StageSelectScene::GetUILayer()
-{
 	if(!m_ui){
-		m_ui =cocos2d::extension::UILayer::create();
-		m_ui->addWidget(KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/stage_scene.json"));
+		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/stage_scene.json");
+		addWidget(m_ui);
 		InitTower();
 		InitStageBut();
 	}
-	return m_ui;
+    return true;
 }
 
 void StageSelectScene::InitTower()
 {
-	UIWidget* pBut = m_ui->getWidgetByName("but_tower");
+	UIWidget* pBut = this->getWidgetByName("but_tower");
 	pBut->addPushDownEvent(this, coco_pushselector(StageSelectScene::DoClickTower));
 	bool bShowTower = KMainPlayer::RealPlayer()->IsShowTower();
 
 	KUIAssist::_setButVisible(pBut, bShowTower);
-	UILabelAtlas* pLayer = (UILabelAtlas*)m_ui->getWidgetByName("tower_layer_txt");
+	UILabelAtlas* pLayer = (UILabelAtlas*)this->getWidgetByName("tower_layer_txt");
 	char sz[64];
 	sprintf(sz,"%d",  KTowerAssist::_getLayer());
 	pLayer->setStringValue(sz);
@@ -84,13 +76,13 @@ void StageSelectScene::InitStageBut()
 	for(int i=0;i<MAX_PAGE_STAGE_NUM;i++){
 		char sz[64];
 		sprintf(sz,"but_stage_%d",i);
-		UIWidget* pBut = m_ui->getWidgetByName(sz);
+		UIWidget* pBut = this->getWidgetByName(sz);
 		pBut->setTouchEnabled(true);
 		pBut->setTag(i+1);
 		pBut->addPushDownEvent(this, coco_pushselector(StageSelectScene::DoClickStage));
 		KUIAssist::_setButVisible(pBut, i<dailyStageLev);
 		sprintf(sz,"stage_txt_%d",i);
-		UILabelAtlas* stageNumLabel = (UILabelAtlas*)m_ui->getWidgetByName(sz);
+		UILabelAtlas* stageNumLabel = (UILabelAtlas*)this->getWidgetByName(sz);
 		sprintf(sz,"%d",i+1);
 		stageNumLabel->setStringValue(sz);
 		stageNumLabel->setVisible(i<dailyStageLev);
@@ -99,7 +91,7 @@ void StageSelectScene::InitStageBut()
 
 void StageSelectScene::DoClickClose(CCObject* sender)
 {
-	UIWidget* pBut = m_ui->getWidgetByName("bk");
+	UIWidget* pBut = this->getWidgetByName("bk");
 	pBut->setTouchEnable(false);
 	KUIAssist::_switch2MainMenu();
 }

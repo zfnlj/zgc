@@ -416,8 +416,10 @@ void KCardInst::ReplaceST(int id)
 	int realId = m_attr.getRealID();
 	m_pST = KGameStaticMgr::getSingleton().GetCard(id);
 	int slot = m_attr.getSlot();
+	int pos = m_attr.getPos();
 	m_attr.init(realId,m_pST);
 	m_attr.setSlot(slot);
+	m_attr.setPos(pos);
 }
 
 const char* KCardInst::GetBasePosName(bool bMy)

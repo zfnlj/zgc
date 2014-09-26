@@ -3,7 +3,7 @@
 Quest_103 = 
 {
 Initialize = function(quest)
-	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=20;money=10;");
+	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=26;money=13;");
 	quest:SetAttrs("nameId=103;talk=0;desc=103;");
 	quest:SetAttrs("type=3;reuse=0;hardDegree=3;achieveId=0;");
 	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");

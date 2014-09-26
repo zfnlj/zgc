@@ -169,7 +169,7 @@ struct tb_playerquest_record
 	int _qid[MAX_PLAYER_QUEST_NUM];
 	KDBBinary<120> _qstate[MAX_PLAYER_QUEST_NUM];
 	KDBBinary<1024> _qhistory;
-	KDBBinary<40> _qdaily;
+	KDBBinary<48> _qdaily;
 };
 
 struct tb_worldState_record
