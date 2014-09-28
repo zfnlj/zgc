@@ -293,7 +293,7 @@ KQuestNew* KQuestManager::RndDailyQuest(int hardLev)
 			pQuest = GetQuest(it->first);
 			it->second = pQuest;
 		}
-		if(pQuest->IsDailyQuest() &&pQuest->m_hardDegree==hardLev) lst.push_back(it->first);
+		if(pQuest && pQuest->IsDailyQuest() &&pQuest->m_hardDegree==hardLev) lst.push_back(it->first);
 	}
 	int questId = _RndPick(lst);
 	return GetQuest(questId);

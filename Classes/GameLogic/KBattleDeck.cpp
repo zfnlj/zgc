@@ -13,7 +13,7 @@
 #include "assist/KSkillAssist.h"
 
 #define  MAX_DECK_CARD_NUM 30
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,20023,20055,21003,21001,32011,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20022,20055,21003,21001,32011,
 								 20002,20002,33003,33004,20002,20001,
 								 20007,20003,31016,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -436,9 +436,10 @@ void KBattleDeck::UpdateActor(KCardInstList* lst,float dt)
 
 void KBattleDeck::QueryValidateHandCards(KCardInstList* lst,int curRes)
 {
-	if(GetEmptyFightSlotNum()==0) return;
+	bool NoFighterSlot = (GetEmptyFightSlotNum()==0);
 	for(KCardInstList::iterator it = m_HandCardSet.begin(); it!=m_HandCardSet.end();++it){
 		KCardInst* pCard = *it;
+		if(pCard->IsKindOf(KCardStatic::card_soldier)&& NoFighterSlot) continue;
 		KAbilityStatic* pAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pCard->GetCardId()*10);
 		if(pAbility){
 			if(pAbility->GetWhat()==KAbilityStatic::what_copy_fight||

@@ -12,6 +12,8 @@ KCardStatic::CardRace KCardStatic::getCardRace(const char* str)
 		return KCardStatic::race_fire;
 	}else if(strcmp(str,"mud")==0){
 		return KCardStatic::race_mud;
+	}else if(strcmp(str,"summon")==0){
+		return KCardStatic::race_summon;
 	}else{
 		return KCardStatic::race_null;
 	}
