@@ -164,7 +164,6 @@
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
 		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
 		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1AFCDA8116D4A25900906EA6 /* RootViewController.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -319,7 +318,6 @@
 		81159E0419869867009D325F /* KIOSiAP_Bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */; };
 		81159E0919869884009D325F /* IOSiAP.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0619869884009D325F /* IOSiAP.mm */; };
 		81159E0A19869884009D325F /* IOSFunc.mm in Sources */ = {isa = PBXBuildFile; fileRef = 81159E0819869884009D325F /* IOSFunc.mm */; };
-		81159E0C19869B5D009D325F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81159E0B19869B5D009D325F /* StoreKit.framework */; };
 		8120F62C1869DCBE000FDB17 /* data in Resources */ = {isa = PBXBuildFile; fileRef = 8120F62B1869DCBE000FDB17 /* data */; };
 		812143BB187AE4400053FC18 /* KCommonSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214367187AE4400053FC18 /* KCommonSession.cpp */; };
 		812143BC187AE4400053FC18 /* KStreamSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81214369187AE4400053FC18 /* KStreamSession.cpp */; };
@@ -400,6 +398,20 @@
 		816863F518969C5A00789DE8 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8168635B18969AE100789DE8 /* liblua.a */; };
 		8182C4771995C47C00D4BEA8 /* KPlayerTmpBag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8182C4751995C47C00D4BEA8 /* KPlayerTmpBag.cpp */; };
 		8196524D1983560300EC457C /* KLoadingBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8196524B1983560300EC457C /* KLoadingBar.cpp */; };
+		81A5423519D7A21500B65580 /* zgc_bk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 81A5423419D7A21500B65580 /* zgc_bk.jpg */; };
+		81A5423819D7A40D00B65580 /* KSerialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5423619D7A40D00B65580 /* KSerialize.cpp */; };
+		81A5423D19D7A43300B65580 /* KHeroCardAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5423919D7A43300B65580 /* KHeroCardAssist.cpp */; };
+		81A5423E19D7A43300B65580 /* KTowerAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5423B19D7A43300B65580 /* KTowerAssist.cpp */; };
+		81A5424319D7A46100B65580 /* KLevUpStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5423F19D7A46100B65580 /* KLevUpStatic.cpp */; };
+		81A5424419D7A46100B65580 /* KTowerAwardStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5424119D7A46100B65580 /* KTowerAwardStatic.cpp */; };
+		81A5424719D7A4AE00B65580 /* KUICardAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5424519D7A4AE00B65580 /* KUICardAssist.cpp */; };
+		81A5425119D7A4FE00B65580 /* HeroBrowseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5424819D7A4FE00B65580 /* HeroBrowseScene.cpp */; };
+		81A5425219D7A4FE00B65580 /* KHeroLevUpPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5424A19D7A4FE00B65580 /* KHeroLevUpPanel.cpp */; };
+		81A5425319D7A4FE00B65580 /* KHeroLevUpResultPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5424C19D7A4FE00B65580 /* KHeroLevUpResultPanel.cpp */; };
+		81A5425519D7A4FE00B65580 /* StageSelectScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5425019D7A4FE00B65580 /* StageSelectScene.cpp */; };
+		81A5425A19D7A68900B65580 /* KPlayerBagAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5425719D7A68900B65580 /* KPlayerBagAssist.cpp */; };
+		81A5425D19D7A6C600B65580 /* KBattleCtrlAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5425B19D7A6C600B65580 /* KBattleCtrlAssist.cpp */; };
+		81A5425F19D7AE7500B65580 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A5425E19D7AE7500B65580 /* StoreKit.framework */; };
 		81A6A6B218966E120039FF68 /* KInteger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6B018966E110039FF68 /* KInteger.cpp */; };
 		81A6A6CE18966F260039FF68 /* KBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C618966F260039FF68 /* KBlock.cpp */; };
 		81A6A6CF18966F260039FF68 /* KBlockBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C818966F260039FF68 /* KBlockBox.cpp */; };
@@ -926,7 +938,6 @@
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1AFCDA8016D4A25900906EA6 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = SOURCE_ROOT; };
 		1AFCDA8116D4A25900906EA6 /* RootViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RootViewController.mm; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1285,7 +1296,6 @@
 		81159E0219869867009D325F /* KIOSiAP_Bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIOSiAP_Bridge.h; path = ../platform/KIOSiAP_Bridge.h; sourceTree = "<group>"; };
 		81159E0619869884009D325F /* IOSiAP.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSiAP.mm; path = ../platform/ios/IOSiAP.mm; sourceTree = "<group>"; };
 		81159E0819869884009D325F /* IOSFunc.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = IOSFunc.mm; path = ../platform/ios/IOSFunc.mm; sourceTree = "<group>"; };
-		81159E0B19869B5D009D325F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8120F62B1869DCBE000FDB17 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = data; sourceTree = "<group>"; };
 		81214367187AE4400053FC18 /* KCommonSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KCommonSession.cpp; sourceTree = "<group>"; };
 		81214368187AE4400053FC18 /* KCommonSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCommonSession.h; sourceTree = "<group>"; };
@@ -1443,6 +1453,32 @@
 		8182C4761995C47C00D4BEA8 /* KPlayerTmpBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPlayerTmpBag.h; sourceTree = "<group>"; };
 		8196524B1983560300EC457C /* KLoadingBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KLoadingBar.cpp; path = assist/KLoadingBar.cpp; sourceTree = "<group>"; };
 		8196524C1983560300EC457C /* KLoadingBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLoadingBar.h; path = assist/KLoadingBar.h; sourceTree = "<group>"; };
+		81A5423419D7A21500B65580 /* zgc_bk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = zgc_bk.jpg; sourceTree = "<group>"; };
+		81A5423619D7A40D00B65580 /* KSerialize.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KSerialize.cpp; sourceTree = "<group>"; };
+		81A5423719D7A40D00B65580 /* KSerialize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSerialize.h; sourceTree = "<group>"; };
+		81A5423919D7A43300B65580 /* KHeroCardAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KHeroCardAssist.cpp; path = ../Classes/PlayerCard/KHeroCardAssist.cpp; sourceTree = "<group>"; };
+		81A5423A19D7A43300B65580 /* KHeroCardAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KHeroCardAssist.h; path = ../Classes/PlayerCard/KHeroCardAssist.h; sourceTree = "<group>"; };
+		81A5423B19D7A43300B65580 /* KTowerAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KTowerAssist.cpp; path = ../Classes/PlayerCard/KTowerAssist.cpp; sourceTree = "<group>"; };
+		81A5423C19D7A43300B65580 /* KTowerAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KTowerAssist.h; path = ../Classes/PlayerCard/KTowerAssist.h; sourceTree = "<group>"; };
+		81A5423F19D7A46100B65580 /* KLevUpStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLevUpStatic.cpp; sourceTree = "<group>"; };
+		81A5424019D7A46100B65580 /* KLevUpStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLevUpStatic.h; sourceTree = "<group>"; };
+		81A5424119D7A46100B65580 /* KTowerAwardStatic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KTowerAwardStatic.cpp; sourceTree = "<group>"; };
+		81A5424219D7A46100B65580 /* KTowerAwardStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTowerAwardStatic.h; sourceTree = "<group>"; };
+		81A5424519D7A4AE00B65580 /* KUICardAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = KUICardAssist.cpp; path = assist/KUICardAssist.cpp; sourceTree = "<group>"; };
+		81A5424619D7A4AE00B65580 /* KUICardAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KUICardAssist.h; path = assist/KUICardAssist.h; sourceTree = "<group>"; };
+		81A5424819D7A4FE00B65580 /* HeroBrowseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HeroBrowseScene.cpp; sourceTree = "<group>"; };
+		81A5424919D7A4FE00B65580 /* HeroBrowseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeroBrowseScene.h; sourceTree = "<group>"; };
+		81A5424A19D7A4FE00B65580 /* KHeroLevUpPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KHeroLevUpPanel.cpp; sourceTree = "<group>"; };
+		81A5424B19D7A4FE00B65580 /* KHeroLevUpPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHeroLevUpPanel.h; sourceTree = "<group>"; };
+		81A5424C19D7A4FE00B65580 /* KHeroLevUpResultPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KHeroLevUpResultPanel.cpp; sourceTree = "<group>"; };
+		81A5424D19D7A4FE00B65580 /* KHeroLevUpResultPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHeroLevUpResultPanel.h; sourceTree = "<group>"; };
+		81A5425019D7A4FE00B65580 /* StageSelectScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageSelectScene.cpp; sourceTree = "<group>"; };
+		81A5425719D7A68900B65580 /* KPlayerBagAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KPlayerBagAssist.cpp; sourceTree = "<group>"; };
+		81A5425819D7A68900B65580 /* KPlayerBagAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KPlayerBagAssist.h; sourceTree = "<group>"; };
+		81A5425919D7A68900B65580 /* KUIMsgDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KUIMsgDef.h; sourceTree = "<group>"; };
+		81A5425B19D7A6C600B65580 /* KBattleCtrlAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleCtrlAssist.cpp; sourceTree = "<group>"; };
+		81A5425C19D7A6C600B65580 /* KBattleCtrlAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBattleCtrlAssist.h; sourceTree = "<group>"; };
+		81A5425E19D7AE7500B65580 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		81A6A513189663770039FF68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		81A6A5A31896655F0039FF68 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		81A6A5A41896655F0039FF68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2012,7 +2048,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81159E0C19869B5D009D325F /* StoreKit.framework in Frameworks */,
+				81A5425F19D7AE7500B65580 /* StoreKit.framework in Frameworks */,
 				812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */,
 				816863F518969C5A00789DE8 /* liblua.a in Frameworks */,
 				81E786C4185DBE6A00829E82 /* libiconv.2.4.0.dylib in Frameworks */,
@@ -2699,7 +2735,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81159E0B19869B5D009D325F /* StoreKit.framework */,
+				81A5425E19D7AE7500B65580 /* StoreKit.framework */,
 				812D955A19839753004F6DD8 /* libUMFeedback.a */,
 				81A6A5A21896655F0039FF68 /* Classes */,
 				81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */,
@@ -3021,6 +3057,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81A5423419D7A21500B65580 /* zgc_bk.jpg */,
 				81DB558C199AFAAC0076CE95 /* Images.xcassets */,
 				81E7DCF418E319EA0043CCC7 /* anim */,
 				81E7DCF018E319560043CCC7 /* armature */,
@@ -3032,7 +3069,6 @@
 				8149030B1860144000695114 /* GUI */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
-				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -3588,6 +3624,8 @@
 		814E9E2B18D92EC8003749B2 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				81A5424519D7A4AE00B65580 /* KUICardAssist.cpp */,
+				81A5424619D7A4AE00B65580 /* KUICardAssist.h */,
 				8196524B1983560300EC457C /* KLoadingBar.cpp */,
 				8196524C1983560300EC457C /* KLoadingBar.h */,
 				81F011A6194F48EF00910DB2 /* KCardGroupAssist.cpp */,
@@ -3717,6 +3755,28 @@
 				816863C218969B0E00789DE8 /* Makefile */,
 			);
 			path = Lua;
+			sourceTree = "<group>";
+		};
+		81A5425619D7A55100B65580 /* scene */ = {
+			isa = PBXGroup;
+			children = (
+				81CB4435185DDFEC00D9E774 /* BattleFieldScene.cpp */,
+				81F011BD194F490A00910DB2 /* CardGroupScene.cpp */,
+				81F011BE194F490A00910DB2 /* CardGroupScene.h */,
+				81A5425019D7A4FE00B65580 /* StageSelectScene.cpp */,
+				81A5424819D7A4FE00B65580 /* HeroBrowseScene.cpp */,
+				81F011C0194F491800910DB2 /* KSceneLayerBase.cpp */,
+				81F011C1194F491800910DB2 /* KSceneLayerBase.h */,
+				81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */,
+				81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */,
+				81BF26BC1930E895007B2A28 /* StageWaitScene.h */,
+				81FA0EA318D0A63000F7DD22 /* MainMenuScene.h */,
+				81F011C6194F496D00910DB2 /* KShopScene.cpp */,
+				81F011C7194F496D00910DB2 /* KShopScene.h */,
+				81A5424919D7A4FE00B65580 /* HeroBrowseScene.h */,
+				81CB4436185DDFEC00D9E774 /* BattleFieldScene.h */,
+			);
+			name = scene;
 			sourceTree = "<group>";
 		};
 		81A6A5A21896655F0039FF68 /* Classes */ = {
@@ -4263,6 +4323,8 @@
 		81CB43DB185DDF9C00D9E774 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
+				81A5423619D7A40D00B65580 /* KSerialize.cpp */,
+				81A5423719D7A40D00B65580 /* KSerialize.h */,
 				81BF26C71930EBAD007B2A28 /* KHeroSkillMgr.cpp */,
 				81BF26C81930EBAD007B2A28 /* KHeroSkillMgr.h */,
 				81E7DCEE18E318FA0043CCC7 /* KGameDef.cpp */,
@@ -4296,6 +4358,8 @@
 		81CB43DC185DDF9C00D9E774 /* assist */ = {
 			isa = PBXGroup;
 			children = (
+				81A5425B19D7A6C600B65580 /* KBattleCtrlAssist.cpp */,
+				81A5425C19D7A6C600B65580 /* KBattleCtrlAssist.h */,
 				81ABA3C11966C7DF00F318DE /* KAIAssist.cpp */,
 				81ABA3C21966C7DF00F318DE /* KAIAssist.h */,
 				81BF26C41930EB7F007B2A28 /* KBattleEventAssist.cpp */,
@@ -4358,6 +4422,10 @@
 		81CB442F185DDFEC00D9E774 /* StaticTable */ = {
 			isa = PBXGroup;
 			children = (
+				81A5423F19D7A46100B65580 /* KLevUpStatic.cpp */,
+				81A5424019D7A46100B65580 /* KLevUpStatic.h */,
+				81A5424119D7A46100B65580 /* KTowerAwardStatic.cpp */,
+				81A5424219D7A46100B65580 /* KTowerAwardStatic.h */,
 				81BF26CD1930EFA8007B2A28 /* KCardStatic.cpp */,
 				81BF26CE1930EFA8007B2A28 /* KCardStatic.h */,
 				81BF26A91930E73D007B2A28 /* KHelpStringStatic.cpp */,
@@ -4509,22 +4577,15 @@
 		81D6FDEB1869DFF6000D53A7 /* Panel */ = {
 			isa = PBXGroup;
 			children = (
-				81F011C6194F496D00910DB2 /* KShopScene.cpp */,
-				81F011C7194F496D00910DB2 /* KShopScene.h */,
-				81F011C0194F491800910DB2 /* KSceneLayerBase.cpp */,
-				81F011C1194F491800910DB2 /* KSceneLayerBase.h */,
-				81F011BD194F490A00910DB2 /* CardGroupScene.cpp */,
-				81F011BE194F490A00910DB2 /* CardGroupScene.h */,
-				81BF26BB1930E895007B2A28 /* StageWaitScene.cpp */,
-				81BF26BC1930E895007B2A28 /* StageWaitScene.h */,
+				81A5425619D7A55100B65580 /* scene */,
+				81A5424A19D7A4FE00B65580 /* KHeroLevUpPanel.cpp */,
+				81A5424B19D7A4FE00B65580 /* KHeroLevUpPanel.h */,
+				81A5424C19D7A4FE00B65580 /* KHeroLevUpResultPanel.cpp */,
+				81A5424D19D7A4FE00B65580 /* KHeroLevUpResultPanel.h */,
 				81BF26B21930E868007B2A28 /* KGameRecordPanel.cpp */,
 				81BF26B31930E868007B2A28 /* KGameRecordPanel.h */,
-				81CB4435185DDFEC00D9E774 /* BattleFieldScene.cpp */,
-				81CB4436185DDFEC00D9E774 /* BattleFieldScene.h */,
 				81D6FDF21869E033000D53A7 /* StartScene.cpp */,
 				81D6FDF31869E033000D53A7 /* StartScene.h */,
-				81FA0EA218D0A63000F7DD22 /* MainMenuScene.cpp */,
-				81FA0EA318D0A63000F7DD22 /* MainMenuScene.h */,
 				81FA0E9318D0A60D00F7DD22 /* KGameResultPanel.cpp */,
 				81FA0E9418D0A60D00F7DD22 /* KGameResultPanel.h */,
 				81FA0E9518D0A60D00F7DD22 /* KGenCardPanel.cpp */,
@@ -4604,6 +4665,9 @@
 		81E786C5185DC38A00829E82 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				81A5425719D7A68900B65580 /* KPlayerBagAssist.cpp */,
+				81A5425819D7A68900B65580 /* KPlayerBagAssist.h */,
+				81A5425919D7A68900B65580 /* KUIMsgDef.h */,
 				81FA0EB118D0A91000F7DD22 /* KVirtualServerAssist.cpp */,
 				81FA0EB218D0A91000F7DD22 /* KVirtualServerAssist.h */,
 				81FA0EAB18D0A90600F7DD22 /* KCommonObj.cpp */,
@@ -4636,6 +4700,10 @@
 		81F011D1194F4B0D00910DB2 /* PlayCard */ = {
 			isa = PBXGroup;
 			children = (
+				81A5423919D7A43300B65580 /* KHeroCardAssist.cpp */,
+				81A5423A19D7A43300B65580 /* KHeroCardAssist.h */,
+				81A5423B19D7A43300B65580 /* KTowerAssist.cpp */,
+				81A5423C19D7A43300B65580 /* KTowerAssist.h */,
 				81F011D2194F4B1E00910DB2 /* KPlayerCardDepot.cpp */,
 				81F011D3194F4B1E00910DB2 /* KPlayerCardDepot.h */,
 				81F011D4194F4B1E00910DB2 /* KPlayerDeck.cpp */,
@@ -4735,6 +4803,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = J4E75UJF2F;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -4793,11 +4866,11 @@
 				810C387E185F28DD00F03DFA /* KSmartPointer.inl in Resources */,
 				812E2794187AF5E4000567D7 /* progress_bar.png in Resources */,
 				810C38A4185F28DD00F03DFA /* KTPWorkload.inl in Resources */,
+				81A5423519D7A21500B65580 /* zgc_bk.jpg in Resources */,
 				81DB5591199B46710076CE95 /* assest in Resources */,
 				8120F62C1869DCBE000FDB17 /* data in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				812E2795187AF5E4000567D7 /* progress_bg.png in Resources */,
-				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				81E7DCF118E319560043CCC7 /* armature in Resources */,
 				379BB9CC17F03F3700829B88 /* json_internalarray.inl in Resources */,
 				379BB9CD17F03F3700829B88 /* json_internalmap.inl in Resources */,
@@ -4899,6 +4972,7 @@
 				81F011B6194F48EF00910DB2 /* KCardGroupAssist.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
+				81A5425519D7A4FE00B65580 /* StageSelectScene.cpp in Sources */,
 				15A3D91D1682F7D5002FB0C5 /* b2EdgeAndPolygonContact.cpp in Sources */,
 				15A3D91E1682F7D5002FB0C5 /* b2PolygonAndCircleContact.cpp in Sources */,
 				81FA0EB018D0A90600F7DD22 /* KPlayerRecordAssist.cpp in Sources */,
@@ -4939,10 +5013,12 @@
 				810C385C185F28DD00F03DFA /* jgencryptor.cpp in Sources */,
 				812143C9187AE4400053FC18 /* KGlobalFunction.cpp in Sources */,
 				81F011D7194F4B1E00910DB2 /* KPlayerDeck.cpp in Sources */,
+				81A5425219D7A4FE00B65580 /* KHeroLevUpPanel.cpp in Sources */,
 				81F011B7194F48EF00910DB2 /* KJsonDictMgr.cpp in Sources */,
 				810C3881185F28DD00F03DFA /* md5c_opt.c in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
 				15A3D9981682F7F9002FB0C5 /* cpDampedRotarySpring.c in Sources */,
+				81A5425319D7A4FE00B65580 /* KHeroLevUpResultPanel.cpp in Sources */,
 				8182C4771995C47C00D4BEA8 /* KPlayerTmpBag.cpp in Sources */,
 				15A3D9991682F7F9002FB0C5 /* cpDampedSpring.c in Sources */,
 				810C38A5185F28DD00F03DFA /* KTPWorkPool.cpp in Sources */,
@@ -4964,6 +5040,7 @@
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				81FA0E8018D09F4C00F7DD22 /* KEventSystem.cpp in Sources */,
 				15A3D9A01682F7F9002FB0C5 /* cpSimpleMotor.c in Sources */,
+				81A5424319D7A46100B65580 /* KLevUpStatic.cpp in Sources */,
 				81CB43F5185DDF9C00D9E774 /* KBattleGod.cpp in Sources */,
 				810C385B185F28DD00F03DFA /* KWordTree.cpp in Sources */,
 				812143C3187AE4400053FC18 /* KServerTabfileLoader.cpp in Sources */,
@@ -4998,6 +5075,7 @@
 				810C3877185F28DD00F03DFA /* KCheckSum.cpp in Sources */,
 				81CB441F185DDFCC00D9E774 /* KActionStaticMgr.cpp in Sources */,
 				15A3D9AC1682F7F9002FB0C5 /* cpSpaceComponent.c in Sources */,
+				81A5423D19D7A43300B65580 /* KHeroCardAssist.cpp in Sources */,
 				810C388F185F28DD00F03DFA /* KThread.cpp in Sources */,
 				15A3D9AD1682F7F9002FB0C5 /* cpSpaceHash.c in Sources */,
 				15A3D9AE1682F7F9002FB0C5 /* cpSpaceQuery.c in Sources */,
@@ -5046,6 +5124,7 @@
 				81FA0E5418D0981500F7DD22 /* KGameStatic.cpp in Sources */,
 				810C3892185F28DD00F03DFA /* KThreadFunctor.cpp in Sources */,
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
+				81A5423E19D7A43300B65580 /* KTowerAssist.cpp in Sources */,
 				81CB4421185DDFCC00D9E774 /* KAffectorStatic.cpp in Sources */,
 				810C3858185F28DD00F03DFA /* KCharset_Japan.cpp in Sources */,
 				810C3868185F28DD00F03DFA /* KTabFileReader.cpp in Sources */,
@@ -5083,6 +5162,7 @@
 				81FA0E5318D0981500F7DD22 /* KDeckDefStatic.cpp in Sources */,
 				81D6FE341869E63E000D53A7 /* KIocpSockServer.cpp in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
+				81A5424419D7A46100B65580 /* KTowerAwardStatic.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
@@ -5126,6 +5206,7 @@
 				81BF26BD1930E895007B2A28 /* StageWaitScene.cpp in Sources */,
 				15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */,
 				810C388E185F28DD00F03DFA /* KLinuxThreadImpl.cpp in Sources */,
+				81A5425D19D7A6C600B65580 /* KBattleCtrlAssist.cpp in Sources */,
 				81FA0E5518D0981500F7DD22 /* KRankStaticMgr.cpp in Sources */,
 				81CB4426185DDFCC00D9E774 /* KSoundStatic.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
@@ -5140,6 +5221,7 @@
 				81FA0E9218D0A53B00F7DD22 /* KUserQuestSql.cpp in Sources */,
 				1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				81A5423819D7A40D00B65580 /* KSerialize.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				81CB43F1185DDF9C00D9E774 /* KSkillAssist.cpp in Sources */,
@@ -5305,12 +5387,15 @@
 				81FA0E7F18D09F4C00F7DD22 /* KEventRegistry.cpp in Sources */,
 				810C3870185F28DD00F03DFA /* KDataBuffer.cpp in Sources */,
 				812143D1187AE4400053FC18 /* KCharacterAttr.cpp in Sources */,
+				81A5425A19D7A68900B65580 /* KPlayerBagAssist.cpp in Sources */,
 				379BB9CE17F03F3700829B88 /* json_reader.cpp in Sources */,
+				81A5425119D7A4FE00B65580 /* HeroBrowseScene.cpp in Sources */,
 				814347D4186FCACD00134432 /* KMsgDelegateBase.cpp in Sources */,
 				81D6FE5A1869E881000D53A7 /* KPacketGate_LC.cpp in Sources */,
 				810C3884185F28DD00F03DFA /* StrUtil.cpp in Sources */,
 				379BB9CF17F03F3700829B88 /* json_value.cpp in Sources */,
 				379BB9D117F03F3700829B88 /* json_writer.cpp in Sources */,
+				81A5424719D7A4AE00B65580 /* KUICardAssist.cpp in Sources */,
 				379BB9D317F03F3700829B88 /* GUIReader.cpp in Sources */,
 				81159E0919869884009D325F /* IOSiAP.mm in Sources */,
 				379BB9D417F03F3700829B88 /* SceneReader.cpp in Sources */,
@@ -5381,8 +5466,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -5429,7 +5514,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -5442,8 +5527,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5482,7 +5567,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5591,7 +5676,7 @@
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
 			name = Distribution;
@@ -5603,8 +5688,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5643,7 +5728,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5719,7 +5804,7 @@
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -5752,7 +5837,7 @@
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
 			name = Release;
