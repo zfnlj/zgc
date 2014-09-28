@@ -27,6 +27,7 @@ public:
 		race_water,
 		race_fire,
 		race_mud,
+		race_summon,
 		race_null,
 	};
 

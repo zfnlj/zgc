@@ -94,6 +94,7 @@ void KCardGroupAssist::FilterCard(KItemUnitList& src,KItemUnitList& des,int brow
 	for(KItemUnitList::iterator it=src.begin();it!=src.end();++it){
 		bool bMatch = false;
 		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(it->_id);
+		if(!pST) continue;
 		if(costId==7){
 			if(pST->GetCost()<7) continue;
 		}else if(costId>0){

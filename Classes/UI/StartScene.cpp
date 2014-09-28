@@ -39,7 +39,7 @@ bool StartScene::init()
         
 			CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 			CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-            CCSprite* bg = CCSprite::create("HelloWorld.png");
+            CCSprite* bg = CCSprite::create("zgc_bk.jpg");
 			bg->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 			this->addChild(bg);
 			

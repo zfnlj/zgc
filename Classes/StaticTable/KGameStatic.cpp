@@ -44,7 +44,7 @@ void KGameStaticMgr::LoadStaticData()
     InitCard("data/card/SoldierCard.txt");
 	InitCard("data/card/HeroCard.txt");
 	InitCard("data/card/SkillCard.txt");
-    InitCard("data/card/Secret.txt");
+    //InitCard("data/card/Secret.txt");
 	InitAbility("data/card/Ability.txt");
 	InitAttr("data/card/Attr.txt");
 	InitBattleField("data/BattleField.txt");
