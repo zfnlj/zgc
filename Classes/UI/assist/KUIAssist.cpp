@@ -684,6 +684,9 @@ void KUIAssist::_playLessonMsg(int id)
 	K3DActionParam* pCurTalkParam = actor.GetActionMgr().ExistAction("hero_talk");
 
 	if(pCurTalkParam && pCurTalkParam->GetDesId(0)==id) return;
+	
+	KHelpStringStatic* helpString = KGameStaticMgr::getSingleton().GetHelpString(id);
+	if(!helpString) return;
 	actor.GetActionMgr().LimitAlive("hero_talk");
 	K3DActionParam param;
 	param.init("hero_talk");
