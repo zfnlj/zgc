@@ -226,6 +226,11 @@ void KGameResultPanel::ShowObtainGift()
 	if(pBag->m_itemList.empty()) return;
 	KPlayerTmpBag::ItemDefList::iterator it = pBag->m_itemList.begin();
 	int index = 0;
+	for(int i=0;i<3;i++){
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
+		pSlot->setVisible(false);
+	}
+
 	for(it;it!=pBag->m_itemList.end();++it){
 		UIWidget* widget = KUIAssist::_createBagItemWidget(*it);
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",index++);

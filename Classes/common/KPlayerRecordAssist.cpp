@@ -195,19 +195,21 @@ bool UseDailyAwardSlot(tb_playerquest_record* record)
 	time_t curTime = _GetSystemTimeVal();
 	void* buf;
 	int num = record->_qdaily.Get(buf)/sizeof(time_t);
+	struct tm *cur_tm = localtime(&curTime);
+	int cur_yday = cur_tm->tm_yday;
 	if(num<MAX_DAILY_AWARD_SLOT){
 		record->_qdaily.Append(&curTime,sizeof(curTime));
 		ok=true;
 	}else{
 		time_t* dailyTime = (time_t*)buf;
 		for(int i=0;i<num;i++,dailyTime++){
-			if( (curTime - *dailyTime)>SECOND_OF_DAY){
+			struct tm *old_tm = localtime(dailyTime);
+			if(old_tm->tm_yday!=cur_yday){
 				*dailyTime = curTime;
 				ok = true;
 				break;
 			}
 		}
-		
 	}
 	if(ok) record->updateMask(tb_playerquest_record::_QDAILY);
 	return ok;
