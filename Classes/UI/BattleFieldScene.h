@@ -58,6 +58,7 @@ public:
 	void DoEndTurn(CCObject* sender);
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();
+	void RunTest2(CCObject* sender);
 
 	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);

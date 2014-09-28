@@ -101,6 +101,7 @@ public:
 	int GetFighterNum();
 	void Clear();
 	void ForceWin();
+	void ForceLost();
 	void ForceExit();
 	static bool g_bDebug;
 protected:

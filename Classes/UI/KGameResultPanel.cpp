@@ -208,11 +208,7 @@ void KGameResultPanel::updatePanel()
 	sprintf(buf,"+%d",m_result._fateStone);
 	pStoneTxt->setText(buf);
 
-	for(int i=0; i<3; i++)
-	{
-		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
-		pSlot->setVisible(false);
-	}
+	
 	UIWidget* pSelectAward = UIHelper::seekWidgetByName(m_Panel,"select_award_txt");
 	pSelectAward->setVisible(false);
 
@@ -222,15 +218,17 @@ void KGameResultPanel::updatePanel()
 
 void KGameResultPanel::ShowObtainGift()
 {
-	KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
-	if(pBag->m_itemList.empty()) return;
-	KPlayerTmpBag::ItemDefList::iterator it = pBag->m_itemList.begin();
 	int index = 0;
 	for(int i=0;i<3;i++){
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
 		pSlot->setVisible(false);
 	}
 
+	KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
+	if(pBag->m_itemList.empty()) return;
+	KPlayerTmpBag::ItemDefList::iterator it = pBag->m_itemList.begin();
+	
+	index = 0;
 	for(it;it!=pBag->m_itemList.end();++it){
 		UIWidget* widget = KUIAssist::_createBagItemWidget(*it);
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",index++);

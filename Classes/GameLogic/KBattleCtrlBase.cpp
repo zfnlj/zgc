@@ -689,6 +689,14 @@ void KBattleCtrlBase::ForceWin()
 	StateJump(battle_game_end);
 }
 
+void KBattleCtrlBase::ForceLost()
+{
+	KBattleGuy* pGuy = GetCurGuy();
+	KCardInst* pHero = pGuy->GetDeck().GetHero();
+	pHero->m_attr.setSlot(KCardInst::enum_slot_tomb);
+	StateJump(battle_game_end);
+}
+
 void KBattleCtrlBase::ForceExit()
 {
 	KGameRecordMgr::getSingleton().Stop();

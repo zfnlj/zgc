@@ -118,8 +118,14 @@ void BattleFieldScene::InitTest()
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
 	KCardInst* pHero = (KCardInst*)pMainPlayer->GetHero();
 	KCardActor* actor = (KCardActor*)pHero->getActor();
+
+	FBattleGuy* pOtherPlayer = KClientBattleCtrl::getInstance()->GetOtherPlayer();
+	KCardInst* pOtherHero = (KCardInst*)pOtherPlayer->GetHero();
+	KCardActor* actor2 = (KCardActor*)pOtherHero->getActor();
+
 	if(GameRoot::getSingleton().m_bDebug) {
 		actor->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest));
+		actor2->GetUI()->addPushDownEvent(this, coco_pushselector(BattleFieldScene::RunTest2));
 	}
 }
 
@@ -175,6 +181,14 @@ void BattleFieldScene::RunTest(CCObject* sender)
 	KCardActor* actor = (KCardActor*)pHero->getActor();
 	actor->GetUI()->addRenderer(bmFont,100);*/
 	//m_gameResultPanel.ShowPanel(KGameResultPanel::enum_panel_task);
+}
+
+void BattleFieldScene::RunTest2(CCObject* sender)
+{
+	if(GameRoot::getSingleton().m_bDebug) {
+		KClickCardMgr::getSingleton().HideBigCard();
+		KClientBattleCtrl::getInstance()->ForceLost();
+	}
 }
 
 void BattleFieldScene::onHandCardReady()
