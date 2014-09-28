@@ -691,7 +691,8 @@ void KBattleCtrlBase::ForceWin()
 
 void KBattleCtrlBase::ForceLost()
 {
-	KBattleGuy* pGuy = GetCurGuy();
+	FBattleGuy* pMe = GetMainPlayer();
+	KBattleGuy* pGuy = pMe->GetImp();
 	KCardInst* pHero = pGuy->GetDeck().GetHero();
 	pHero->m_attr.setSlot(KCardInst::enum_slot_tomb);
 	StateJump(battle_game_end);
