@@ -520,7 +520,7 @@
 		81D6FE5E1869E881000D53A7 /* KSocketDefine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE511869E881000D53A7 /* KSocketDefine.cpp */; };
 		81D6FE5F1869E881000D53A7 /* KUserData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81D6FE531869E881000D53A7 /* KUserData.cpp */; };
 		81DB558D199AFAAC0076CE95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81DB558C199AFAAC0076CE95 /* Images.xcassets */; };
-		81DB558F199B37C80076CE95 /* assest in Resources */ = {isa = PBXBuildFile; fileRef = 81FEECDB1996043D00B5E6BE /* assest */; };
+		81DB5591199B46710076CE95 /* assest in Resources */ = {isa = PBXBuildFile; fileRef = 81DB5590199B46710076CE95 /* assest */; };
 		81E786C4185DBE6A00829E82 /* libiconv.2.4.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */; };
 		81E786CC185DC38A00829E82 /* KClientTabfileLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E786C6185DC38A00829E82 /* KClientTabfileLoader.cpp */; };
 		81E786CD185DC38A00829E82 /* KStreamWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81E786C8185DC38A00829E82 /* KStreamWrapper.cpp */; };
@@ -1904,6 +1904,7 @@
 		81D6FE7A1869E8AD000D53A7 /* KPacketGate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate.h; path = ../Classes/KNet/PacketGate/KPacketGate.h; sourceTree = "<group>"; };
 		81DB558C199AFAAC0076CE95 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = zgc/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		81DB558E199B37430076CE95 /* zgc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = zgc.entitlements; path = zgc/zgc.entitlements; sourceTree = "<group>"; };
+		81DB5590199B46710076CE95 /* assest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assest; sourceTree = "<group>"; };
 		81E786C3185DBE6A00829E82 /* libiconv.2.4.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.4.0.dylib; path = usr/lib/libiconv.2.4.0.dylib; sourceTree = SDKROOT; };
 		81E786C6185DC38A00829E82 /* KClientTabfileLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KClientTabfileLoader.cpp; sourceTree = "<group>"; };
 		81E786C7185DC38A00829E82 /* KClientTabfileLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KClientTabfileLoader.h; sourceTree = "<group>"; };
@@ -1994,7 +1995,6 @@
 		81FA0EB618D0A94400F7DD22 /* KToLua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KToLua.h; sourceTree = "<group>"; };
 		81FA0EB718D0A94400F7DD22 /* KZGThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KZGThread.cpp; sourceTree = "<group>"; };
 		81FA0EB818D0A94400F7DD22 /* KZGThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZGThread.h; sourceTree = "<group>"; };
-		81FEECDB1996043D00B5E6BE /* assest */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assest; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -2672,8 +2672,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				81DB5590199B46710076CE95 /* assest */,
 				81DB558E199B37430076CE95 /* zgc.entitlements */,
-				81FEECDB1996043D00B5E6BE /* assest */,
 				81159DFC19869850009D325F /* platform */,
 				812D9560198397FA004F6DD8 /* UM */,
 				8168637E18969B0E00789DE8 /* lua */,
@@ -4780,7 +4780,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81DB558F199B37C80076CE95 /* assest in Resources */,
 				810C389F185F28DD00F03DFA /* KTPStreamPartitioner.inl in Resources */,
 				81DB558D199AFAAC0076CE95 /* Images.xcassets in Resources */,
 				814E9E4618D932B7003749B2 /* Item in Resources */,
@@ -4794,6 +4793,7 @@
 				810C387E185F28DD00F03DFA /* KSmartPointer.inl in Resources */,
 				812E2794187AF5E4000567D7 /* progress_bar.png in Resources */,
 				810C38A4185F28DD00F03DFA /* KTPWorkload.inl in Resources */,
+				81DB5591199B46710076CE95 /* assest in Resources */,
 				8120F62C1869DCBE000FDB17 /* data in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				812E2795187AF5E4000567D7 /* progress_bg.png in Resources */,
@@ -5378,6 +5378,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
@@ -5437,6 +5439,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
@@ -5596,6 +5600,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
