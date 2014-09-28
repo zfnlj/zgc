@@ -31,7 +31,8 @@ void KUICardAssist::SetRaceIcon(UIWidget* widgetRace, int race)
 	char sz[32];
 	UIImageView* imageWidget = (UIImageView*)widgetRace;
 
-	if(race !=(int)KCardStatic::race_null){
+	if(race !=(int)KCardStatic::race_null&&
+       race !=(int)KCardStatic::race_summon){
 		sprintf(sz,"%s_icon.png",raceIcon[race]);
 		imageWidget->loadTexture(sz,UI_TEX_TYPE_PLIST);
 		imageWidget->setVisible(true);
@@ -268,7 +269,7 @@ UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst*
 	}
 	UIImageView* widgetRace = (UIImageView*)ui->getChildByName("race_icon");
 
-	SetRaceIcon(widgetRace, pST->GetRace());
+	if(widgetRace) SetRaceIcon(widgetRace, pST->GetRace());
 
 	UIImageView* widgetMask =(UIImageView*)ui->getChildByName("card_mask");
 	if(widgetMask) widgetMask->loadTexture(pLayout->GetMask(),UI_TEX_TYPE_PLIST);
@@ -276,8 +277,10 @@ UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst*
 	
 	UIImageView* widgetTitle = (UIImageView*)ui->getChildByName("title");
 	sprintf(sz,"t_%d.png",pST->GetID());
-	if(widgetTitle) widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
-	widgetTitle->setScale(0.9f);
+	if(widgetTitle){
+        widgetTitle->loadTexture(sz,UI_TEX_TYPE_PLIST);
+        widgetTitle->setScale(0.9f);
+    }
 
 	UIWidget* widgetIconCost = ui->getChildByName("icon_cost");
 	if(widgetIconCost) widgetIconCost->setVisible(pLayout->IsShowCost());
@@ -310,20 +313,23 @@ UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst*
 	}
 
 	UILabel* labelDesc = (UILabel*)ui->getChildByName("detail");
-	labelDesc->setVisible(true);
-	if(bBig){
-		if(strlen(pST->GetDetail())>2){
-			labelDesc->setText(pST->GetDetail());
-		}else{
-			labelDesc->setVisible(false);
-		}
-	}else{
-		if(strlen(pST->GetDesc())>2){
-			labelDesc->setText(pST->GetDesc());
-		}else{
-			labelDesc->setVisible(false);
-		}
-	}
+    if(labelDesc){
+        labelDesc->setVisible(true);
+        if(bBig){
+            if(strlen(pST->GetDetail())>2){
+                labelDesc->setText(pST->GetDetail());
+            }else{
+                labelDesc->setVisible(false);
+            }
+        }else{
+            if(strlen(pST->GetDesc())>2){
+                labelDesc->setText(pST->GetDesc());
+            }else{
+                labelDesc->setVisible(false);
+            }
+        }     
+    }
+
 
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
 	if(pLayout->IsShowHp()){

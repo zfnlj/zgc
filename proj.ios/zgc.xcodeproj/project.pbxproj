@@ -412,6 +412,7 @@
 		81A5425A19D7A68900B65580 /* KPlayerBagAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5425719D7A68900B65580 /* KPlayerBagAssist.cpp */; };
 		81A5425D19D7A6C600B65580 /* KBattleCtrlAssist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A5425B19D7A6C600B65580 /* KBattleCtrlAssist.cpp */; };
 		81A5425F19D7AE7500B65580 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A5425E19D7AE7500B65580 /* StoreKit.framework */; };
+		81A5426119D8030300B65580 /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 81A5426019D8030300B65580 /* icon */; };
 		81A6A6B218966E120039FF68 /* KInteger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6B018966E110039FF68 /* KInteger.cpp */; };
 		81A6A6CE18966F260039FF68 /* KBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C618966F260039FF68 /* KBlock.cpp */; };
 		81A6A6CF18966F260039FF68 /* KBlockBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81A6A6C818966F260039FF68 /* KBlockBox.cpp */; };
@@ -1479,6 +1480,7 @@
 		81A5425B19D7A6C600B65580 /* KBattleCtrlAssist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KBattleCtrlAssist.cpp; sourceTree = "<group>"; };
 		81A5425C19D7A6C600B65580 /* KBattleCtrlAssist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBattleCtrlAssist.h; sourceTree = "<group>"; };
 		81A5425E19D7AE7500B65580 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		81A5426019D8030300B65580 /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		81A6A513189663770039FF68 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		81A6A5A31896655F0039FF68 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		81A6A5A41896655F0039FF68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -3057,6 +3059,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				81A5426019D8030300B65580 /* icon */,
 				81A5423419D7A21500B65580 /* zgc_bk.jpg */,
 				81DB558C199AFAAC0076CE95 /* Images.xcassets */,
 				81E7DCF418E319EA0043CCC7 /* anim */,
@@ -4878,6 +4881,7 @@
 				810C389B185F28DD00F03DFA /* KTPObjPool.inl in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				810C38A1185F28DD00F03DFA /* KTPTask.inl in Resources */,
+				81A5426119D8030300B65580 /* icon in Resources */,
 				379BB9D217F03F3700829B88 /* sconscript in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
