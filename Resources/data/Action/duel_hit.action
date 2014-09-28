@@ -13,7 +13,6 @@
 	  <affector class="updateHit" createtime="2.2"  life="0.001" /> 
 	  <affector class="moveOnHit" createtime="2.2" fVal="1000" life="20" />
 	  <affector class="layer" createtime="2.5" fVal="1" life="0.001" />
-	  <affector class="shader" obj="GrayScalingShader" createtime="0.0" life="4.001" />
   </affect_body>
 </action>
 </ag>
