@@ -34,11 +34,14 @@ public:
 	ItemDefList m_itemList;
 	void AddMoney(int val){ m_money += val;}
 	void AddExp(int val) { m_exp += val;}
+	void AddFateStone(int val) { m_fateStone += val;}
 	int GetMoney() { return m_money;}
 	int GetExp(){ return m_exp;}
+	int GetFateStone(){ return m_fateStone;}
 private:
 	int m_money;
 	int m_exp;
+	int m_fateStone;
 };
 
 

@@ -60,8 +60,8 @@ bool _active(tb_player_record* record,int curLayer)
 		
 	}
 	int rnd = g_rnd.GetRandom(0,100);
-	if(record->_gameData._tower.GetLev()==curLayer &&
-		rnd < 30 + record->_gameData.GetDailyStageLev()*4 ){
+	if(record->_gameData._tower.GetPos()==curLayer &&
+		rnd < 25 + record->_gameData.GetDailyStageLev()*4 ){
 		record->_gameData._tower._bShow = true;
 		record->updateMask(tb_player_record::_CRI);
 		return true;
@@ -118,10 +118,13 @@ void _win(int questId)
 	pTmpBag->Reset();
 	int money = _calcMoney(record);
 	int exp = _calcExp(record);
+	int fateStone = _calcFateStone(record);
 	pTmpBag->AddMoney(money);
 	pTmpBag->AddExp(exp);
+	pTmpBag->AddFateStone(fateStone);
 	record->_money += money;
 	record->_exp += exp;
+	record->_fateStone += fateStone;
 	_stepOn(record);
 }
 

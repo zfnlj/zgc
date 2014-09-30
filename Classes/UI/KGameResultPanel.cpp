@@ -207,6 +207,7 @@ void KGameResultPanel::updatePanel()
 		KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
 		m_result._money = pBag->GetMoney();
 		m_result._exp = pBag->GetExp();
+		m_result._fateStone = pBag->GetFateStone();
 	}else{
 		KQuestNew* pQuest = playerQuestManager.GetQuest(m_result._questId);
 		if(pQuest && pQuest->GetQuestStatus()==KQ_PreStepOver){
