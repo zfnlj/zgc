@@ -28,6 +28,8 @@ public:
 	void SetTip(KHelpStringStatic* tip);
 	static void SetSceneVal(Scene_type tp,int val=0){ m_sceneType = tp;m_val=val;}
 private:
+	void CreateExitBut();
+	void menuExitCallback(CCObject* pSender);
 	CCLabelTTF* m_InfoLabel;
 	static Scene_type m_sceneType;
 	static int m_val;

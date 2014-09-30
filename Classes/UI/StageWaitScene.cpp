@@ -111,6 +111,7 @@ bool StageWaitScene::init()
 	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
 	SetTip(tip);
 	m_delayCloseTime = 4;
+	CreateExitBut();
     return true;
 }
 
@@ -156,4 +157,27 @@ void StageWaitScene::DoClickClose(CCObject* sender)
 	}else if(m_sceneType==scene_tower){
 		KQuestFacade::_startTower(m_qId);
 	}
+}
+
+void StageWaitScene::CreateExitBut()
+{
+	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
+                                        "CloseNormal.png",
+                                        "CloseNormal.png",
+                                        this,
+                                        menu_selector(StageWaitScene::menuExitCallback));
+    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
+                                origin.y + pCloseItem->getContentSize().height/2));
+
+    // create menu, it's an autorelease object
+    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    pMenu->setPosition(CCPointZero);
+    this->addChild(pMenu, 1);
+}
+
+void StageWaitScene::menuExitCallback(CCObject* pSender)
+{
+	KUIAssist::_switch2MainMenu();
 }
