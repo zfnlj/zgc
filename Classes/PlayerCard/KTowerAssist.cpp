@@ -18,7 +18,7 @@ void _stepOn(tb_player_record* record)
 {
 	record->_gameData._tower._lev++;
 	record->_gameData._tower._strong++;
-	record->_gameData._tower._strong += g_rnd.GetRandom(0,2);
+	record->_gameData._tower._strong += g_rnd.GetRandom(0,3);
 	record->_gameData._tower._fate += g_rnd.GetRandom(0,5);
 	record->_gameData._tower._lucky +=g_rnd.GetRandom(0,4);
 	if(record->_gameData._tower._lucky>100) record->_gameData._tower._lucky = 100;

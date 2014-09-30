@@ -151,7 +151,7 @@ void KUIAssist::_showCard(KCardInst* card)
 	
 	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCardOwner(card);
 	KCardInstList* lst = guy->QueryCardSet(card->GetSlot());
-	KUIAssist::_moveCardSet(lst,"card_move");
+	KUIAssist::_moveCardSet(lst,"card_resort");
 	
 }
 
@@ -507,7 +507,7 @@ void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	_moveCardSet(&tmpLst,"card_move");
+	_moveCardSet(&tmpLst,"card_resort");
 }
 
 void KUIAssist::_delayResortHandCardSet(FBattleGuy* guy)
