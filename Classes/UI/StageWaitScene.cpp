@@ -108,7 +108,12 @@ bool StageWaitScene::init()
 	pBut->addPushDownEvent(this, coco_pushselector(StageWaitScene::DoClickClose));
 	pBut->setTouchEnable(true);
 
-	KHelpStringStatic* tip = KGameStaticMgr::getSingleton().GetRndStory();
+	KHelpStringStatic* tip = NULL;
+	if(KMainPlayer::RealPlayer()->getLevel()<5){
+		tip = KGameStaticMgr::getSingleton().GetRndTip();
+	}else{
+		tip = KGameStaticMgr::getSingleton().GetRndStory();
+	}
 	SetTip(tip);
 	m_delayCloseTime = 4;
 	CreateExitBut();
