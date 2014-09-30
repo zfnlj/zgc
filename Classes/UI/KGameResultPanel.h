@@ -37,6 +37,7 @@ private:
 	bool ShowSelectGift(KQuestNew* pQuest);
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
+	void ResetSlotInfo();
 	void DoClickSlot(CCObject* sender);
 	void ShowGuyLevAndExp();
 	CCPoint m_pt;

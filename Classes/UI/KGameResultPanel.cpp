@@ -17,6 +17,7 @@
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
+#define SELECT_ITEM_TAG_BASE 10000
 KGameResultPanel::KGameResultPanel():m_Panel(NULL)
 {
 }
@@ -53,7 +54,21 @@ void KGameResultPanel::init(cocos2d::extension::UILayer* layer)
 	m_Panel->setZOrder(999);
 	m_bSelectGift = false;
 	m_expBar.init(NULL,0,0,0.0f);
+
 	updatePanel();
+}
+
+void KGameResultPanel::ResetSlotInfo()
+{
+	for(int i=0; i<3; i++)
+	{
+		UIWidget* pItem = m_Panel->getChildByTag(SELECT_ITEM_TAG_BASE+i);
+		if(pItem) pItem->removeFromParent();
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
+		KUIAssist::ShowButton(pSlot,false);
+		UIWidget* pSelect = KUIAssist::GetIndexWidget(m_Panel,"select",i);
+		pSelect->setVisible(false);
+	}
 }
 
 void KGameResultPanel::onGameEnd(unsigned long long Param1)
@@ -147,6 +162,7 @@ void KGameResultPanel::DoClickClose(CCObject* sender)
 
 void KGameResultPanel::updatePanel()
 {
+	ResetSlotInfo();
 	char buf[128];
 	UIWidget* pWinWidget = UIHelper::seekWidgetByName(m_Panel,"win_icon");
 	UIWidget* pLostWidget = UIHelper::seekWidgetByName(m_Panel,"lost_icon");
@@ -218,23 +234,16 @@ void KGameResultPanel::updatePanel()
 
 void KGameResultPanel::ShowObtainGift()
 {
-	int index = 0;
-	for(int i=0;i<3;i++){
-		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
-		pSlot->setVisible(false);
-	}
-
 	KPlayerTmpBag* pBag = KMainPlayer::RealPlayer()->GetResultBag();
 	if(pBag->m_itemList.empty()) return;
 	KPlayerTmpBag::ItemDefList::iterator it = pBag->m_itemList.begin();
 	
-	index = 0;
-	for(it;it!=pBag->m_itemList.end();++it){
+	int index = 0;
+	for(it;it!=pBag->m_itemList.end();++it,index++){
 		UIWidget* widget = KUIAssist::_createBagItemWidget(*it);
-		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",index++);
+		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",index);
 		widget->setPosition(pSlot->getPosition());
-		widget->setVisible(true);
-		//pSlot->addChild(widget);
+		widget->setTag(SELECT_ITEM_TAG_BASE+index);
 		m_Panel->addChild(widget);
 	}
 	
@@ -268,7 +277,7 @@ bool KGameResultPanel::ShowSelectGift(KQuestNew* pQuest)
 		const KCreateInfo_ItemBase* pCIIB = KItemCreate::Instance()->GetItemCreateInfo(itemId);
 		UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
 		pSlot->loadTexture(pCIIB->s_icon,UI_TEX_TYPE_PLIST);
-		pSlot->setVisible(true);
+		KUIAssist::ShowButton(pSlot,true);
 	}
 
 	/*UIWidget* pMoneyVal = UIHelper::seekWidgetByName(m_Panel,"money_val");
