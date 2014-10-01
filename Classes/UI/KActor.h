@@ -37,7 +37,7 @@ public:
 	void ShowEff(CCParticleSystem* emitter,CCPoint* pt);
 	void RemoveEff(CCParticleSystem* emitter,const char* obj);
 	KActionMgr& GetActionMgr(){ return m_ActionMgr;}
-	void setZOrder(const char* obj,int val);
+	virtual void setZOrder(const char* obj,int val);
 	CCNode* GetDictObj(const char* obj);
 	void DictObjSetOpacity(const char* obj,int val);
 	void RemoveCCAction(const char* obj);	

@@ -44,6 +44,7 @@ public:
 	virtual void SummonSelf();
 	virtual void UpdateCardBuf();
 
+	virtual void setZOrder(const char* obj,int val);
 	virtual void addWidget(const char* obj,int zOrder);
 	virtual void delWidget(const char* obj);
 	virtual void updateSecret();

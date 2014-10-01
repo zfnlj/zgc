@@ -12,6 +12,8 @@
 #include "KClickCardMgr.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "assist/KUICardAssist.h"
+#include "../GameLogic/assist/KBattleCtrlAssist.h"
+
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -119,6 +121,15 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 	CC_SAFE_RETAIN(m_bigPhoto);
 	return m_bigPhoto;
 
+}
+
+void KCardActor::setZOrder(const char* obj,int val)
+{
+	if(strlen(obj)==0){
+		KCardInstList*lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),m_card);
+		if(lst) val += _getIndexOfCard(lst,m_card);
+	}
+	KActor::setZOrder(obj,val);
 }
 
 void KCardActor::init(KCardInst* pInst,bool bBig)
