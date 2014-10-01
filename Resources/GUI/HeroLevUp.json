@@ -10,8 +10,8 @@
   "designHeight": 768,
   "designWidth": 1024,
   "textures": [
-    "ui_elem.plist",
-    "heroLevUp.plist"
+    "heroLevUp.plist",
+    "ui_elem.plist"
   ],
   "version": "1.2.0.1",
   "widgetTree": {
@@ -62,7 +62,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "gold.png",
+            "path": "fateStone.png",
             "plistFile": "ui_elem.plist",
             "resourceType": 1
           },
@@ -84,9 +84,9 @@
           "anchorPointX": 0.5,
           "anchorPointY": 0.5,
           "classType": null,
-          "colorB": 240,
-          "colorG": 92,
-          "colorR": 8,
+          "colorB": 57,
+          "colorG": 9,
+          "colorR": 245,
           "flipX": false,
           "flipY": false,
           "height": 27,
@@ -133,9 +133,9 @@
           "anchorPointX": 0.5,
           "anchorPointY": 0.5,
           "classType": null,
-          "colorB": 240,
-          "colorG": 92,
-          "colorR": 8,
+          "colorB": 57,
+          "colorG": 9,
+          "colorR": 245,
           "flipX": false,
           "flipY": false,
           "height": 27,
@@ -236,9 +236,9 @@
           "scale9Height": 36,
           "scale9Width": 78,
           "text": "升级",
-          "textColorB": 240,
-          "textColorG": 92,
-          "textColorR": 8
+          "textColorB": 57,
+          "textColorG": 9,
+          "textColorR": 245
         }
       },
       {
@@ -254,9 +254,9 @@
           "anchorPointX": 0.5,
           "anchorPointY": 0.5,
           "classType": null,
-          "colorB": 240,
-          "colorG": 92,
-          "colorR": 8,
+          "colorB": 57,
+          "colorG": 9,
+          "colorR": 245,
           "flipX": false,
           "flipY": false,
           "height": 27,

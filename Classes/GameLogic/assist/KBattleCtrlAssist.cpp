@@ -62,7 +62,7 @@ KCardInstList* KBattleCtrlAssist::GetCardSet(KBattleCtrlBase* ctrl,KCardInst* ca
 
 	lst = ctrl->GetOtherPlayer()->QueryCardSet(card->GetSlot());
 	if(_findCardIt(lst,card)!=lst->end()) return lst;
-	CCAssert(false , "Error to  GetCardSet!");
+	//CCAssert(false , "Error to  GetCardSet!");
 	return NULL;
 }
 
