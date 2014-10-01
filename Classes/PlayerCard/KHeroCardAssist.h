@@ -7,6 +7,7 @@ namespace KHeroCardAssist
 {
 	bool _LevUp(KHeroDef* hero,KPlayer* player);
 	bool _SkillLevUp(KHeroDef* hero,int index,KPlayer* player);
+	bool _LevUpFate(KHeroDef* hero,KPlayer* player);
 }
 
 #endif // 

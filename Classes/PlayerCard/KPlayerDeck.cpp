@@ -110,6 +110,12 @@ int KHeroDef::GetLevUpStoneNum() const
 	return KGameStaticMgr::getSingleton().GetHeroLevUpExp(_lev+1);
 }
 
+int KHeroDef::GetFateLevUpStone() const
+{
+	if(_fate==MAX_HERO_FATE_LEV) return -1;
+	return KGameStaticMgr::getSingleton().GetHeroFateLevUpExp(_fate+1);
+}
+
 void KHeroDef::LevZero()
 {
 	_lev = 1;

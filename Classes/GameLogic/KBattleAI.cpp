@@ -97,7 +97,8 @@ void KBattleAI::ThinkToPlay(float dt)
 	if(SoldierToAttack())
 		return;
 
-	m_useSkillVal = 0.80f;
+	m_useSkillVal = 1.0f - 0.05f* ((float)GetCurRes());
+	if(m_useSkillVal<0.2f) m_useSkillVal = 0.2f;
 	if(ThinkPlayCard()) return;
 
 	SetPlayTimeOut(); //AI 无可执行操作

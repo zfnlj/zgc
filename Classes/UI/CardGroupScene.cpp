@@ -72,6 +72,7 @@ bool CardGroupScene::init()
 	m_gameRecPanel.init(this);
 	m_actor.init(m_ui);
 	ShowHelpDrama();
+	m_heroLevUpPanel.init(this);
     return true;
 }
 
@@ -538,14 +539,17 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 		}
 	}else if(m_mainType==type_card){
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
-			m_radioSelectHero.SetSelected(pWidgetSlot->getTag(),false);
+
+			KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[pWidgetSlot->getTag()]._id);
+			m_heroLevUpPanel.ShowPanel(pHeroDef);
+			/*m_radioSelectHero.SetSelected(pWidgetSlot->getTag(),false);
 			
 			if(KCardGroupAssist::IsMiniCardListMatch(m_slotElem[pWidgetSlot->getTag()],m_miniHero,m_miniCardList,m_depot)){
 				const KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[pWidgetSlot->getTag()]._id);
 				memcpy(&m_miniHero,pHeroDef,sizeof(KHeroDef));
 				ShowMiniHero();
 			}
-			UpdateSmartCardGroupBut();
+			UpdateSmartCardGroupBut();*/
 		}else{
 			UIWidget* pAdd = KUIAssist::GetIndexWidget(this->getRootWidget(),"slot_add",pWidgetSlot->getTag());
 			if(pAdd->isVisible()) onClickSlotAdd(sender);

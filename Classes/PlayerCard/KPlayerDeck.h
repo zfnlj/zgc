@@ -5,6 +5,7 @@
 
 #define MAX_HERO_SKILL_LEV 3
 #define MAX_HERO_LEV_INDEX 5
+#define MAX_HERO_FATE_LEV 30
 class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{
@@ -42,8 +43,10 @@ struct KHeroDef{
 	int rndGenLevStrong();
 	int GetLevUpStoneNum()const;
 	int GetSkillLevUpMoney(int skillIndex);
+	int GetFateLevUpStone() const ;
 	bool LevUp();
 	void LevZero();
+	bool IsFateMax(){ return _fate>=MAX_HERO_FATE_LEV;}
 	bool IsLevMax(){ return _lev>=MAX_HERO_LEV_NUM;}
 	bool SkillLevUp(int skillIndex);
 	int GetAtkVal() const;

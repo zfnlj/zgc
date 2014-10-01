@@ -336,6 +336,19 @@ void AddCriVal(tb_player_record* record,int money,int exp,int fateStone)
 	record->updateMask(tb_player_record::_CRI);
 }
 
+int GetFateStoneNum(tb_player_record* record)
+{
+	return record->_fateStone;
+}
+
+bool ConsumeFateStone(tb_player_record* record,int num)
+{
+	if(record->_fateStone<num) return false;
+	record->_fateStone -= num;
+	record->updateMask(tb_player_record::_CRI);
+	return true;
+}
+
 bool updateHero(tb_player_record* record,KHeroDef* heroDef)
 {
 	int heroNum = record->_heroData.actualLength/sizeof(KHeroDef);

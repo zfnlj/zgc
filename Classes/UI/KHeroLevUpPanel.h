@@ -31,11 +31,13 @@ private:
 	KHeroLevUpResultPanel m_resultPanel;
 	void DoClickHeroLevUp(CCObject* sender);
 	void DoClickSkillLevUp(CCObject* sender);
+	void DoClickFateLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
 	void UpdateHeroLevUpInfo();
 	void UpdateMoney();
 	void UpdateSkillInfo();
 	void UpdateHeroAtkPower();
+	void UpdateFateInfo();
 };
 
 #endif // _KHEROLEVUPPANEL_H

@@ -36,6 +36,8 @@ namespace KPlayerRecordAssist
 
 	//money
 	void AddCriVal(tb_player_record* record,int money,int exp,int fateStone=0);
+	int GetFateStoneNum(tb_player_record* record);
+	bool ConsumeFateStone(tb_player_record* record,int num);
 	//quest
 	bool syncQuestFromRecord(KPlayerQuestManager*,tb_playerquest_record* record);
 	void ClearHistory(tb_playerquest_record* record,int qid);

@@ -57,6 +57,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitDeckDef("data/DeckDef.txt");
 	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
 	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
+	InitLevUp("data/FateLevUp.txt",m_heroFateLevUpMgr);
 	InitTowerAward("data/TowerAward.txt");
 
 	for(int i=1;i<4;i++){
@@ -532,6 +533,13 @@ int KGameStaticMgr::GetSkillLevUpExp(int lev)
 {
 	KLevUpStaticMap::iterator it = m_skillLevUpMgr.find(lev);
 	if(it==m_skillLevUpMgr.end()) return 0;
+	return it->second->GetExp();
+}
+
+int KGameStaticMgr::GetHeroFateLevUpExp(int lev)
+{
+	KLevUpStaticMap::iterator it = m_heroFateLevUpMgr.find(lev);
+	if(it==m_heroFateLevUpMgr.end()) return 0;
 	return it->second->GetExp();
 }
 

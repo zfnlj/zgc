@@ -98,6 +98,7 @@ protected:
 	int m_curCardGroup;
 	int m_curPage;
 	KCardGroupSlotElem m_slotElem[PAGE_CARD_NUM];
+	KHeroLevUpPanel m_heroLevUpPanel;
 
 };
 

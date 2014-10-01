@@ -53,6 +53,7 @@ public:
 	KCardLayoutStatic* GetCardLayout(int idx);
 	int GetSkillLevUpExp(int lev);
 	int GetHeroLevUpExp(int lev);
+	int GetHeroFateLevUpExp(int lev);
 	int GetTowerLevMoney(int lev);
 	int GetTowerLevFateStone(int lev);
 	KHeroSkillStatic* GetHeroSkill(int id);
@@ -86,6 +87,7 @@ private:
 
 	KLevUpStaticMap m_skillLevUpMgr;
 	KLevUpStaticMap m_heroLevUpMgr;
+	KLevUpStaticMap m_heroFateLevUpMgr;
 	KTowerAwardStaticMap m_towerAwardMap;
 };
 

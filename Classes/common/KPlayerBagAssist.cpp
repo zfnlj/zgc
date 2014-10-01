@@ -31,6 +31,7 @@ bool ConsumeItem(KWorldObjAbout::KPlayer* player,DWORD itemId,int num)
 	return true;
 }
 
+
 bool ConsumeMoney(KWorldObjAbout::KPlayer* player,int moneyVal)
 {
 	if(!player->HasMoney(moneyVal)) return false;

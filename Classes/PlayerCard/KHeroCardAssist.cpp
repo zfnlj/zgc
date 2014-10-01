@@ -1,5 +1,6 @@
 #include "KHeroCardAssist.h"
 #include "../common/KPlayerBagAssist.h"
+#include "../common/KPlayerRecordAssist.h"
 
 namespace KHeroCardAssist
 {
@@ -13,6 +14,15 @@ bool _LevUp(KHeroDef* hero,KPlayer* player)
 	if(!KPlayerBagAssist::ConsumeItem(player,hero->GetCardId()*10,needChipNum)) return false;
 	//m_pHeroDef->LevZero();
 	hero->LevUp();
+	player->m_cardDepot.SaveHero(hero);
+	return true;
+}
+
+bool _LevUpFate(KHeroDef* hero,KPlayer* player)
+{
+	int needStone = hero->GetFateLevUpStone();
+	if(!KPlayerRecordAssist::ConsumeFateStone(player->GetPlayerRecord(),needStone)) return false;
+	hero->LevUpFate();
 	player->m_cardDepot.SaveHero(hero);
 	return true;
 }

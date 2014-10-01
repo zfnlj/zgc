@@ -18,6 +18,7 @@
 #include "assist/KPopupLayer.h"
 #include "../common/KUIMsgDef.h"
 #include "../PlayerCard/KHeroCardAssist.h"
+#include "../common/KPlayerRecordAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -42,6 +43,10 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 		pBut = UIHelper::seekWidgetByName(m_Panel, "Lev_up_but");
 		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickHeroLevUp));
 		m_resultPanel.init(layer);
+
+		pBut = UIHelper::seekWidgetByName(m_Panel, "fate_levup_but");
+		pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickFateLevUp));
+
 
 		for(int i=0;i<MAX_HERO_SKILL_NUM;i++){
 			pBut = KUIAssist::GetIndexWidget(m_Panel,"skill_levup_but",i);
@@ -90,6 +95,7 @@ void KHeroLevUpPanel::ShowHero(KHeroDef* hero)
 	UpdateSkillInfo();
 	UpdateMoney();
 	UpdateHeroLevUpInfo();
+	UpdateFateInfo();
 	m_Panel->addChild(m_pHeroWidget);
 
 	char sz[64];
@@ -137,6 +143,21 @@ void KHeroLevUpPanel::UpdateHeroAtkPower()
 	UILabelBMFont* heroPowerWidget = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel,"hero_power_val");
 	sprintf(sz,"%d",m_pHeroDef->GetAtkVal());
 	heroPowerWidget->setText(sz);
+}
+
+void KHeroLevUpPanel::UpdateFateInfo()
+{
+	UIWidget* pBut = UIHelper::seekWidgetByName(m_Panel, "fate_levup_but");
+	KUIAssist::ShowButton(pBut,!m_pHeroDef->IsFateMax());
+	char sz[64];
+	UILabel* fateLevTxt = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"fate_lev_txt");
+	sprintf(sz,"lev.%d",m_pHeroDef->_fate);
+	if(fateLevTxt) fateLevTxt->setText(sz);
+
+	UILabel* fateStoneTxt = (UILabel*)UIHelper::seekWidgetByName(m_Panel,"fate_money_txt");
+	sprintf(sz,"%d",m_pHeroDef->GetFateLevUpStone());
+	if(fateLevTxt) fateStoneTxt->setText(sz);
+
 }
 
 void KHeroLevUpPanel::UpdateSkillInfo()
@@ -198,6 +219,17 @@ void KHeroLevUpPanel::DoClickSkillLevUp(CCObject* sender)
 	UpdateMoney();
 	UpdateSkillInfo();
 	UpdateHeroAtkPower();
+}
+
+void KHeroLevUpPanel::DoClickFateLevUp(CCObject* sender)
+{
+	int needFateStone =  m_pHeroDef->GetFateLevUpStone();
+	if(KPlayerRecordAssist::GetFateStoneNum(KMainPlayer::RealPlayer()->GetPlayerRecord())<needFateStone){
+		KPopupLayer::DoModal(UI_WARNING_STR,FATESTONE_NO_ENOUGH,KPopupLayer::DT_Ok);
+		return;
+	}
+	if(!KHeroCardAssist::_LevUpFate(m_pHeroDef,KMainPlayer::RealPlayer())) return;
+	UpdateFateInfo();
 }
 
 void KHeroLevUpPanel::DoClickHeroLevUp(CCObject* sender)
