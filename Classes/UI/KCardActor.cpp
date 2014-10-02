@@ -125,7 +125,7 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 
 void KCardActor::setZOrder(const char* obj,int val)
 {
-	if(strlen(obj)==0){
+	if(strlen(obj)==0 && m_card->GetSlot()==KCardInst::enum_slot_tomb){
 		KCardInstList*lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),m_card);
 		if(lst) val += _getIndexOfCard(lst,m_card);
 	}

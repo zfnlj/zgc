@@ -495,7 +495,7 @@ void KUIAssist::_resortCardSet(FBattleGuy* guy,int slot)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	_moveCardSet(&tmpLst,"card_move");
+	_moveCardSet(&tmpLst,"card_resort");
 }
 
 
