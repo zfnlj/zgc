@@ -21,6 +21,7 @@ enum AffectorType
 {
 	Affector_null = 0,
 	Affector_layer, //改层
+	Affector_tmpLayer, //改层
 	Affector_scale, //缩放
 	Affector_scaleX, //缩放
 	Affector_visible, //缩放
@@ -44,6 +45,7 @@ enum AffectorType
 	Affector_summon,
 	Affector_summonSelf,
 	Affector_resortHand,
+	Affector_resortZOrder,
 	Affector_drawCard,
 	Affector_anim,
 	Affector_replace,

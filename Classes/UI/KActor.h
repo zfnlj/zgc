@@ -61,6 +61,7 @@ public:
 	virtual void delWidget(const char* obj){}
 	virtual void updateSecret(){}
 	virtual CCPoint GetDestPosition();
+	virtual void resortZOrder(int val){}
 	void updateRes();
 	void StopBreathe(const char* obj);
 	void StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef);

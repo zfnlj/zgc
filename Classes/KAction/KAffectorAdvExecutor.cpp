@@ -81,11 +81,21 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 			GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
 		}
 		break;
+	case Affector_tmpLayer:
+		if(GetActor()){
+			GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
+		}
+		break;
 	case Affector_summon:
 		if(GetActor()) GetActor()->SummonCard(m_param->GetDesId(0));
 		break;
 	case Affector_summonSelf:
 		if(GetActor()) GetActor()->SummonSelf();
+		break;
+	case Affector_resortZOrder:
+		if(GetActor()){
+			GetActor()->resortZOrder(m_AffectorStatic->GetIntVal());
+		}
 		break;
 	case Affector_resortHand:
 		{
@@ -254,6 +264,9 @@ void KAffectorExecutor::LimitAlive(float val)
 	{
 	case Affector_layer:
 		if(GetActor()) GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
+		break;
+	case Affector_tmpLayer:
+		if(GetActor()) GetActor()->resortZOrder(0);
 		break;
 	case Affector_visible:
 		if(GetActor()) GetActor()->SetVisible(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal()>0);

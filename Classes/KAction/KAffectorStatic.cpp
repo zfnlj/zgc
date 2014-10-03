@@ -93,6 +93,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_layer;
 	}else if ( strcmp(szName,"scale") == 0 ){
 		eType = Affector_scale;
+	}else if ( strcmp(szName,"tmpLayer") == 0 ){
+		eType = Affector_tmpLayer;
 	}else if ( strcmp(szName,"scaleX") == 0 ){
 		eType = Affector_scaleX;
 	}else if ( strcmp(szName,"visible") == 0 ){
@@ -141,6 +143,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_summonSelf;
 	}else if ( strcmp(szName,"resortHand") == 0 ){
 		eType = Affector_resortHand;
+	}else if ( strcmp(szName,"resortZOrder") == 0 ){
+		eType = Affector_resortZOrder;
 	}else if ( strcmp(szName,"anim") == 0 ){
 		eType = Affector_anim;
 	}else if ( strcmp(szName,"replace") == 0 ){

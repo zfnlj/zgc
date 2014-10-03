@@ -31,6 +31,7 @@ public:
 	bool PickCurHero(KHeroDef& hero);
 	bool PickStoreCard(KItemUnitList& tmpLst);
 	bool PickAllHero(KHeroDefList& lst);
+	int  GetCardNum(int cardId);
 	int  GetDeckCardNum(int deck,int cardId);
 	int  GetHeroNum();
 	bool IsDeckHero(int heroId);

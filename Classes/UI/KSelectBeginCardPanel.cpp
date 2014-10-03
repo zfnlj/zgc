@@ -43,7 +43,7 @@ void KSelectBeginCardPanel::init(cocos2d::extension::UILayer* layer)
 		actor->GetUI()->setPosition(base->getWorldPosition());
 		actor->GetUI()->setScale(base->getScale());
 	}
-	KUIAssist::_moveCardSet(lst,"go_select");
+	KUIAssist::_playAction(lst,"go_select");
 	_copyCardSet(lst,&m_initSelectLst);
 }
 

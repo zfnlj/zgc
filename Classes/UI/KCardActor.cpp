@@ -123,13 +123,18 @@ cocos2d::extension::UIWidget* KCardActor::GetBigCard()
 
 }
 
-void KCardActor::setZOrder(const char* obj,int val)
+void KCardActor::resortZOrder(int val)
 {
-	if(strlen(obj)==0 && m_card->GetSlot()==KCardInst::enum_slot_tomb){
-		KCardInstList*lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),m_card);
-		if(lst) val += _getIndexOfCard(lst,m_card);
+	KCardInstList*lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),m_card);
+	if(lst){
+		int pos=0;
+		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it,pos++)
+		{
+			KCardActor* actor = (KCardActor*) (*it)->getActor();
+			actor->GetUI()->setZOrder(val+pos);
+		}
 	}
-	KActor::setZOrder(obj,val);
+
 }
 
 void KCardActor::init(KCardInst* pInst,bool bBig)

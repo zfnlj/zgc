@@ -27,7 +27,7 @@ public:
 	static const char* _getBasePosName(KCardInst* card);
 	static void _showCardSet(KCardInstList* lst);
 	static void _removeCardSet(KCardInstList* lst);
-	static void _moveCardSet(KCardInstList* lst,const char* actionname);
+	static void _playAction(KCardInstList* lst,const char* actionname);
 	static void _showCard(KCardInst* card);
 	
 	static void _updateCard(KCardInst* card);

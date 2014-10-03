@@ -632,7 +632,8 @@ void CardGroupScene::UpdateAddSubBut()
 			 KUIAssist::ShowButton(pSub,false);
 		 }else if(m_mainType==type_card){
 			 if(bFull ||
-				 deckCardCount==2){
+				 deckCardCount==2||
+				 deckCardCount >=m_depot->GetCardNum(m_slotElem[i]._id)){
 				 KUIAssist::ShowButton(pAdd,false);
 			 }else{
 				 KUIAssist::ShowButton(pAdd,true);

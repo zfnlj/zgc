@@ -167,6 +167,16 @@ bool KPlayerCardDepot::PickStoreCard(KItemUnitList& tmpLst)
 	return true;
 }
 
+int  KPlayerCardDepot::GetCardNum(int cardId)
+{
+	int cardNum = m_record->_cardStore.actualLength/sizeof(KDBBagItemUnit);
+	KDBBagItemUnit* pUnit = (KDBBagItemUnit*)m_record->_cardStore.binData;
+	for(int i=0;i<cardNum;i++,pUnit++){
+		if(pUnit->_id== cardId) return pUnit->_count;
+	}
+	return 0;
+}
+
 bool KPlayerCardDepot::SaveDeck(int deckId,KIntegerList& tmpLst)
 {
 	return  KPlayerRecordAssist::updateCardDeck(m_record,tmpLst,deckId);

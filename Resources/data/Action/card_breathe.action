@@ -2,7 +2,8 @@
 <ag>
 <action  class="null">
   <affect_body>
-  	 <affector class="breathe" createtime="0" iVal="105" fVal="1.0" obj="card" life="0" />
+  	<affector class="breathe" createtime="0" iVal="105" fVal="1.0" obj="card" life="0" />
+	<affector class="tmpLayer" createtime="0.0" iVal="1000" life="0" />
   </affect_body>
 </action>
 </ag>

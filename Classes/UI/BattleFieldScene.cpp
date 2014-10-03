@@ -162,7 +162,7 @@ void BattleFieldScene::onTurnBegin()
 
 void BattleFieldScene::onTurnEnd()
 {
-
+	m_indicatePanel.OnSelectSrcCard(NULL);
 	KClickCardMgr::getSingleton().HideBigCard();
 	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCurPlayer();
 	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
@@ -211,7 +211,7 @@ void BattleFieldScene::DoEndTurn(CCObject* sender)
 	}else{
 		KSocketFacade::DoEndTurn();
 	}
-	m_indicatePanel.OnSelectSrcCard(NULL);
+
 }
 
 void BattleFieldScene::ReGenerateAllCard()
@@ -316,11 +316,13 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);
 	KCardInstList tmpLst,tmpLst2;
 	_copyCardSet(lst,&tmpLst,NULL,KCardInst::enum_slot_hand);
-	for(KCardInstList::iterator it = tmpLst.begin();it!=tmpLst.end();++it){
+	int pos=0;
+	for(KCardInstList::iterator it = tmpLst.begin();it!=tmpLst.end();++it,++pos){
 		if(!(*it)->getActor()) continue;
 		tmpLst2.push_back(*it);
 	}
-	KUIAssist::_moveCardSet(&tmpLst2,"go_hand");
+	KUIAssist::_playAction(&tmpLst2,"go_hand");
+	KUIAssist::_playAction(cardList,"card_resortZOrder");
 
 	//FreshAllCard();
 }

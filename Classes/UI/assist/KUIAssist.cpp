@@ -151,7 +151,7 @@ void KUIAssist::_showCard(KCardInst* card)
 	
 	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCardOwner(card);
 	KCardInstList* lst = guy->QueryCardSet(card->GetSlot());
-	KUIAssist::_moveCardSet(lst,"card_resort");
+	KUIAssist::_playAction(lst,"card_resort");
 	
 }
 
@@ -164,7 +164,7 @@ void KUIAssist::_removeCardSet(KCardInstList* lst)
 	}
 }
 
-void KUIAssist::_moveCardSet(KCardInstList* lst,const char* actionname)
+void KUIAssist::_playAction(KCardInstList* lst,const char* actionname)
 {
 	for(KCardInstList::iterator it=lst->begin();it!=lst->end();++it){
 		KCardInst* card = *it;
@@ -495,7 +495,7 @@ void KUIAssist::_resortCardSet(FBattleGuy* guy,int slot)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	_moveCardSet(&tmpLst,"card_resort");
+	_playAction(&tmpLst,"card_resort");
 }
 
 
@@ -507,7 +507,7 @@ void KUIAssist::_resortHandCardSet(FBattleGuy* guy)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	_moveCardSet(&tmpLst,"card_resort");
+	_playAction(&tmpLst,"card_resort");
 }
 
 void KUIAssist::_delayResortHandCardSet(FBattleGuy* guy)
@@ -518,7 +518,7 @@ void KUIAssist::_delayResortHandCardSet(FBattleGuy* guy)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		if(actor&&actor->GetUI()) tmpLst.push_back(*it);
 	}
-	_moveCardSet(&tmpLst,"card_delayMove");
+	_playAction(&tmpLst,"card_delayMove");
 }
 
 void KUIAssist::_setActionParamSlot(K3DActionParam* param)

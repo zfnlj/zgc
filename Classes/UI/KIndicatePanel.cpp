@@ -163,7 +163,9 @@ void KIndicatePanel::ActiveArr(KCardInstList* lst,KCardInstList* oldLst,bool bGr
 
 void KIndicatePanel::OnSelectCardOK()
 {
-	if(m_selActor) m_selActor->GetActionMgr().LimitAlive("card_breathe");
+	if(m_selActor){
+		m_selActor->GetActionMgr().LimitAlive("card_breathe");
+	}
 	m_selActor = NULL;
 }
 
