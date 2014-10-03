@@ -7,7 +7,7 @@
             <key>CloseNormal.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,270},{53,35}}</string>
+                <string>{{2,314},{53,35}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>arrow_to.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,164},{29,30}}</string>
+                <string>{{130,208},{29,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>fateStone.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{130,210},{64,64}}</string>
+                <string>{{162,210},{64,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,11 +46,11 @@
             <key>gold.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,266},{54,64}}</string>
+                <string>{{130,276},{54,64}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{5,0},{54,64}}</string>
                 <key>sourceSize</key>
@@ -59,7 +59,7 @@
             <key>leader.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{160,160}}</string>
+                <string>{{2,46},{160,160}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>lock.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,164},{126,104}}</string>
+                <string>{{2,208},{126,104}}</string>
                 <key>offset</key>
                 <string>{-2,4}</string>
                 <key>rotated</key>
@@ -82,10 +82,23 @@
                 <key>sourceSize</key>
                 <string>{130,112}</string>
             </dict>
+            <key>money_ret_txt.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{164,42}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{1,0},{164,42}}</string>
+                <key>sourceSize</key>
+                <string>{166,42}</string>
+            </dict>
             <key>new_icon.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{196,210},{58,54}}</string>
+                <string>{{196,276},{58,54}}</string>
                 <key>offset</key>
                 <string>{-1,0}</string>
                 <key>rotated</key>
@@ -111,7 +124,7 @@
             <key>short_but_1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{164,40},{78,36}}</string>
+                <string>{{168,40},{78,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +137,7 @@
             <key>short_but_2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{164,2},{78,36}}</string>
+                <string>{{168,2},{78,36}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -157,7 +170,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cffa117ae7bbf3195638be08f11dee56$</string>
+            <string>$TexturePacker:SmartUpdate:3992f44c8504c2434a32a956eff268a0$</string>
             <key>textureFileName</key>
             <string>ui_elem.png</string>
         </dict>

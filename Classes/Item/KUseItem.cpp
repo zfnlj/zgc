@@ -17,6 +17,7 @@
 #include "../../Inc/PacketGate/c_game_packet.h"
 #include "../common/KCommonObj.h"
 #include "../common/KPlayerBagAssist.h"
+#include "../KNet/KNetMsgFacade.h"
 
 using namespace KAttributeAbout;
 using namespace System::Collections;
@@ -287,10 +288,32 @@ void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int ran
 			KHeroDef hero;
 			hero.Generate(*it);
 			KPlayerRecordAssist::addHero(pPlayer->GetPlayerRecord(),&hero);
+		}else if(pPlayer->GetCardDepot()->GetCardNum(pCardStatic->GetID())>=2){
+			switch(pCardStatic->GetRank()){
+			case 0:
+				genCard.AddMoney(40);
+				break;
+			case 1:
+				genCard.AddMoney(80);
+				break;
+			case 2:
+				genCard.AddMoney(120);
+				break;
+			case 3:
+				genCard.AddMoney(150);
+				break;
+			case 4:
+				genCard.AddMoney(200);
+				break;
+			}
+			bNew = false;
 		}else{
 			KPlayerRecordAssist::addStoreCard(pPlayer->GetPlayerRecord(),*it,1,bNew);
 		}
 		genCard.AddCard(*it,bNew);
+	}
+	if(genCard.money>0){
+		KNetMsgFacade::onAddMoney(genCard.money);
 	}
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_WORLD_GEN_PLAYERCARD,(unsigned long long)&genCard,0);
 }

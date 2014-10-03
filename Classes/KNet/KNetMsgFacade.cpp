@@ -114,6 +114,15 @@ void KNetMsgFacade::onChangeMoney(const void* pData, int len)
 	}
 }
 
+void KNetMsgFacade::onAddMoney(int val)
+{
+	KMainPlayer::RealPlayer()->m_money.Increase(val);
+	GameRoot::getSingleton().getMainMenuScene()->onUpdateMoney();
+	if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
+		KMainPlayer::RealPlayer()->GetPlayerRecord()->updateMask(tb_player_record::_CRI);
+	}
+}
+
 void KNetMsgFacade::syncAvailQuests(const void* pData, int len)
 {
 	KPlayerQuestManager& playerQuestManager = KMainPlayer::RealPlayer()->m_questManager;

@@ -42,7 +42,7 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 	SC_GenPlayerCard* pGen = (SC_GenPlayerCard*)p1;
 	for(int i=0;i<pGen->count;i++){
 		char slotName[20];
-		sprintf(slotName,"select_%d",i+1);
+		sprintf(slotName,"select_%d",i);
 		UIImageView* slotView = (UIImageView*)m_layer->getWidgetByName(slotName);
 		if(!slotView) continue;
 
@@ -61,6 +61,20 @@ void KGenCardPanel::init(cocos2d::extension::UILayer* layer,unsigned long long p
 		KAction* pAction = actor->GetActionMgr().PlayAction("gen_card");
 		pAction->SetDelayTime(i*1.5);
 	}
+	UIImageView* pMoneyTxt = (UIImageView*)UIHelper::seekWidgetByName(m_Panel,"money_return_txt");
+	UILabelBMFont* pMoneyVal = (UILabelBMFont*)UIHelper::seekWidgetByName(m_Panel,"money_return_val");
+	if(pGen->money>0){
+		pMoneyTxt->setVisible(true);
+		pMoneyVal->setVisible(true);
+		char sz[64];
+		sprintf(sz,"%d",pGen->money);
+		pMoneyVal->setText(sz);
+
+	}else{
+		pMoneyTxt->setVisible(false);
+		pMoneyVal->setVisible(false);
+	}
+
 	m_delayCloseTime = 10.0f;
 }
 

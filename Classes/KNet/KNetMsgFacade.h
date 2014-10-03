@@ -19,7 +19,7 @@ public:
 	static void onInitOneBag(const void* pData,int len);
 	static void onChangeMoney(const void* pData, int len);
 	static void syncAvailQuests(const void* pData, int len);
-
+	static void onAddMoney(int val);
 	//quest
 	static void onQuestFinished(int qId);
 	static void onCancleQuest(int qId);

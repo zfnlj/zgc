@@ -641,8 +641,10 @@ struct SC_GenPlayerCard{
 	int cardID[MAX_GEN_CARD_NUM];
 	bool newFlag[MAX_GEN_CARD_NUM];
 	int count;
+	int money;
 	SC_GenPlayerCard(){
 		count = 0;
+		money = 0;
 		memset(cardID,0,sizeof(count));
 	}
 	bool AddCard(int id,bool bNew){
@@ -650,6 +652,9 @@ struct SC_GenPlayerCard{
 		cardID[count] = id;
 		newFlag[count++] = bNew;
 		return true;
+	}
+	void AddMoney(int val){
+		money += val;
 	}
 };
 
