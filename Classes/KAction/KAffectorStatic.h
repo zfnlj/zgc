@@ -45,6 +45,7 @@ enum AffectorType
 	Affector_summon,
 	Affector_summonSelf,
 	Affector_resortHand,
+	Affector_reZOrderHand,
 	Affector_resortZOrder,
 	Affector_drawCard,
 	Affector_anim,

@@ -3,6 +3,7 @@
 <action class="null">
   <affect_body>
   	<affector class="resortHand" createtime="1.0" life="0.001" />
+  	<affector class="reZOrderHand" createtime="1.0" life="0.001" />	
   </affect_body>
 </action>
 </ag>

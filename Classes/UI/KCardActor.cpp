@@ -293,9 +293,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bBigCard,b
 		}
 		if(strcmp(info,labelAtk->getStringValue())!=0){
 			if(!bInit && !bBigCard){
-				float oldScale = labelAtk->getScale();
-				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
-				labelAtk->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+				labelAtk->runAction(  CCSequence::create(CCScaleTo::create(0.2f, 0.8f), CCScaleTo::create(0.3f, 0.6f), NULL));
 			}
 			labelAtk->setStringValue(info);
 		}

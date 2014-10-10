@@ -143,6 +143,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_summonSelf;
 	}else if ( strcmp(szName,"resortHand") == 0 ){
 		eType = Affector_resortHand;
+	}else if ( strcmp(szName,"reZOrderHand") == 0 ){
+		eType = Affector_reZOrderHand;
 	}else if ( strcmp(szName,"resortZOrder") == 0 ){
 		eType = Affector_resortZOrder;
 	}else if ( strcmp(szName,"anim") == 0 ){

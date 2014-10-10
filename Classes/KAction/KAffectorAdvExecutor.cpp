@@ -103,6 +103,12 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 			KUIAssist::_resortHandCardSet(cardActor->GetCard()->GetOwner()->GetFacade());
 		}
 		break;
+	case Affector_reZOrderHand:
+		{
+			KCardActor* cardActor = (KCardActor*)GetActor();
+			KUIAssist::_reZOrderHandCardSet(cardActor->GetCard()->GetOwner()->GetFacade());
+		}
+		break;
 	case Affector_anim:
 		if(GetActor()) m_dictObj = GetActor()->CreateAnim(m_AffectorStatic->GetObj(),m_AffectorStatic->GetSlot(),
 															m_AffectorStatic->GetFloatVal(),m_AffectorStatic->GetIntVal(),m_AffectorStatic->GetFloatVal2(),mbInfinite);
