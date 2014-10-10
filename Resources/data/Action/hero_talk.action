@@ -2,7 +2,7 @@
 <ag>
 <action class="null">
   <affect_body>
-  	<affector class="talk"  slot="hero_talk_pos" createtime="0" fVal="0.8" obj="GUI/hero_talk.json" life="4" />
+  	<affector class="talk"  slot="hero_talk_pos" createtime="0" iVal="1000" fVal="0.8" obj="GUI/hero_talk.json" life="4" />
   	<affector class="null"  createtime="0"  life="18" />
   </affect_body>
 </action>

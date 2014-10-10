@@ -218,7 +218,7 @@ bool KBattleGod::OnPlayCard(KBattleCtrlBase* ctrl,KBattleCtrlBase::BattleOp* op)
 bool KBattleGod::DoCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility,KCardInst* pSrc,KCardInst* pDes,int actor)
 {
 	if(pAbility->GetWhich()==KAbilityStatic::which_owner) return pSrc->GetOwner()->DoGuyAbility(ctrl,pSrc,pAbility,actor);
-	if(pDes && pDes->HasBuf(pAbility)) return false;
+	if(!pAbility->IsArea() && pDes && pDes->HasBuf(pAbility)) return false;
 
 	bool ret = false;
 	if(actor==0) actor=pSrc->GetRealId();

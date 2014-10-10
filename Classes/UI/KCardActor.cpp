@@ -131,7 +131,7 @@ void KCardActor::resortZOrder(int val)
 		for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it,pos++)
 		{
 			KCardActor* actor = (KCardActor*) (*it)->getActor();
-			actor->GetUI()->setZOrder(val+pos);
+			if(actor&& actor->GetUI()) actor->GetUI()->setZOrder(val+pos);
 		}
 	}
 
@@ -282,9 +282,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bBigCard,b
 		}
 		if(strcmp(info,labelHp->getStringValue())!=0){
 			if(!bInit && !bBigCard){
-				float oldScale = labelHp->getScale();
-				CCActionInterval*  actionBy = CCScaleBy::create(0.2f, 1.2/oldScale, 1.2/oldScale);
-				labelHp->runAction( CCSequence::create(actionBy, actionBy->reverse(), NULL));
+				labelHp->runAction( CCSequence::create(CCScaleTo::create(0.2f, 0.8f), CCScaleTo::create(0.3f, 0.6f), NULL));
 			}
 			labelHp->setStringValue(info);
 		}

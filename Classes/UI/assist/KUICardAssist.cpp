@@ -332,6 +332,7 @@ UIWidget* KUICardAssist::_createCardLayout(KCardStatic* pST,bool bBig,KCardInst*
 
 
 	UILabelAtlas* labelHp = (UILabelAtlas*)ui->getChildByName("hp");
+
 	if(pLayout->IsShowHp()){
 		sprintf(sz,"%d",pST->GetHp());
 		labelHp->setStringValue(sz);
