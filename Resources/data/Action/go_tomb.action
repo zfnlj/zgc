@@ -5,9 +5,7 @@
   <affect_body>
   	 <affector class="scale" createtime="0" fVal="0.4" life="0.4" />
      <affector class="move" slot="card_pos" createtime="0" fVal="1000" life="10" />
-     <affector class="layer" createtime="1.0" fVal="1" life="0.001" />
-
-
+     <affector class="ZOrderCardSet" iVal="7" createtime="1.0" life="0.001" />
   </affect_body>
 </action>
 </ag>
