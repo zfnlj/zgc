@@ -322,7 +322,11 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 		tmpLst2.push_back(*it);
 	}
 	KUIAssist::_playAction(&tmpLst2,"go_hand");
-	KUIAssist::_playAction(cardList,"card_resortZOrder");
+	it = tmpLst2.begin();
+	if(it!=tmpLst2.end()){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		actor->GetActionMgr().PlayAction("delay_resortHand");
+	}
 
 	//FreshAllCard();
 }

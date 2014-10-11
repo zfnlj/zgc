@@ -498,6 +498,16 @@ void KUIAssist::_resortCardSet(FBattleGuy* guy,int slot)
 	_playAction(&tmpLst,"card_resort");
 }
 
+void KUIAssist::_ZOrderCardSet(FBattleGuy* guy,int slot)
+{
+	KCardInstList* lst = guy->QueryCardSet(slot);
+	int pos=0;
+	for(KCardInstList::iterator it = lst->begin();it!=lst->end();++it){
+		KCardActor* actor = (KCardActor*)(*it)->getActor();
+		if(actor&& actor->GetUI()) actor->GetUI()->setZOrder(pos);
+	}
+}
+
 void KUIAssist::_reZOrderHandCardSet(FBattleGuy* guy)
 {
 	KCardInstList* lst = guy->QueryCardSet(KCardInst::enum_slot_hand);

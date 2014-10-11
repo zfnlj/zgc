@@ -92,21 +92,16 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_summonSelf:
 		if(GetActor()) GetActor()->SummonSelf();
 		break;
-	case Affector_resortZOrder:
-		if(GetActor()){
-			GetActor()->resortZOrder(m_AffectorStatic->GetIntVal());
-		}
-		break;
 	case Affector_resortHand:
 		{
 			KCardActor* cardActor = (KCardActor*)GetActor();
 			KUIAssist::_resortHandCardSet(cardActor->GetCard()->GetOwner()->GetFacade());
 		}
 		break;
-	case Affector_reZOrderHand:
+	case Affector_ZOrderCardSet:
 		{
 			KCardActor* cardActor = (KCardActor*)GetActor();
-			KUIAssist::_reZOrderHandCardSet(cardActor->GetCard()->GetOwner()->GetFacade());
+			KUIAssist::_ZOrderCardSet(cardActor->GetCard()->GetOwner()->GetFacade(),m_AffectorStatic->GetIntVal());
 		}
 		break;
 	case Affector_anim:

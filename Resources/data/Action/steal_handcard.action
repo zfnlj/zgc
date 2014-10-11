@@ -7,7 +7,6 @@
   	<affector class="action" obj="steal_handcard_show" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
   	<affector class="action" obj="delay_resortHand" tarFlag="0" createtime="3.0" life="0.001" />
-	<affector class="resortZOrder"  createtime="3.1"  life="0.1" /> 
   </affect_body>
 </action>
 
@@ -17,7 +16,6 @@
    	<affector class="scale" createtime="0" fVal="0.01" life="0.01" />
    	<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="gen_circle" life="1.0" />
   	<affector class="scale" createtime="0.1" fVal="0.8" life="0.6" />
-  	
   </affect_body>
 </action>
 </ag>
