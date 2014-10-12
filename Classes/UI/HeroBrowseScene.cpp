@@ -159,7 +159,8 @@ void HeroBrowseScene::ShowHeroCards()
 	int heroNum = m_depot->GetHeroNum();
 	KHeroDefList heroLst,tmpLst;
 	m_depot->PickAllHero(heroLst);
-	
+	KHeroDef curHero;
+	m_depot->PickCurHero(curHero);
 	KCardGroupAssist::FilterHero(heroLst,tmpLst,m_radioRace.GetSelectVal(),m_curPage*PAGE_CARD_NUM);
 	UpdatePageInfo(tmpLst.size());
 
@@ -176,6 +177,11 @@ void HeroBrowseScene::ShowHeroCards()
 		UIImageView* widgetPos =(UIImageView*)UIHelper::seekWidgetByName(m_ui,sz);
 		widget->setPosition(widgetPos->getPosition());
 		widget->setTouchEnable(false);
+
+		UIImageView* pCardCenter = (UIImageView*)UIHelper::seekWidgetByName(widget,"card_center");
+		pCardCenter->loadTexture("card_fight_txt.png",UI_TEX_TYPE_PLIST);
+		pCardCenter->setVisible((curHero._id == pHeroDef->_id)?true:false);
+
 		KCardGroupAssist::SetSlotElem(&m_slotElem[curPos++],pHeroDef->_id,KCardGroupSlotElem::elem_hero,widget);
 
 	}

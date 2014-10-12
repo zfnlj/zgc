@@ -58,6 +58,7 @@ void MainMenuScene::runAutoTest(float dt)
 // on "init" you need to initialize your instance
 bool MainMenuScene::init()
 {
+
 	//CCDirector::sharedDirector()->getRunningScene
 	m_ui = NULL;
 
@@ -108,6 +109,12 @@ bool MainMenuScene::init()
 
 	UpdateLockStatus();
 	ShowCollectInfo();
+	{
+		int n = KPlayerRecordAssist::RemainDailyQuestNum(&KMainPlayer::RealPlayer()->m_questRecord);
+		for(int i=0;i<6;i++){
+			KPlayerRecordAssist::UseDailyAwardSlot(&KMainPlayer::RealPlayer()->m_questRecord);
+		}
+	}
     return true;
 }
 

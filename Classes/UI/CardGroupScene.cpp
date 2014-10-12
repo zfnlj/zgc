@@ -316,7 +316,7 @@ void CardGroupScene::FreshMiniCardList()
 			this->addWidget(elem._pWidget);
 		}
 		elem._pWidget->setPosition(pt);
-		pt.y -= 32;
+		if(pt.y >60) pt.y -= 32;
 	}
 }
 

@@ -287,23 +287,24 @@ void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int ran
 		if(pCardStatic->GetType()==KCardStatic::card_hero){
 			KHeroDef hero;
 			hero.Generate(*it);
+			bNew = false;
 			KPlayerRecordAssist::addHero(pPlayer->GetPlayerRecord(),&hero);
 		}else if(pPlayer->GetCardDepot()->GetCardNum(pCardStatic->GetID())>=2){
 			switch(pCardStatic->GetRank()){
 			case 0:
-				genCard.AddMoney(40);
+				genCard.AddMoney(20);
 				break;
 			case 1:
-				genCard.AddMoney(80);
+				genCard.AddMoney(40);
 				break;
 			case 2:
-				genCard.AddMoney(120);
+				genCard.AddMoney(80);
 				break;
 			case 3:
-				genCard.AddMoney(150);
+				genCard.AddMoney(120);
 				break;
 			case 4:
-				genCard.AddMoney(200);
+				genCard.AddMoney(160);
 				break;
 			}
 			bNew = false;
