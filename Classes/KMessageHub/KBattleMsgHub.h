@@ -11,6 +11,7 @@ public:
 	virtual void TurnBegin(unsigned long long Param1, unsigned long long Param2);  //回合开始
 	virtual void TurnEnd(unsigned long long Param1, unsigned long long Param2);    //回合结束
 	virtual void DrawCard(unsigned long long Param1, unsigned long long Param2);   //抓牌
+	virtual void DoubleDraw(unsigned long long Param1, unsigned long long Param2); 
 	virtual void CardDuelResult(unsigned long long Param1, unsigned long long Param2); //卡片对打结果
 	virtual void UseRes(unsigned long long Param1, unsigned long long Param2); //卡片对打结果
 	virtual void CardMove(unsigned long long Param1, unsigned long long Param2); //卡片对打结果

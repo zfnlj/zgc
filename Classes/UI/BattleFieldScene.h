@@ -59,7 +59,7 @@ public:
 	void ActiveMyFightArea();
 	void DeactiveMyFightArea();
 	void RunTest2(CCObject* sender);
-
+	void onTurnBeginDoubleDraw();
 	void OnSelectCardOK();
 	void onClickBackground(CCObject* sender);
 	cocos2d::extension::UILayer* GetLayer(){ return this;}

@@ -207,7 +207,7 @@ int KHeroDef::GetAtkVal() const
 	float resLuckyVal = 1.5f*(float)_resLucky;
 	if(resLuckyVal>300.0f) resLuckyVal=300.0f;
 
-	float fateVal = 2.0f*(float)_fate;
+	float fateVal = 4.0f*(float)_fate;
 	if(fateVal>400.0f) fateVal = 400.0f;
 	
 	return (int)(strongVal + skillVal + resLuckyVal + fateVal);

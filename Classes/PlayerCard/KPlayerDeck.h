@@ -5,7 +5,7 @@
 
 #define MAX_HERO_SKILL_LEV 3
 #define MAX_HERO_LEV_INDEX 5
-#define MAX_HERO_FATE_LEV 30
+#define MAX_HERO_FATE_LEV 100
 class KDeckDefStatic;
 struct KHeroDef{
 	struct skillDef{

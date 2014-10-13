@@ -159,6 +159,16 @@ void BattleFieldScene::onTurnBegin()
 	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCurPlayer();
 	m_resPanel.UpdateRes();
 	KUIAssist::_updateCardListBuf(guy->QueryCardSet(KCardInst::enum_slot_fight));
+	
+}
+
+void BattleFieldScene::onTurnBeginDoubleDraw()
+{
+	if(KClientBattleCtrl::getInstance()->IsMyTurn()){
+		m_actor.GetActionMgr().PlayAction("i_double_draw");
+	}else{
+		m_actor.GetActionMgr().PlayAction("u_double_draw");
+	}
 }
 
 void BattleFieldScene::onTurnEnd()

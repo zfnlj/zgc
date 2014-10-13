@@ -127,7 +127,11 @@ KCardInst* KBattleDeck::SummonCard(int id)
 void KBattleDeck::TurnBeginDrawCard()
 {
 	int drawNum = 1;
-	if(m_heroDef.GetFate()>g_rnd.GetRandom(0,100)) drawNum++;
+	if(m_heroDef.GetFate()>g_rnd.GetRandom(0,400)){
+		drawNum++;
+		KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_DOUBLEDRAW,0,
+													(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
+	}
 	DrawCard(drawNum);
 }
 

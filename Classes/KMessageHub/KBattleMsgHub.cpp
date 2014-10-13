@@ -43,6 +43,13 @@ void KBattleMsgHub::TurnBegin(unsigned long long Param1, unsigned long long Para
 #endif
 }
 
+void KBattleMsgHub::DoubleDraw(unsigned long long Param1, unsigned long long Param2)
+{
+#ifdef _USE_COCOS2DX
+	GameRoot::getSingleton().getBattleScene()->onTurnBeginDoubleDraw();
+#endif
+}
+
 void KBattleMsgHub::TurnEnd(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX

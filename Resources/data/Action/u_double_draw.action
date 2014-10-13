@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ag>
+<action class="null">
+  <affect_body> 
+   	<affector class="eff" slot="your_slot_base" obj="card_use" createtime="0.0" fVal="0.5" iVal="90"  life="2.0" />
+  </affect_body>
+</action>
+</ag>
+		
