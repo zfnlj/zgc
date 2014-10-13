@@ -8,6 +8,7 @@
 #include "../common/KUIMsgDef.h"
 #include "../PlayerCard/KTowerAssist.h"
 #include "../WorldObject/KPlayer.h"
+#include "../common/KPlayerRecordAssist.h"
 
 template<> KDynamicWorld* Singleton<KDynamicWorld>::mSingleton = 0;
 
@@ -78,6 +79,9 @@ void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 		KTowerAssist::_deactive(KMainPlayer::RealPlayer()->GetPlayerRecord());
 		KDynamicWorld::getSingleton().onSystemMsg(TOWER_CLOSE);
 	}else{
+		if(tp==scene_daily){
+			KPlayerRecordAssist::DailyStageLost(KMainPlayer::RealPlayer()->GetPlayerRecord());
+		}
 		KEventAbout::KEDBattleFailed evt;
 		evt.m_nID = questId;
 		FireEvent(evt);
