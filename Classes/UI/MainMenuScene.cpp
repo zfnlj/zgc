@@ -109,12 +109,6 @@ bool MainMenuScene::init()
 
 	UpdateLockStatus();
 	ShowCollectInfo();
-	{
-		int n = KPlayerRecordAssist::RemainDailyQuestNum(&KMainPlayer::RealPlayer()->m_questRecord);
-		for(int i=0;i<6;i++){
-			KPlayerRecordAssist::UseDailyAwardSlot(&KMainPlayer::RealPlayer()->m_questRecord);
-		}
-	}
     return true;
 }
 
