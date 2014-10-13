@@ -334,7 +334,8 @@ void KCardInst::DispleGoodBuf()
 	while(it != m_attr.m_bufList.end()){
 		KCardBuffer& buf = *it;
 		if(buf._pST->GetWhen()==KAbilityStatic::when_ever||
-			buf._pST->GetAbilityType()==KAbilityStatic::ability_bad){
+			buf._pST->GetAbilityType()==KAbilityStatic::ability_bad||
+			buf._pST->GetAbilityType()==KAbilityStatic::ability_neutral){
 			it++;
 		}else{
 			if(buf._pST->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(buf._pST);
@@ -352,6 +353,7 @@ void KCardInst::DispleBuf()
 			it++;
 		}else{
 			if(buf._pST->GetWhich()==KAbilityStatic::which_owner) m_Owner->RemoveGuyAbility(buf._pST);
+			if(buf._pST->GetWhat()==KAbilityStatic::what_atk_equ_hp) m_attr.setAddAtk(GetHp());
 			it = m_attr.m_bufList.erase(it);
 		}
 	}

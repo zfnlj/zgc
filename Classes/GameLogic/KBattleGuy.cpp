@@ -52,7 +52,8 @@ void KBattleGuy::onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectC
 	if(m_battleCtrl->GetMainPlayer()->GetImp()==this) playerCardDepot = KMainPlayer::RealPlayer()->GetCardDepot();
 	
 
-	if(pDeckDef){
+
+	/*if(pDeckDef){
 		m_Deck.initDeck(pDeckDef,bSelectCard);
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
@@ -65,7 +66,7 @@ void KBattleGuy::onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectC
 		playerCardDepot->PickCurHero(m_Deck.GetHeroDef());
 		m_Deck.SetHeroSkill();
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
-	}else
+	}else*/
 	{
 		m_Deck.createTestDeck();
 		m_attr.setMaxRes(8);
