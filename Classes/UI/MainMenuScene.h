@@ -21,7 +21,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-    void menuCloseCallback(CCObject* pSender);
+    void menuMailCallback(CCObject* pSender);
     virtual void update(float dt);
     // implement the "static node()" method manually
     CREATE_FUNC(MainMenuScene);

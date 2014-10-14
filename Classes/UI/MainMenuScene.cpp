@@ -82,17 +82,17 @@ bool MainMenuScene::init()
     //    you may modify it.
 
     // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseSelected.png",
+    CCMenuItemImage *pMailBut = CCMenuItemImage::create(
+                                        "mail_icon.png",
+                                        "mail_icon.png",
                                         this,
-                                        menu_selector(MainMenuScene::menuCloseCallback));
+                                        menu_selector(MainMenuScene::menuMailCallback));
     
-	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
-                                origin.y + pCloseItem->getContentSize().height/2));
+	pMailBut->setPosition(ccp(origin.x + visibleSize.width - pMailBut->getContentSize().width/2 ,
+                                origin.y + pMailBut->getContentSize().height/2));
 
     // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    CCMenu* pMenu = CCMenu::create(pMailBut, NULL);
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
 
@@ -113,7 +113,7 @@ bool MainMenuScene::init()
 }
 
 
-void MainMenuScene::menuCloseCallback(CCObject* pSender)
+void MainMenuScene::menuMailCallback(CCObject* pSender)
 {
     IOSFunc_Bridge IOSFunc;
 	IOSFunc.OpenFeedback();
