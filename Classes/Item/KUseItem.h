@@ -100,6 +100,7 @@ public:
 	void InitLuaFuncFlag(const char* tableName);
 	bool hasLua(int method);
 	MethodName luaMethod(int method);
+	void BuyGold(UINT64 playerId,char* goldName);
 	void GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate);
 	void GenerateCardDeck(UINT64 playerId,int deckId);
 	int  RndVal();
@@ -114,6 +115,7 @@ public:
 		DefMemberFunc(GetIntAttr);
 		DefMemberFunc(GetStringAttr);
 		DefMemberFunc(GeneratNormalCard);
+		DefMemberFunc(BuyGold);
 		DefMemberFunc(GenerateCardDeck);
 		DefMemberFunc(RndVal);
 		DefMemberFunc(GenerateHero);

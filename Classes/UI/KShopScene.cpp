@@ -101,29 +101,31 @@ void KShopScene::onClickBuy(CCObject* sender)
 	m_buyProduct = pBut->getTag();
 
 	const KItemAbout::KCreateInfo_ItemBase* item = KStoreManager::GetInstancePtr()->GetItemCreateInfo(m_buyProduct);
-	char sz[128];
-	KHelpStringStatic* willBuyString = KGameStaticMgr::getSingleton().GetHelpString(WILL_BUY_STR);
 
-	sprintf(sz,"%s [ %s ]?",willBuyString->GetString(),item->GetName());
+	KStoreAbout::KStoreProduct* pProduct = m_store->GetStoreProduct(m_buyProduct);
+	if(!pProduct) return;
+	if(pProduct->GetMoneyType()==0){ //╫П╠р
+		char sz[128];
+		KHelpStringStatic* willBuyString = KGameStaticMgr::getSingleton().GetHelpString(WILL_BUY_STR);
+		sprintf(sz,"%s [ %s ]?",willBuyString->GetString(),item->GetName());
+		KHelpStringStatic* titleString = KGameStaticMgr::getSingleton().GetHelpString(UI_NOTIFY_STR);
+		KPopupLayer::DoModal(titleString->GetString(),sz,KPopupLayer::DT_Yes_No,coco_pushselector(KShopScene::DoClickBuy),this);
+	}else{ //ож╫П
+		BuyProduct(m_buyProduct);
+	}
 
-	KHelpStringStatic* titleString = KGameStaticMgr::getSingleton().GetHelpString(UI_NOTIFY_STR);
-
-	KPopupLayer::DoModal(titleString->GetString(),sz,KPopupLayer::DT_Yes_No,coco_pushselector(KShopScene::DoClickBuy),this);
 }
 
-void KShopScene::DoClickBuy(CCObject* sender)
+void KShopScene::BuyProduct(int productId)
 {
-	UIWidget* pBut = (UIWidget*)sender;
-	if(pBut->getTag()!=KPopupLayer::RT_YES) return;
-
-	if(!KStoreManager::GetInstancePtr()->TryBuy(m_buyProduct,1)) return;
+	if(!KStoreManager::GetInstancePtr()->TryBuy(productId,1)) return;
 
 	KItemAbout::KBagManager* pBagMgr = KMainPlayer::Instance()->GetBagManagerPtr();
 	if(!pBagMgr) return;
 	KBagNormal* pBag = pBagMgr->FindNormalBag();
 	if(!pBag) return;
 
-	const KItemAbout::KCreateInfo_ItemBase* item = KStoreManager::GetInstancePtr()->GetItemCreateInfo(m_buyProduct);
+	const KItemAbout::KCreateInfo_ItemBase* item = KStoreManager::GetInstancePtr()->GetItemCreateInfo(productId);
 	if(!item) return;
 	int pos = pBag->GetFirstPos(item->s_nItemID);
 	if(pos<0) return;
@@ -134,6 +136,13 @@ void KShopScene::DoClickBuy(CCObject* sender)
 		//TBD
 	}
 	UpdateMoney();
+}
+
+void KShopScene::DoClickBuy(CCObject* sender)
+{
+	UIWidget* pBut = (UIWidget*)sender;
+	if(pBut->getTag()!=KPopupLayer::RT_YES) return;
+	BuyProduct(m_buyProduct);
 }
 
 void KShopScene::DoClickUseItem(CCObject* sender)
@@ -213,7 +222,7 @@ void KShopScene::InitItem()
 
 		sprintf(slot_name,"gold_icon_%d",index);
 		UIWidget* pWidget = UIHelper::seekWidgetByName(m_ui, slot_name);
-		pWidget->setVisible(true);
+		if(pStoreProduct->GetMoneyType()==0) pWidget->setVisible(true);
 
 		index++;
 	}

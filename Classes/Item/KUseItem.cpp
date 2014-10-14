@@ -274,6 +274,17 @@ void KUseItem::run(UINT64 playerId)
 
 }
 
+void KUseItem::BuyGold(UINT64 playerId,char* goldName)
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	KNetMsgFacade::onAddMoney(1000);
+#else
+	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
+#endif
+	
+	
+}
+
 void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate)
 {
 	SC_GenPlayerCard genCard;

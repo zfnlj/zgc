@@ -35,6 +35,7 @@ private:
 	void DoClickBuy(CCObject* sender);
 	void onClickBuy(CCObject* sender);
 	void DoClickUseItem(CCObject* sender);
+	void BuyProduct(int productId);
 	KStoreAbout::KStoreCreateInfo* m_store;
 	int m_buyProduct;
 	KGenCardPanel m_genCardPanel;

@@ -399,6 +399,7 @@ namespace KScriptAbout
 
 		EXPORT_STOREPRICE_TYPE(enumPT_none);
 		EXPORT_STOREPRICE_TYPE(enumPT_money);
+		EXPORT_STOREPRICE_TYPE(enumPT_cash);
 		EXPORT_STOREPRICE_TYPE(enumPT_bluePower);
 		EXPORT_STOREPRICE_TYPE(enumPT_item);
 		EXPORT_STOREPRICE_TYPE(enumPT_count);

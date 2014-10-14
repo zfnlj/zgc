@@ -29,6 +29,7 @@ namespace KStoreAbout
 	{
 		enumPT_none = -1,
 		enumPT_money,			// 金钱 消耗T1Param1
+		enumPT_cash,            //现金
 		enumPT_bluePower,		// 深蓝之力 消耗T1Param1
 		enumPT_item,			// 道具 消耗ID为T1Param2的道具T1Param1个
 
