@@ -40,6 +40,8 @@ void GameRoot::init()
 
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GameRoot::update),this,0.1f,false);
 
+	m_iap.requestProducts();
+
 	unsigned long long val = time(NULL);
 	srand(val);//
 	//KEventAbout::KEDKillMonster evt;

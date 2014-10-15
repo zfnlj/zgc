@@ -5,7 +5,7 @@
 #include "UILayer.h"
 #include "KSceneLayerBase.h"
 #include "KGenCardPanel.h"
-#include "platform/KIOSiAP_Bridge.h"
+
 USING_NS_CC;
 
 namespace KStoreAbout{
@@ -40,7 +40,7 @@ private:
 	KStoreAbout::KStoreCreateInfo* m_store;
 	int m_buyProduct;
 	KGenCardPanel m_genCardPanel;
-	IOSiAP_Bridge m_iap;
+	
 };
 
 #endif // __BattleFieldScene_SCENE_H__

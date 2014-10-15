@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "System/Singleton.h"
 #include "GameLogic/KClientBattleCtrl.h"
+#include "platform/KIOSiAP_Bridge.h"
 class BattleFieldScene;
 class MainMenuScene;
 
@@ -38,6 +39,7 @@ private :
 	MainMenuScene* _mainMenuScene;
 	int m_inc;
 	char m_rootPath[256];
+	IOSiAP_Bridge m_iap;
 
 };
 
