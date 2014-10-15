@@ -17,7 +17,7 @@ public:
     virtual void onRequestProductsFinish(void);
     virtual void onRequestProductsError(int code);
     virtual void onPaymentEvent(std::string &identifier, IOSiAPPaymentEvent event, int quantity);
-
+	void Payment(std::string &identifier,int count);
 private:
 	std::vector <std::string>  m_productIdentifiers;
 	std::string	m_identifier;

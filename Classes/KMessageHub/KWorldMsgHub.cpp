@@ -31,3 +31,13 @@ void KWorldMsgHub::GenPlayerCard(unsigned long long Param1, unsigned long long P
 	
 #endif
 }
+
+
+void KWorldMsgHub::iapCallback(unsigned long long Param1, unsigned long long Param2)
+{
+#ifdef _USE_COCOS2DX
+	
+#else
+	
+#endif
+}

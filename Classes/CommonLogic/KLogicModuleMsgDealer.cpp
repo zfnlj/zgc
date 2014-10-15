@@ -39,6 +39,7 @@ void KLogicModuleMsgDealer::RegisterAllMsg()
 
 	RegisterMsg<KWorldMsgHub>(LOGIC_WORLD_GEN_PLAYERCARD, &KMsgHub::getSingleton().GetWorldMsgHub(), &KWorldMsgHub::GenPlayerCard);
 	RegisterMsg<KWorldMsgHub>(LOGIC_WORLD_USE_ITEM, &KMsgHub::getSingleton().GetWorldMsgHub(), &KWorldMsgHub::UseItem);
+	RegisterMsg<KWorldMsgHub>(LOGIC_WORLD_IAP_CALLBACK, &KMsgHub::getSingleton().GetWorldMsgHub(), &KWorldMsgHub::iapCallback);
 	
 	
 }
