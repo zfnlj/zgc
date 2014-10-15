@@ -1,5 +1,5 @@
-#ifndef _K_IOSIAP_BRIDGE_H_
-#define _K_IOSIAP_BRIDGE_H_
+#ifndef _K_IOSFUNC_BRIDGE_H_
+#define _K_IOSFUNC_BRIDGE_H_
 
 
 #include "IOSFunc.h"

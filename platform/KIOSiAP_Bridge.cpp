@@ -9,6 +9,8 @@ IOSiAP_Bridge::IOSiAP_Bridge()
 {
     iap = new IOSiAP();
     iap->delegate = this;
+    m_productIdentifiers[0]="gold_01";
+    m_productIdentifiers[1]="gold_02";
 }
 
 IOSiAP_Bridge::~IOSiAP_Bridge()

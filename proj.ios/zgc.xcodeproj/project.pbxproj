@@ -353,6 +353,7 @@
 		814E9E2A18D92EA2003749B2 /* KCardLayoutStatic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814E9E2818D92EA2003749B2 /* KCardLayoutStatic.cpp */; };
 		814E9E4618D932B7003749B2 /* Item in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4518D932B7003749B2 /* Item */; };
 		814E9E4818D932E4003749B2 /* StringManager in Resources */ = {isa = PBXBuildFile; fileRef = 814E9E4718D932E4003749B2 /* StringManager */; };
+		815FF2A019ECF16500CDE840 /* mail_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 815FF29F19ECF16500CDE840 /* mail_icon.png */; };
 		81686242189697F200789DE8 /* KMoney.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 81686240189697F200789DE8 /* KMoney.cpp */; };
 		8168635C18969AE100789DE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		8168636118969AE100789DE8 /* lua.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8168636018969AE100789DE8 /* lua.h */; };
@@ -1376,6 +1377,7 @@
 		814E9E2918D92EA2003749B2 /* KCardLayoutStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KCardLayoutStatic.h; sourceTree = "<group>"; };
 		814E9E4518D932B7003749B2 /* Item */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Item; sourceTree = "<group>"; };
 		814E9E4718D932E4003749B2 /* StringManager */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StringManager; sourceTree = "<group>"; };
+		815FF29F19ECF16500CDE840 /* mail_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mail_icon.png; sourceTree = "<group>"; };
 		81686240189697F200789DE8 /* KMoney.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KMoney.cpp; sourceTree = "<group>"; };
 		81686241189697F200789DE8 /* KMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KMoney.h; sourceTree = "<group>"; };
 		8168635B18969AE100789DE8 /* liblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3059,6 +3061,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				815FF29F19ECF16500CDE840 /* mail_icon.png */,
 				81A5426019D8030300B65580 /* icon */,
 				81A5423419D7A21500B65580 /* zgc_bk.jpg */,
 				81DB558C199AFAAC0076CE95 /* Images.xcassets */,
@@ -4808,7 +4811,7 @@
 						DevelopmentTeam = J4E75UJF2F;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -4879,6 +4882,7 @@
 				379BB9CD17F03F3700829B88 /* json_internalmap.inl in Resources */,
 				810C389D185F28DD00F03DFA /* KTPStream.inl in Resources */,
 				810C389B185F28DD00F03DFA /* KTPObjPool.inl in Resources */,
+				815FF2A019ECF16500CDE840 /* mail_icon.png in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				810C38A1185F28DD00F03DFA /* KTPTask.inl in Resources */,
 				81A5426119D8030300B65580 /* icon in Resources */,
@@ -5518,7 +5522,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -5571,7 +5575,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -5732,7 +5736,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "748a69d1-a156-4b4c-838a-85c5ce0ad119";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
