@@ -81,6 +81,7 @@ bool KShopScene::init()
 	InitItem();
 	UpdateNormalBag();
 	UpdateMoney();
+	m_iap.requestProducts();
     return true;
 }
 
