@@ -113,6 +113,16 @@ bool KUseItemManager::ReloadUseItem(int qid)
 	return true;
 }
 
+bool KUseItemManager::UseItem(const char* itemName,UINT64 playerId)
+{
+	char f[256];
+	sprintf_k(f, sizeof(f), "UseItemUtil:%s", itemName);
+	if(!LuaWraper.hasFunction(f)) return false;
+
+	LuaWraper.Call<int>(f);
+	return true;
+}
+
 bool KUseItemManager::UseItem(int id,UINT64 playerId)
 {
 	KUseItem* useItem = GetUseItem(id);

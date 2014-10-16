@@ -32,6 +32,7 @@ public:
 	KUseItem* GetUseItem(int id);	// 通过任务ID取得任务指针
 	bool ReloadUseItem(int qid);		// 重新加载任务脚本
 	bool UseItem(int id,UINT64 playerId);
+	bool UseItem(const char* itemName,UINT64 playerId);
 public:
 	UseItemMap m_mapUseItem;
 };

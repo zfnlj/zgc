@@ -15,6 +15,7 @@
 #include "../sqlite/KUserQuestSql.h"
 #include "../common/KPlayerRecordAssist.h"
 #include "../GameLogic/KDynamicWorld.h"
+#include "../KNet/KNetMsgFacade.h"
 
 //#include "Business/KBusinessManager.h"
 //#include "Store/KStoreManager.h"
@@ -291,4 +292,9 @@ bool KMainPlayer::OnEventImp(KEventAbout::KEventID id, const KEventAbout::KEvent
 		KPlayerRecordAssist::UpdataQuestSession(&m_pRealPlayer->m_questRecord,pQuestSession->m_pQuest);
 	}
 	return false;
+}
+
+void KMainPlayer::AddMoney(int val)
+{
+	KNetMsgFacade::onAddMoney(val);
 }

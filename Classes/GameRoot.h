@@ -26,7 +26,7 @@ public :
 	void init();
 	const char* GetRootPath(){return m_rootPath;}
 	KBattleCtrlBase* BattleCtrl();
-
+	IOSiAP_Bridge* IAP_Bridge(){ return &m_iap;}
 	void ParseCmd(char* cmdLine);
 	void RunAutoTest();
 	void onGameEnd(unsigned long long Param1);

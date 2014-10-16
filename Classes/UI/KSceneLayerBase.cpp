@@ -2,6 +2,7 @@
 #include "ccMacros.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "assist/KUIAssist.h"
+#include "../Item/KUseItemManager.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -69,4 +70,13 @@ void KSceneLayerBase::CreateCloseBut()
 void KSceneLayerBase::menuCloseCallback(CCObject* pSender)
 {
 	onCloseCallback();
+}
+
+void KSceneLayerBase::onIAPCallback(const char* productName,int count)
+{
+	if(strlen(productName)>0){
+		for(int i=0;i<count;i++){
+			KItemAbout::KUseItemManager::GetInstance()->UseItem(productName,0);
+		}
+	}
 }

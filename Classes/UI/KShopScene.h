@@ -30,6 +30,7 @@ public:
 	virtual void onSystemMsg(int id);
 	void DoBuyMoney(CCObject* sender);
 	virtual void onCloseCallback(){}
+	virtual void onIAPCallback(const char* productName,int count);
 private:
 	void InitItem();
 	

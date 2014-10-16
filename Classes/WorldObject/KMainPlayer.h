@@ -202,7 +202,9 @@ public:
 
 	void RegEvt();
 	virtual bool OnEventImp(KEventAbout::KEventID id, const KEventAbout::KEventData* pData, uint_r customData);
+	void AddMoney(int val);
 public:
 	BeginDefLuaClass(KMainPlayer)
+		DefMemberFunc(AddMoney);
 	EndDef
 };

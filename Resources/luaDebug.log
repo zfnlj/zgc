@@ -1,1 +1,19 @@
 
+2014-10-15 14:31:16 [6104] LuaTinker::call() attempt a table `item_0' (not a table)
+2014-10-15 14:31:16 [6104] 
+
+2014-10-15 14:52:21 [7196] no class at first argument. (forgot ':' expression ?)
+	 at =[C]
+	AddMoney(C) at =[C]
+	 at ? line:4
+
+2014-10-15 14:53:34 [7196] no class at first argument. (forgot ':' expression ?)
+	 at =[C]
+	AddMoney(C) at =[C]
+	 at ? line:4
+
+2014-10-15 15:10:40 [8092] no class at first argument. (forgot ':' expression ?)
+	 at =[C]
+	GeneratNormalCard(C) at =[C]
+	 at ? line:5
+

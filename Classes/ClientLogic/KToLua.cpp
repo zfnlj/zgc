@@ -23,6 +23,7 @@
 #include "../GameLogic/KDynamicWorld.h"
 #include "../GameLogic/KClientBattleCtrl.h"
 #include "../GameLogic/assist/KAIAssist.h"
+#include "../WorldObject/KMainPlayer.h"
 
 using namespace KAttributeAbout;
 
@@ -307,7 +308,7 @@ namespace KScriptAbout
 
 		ObjToLua("CPP.battleCtrl", KClientBattleCtrl::getInstance());
 		ObjToLua("CPP.AIAssist", KAIAssist::getInstance());
-
+		ObjToLua("CPP.MainPlayer", KMainPlayer::Instance());
 	
 		// 独有的----------------------------------------------------------------------------------
 		//ObjToLua("CPP.mainPlayer", KMainPlayer::Instance());
@@ -324,6 +325,7 @@ namespace KScriptAbout
 		// 当作角色操作
 		REGISTER_LUA_CLASS(KWorldObjAbout::KCharacter);
 		REGISTER_LUA_CLASS(KWorldObjAbout::KPlayer);
+		REGISTER_LUA_CLASS(KMainPlayer);
 
 
 

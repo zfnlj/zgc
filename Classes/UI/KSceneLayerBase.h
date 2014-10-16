@@ -20,6 +20,7 @@ public:
 	KGameRecordPanel& RecordPanel(){ return m_gameRecPanel;}
 	virtual void onGenPlayerCard(unsigned long long p1){}
 	virtual void onSystemMsg(int id){}
+	virtual void onIAPCallback(const char* productName,int count);
 	void CreateCloseBut();
 	void menuCloseCallback(CCObject* pSender);
 	virtual void onCloseCallback()=0;

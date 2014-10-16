@@ -19,6 +19,7 @@
 #include "../common/KUIMsgDef.h"
 #include "platform/KIOSiAP_Bridge.h"
 #include "assist/KJsonDictMgr.h"
+#include "../Item/KUseItemManager.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -166,6 +167,7 @@ void KShopScene::InitItem()
 	m_store =KStoreCreateInfoManager::GetInstancePtr()->GetStoreCreateInfo(1);
 	if(!m_store) return;
 
+	
 	for(int i=0;i<MAX_SHOP_ITEM;i++){
 		char slot_name[64];
 		sprintf(slot_name,"item_%d",i);
@@ -296,6 +298,12 @@ void KShopScene::DoBuyMoney(CCObject* sender)
 	if(pBut->getTag()==KPopupLayer::RT_YES){
 		//TBD
 	}
+}
+
+void KShopScene::onIAPCallback(const char* productName,int count)
+{
+	KSceneLayerBase::onIAPCallback(productName,count);
+	UpdateMoney();
 }
 
 void TestIAP()

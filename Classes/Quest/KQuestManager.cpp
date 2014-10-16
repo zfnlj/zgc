@@ -42,6 +42,7 @@ bool KQuestManager::Initialize(void)
 	LoadLuaScript("QuestUtils.lua");
 	LoadLuaScript("PlayCardUtil.lua");
 	LoadLuaScript("AIUtil.lua");
+	LoadLuaScript("UseItemUtil.lua");
 	doDirQuest("Quest");
 	LoadAvailQuestList();
 	LoadDailyQuestMap();
