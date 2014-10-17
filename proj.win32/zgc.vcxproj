@@ -266,6 +266,8 @@
     <ClCompile Include="..\Classes\UI\KSceneLayerBase.cpp" />
     <ClCompile Include="..\Classes\UI\KClickCardMgr.cpp" />
     <ClCompile Include="..\Classes\UI\KResPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KSceneSlideMgr.cpp" />
+    <ClCompile Include="..\Classes\UI\KSceneSlidePicture.cpp" />
     <ClCompile Include="..\Classes\UI\KSelectBeginCardPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KShopScene.cpp" />
     <ClCompile Include="..\Classes\UI\MainMenuScene.cpp" />
@@ -446,6 +448,8 @@
     <ClInclude Include="..\Classes\UI\KSceneLayerBase.h" />
     <ClInclude Include="..\Classes\UI\KClickCardMgr.h" />
     <ClInclude Include="..\Classes\UI\KResPanel.h" />
+    <ClInclude Include="..\Classes\UI\KSceneSlideMgr.h" />
+    <ClInclude Include="..\Classes\UI\KSceneSlidePicture.h" />
     <ClInclude Include="..\Classes\UI\KSelectBeginCardPanel.h" />
     <ClInclude Include="..\Classes\UI\KShopScene.h" />
     <ClInclude Include="..\Classes\UI\MainMenuScene.h" />
