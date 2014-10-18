@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 #include "../BattleFieldScene.h"
 #include "../MainMenuScene.h"
+#include "../KSceneSlidePicture.h"
 #include "cocos-ext.h"
 #include "../../GameLogic/KDynamicWorld.h"
 #include "../../GameLogic/KCardInst.h"
@@ -194,9 +195,24 @@ void KUIAssist::_switch2ShopScene()
 
 }
 
+void KUIAssist::_openMainHelpScene(int first,int last)
+{
+	KSceneSlidePicture::Setting(first,last);
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, KSceneSlidePicture::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+}
+
 void KUIAssist::_switch2StageWaitScene()
 {
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, StageWaitScene::scene());
+	CCDirector::sharedDirector()->replaceScene(scene);
+
+}
+
+void KUIAssist::_switch2SlideScene()
+{
+	KSceneSlidePicture::Setting(0,3);
+	CCScene* scene = CCTransitionSplitRows::create(0.5f, KSceneSlidePicture::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 
 }

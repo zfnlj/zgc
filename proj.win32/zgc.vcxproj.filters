@@ -483,9 +483,6 @@
     <ClCompile Include="..\Classes\UI\KSceneSlidePicture.cpp">
       <Filter>UI\Panel\scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\UI\KSceneSlideMgr.cpp">
-      <Filter>UI\Panel\scene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -1014,9 +1011,6 @@
       <Filter>UI\Panel\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\UI\KSceneSlidePicture.h">
-      <Filter>UI\Panel\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\UI\KSceneSlideMgr.h">
       <Filter>UI\Panel\scene</Filter>
     </ClInclude>
   </ItemGroup>
