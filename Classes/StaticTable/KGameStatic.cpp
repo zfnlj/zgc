@@ -470,16 +470,16 @@ int KGameStaticMgr::PlayerExpToLevel(int exp)
 }
 
 
-void KGameStaticMgr::RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int rank3Rate,
+void KGameStaticMgr::RndGetNormalCard(int count,int rank1Rate,int rank2Rate,int rank3Rate,int rank4Rate,
 									  int heroRate,KIntegerList& outLst)
 {
 	KIntegerList tmpLst;
 
 	RndGetNormalCard(0,rank1Rate*0.5,tmpLst);
 	RndGetNormalCard(1,rank1Rate*0.5,tmpLst);
-	RndGetNormalCard(2,rank2Rate*0.5,tmpLst);
-	RndGetNormalCard(3,rank2Rate*0.5,tmpLst);
-	RndGetNormalCard(4,rank3Rate,tmpLst);
+	RndGetNormalCard(2,rank2Rate,tmpLst);
+	RndGetNormalCard(3,rank3Rate,tmpLst);
+	RndGetNormalCard(4,rank4Rate,tmpLst);
 	RndGetHeroCard(heroRate,tmpLst);
 
 	_RndPick(tmpLst,outLst,count);

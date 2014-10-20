@@ -101,7 +101,7 @@ public:
 	bool hasLua(int method);
 	MethodName luaMethod(int method);
 	void BuyGold(UINT64 playerId,char* goldName);
-	void GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate);
+	void GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int rank4Rate,int heroRate);
 	void GenerateCardDeck(UINT64 playerId,int deckId);
 	int  RndVal();
 	void GenerateHero(UINT64 playerId,int heroId);

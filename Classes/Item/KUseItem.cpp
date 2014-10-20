@@ -283,11 +283,11 @@ void KUseItem::BuyGold(UINT64 playerId,char* goldName)
 #endif
 }
 
-void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int heroRate)
+void KUseItem::GeneratNormalCard(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,int rank4Rate,int heroRate)
 {
 	SC_GenPlayerCard genCard;
 	KIntegerList tmpLst;
-	KGameStaticMgr::getSingleton().RndGetNormalCard(count,rank1Rate,rank2Rate,rank3Rate,heroRate,tmpLst);
+	KGameStaticMgr::getSingleton().RndGetNormalCard(count,rank1Rate,rank2Rate,rank3Rate,rank4Rate,heroRate,tmpLst);
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
 	for(KIntegerList::iterator it=tmpLst.begin();it!=tmpLst.end();it++){
 
