@@ -84,8 +84,8 @@ void KSceneSlidePicture::CreateCheckSlideRadio()
 void KSceneSlidePicture::CreateCloseBut()
 {
 	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseNormal.png",
+                                        "but_exit0.png",
+                                        "but_exit1.png",
                                         this,
                                         menu_selector(KSceneSlidePicture::menuCloseCallback));
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();

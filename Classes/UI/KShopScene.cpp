@@ -63,18 +63,13 @@ bool KShopScene::init()
     {
         return false;
     }
-  
+	CreateCloseBut();
     // add "BattleFieldScene" splash screen"
 
 	if(!m_ui){
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/shop.json"); 
 		CC_SAFE_RETAIN(m_ui);
 		addWidget(m_ui);
-
-		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui, "but_close");
-		pBut->setTouchEnable(true);
-		KShopScene* me = this;
-		pBut->addPushDownEvent(me, coco_pushselector(KShopScene::DoClickClose));
 		m_actor.init(m_ui);
 	}
 
@@ -90,11 +85,6 @@ void KShopScene::UpdateMoney()
 {
 	UILabelBMFont* pLabel = (UILabelBMFont*)UIHelper::seekWidgetByName(m_ui, "money_txt");
 	pLabel->setText(KMainPlayer::RealPlayer()->GetMoney());
-}
-
-void KShopScene::DoClickClose(CCObject* sender)
-{
-	KUIAssist::_switch2MainMenu();
 }
 
 void KShopScene::onClickBuy(CCObject* sender)
@@ -310,4 +300,9 @@ void TestIAP()
 {
 	IOSiAP_Bridge iap;
 	iap.requestProducts();
+}
+
+void KShopScene::onCloseCallback()
+{
+	KUIAssist::_switch2MainMenu();
 }

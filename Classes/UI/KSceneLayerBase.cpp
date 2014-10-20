@@ -29,22 +29,6 @@ bool KSceneLayerBase::init()
 	KUIAssist::_activeScene = this;
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-
-
-	//CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-	//	"CloseNormal.png",
-	//	"CloseSelected.png",
-	//	this,
-	//	menu_selector(BattleFieldScene::menuCloseCallback));
-
-	//pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
-	//	origin.y + pCloseItem->getContentSize().height/2));
-
-	//// create menu, it's an autorelease object
-	//CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-	//pMenu->setPosition(CCPointZero);
-	//this->addChild(pMenu, 1);
-
 	return true;
 }
 
@@ -52,8 +36,8 @@ bool KSceneLayerBase::init()
 void KSceneLayerBase::CreateCloseBut()
 {
 	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseNormal.png",
+                                        "but_exit0.png",
+                                        "but_exit1.png",
                                         this,
                                         menu_selector(KSceneLayerBase::menuCloseCallback));
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();

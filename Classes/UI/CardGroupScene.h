@@ -36,7 +36,7 @@ public:
     virtual void update(float dt);
     // implement the "static node()" method manually
     CREATE_FUNC(CardGroupScene);
-	virtual void onCloseCallback(){}
+	virtual void onCloseCallback();
 	virtual cocos2d::extension::UIWidget* GetPanel();
 	virtual bool ccTouchBegan(CCTouch * touch,CCEvent * pevent);
 protected:

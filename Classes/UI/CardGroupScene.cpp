@@ -59,7 +59,7 @@ bool CardGroupScene::init()
 	{
 		return false;
 	}
-
+	CreateCloseBut();
 	addWidget(GetPanel());
 	m_pMiniHeroWidget = NULL;
 	memset(m_slotElem,0,sizeof(m_slotElem));
@@ -692,7 +692,7 @@ void CardGroupScene::UpdateSelectHeroBut()
 {
 	if(m_mainType==type_cardgroup){
 		for(int i=0;i<PAGE_CARD_NUM;i++){
-			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget!=NULL);
+			m_radioSelectHero.SetVisible(i,m_slotElem[i]._widget!=NULL&& m_depot->IsDeckReady(i));
 		}
 	}else if(m_mainType==type_card){
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
@@ -758,4 +758,9 @@ bool CardGroupScene::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 	KGameRecordMgr::getSingleton().onPlayStepOn();
 	if (m_pInputManager) m_pInputManager->onTouchBegan(touch);
 	return true;
+}
+
+void CardGroupScene::onCloseCallback()
+{
+	KUIAssist::_switch2MainMenu();
 }

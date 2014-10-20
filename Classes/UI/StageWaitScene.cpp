@@ -167,8 +167,8 @@ void StageWaitScene::DoClickClose(CCObject* sender)
 void StageWaitScene::CreateExitBut()
 {
 	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseNormal.png",
+                                        "but_exit0.png",
+                                        "but_exit1.png",
                                         this,
                                         menu_selector(StageWaitScene::menuExitCallback));
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
