@@ -50,7 +50,6 @@ private:
 	cocos2d::extension::UILayer* m_ui;
 	void InitTest();
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
-	KGameResultPanel m_gameResultPanel;
 	void runAutoTest(float dt);
 };
 

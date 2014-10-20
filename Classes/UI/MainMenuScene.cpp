@@ -150,8 +150,8 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 
 		pBut = m_ui->getWidgetByName("but_hero");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickHeroBrowse));
+		KUIAssist::ShowButton(pBut,KMainPlayer::RealPlayer()->GetCardDepot()->GetHeroNum()>0);
 
-		m_gameResultPanel.init(m_ui);
 
 	}
 	return m_ui;
@@ -237,7 +237,6 @@ void MainMenuScene::onQuestUpdate()
 
 void MainMenuScene::onQuestFinished(int qId)
 {
-	//m_gameResultPanel.onQuestFinished(qId);
 }
 
 void MainMenuScene::DoClickFeedback(CCObject* sender)

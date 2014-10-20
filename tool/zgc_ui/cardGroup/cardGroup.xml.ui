@@ -8,15 +8,15 @@
   <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\cardGroup\Resources</Resources>
   <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\cardGroup\Json</JsonFolder>
   <JsonList>
-    <string>cardGroup_1.json</string>
+    <string>cardGroup.json</string>
   </JsonList>
   <imageFileList>
-    <string>card_elem.plist</string>
     <string>card_sort.plist</string>
+    <string>card_elem.plist</string>
     <string>popMsg.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson />
+  <CurrentUIJson>cardGroup.json</CurrentUIJson>
   <CanvasSize>
     <Width>1024</Width>
     <Height>768</Height>
