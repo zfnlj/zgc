@@ -99,7 +99,10 @@ void KGenCardPanel::update(float dt)
 
 void KGenCardPanel::DoClickOK(CCObject* sender)
 {
-	if(m_delayCloseTime>4.5f) return;
+	if(m_delayCloseTime>3.5f){
+		m_delayCloseTime = 3.5f;
+		return;
+	}
 
 	for(int i=0;i<MAX_GEN_CARD_NUM;i++){
 		KCardActor* actor = (KCardActor*)m_GenCard[i].getActor();
