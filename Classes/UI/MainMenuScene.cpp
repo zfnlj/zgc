@@ -159,7 +159,6 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
-	//KUIAssist::_switch2SlideScene();
 	KUIAssist::_switch2CardGroupScene();
 }
 

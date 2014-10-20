@@ -195,9 +195,9 @@ void KUIAssist::_switch2ShopScene()
 
 }
 
-void KUIAssist::_openMainHelpScene(int first,int last)
+void KUIAssist::_openMainHelpScene()
 {
-	KSceneSlidePicture::Setting(first,last);
+	KSceneSlidePicture::Setting(0,2,KSceneSlidePicture::goto_mainMenu);
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, KSceneSlidePicture::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 }
@@ -205,14 +205,6 @@ void KUIAssist::_openMainHelpScene(int first,int last)
 void KUIAssist::_switch2StageWaitScene()
 {
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, StageWaitScene::scene());
-	CCDirector::sharedDirector()->replaceScene(scene);
-
-}
-
-void KUIAssist::_switch2SlideScene()
-{
-	KSceneSlidePicture::Setting(0,3);
-	CCScene* scene = CCTransitionSplitRows::create(0.5f, KSceneSlidePicture::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 
 }

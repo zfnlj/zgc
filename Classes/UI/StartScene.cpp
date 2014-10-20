@@ -15,6 +15,8 @@
 #include "ccMacros.h"
 #include "assist/KUIAssist.h"
 #include "assist/KJsonDictMgr.h"
+#include "../StaticTable/StaticData.h"
+
 //#include "PersonalAudioEngine.h"
 
 USING_NS_CC;
@@ -76,9 +78,15 @@ void StartScene::loading(CCObject* pObj)
 }
 void StartScene::transition(CCObject* pSender)
 {
-    CCScene* scene = CCTransitionFadeBL::create(2.0f, MainMenuScene::scene());
+	if(STATIC_DATA_INT("first_help")==0){
+		STATIC_DATA_SET("first_help",1);
+		KUIAssist::_openMainHelpScene();
+	}else{
+		CCScene* scene = CCTransitionFadeBL::create(2.0f, MainMenuScene::scene());
+		CCDirector::sharedDirector()->replaceScene(scene);
+	}
 	//CCScene* scene = CCTransitionFadeBL::create(2.0f, BattleFieldScene::scene());
-    CCDirector::sharedDirector()->replaceScene(scene);
+    
 }
 void StartScene::cacheInit()
 {

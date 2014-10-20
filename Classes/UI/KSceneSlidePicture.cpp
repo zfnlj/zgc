@@ -9,6 +9,7 @@ using namespace cocos2d::extension;
 int KSceneSlidePicture::m_firstId = 0;
 int KSceneSlidePicture::m_lastId = 0;
 int KSceneSlidePicture::m_curId = 0;
+KSceneSlidePicture::Goto KSceneSlidePicture::m_goto = KSceneSlidePicture::goto_mainMenu;
 CCScene* KSceneSlidePicture::scene()
 {
     // 'scene' is an autorelease object
