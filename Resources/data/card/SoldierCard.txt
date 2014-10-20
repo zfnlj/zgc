@@ -7,7 +7,7 @@ ID	Name	Rank	Cost	Atk	Hp	Race	Desc	Detail	Show
 20006	刺客	1	2	2	2	0	迷踪	迷踪：不可被攻击	soldier_hide
 20007	朱亥	2	5	2	7	0	狂暴	狂暴:受到伤害时增加3点攻击力	soldier_angry
 20008	伍子胥	1	4	4	4	0	遗言	遗言：对所有勇士造成2点伤害。	soldier_dead_curse_ability
-20011	徐福	1	1	0	1	summon	0	0	0
+20011	徐福	0	1	0	1	summon	0	0	0
 20012	王翦	2	3	2	3	0	嗜血	当一名勇士死亡时，增加1点攻击	soldier_dead_atkadd
 20013	东施	1	1	0	1	0	护卫	护卫	soldier_guide
 20014	假人	1	1	1	3	summon	0	0	0

@@ -99,8 +99,7 @@ void KGenCardPanel::update(float dt)
 
 void KGenCardPanel::DoClickOK(CCObject* sender)
 {
-	if(m_delayCloseTime>3.5f){
-		m_delayCloseTime = 3.5f;
+	if(m_delayCloseTime>6.0f){
 		return;
 	}
 

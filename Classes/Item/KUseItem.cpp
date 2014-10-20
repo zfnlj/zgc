@@ -277,7 +277,7 @@ void KUseItem::run(UINT64 playerId)
 void KUseItem::BuyGold(UINT64 playerId,char* goldName)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	KNetMsgFacade::onAddMoney(1000);
+	KNetMsgFacade::onAddMoney(10000);
 #else
 	GameRoot::getSingleton().IAP_Bridge()->Payment(goldName,1);
 #endif

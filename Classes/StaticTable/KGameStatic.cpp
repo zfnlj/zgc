@@ -336,7 +336,7 @@ void KGameStaticMgr::RndGetNormalCard(int rank,int count,KIntegerList& lst)
 	for(CardMap::iterator it = m_cardMap.begin();it!=m_cardMap.end();++it){
 		KCardStatic* pCard = it->second;
 		if(pCard->GetType()==KCardStatic::card_hero) continue;
-		if(pCard->GetRank()>rank) continue;
+		if(pCard->GetRank()!=rank) continue;
 		tmpLst.push_back(pCard->GetID());
 	}
 	for(int i=0;i<count;i++){
