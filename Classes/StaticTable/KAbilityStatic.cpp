@@ -101,6 +101,23 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
 	return tp;
 }
 
+
+		
+bool KAbilityStatic::IsReEnterAble()
+{
+	bool ret = false;
+	switch(m_what){
+	case what_cast_add:
+	case what_sp_rate:
+	case what_mp_cost:
+		ret = true;
+		break;
+	default:
+		break;
+	}
+	return ret;
+}
+
 bool KAbilityStatic::IsTargetSure()
 {
 	return (m_which==which_i || m_which==which_myhero || m_which==which_yourhero);

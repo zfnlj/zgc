@@ -210,7 +210,7 @@ void KBattleGuy::onCardLeaveCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 void KBattleGuy::onCardEnterCtrl(KBattleCtrlBase* ctrl,KCardInst* card)
 {
 	KAbilityStatic* pAbility =KSkillAssist::_findStaticAbility(card->GetCardId(),KAbilityStatic::when_enter);
-	DoGuyAbility(ctrl,card,pAbility,0);
+	if(pAbility->IsReEnterAble()) DoGuyAbility(ctrl,card,pAbility,0);
 }
 
 void KBattleGuy::AddRes(KBattleCtrlBase* ctrl,KAbilityStatic* pAbility)

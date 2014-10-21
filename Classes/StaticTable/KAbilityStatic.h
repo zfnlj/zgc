@@ -142,6 +142,7 @@ public:
 	int GetNormalVal(){ return m_val._val;}
 	int GetBufVal();
 	bool IsTargetSure();
+	bool IsReEnterAble();
 	void Clone(KAbilityStatic&);
 	int GetSummonId();
 	int GetPriority();
