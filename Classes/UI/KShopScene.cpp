@@ -70,6 +70,12 @@ bool KShopScene::init()
 		m_ui = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/shop.json"); 
 		CC_SAFE_RETAIN(m_ui);
 		addWidget(m_ui);
+
+		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui, "but_close");
+		pBut->setTouchEnable(true);
+		KShopScene* me = this;
+		pBut->addPushDownEvent(me, coco_pushselector(KShopScene::DoClickClose));
+
 		m_actor.init(m_ui);
 	}
 
@@ -303,6 +309,11 @@ void TestIAP()
 }
 
 void KShopScene::onCloseCallback()
+{
+	KUIAssist::_switch2MainMenu();
+}
+
+void KShopScene::DoClickClose(CCObject* sender)
 {
 	KUIAssist::_switch2MainMenu();
 }

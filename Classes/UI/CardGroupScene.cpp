@@ -222,6 +222,7 @@ void CardGroupScene::SetMiniHeroWidget(UIWidget* newHero)
 
 void CardGroupScene::ShowMiniHero()
 {
+	if(m_miniHero._id==0) return;
 	UIWidget* slot = UIHelper::seekWidgetByName(m_ui,"mini_card_pos");
 	CCPoint pt = slot->getPosition();
 	UIImageView* raceSlot = (UIImageView*)UIHelper::seekWidgetByName(m_ui,"race_slot");
