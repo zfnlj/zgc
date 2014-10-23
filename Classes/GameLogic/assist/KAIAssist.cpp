@@ -189,7 +189,7 @@ KCardInst* KAIAssist::_MostValuableTargetNoBuf(KCardInstList& lst, KAbilityStati
 	float val = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
-		if(pCur->FindRealBuf(buf)) continue;
+		if(pCur->FindBuf(buf)) continue;
 		float curVal = _calcCardValue(pCur);
 		if(curVal > val){
 			val = curVal;
@@ -237,7 +237,7 @@ KCardInst* KAIAssist::_MostValuableTargetExistBuf(KCardInstList& lst, KAbilitySt
 	float val = 0;
 	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
 		KCardInst* pCur = *it;
-		if(!pCur->FindRealBuf(buf)) continue;
+		if(!pCur->FindBuf(buf)) continue;
 		float curVal = _calcCardValue(pCur);
 		if(curVal > val){
 			val = curVal;

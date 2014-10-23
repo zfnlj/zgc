@@ -391,7 +391,7 @@ int KCardAttr::GetBufVal()
 	return val;
 }
 
-KAbilityStatic* KCardAttr::FindRealBuf(KAbilityStatic::Enum_What what)
+KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_What what)
 {
 	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
@@ -402,32 +402,13 @@ KAbilityStatic* KCardAttr::FindRealBuf(KAbilityStatic::Enum_What what)
 	return NULL;
 }
 
-KAbilityStatic* KCardAttr::FindBufAbility(KAbilityStatic::Enum_What what)
+KAbilityStatic* KCardAttr::FindBuf(KAbilityStatic::Enum_When when)
 {
-	KCardBufferList::iterator it = m_bufList.begin();
-	while(it != m_bufList.end()){
-		KCardBuffer& buf = *it;
-		if(buf._pST->GetWhat()==KAbilityStatic::what_buf){
-			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(buf._pST->GetNormalVal());
-			if(pBuf && pBuf->GetWhat()==what && pBuf->GetWhich()==KAbilityStatic::which_i) return pBuf;
-		}
-		it++;
-	}
-	return NULL;
-}
-
-KAbilityStatic* KCardAttr::FindBufAbility(KAbilityStatic::Enum_When when)
-{
-	//KCardBufferList abilityList;
-	//KGameStaticMgr::getSingleton().GetAbilityList(getCardId(),abilityList,when);
-	//if(!abilityList.empty()) return *(abilityList.begin());
-
 	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
 		KAbilityStatic* pAbility = (*it)._pST;
-		if(pAbility->GetWhat()==KAbilityStatic::what_buf){
-			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
-			if(pBuf && pBuf->GetWhen()==when ) return pBuf;
+		if(pAbility->GetWhen()==when ){
+			return pAbility;
 		}
 		it++;
 	}

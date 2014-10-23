@@ -75,7 +75,7 @@ public:
 	KCardStatic::CardDef GetKind(){ return m_pST->GetType();}
 	bool IsKindOf(KCardStatic::CardDef def) { return  (m_pST->GetType()==def);}
 	bool IsActiveDefend();
-	void AddBuf(KAbilityStatic* pBuf);
+	void AddBuf(KAbilityStatic* pBuf,int loopNum);
 	void AddBuf(int id);
 	void DelBuf(KAbilityStatic* pBuf);
 	void ClearBuf();
@@ -83,9 +83,9 @@ public:
 	void DispleGoodBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
 	void ReturnHand();
-	KAbilityStatic* FindRealBuf(KAbilityStatic::Enum_What what);
+	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	//KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_What what);
-	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_When when);
+	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
 	KAbilityStatic* GetSecretAbility();
 	void ReplaceST(int id);
 	const char* GetBasePosName(bool bMy);

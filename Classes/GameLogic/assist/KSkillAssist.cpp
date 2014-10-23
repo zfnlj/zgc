@@ -24,7 +24,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 		KAbilityStatic::Enum_When realWhen = when;
 		KCardInst* card = *it;
 		if(card==pSkip) continue;
-		KAbilityStatic* pAbility = card->FindBufAbility(when);
+		KAbilityStatic* pAbility = card->FindBuf(when);
 		if(!pAbility){
 			if(when==KAbilityStatic::when_soldier_dead||
 				when==KAbilityStatic::when_soldier_hurted||
@@ -35,7 +35,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 				when==KAbilityStatic::when_soldier_enter){
 				realWhen = KAbilityStatic::Enum_When ((int)when+ 1);
 			}
-			pAbility = card->FindBufAbility(realWhen);
+			pAbility = card->FindBuf(realWhen);
 		}
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
@@ -49,7 +49,7 @@ void _fillCtrlCardEvt(KBattleCtrlBase* ctrl,KCardInst* pCard,KAbilityStatic::Enu
 	for(KCardInstList::iterator it=tmpLst.begin();it!=tmpLst.end();++it)
 	{
 		KCardInst* card = *it;
-		KAbilityStatic* pAbility = card->FindBufAbility(when);
+		KAbilityStatic* pAbility = card->FindBuf(when);
 		if(!pAbility) continue;
 		if(!pAbility->ToSelfEnable() && (pCard==card)) continue;
 		ctrl->AddCardEvtAbility(card,when);
@@ -174,12 +174,12 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes
 		KCardInst* card = *it;
 		if(card==skip) continue;
 		if(pAbility->GetWhat()== KAbilityStatic::what_rush &&
-			!card->FindRealBuf(KAbilityStatic::what_can_rush)) continue;
+			!card->FindBuf(KAbilityStatic::what_can_rush)) continue;
 		if(pAbility->GetWhat()== KAbilityStatic::what_buf){
 			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(card->HasBuf(pBuf)) continue; //same buf only one..
 		}
-		if(card->HasBuf(pAbility)) continue; //same buf only one..
+		//if(card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);
 	}
@@ -251,7 +251,7 @@ void _fillMyAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,
 			if(card->HasBuf(pBuf)) continue; //same buf only one..
 		}
 		if(pAbility->GetWhat()== KAbilityStatic::what_rush){
-			if(!card->FindRealBuf(KAbilityStatic::what_can_rush)) continue;
+			if(!card->FindBuf(KAbilityStatic::what_can_rush)) continue;
 		}
 		if(card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
@@ -540,7 +540,7 @@ bool _IsMatch(KConditionDef& condDef,KCardInst* card)
 		return card->GetAtk() <= condDef.GetVal();
 		break;
 	case KConditionDef::con_exist_buf:
-		return (card->FindRealBuf((KAbilityStatic::Enum_What)condDef.GetVal())!=NULL);
+		return (card->FindBuf((KAbilityStatic::Enum_What)condDef.GetVal())!=NULL);
 		break;
 	}
 	return true;

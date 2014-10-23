@@ -53,7 +53,7 @@ void KBattleGuy::onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectC
 	
 
 
-	if(pDeckDef){
+	/*if(pDeckDef){
 		m_Deck.initDeck(pDeckDef,bSelectCard);
 		m_attr.setMaxRes(pDeckDef->getRes());
 		m_attr.setCurRes(pDeckDef->getRes());
@@ -66,7 +66,7 @@ void KBattleGuy::onBattleInit(bool bFirst,KDeckDefStatic* pDeckDef,bool bSelectC
 		playerCardDepot->PickCurHero(m_Deck.GetHeroDef());
 		m_Deck.SetHeroSkill();
 		m_Deck.DrawCard(bFirst?3:4,(bSelectCard)?KCardInst::enum_slot_select:KCardInst::enum_slot_hand);
-	}else
+	}else*/
 	{
 		m_Deck.createTestDeck();
 		m_attr.setMaxRes(8);
@@ -272,7 +272,7 @@ bool KBattleGuy::DoGuyAbility(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStat
 		m_attr.AddBuf(pAbility);
 		break;
 	}
-	if(!pAbility->BufIconEmpty()) pSrc->AddBuf(pAbility);
+	if(!pAbility->BufIconEmpty()) pSrc->AddBuf(pAbility,pAbility->LoopNum());
 	return true;
 }
 

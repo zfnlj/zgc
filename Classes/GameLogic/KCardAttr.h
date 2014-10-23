@@ -14,16 +14,17 @@ class KCardStatic;
 
 struct KCardBuffer{
 	KAbilityStatic* _pST;
-	int _loop;
-	KCardBuffer(KAbilityStatic* pST,int loopNum){
+	unsigned short _loop;
+	unsigned short _loopNum;
+	KCardBuffer(KAbilityStatic* pST,unsigned short loopNum){
 		_pST = pST;
-		_loop = loopNum;
+		_loopNum = loopNum;
 	}
 	bool IsLoopOver(){
-		if(_pST->IsLoop()) return false;
-		return (_loop >=_pST->LoopNum());
+		if(IsLoop()) return false;
+		return (_loop >=_loopNum);
 	}
-	bool IsLoop(){ return _pST->IsLoop();}
+	bool IsLoop(){ return (_loopNum==0);}
 	KAbilityStatic* GetAbility(){ return _pST;}
 };
 
@@ -109,9 +110,8 @@ public: // IAttrSet
 	void AddBuf(KAbilityStatic* pBuf,int loopNum);
 	bool HasBuf(KAbilityStatic* pBuf);
 
-	KAbilityStatic* FindRealBuf(KAbilityStatic::Enum_What what);
-	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_What what);
-	KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_When when);
+	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
+	KAbilityStatic* FindBuf(KAbilityStatic::Enum_When when);
 
 	int getRealID(){ return getAttrValue(ca_realId);}
 	void setRealId(int val){ setAttrValue(ca_realId,val);}

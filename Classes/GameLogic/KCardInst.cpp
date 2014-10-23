@@ -206,11 +206,11 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 	case enum_slot_fight:
 		{
 			KAbilityStatic* pNoReady = KSkillAssist::_findStaticAbility(GetCardId(),KAbilityStatic::what_noready);
-			if(!FindRealBuf(KAbilityStatic::what_stun) && !pNoReady){
+			if(!FindBuf(KAbilityStatic::what_stun) && !pNoReady){
 				m_attr.setReady(1);
 			}
 			m_attr.updateBufList();
-			if(!FindRealBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
+			if(!FindBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_begin);
 		}
 		break;
 	case enum_slot_secret:
@@ -230,7 +230,7 @@ void KCardInst::onTurnBegin(KBattleCtrlBase* ctrl)
 
 void KCardInst::OnTurnEnd(KBattleCtrlBase* ctrl)
 {
-	if(!FindRealBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_end);
+	if(!FindBuf(KAbilityStatic::what_stun)) onCardAbility(ctrl,KAbilityStatic::when_turn_end);
 	m_attr.updateBufList();
 }
 
@@ -268,7 +268,7 @@ void KCardInst::AddHp(int val)
 
 float KCardInst::GetAtkedVal(int damage)
 {
-	KAbilityStatic* pEmmune = FindRealBuf(KAbilityStatic::what_immune);
+	KAbilityStatic* pEmmune = FindBuf(KAbilityStatic::what_immune);
 	if(pEmmune) return GetAtk();
 	float hp = (float)m_attr.getCurHp();
 	if(hp>damage) return ((float)damage)*0.4f;
@@ -277,7 +277,7 @@ float KCardInst::GetAtkedVal(int damage)
 
 int KCardInst::Heal(KCardInst* pSrc,int val)
 {
-	KAbilityStatic* pEmmune = FindRealBuf(KAbilityStatic::what_immune);
+	KAbilityStatic* pEmmune = FindBuf(KAbilityStatic::what_immune);
 	if(val < 0 && pEmmune){ //有免疫buf ，优先使用buf.
 		DelBuf(pEmmune);
 		return 0;
@@ -286,7 +286,7 @@ int KCardInst::Heal(KCardInst* pSrc,int val)
 	hp += val;
 	if(hp > m_attr.getMaxHp()) hp = m_attr.getMaxHp();
 	if(hp<0) hp = 0;
-	KAbilityStatic* pBlessHp = FindRealBuf(KAbilityStatic::what_bless_hp);
+	KAbilityStatic* pBlessHp = FindBuf(KAbilityStatic::what_bless_hp);
 	if(pBlessHp){
 		if(hp < pBlessHp->GetNormalVal()) hp = pBlessHp->GetNormalVal();
 	}
@@ -318,9 +318,9 @@ void KCardInst::AddBuf(int id)
 	if(pBuf) m_attr.AddBuf(pBuf,0);
 }
 
-void KCardInst::AddBuf(KAbilityStatic* pBuf)
+void KCardInst::AddBuf(KAbilityStatic* pBuf,int loopNum)
 {
-	m_attr.AddBuf(pBuf,0);
+	m_attr.AddBuf(pBuf,loopNum);
 }
 
 void KCardInst::DelBuf(KAbilityStatic* pBuf)
@@ -377,9 +377,9 @@ bool KCardInst::HasBuf(KAbilityStatic* pBuf)
 	return m_attr.HasBuf(pBuf);
 }
 
-KAbilityStatic* KCardInst::FindRealBuf(KAbilityStatic::Enum_What what)
+KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_What what)
 {
-	return m_attr.FindRealBuf(what);
+	return m_attr.FindBuf(what);
 }
 
 //KAbilityStatic* KCardInst::FindBufAbility(KAbilityStatic::Enum_What what)
@@ -387,9 +387,9 @@ KAbilityStatic* KCardInst::FindRealBuf(KAbilityStatic::Enum_What what)
 //	return m_attr.FindBufAbility(what);
 //}
 
-KAbilityStatic* KCardInst::FindBufAbility(KAbilityStatic::Enum_When when)
+KAbilityStatic* KCardInst::FindBuf(KAbilityStatic::Enum_When when)
 {
-	return m_attr.FindBufAbility(when);
+	return m_attr.FindBuf(when);
 }
 
 void KCardInst::onCard2Tomb()
@@ -400,7 +400,7 @@ void KCardInst::onCard2Tomb()
 
 void KCardInst::onCardAbility(KBattleCtrlBase* ctrl,KAbilityStatic::Enum_When when)
 {
-	KAbilityStatic* pAbility = FindBufAbility(when);
+	KAbilityStatic* pAbility = FindBuf(when);
 	if(!pAbility && m_pST->IsRare()){
 		KCardAbilityList abilityLst;
 		KGameStaticMgr::getSingleton().GetAbilityList(GetCardId(),abilityLst,when);
@@ -467,7 +467,7 @@ bool KCardInst::IsActiveDefend()
 	switch(GetKind()){
 	case KCardStatic::card_soldier:
 		{
-			if(FindRealBuf(KAbilityStatic::what_hide)) return false;	
+			if(FindBuf(KAbilityStatic::what_hide)) return false;	
 		}
 		break;
 	case KCardStatic::card_hero:
@@ -497,7 +497,7 @@ bool KCardInst::IsTargetLess(KAbilityStatic::Enum_When when)
 
 bool KCardInst::IsRangeAbility(KAbilityStatic::Enum_When when)
 {
-	KAbilityStatic* pAbility = FindBufAbility(when);
+	KAbilityStatic* pAbility = FindBuf(when);
 	if(!pAbility) return false;
 	return pAbility->IsArea();
 }
@@ -540,7 +540,7 @@ void KCardInst::AtkSet(int val)
 
 int KCardInst::GetAtk()
 {
-	if(FindRealBuf(KAbilityStatic::what_atk_equ_hp)){
+	if(FindBuf(KAbilityStatic::what_atk_equ_hp)){
 		return GetHp();
 	}else{
 		return m_pST->GetAtk() + m_attr.getAddAtk();
@@ -564,7 +564,7 @@ bool KCardInst::IsDead()
 
 void KCardInst::DoRush()
 {
-	if(!FindRealBuf(KAbilityStatic::what_can_rush)) return;
+	if(!FindBuf(KAbilityStatic::what_can_rush)) return;
 	m_attr.DelBuf(KAbilityStatic::what_can_rush);
 	m_attr.setReady(1);
 }

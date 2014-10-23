@@ -13,7 +13,7 @@
 #include "assist/KSkillAssist.h"
 
 #define  MAX_DECK_CARD_NUM 30
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,21009,20046,21003,21001,32011,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,20033,20035,20007,31001,32011,
 								 20002,20002,33003,33004,20002,20001,
 								 20007,20003,31016,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
@@ -160,7 +160,7 @@ void KBattleDeck::GetDefenderSet(KCardInstList* lst)
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		KCardInst* pCard = *it;
-		if(!pCard->FindRealBuf(KAbilityStatic::what_hide)){
+		if(!pCard->FindBuf(KAbilityStatic::what_hide)){
 			lst->push_back(pCard);
 		}
 	}
@@ -170,7 +170,7 @@ void KBattleDeck::FindFightingGuider(KCardInstList* lst)
 {
 	for(KCardInstList::iterator it = m_FightCardSet.begin();it!=m_FightCardSet.end();it++){
 		KCardInst* pCard = *it;
-		if(pCard->FindRealBuf(KAbilityStatic::what_guide)){
+		if(pCard->FindBuf(KAbilityStatic::what_guide)){
 			lst->push_back(pCard);
 		}
 	}
@@ -488,7 +488,7 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 	if(pAtk->IsKindOf(KCardStatic::card_soldier)){
 		for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
 			KCardInst* pCard = *it;
-			if(pCard->FindRealBuf(KAbilityStatic::what_guide)) lstGuider.push_back(pCard);
+			if(pCard->FindBuf(KAbilityStatic::what_guide)) lstGuider.push_back(pCard);
 			if(pCard->IsActiveDefend()) lstDefender.push_back(pCard);
 		}
 
@@ -498,7 +498,7 @@ void KBattleDeck::QueryActiveDefendCards(KCardInstList* lst)
 		}
 		for(KCardInstList::iterator it = m_FightCardSet.begin(); it!=m_FightCardSet.end();++it){
 			KCardInst* pCard = *it;
-			if(pCard->FindRealBuf(KAbilityStatic::what_hide)) continue;
+			if(pCard->FindBuf(KAbilityStatic::what_hide)) continue;
 			lst->push_back(pCard);
 		}
 
@@ -604,7 +604,7 @@ int KBattleDeck::GetHurtedSoldierNum()
 	int count=0;
 	for(KCardInstList::iterator it=m_FightCardSet.begin();it!=m_FightCardSet.end();++it){
 		KCardInst* card = *it;
-		if(card->FindRealBuf(KAbilityStatic::what_hurted)) count++;
+		if(card->FindBuf(KAbilityStatic::what_hurted)) count++;
 	}
 	return count;
 }
