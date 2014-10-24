@@ -421,7 +421,9 @@ float KBattleAI::CalcUseTargetSkillGood(KCardInst* pCard,KAbilityStatic* pAbilit
 	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lst);
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	KCardInst* pBest = NULL;
-	switch(pAbility->GetWhat()){
+	KAbilityStatic::Enum_What whatAbility = pAbility->GetWhat();
+	if(whatAbility==KAbilityStatic::what_buf) whatAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal())->GetWhat();
+	switch(whatAbility){
 	case KAbilityStatic::what_stun:
 		{
 			pBest = KAIAssist::_MostValuableTarget(lst);

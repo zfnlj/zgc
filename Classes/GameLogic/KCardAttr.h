@@ -18,6 +18,7 @@ struct KCardBuffer{
 	unsigned short _loopNum;
 	KCardBuffer(KAbilityStatic* pST,unsigned short loopNum){
 		_pST = pST;
+		_loop = 0;
 		_loopNum = loopNum;
 	}
 	bool IsLoopOver(){

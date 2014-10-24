@@ -315,7 +315,7 @@ int KCardInst::GetHp()
 void KCardInst::AddBuf(int id)
 {
 	KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(id);
-	if(pBuf) m_attr.AddBuf(pBuf,0);
+	if(pBuf) m_attr.AddBuf(pBuf,pBuf->LoopNum());
 }
 
 void KCardInst::AddBuf(KAbilityStatic* pBuf,int loopNum)

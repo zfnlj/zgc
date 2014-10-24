@@ -143,6 +143,7 @@ public:
 	int GetBufVal();
 	bool IsTargetSure();
 	bool IsReEnterAble();
+	bool IsBufAbility();
 	void Clone(KAbilityStatic&);
 	int GetSummonId();
 	int GetPriority();

@@ -67,6 +67,9 @@ void KCardAttr::updateBufList()
 	for(KCardBufferList::iterator it= m_bufList.begin();it!=m_bufList.end();){
 		KCardBuffer& buf = *it;
 		buf._loop++;
+		if(buf._pST->GetWhat()==KAbilityStatic::what_stun){
+			int kk=0;
+		}
 		if(buf.IsLoopOver()){
 			it = m_bufList.erase(it);
 			this->updateMask(KCardAttr::BUF);
@@ -363,12 +366,12 @@ bool KCardAttr::HasBuf(KAbilityStatic* pBuf)
 	KCardBufferList::iterator it = m_bufList.begin();
 	while(it != m_bufList.end()){
 		KCardBuffer& buf = *it;
-		if(buf._pST->GetWhat()==KAbilityStatic::what_buf){
-			if(buf._pST == pBuf) return true;
-		}else if(buf._pST->GetWhat()==pBuf->GetWhat()){
-			return true;
+		KAbilityStatic::Enum_What buf_what = pBuf->GetWhat();
+		if(pBuf->GetWhat()==KAbilityStatic::what_buf){
+			KAbilityStatic* pRealBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pBuf->GetNormalVal());
+			buf_what = pRealBuf->GetWhat();
 		}
-		
+		if(buf._pST->GetWhat()==buf_what) return true;
 		it++;
 	}
 	return false;

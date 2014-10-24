@@ -397,6 +397,9 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 		}
 		break;
     default:
+		if(pAbility->IsBufAbility()){
+			pDes->AddBuf(pAbility,pAbility->LoopNum());
+		}
 		result->SetDestVal(pDes->GetRealId(),0);
         break;
 	}

@@ -41,6 +41,29 @@ KAbilityStatic* KAbilityStatic::create()
 	return pAbility;
 }
 
+bool KAbilityStatic::IsBufAbility()
+{
+	bool ret = false;
+	switch(m_what){
+	case what_stun:
+	case what_immune:
+	case what_cast_add:
+	case what_sp_rate:
+	case what_atk_equ_hp:
+	case what_mp_cost:
+	case what_hide:
+	case what_guide:
+	case what_dist:
+	case what_bless_hp:
+	case what_angry:
+		ret = true;
+		break;
+	default:
+		break;
+	}
+	return ret;
+}
+
 int KAbilityStatic::GetBufVal()
 {
 	int ret = 0;
