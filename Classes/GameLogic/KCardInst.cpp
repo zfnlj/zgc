@@ -451,7 +451,7 @@ const char* KCardInst::GetBasePosName(bool bMy)
 		break;
 	case KCardInst::enum_slot_fight:
 		{
-			sprintf(sz,"%s_%d",(bMy)? "my_fight_slot":"your_fight_slot",m_attr.getPos());
+			sprintf(sz,"%s_%d",(bMy)? "my_fight_slot":"your_fight_slot",(m_attr.getPos()>=0)?m_attr.getPos():0);
 		}
 		return sz;
 		break;
