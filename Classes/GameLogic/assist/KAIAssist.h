@@ -34,6 +34,7 @@ public:
 	static float _getCardValueRate(KCardInst* pCard);
 	static int _calcTotalAtk(KCardInstList* lst);
 	static int _calcTotalActiveAtk(KCardInstList* lst);
+	static float _CalcDispelGoodBufVal(KCardInstList& lst);
 	KCardInst* AbilityMostValuableTarget(void* ctrl,KCardInst* card,int abilityId,float maxHp=99.0f,float minHp=-1.0f);
 	float CalcAbilityDoVal(void* ctrl,int abilityId,KCardInst* pSrc,KCardInst* pDes);
 	KCardInst* BestAttackTarget(void* ctrl,KCardInst* pAtk,void* lst,float maxAtk=99.0f,float minAtk=-1.0f);

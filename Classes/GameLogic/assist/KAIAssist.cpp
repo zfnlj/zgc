@@ -216,6 +216,16 @@ KCardInst* KAIAssist::_MostValuableTarget(KCardInstList& lst,float maxHp,float m
 	return pBest;
 }
 
+float KAIAssist::_CalcDispelGoodBufVal(KCardInstList& lst)
+{
+	float val = 0.0f;
+	for(KCardInstList::iterator it= lst.begin();it!=lst.end();++it){
+		KCardInst* pCur = *it;
+		val += pCur->CalcGoodBufVal();
+	}
+	return val;
+}
+
 KCardInst* KAIAssist::_MostValuableBufTarget(KCardInstList& lst)
 {
 	KCardInst* pBest = NULL;

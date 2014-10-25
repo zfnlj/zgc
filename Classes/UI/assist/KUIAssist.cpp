@@ -91,7 +91,12 @@ void KUIAssist::_showCardSet(KCardInstList* lst)
 cocos2d::CCPoint KUIAssist::_queryCardPos(KCardInstList* lst,KCardInst* card,UIWidget* base)
 {
 	cocos2d::CCPoint pt(-999.0f,-999.0f);
-	if(!base) base = _activeScene->getWidgetByName(_getBasePosName(card));
+	if(!base) {
+		base = _activeScene->getWidgetByName(_getBasePosName(card));
+		if(!base){
+			int jj=0;
+		}
+	}
 	
 	if(card->GetSlot()==KCardInst::enum_slot_tomb){
 		if(!lst) lst = KBattleCtrlAssist::GetCardSet(KClientBattleCtrl::getInstance(),card);

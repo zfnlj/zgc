@@ -41,7 +41,6 @@ public:
 	void GetDefenderSet(KCardInstList*);
 	KCardInstList* QueryCardSet(KCardInst*);
 	bool AddCard(KCardInstList* list, KCardInst*);
-	void Hand2Fight(KCardInst* pCard);
 	void Hand2Fight(KCardInst* pCard,int pos);
 	void Hand2Secret(KCardInst* card,int pos);
 	void Hand2Tomb(KCardInst* pCard);

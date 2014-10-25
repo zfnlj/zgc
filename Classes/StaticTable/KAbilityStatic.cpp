@@ -89,6 +89,11 @@ int KAbilityStatic::GetBufVal()
 	case what_angry:
 		ret =2;
 		break;
+	case what_atk_add:
+		{
+			ret = GetNormalVal();
+		}
+		break;
 	}
 	return ret;
 }

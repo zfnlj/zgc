@@ -280,7 +280,7 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bBigCard,b
 				sprintf(info,"%d",m_card->GetHp());
 			}
 		}
-		if(strcmp(info,labelHp->getStringValue())!=0){
+		if(labelHp && strcmp(info,labelHp->getStringValue())!=0){
 			if(!bInit && !bBigCard){
 				labelHp->runAction( CCSequence::create(CCScaleTo::create(0.2f, 0.8f), CCScaleTo::create(0.3f, 0.6f), NULL));
 			}
@@ -291,15 +291,15 @@ void KCardActor::UpdateCardAttr(cocos2d::extension::UIWidget* ui,bool bBigCard,b
 		}else{
 			sprintf(info,"%d",m_card->GetAtk());
 		}
-		if(strcmp(info,labelAtk->getStringValue())!=0){
+		if(labelAtk && strcmp(info,labelAtk->getStringValue())!=0){
 			if(!bInit && !bBigCard){
 				labelAtk->runAction(  CCSequence::create(CCScaleTo::create(0.2f, 0.8f), CCScaleTo::create(0.3f, 0.6f), NULL));
 			}
 			labelAtk->setStringValue(info);
 		}
 	}else{
-		labelHp->setVisible(false);
-		labelAtk->setVisible(false);
+		if(labelHp) labelHp->setVisible(false);
+		if(labelAtk) labelAtk->setVisible(false);
 	}
 
 }

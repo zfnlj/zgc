@@ -16,6 +16,7 @@ KCardAttr::~KCardAttr(void)
 void KCardAttr::clearAttrs()
 {
 	m_attrs.clearAttrs();
+	setAttrValue(ca_pos, -1);
 	m_bufList.clear();
 }
 

@@ -280,12 +280,6 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			CCLog("Skill:%s do heal:%d to:%s",pSrc->GetST()->GetName(),val,pDes->GetST()->GetName());
 		}
 		break;
-	case KAbilityStatic::what_immune:
-		{
-			result->SetDestVal(pDes->GetRealId(),0);
-			CCLog("%s do immune to:%s,id=%d",pSrc->GetST()->GetName(),pDes->GetST()->GetName(),pDes->GetRealId());
-		}
-		break;
 	case KAbilityStatic::what_replace:
 		{
 			pDes->ReplaceST(pAbility->GetNormalVal());
@@ -304,13 +298,13 @@ void KBattleGod::DoCardAbility2Des(KBattleCtrlBase* ctrl,KAbilityStatic* pAbilit
 			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
 		break;
-	case KAbilityStatic::what_angry:
+	/*case KAbilityStatic::what_angry:
 		{
 			pDes->AddAtk(pAbility->GetNormalVal());
 			pDes->m_attr.DelBuf(pAbility->GetVal2());
 			result->SetDestVal(pDes->GetRealId(),pAbility->GetNormalVal());
 		}
-		break;
+		break;*/
 	case KAbilityStatic::what_damage_atkadd:
 		{
 			int val = pDes->Heal(pSrc,-pAbility->GetNormalVal());

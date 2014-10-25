@@ -13,8 +13,8 @@
 #include "assist/KSkillAssist.h"
 
 #define  MAX_DECK_CARD_NUM 30
-int tmpCard[MAX_GAME_PLAY_CARD]={10002,22003,33003,23003,32001,32011,
-								 20002,20002,33003,33004,20002,20001,
+int tmpCard[MAX_GAME_PLAY_CARD]={10002,31017,31018,23003,31019,31020,
+								 20002,20002,31021,31023,31024,31025,
 								 20007,20003,31016,30001,20002,20001,
 								 20001,20001,20002,30006,20002,20001,
 								 20001,20001,20002,20002,20002,20001,20001};
@@ -212,11 +212,13 @@ void KBattleDeck::Hand2Secret(KCardInst* card,int pos)
 	KDynamicWorld::getSingleton().SendWorldMsg(LOGIC_BATTLE_USE_SECRET,card->GetRealId(),(unsigned long long)m_Owner->GetBattleCtrl()->GetWorld());
 }
 
-void KBattleDeck::Hand2Fight(KCardInst* pCard)
-{
-	int pos = GetEmptyFightSlot();
-	Hand2Fight(pCard,pos);
-}
+//void KBattleDeck::Hand2Fight(KCardInst* pCard,int pos)
+//{
+//	int pos2  = pCard->m_attr.getPos();
+//	int pos = GetEmptyFightSlot();
+//	CCAssert(pos>=0 , "Failed to find empty fight slot");
+//	Hand2Fight(pCard,pos);
+//}
 
 void KBattleDeck::Hand2Fight(KCardInst* card,int pos)
 {
@@ -529,6 +531,7 @@ int KBattleDeck::GetEmptyFightSlot()
     memset(posFlag,0,sizeof(posFlag));
     for(KCardInstList::iterator it=m_FightCardSet.begin();it!=m_FightCardSet.end();++it){
 		KCardInst* card = *it;
+		if(card->m_attr.getPos()<0) continue;
         posFlag[card->m_attr.getPos()]= true;
 	}
     for(int i=0;i<MAX_FIGHT_POS_NUM;i++){
@@ -552,6 +555,7 @@ int KBattleDeck::GetRndEmptyFightSlot()
 	memset(posFlag,0,sizeof(posFlag));
 	for(KCardInstList::iterator it=m_FightCardSet.begin();it!=m_FightCardSet.end();++it){
 		KCardInst* card = *it;
+		if(card->m_attr.getPos()<0) continue;
 		posFlag[card->m_attr.getPos()]= true;
 	}
 	int nRand = g_rnd.GetRandom(0,MAX_FIGHT_POS_NUM);
@@ -585,6 +589,7 @@ int KBattleDeck::GetEmptySecretSlot()
     memset(posFlag,0,sizeof(posFlag));
     for(KCardInstList::iterator it=m_SecretCardSet.begin();it!=m_SecretCardSet.end();++it){
 		KCardInst* card = *it;
+		if(card->m_attr.getPos()<0) continue;
         posFlag[card->m_attr.getPos()]= true;
 	}
     for(int i=0;i<MAX_SECRET_POS_NUM;i++){

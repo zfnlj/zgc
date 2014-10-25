@@ -328,6 +328,21 @@ void KCardInst::DelBuf(KAbilityStatic* pBuf)
 	m_attr.DelBuf(pBuf);
 }
 
+int KCardInst::CalcGoodBufVal()
+{
+	int ret = 0;
+	KCardBufferList::iterator it = m_attr.m_bufList.begin();
+	while(it != m_attr.m_bufList.end()){
+		KCardBuffer& buf = *it;
+		if(buf._pST->GetWhen()!=KAbilityStatic::when_ever&&
+			buf._pST->GetAbilityType()==KAbilityStatic::ability_good){
+			ret += buf._pST->GetBufVal();
+		}
+		it++;
+	}
+	return ret;
+}
+
 void KCardInst::DispleGoodBuf()
 {
 	KCardBufferList::iterator it = m_attr.m_bufList.begin();

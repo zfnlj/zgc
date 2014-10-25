@@ -405,6 +405,13 @@ float KBattleAI::CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility
 			return CalcBlessHp(pCard,pAbility,&lstMy);
 		}
 		break;
+	case KAbilityStatic::what_dispel_good_buf:
+		{
+			float v1 = KAIAssist::_CalcDispelGoodBufVal(lst);
+			float v2 = KAIAssist::_CalcDispelGoodBufVal(lstMy);
+			return (v1-v2);
+		}
+		break;
     default:
 		CCAssert(false , "TBD!");
         break;

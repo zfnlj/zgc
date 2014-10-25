@@ -82,6 +82,7 @@ public:
 	void DispleBuf();
 	void DispleGoodBuf();
 	bool HasBuf(KAbilityStatic* pBuf);
+	int	 CalcGoodBufVal();
 	void ReturnHand();
 	KAbilityStatic* FindBuf(KAbilityStatic::Enum_What what);
 	//KAbilityStatic* FindBufAbility(KAbilityStatic::Enum_What what);

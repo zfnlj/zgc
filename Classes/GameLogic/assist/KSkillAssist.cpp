@@ -524,9 +524,12 @@ void _copyFightSoldier(KBattleCtrlBase* ctrl,KCardInst* pSrc,KAbilityStatic* pAb
 	result.init(pSrc->GetRealId(),pSrc->GetRealId(),pAbility);
 	for(KCardInstList::iterator it = newLst.begin();it!=newLst.end();++it){
 		result.SetDestVal((*it)->GetRealId(),0);
+		int pos = pPlayer->GetDeck().GetRndEmptyFightSlot();
 		KCardInst* card = KBattleCtrlAssist::GetCard(ctrl,(*it)->GetRealId());
-		pPlayer->GetDeck().Hand2Fight(card);
+		pPlayer->GetDeck().Hand2Fight(card,pos);
+		CCAssert(pos>=0 , "TBD!");
 	}
+	
 	_sendAbilityResult(ctrl,result);
 }
 
