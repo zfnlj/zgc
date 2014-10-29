@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <filePath>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\shop.xml.ui</filePath>
+  <filePath>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\shop.xml.ui</filePath>
   <Version>1.2.0.1</Version>
   <Name>shop</Name>
-  <ProjectDir>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop</ProjectDir>
+  <ProjectDir>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop</ProjectDir>
   <JsonFileName>shop.json</JsonFileName>
-  <Resources>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\Resources</Resources>
-  <JsonFolder>E:\cocos2d-x-2.2.1\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\Json</JsonFolder>
+  <Resources>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\Resources</Resources>
+  <JsonFolder>E:\cocos2d-x-2.2.1\samples\Cpp\zgc\tool\zgc_ui\shop\Json</JsonFolder>
   <JsonList>
     <string>shop_1.json</string>
   </JsonList>
