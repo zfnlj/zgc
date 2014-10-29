@@ -198,7 +198,9 @@ void MainMenuScene::UpdateLockStatus()
 {
 	UpdateLockStatus("open_adventure","but_quest","lock_quest");
 	UpdateLockStatus("open_cardgroup","but_cardgroup","lock_cardgroup");
-	UpdateLockStatus("open_shop","but_shop","lock_shop");
+	UIWidget* pLockWidget = m_ui->getWidgetByName("lock_shop");
+	pLockWidget->setVisible(false);
+	//UpdateLockStatus("open_shop","but_shop","lock_shop");
 
 	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("daily_num_txt");
 	int openVal = STATIC_DATA_INT("open_adventure");
