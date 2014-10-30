@@ -3,6 +3,7 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #include "assist/KUIAssist.h"
 #include "../Item/KUseItemManager.h"
+#include "assist/KPopupLayer.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -63,4 +64,9 @@ void KSceneLayerBase::onIAPCallback(const char* productName,int count)
 			KItemAbout::KUseItemManager::GetInstance()->UseItem(productName,0);
 		}
 	}
+}
+
+void KSceneLayerBase::onSystemMsg(int id)
+{
+	KPopupLayer::DoNotifyDlg(id);
 }

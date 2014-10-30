@@ -285,6 +285,8 @@ void KShopScene::onSystemMsg(int id)
 {
 	if(id==MONEY_LOW_STR){
 		KPopupLayer::DoModal(UI_NOTIFY_STR,MONEY_LOW_STR,KPopupLayer::DT_Yes_No,coco_pushselector(KShopScene::DoBuyMoney),this);
+	}else{
+		KSceneLayerBase::onSystemMsg(id);
 	}
 }
 
@@ -293,6 +295,7 @@ void KShopScene::DoBuyMoney(CCObject* sender)
 	UIWidget* pBut = (UIWidget*)sender;
 	if(pBut->getTag()==KPopupLayer::RT_YES){
 		//TBD
+		BuyProduct(4);
 	}
 }
 
@@ -317,3 +320,4 @@ void KShopScene::DoClickClose(CCObject* sender)
 {
 	KUIAssist::_switch2MainMenu();
 }
+

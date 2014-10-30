@@ -10,6 +10,11 @@
 #include "../WorldObject/KPlayer.h"
 #include "../common/KPlayerRecordAssist.h"
 
+#ifdef _USE_COCOS2DX
+#include "../UI/assist/KUIAssist.h"
+#include "../UI/KSceneLayerBase.h"
+#endif
+
 template<> KDynamicWorld* Singleton<KDynamicWorld>::mSingleton = 0;
 
 KDynamicWorld& KDynamicWorld::getSingleton(void)
@@ -58,7 +63,13 @@ const char* KDynamicWorld::GetStringByID(int id)
 
 void KDynamicWorld::onSystemMsg(int id)
 {
-	KPopupLayer::DoNotifyDlg(id);
+#ifdef _USE_COCOS2DX
+	if(KUIAssist::_activeSceneLayer()){
+		KUIAssist::_activeSceneLayer()->onSystemMsg(id);
+	}else{
+		KPopupLayer::DoNotifyDlg(id);
+	}
+#endif
 }
 
 
