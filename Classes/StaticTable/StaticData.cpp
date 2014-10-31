@@ -10,7 +10,7 @@
 USING_NS_CC;
 using namespace std;
 
-#define STATIC_DATA_NAME "static_data.plist"
+#define STATIC_DATA_NAME "static_data_1_1.plist"
 
 static StaticData* _sharedStaticData = NULL;
 StaticData* StaticData::sharedStaticData()

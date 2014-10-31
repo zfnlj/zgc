@@ -36,7 +36,7 @@ void GameRoot::init()
 	m_inc = 1;
 	VirtualService::getSingleton().init();
 	KQuestManager::GetInstance()->GetQuest(10001);
-	KClientGateListener::getSingleton().ConnectLoginServer(STATIC_DATA_STRING("user"), STATIC_DATA_STRING("pwd"));	
+	//KClientGateListener::getSingleton().ConnectLoginServer(STATIC_DATA_STRING("user"), STATIC_DATA_STRING("pwd"));	
 
 	CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GameRoot::update),this,0.1f,false);
 

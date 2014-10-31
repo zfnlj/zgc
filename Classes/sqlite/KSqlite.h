@@ -1,7 +1,7 @@
 #ifndef _KSQLITE_H
 #define _KSQLITE_H
 
-#define  SQLITE_FILE_NAME "zgc.dat"
+#define  SQLITE_FILE_NAME "zgc_1_1.dat"
 
 #include "../sqlite/sqlite3.h"
 

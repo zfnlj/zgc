@@ -56,11 +56,14 @@ bool KSceneSlidePicture::init()
 void KSceneSlidePicture::CreateCheckSlideRadio()
 {
 	int slideNum = m_lastId - m_firstId +1;
-	m_radioSelect.AddGroupBut("check_slide",8,
+	m_radioSelect.AddGroupBut("check_slide",slideNum,
 								m_ui,this,coco_pushselector(KSceneSlidePicture::onClickSelectSlide),0);
 
 	for(int i=slideNum;i<8;i++){
-		m_radioSelect.SetVisible(i,false);
+		char sz[64];
+		sprintf(sz,"check_slide_%d",i);
+		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui,sz);
+		KUIAssist::_setButVisible(pBut,false);
 	}
 
 	int realWidth = 56;
