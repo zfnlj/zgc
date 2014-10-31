@@ -542,7 +542,7 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
 
 			KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[pWidgetSlot->getTag()]._id);
-			m_heroLevUpPanel.ShowPanel(pHeroDef);
+			if(pHeroDef) m_heroLevUpPanel.ShowPanel(pHeroDef);
 			/*m_radioSelectHero.SetSelected(pWidgetSlot->getTag(),false);
 			
 			if(KCardGroupAssist::IsMiniCardListMatch(m_slotElem[pWidgetSlot->getTag()],m_miniHero,m_miniCardList,m_depot)){
