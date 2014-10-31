@@ -763,5 +763,6 @@ bool CardGroupScene::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 
 void CardGroupScene::onCloseCallback()
 {
+	if(KGameRecordMgr::getSingleton().IsPlaying()) return;
 	KUIAssist::_switch2MainMenu();
 }

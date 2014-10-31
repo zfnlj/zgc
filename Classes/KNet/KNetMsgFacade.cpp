@@ -163,7 +163,7 @@ void KNetMsgFacade::onQuestFinished(int qId)
 		break;
 	case 10008:
 		STATIC_DATA_SET_KEYVAL("open_shop");
-		KDynamicWorld::getSingleton().onSystemMsg(OPEN_SHOP);
+		//KDynamicWorld::getSingleton().onSystemMsg(OPEN_SHOP);
 		break;
 	case 10011:
 		STATIC_DATA_SET_KEYVAL("open_adventure");
