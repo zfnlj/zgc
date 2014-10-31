@@ -235,7 +235,9 @@ bool KCardGroupAssist::SaveCardGroup(int deckId,KHeroDef& curHero,KMiniCardList&
 		KCardStatic* pST = KGameStaticMgr::getSingleton().GetCard(it->_cardId);
 		if(pHeroST &&
 			pST->GetRace()!= KCardStatic::race_null &&
-			pST->GetRace()!= pHeroST->GetRace()) continue;
+			pST->GetRace()!= pHeroST->GetRace()){
+				continue;
+		}
 		for(int i=0;i<it->_count;i++){
 			tmpLst.push_back(it->_cardId);
 		}
@@ -252,7 +254,7 @@ void KCardGroupAssist::SmartFillCardGroup(KHeroDef& curHero,KMiniCardList& miniL
 	FilterCard(tmpList,desList,browse_all,KCardStatic::race_all,curHero.GetRace(),-1,0);
 
 	KIntegerList remainLst;
-	for(KItemUnitList::iterator it= tmpList.begin();it!=tmpList.end();++it){
+	for(KItemUnitList::iterator it= desList.begin();it!=desList.end();++it){
 		int remainNum = 2 - GetDeckMiniCardNum(miniList,it->_id);
 		while(remainNum>0){
 			remainLst.push_back(it->_id);

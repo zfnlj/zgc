@@ -400,6 +400,10 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 		return KUIAssist::_queryCardPos(NULL,m_card);
 	}else if(strcmp(slot,"secret_pos")==0){
 		return KUIAssist::_querySecretPos(m_card);
+	}else if(strcmp(slot,"enemy_skill_center")==0){
+		bool bMy = !KClientBattleCtrl::getInstance()->IsMyCard(m_card);
+		UIWidget* widget = (bMy)?KUIAssist::_activeScene->getWidgetByName("skill_my_pos"):KUIAssist::_activeScene->getWidgetByName("skill_your_pos");
+		if(widget) return widget->getWorldPosition();
 	}else if(strcmp(slot,"secret_show")==0){
 		return KUIAssist::_querySecretShowPos(m_card);
 	}else if(strcmp(slot,"res")==0){

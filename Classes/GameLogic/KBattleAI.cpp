@@ -281,7 +281,11 @@ bool KBattleAI::IsUseSoldierAbilityGood(KCardInst* pCard,int& target)
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,NULL,pAbility,&lstMy);
 	KCardInst* pBest = NULL;
 	float maxVal = 0;
-	switch(pAbility->GetWhat()){
+
+	KAbilityStatic::Enum_What whatAbility = pAbility->GetWhat();
+	if(whatAbility==KAbilityStatic::what_buf) whatAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal())->GetWhat();
+
+	switch(whatAbility){
 	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_control:
 	case KAbilityStatic::what_stun:
@@ -356,7 +360,9 @@ float KBattleAI::CalcUseRangeSkillGood(KCardInst* pCard,KAbilityStatic* pAbility
 	KSkillAssist::_fillYourAbilityTarget(m_battleCtrl,pCard,pDes,pAbility,&lst);
 	KSkillAssist::_fillMyAbilityTarget(m_battleCtrl,pCard,pDes,pAbility,&lstMy);
 	int target=0;
-	switch(pAbility->GetWhat()){
+	KAbilityStatic::Enum_What whatAbility = pAbility->GetWhat();
+	if(whatAbility==KAbilityStatic::what_buf) whatAbility = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal())->GetWhat();
+	switch(whatAbility){
 	case KAbilityStatic::what_damage:
 	case KAbilityStatic::what_kill:
 	case KAbilityStatic::what_heal:
