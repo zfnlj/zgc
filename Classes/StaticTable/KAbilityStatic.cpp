@@ -107,6 +107,7 @@ KAbilityStatic::Enum_AblityType KAbilityStatic::GetAbilityType()
 	case what_angry:
 	case what_hp_double:
     case what_hp_add:
+	case what_add_atk_hp:
             tp = (m_val._val>0)?ability_good:ability_bad;
             break;
 	case what_stun:

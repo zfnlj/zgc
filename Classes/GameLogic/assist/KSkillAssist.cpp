@@ -179,7 +179,6 @@ void _fillAllAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes
 			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(card->HasBuf(pBuf)) continue; //same buf only one..
 		}
-		//if(card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);
 	}
@@ -253,7 +252,7 @@ void _fillMyAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDes,
 		if(pAbility->GetWhat()== KAbilityStatic::what_rush){
 			if(!card->FindBuf(KAbilityStatic::what_can_rush)) continue;
 		}
-		if(card->HasBuf(pAbility)) continue; //same buf only one..
+		if(pAbility->IsBufAbility()&&card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);
 	}
