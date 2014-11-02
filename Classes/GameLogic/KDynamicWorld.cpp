@@ -90,9 +90,9 @@ void KDynamicWorld::onBattleFailed(int questId,Scene_type tp)
 		KTowerAssist::_deactive(KMainPlayer::RealPlayer()->GetPlayerRecord());
 		KDynamicWorld::getSingleton().onSystemMsg(TOWER_CLOSE);
 	}else{
-		if(tp==scene_daily){
+		/*if(tp==scene_daily){
 			KPlayerRecordAssist::DailyStageLost(KMainPlayer::RealPlayer()->GetPlayerRecord());
-		}
+		}*/
 		KEventAbout::KEDBattleFailed evt;
 		evt.m_nID = questId;
 		FireEvent(evt);

@@ -59,9 +59,9 @@ bool _active(tb_player_record* record,int curLayer)
 		_create(record);
 		
 	}
-	int rnd = g_rnd.GetRandom(0,100);
+	int rnd = g_rnd.GetRandom(0,100+record->_gameData._tower.GetPos()*5);
 	if(record->_gameData._tower.GetPos()==curLayer &&
-		rnd < 25 + record->_gameData.GetDailyStageLev()*4 ){
+		rnd < 30 ){
 		record->_gameData._tower._bShow = true;
 		record->updateMask(tb_player_record::_CRI);
 		return true;
@@ -72,8 +72,8 @@ bool _active(tb_player_record* record,int curLayer)
 
 void _deactive(tb_player_record* record)
 {
-	record->_gameData._tower.Reset();
-	record->updateMask(tb_player_record::_CRI);
+	_create(record);
+	//record->updateMask(tb_player_record::_CRI);
 }
 
 int _calcMoney(tb_player_record* record)

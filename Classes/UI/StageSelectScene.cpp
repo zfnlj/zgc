@@ -73,6 +73,8 @@ void StageSelectScene::InitTower()
 void StageSelectScene::InitStageBut()
 {
 	int dailyStageLev = KMainPlayer::RealPlayer()->GetDailyStageLev();
+	int towerPos = KMainPlayer::RealPlayer()->GetPlayerRecord()->_gameData._tower.GetPos();
+	bool bTowerShow =KMainPlayer::RealPlayer()->GetPlayerRecord()->_gameData._tower._bShow;
 	for(int i=0;i<MAX_PAGE_STAGE_NUM;i++){
 		char sz[64];
 		sprintf(sz,"but_stage_%d",i);
@@ -83,6 +85,11 @@ void StageSelectScene::InitStageBut()
 		KUIAssist::_setButVisible(pBut, i<dailyStageLev);
 		sprintf(sz,"stage_txt_%d",i);
 		UILabelAtlas* stageNumLabel = (UILabelAtlas*)this->getWidgetByName(sz);
+		if(!bTowerShow && towerPos==(i+1)){
+			stageNumLabel->setColor(ccc3(240, 55, 11));
+		}else{
+			stageNumLabel->setColor(ccc3(255, 255, 255));
+		}
 		sprintf(sz,"%d",i+1);
 		stageNumLabel->setStringValue(sz);
 		stageNumLabel->setVisible(i<dailyStageLev);
