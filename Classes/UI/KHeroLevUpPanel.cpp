@@ -56,6 +56,7 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 
 	}
 	m_layer = layer;
+	CreateExitBut();
 	m_pHeroWidget = NULL;
 	m_pHeroDef = NULL;
 	//m_layer->addWidget(m_Panel);
@@ -266,4 +267,27 @@ void KHeroLevUpPanel::updatePanel()
 void KHeroLevUpPanel::update(float dt)
 {
 	m_resultPanel.update(dt);
+}
+
+void KHeroLevUpPanel::CreateExitBut()
+{
+	CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
+                                        "but_exit0.png",
+                                        "but_exit1.png",
+                                        this,
+                                        menu_selector(KHeroLevUpPanel::menuExitCallback));
+    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	pCloseItem->setPosition(ccp(origin.x + visibleSize.width - pCloseItem->getContentSize().width/2 ,
+                                origin.y + pCloseItem->getContentSize().height/2));
+
+    // create menu, it's an autorelease object
+    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    pMenu->setPosition(CCPointZero);
+    m_layer->addChild(pMenu, 1);
+}
+
+void KHeroLevUpPanel::menuExitCallback(CCObject* pSender)
+{
+	KUIAssist::_switch2MainMenu();
 }

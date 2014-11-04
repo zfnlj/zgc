@@ -23,6 +23,7 @@ public:
 	void update(float dt);
 	void ShowPanel(KHeroDef*);
 	void ShowHero(KHeroDef* hero);
+	void CreateExitBut();
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;
@@ -33,6 +34,7 @@ private:
 	void DoClickSkillLevUp(CCObject* sender);
 	void DoClickFateLevUp(CCObject* sender);
 	void SetLevUpWidgetsVisible(int index,bool bVisible);
+	void menuExitCallback(CCObject* pSender);
 	void UpdateHeroLevUpInfo();
 	void UpdateMoney();
 	void UpdateSkillInfo();
