@@ -365,7 +365,7 @@ void BattleFieldScene::onCardMove(KCardInst* pCard)
 	int oldSlot = pCard->GetOldSlot();
 	KCardActor* actor = KCardActor::create(pCard); 
 	if(actor->getBack()&& !KClientBattleCtrl::getInstance()->IsShowBack(pCard)){
-		actor->UpdateUI();
+		actor->UpdateUI(true);
 		addWidget(actor->GetUI());
 	}
 	if(oldSlot ==(int)KCardInst::enum_slot_hand){ //when hand card to fight, resort hand set.

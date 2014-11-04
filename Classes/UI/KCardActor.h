@@ -31,7 +31,7 @@ public:
 	void DoSelect(CCObject* sender);
 	void onMoveEvent(CCObject* sender);
 	CC_SYNTHESIZE(bool,m_bBack,Back);
-	void UpdateUI();
+	void UpdateUI(bool bFlip=false);
 	cocos2d::extension::UIWidget* GetBigCard();
 	void initTombAction(K3DActionParam* param);
 	virtual void MoveReached(CCObject* sender);
@@ -55,7 +55,7 @@ public:
 	virtual void resortZOrder(int val);
 	void RemoveSelectImg();
 private:
-	void init(KCardInst*,bool bBig=false);
+	void init(KCardInst*,bool bBig=false,bool bFlip=false);
 	bool DoSelectBeginCard(CCObject* sender);
 	KCardInst* m_card;
 	cocos2d::extension::UIWidget* m_bigPhoto;

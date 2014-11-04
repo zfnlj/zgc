@@ -91,14 +91,14 @@ KCardActor* KCardActor::create(KCardInst* pCardInst,bool bBig)
 	return actor;
 }
 
-void KCardActor::UpdateUI()
+void KCardActor::UpdateUI(bool bFlip)
 {
 	if(m_bigPhoto){
 		m_bigPhoto->removeFromParent();
 		CC_SAFE_RELEASE(m_bigPhoto);
 	}
 	cocos2d::extension::UIWidget* oldUI = m_ui;
-	init(m_card);
+	init(m_card,false,bFlip);
 	m_ui->setPosition(oldUI->getPosition());
 	if(oldUI->getParent()) oldUI->removeFromParent();
 	CC_SAFE_RELEASE(oldUI);
@@ -137,7 +137,7 @@ void KCardActor::resortZOrder(int val)
 
 }
 
-void KCardActor::init(KCardInst* pInst,bool bBig)
+void KCardActor::init(KCardInst* pInst,bool bBig,bool bFlip)
 {
 	m_ui = NULL;
 	m_bigPhoto = NULL;
@@ -154,7 +154,7 @@ void KCardActor::init(KCardInst* pInst,bool bBig)
 		m_bBack = true;
 	}else{
 		m_ui = KUICardAssist::_createCardLayout(pInst->GetST(),bBig,m_card);
-		UpdateCardAttr(m_ui,true);
+		if(!bFlip) UpdateCardAttr(m_ui,true);
 		m_bBack = false;
 		RemoveSelectImg();
 		m_ui->addPushDownEvent(this, coco_pushselector(KCardActor::DoSelect));
