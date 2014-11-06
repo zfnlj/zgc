@@ -68,11 +68,11 @@ bool KBattleAI::ThinkPlayCard()
 	KCardInstList* yourFightLst = pDefGuy->QueryCardSet(KCardInst::enum_slot_fight);
 	float yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
 	if(myVal<=yourVal){
-		//if(HandSoldierToField()) return true;
+		if(HandSoldierToField()) return true;
 		if(UseSkillCard()) return true;
 	}else{
 		if(UseSkillCard()) return true;
-		//if(HandSoldierToField()) return true;
+		if(HandSoldierToField()) return true;
 	}
 	
 	return false;
