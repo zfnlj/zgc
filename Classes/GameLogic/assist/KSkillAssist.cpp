@@ -326,7 +326,7 @@ void _fillYourAbilityTarget(KBattleCtrlBase* ctrl,KCardInst* pSrc,KCardInst* pDe
 			KAbilityStatic* pBuf = KGameStaticMgr::getSingleton().GetAbilityOnId(pAbility->GetNormalVal());
 			if(card->HasBuf(pBuf)) continue; //same buf only one..
 		}
-		if(card->HasBuf(pAbility)) continue; //same buf only one..
+		if(pAbility->IsBufAbility()&& card->HasBuf(pAbility)) continue; //same buf only one..
 		if(!_IsMatch(pAbility->GetCond(),card)) continue;
 		lst->push_back(card);
 	}

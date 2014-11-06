@@ -68,11 +68,11 @@ bool KBattleAI::ThinkPlayCard()
 	KCardInstList* yourFightLst = pDefGuy->QueryCardSet(KCardInst::enum_slot_fight);
 	float yourVal = KAIAssist::_calcTotalCardVal(*yourFightLst);
 	if(myVal<=yourVal){
-		if(HandSoldierToField()) return true;
+		//if(HandSoldierToField()) return true;
 		if(UseSkillCard()) return true;
 	}else{
 		if(UseSkillCard()) return true;
-		if(HandSoldierToField()) return true;
+		//if(HandSoldierToField()) return true;
 	}
 	
 	return false;
@@ -87,6 +87,7 @@ void KBattleAI::ThinkToPlay(float dt)
 		return;
 	m_thinkElapsed = 0;
 	
+
 	m_useSkillVal = 0.88f;
 	if(ThinkPlayCard()) return;
 	//if(UseHeroSkill())
@@ -224,7 +225,8 @@ KCardInst* KBattleAI::ThinkUseSkillCard(KCardInst* card,float& retVal)
 		}else{
 			int target = 0;
 			retVal += CalcUseTargetSkillGood(card,pAbility,target);
-			des = KBattleCtrlAssist::GetCard(m_battleCtrl,target);
+			KCardInst* curDes = KBattleCtrlAssist::GetCard(m_battleCtrl,target);
+			if(!pAbility->IsTargetSure()) des = curDes;
 		}
 	}
 	if(card->GetCost()>0){
