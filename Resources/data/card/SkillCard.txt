@@ -1,51 +1,16 @@
-ID	Name	Rank	Cost	Race	Desc	Detail
-30001	±¬Õ¨Êõ	1	2	0	0	¶ÔµÐ·½È«ÌåÓÂÊ¿Ôì³É1µãÉËº¦
-30003	ÌìµØ²»ÈÊ	1	2	0	0	¶ÔÈ«ÌåÓÂÊ¿Ôì³É2µãÉËº¦
-30006	Îå¹È·áµÇ	2	2	0	0	³éÈ¡Á½ÕÅÊÖÅÆ
-30007	Ö¸Â¹ÎªÂí	1	3	0	0	½«Ò»Î»ÓÂÊ¿±äÎª0/1
-30009	·Ç¹¥	1	0	0	0	½«ÓÂÊ¿ÒÆµ½ÊÖÅÆ
-30011	½ð¸ÕÖä	1	3	0	0	Ê¹ÎÒ·½ÓÂÊ¿+2/+2
-30014	½ðÖÓÕÖ	2	1	0	0	¾ø¶Ô·ÀÓù:µÖ¿¹Ò»´ÎÉËº¦
-30015	Á÷ÐÇÓê	1	4	0	0	¶ÔËùÓÐ½ÇÉ«Ôì³É3µãÉËº¦
-31001	Ìì½µ¸ÊÁØ	1	0	water	0	¶ÔÈ«ÌåÓÂÊ¿ÖÎÁÆ4µãÉúÃü
-31002	´È±¯	1	2	water	ÖÎÁÆÓ¢ÐÛ	¶ÔÓ¢ÐÛÖÎÁÆ4µãÉúÃü
-31003	Ç¿ÉíÊõ(ÉñÊ¥Ö®Áé)	0	2	water	0	Ê¹ÓÂÊ¿µÄÉúÃüÖµ·­±¶
-31004	Æ½µÈ	2	2	water	0	Ê¹ËùÓÐÓÂÊ¿µÄÉúÃüÖµ±äÎª1
-31016	ÌìÅ®É¢»¨(ÉñÊ¥ÐÂÐÇ)	0	5	water	0	¶ÔËùÓÐµÐÈËÔì³É2µãÉËº¦£¬ÖÎÁÆËùÓÐÓÑ·½2µãÉúÃü¡£
-31017	Ô¸ÕßÉÏ¹³(ÐÄÁéÊÓ½ç)	0	1	water	0	Ëæ»ú¸´ÖÆ¶ÔÊÖµÄÒ»ÕÅÊÖÅÆ¡£
-31018	ÇîÉñÖª»¯(Ë¼Î¬ÇÔÈ¡)	1	3	water	0	Ëæ»ú¸´ÖÆ¶ÔÊÖµÄ¶þÕÅÊÖÅÆ¡£
-31019	½Ì»¯(¿ØÐÄÊõ)	3	4	water	0	Ëæ»ú¸´ÖÆ¶ÔÊÖµÄÓÂÊ¿£¬²¢½«ÆäÍ¶ÈëÕ½³¡¡£
-31020	¾»»¯(Í´)	0	2	water	0	ÏûÃðÒ»Î»¹¥»÷Á¦²»´óÓÚ3µÄÓÂÊ¿¡£
-31021	¸ß½×¾»»¯(Ãð)	0	3	water	0	ÏûÃðÒ»Î»¹¥»÷Á¦´óÓÚµÈÓÚ5µÄÓÂÊ¿¡£
-31022	åÐÒ£ÓÎ	1	0	water	0	ÇýÉ¢Ò»Î»ÓÂÊ¿µÄBuffer¡£
-31023	×ÔÇ¿²»Ï¢(¶Ü)	0	1	water	0	Ê¹Ò»Î»ÓÂÊ¿ÉúÃüÖµ¼Ó2£¬³éÈ¡Ò»ÕÅÊÖÅÆ¡£
-31024	ÒÆ»¨½ÓÄ¾(ÉñÊ¥Ö®»ð)	2	6	water	0	Ôì³É5µãÉËº¦£¬ÎªÎÒ·½Ó¢ÐÛ»Ö¸´5µãÉúÃü¡£
-31025	µã»¯(¾«Éñ¿ØÖÆ)	0	8	water	0	»ñµÃÒ»Î»µÐ·½ÓÂÊ¿µÄ¿ØÖÆÈ¨¡£
-31026	¹¥ÊØÏà¼Ã(ÐÄÁéÖ®»ð)	1	1	water	0	Ê¹Ò»Î»ÓÂÊ¿µÄ¹¥»÷Á¦µÈÍ¬ÓÚÉúÃüÖµ
-31027	ÇåÐÄÖä	2	4	water	0	ÇýÉ¢ËùÓÐ¶Ô·½µÄÓÂÊ¿£¬²¢³éÈ¡Ò»ÕÅÅÆ
-31028	Ö±È¡µÐ½«	0	2	water	0	¶ÔµÐ·½Ó¢ÐÛÔì³É5µãÉËº¦
-31029	ÎÞÍýÖ®ÔÖ	0	1	water	0	Ôì³É2µãÉËº¦¡£
-32001	Òý»ðÉÕÉí	1	1	fire	0	µãÈ¼Ò»¸öµÐ·½ÓÂÊ¿£¬Ê¹ÆäÎÞ·¨ÐÐ¶¯Ò»»ØºÏ¡£
-32002	»ðÉÕÁ¬Óª(±ù×¶Êõ)	1	3	fire	0	µãÈ¼Ò»¸öµÐ·½ÓÂÊ¿ºÍËü¸½½üµÄÓÂÊ¿£¬²¢¶ÔËüÃÇÔì³É1µãÉËº¦¡£
-32003	»ðº£(±ùËªÐÂÐÇ)	0	2	fire	0	µãÈ¼ËùÓÐµÐ·½ÓÂÊ¿¡£
-32004	´ôÈôÄ¾¼¦(±äÐÎÊõ)	0	4	fire	0	½«Ò»Î»ÓÂÊ¿±äÎª1/1
-32005	ÆëÈËÈý¹Ä(°ÂÊõ·Éµ¯)	1	1	fire	0	Ëæ»ú¶ÔµÐ·½Ôì³É3µãÉËº¦¡£
-32006	¶«Ê©Ð§ò­(¾µÏñ)	0	3	fire	0	Éú³É2¸ö´ø»¤ÎÀµÄ¡°¶«Ê©¡±¡£
-32007	Ìì»ð·ÙÉí(º®±ù¼ý)	0	2	fire	0	¶ÔµÐ·½ÓÂÊ¿Ôì³É3µãÉËº¦£¬²¢½«ÆäµãÈ¼¡£
-32008	Á÷ÐÇ»ðÓê(ÁÒÑæ·ç±©)	0	7	fire	0	¶ÔËùÓÐµÐ·½ÓÂÊ¿Ôì³É4µãÉËº¦¡£
-32009	Ñ×ÁúÍÂÏ¢(»ðÇòÊõ)	0	4	fire	0	¶ÔµÐ·½µ¥Î»Ôì³É6µãÉËº¦
-32010	¿ºÁúÓÐ»Ú(Ñ×±¬Êõ)	3	8	fire	0	¶ÔµÐ·½µ¥Î»Ôì³É10µãÉËº¦
-32011	ÆÆÕó¸è£¨Ä§±¬Êõ£©	1	2	fire	0	¶ÔËùÓÐµÐ·½ÓÂÊ¿Ôì³É1µãÉËº¦¡£
-32012	»ðËÙÔöÔ®(°ÂÊõÖÇ»Û)	0	3	fire	0	³éÈ¡2ÕÅÅÆ
-32013	µØÓüÁÒÑæ(±©·çÑ©)	2	5	fire	0	¶ÔËùÓÐµÐ·½ÓÂÊ¿Ôì³É2µãÉËº¦£¬²¢½«ÆäµãÈ¼¡£
-33001	×³Ê¿Ò»È¥Ùâ(¾øÃüÂÒ¶·)	3	5	gold	0	Ëæ»úÑ¡ÔñÒ»ÃûÓÂÊ¿£¬ÏûÃðÆäËüËùÓÐÓÂÊ¿¡£
-33002	Í»Ï®(³å·æ£©	0	0	gold	0	Ê¹Ò»ÃûÓÂÊ¿»ñµÃÍ»Ï®Ð§¹û¡£
-33003	²ÜØÛÂÛÕ½(ÃüÁîÅ­ºð£©	2	2	gold	0	ÔÚ±¾»ØºÏ£¬ÎÒ·½ÓÂÊ¿µÄÉúÃüÖµÎÞ·¨±»½µµ½1µãÒÔÏÂ£¬³éÒ»ÕÅÅÆ¡£
-33004	ÞëÃçÖú³¤(Å­»ðÖÐÉÕ£©	1	0	gold	0	¶ÔÒ»ÃûÓÂÊ¿Ôì³É1µãÉËº¦£¬²¢Ê¹Æä»ñµÃ+2¹¥»÷Á¦¡£
-33005	Õ½ÕùÕÙ¼±Áî£¨Õ½¶·Å­»ð£©	1	3	gold	0	Ã¿ÓÐÒ»¸öÊÜµ½ÉËº¦µÄÓÂÊ¿£¬±ã³éÒ»ÕÅÅÆ¡£
-33006	Õ¶Ê×(Õ¶É±£©	0	1	gold	0	ÏûÃðÒ»¸öÊÜµ½ÉËº¦µÄµÐ·½ÓÂÊ¿¡£
-33007	µ¶¹â½£Ó°£¨Ðý·çÕ¶£©	0	1	gold	0	¶ÔËùÓÐÓÂÊ¿Ôì³É1µãÉËº¦¡£
-33008	¹ÄÎèÊ¿Æø(¿ñ±©)	1	2	gold	0	Ê¹Ò»ÃûÊÜ¹ýÉËº¦µÄÓÂÊ¿»ñµÃ+3/+3¡£
-33009	ÃÍ»÷	1	2	gold	0	¶ÔÒ»ÃûÓÂÊ¿Ôì³É2µãÉËº¦£¬Èç¹ûËüÒÀÈ»´æ»î£¬Ôò³éÈ¡Ò»ÕÅÅÆ¡£
-33013	ÂÒÉä(Ë³ÅüÕ¶£©	0	2	gold	0	¶Ô2Ãû¶Ô·½ÓÂÊ¿Ôì³É2-4µãÉËº¦¡£
-33014	¹úéä	3	4	gold	0	Ôì³É4µãÉËº¦£¬Èç¹ûÓ¢ÐÛÉúÃüÖµ²»¸ßÓÚ12,Ôò¸ÄÎªÔì³É6µãÉËº¦¡£
+ÜáXX6:t.s-v;	u+t8s;	prLNMLNuÌÐªÖ³‡vMtJvNtLvÈ©Ç¯ÇÀ´Ô²˜©½´¾¨“Ë´KÊ›´±ÅØprLNMLLu±Ê¦ËÁ·´tKvLtLvNtÆ«¶Ò°š«»²Àª‘É¶LÈ™¶³ÃÖrtJLONGs±™Ä´ÈÈµvLtJvNtLvË”´Þ½À§º´§·¹qsIONMEv¨ÅºÆ°Óº’uLsLuMsOuÀÑ­Ã¯Á¬¼³½Îš¯ÒOOLouKMLOEtÅ¸ÅØsNuMsOuMsÂÓªºµ¿«¶ÊÁ³¦º¸prLNMKNuÀŒÇ©§˜vMtIvNtLv´Ä®­ÇÀ©½´¾QMORJrtJLOMIsÂŽ§©ª¨tJvMtLvNt¾‡È©Å¿«„BÊ¨¾Ã­ÃÉ®¶³ÃÖrtJLOMHs¾‡­µ¬”tKvJtLvNtÆ«³„©¯Á¶³Ôª‘É¶KÈ™¶³ÃÖrtJKONLs³’ÀÇÇ´¼¤vMtLvtLvÈ©´Ô²˜©½´¾¦±½·HÊ›´‚¼‚prLMMLMuÉ´ÎÏtKvLt
+
+v¨¯»¹«Û¬¤uÇ¨¬Ü­¡©°¼¶KÉš³…»ouKLLOKtµÀµ²ŠV´‹µÙ§Î¾•TsOuKs	uMsµÅªºµ¿È¸¶„º€©ÉÆÏÎÈprLMMLKu·¿Ê¶tJvLt
+
+vNt²Æ³„©¯«»²ÀÉ¹³…»¦ÊÍ™®ÕMprLMMKIu±ºÐ´ÚÄÖU³Ž´Ø¬½®¶SvNtGvtLvÈ©±†«­Ç¯¶²¨“Ë´JÊ›´±ÅØÚÐ©°¼¶´…ª¬¬­Æ¿MÉš³…»ÛÜqsINNLEvªÅ§ µ®ÃÌV­¸¾•³©Â—TsOuLs	uMs´˜Â‚ÇÊ§¶Éª³¦Êº«Áª¹³¦º¸ÜÙrtJKOMEs¸´‹©ÔÂÍW³Á®Ó·©´ÞUtKvKt
+
+vNt±™ÃƒÄË¨·Æ«´§Ç»Èÿ§º´§·¹ÝÚouKLLNEt¿³ÃÎTÀ¦­¸µ‰TsLuIs	uMs´˜Â‚ÇÊ§¶Éª³¦Êºªºµ¿ÚÐÍÜÀÑ¹š°Æ·“¨¿ÌÝÜÙrtJKOLMsÁÃÂÍW±ÉSvNtJvtLv¯‚¹¬Â®ÄÅØÁˆ½×ÊÄÊŠ©¥KÈ¸¬¼³½ÞÛprLMMJNuÅÂ§¿ÁÄÏU¹UtLvKt
+
+vNt­„»ªÄ°ÂÃÚÃ†»ÙÊŠ©¥Éµ©¥IÈ¸¬¼³½ÞÛprLMMJMu˜¬­Ûª®vMtLvtLv·€³Ý¬Â®Ä«»²ÀÉ¹:
+ÝÚouKLLMKt¥«·¾ÊÄ¯ÛTÉ¢TsOuLs	uMsµÅ«Á±Ãªºµ¿´‚¼‚§ÇÃ«KÙÓË”´Þ¬Â§º´§·¹ÝÚouKLLMJtª¹ÃÕ¿¬º¿T¶³×©ÐÂŒVuKsIusOu©ÌµHÇœµ²ÂÙÛÑ®Õ°«ÅÂ«Û¬¤Ã§ÄËIÈ™¶„º€ÞÛprLMMJJuÈ™ÄÏU¾ÔµŒ½§¨·SvNtDvtLvÃŒÇ¼¬Â®ÄÉ­ÅÂ«»²ÀÉ¹½§¨·´×ÝÚouKLLMHtÃÚ´¥­ŸÂºT¯º¼“©ÐÂŒVuLsNusOu³Ã­Ã¯Á¬¼³½ÊºÄ×Ä‡¼ÖÊ¶°Ð¬¤´‚¼‚§ÇrtJKOLFs¸™­¸©štJvJt
+
+vNtµ‚µÛ±†«­Æ«ÇÀÇ»«»²ÀÛÑÊÝË”´Þ¬Â§º¹·ouKLLMFt¦Î¶ÜÇ¯ÁÒsOuKs	uMsÉªÈ¬ÈÁªÚ¯£©ÌµHÇœµ²ÂÙqsINNKCv°Ÿ¯‚¨Ï¨©uMsNusOu©ÌµKÇœµ²ÂÙÝÚouKKLOMtª‚Ã³ªµsNuLsvNtÇœ¶ÁªÄÆ‡Ç¯ÇÀ©½´¾ÙÓ´Ä¶›°ŸÅ×®­ÆÐ¬ÂÁ§Ä®ÛÜqsIMNMJvÃ³ª½Ñ©ÕVÌƒ¨È³‡VuLsLutLvÉš´Ã¬ÂÄ‰É­ÅÂ«»²ÀÄ°±ƒÆÀ¿ƒÉ¹©½´¾ÙÓÌÛÆ«³¹¸ª‘É¶MÈ™¶³ÃÖÞÛprLLMLLuÂŒÅÛUË†³Ó¬½®¶SvNtJv
+uMsÊ›µÀ´…ª¬Ê®Æ¿¬¼³½ÞÛprLLMLKuÉˆ·Š¹¾ÃØUË›®¯²ŠUtLvJtsOuÀÑ­Ã¯Á¬¼³½Îš¯ÒNOLouKKLOIt¶”¶²´‚Å¹TÏ¼³‡ÈµÈÍVuLsNutLv³—Á…È©Ç¯ÇÀ¨“Ë´IÊ›´±ÅØÜÙrtJJONGsÉÓ³Ó¯×‹ÏWÀÈ­ŽUtLvKtsOu´‚ÌµKÄ‰Ê…ÁÛ°½Ç»ÝÍÆÔ´ÔÛÎÝÚouKKLOGt°“ÃÅ¦µTÅÐÌƒÃTsOuKsvNtÆ«É­ÅÂ«»²Àª‘É¶KÈ™¶³ÃÖÜÒËÚÂÓ·˜Ê›µÀÞÛprLLMLGu¼…¯·ÂŒ¬”U»­­—Å˜ÍÔSvNtEv
+uMsÉª²ƒ¬®È¬ÈÁªºµ¿©ÌµIÇœµ²ÂÙÝÚouKKLOEt«¨½ƒ¯½¯ÛTÄŽ¶Šµ‰TsOuIsvNtÆ«É­ÅÂÉØ®Äª‘É¶HÈ™¶³ÃÖrtJJOMMsÀÄ¼‚¬®Â¢W­¦ËÓ´ˆSvKtDv
+uMsÉªÈ¬ÈÁÈ×±Ã©ÌµLLÊ›´±ÅØprLLMKNu·¶ª‹Å”ÜÖ¹ÕÎÒ³‡ÜÕtKvLtsOuÇ¨´…ª¬Ê®Æ¿¬¼³½«’Ê³NÉš³´Ä×ÛÜqsIMNLJvÃ±¦ª‡¨ÑVÍºµ‰§µÄ£TsOuJsvNtÉ–¶ÜJª¹¸¶rtJJOMJsÊ¦ª€¾¬¬–WÍÔÅ˜­ÔSvLtGv
+uMsÉª²ƒ¬®È¬ÈÁªºµ¿©ÌµKÇœµ²ÂÙÛÑÊÝÁÒ¶›Éš´ÃÝÚouKJLOMt¥Ì´¾ªÄ¶Ø£V¿„¼‚»ªÉÇTsLuHsvNt±™Ãƒ«ÞªŒªÄ»‚©½´¾ÙÓ¯‚¹¸™±ƒ³„©¯«»²ÀÝÚouKJLOLt¯Ä¯ÏTÌ™Æ–ÜÕtLvNtsOu³Ã­Ãº¬¼³½ÄÈ¹²Ã®Î¯×ÄÞÛprLKMLLuË §£»¡ªÁU¹ƒ½·ÒÄÙÖuKsMutLvª£ËÁÃ¥Â°ÛÑ®­ÇÀ©½´¾Ç»µƒ¹ƒ¨È®¡ÇÕËÄÁÈÇÂMÈ™­ª®ºÜÒÊ“­Ã¨·º¸ÜÙrtJIONIs¡“º•©„ÊØW¹ÐÁ¨­³ªÛÔsNuMsvNtÆ«¬Â¹„«»²Àª‘É¶MÈ™¶³ÃÖÜÒËÚµÅ·˜ÄÈ¹TLÄ×Ä‡¼ÖÞÛprLKMLJu¨¿ª…¨£ÃÍ¼ŽÜÖ¨¿ÉÇ¸ÏÄŽÚÓvMtIvuMs¼¿ª¬­ÃÅ†µ¢È¿¶³ÃÖÊºªºµ¿ÚÐÎ›Ê“­Ã¨·º¸ÜÙrtJIONGsªÈ³¥W©Ç³ÎÛÔsOuLsvNt­„»ªÄÆ‡²£ÉÀ³´Ä×Ç»É­ÅÂ«»²ÀÝÚouKJLOGtÇÉÅ›¿Ü«ÍÙ×®€Å˜©ÇÙÖuMsNutLvÈ©±†«­©½´¾¨“Ë´KÊ›´±ÅØÜÙrtJIONEsÆº¯”µ¿·„W¿ŒËÖUtKvLtsOu³Ã­Ãºµ¢Äÿ¶³ÃÖÊºªºµ¿Â‹Ê»RIPSJÛÜqsILNMCv»°ÁˆuLsMutLvÈ©ªÄ»‚©½´¾¨“Ë´JÊ›´±ÅØÚÐ·—Ä´‚«¼·ÃÉ–ÄÚÐ«ŒÊ“·Ý«Áª¹¸¶ÞÛprLKMKLu»ª¶šU±Ì¹§ÉÛÔsOuKsvNtÆ«LºÉªÆ¿¬¼³½«’Ê³MQIÇœµ²ÂÙÝÚouKJLNJtÃ…•™sLuIsvNt¨“Ë´HÊ›´±ÅØÚÐ·—Ä¬Ü­¡¶„º€©ÉËÁÇŸª¢NLQ¨Æ¹®Õª‘É¶HÈ™¶³ÃÖÞÛpr

@@ -1,41 +1,46 @@
-ï»¿
-
-Quest_117 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=88;money=44;");
-	quest:SetAttrs("nameId=111;talk=0;desc=111;");
-	quest:SetAttrs("type=3;reuse=0;hardDegree=17;achieveId=0;");
-	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=117;");
+ÜáXXÃ¾ouqs+
+
+ MLE_A]oupr6]?_
+V	Srtt
+
+E+>
 	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=117;count=1;");
-  -- end groups
-	return true;
-end,
+V[+
+
+BNB@LD	0BMBBMB@DGC?KJBZVCprv
+C)
+<
+T]5?NMLABNB?NMLA]UBouu	B,	;
+	W\	@ID@LD
+:?NGB	4BNBZVCprv
+C)
+<
+T]-
+@LDBNBAMA]UBouu	B,	;
+	W\
+9ALKHC[SDqssrttOR^6
+	\Oqss^
+	L_A]
+
+E;
+(7
+UZZVCpr_^]\_^]\NC9*
+	T]31
+
+]R]Z?NMFAALA]UBou^]OR^^
+		rtt
+
+
+^	
 
-UseGift = function(quest,player)
-	if quest:RemainDailyQuestNum()>0 then
-			return "5117"; 
-	else
-			return "";
-	end
-end, 
-
-QName = function (quest , player)
-	return "daily mission17";
-end,  
-
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 180			-- ç»éªŒå¥–åŠ±
-		money = 80	  	-- é‡‘é’±å¥–åŠ±
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+BouSqsou)
+8_A]
+T		R
+Vqss]
+
+E,8.		0WU?L_
+qssvu	_\HKNG[A_qss
+rttsv
+\]\BouuqsQ\rtpr.0^@\	_V	\S^
+Vqss	]Z^MFZDqsQ\_qsouqs5	8\B^	]T		^Q\Tou^]_rtt_prv]	ouut]?_MELvutOR^–Áğ•ÓğšÙç—õÍprvu\B^ELv^]sRQ]“øí”êÎ™ØæšôÌouu	_7.		7+	
+W		RRSrtR]ou^]ou

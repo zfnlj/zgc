@@ -1,31 +1,58 @@
-ID	BG	CARD_MASK	COST	ATK	HP
-10	card_photo_bg_base.png	card_mask_hero_null.png	0	0	1
-11	card_photo_bg_base.png	card_mask_hero_gold.png	0	0	1
-12	card_photo_bg_base.png	card_mask_hero_tree.png	0	0	1
-13	card_photo_bg_base.png	card_mask_hero_water.png	0	0	1
-14	card_photo_bg_base.png	card_mask_hero_fire.png	0	0	1
-15	card_photo_bg_base.png	card_mask_hero_mud.png	0	0	1
-20	card_photo_bg_base.png	card_mask_soldier_null.png	1	1	1
-21	card_photo_bg_base.png	card_mask_soldier_gold.png	1	1	1
-22	card_photo_bg_base.png	card_mask_soldier_tree.png	1	1	1
-23	card_photo_bg_base.png	card_mask_soldier_water.png	1	1	1
-24	card_photo_bg_base.png	card_mask_soldier_fire.png	1	1	1
-25	card_photo_bg_base.png	card_mask_soldier_mud.png	1	1	1
-30	card_photo_bg_base.png	card_mask_skill_null.png	1	0	0
-31	card_photo_bg_base.png	card_mask_skill_gold.png	1	0	0
-32	card_photo_bg_base.png	card_mask_skill_tree.png	1	0	0
-33	card_photo_bg_base.png	card_mask_skill_water.png	1	0	0
-34	card_photo_bg_base.png	card_mask_skill_fire.png	1	0	0
-35	card_photo_bg_base.png	card_mask_skill_mud.png	1	0	0
-40	card_photo_bg_base.png	card_mask_equip_null.png	1	1	0
-41	card_photo_bg_base.png	card_mask_equip_gold.png	1	1	0
-42	card_photo_bg_base.png	card_mask_equip_tree.png	1	1	0
-43	card_photo_bg_base.png	card_mask_equip_water.png	1	1	0
-44	card_photo_bg_base.png	card_mask_equip_fire.png	1	1	0
-45	card_photo_bg_base.png	card_mask_equip_mud.png	1	1	0
-60	card_photo_bg_base.png	card_mask_skill_null.png	1	0	0
-61	card_photo_bg_base.png	card_mask_skill_gold.png	1	0	0
-62	card_photo_bg_base.png	card_mask_skill_tree.png	1	0	0
-63	card_photo_bg_base.png	card_mask_skill_water.png	1	0	0
-64	card_photo_bg_base.png	card_mask_skill_fire.png	1	0	0
-65	card_photo_bg_base.png	card_mask_skill_mud.png	1	0	0
+ÜáXX6:t:8u:;-:/>+2s</*(v=)1v6-ouMMs Ot
+ 
+OtLvNtKrtLKv
+
+Ns 	NsOuMsNqsKMu	 
+Qv
+QvNtLvMprNKt 	Pu OtLvNtKrtLHv
+
+Ns 	NsOuMsNqsKJu	 
+Qv
+	NsOuMsNqsJOu	 
+Qv
+	
+NsNuLsNqsJNu	 
+Qv
+	NsNuLsNqsJMu	 
+Qv
+	NsNuLsNqsJLu	 
+Qv
+	
+
+QvMtKvMprMJt 	PuQvMtKvMprMIt 	Pu	NsNuLsNqsIOu	 
+Qv
+	 PuLsOuMouKLs Ot
+ NsNuMsOqsIMu	 
+Qv
+	 
+PuLsOuMouKJs Ot
+ 
+
+QvMtLvNprLJt 	PuOtKvNtLrtJGv
+
+Ns 	
+	NsNuMsOqsHOu	 
+Qv
+	 PuLsNuMouJLs Ot
+ NsNuLsOqsHMu	 
+Qv
+	 
+PuLsNuMouJJs Ot
+ 
+
+QvMtKvNprKJt 	PuOtKvMtLrtIGv
+
+Ns 	
+	NsNuLsOqsFOu	 
+Qv
+	 PuLsOuMouHLs Ot
+ NsNuMsOqsFMu	 
+Qv
+	 
+PuLsOuMouHJs Ot
+ 
+
+QvMtLvNprIJt 	PuOtKvNtLrtGGv
+
+Ns 	
+	NsNuMsOqs

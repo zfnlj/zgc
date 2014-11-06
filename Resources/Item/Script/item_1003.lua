@@ -1,11 +1,16 @@
-Ôªøitem_1003 = 
-{
-Initialize = function(KUseItem)
-	return true;
-end,
-run = function(KUseItem,playerId )
-		--(UINT64 playerId,int count,int rank1Rate,int rank2Rate,int rank3Rate,heroRate)
-	KUseItem:GeneratNormalCard(playerId,3,20,43,30,4,3); 
-	return true;
-end,
-}
+‹·XXê√æNNMI_A]oupr6]?_
+V2'4Touu	_
+CprPrt^@\	W3(	5	R
+6]SrttsRQU'60)FK^
+6Q
+]	S_M+Q
+]
+J-	S_K+Q*
+Srtt1*3B8	.;
+V
+6QISLMPKKQIORIPLUB\rtt
+
+
+^	
+
+BouSqs

@@ -1,32 +1,34 @@
-ï»¿-- Script for Quest 10001 æ‘¸åº•è€ƒè¯•
--- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-Quest_10010 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=10009;abandon=0;acceptLevel=1;level=1;exp=40;money=20;");
-	quest:SetAttrs("nameId=100010;talk=0;desc=100011;finishDesc=1500511;");
-	quest:SetAttrs("type=1;reuse=0;hardDegree=1;achieveId=0;share=0;");
-	quest:SetAttrs("nextQuest=10011;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=10;");
-	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=10011;count=1;");
-  -- end groups
-	return true;
-end,
+ÜáXXÃ¾OR^*_
+_-
+]KONMK_˜ìÄšÄè”ÿû•ÍêqsOR^"(?OC@LD*AMA	BNB(?OCK?O!pr.		LLOMM\B^prqs3	^@\	W
+Touu	B,	;
+	W\
+,	?NNMLFCAMA
+1	?NC	?NCAILD@JOC[SDqss		D*=	UZ6@KONMKOC	@LD	ALLONLKD8?NIMLJMLA]UBouu	B,	;
+	W\	@KD@LD
+:?NC5?OC
+?OC[SDqss		D*=	UZ.		ALLOMLA	?OC	BNBZVCprv
+C)
+<
+T]6BMMA]UBouuprvQP\8^Mouu\N]?_
+C9*
+	5W\\TArt]\_^]\_^
+	LE;
+(V[1/
+[P_\ALLOMLAALA]UBou^]OR^^
+		rtt
+
+
+^	
 
-QName = function (quest , player)
-	return "stage 1-10";
-end,   
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 40			-- ç»éªŒå¥–åŠ±
-		money = 20	  	-- é‡‘é’±å¥–åŠ±
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+BouSqsou-/]?_
+^U
+
+_R]Uprv
+\]	]KRMMZDqsQ\_^prrt6
+9]?_
+^U
+
+_R]Upr_^\ouu\qss^
+prvu^@\KNtsvQP\˜Ãî“Õò˜×é™óËrtts^@\MNt\_uPO_•öë–ìÌ—Úè˜òÎqss	]5
+,	5	)U	PPUprP_qs\_qs

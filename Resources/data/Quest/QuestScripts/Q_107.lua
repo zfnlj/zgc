@@ -1,41 +1,37 @@
-ï»¿
-
-Quest_107 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=40;money=20;");
-	quest:SetAttrs("nameId=107;talk=0;desc=107;");
-	quest:SetAttrs("type=3;reuse=0;hardDegree=7;achieveId=0;");
-	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=107;");
+ÜáXXÃ¾ouqs+
+
+ MME_A]oupr6]?_
+V	Srtt
+
+E+>
 	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=107;count=1;");
-  -- end groups
-	return true;
-end,
-
-UseGift = function(quest,player)
-	if quest:RemainDailyQuestNum()>0 then
-			return "5107"; 
-	else
-			return "";
-	end
-end, 
-
-QName = function (quest , player)
-	return "daily mission7";
-end,  
-
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 180			-- ç»éªŒå¥–åŠ±
-		money = 80	  	-- é‡‘é’±å¥–åŠ±
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+V[+
+
+BNB@LD	0BMBBMB@HOC?MNBZVCprv
+C)
+<
+T]5?NNFABNB?NNFA]UBouu	B,	;
+	W\	@ID@LD
+:?HC5?OC[SDqss		D*=	UZ.		AMA	?OC	BNBZVCprv
+C)
+<
+T]6BMMED\TArttouuPO_7
+]Lrtt_
+M\B^	B<)8V[[SDqs\_^]\_^]OD:
+	+
+UZ42	ZS^[@KOGB	BMBZVCpr_^PO__
+
+ouu	_
+CprPrtpr*5	\B^	U
+
+SSrtt^	B-9+
+
+1	TV@M\rttsv
+\]ILLH\B\rttouuts	]Z]CprvrtR]ouqs+1_A]
+\W
+]P_Srtt
+
+
+^[_	H\BouS^]ouqsou7:	^@\	_V	\S^
+Vqs\_]prv]rtt_		qssv_A]KGNtsvQP\˜Ãî“Õò˜×é™óËrtts^@\GNt\_uPO_•öë–ìÌ—Úè˜òÎqss	]5
+,	5	)U	PPUprP_qs\_qs

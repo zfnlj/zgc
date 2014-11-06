@@ -1,41 +1,33 @@
-ï»¿-- Script for Quest 101 æ¯æ—¥ä»»åŠ¡
--- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-Quest_101 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=20;money=10;");
-	quest:SetAttrs("nameId=101;talk=0;desc=101;finishDesc=1500511;");
-	quest:SetAttrs("type=3;reuse=0;hardDegree=1;achieveId=0;");
-	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=101;");
+ÜáXXÃ¾OR^*_
+_-
+]KOM]–Ğï—åÚšÂÁšôÜouQP\$*AMA	BNB(?OC@LD*AMAMAMrt,	NNL\B^prqs3	^@\	W
+Touu	B,	;
+	W\
+,	?OCAMA
+1	?NC	?NCAKLD@KOC[SDqss		D*=	UZ6@KOMB?OC@KOMB	:	ALGONHKNC[SDqss		D*=	UZBKB
+	
+BNB8ALA3AMA]UBouu	B,	;
+	W\
+,	?OCAMA@LD\TArtt
+
+E+>
 	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=101;count=1;");
-  -- end groups
-	return true;
-end,
-
-QName = function (quest , player)
-	return "daily mission1";
-end,  
-
-
-UseGift = function(quest,player)
-	if quest:RemainDailyQuestNum()>0 then
-			return "5101"; 
-	else
-			return "";
-	end
-end, 
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 60			-- ç»éªŒå¥–åŠ±
-		money = 30	  	-- é‡‘é’±å¥–åŠ±
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+V[
+	8@KOMBZVCprvqssRQ]5_Nprv]O^@\		D:
+	+
+6
+	T]]UBou^]\_^]\_
+MB<)W\20	\Q\]BMMKD
+@KD\TArt]\RQ]]qss	]	ArtRprrt,.\B^	]T		^Q\Touu	_\\
+	K]CprP_^prrtpr*5	\B^	U
+
+SSrtt^	B-9+
+
+1	TV@M\rttsv
+\]ILLN\B\rttouuts	]Z]CprvrtR]ouqs5	8\B^	]T		^Q\Tou^]_rtt_prv]	ouut]?_HMsvuPO_—Âí–Ôñ—Úè˜òÎqssv]?_KMs_^tOR^”õî•ëËšÙç—õÍprv
+\8	+
+
+8,
+T
+
+SSTouS^pr_^pr

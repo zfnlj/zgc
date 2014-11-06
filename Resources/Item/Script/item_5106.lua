@@ -1,16 +1,10 @@
-ï»¿-- 
--- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-item_5106 = 
-{
-Initialize = function(KUseItem)
-	return true;
-end,
-run = function(KUseItem,playerId )
-  local rndVal = KUseItem:RndVal();
-  if rndVal <= 2 then	
-  	KUseItem:GenerateHero(playerId,10002);
-  elseif rndVal <= 32 then 
-   	KUseItem:GenerateItem(playerId,100020,2);
-  end
-end,
-}
+ÜáXXÃ¾OR^prRQ]!+BNB
+?OC)@LDAMA	+BNBJBN ou	HKOH]?_qsrt4
+_A]
+T4)
+6
+Vqss	]	ArtRpr	\B^	U1*3P4_Upr_^\&]?_3(	5	D+(WUBou^]^(_B@\M^	tou^]s4)
+6
+E76
+V
+6QKONMJVCpr_^_)\CA]IM^	]ou^]\v3(	5	D64U5PNNMLMNQJVCpr_^qsQou

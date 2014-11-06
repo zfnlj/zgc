@@ -1,10 +1,2 @@
-
-UseItemUtil ={
-			gold_01 = function(self)
-					CPP.MainPlayer:AddMoney(1000); 
-			end,
-			
-			gold_02 = function(self)
-					CPP.MainPlayer:AddMoney(2500); 
-			end,
-}
+‹·XXrt(	5	)	^@rttsvMK_A]
+TVqssvuts<.-N2/C;0TNNMLVC]ouutsPrttsvqssvuLM^@\	WUprvutsv;-,Q1.B>/WLHLOUB\rttsvSqsrt

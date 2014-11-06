@@ -1,41 +1,35 @@
-ï»¿-- Script for Quest 10001 æ‘¸åº•è€ƒè¯•
--- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-Quest_10011 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=10010;abandon=0;acceptLevel=1;level=1;exp=60;money=30;");
-	quest:SetAttrs("nameId=100011;talk=0;desc=100011;finishDesc=1500511;");
-	quest:SetAttrs("type=1;reuse=0;hardDegree=1;achieveId=0;share=0;");
-	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=11;");
+ÜáXXÃ¾OR^*_
+_-
+]KONMK_˜ìÄšÄè”ÿû•ÍêqsOR^"(?OC@LD*AMA	BNB(?OCK?O!pr.		LLOML\B^prqs3	^@\	W
+Touu	B,	;
+	W\
+,	?NNMKOCAMA
+1	?NC	?NCAGLD@IOC[SDqss		D*=	UZ6@KONMKNC	@LD	ALLONLKD8?NIMLJMLA]UBouu	B,	;
+	W\	@KD@LD
+:?NC5?OC
+?OC[SDqss		D*=	UZ.		AMA	?OC	BNBZVCprv
+C)
+<
+T]6BMLA]UBouuprvQP\8^Mouu\N]?_
+C9*
+	5W\\TArt]\_^]\_^
+	LE;
+(V[1/
+[P_\ALLOMKAALA]UBou^]OR^^
+		rtt
+
+
+^	
+
+BouSqsou-/]?_
+^U
+
+_R]Uprv
+\]	]KRMLZDqsQ\_qsouqs5	8\B^	]T		^Q\Tou^]_rtt_prv]	ouut]?_JMsvuPO_—Âí–Ôñ—Úè˜òÎqssv]?_LMs_^tOR^”õî•ëËšÙç—õÍprv\C5
+<'	TGFT?BN]ouut	\B^[GONLBN\]OR^™ÁÄ™óÛšÙç—õÍ–óÖ™êûrtt^
+E7>
 	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=10012;count=1;");
-  -- end groups
-	return true;
-end,
-
-QName = function (quest , player)
-	return "stage 1-11";
-end,  
-
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 40			-- ç»éªŒå¥–åŠ±
-		money = 20	  	-- é‡‘é’±å¥–åŠ±
-	if player:GetAttrValue(88)==0 then
-		itemlist = "5001:1" -- ä»»åŠ¡å¥–åŠ±ç‰©å“
-	elseif player:GetAttrValue(88)==1 then
-	  itemlist = "5002:1" -- ä»»åŠ¡å¥–åŠ±ç‰©å“
-	else -- é»˜è®¤å¥–åŠ±ä¿¡æ¯ä¸º0ï¼Œä¸€èˆ¬ä¸è¦æ”¹
-	  itemlist = "5003:1" -- ä»»åŠ¡å¥–åŠ±ç‰©å“
-	end 
-		
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+)VEDVA@K_
+qss_^
+]?_\HLOLCK]^PO_šÂÁšôÜ—Úè˜òÎ—ôÓšëüouu]OR^”Áç–ÏØšÙç—õÍ™½Ş˜üÍ›ÆÃLÂñ˜Çş•ôÓšÅï—Øü–ëÅprv^]	\B^[GONJBN\]OR^™ÁÄ™óÛšÙç—õÍ–óÖ™êûrtt]ouutouu	_7.		7+	
+W		RRSrtR]ou^]ou

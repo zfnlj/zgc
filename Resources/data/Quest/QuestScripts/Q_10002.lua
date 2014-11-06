@@ -1,32 +1,38 @@
-ï»¿-- Script for Quest 10001 æ‘¸åº•è€ƒè¯•
--- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
-Quest_10002 = 
-{
-Initialize = function(quest)
-	quest:SetAttrs("prevQuest=10001;abandon=0;acceptLevel=1;level=1;exp=12;money=6;");
-	quest:SetAttrs("nameId=100010;talk=0;desc=100011;");
-	quest:SetAttrs("type=1;reuse=0;hardDegree=1;achieveId=0;");
-	quest:SetAttrs("nextQuest=10003;achievement=0;timeperiod=0;");
-	quest:SetAttrs("battleField=2;");
+ÜáXXÃ¾OR^*_
+_-
+]KONMK_˜ìÄšÄè”ÿû•ÍêqsOR^"(?OC@LD*AMA	BNB(?OCK?O!pr.		LLONK\B^prqs3	^@\	W
+Touu	B,	;
+	W\
+,	?NNMLNCAMA
+1	?NC	?NCALJD@FD\TArtt
+
+E+>
 	
-	-- Group 0
-	local group0 = quest:CreateTargetGroup("and");
-        group0:CreateTarget("KillMonster", "npc=10002;count=1;");
-  -- end groups
-	return true;
-end,
-
-QName = function (quest , player)
-	return "stage 1-2";
-end,   
-
-GiftDesc = function (quest , player)
-  local exp
-	local money
-	local itemlist
-		exp = 12			-- ç»éªŒå¥–åŠ±
-		money = 6	  	-- é‡‘é’±å¥–åŠ±
-	return GetQuestGiftStr(itemlist,exp,money)
-end, 
-  
-}
+V[3ALLONLLD
+AMA
+BMMLOMLA]UBouu	B,	;
+	W\	@KD@LD
+:?NC5?OC[SDqss		D*=	UZ.		ALLONJA	?OC	BNBZVCprv
+C)
+<
+T]6BLBZVCprvqssRQ]5_Nprv]O^@\		D:
+	+
+6
+	T]]UBou^]\_^]\_
+MB<)W\20	\Q\]BMMLOLB	BMBZVCpr_^PO__
+
+ouu	_
+CprPrtpr.0^@\	_V	\S^
+Vqss	]Z
+^LOM\BouS^]\rtpr8;
+_A]
+\W
+]P_Srt]\^qss^ouu\
+
+rtts\B^LJvutOR^–Áğ•ÓğšÙç—õÍprvu\B^Gs_^tOR^”õî•ëËšÙç—õÍprv
+\8	+
+
+8,
+T
+
+SSTouS^pr_^pr

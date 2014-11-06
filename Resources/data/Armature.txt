@@ -1,42 +1,76 @@
-File
-armature/gen_circle.json
-armature/strong.json
-armature/absolute_def.json
-armature/toSheep.json
-armature/curse.json
-armature/guider.json
-armature/heal_area.json
-armature/curse_dead.json
-armature/atk_equ_hp.json
-armature/clear_buf.json
-armature/ctrlcard.json
-armature/kill.json
-armature/cost_reduce.json
-armature/burn_buf.json
-armature/anim_hide.json
-armature/burned_buf.json
-armature/damage_atkadd.json
-armature/angry_buf.json
-armature/absorb.json
-armature/courage_buf.json
-armature/yinu.json
-armature/sp_rate.json
-armature/quest_i.json
-armature/rush.json
-armature/heal_ability.json
-armature/dead_atkadd.json
-armature/dead_curse.json
-armature/kingkong_word.json
-armature/cuthead.json
-armature/catch_card.json
-armature/hp_bless.json
-armature/fire_down.json
-armature/pray_card.json
-armature/pray_other.json
-armature/strange.json
-armature/soldier_cast.json
-armature/pray_other_ability.json
-armature/dist_ability.json
-armature/click_down.json
-armature/doDamage.json
-armature/addRes.json
+‹·XX9rt
+	NP	pr	P	
+Nrt
+	N
+
+Nrt
+	N+Oou
+
+ONrt
+	N
+P	pr	P
+Oou
+
+OQ
+qs
+M
+Oou
+
+O	Nrt
+	NNrt
+	NNrt
+	N	Oou
+
+O
+Oou
+
+ONrt
+	N
+P	pr	P
+Oou
+
+O	Nrt
+	N
+P	pr	P Q
+qs
+MQ
+qs
+M
+
+Nrt
+	N
+
+ Oou
+
+OOou
+
+OOou
+
+OP	pr	PNrt
+	NQ
+qs
+M		Nrt
+	N
+ 
+P	pr	P	P	pr	P
+Oou
+
+O
+Nrt
+	N
+P	pr	P	
+Q
+qs
+M
+Q
+qs
+M 	Oou
+
+O
+Oou
+
+OQ
+qs
+M9Q
+qs
+M*Oou

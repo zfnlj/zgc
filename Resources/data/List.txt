@@ -1,27 +1,54 @@
-png	plist	anim	frame	interval
-GUI/battle_elem.png	GUI/battle_elem.plist	0	0	0
-GUI/card_elem.png	GUI/card_elem.plist	0	0	0
-GUI/ui_elem.png	GUI/ui_elem.plist	0	0	0
-GUI/title.png	GUI/title.plist	0	0	0
-anim/active_red.png	anim/active_red.plist	active_red	19	0.2
-anim/active_green.png	anim/active_green.plist	active_green	19	0.2
-anim/dragon_light.png	anim/dragon_light.plist	dragon_light	18	0.13
-anim/god_kill.png	anim/god_kill.plist	god_kill	15	0.13
-anim/sleep_effect.png	anim/sleep_effect.plist	sleep_effect	15	0.2
-armature/cut_head.png	armature/cut_head.plist	0	0	0
-armature/rare_enter.png	armature/rare_enter.plist	rare_enter	17	0.1
-anim/anim_blood.png	anim/anim_blood.plist	blood	10	0.15
-anim/evil_bless.png	anim/evil_bless.plist	evil_bless	12	0.12
-anim/pre_cast.png	anim/pre_cast.plist	pre_cast	13	0.11
-anim/hero_cast2.png	anim/hero_cast2.plist	hero_cast2	13	0.12
-anim/hero_cast3.png	anim/hero_cast3.plist	hero_cast3	16	0.13
-anim/ice_break.png	anim/ice_break.plist	ice_break	14	0.12
-armature/dragon_move.png	armature/dragon_move.plist	0	0	0
-armature/anim_elem.png	armature/anim_elem.plist	0	0	0
-armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0
-armature/anim_elem2.png	armature/anim_elem2.plist	0	0	0
-GUI/photo_soldier.jpg	GUI/photo_soldier.plist	0	0	0
-GUI/photo_soldier2.jpg	GUI/photo_soldier2.plist	0	0	0
-GUI/photo_skill.jpg	GUI/photo_skill.plist	0	0	0
-GUI/battle_str.png	GUI/battle_str.plist	0	0	0
-GUI/pp_all.jpg	GUI/pp_all.plist	0	0	0
+‹·XXs	utvqs5*5N
+	Ot5*5N
+	O
+vNtLvNpr8)4M Pu6'6ON	uMsOuMou7(3P	Qv7(3P	Q
+tLvNtLrt6'6O	Ns8)4M	P	sOuMsOqsM		
+OtM		
+O
+vsNEtLQLprPPuN
+
+N	u tKFuMNMqsMQvO
+ 
+O
+vuLDvNOKLqsMQvOO
+v uLGvNOKLqsMQvO
+
+O
+vuLGvNOJrt
+	N
+
+Ns	P P	sOuMsOqs
+M Ot
+M O
+v
+sNGtLQMprPNsPN	usNNtLQMHouO
+	QvO
+	Q
+t		uLJvNOKMqsM
+QvO
+
+O
+v 	uLIvNOKNqsM 	LOtM 	LO
+v
+
+KsNKtLQMKouO	IQvO	IQ
+t
+LuLFvNOKLqsMPuNQ
+tvMIsOPLJrt
+	N	Ot
+MN	uMsOuMou
+
+ONs	PO
+vNtLvNpr	P Ot
+M	 P	sOuMsOqs
+M LOt
+M LO
+vNtLvNpr8)4M
+Pu6'6O
+N	uMsOuMou7(3P	KNs8)4M
+LO
+vNtLvNpr8)4M
+Ns8)4M
+N	uMsOuMou7(3P
+Ns8)4M		O
+vNtLvNpr8)4MOt5*5NP	sOuMsOqs
