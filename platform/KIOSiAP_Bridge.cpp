@@ -27,10 +27,9 @@ void IOSiAP_Bridge::requestProducts()
 
 void IOSiAP_Bridge::onRequestProductsFinish(void)
 {
-    //必须在onRequestProductsFinish后才能去请求iAP产品数据。
-    IOSProduct *product = iap->iOSProductByIdentifier(m_productIdentifiers[m_idx]);
-    // 然后可以发起付款请求。
-    iap->paymentWithProduct(product, m_count);
+   //IOSProduct *product = iap->iOSProductByIdentifier(m_productIdentifiers[m_idx]);
+
+   // iap->paymentWithProduct(product, m_count);
 }
 
 void IOSiAP_Bridge::Payment(std::string &identifier,int count)

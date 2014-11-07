@@ -19,6 +19,7 @@
 #include "../common/KPlayerBagAssist.h"
 #include "../KNet/KNetMsgFacade.h"
 
+#include "../GameRoot.h"
 using namespace KAttributeAbout;
 using namespace System::Collections;
 
@@ -279,7 +280,8 @@ void KUseItem::BuyGold(UINT64 playerId,char* goldName)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	KNetMsgFacade::onAddMoney(10000);
 #else
-	GameRoot::getSingleton().IAP_Bridge()->Payment(goldName,1);
+    std::string goldNameStr = goldName;
+	GameRoot::getSingleton().IAP_Bridge()->Payment(goldNameStr,1);
 #endif
 }
 
