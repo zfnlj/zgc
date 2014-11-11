@@ -72,7 +72,7 @@ bool KUseItemManager::ReloadUseItem(int qid)
 	}
 
 	static char achQuestFileName[256];
-	sprintf(achQuestFileName, "item/Script/item_%d.lua", qid);
+	sprintf(achQuestFileName, "Item/Script/item_%d.lua", qid);
 
 	//sprintf(achQuestFileName, "../../data/configs/Quest/QuestScripts/Q_%d.lua", qid);
 	std::string fullPath;
