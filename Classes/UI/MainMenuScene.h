@@ -42,7 +42,7 @@ public:
 	cocos2d::extension::UILayer* GetLayer(){ return m_ui;}
 	void DoClickFeedback(CCObject* sender);
 	void ShowCollectInfo();
-
+	void DoClickTiebar(CCObject* sender);
 	void SetRaceCollectInfo(KItemUnitList& tmpList,KCardStatic::CardRace race);
 private:
 	CCLabelTTF* m_InfoLabel;

@@ -20,3 +20,11 @@ void IOSFunc_Bridge::OpenFeedback()
 {
 	m_ios->OpenFeedback();
 }
+
+void IOSFunc_Bridge::OpenUrl(const char* pszUrl)
+{
+	m_ios->OpenUrl(pszUrl);
+
+	//[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+}
+

@@ -72,7 +72,6 @@ bool CardGroupScene::init()
 	m_gameRecPanel.init(this);
 	m_actor.init(m_ui);
 	ShowHelpDrama();
-	m_heroLevUpPanel.init(this);
     return true;
 }
 
@@ -195,6 +194,9 @@ void CardGroupScene::onClickBack(CCObject* sender)
 	m_radioSelectHero.SetSelected(-1,false);
 	if(m_mainType== type_card){
 		m_mainType = type_cardgroup;
+		CreateMiniCardList(m_depot->GetCurDeck());
+		ShowMiniHero();
+		ShowMiniCardList();
 		UpdateUI();
 		UpdateCurDeckRadio();
 	}else if(m_mainType==type_cardgroup){
@@ -542,7 +544,10 @@ void CardGroupScene::onClickSlot(CCObject* sender)
 		if(m_radioMain.GetSelectVal()==(int)KCardGroupAssist::browse_hero){
 
 			KHeroDef* pHeroDef = m_depot->FindHero(m_slotElem[pWidgetSlot->getTag()]._id);
-			if(pHeroDef) m_heroLevUpPanel.ShowPanel(pHeroDef);
+			if(pHeroDef){
+				m_heroLevUpPanel.init(this);
+				m_heroLevUpPanel.ShowPanel(pHeroDef);
+			}
 			/*m_radioSelectHero.SetSelected(pWidgetSlot->getTag(),false);
 			
 			if(KCardGroupAssist::IsMiniCardListMatch(m_slotElem[pWidgetSlot->getTag()],m_miniHero,m_miniCardList,m_depot)){
