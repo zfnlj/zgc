@@ -20,3 +20,8 @@ void IOSFunc_Bridge::OpenFeedback()
 {
 	m_ios->OpenFeedback();
 }
+
+void IOSFunc_Bridge::ShowLeaderboard()
+{
+	m_ios->ShowLeaderboard();
+}

@@ -45,7 +45,7 @@ public:
     @return false   Initialize failed, app terminate.
     */
     virtual void OpenFeedback();
-
+	virtual void ShowLeaderboard();
 };
 
 

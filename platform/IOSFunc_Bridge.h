@@ -13,6 +13,7 @@ public:
     IOSFunc *m_ios;
     
 	virtual void OpenFeedback();
+	virtual void ShowLeaderboard();
 };
 
 

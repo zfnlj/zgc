@@ -4,3 +4,7 @@
 void IOSFunc::OpenFeedback()
 {
 }
+
+void IOSFunc::ShowLeaderboard()
+{
+}
