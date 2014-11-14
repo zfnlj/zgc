@@ -152,7 +152,8 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickHeroBrowse));
 		KUIAssist::ShowButton(pBut,KMainPlayer::RealPlayer()->GetCardDepot()->GetHeroNum()>0);
 
-
+		UIWidget* pTiebar = m_ui->getWidgetByName("Tiebar_url");
+		pTiebar->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickTiebar));
 	}
 	return m_ui;
 }
@@ -166,6 +167,13 @@ void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
 	KUIAssist::_switch2StageSelectScene();
 }
+
+void MainMenuScene::DoClickTiebar(CCObject* sender)
+{
+	IOSFunc_Bridge IOSFunc;
+	IOSFunc.OpenUrl("http://tieba.baidu.com/f?kw=%E5%8D%A1%E7%89%8C%E6%88%98%E5%9B%BD%E7%AD%96");
+}
+
 
 void MainMenuScene::DoClickHeroBrowse(CCObject* sender)
 {
