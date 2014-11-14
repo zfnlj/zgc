@@ -119,7 +119,7 @@
 		15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA031682F826002FB0C5 /* CCInvocation.cpp */; };
 		15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA051682F826002FB0C5 /* CCScale9Sprite.cpp */; };
 		15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA081682F826002FB0C5 /* CCEditBox.cpp */; };
-		15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA0E1682F826002FB0C5 /* CCEditBoxImplIOS.mm */; };
+		15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA0E1682F826002FB0C5 /* CCEditBoxImplIOS.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA121682F826002FB0C5 /* CCScrollView.cpp */; };
 		15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA141682F826002FB0C5 /* CCSorting.cpp */; };
 		15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA161682F826002FB0C5 /* CCTableView.cpp */; };
@@ -128,7 +128,7 @@
 		15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA201682F826002FB0C5 /* CCPhysicsDebugNode.cpp */; };
 		15A3DA5F1682F826002FB0C5 /* CCPhysicsSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA221682F826002FB0C5 /* CCPhysicsSprite.cpp */; };
 		15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A3D8861682F7B3002FB0C5 /* libcocos2dx.a */; };
-		15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA861682F8A6002FB0C5 /* CDAudioManager.m */; };
+		15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA861682F8A6002FB0C5 /* CDAudioManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA891682F8A6002FB0C5 /* CDOpenALSupport.m */; };
 		15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA8B1682F8A6002FB0C5 /* CocosDenshion.m */; };
 		15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = 15A3DA8C1682F8A6002FB0C5 /* SimpleAudioEngine.mm */; };
@@ -344,7 +344,7 @@
 		813F54211A15D84F009F4E68 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54201A15D84F009F4E68 /* GameKit.framework */; };
 		813F54231A15D95B009F4E68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54221A15D95B009F4E68 /* Security.framework */; };
 		813F54251A15D987009F4E68 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54241A15D987009F4E68 /* SystemConfiguration.framework */; };
-		813F543A1A15E096009F4E68 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54351A15E096009F4E68 /* GameCenterManager.m */; };
+		813F543A1A15E096009F4E68 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54351A15E096009F4E68 /* GameCenterManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		813F543B1A15E096009F4E68 /* NSDataAES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54371A15E096009F4E68 /* NSDataAES256.m */; };
 		813F543C1A15E096009F4E68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54391A15E096009F4E68 /* Reachability.m */; };
 		814347D2186FCACD00134432 /* KGatewayMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CA186FCACD00134432 /* KGatewayMsgDealer.cpp */; };
@@ -5528,6 +5528,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
@@ -5590,6 +5591,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
@@ -5755,6 +5757,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-7";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";

@@ -46,6 +46,7 @@ public:
     */
     virtual void OpenFeedback();
 	virtual void OpenUrl(const char* pszUrl);
+    virtual void CheckGCAvailability();
 };
 
 

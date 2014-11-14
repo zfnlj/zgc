@@ -3,7 +3,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
-
+#import "GameCenterManager.h"
 
 @implementation AppController
 
@@ -51,7 +51,7 @@ static AppDelegate s_sharedApplication;
     [[UIApplication sharedApplication] setStatusBarHidden:true];
 
     
-   
+    [[GameCenterManager sharedManager] setupManager];
     
     cocos2d::CCApplication::sharedApplication()->run();
 
