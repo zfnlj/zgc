@@ -21,3 +21,4 @@ IOSProduct* IOSiAP::iOSProductByIdentifier(std::string &identifier)
 void IOSiAP::paymentWithProduct(IOSProduct *iosProduct, int quantity)
 {
 }
+

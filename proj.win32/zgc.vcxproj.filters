@@ -411,12 +411,6 @@
     <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp">
       <Filter>UI\assist</Filter>
     </ClCompile>
-    <ClCompile Include="..\platform\KIOSiAP_Bridge.cpp">
-      <Filter>platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platform\win32\IOSiAP.cpp">
-      <Filter>platform\win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\platform\IOSFunc_Bridge.cpp">
       <Filter>platform</Filter>
     </ClCompile>
@@ -482,6 +476,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\UI\KSceneSlidePicture.cpp">
       <Filter>UI\Panel\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\platform\KIOSiAP_Bridge.cpp">
+      <Filter>platform\IAP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\platform\win32\IOSiAP.cpp">
+      <Filter>platform\IAP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -941,12 +941,6 @@
     <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h">
       <Filter>UI\assist</Filter>
     </ClInclude>
-    <ClInclude Include="..\platform\IOSiAP.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\platform\KIOSiAP_Bridge.h">
-      <Filter>platform</Filter>
-    </ClInclude>
     <ClInclude Include="..\platform\IOSFunc.h">
       <Filter>platform</Filter>
     </ClInclude>
@@ -1012,6 +1006,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\KSceneSlidePicture.h">
       <Filter>UI\Panel\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platform\KIOSiAP_Bridge.h">
+      <Filter>platform\IAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\platform\IOSiAP.h">
+      <Filter>platform\IAP</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1113,6 +1113,9 @@
     </Filter>
     <Filter Include="UI\Panel\scene">
       <UniqueIdentifier>{6ac01fdd-3ac2-4120-8c09-36c8f02cfada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="platform\IAP">
+      <UniqueIdentifier>{c08d08b9-c91b-4c42-a318-5e0de0c71be8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

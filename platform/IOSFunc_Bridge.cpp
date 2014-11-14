@@ -25,3 +25,8 @@ void IOSFunc_Bridge::ShowLeaderboard()
 {
 	m_ios->ShowLeaderboard();
 }
+
+void IOSFunc_Bridge::OpenUrl(const char* url)
+{
+	m_ios->OpenUrl(url);
+}

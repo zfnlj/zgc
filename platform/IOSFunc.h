@@ -46,6 +46,8 @@ public:
     */
     virtual void OpenFeedback();
 	virtual void ShowLeaderboard();
+	virtual void CheckGCAvailability();
+	virtual void OpenUrl(const char*);
 };
 
 

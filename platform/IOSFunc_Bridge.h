@@ -14,6 +14,7 @@ public:
     
 	virtual void OpenFeedback();
 	virtual void ShowLeaderboard();
+	virtual void OpenUrl(const char*);
 };
 
 
