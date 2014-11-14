@@ -95,13 +95,13 @@ bool StageWaitScene::init()
 			pQuest->GetName(KMainPlayer::RealPlayer(),stageName,63);
 		}
 		if(strlen(stageName)>0){
-			labelName->setVisible(true);
 			labelName->setText(stageName);
 		}else{
-			labelName->setVisible(false);
+			labelName->setText("Clear!");
 		}
 	}else{
-		labelName->setVisible(false);
+		labelName->setText("Clear!");
+		//labelName->setVisible(false);
 	}
 
 	UIWidget* pBut = m_ui->getWidgetByName("bk");

@@ -34,6 +34,7 @@ KHeroLevUpPanel::~KHeroLevUpPanel()
 void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 {
 	UIWidget* pBut;
+	m_layer = layer;
 	if(!m_Panel){
 		m_Panel = KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/HeroLevUp.json");
 		CC_SAFE_RETAIN(m_Panel);
@@ -53,10 +54,9 @@ void KHeroLevUpPanel::init(cocos2d::extension::UILayer* layer)
 			pBut->setTag(i);
 			pBut->addPushDownEvent(this, coco_pushselector(KHeroLevUpPanel::DoClickSkillLevUp));
 		}
-
+		CreateExitBut();
 	}
-	m_layer = layer;
-	CreateExitBut();
+	
 	m_pHeroWidget = NULL;
 	m_pHeroDef = NULL;
 	//m_layer->addWidget(m_Panel);
