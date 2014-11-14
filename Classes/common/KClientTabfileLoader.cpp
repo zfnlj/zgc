@@ -46,7 +46,7 @@ BOOL KFileStreamBase::Open(const char* filename)
 	return TRUE;
 }
 
-int KFileStreamBase::ReadData(void* value, size_t length)
+int_r KFileStreamBase::ReadData(void* value, size_t length)
 {
 	size_t readLen = ((m_Size - m_pos)>length)? length : (m_Size - m_pos);
 	if(readLen >0){
@@ -56,7 +56,7 @@ int KFileStreamBase::ReadData(void* value, size_t length)
 	return readLen;
 }
 
-int KFileStreamBase::WriteData(const void* value, size_t length)
+int_r KFileStreamBase::WriteData(const void* value, size_t length)
 {
 	return -1;
 }
@@ -113,12 +113,12 @@ BOOL KClientFileStream::Open(const char* filename)
 	return TRUE;
 }
 
-int KClientFileStream::ReadData(void* value, size_t length)
+int_r KClientFileStream::ReadData(void* value, size_t length)
 {
 	return m_encStream.ReadData(value, length);
 }
 
-int KClientFileStream::WriteData(const void* value, size_t length)
+int_r KClientFileStream::WriteData(const void* value, size_t length)
 {
 	return 0;
 }

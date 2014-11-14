@@ -341,6 +341,12 @@
 		812E278C187AF451000567D7 /* KPacketGate_Gw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 812E278A187AF451000567D7 /* KPacketGate_Gw.cpp */; };
 		812E2794187AF5E4000567D7 /* progress_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E278F187AF5E4000567D7 /* progress_bar.png */; };
 		812E2795187AF5E4000567D7 /* progress_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 812E2790187AF5E4000567D7 /* progress_bg.png */; };
+		813F54211A15D84F009F4E68 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54201A15D84F009F4E68 /* GameKit.framework */; };
+		813F54231A15D95B009F4E68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54221A15D95B009F4E68 /* Security.framework */; };
+		813F54251A15D987009F4E68 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 813F54241A15D987009F4E68 /* SystemConfiguration.framework */; };
+		813F543A1A15E096009F4E68 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54351A15E096009F4E68 /* GameCenterManager.m */; };
+		813F543B1A15E096009F4E68 /* NSDataAES256.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54371A15E096009F4E68 /* NSDataAES256.m */; };
+		813F543C1A15E096009F4E68 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 813F54391A15E096009F4E68 /* Reachability.m */; };
 		814347D2186FCACD00134432 /* KGatewayMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CA186FCACD00134432 /* KGatewayMsgDealer.cpp */; };
 		814347D3186FCACD00134432 /* KLoginMsgDealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CC186FCACD00134432 /* KLoginMsgDealer.cpp */; };
 		814347D4186FCACD00134432 /* KMsgDelegateBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 814347CE186FCACD00134432 /* KMsgDelegateBase.cpp */; };
@@ -1361,6 +1367,15 @@
 		812E278B187AF451000567D7 /* KPacketGate_Gw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KPacketGate_Gw.h; path = ../Classes/KNet/KPacketGate_Gw.h; sourceTree = "<group>"; };
 		812E278F187AF5E4000567D7 /* progress_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bar.png; sourceTree = "<group>"; };
 		812E2790187AF5E4000567D7 /* progress_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_bg.png; sourceTree = "<group>"; };
+		813F54201A15D84F009F4E68 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		813F54221A15D95B009F4E68 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		813F54241A15D987009F4E68 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		813F54341A15E096009F4E68 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameCenterManager.h; path = "../GC Manager/GameCenterManager.h"; sourceTree = "<group>"; };
+		813F54351A15E096009F4E68 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameCenterManager.m; path = "../GC Manager/GameCenterManager.m"; sourceTree = "<group>"; };
+		813F54361A15E096009F4E68 /* NSDataAES256.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDataAES256.h; path = "../GC Manager/NSDataAES256.h"; sourceTree = "<group>"; };
+		813F54371A15E096009F4E68 /* NSDataAES256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataAES256.m; path = "../GC Manager/NSDataAES256.m"; sourceTree = "<group>"; };
+		813F54381A15E096009F4E68 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "../GC Manager/Reachability.h"; sourceTree = "<group>"; };
+		813F54391A15E096009F4E68 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "../GC Manager/Reachability.m"; sourceTree = "<group>"; };
 		814347CA186FCACD00134432 /* KGatewayMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KGatewayMsgDealer.cpp; sourceTree = "<group>"; };
 		814347CB186FCACD00134432 /* KGatewayMsgDealer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGatewayMsgDealer.h; sourceTree = "<group>"; };
 		814347CC186FCACD00134432 /* KLoginMsgDealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KLoginMsgDealer.cpp; sourceTree = "<group>"; };
@@ -2059,6 +2074,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				813F54251A15D987009F4E68 /* SystemConfiguration.framework in Frameworks */,
+				813F54231A15D95B009F4E68 /* Security.framework in Frameworks */,
 				81A5425F19D7AE7500B65580 /* StoreKit.framework in Frameworks */,
 				812D955B19839753004F6DD8 /* libUMFeedback.a in Frameworks */,
 				816863F518969C5A00789DE8 /* liblua.a in Frameworks */,
@@ -2068,6 +2085,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				813F54211A15D84F009F4E68 /* GameKit.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712461292920000B8313A /* libxml2.dylib in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
@@ -2719,6 +2737,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				813F54331A15E07D009F4E68 /* GC Manager */,
 				81DB5590199B46710076CE95 /* assest */,
 				81DB558E199B37430076CE95 /* zgc.entitlements */,
 				81159DFC19869850009D325F /* platform */,
@@ -2746,6 +2765,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				813F54241A15D987009F4E68 /* SystemConfiguration.framework */,
+				813F54221A15D95B009F4E68 /* Security.framework */,
+				813F54201A15D84F009F4E68 /* GameKit.framework */,
 				81A5425E19D7AE7500B65580 /* StoreKit.framework */,
 				812D955A19839753004F6DD8 /* libUMFeedback.a */,
 				81A6A5A21896655F0039FF68 /* Classes */,
@@ -3634,6 +3656,19 @@
 				81D6FE441869E881000D53A7 /* KPacketGate_ChatC.h */,
 			);
 			name = Hub;
+			sourceTree = "<group>";
+		};
+		813F54331A15E07D009F4E68 /* GC Manager */ = {
+			isa = PBXGroup;
+			children = (
+				813F54341A15E096009F4E68 /* GameCenterManager.h */,
+				813F54351A15E096009F4E68 /* GameCenterManager.m */,
+				813F54361A15E096009F4E68 /* NSDataAES256.h */,
+				813F54371A15E096009F4E68 /* NSDataAES256.m */,
+				813F54381A15E096009F4E68 /* Reachability.h */,
+				813F54391A15E096009F4E68 /* Reachability.m */,
+			);
+			name = "GC Manager";
 			sourceTree = "<group>";
 		};
 		814E9E2B18D92EC8003749B2 /* assist */ = {
@@ -4821,6 +4856,9 @@
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = J4E75UJF2F;
 						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
@@ -5068,6 +5106,7 @@
 				81BF26A51930E6F3007B2A28 /* KSqlEnc.cpp in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
 				81E786CE185DC38A00829E82 /* OgreDataStream.cpp in Sources */,
+				813F543C1A15E096009F4E68 /* Reachability.m in Sources */,
 				15A3D9A21682F7F9002FB0C5 /* cpArbiter.c in Sources */,
 				15A3D9A31682F7F9002FB0C5 /* cpArray.c in Sources */,
 				81CB43D6185DDF8300D9E774 /* KLogicModuleMsgDealer.cpp in Sources */,
@@ -5197,6 +5236,7 @@
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				81CD49FE189649AE00D6DB43 /* KBattleGuyAttr.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
+				813F543B1A15E096009F4E68 /* NSDataAES256.m in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				810C3898185F28DD00F03DFA /* KThreadUnitQueue.cpp in Sources */,
@@ -5234,6 +5274,7 @@
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				81CD4A3718964AC400D6DB43 /* KQuestSession.cpp in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
+				813F543A1A15E096009F4E68 /* GameCenterManager.m in Sources */,
 				810C3855185F28DD00F03DFA /* KCharset_Ascii.cpp in Sources */,
 				81A6A70E18966F6C0039FF68 /* KCharacter.cpp in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
@@ -5489,7 +5530,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -5534,12 +5575,12 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-O2";
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "b50f5d0d-6471-4570-a449-8466c997820d";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b50f5d0d-6471-4570-a449-8466c997820d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv6 armv7 i386";
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -5551,7 +5592,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5587,7 +5628,7 @@
 					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "b50f5d0d-6471-4570-a449-8466c997820d";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b50f5d0d-6471-4570-a449-8466c997820d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -5634,7 +5675,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -5704,7 +5745,7 @@
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Distribution;
 		};
@@ -5716,7 +5757,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-6";
 				CODE_SIGN_ENTITLEMENTS = zgc/zgc.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: fanan zhu (CKBBZU75PA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: fanan zhu (J4E75UJF2F)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fanan zhu (CKBBZU75PA)";
 				COPY_PHASE_STRIP = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -5752,7 +5793,7 @@
 					"/Users/ios/work/cocos2d-x-2.2.1/projects/zgc/UM/UMFeedback",
 				);
 				PRODUCT_NAME = zgc;
-				PROVISIONING_PROFILE = "b50f5d0d-6471-4570-a449-8466c997820d";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "b50f5d0d-6471-4570-a449-8466c997820d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -5828,14 +5869,14 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				New_Setting = "";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "b50f5d0d-6471-4570-a449-8466c997820d";
 				SDKROOT = iphoneos;
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"USER_HEADER_SEARCH_PATHS[arch=*]" = "";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -5867,7 +5908,7 @@
 				SEPARATE_STRIP = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

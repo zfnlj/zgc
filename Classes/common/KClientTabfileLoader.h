@@ -14,8 +14,8 @@ public:
 public:
 	void init();
 	BOOL Open(const char* filename);
-	int  ReadData(void* value, size_t length);
-	int  WriteData(const void* value, size_t length);
+	int_r  ReadData(void* value, size_t length);
+	int_r  WriteData(const void* value, size_t length);
 	BOOL Seek(size_t pos);
 	size_t tell() const;
 	void Close();
@@ -36,8 +36,8 @@ public:
 public:
 	void init();
 	BOOL Open(const char* filename);
-	int  ReadData(void* value, size_t length);
-	int  WriteData(const void* value, size_t length);
+	int_r ReadData(void* value, size_t length);
+	int_r  WriteData(const void* value, size_t length);
 	BOOL Seek(size_t pos);
 	size_t tell() const;
 	void Close();
