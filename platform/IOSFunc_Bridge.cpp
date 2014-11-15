@@ -30,3 +30,20 @@ void IOSFunc_Bridge::OpenUrl(const char* url)
 {
 	m_ios->OpenUrl(url);
 }
+
+void IOSFunc_Bridge::CheckGCAvailability()
+{
+	m_ios->CheckGCAvailability();
+}
+
+void IOSFunc_Bridge::_OpenFeedback()
+{
+	IOSFunc_Bridge IOSFunc;
+	IOSFunc.OpenFeedback();
+}
+
+void IOSFunc_Bridge::_CheckGCAvailability()
+{
+	IOSFunc_Bridge IOSFunc;
+	IOSFunc.CheckGCAvailability();
+}

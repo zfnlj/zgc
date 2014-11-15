@@ -15,6 +15,10 @@ public:
 	virtual void OpenFeedback();
 	virtual void ShowLeaderboard();
 	virtual void OpenUrl(const char*);
+	virtual void CheckGCAvailability();
+	
+	static void _OpenFeedback();
+	static void _CheckGCAvailability();
 };
 
 

@@ -109,14 +109,14 @@ bool MainMenuScene::init()
 
 	UpdateLockStatus();
 	ShowCollectInfo();
+	IOSFunc_Bridge::_CheckGCAvailability();
     return true;
 }
 
 
 void MainMenuScene::menuMailCallback(CCObject* pSender)
 {
-    IOSFunc_Bridge IOSFunc;
-	IOSFunc.OpenFeedback();
+	IOSFunc_Bridge::_OpenFeedback();
 /*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
@@ -154,6 +154,10 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 
 		UIWidget* pTiebar = m_ui->getWidgetByName("Tiebar_url");
 		pTiebar->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickTiebar));
+
+		pBut = m_ui->getWidgetByName("but_gc");
+		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickGameCenter));
+
 	}
 	return m_ui;
 }
@@ -249,9 +253,9 @@ void MainMenuScene::onQuestFinished(int qId)
 {
 }
 
-void MainMenuScene::DoClickFeedback(CCObject* sender)
+void MainMenuScene::DoClickGameCenter(CCObject* sender)
 {
-
+	IOSFunc_Bridge::_CheckGCAvailability();
 }
 
 void MainMenuScene::ShowCollectInfo()
