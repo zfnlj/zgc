@@ -174,8 +174,7 @@ void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 
 void MainMenuScene::DoClickTiebar(CCObject* sender)
 {
-	IOSFunc_Bridge IOSFunc;
-	IOSFunc.OpenUrl("http://tieba.baidu.com/f?kw=%E5%8D%A1%E7%89%8C%E6%88%98%E5%9B%BD%E7%AD%96");
+    IOSFunc_Bridge::_OpenUrl("http://tieba.baidu.com/f?kw=%E5%8D%A1%E7%89%8C%E6%88%98%E5%9B%BD%E7%AD%96");
 }
 
 
@@ -255,7 +254,7 @@ void MainMenuScene::onQuestFinished(int qId)
 
 void MainMenuScene::DoClickGameCenter(CCObject* sender)
 {
-	IOSFunc_Bridge::_CheckGCAvailability();
+    IOSFunc_Bridge::_ShowLeaderboard();
 }
 
 void MainMenuScene::ShowCollectInfo()

@@ -15,35 +15,38 @@ IOSFunc_Bridge::~IOSFunc_Bridge()
     delete m_ios;
 }
 
-
-void IOSFunc_Bridge::OpenFeedback()
+void IOSFunc_Bridge::_OpenUrl(const char* url)
 {
-	m_ios->OpenFeedback();
-}
-
-void IOSFunc_Bridge::ShowLeaderboard()
-{
-	m_ios->ShowLeaderboard();
-}
-
-void IOSFunc_Bridge::OpenUrl(const char* url)
-{
-	m_ios->OpenUrl(url);
-}
-
-void IOSFunc_Bridge::CheckGCAvailability()
-{
-	m_ios->CheckGCAvailability();
+    IOSFunc_Bridge IOSFunc;
+    IOSFunc.m_ios->OpenUrl(url);
 }
 
 void IOSFunc_Bridge::_OpenFeedback()
 {
 	IOSFunc_Bridge IOSFunc;
-	IOSFunc.OpenFeedback();
+	IOSFunc.m_ios->OpenFeedback();
 }
 
 void IOSFunc_Bridge::_CheckGCAvailability()
 {
 	IOSFunc_Bridge IOSFunc;
-	IOSFunc.CheckGCAvailability();
+	IOSFunc.m_ios->CheckGCAvailability();
+}
+
+void IOSFunc_Bridge::_ShowLeaderboard()
+{
+    IOSFunc_Bridge IOSFunc;
+    IOSFunc.m_ios->ShowLeaderboard();
+}
+
+void IOSFunc_Bridge::_ReportScore(const char* str,int val)
+{
+    IOSFunc_Bridge IOSFunc;
+    IOSFunc.m_ios->ReportScore(str,val);
+}
+
+void IOSFunc_Bridge::_ReportAchievement(const char* str,double percent,bool bNotify)
+{
+    IOSFunc_Bridge IOSFunc;
+    IOSFunc.m_ios->ReportAchievement(str,percent,bNotify);
 }

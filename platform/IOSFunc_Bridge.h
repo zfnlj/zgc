@@ -10,15 +10,14 @@ class IOSFunc_Bridge
 public:
     IOSFunc_Bridge();
     ~IOSFunc_Bridge();
-    IOSFunc *m_ios;
+    IOSFunc *m_ios;    
     
-	virtual void OpenFeedback();
-	virtual void ShowLeaderboard();
-	virtual void OpenUrl(const char*);
-	virtual void CheckGCAvailability();
-	
+    static void _OpenUrl(const char* url);
 	static void _OpenFeedback();
 	static void _CheckGCAvailability();
+    static void _ShowLeaderboard();
+    static void _ReportScore(const char* ,int val);
+    static void _ReportAchievement(const char*,double percent,bool bNotify);
 };
 
 

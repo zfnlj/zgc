@@ -52,7 +52,8 @@ static AppDelegate s_sharedApplication;
 
     
     [[GameCenterManager sharedManager] setupManager];
-    
+    [[GameCenterManager sharedManager] setDelegate:viewController];
+
     cocos2d::CCApplication::sharedApplication()->run();
 
     return YES;

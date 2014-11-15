@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "GameCenterManager.h"
 
-
-@interface RootViewController : UIViewController {
+@interface RootViewController : UIViewController<UIActionSheetDelegate, GameCenterManagerDelegate> {
 
 }
 

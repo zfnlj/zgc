@@ -70,7 +70,7 @@ void GameRoot::InitializeResource()
 
 void GameRoot::update(float dt)
 {
-	KClientGateListener::getSingleton().update(dt);
+	//KClientGateListener::getSingleton().update(dt);
 	KClientBattleCtrl::getInstance()->update(dt);
 }
 

@@ -3467,13 +3467,11 @@
 		81159DFC19869850009D325F /* platform */ = {
 			isa = PBXGroup;
 			children = (
+				8135D95E1A17550500B69640 /* IAP */,
 				81159E051986986C009D325F /* ios */,
 				81159DFD19869867009D325F /* IOSFunc_Bridge.cpp */,
 				81159DFE19869867009D325F /* IOSFunc_Bridge.h */,
 				81159DFF19869867009D325F /* IOSFunc.h */,
-				81159E0019869867009D325F /* IOSiAP.h */,
-				81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */,
-				81159E0219869867009D325F /* KIOSiAP_Bridge.h */,
 			);
 			name = platform;
 			sourceTree = "<group>";
@@ -3481,7 +3479,6 @@
 		81159E051986986C009D325F /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				81159E0619869884009D325F /* IOSiAP.mm */,
 				81159E0819869884009D325F /* IOSFunc.mm */,
 			);
 			name = ios;
@@ -3656,6 +3653,17 @@
 				81D6FE441869E881000D53A7 /* KPacketGate_ChatC.h */,
 			);
 			name = Hub;
+			sourceTree = "<group>";
+		};
+		8135D95E1A17550500B69640 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				81159E0019869867009D325F /* IOSiAP.h */,
+				81159E0119869867009D325F /* KIOSiAP_Bridge.cpp */,
+				81159E0219869867009D325F /* KIOSiAP_Bridge.h */,
+				81159E0619869884009D325F /* IOSiAP.mm */,
+			);
+			name = IAP;
 			sourceTree = "<group>";
 		};
 		813F54331A15E07D009F4E68 /* GC Manager */ = {
