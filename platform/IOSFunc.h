@@ -48,8 +48,8 @@ public:
 	virtual void ShowLeaderboard();
 	virtual void CheckGCAvailability();
 	virtual void OpenUrl(const char*);
-    virtual void ReportScore(const char* ,int val);
-    virtual void ReportAchievement(const char*,double percent,bool bNotify);
+    virtual bool ReportScore(const char* ,int val);
+    virtual bool ReportAchievement(const char*,double percent,bool bNotify);
 };
 
 

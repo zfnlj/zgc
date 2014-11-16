@@ -16,8 +16,8 @@ public:
 	static void _OpenFeedback();
 	static void _CheckGCAvailability();
     static void _ShowLeaderboard();
-    static void _ReportScore(const char* ,int val);
-    static void _ReportAchievement(const char*,double percent,bool bNotify);
+    static bool _ReportScore(const char* ,int val);
+    static bool _ReportAchievement(const char*,double percent,bool bNotify);
 };
 
 

@@ -39,14 +39,14 @@ void IOSFunc_Bridge::_ShowLeaderboard()
     IOSFunc.m_ios->ShowLeaderboard();
 }
 
-void IOSFunc_Bridge::_ReportScore(const char* str,int val)
+bool IOSFunc_Bridge::_ReportScore(const char* str,int val)
 {
     IOSFunc_Bridge IOSFunc;
-    IOSFunc.m_ios->ReportScore(str,val);
+    return IOSFunc.m_ios->ReportScore(str,val);
 }
 
-void IOSFunc_Bridge::_ReportAchievement(const char* str,double percent,bool bNotify)
+bool IOSFunc_Bridge::_ReportAchievement(const char* str,double percent,bool bNotify)
 {
     IOSFunc_Bridge IOSFunc;
-    IOSFunc.m_ios->ReportAchievement(str,percent,bNotify);
+    return IOSFunc.m_ios->ReportAchievement(str,percent,bNotify);
 }
