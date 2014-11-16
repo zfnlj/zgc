@@ -1,0 +1,6 @@
+hero_power
+open_tower
+col_fire
+col_gold
+col_water
+battle_ok

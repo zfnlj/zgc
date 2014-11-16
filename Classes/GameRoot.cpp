@@ -29,7 +29,7 @@ void GameRoot::init()
 {
 	KScriptAbout::KToLua::Instance();
 	sqlite3_config(SQLITE_CONFIG_SERIALIZED); //sqlite使用串行方式
-	KClientGateListener::getSingleton().init();
+	//KClientGateListener::getSingleton().init();
 	InitializeResource();
 	KClientBattleCtrl::getInstance()->init(NULL);
 	_battleScene = NULL;
