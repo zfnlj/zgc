@@ -1,6 +1,15 @@
-hero_power
+
 open_tower
-col_fire
-col_gold
-col_water
+card_col_gold *
+card_col_fire *
+card_col_water *
+card_col_rare *
 battle_ok
+
+
+leaderboard
+
+hero_power *
+tower_achieve *,
+consume_money,
+daily_complete_num,

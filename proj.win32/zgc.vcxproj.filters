@@ -483,6 +483,9 @@
     <ClCompile Include="..\platform\win32\IOSiAP.cpp">
       <Filter>platform\IAP</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\common\KPlayerGCAssist.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -1012,6 +1015,9 @@
     </ClInclude>
     <ClInclude Include="..\platform\IOSiAP.h">
       <Filter>platform\IAP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\common\KPlayerGCAssist.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

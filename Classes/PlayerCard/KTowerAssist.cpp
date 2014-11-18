@@ -5,6 +5,8 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
 #include "../Quest/KQuestManager.h"
+#include "../../platform/IOSFunc_Bridge.h"
+
 namespace KTowerAssist
 {
 
@@ -25,6 +27,9 @@ void _stepOn(tb_player_record* record)
 	record->_gameData._tower._resLucky +=g_rnd.GetRandom(0,6);
 	if(record->_gameData._tower._resLucky>100) record->_gameData._tower._resLucky = 100;
 	record->updateMask(tb_player_record::_CRI);
+
+	int curTowerVal = record->_gameData._tower._lev*(record->_gameData._tower._lev + record->_gameData._tower._pos);
+	IOSFunc_Bridge::_ReportScore("tower_achieve",curTowerVal);
 }
 
 bool _isShow(tb_player_record* record)

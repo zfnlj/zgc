@@ -135,6 +135,7 @@
     <ClCompile Include="..\Classes\common\KClientTabfileLoader.cpp" />
     <ClCompile Include="..\Classes\common\KCommonObj.cpp" />
     <ClCompile Include="..\Classes\common\KPlayerBagAssist.cpp" />
+    <ClCompile Include="..\Classes\common\KPlayerGCAssist.cpp" />
     <ClCompile Include="..\Classes\common\KPlayerRecordAssist.cpp" />
     <ClCompile Include="..\Classes\common\KStreamWrapper.cpp" />
     <ClCompile Include="..\Classes\common\KVirtualServerAssist.cpp" />
@@ -304,6 +305,7 @@
     <ClInclude Include="..\Classes\common\KClientTabfileLoader.h" />
     <ClInclude Include="..\Classes\common\KCommonObj.h" />
     <ClInclude Include="..\Classes\common\KPlayerBagAssist.h" />
+    <ClInclude Include="..\Classes\common\KPlayerGCAssist.h" />
     <ClInclude Include="..\Classes\common\KPlayerRecordAssist.h" />
     <ClInclude Include="..\Classes\common\KStreamWrapper.h" />
     <ClInclude Include="..\Classes\common\KUIMsgDef.h" />

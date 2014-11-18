@@ -8,6 +8,7 @@
 #include "../Quest/KQuestNew.h"
 #include "../PlayerCard/KPlayerDeck.h"
 #include "KCommonObj.h"
+#include "KPlayerGCAssist.h"
 
 #define  SECOND_OF_DAY 24*60*60
 using namespace KItemAbout;
@@ -101,9 +102,10 @@ bool setCurDeck(tb_player_record* record,int index)
 
 bool addStoreCard(tb_player_record* record,KIntegerList& lst)
 {
+	void* buf=NULL;
+	int len = record->_cardStore.Get(buf);
+	
 	for(KIntegerList::iterator it=lst.begin();it!=lst.end();++it){
-		void* buf=NULL;
-		int len = record->_cardStore.Get(buf);
 		int id = *it;
 		KDBBagItemUnit* dbCard = (KDBBagItemUnit*)buf;
 		int n = len/sizeof(KDBBagItemUnit);
@@ -122,6 +124,8 @@ bool addStoreCard(tb_player_record* record,KIntegerList& lst)
 		}
 	}
 	record->updateMask(tb_player_record::_CARDSTORE);
+
+	KPlayerGCAssist::updateCardAchieve(record);
 	return true;
 }
 
@@ -145,6 +149,7 @@ bool addStoreCard(tb_player_record* record,int id,int count,bool& bNew)
 		bNew = true;
 		KDBBagItemUnit addCard(id,count);
 		record->_cardStore.Append(&addCard,sizeof(addCard));
+		KPlayerGCAssist::updateCardAchieve(record);
 	}
 	record->updateMask(tb_player_record::_CARDSTORE);
 	return true;

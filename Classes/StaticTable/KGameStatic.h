@@ -43,6 +43,7 @@ public:
 	float GetLevRate(int exp);
 	KCardStatic* GetCard(int id);
 	int GetCardNum(KCardStatic::CardRace);
+	int GetRankCardNum(int rank);
 	int GetNormalCardNum();
 	int GetAllCard(){ return m_cardMap.size();}
 	void GetAbilityList(int id,KCardAbilityList&,KAbilityStatic::Enum_When when=KAbilityStatic::when_all);

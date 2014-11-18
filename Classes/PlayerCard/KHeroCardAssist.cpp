@@ -1,6 +1,7 @@
 #include "KHeroCardAssist.h"
 #include "../common/KPlayerBagAssist.h"
 #include "../common/KPlayerRecordAssist.h"
+#include "../../platform/IOSFunc_Bridge.h"
 
 namespace KHeroCardAssist
 {
@@ -15,6 +16,9 @@ bool _LevUp(KHeroDef* hero,KPlayer* player)
 	//m_pHeroDef->LevZero();
 	hero->LevUp();
 	player->m_cardDepot.SaveHero(hero);
+
+	int atkVal = hero->GetAtkVal();
+	IOSFunc_Bridge::_ReportScore("hero_power",atkVal);
 	return true;
 }
 
