@@ -26,3 +26,8 @@ bool IOSFunc::ReportAchievement(const char*,double percent,bool bNotify)
 {
 	return false;
 }
+
+bool IOSFunc::ReportAddScore(const char* ,int val)
+{
+	return false;
+}

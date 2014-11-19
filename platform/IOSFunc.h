@@ -49,6 +49,7 @@ public:
 	virtual void CheckGCAvailability();
 	virtual void OpenUrl(const char*);
     virtual bool ReportScore(const char* ,int val);
+	virtual bool ReportAddScore(const char* ,int val);
     virtual bool ReportAchievement(const char*,double percent,bool bNotify);
 };
 

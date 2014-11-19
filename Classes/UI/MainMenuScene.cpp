@@ -108,7 +108,7 @@ bool MainMenuScene::init()
 	this->addChild(GetUILayer(), 1);
 
 	UpdateLockStatus();
-	ShowCollectInfo();
+	//ShowCollectInfo();
 	IOSFunc_Bridge::_CheckGCAvailability();
     return true;
 }

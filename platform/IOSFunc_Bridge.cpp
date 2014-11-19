@@ -45,6 +45,11 @@ bool IOSFunc_Bridge::_ReportScore(const char* str,int val)
     return IOSFunc.m_ios->ReportScore(str,val);
 }
 
+bool IOSFunc_Bridge::_ReportAddScore(const char* str,int val)
+{
+	IOSFunc_Bridge IOSFunc;
+	return IOSFunc.m_ios->ReportAddScore(str,val);
+}
 bool IOSFunc_Bridge::_ReportAchievement(const char* str,double percent,bool bNotify)
 {
     IOSFunc_Bridge IOSFunc;

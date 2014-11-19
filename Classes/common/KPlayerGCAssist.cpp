@@ -60,7 +60,12 @@ void updateCardAchieve(tb_player_record* record)
 	}else{
 		IOSFunc_Bridge::_ReportAchievement("card_col_water",(double)myWaterCardNum*100/(double)totalWaterNum,true);
 	}
-
+	int totalCardNum = KGameStaticMgr::getSingleton().GetCardNum(KCardStatic::race_all);
+	if(totalCardNum==n){
+		IOSFunc_Bridge::_ReportAchievement("card_col_all",100.0f,true);
+	}else{
+		IOSFunc_Bridge::_ReportAchievement("card_col_all",(double)n*100/(double)totalCardNum,true);
+	}
 }
 
 }

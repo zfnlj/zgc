@@ -3,6 +3,7 @@
 #include "../Item/KBagManager.h"
 #include "../Item/KBag.h"
 #include "../Item/KBagManager.h"
+#include "../../platform/IOSFunc_Bridge.h"
 
 using namespace KItemAbout;
 
@@ -38,6 +39,8 @@ bool ConsumeMoney(KWorldObjAbout::KPlayer* player,int moneyVal)
 
 	player->m_money.Increase(-moneyVal);
 	player->syncToRecord();
+
+	IOSFunc_Bridge::_ReportAddScore("consume_money",moneyVal);
 	return true;
 }
 

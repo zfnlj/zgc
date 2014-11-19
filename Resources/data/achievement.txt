@@ -4,12 +4,18 @@ card_col_gold *
 card_col_fire *
 card_col_water *
 card_col_rare *
+card_col_all *
 battle_ok
+
 
 
 leaderboard
 
 hero_power *
 tower_achieve *,
-consume_money,
+consume_money *,
+five_star_card,
+five_star_fire ,
+five_star_water,
+five_star_gold,
 daily_complete_num,

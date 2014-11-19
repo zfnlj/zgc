@@ -17,6 +17,7 @@ public:
 	static void _CheckGCAvailability();
     static void _ShowLeaderboard();
     static bool _ReportScore(const char* ,int val);
+	static bool _ReportAddScore(const char* ,int val);
     static bool _ReportAchievement(const char*,double percent,bool bNotify);
 };
 

@@ -19,6 +19,7 @@
 #include "../KNet/KNetMsgFacade.h"
 #include "VirtualService.h"
 #include "../common/KUIMsgDef.h"
+#include "../common/KPlayerBagAssist.h"
 
 using namespace KWorldObjAbout;
 using namespace KItemAbout;
@@ -427,10 +428,7 @@ namespace KStoreAbout
 		}
 		
 		if(GameRoot::getSingleton().BattleCtrl()->IsServerSide()){
-			KMoneyAbout::KMoney curMoney = KMainPlayer::RealPlayer()->m_money;
-			curMoney.Increase(-pProduct->GetNumOfMoney());
-			std::string s = curMoney.m_money.toString();
-			KNetMsgFacade::onChangeMoney(s.c_str(),s.size()+1);
+			KPlayerBagAssist::ConsumeMoney(KMainPlayer::RealPlayer(),pProduct->GetNumOfMoney());
 			VirtualService::getSingleton().AddItem(pProduct->m_dwItemID,pProduct->m_nPileCount);
 			return true;
 		}else{
