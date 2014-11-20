@@ -16,7 +16,7 @@
 #include "assist/KUIAssist.h"
 #include "assist/KJsonDictMgr.h"
 #include "../StaticTable/StaticData.h"
-
+#include "SimpleAudioEngine.h"
 //#include "PersonalAudioEngine.h"
 
 USING_NS_CC;
@@ -95,7 +95,7 @@ void StartScene::cacheInit()
 	KJsonDictMgr::getSingleton().GetJsonDict("GUI/battle.json");
 
 	LoadArmature();
-
+	PreLoadSoundEff();
 	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("data/List.txt");
 	
 	KTabfileLoader& loader = KTabfileLoader::GetInstance();
@@ -212,6 +212,26 @@ void StartScene::LoadArmature()
 		fileReader->GetString("File", "",sz, 127);
 		if(strlen(sz)>2){
 			CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo(sz);
+		}
+	}
+	loader.CloseFileReader(fileReader);
+}
+
+void StartScene::PreLoadSoundEff()
+{
+	std::string fullPath = cocos2d::CCFileUtils::sharedFileUtils()->fullPathForFilename("data/LoadSound.txt");
+	KTabfileLoader& loader = KTabfileLoader::GetInstance();
+	KTabFile2* fileReader = loader.GetFileReader(fullPath.c_str());
+	if(!fileReader)	return;
+	while(true)
+	{
+		int nRet = fileReader->ReadLine();
+		if(nRet == -1) { loader.CloseFileReader(fileReader); return ; }
+		if(nRet == 0) break;
+		char sz[128];
+		fileReader->GetString("File", "",sz, 127);
+		if(strlen(sz)>2){
+			SimpleAudioEngine::sharedEngine()->preloadEffect( sz );
 		}
 	}
 	loader.CloseFileReader(fileReader);

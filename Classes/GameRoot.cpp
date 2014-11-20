@@ -42,6 +42,7 @@ void GameRoot::init()
 
 	m_iap.requestProducts();
 
+
 	unsigned long long val = time(NULL);
 	srand(val);//
 	//KEventAbout::KEDKillMonster evt;

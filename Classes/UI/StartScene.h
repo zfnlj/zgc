@@ -33,6 +33,7 @@ protected:
     void audioAndUserDataInit();
     void initializationCompleted();
 	void LoadArmature();
+	void PreLoadSoundEff();
 	int m_curLoadPic;
 	int m_totalLoadPic;
 };

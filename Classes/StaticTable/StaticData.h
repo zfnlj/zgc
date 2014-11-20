@@ -10,6 +10,8 @@
 #define __FishingJoy__StaticData__
 
 #include "cocos2d.h"
+
+
 #define STATIC_DATA_INIT(user,pwd) StaticData::sharedStaticData()->init(user,pwd)
 #define STATIC_DATA_STRING(key) StaticData::sharedStaticData()->stringFromKey(key)
 #define STATIC_DATA_INT(key) StaticData::sharedStaticData()->intFromKey(key)
