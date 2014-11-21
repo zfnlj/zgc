@@ -93,6 +93,8 @@ AffectorType KAffectorStatic::GetEnumByTypeName( const char * szName )
 		eType = Affector_layer;
 	}else if ( strcmp(szName,"scale") == 0 ){
 		eType = Affector_scale;
+	}else if ( strcmp(szName,"sound") == 0 ){
+		eType = Affector_sound;
 	}else if ( strcmp(szName,"tmpLayer") == 0 ){
 		eType = Affector_tmpLayer;
 	}else if ( strcmp(szName,"scaleX") == 0 ){

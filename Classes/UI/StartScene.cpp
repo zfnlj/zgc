@@ -22,7 +22,7 @@
 USING_NS_CC;
 //using namespace CocosDenshion;
 using namespace System::File;
-
+using namespace CocosDenshion;
 bool StartScene::init()
 {
 	m_curLoadPic = m_totalLoadPic = 0;

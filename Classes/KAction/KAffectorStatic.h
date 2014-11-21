@@ -58,6 +58,7 @@ enum AffectorType
 	Affector_talk,
 	Affector_updateRes,
 	Affector_shader,
+	Affector_sound,
 };
 
 

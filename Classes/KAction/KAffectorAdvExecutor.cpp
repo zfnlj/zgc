@@ -4,6 +4,7 @@
 #include "../UI/assist/KUIAssist.h"
 #include "GameRoot.h"
 #include "../ui/KSceneLayerBase.h"
+#include "SimpleAudioEngine.h"
 
 CCActionDef::~CCActionDef()
 {
@@ -79,6 +80,11 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 	case Affector_layer:
 		if(GetActor()){
 			GetActor()->setZOrder(m_AffectorStatic->GetObj(),m_AffectorStatic->GetIntVal());
+		}
+		break;
+	case Affector_sound:
+		{
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(m_AffectorStatic->GetObj());
 		}
 		break;
 	case Affector_tmpLayer:

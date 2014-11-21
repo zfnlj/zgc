@@ -8,6 +8,7 @@
  
   	<affector class="moveback" createtime="1.6" life="0.001" />
   	<affector class="resortHand" createtime="1.6" life="0.001" />
+  	<affector class="sound" obj="audio/battle/card_use.wav" createtime="0.0" life="2.0" />
   </affect_body>
 </action>
 </ag>
