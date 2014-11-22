@@ -6,3 +6,4 @@ audio/battle/card_shuffle.wav
 audio/battle/turn_start_flip.wav
 audio/battle/ground_click.wav
 audio/battle/ui_click.wav
+audio/battle/lei01.wav

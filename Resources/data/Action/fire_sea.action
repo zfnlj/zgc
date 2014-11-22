@@ -13,6 +13,7 @@
 <action name="fire_sea_show" class="null">
   <affect_body>
   		<affector class="eff" slot="enemy_skill_center" obj="fire_sea" createtime="0.0" fVal="1.2" iVal="90"  life="2.5" />
+		<affector class="sound" obj="audio/battle/fire.wav" createtime="0.0" life="1.0" />
   </affect_body>
 </action>
 </ag>

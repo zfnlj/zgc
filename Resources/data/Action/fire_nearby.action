@@ -5,7 +5,7 @@
   	<affector class="action" obj="use_bad_tar_skill" tarFlag="0" pre="0" createtime="0" iVal="1" life="30" />
   	<affector class="action" obj="fire_nearby_show" tarFlag="5" pre="1" createtime="0" iVal="2" life="30" />
   	<affector class="action" obj="duel_hit" tarFlag="1" pre="2" createtime="0" iVal="3" life="30" />
-  	<affector class="action" obj="update_tar_buf_show" tarFlag="1" pre="3" createtime="0" iVal="4" life="30" />
+  	<affector class="action" obj="update_tar_buf_show" tarFlag="1" pre="2" createtime="0" iVal="4" life="30" />
   	<affector class="moveback" createtime="3" life="0.001" />
   	<affector class="action" obj="delay_resortHand" tarFlag="0" createtime="3.0" life="0.001" />
   </affect_body>
@@ -14,6 +14,7 @@
 <action name="fire_nearby_show" class="null">
   <affect_body>
   		<affector class="eff" slot="card_center" obj="fire_nearby" createtime="0.0" fVal="1.2" iVal="90"  life="2.5" />
+		  <affector class="sound" obj="audio/battle/fire.wav" createtime="0.0" life="1.0" />
   </affect_body>
 </action>
 </ag>

@@ -13,7 +13,7 @@
 <action name="do_damage_show" class="null">
   <affect_body>
   		<affector class="armature" slot="card_center" obj="doDamage" createtime="0.0" fVal="1.0" iVal="90"  life="1.0" />
-		<affector class="sound" obj="audio/battle/Wound.wav" fVal="1.0" createtime="0.0" life="1.6" />
+		<affector class="sound" obj="audio/battle/Wound.wav" fVal="1.0" createtime="0.0" life="0.4" />
   </affect_body>
 </action>
 </ag>

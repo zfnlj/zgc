@@ -27,7 +27,7 @@ public:
 	virtual cocos2d::extension::UIWidget* GetWidget(const char* obj);
 	virtual void MoveBack(float speed);//“∆∂Øªÿ≤€Œª
 	virtual CCNode* ShowHit(const char* slot,K3DActionParam* param,float scale,bool bGood);
-	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
+	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index,bool& ret);
 	void DoSelect(CCObject* sender);
 	void onMoveEvent(CCObject* sender);
 	CC_SYNTHESIZE(bool,m_bBack,Back);

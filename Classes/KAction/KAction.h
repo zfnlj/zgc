@@ -70,4 +70,5 @@ public:
 	void Reset();
 	void SetDelayTime(float delay);
 	static int g_totalClassAction;
+	float m_elapsed;
 };

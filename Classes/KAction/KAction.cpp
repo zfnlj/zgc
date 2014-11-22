@@ -37,6 +37,7 @@ KAction* KAction::create(KActionStatic* pST,KActionMgr* pMgr,K3DActionParam* pPa
 
 void KAction::Init(KActionStatic* pST,KActionMgr* pMgr,K3DActionParam* pParam,int key)
 {
+	m_elapsed = 0.0f;
 	m_key = key;
 	m_parent = NULL;
 	m_delayTime = 0;
@@ -86,6 +87,11 @@ bool KAction::Stop()
 void KAction::breathe(float timeElapsed)
 {
 	timeElapsed = BreatheDelayTime(timeElapsed);
+
+	m_elapsed += timeElapsed;
+	if(m_elapsed>6.0f  && m_AffectMgr.getSize()>4){
+		int kk=0;
+	}
 	if(timeElapsed <=0.0)
 	{
 		return;

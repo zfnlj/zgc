@@ -11,7 +11,7 @@
 <action name="dead_curse_show" class="null">
   <affect_body>
   		<affector class="armature"  slot="screen_center" createtime="0" fVal="1.0" obj="curse" life="0.9" />
-		<affector class="sound" obj="audio/battle/curse.wav" createtime="0.0" life="1.1" />
+		<affector class="sound" obj="audio/battle/curse.wav" createtime="0.0" life="0.5" />
   </affect_body>
 </action>
 </ag>

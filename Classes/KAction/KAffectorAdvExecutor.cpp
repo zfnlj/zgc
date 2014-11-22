@@ -327,7 +327,8 @@ void KAffectorMissileExecutor::OnPlay(K3DActionParam* param)
 
 	cocos2d::extension::UIWidget* widget = GetActor()->GetWidget("");
 	CCPoint ptSrc = widget->getPosition();
-	CCPoint ptDes = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0);
+	bool ret;
+	CCPoint ptDes = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0,ret);
 	CCPoint vTmp = ptDes - ptSrc;
 	float fDistance = vTmp.getLength();
 	float fTime = fDistance / m_AffectorStatic->GetFloatVal();
@@ -429,11 +430,15 @@ void KAffectorIndicateExecutor::callbackMissileReach()
 }
 void KAffectorIndicateExecutor::OnPlay(K3DActionParam* param)
 {
-	CCPoint ptSrc = GetActor()->GetDestPosition(param,"card_center",0);
+	bool ret;
+	CCPoint ptSrc = GetActor()->GetDestPosition(param,"card_center",0,ret);
 
-	if(param->_desArr[0]==0) return;
 
-	CCPoint ptDes = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0);
+	CCPoint ptDes = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0,ret);
+	if(!ret){
+		LimitAlive(0.1f);
+		return;
+	}
 	CCPoint vTmp = ptDes - ptSrc;
 	float fDistance = vTmp.getLength();
 	float fTime = fDistance / m_AffectorStatic->GetFloatVal();
@@ -490,7 +495,12 @@ KAffectorTimerBarExecutor::~KAffectorTimerBarExecutor()
 
 void KAffectorTimerBarExecutor::OnPlay(K3DActionParam* param)
 {
-	CCPoint pt = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0);
+	bool ret;
+	CCPoint pt = GetActor()->GetDestPosition(param,m_AffectorStatic->GetSlot(),0,ret);
+	if(!ret){
+		LimitAlive(0.1f);
+		return;
+	}
 
 	CCSprite* sprite = CCSprite::createWithSpriteFrameName(m_AffectorStatic->GetObj());
 

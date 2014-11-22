@@ -72,7 +72,8 @@ void KActor::RemoveEff(CCParticleSystem* emitter,const char* obj)
 
 void KActor::Move(const char* obj,const char* slot,float fSpeed,CCActionDef& actionDef)
 {
-	CCPoint pt = GetDestPosition(NULL,slot,0);
+	bool ret;
+	CCPoint pt = GetDestPosition(NULL,slot,0,ret);
 	CCNode* node = GetCNode(obj);
 	if(fSpeed>=9999.0f){
 		node->setPosition(pt);
@@ -133,14 +134,23 @@ CCPoint KActor::GetDestPosition()
 	return GetUI()->getPosition();
 }
 
-CCPoint KActor::GetDestPosition(K3DActionParam* param,const char* obj,int index)
+CCPoint KActor::GetDestPosition(K3DActionParam* param,const char* obj,int index,bool& ret)
 {
+	ret = true;
 	CCPoint pt;
 	if(strcmp(obj,"dest")==0){
+		if(param->_desArr[0]==0){
+			ret = false;
+			return pt;
+		}
 		KActor* actor =  (KActor*)KUIAssist::_getCardActor(param->_desArr[index]);
 		return actor->GetDestPosition();
 	}else if(strcmp(obj,"my_fight_slot")==0){
 		char sz[32];
+		if(param->_desArr[0]==0){
+			ret = false;
+			return pt;
+		}
 		sprintf(sz,"%s_%d",obj,param->_desArr[index]);
 		UIWidget* widget = GetWidget(sz);
 		return widget->getWorldPosition();
@@ -328,7 +338,8 @@ void KActor::ShowCard(int realId)
 
 CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zOrder,float offsetY,bool bLoop)
 {
-	CCPoint pt = GetDestPosition(NULL,slot,0);
+	bool ret;
+	CCPoint pt = GetDestPosition(NULL,slot,0,ret);
 	pt.y += offsetY;
 	CCSprite* pAnim = KUIAssist::CreateAnimationSprite(obj,bLoop);
 	pAnim->setAnchorPoint(ccp(0.50f,0.50f));
@@ -341,7 +352,8 @@ CCSprite* KActor::CreateAnim(const char* obj,const char* slot,float scale,int zO
 
 cocos2d::extension::CCArmature* KActor::CreateArmature(K3DActionParam* param,const char* obj,const char* slot,float scale,float yOffset,int zOrder)
 {
-	CCPoint pt = GetDestPosition(param,slot,0);
+	bool ret;
+	CCPoint pt = GetDestPosition(param,slot,0,ret);
 	pt.y += yOffset;
 	CCArmature *armature = CCArmature::create(obj);
 	if(!armature) return NULL;
@@ -355,7 +367,8 @@ cocos2d::extension::CCArmature* KActor::CreateArmature(K3DActionParam* param,con
 
 CCSprite* KActor::CreateSprite(const char* obj,const char* slot,float scale,int zOrder)
 {
-	CCPoint pt = GetDestPosition(NULL,slot,0);
+	bool ret;
+	CCPoint pt = GetDestPosition(NULL,slot,0,ret);
 	CCSprite* sprite = CCSprite::createWithSpriteFrameName(obj);
 	if(!sprite) return NULL;
 	sprite->setAnchorPoint(ccp(0.50f,0.50f));
@@ -386,11 +399,11 @@ void KActor::RemoveDictObj(CCNode* node,const char* obj)
 
 CCParticleSystem* KActor::CreateEff(const char* obj,const char* slot,int zOrder,float scale)
 {
-	
+	bool ret;
 	CCParticleSystem* emitter = KParticleCacheMgr::getSingleton().CreateParticle(obj);
 	if(!emitter) return NULL;
 	emitter->setScale(scale);
-	CCPoint destPt = GetDestPosition(NULL,slot,0);
+	CCPoint destPt = GetDestPosition(NULL,slot,0,ret);
 	emitter->setPosition(destPt);
 	KUIAssist::_activeSceneLayer()->addChild(emitter,zOrder);
 	
@@ -423,8 +436,9 @@ void KActor::Move(const char* obj,CCPoint& pt,float fSpeed,CCActionDef& actionDe
 
 cocos2d::extension::UIWidget* KActor::CreateTalk(const char* obj,const char* slot,int z, int msgId)
 {
+	bool ret;
 	UIWidget* widget = KJsonDictMgr::getSingleton().widgetFromJsonFile(obj);
-	CCPoint pt = GetDestPosition(NULL,slot,0);
+	CCPoint pt = GetDestPosition(NULL,slot,0,ret);
 	widget->setZOrder(z);
 
 	char sz[16];

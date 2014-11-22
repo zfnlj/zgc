@@ -12,7 +12,7 @@
 <action name="cuthead_show" class="null">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="cuthead" life="1.3" />
-  		<affector class="sound" obj="audio/battle/wound.wav" fVal="1.0" createtime="0.0" life="1.2" />
+  		<affector class="sound" obj="audio/battle/wound.wav" fVal="1.0" createtime="0.0" life="0.4" />
   		<affector class="moveback" createtime="1.5" life="0.001" />
   </affect_body>
 </action>

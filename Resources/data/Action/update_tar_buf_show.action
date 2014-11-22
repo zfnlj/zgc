@@ -2,7 +2,7 @@
 <ag>
 <action name="" class="null">
   <affect_body>
-    	<affector class="updateBuf" createtime="0.8"  life="0.001" />  
+    	<affector class="updateBuf" createtime="0.4"  life="0.001" />  
   </affect_body>
 </action>
 
