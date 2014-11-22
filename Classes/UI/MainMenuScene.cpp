@@ -84,7 +84,7 @@ bool MainMenuScene::init()
     // add a "close" icon to exit the progress. it's an autorelease object
     CCMenuItemImage *pMailBut = CCMenuItemImage::create(
                                         "mail_icon.png",
-                                        "mail_icon.png",
+                                        "mail_icon2.png",
                                         this,
                                         menu_selector(MainMenuScene::menuMailCallback));
     
@@ -110,6 +110,7 @@ bool MainMenuScene::init()
 	UpdateLockStatus();
 	//ShowCollectInfo();
 	IOSFunc_Bridge::_CheckGCAvailability();
+	KUIAssist::PlayBGM();
     return true;
 }
 
@@ -164,11 +165,13 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2CardGroupScene();
 }
 
 void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2StageSelectScene();
 }
 
@@ -180,11 +183,13 @@ void MainMenuScene::DoClickTiebar(CCObject* sender)
 
 void MainMenuScene::DoClickHeroBrowse(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2HeroBrowseScene();
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	StageWaitScene::SetSceneVal(scene_battle);
 	KUIAssist::_switch2StageWaitScene();
 }
@@ -229,6 +234,7 @@ void MainMenuScene::UpdateLockStatus()
 
 void MainMenuScene::DoClickShopBut(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2ShopScene();
 }
 

@@ -96,14 +96,6 @@ void StageSelectScene::InitStageBut()
 	}
 }
 
-void StageSelectScene::DoClickClose(CCObject* sender)
-{
-	UIWidget* pBut = this->getWidgetByName("bk");
-	pBut->setTouchEnable(false);
-	KUIAssist::_switch2MainMenu();
-}
-
-
 void StageSelectScene::DoClickStage(CCObject* sender)
 {
 	UIWidget* pBut = (UIWidget*)sender;
@@ -118,7 +110,10 @@ void StageSelectScene::DoClickTower(CCObject* sender)
 	KUIAssist::_switch2StageWaitScene();
 }
 
-void StageSelectScene::onCloseCallback()
+void StageSelectScene::onCloseCallback(CCObject* sender)
 {
+	UIWidget* pBut = this->getWidgetByName("bk");
+	pBut->setTouchEnable(false);
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }

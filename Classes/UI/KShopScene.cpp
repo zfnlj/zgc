@@ -74,7 +74,7 @@ bool KShopScene::init()
 		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui, "but_close");
 		pBut->setTouchEnable(true);
 		KShopScene* me = this;
-		pBut->addPushDownEvent(me, coco_pushselector(KShopScene::DoClickClose));
+		pBut->addPushDownEvent(me, coco_pushselector(KShopScene::onCloseCallback));
 
 		m_actor.init(m_ui);
 	}
@@ -311,13 +311,9 @@ void TestIAP()
 	iap.requestProducts();
 }
 
-void KShopScene::onCloseCallback()
+void KShopScene::onCloseCallback(CCObject* sender)
 {
-	KUIAssist::_switch2MainMenu();
-}
-
-void KShopScene::DoClickClose(CCObject* sender)
-{
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }
 

@@ -289,5 +289,6 @@ void KHeroLevUpPanel::CreateExitBut()
 
 void KHeroLevUpPanel::menuExitCallback(CCObject* pSender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }

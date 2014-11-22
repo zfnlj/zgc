@@ -5,7 +5,6 @@
      <affector class="createSprite" slot="select_base" obj="your_turn.png" createtime="0" fVal="0.2" iVal="100" life="0.001" />
 	   <affector class="scale" obj="your_turn.png" fVal="1.0" createtime="0.1" life="0.4" />
 	   <affector class="fadeout" obj="your_turn.png" fVal="0.5" createtime="1.5" life="0.8" />
-	   <affector class="sound" obj="audio/battle/turn_start2.wav" createtime="0.0" life="3.0" />
   </affect_body>
 </action>
 </ag>

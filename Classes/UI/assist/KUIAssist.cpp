@@ -25,6 +25,7 @@
 #include "../../Item/KItemCreate.h"
 #include "../StageSelectScene.h"
 #include "../HeroBrowseScene.h"
+#include "SimpleAudioEngine.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -234,7 +235,8 @@ void KUIAssist::_switch2HeroBrowseScene()
 
 void KUIAssist::_switch2BattleScene()
 {
-	CCScene* scene = CCTransitionSplitRows::create(0.5f, BattleFieldScene::scene());
+	PlaySound("audio/battle/battle_vs.wav");
+	CCScene* scene = CCTransitionSplitRows::create(0.8f, BattleFieldScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 }
 
@@ -427,10 +429,12 @@ CCAction* KUIAssist::_createAtkMove(UIWidget* widgetSrc,int des,float val)
 	CCActionInterval* move = CCMoveTo::create(0.2*val, ptLast);
 	CCActionInterval* move_ease_out = CCEaseElasticOut::create(move,0.05f);
 
-	CCSequence* seq1 = CCSequence::create(action, move_ease_out, NULL);
+	CCSequence* seq1 = CCSequence::create(action, CCCallFuncN::create(NULL, callfuncN_selector(KActor::callbackHitSound)),move_ease_out, NULL);
 	widgetSrc->runAction(seq1);
 	return seq1;
 }
+
+
 
 CCParticleSystem* KUIAssist::_createParticle(const char* name)
 {
@@ -796,4 +800,28 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 		break;
 	}
 	return widget;
+}
+
+void KUIAssist::PlaySound(const char* name)
+{
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(name);
+}
+
+void KUIAssist::PlayBGM()
+{
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mid");
+}
+
+void KUIAssist::PlayDrawCardSound(int n)
+{
+	if(KClientBattleCtrl::getInstance()->GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
+	if(n>3) n=3;
+	char sz[128];
+	sprintf(sz,"audio/battle/card_shuffle%d.wav",n);
+	PlaySound(sz);
+}
+
+void KUIAssist::PlayClickButSound()
+{
+	PlaySound("audio/ui/but_click.wav");
 }

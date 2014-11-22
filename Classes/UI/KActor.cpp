@@ -373,6 +373,11 @@ void KActor::AtkMove(int des,float val,CCActionDef& actionDef)
 	actionDef.init(action,m_ui->getRenderer());
 }
 
+void KActor::callbackHitSound(CCNode* pSender)
+{
+	KUIAssist::PlaySound("audio/battle/hit_heavy.wav");
+}
+
 void KActor::RemoveDictObj(CCNode* node,const char* obj)
 {
 	node->removeFromParent();

@@ -22,12 +22,11 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(StageSelectScene);
 
-	void DoClickClose(CCObject* sender);
 	void DoClickStage(CCObject* sender);
 	void DoClickTower(CCObject* sender);
 	void InitStageBut();
 	void InitTower();
-	virtual void onCloseCallback();
+	virtual void onCloseCallback(CCObject* sender);
 };
 
 #endif // __StageSelectScene_SCENE_H__

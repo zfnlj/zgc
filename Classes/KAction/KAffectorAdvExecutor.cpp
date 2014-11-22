@@ -84,6 +84,7 @@ void KAffectorExecutor::OnPlay(K3DActionParam* param)
 		break;
 	case Affector_sound:
 		{
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(m_AffectorStatic->GetFloatVal());
 			CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(m_AffectorStatic->GetObj());
 		}
 		break;

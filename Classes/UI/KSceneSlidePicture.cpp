@@ -105,6 +105,7 @@ void KSceneSlidePicture::CreateCloseBut()
 
 void KSceneSlidePicture::menuCloseCallback(CCObject* pSender)
 {
+	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }
 

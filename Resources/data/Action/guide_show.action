@@ -2,8 +2,9 @@
 <ag>
 <action class="null">
   <affect_body>
-  		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="guider" life="1.2" />
+ 	<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="guider" life="1.2" />
     	<affector class="updateBuf" createtime="1.4"  life="0.001" />  
+	<affector class="sound" obj="audio/battle/guide.wav" fVal="1.0" createtime="0.0" life="1.6" />
   </affect_body>
 </action>
 </ag>
