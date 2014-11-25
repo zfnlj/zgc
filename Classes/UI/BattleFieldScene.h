@@ -32,7 +32,7 @@ public:
     static cocos2d::CCScene* scene();
     
     // a selector callback
-	virtual void onCloseCallback();
+	virtual void onCloseCallback(CCObject* sender);
     virtual void update(float dt);
     // implement the "static node()" method manually
     CREATE_FUNC(BattleFieldScene);

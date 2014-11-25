@@ -86,8 +86,9 @@ bool BattleFieldScene::init()
     return true;
 }
 
-void BattleFieldScene::onCloseCallback()
+void BattleFieldScene::onCloseCallback(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	KClientBattleCtrl::getInstance()->ForceExit();
 	KUIAssist::_switch2MainMenu();
 }
@@ -210,6 +211,7 @@ void BattleFieldScene::onHandCardReady()
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
 
+	KUIAssist::PlaySound("audio/ui/turn_end_click.wav");
 
 	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return;
@@ -305,7 +307,8 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 	if(cardList->empty()) return;
 	KCardInstList::iterator it = cardList->begin();
 	FBattleGuy* guy = KClientBattleCtrl::getInstance()->GetCardOwner(*it);
-	if(KClientBattleCtrl::getInstance()->GetBattleState()==KBattleCtrlBase::battle_init)
+	if(KClientBattleCtrl::getInstance()->GetBattleState()==KBattleCtrlBase::battle_init||
+		KClientBattleCtrl::getInstance()->GetBattleState()==KBattleCtrlBase::quest_battle_init)
 		return;
 	UIImageView* base = NULL;
 	if(guy==KClientBattleCtrl::getInstance()->GetMainPlayer()){
@@ -338,8 +341,7 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		actor->GetActionMgr().PlayAction("delay_resortHand");
 	}
-
-	//FreshAllCard();
+	KUIAssist::PlayDrawCardSound(cardList->size());
 }
 
 void BattleFieldScene::ActiveMyFightArea()

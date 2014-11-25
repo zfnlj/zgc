@@ -13,6 +13,7 @@
 <action name="dragon_light_show" class="null">
   <affect_body>
   		<affector class="anim" slot="card_center" obj="dragon_light" createtime="0.0" fVal="0.6" fVal2="40" iVal="90"  life="2.5" />
+		<affector class="sound" obj="audio/battle/lei01.wav" createtime="0.0" life="0.4" />
   </affect_body>
 </action>
 </ag>

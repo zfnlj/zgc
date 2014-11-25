@@ -36,7 +36,7 @@ void KWorldMsgHub::GenPlayerCard(unsigned long long Param1, unsigned long long P
 void KWorldMsgHub::iapCallback(unsigned long long Param1, unsigned long long Param2)
 {
 #ifdef _USE_COCOS2DX
-	KUIAssist::_activeSceneLayer()->onIAPCallback((const char*)Param1,Param2);
+	if(KUIAssist::_activeSceneLayer()) KUIAssist::_activeSceneLayer()->onIAPCallback((const char*)Param1,Param2);
 #else
 	
 #endif

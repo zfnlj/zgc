@@ -394,8 +394,9 @@ CCNode* KCardActor::ShowHit(const char* slot,K3DActionParam* param,float scale,b
 	return bmFont;
 }
 
-CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int index)
+CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int index,bool& ret)
 {
+	ret = true;
 	if(strcmp(slot,"card_pos")==0 ){
 		return KUIAssist::_queryCardPos(NULL,m_card);
 	}else if(strcmp(slot,"secret_pos")==0){
@@ -411,7 +412,7 @@ CCPoint KCardActor::GetDestPosition(K3DActionParam* param,const char* slot,int i
 		UIWidget* widget = (bMy)?KUIAssist::_activeScene->getWidgetByName("my_res"):KUIAssist::_activeScene->getWidgetByName("your_res");
 		if(widget) return widget->getWorldPosition();
 	}
-	return KActor::GetDestPosition(param,slot,index);
+	return KActor::GetDestPosition(param,slot,index,ret);
 }
 
 void KCardActor::SummonSelf()

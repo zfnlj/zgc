@@ -55,7 +55,7 @@ public:
 	cocos2d::extension::CCArmature* CreateArmature(K3DActionParam*,const char* obj,const char* slot,float scale,float yOffset,int zOrder);
 	CCParticleSystem* CreateEff(const char* obj,const char* slot,int zOrder,float scale);
 	virtual cocos2d::extension::UIWidget* CreateTalk(const char* obj,const char* slot,int z, int msgId);
-	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index);
+	virtual CCPoint GetDestPosition(K3DActionParam* param,const char* obj,int index,bool& ret);
 	virtual KCardInst* GetCard(){ return NULL;}
 	virtual void addWidget(const char* obj,int zOrder){}
 	virtual void delWidget(const char* obj){}
@@ -67,6 +67,7 @@ public:
 	void StartBreathe(const char* obj,float val,float elapse,CCActionDef& actionDef);
 	void SetShader(const char* obj);
 	void RestoreShader();
+	void callbackHitSound(CCNode* pSender);
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActionMgr m_ActionMgr;

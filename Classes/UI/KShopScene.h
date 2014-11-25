@@ -23,13 +23,12 @@ public:
 
 	CREATE_FUNC(KShopScene);
 	virtual void update(float dt);
-	void DoClickClose(CCObject* sender);
 	void UpdateMoney();
 	void UpdateNormalBag();
 	virtual void onGenPlayerCard(unsigned long long p1);
 	virtual void onSystemMsg(int id);
 	void DoBuyMoney(CCObject* sender);
-	virtual void onCloseCallback();
+	virtual void onCloseCallback(CCObject* sender);
 	virtual void onIAPCallback(const char* productName,int count);
 private:
 	void InitItem();

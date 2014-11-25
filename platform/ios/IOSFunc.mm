@@ -44,3 +44,8 @@ bool IOSFunc::ReportAchievement(const char* str,double percent,bool bNotify)
     [[GameCenterManager sharedManager] saveAndReportAchievement:nsStr percentComplete:percent shouldDisplayNotification:bNotify];
     return true;
 }
+
+bool IOSFunc::ReportAddScore(const char* ,int val)
+{
+    return false;
+}

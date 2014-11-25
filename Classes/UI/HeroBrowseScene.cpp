@@ -76,7 +76,7 @@ cocos2d::extension::UIWidget* HeroBrowseScene::GetPanel()
 		
 		
 		UIWidget* pBut = UIHelper::seekWidgetByName(m_ui,"back_but");
-		pBut->addPushDownEvent(this,coco_pushselector(HeroBrowseScene::onClickBack));
+		pBut->addPushDownEvent(this,coco_pushselector(HeroBrowseScene::onCloseCallback));
 		
 		pBut = UIHelper::seekWidgetByName(m_ui,"page_down_but");
 		pBut->addPushDownEvent(this,coco_pushselector(HeroBrowseScene::onClickPageDown));
@@ -124,8 +124,9 @@ void HeroBrowseScene::onClickCost(CCObject* sender)
 	UpdateUI();
 }
 
-void HeroBrowseScene::onClickBack(CCObject* sender)
+void HeroBrowseScene::onCloseCallback(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	m_curPage = 0;
 	KUIAssist::_switch2MainMenu();
 }

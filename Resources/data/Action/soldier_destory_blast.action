@@ -11,6 +11,7 @@
 <action name="soldier_destory_blast_show" class="null">
   <affect_body>
   		<affector class="eff" slot="screen_center" obj="destory_blast" createtime="0.0" fVal="1.2" iVal="90"  life="1.2" />
+		<affector class="sound" obj="audio/battle/destory_blast.wav" fVal="1.0" createtime="0.0" life="0.4" />
   </affect_body>
 </action>
 </ag>

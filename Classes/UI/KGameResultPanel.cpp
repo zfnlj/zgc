@@ -14,6 +14,7 @@
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
 
+
 using namespace cocos2d::extension;
 using namespace KItemAbout;
 
@@ -77,8 +78,10 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 	memcpy(&m_result,result,sizeof(strGameResult));
 	if(result->_winner==GameRoot::getSingleton().BattleCtrl()->GetMainPlayer()){
 		m_resultType = result_win;
+		KUIAssist::PlaySound("audio/battle/game_win.wav");
 	}else if(result->_winner){
 		m_resultType = result_lost;
+		KUIAssist::PlaySound("audio/battle/game_lose.wav");
 	}else{
 		m_resultType = result_equal;
 	}

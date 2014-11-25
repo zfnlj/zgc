@@ -23,7 +23,7 @@ public:
 	virtual void onIAPCallback(const char* productName,int count);
 	void CreateCloseBut();
 	void menuCloseCallback(CCObject* pSender);
-	virtual void onCloseCallback()=0;
+	virtual void onCloseCallback(CCObject* sender)=0;
 protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActor m_actor;

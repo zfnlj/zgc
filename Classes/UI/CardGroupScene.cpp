@@ -200,7 +200,7 @@ void CardGroupScene::onClickBack(CCObject* sender)
 		UpdateUI();
 		UpdateCurDeckRadio();
 	}else if(m_mainType==type_cardgroup){
-		KUIAssist::_switch2MainMenu();
+		onCloseCallback(sender);
 	}
 }
 
@@ -766,8 +766,9 @@ bool CardGroupScene::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 	return true;
 }
 
-void CardGroupScene::onCloseCallback()
+void CardGroupScene::onCloseCallback(CCObject* sender)
 {
+	KUIAssist::PlayClickButSound();
 	if(KGameRecordMgr::getSingleton().IsPlaying()) return;
 	KUIAssist::_switch2MainMenu();
 }

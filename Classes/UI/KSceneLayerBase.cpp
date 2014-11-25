@@ -54,7 +54,7 @@ void KSceneLayerBase::CreateCloseBut()
 
 void KSceneLayerBase::menuCloseCallback(CCObject* pSender)
 {
-	onCloseCallback();
+	onCloseCallback(pSender);
 }
 
 void KSceneLayerBase::onIAPCallback(const char* productName,int count)

@@ -36,12 +36,11 @@ public:
     virtual void update(float dt);
     // implement the "static node()" method manually
     CREATE_FUNC(HeroBrowseScene);
-	virtual void onCloseCallback(){}
+	virtual void onCloseCallback(CCObject* sender);
 	virtual cocos2d::extension::UIWidget* GetPanel();
 	void DoBreakHero(CCObject* sender);
 protected:
 
-	void onClickBack(CCObject* sender);
 	void onClickCost(CCObject* sender);
 	void onClickPageDown(CCObject* sender);
 	void onClickPageUp(CCObject* sender);

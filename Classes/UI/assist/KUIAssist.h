@@ -89,7 +89,7 @@ public:
 	static void _playLessonMsg(int id);
 	static KSceneLayerBase* _activeSceneLayer();
 	static KActor& _activeSceneActor();
-
+	static void PlaySound(const char* name);
 	static void _popNotifyMsg(int dlgId);
 	static UIWidget* _createBagItemWidget(KPlayerTmpBag::ItemDef item);
 	static UIWidget* _createNormalItemWidget(KPlayerTmpBag::ItemDef item);
@@ -97,6 +97,11 @@ public:
 	static CCGLProgram* _createGrayProgram();
 	static KGameRecordPanel& _recordPanel();
 	static KSceneLayerBase* _activeScene;
+
+	//sound
+	static void PlayDrawCardSound(int n);
+	static void PlayClickButSound();
+	static void PlayBGM();
 	
 };
 
