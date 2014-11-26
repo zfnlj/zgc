@@ -208,6 +208,9 @@ void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const c
 	}
 	pBut = m_ui->getWidgetByName("but_hero");
 	KUIAssist::ShowButton(pBut,KMainPlayer::RealPlayer()->GetCardDepot()->GetHeroNum()>0);
+
+
+	KUIAssist::ShowButton(m_ui->getWidgetByName("but_hero"),STATIC_DATA_INT("open_cardgroup")>0);
 }
 
 void MainMenuScene::UpdateLockStatus()
