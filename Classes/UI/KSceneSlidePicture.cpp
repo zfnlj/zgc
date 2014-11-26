@@ -112,7 +112,15 @@ void KSceneSlidePicture::menuCloseCallback(CCObject* pSender)
 void KSceneSlidePicture::onClickNext(CCObject* sender)
 {
 	if( m_curId>=m_lastId){
-		KUIAssist::_switch2MainMenu();
+		switch(m_goto){
+		case goto_mainMenu:
+			KUIAssist::_switch2MainMenu();
+			break;
+		case goto_StageWait:
+			KUIAssist::_switch2StageWaitScene();
+			break;
+		}
+		
 		return;
 	}
 	m_curId++;

@@ -198,7 +198,7 @@ void KUIAssist::_switch2ShopScene()
 
 void KUIAssist::_openMainHelpScene()
 {
-	KSceneSlidePicture::Setting(0,2,KSceneSlidePicture::goto_mainMenu);
+	KSceneSlidePicture::Setting(0,2,KSceneSlidePicture::goto_StageWait);
 	CCScene* scene = CCTransitionSplitRows::create(0.5f, KSceneSlidePicture::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 }

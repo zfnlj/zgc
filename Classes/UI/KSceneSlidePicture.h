@@ -13,6 +13,7 @@ public:
 	enum Goto{
 		goto_mainMenu,
 		goto_heroBrowse,
+		goto_StageWait,
 	};
 	KSceneSlidePicture(){}
 	~KSceneSlidePicture();

@@ -191,7 +191,13 @@ void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
 	KUIAssist::PlayClickButSound();
 	StageWaitScene::SetSceneVal(scene_battle);
-	KUIAssist::_switch2StageWaitScene();
+
+	if(STATIC_DATA_INT("first_help")==0){
+		STATIC_DATA_SET("first_help",1);
+		KUIAssist::_openMainHelpScene();
+	}else{
+		KUIAssist::_switch2StageWaitScene();
+	}
 }
 
 void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const char* lockImage)

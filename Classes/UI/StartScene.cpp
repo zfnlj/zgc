@@ -78,10 +78,7 @@ void StartScene::loading(CCObject* pObj)
 }
 void StartScene::transition(CCObject* pSender)
 {
-	if(STATIC_DATA_INT("first_help")==0){
-		STATIC_DATA_SET("first_help",1);
-		KUIAssist::_openMainHelpScene();
-	}else{
+	{
 		CCScene* scene = CCTransitionFadeBL::create(2.0f, MainMenuScene::scene());
 		CCDirector::sharedDirector()->replaceScene(scene);
 	}
