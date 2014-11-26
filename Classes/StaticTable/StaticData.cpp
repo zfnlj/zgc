@@ -42,6 +42,10 @@ void StaticData::init(const char* userName,const char* pwd)
 		set("player",userName);
 		set("recInc",1);
 		set("Inc",1);
+		set("Music On",1);
+		set("Sound On",1);
+		set("Music Vol",100);
+		set("Sound Vol",100);
 		_dictionary->writeToFile(m_fullPath);
 	}else{
 		_dictionary = CCDictionary::createWithContentsOfFile(m_fullPath);
