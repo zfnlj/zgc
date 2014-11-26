@@ -242,3 +242,6 @@
 /tool/zgc_ui/Slider/Export
 
 /tool/zgc_ui/Slider/Resources/ui_elem_PList.Dir
+/tool/zgc_ui/GameSetting/Backup
+/tool/zgc_ui/GameSetting/Export
+/tool/zgc_ui/GameSetting/Resources/ui_elem_PList.Dir
