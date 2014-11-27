@@ -1,43 +1,33 @@
-ÜáXXÃ¾OR^*_
-_-
-]CNM]–Ğï—åÚšÂÁšôÜouQP\$*AMA	BNB(?OC@LD*AMAMAMrt,	FML\B^prqs3	^@\	W
-Touu	B,	;
-	W\
-,	?OCAMA
-1	?NC	?NCALLOC?JNBZVCprv
-C)
-<
-T]5?NNLABNB?NNLA9@KJNMGNMBZVCprv
-C)
-<
-T]
-AIA	AMA;
-@KD6@LD\TArtt
-
-E+>
+ï»¿-- Script for Quest 911 æ¯æ—¥ä»»åŠ¡
+-- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
+Quest_911 = 
+{
+Initialize = function(quest)
+	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=100;money=50;");
+	quest:SetAttrs("nameId=101;talk=0;desc=101;finishDesc=1500511;");
+	quest:SetAttrs("type=4;reuse=0;hardDegree=1;achieveId=0;");
+	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
+	quest:SetAttrs("battleField=101;");
 	
-V[	+
-
-BNB	
-@LD
-
-?OC[SDqss		D*=	UZ	7?NNLA]UBouuprvQP\8^Mouu\N]?_
-C9*
-	5W\\TArt]\_^]\_^
-	LE;
-(V[1/
-[P_\ADKNC
-	?NC[SDqs\_QP\\prv
-\DqsQouqs+1_A]
-\W
-]P_Srtt
-
-
-^[
-_	]CprP_^prrtpr8;
-_A]
-\W
-]P_Srt]\^qss^ouu\
-
-rtts\B^GLvutOR^–Áğ•ÓğšÙç—õÍprvu\B^JLv^]sRQ]“øí”êÎ™ØæšôÌouu	_7.		7+	
-W		RRSrtR]ou^]ou
+	-- Group 0
+	local group0 = quest:CreateTargetGroup("and");
+        group0:CreateTarget("KillMonster", "npc=911;count=1;");
+  -- end groups
+	return true;
+end,
+
+QName = function (quest , player)
+	return "tower mission";
+end,  
+
+
+GiftDesc = function (quest , player)
+  local exp
+	local money
+	local itemlist
+		exp = 60			-- ç»éªŒå¥–åŠ±
+		money = 30	  	-- é‡‘é’±å¥–åŠ±
+	return GetQuestGiftStr(itemlist,exp,money)
+end, 
+  
+}

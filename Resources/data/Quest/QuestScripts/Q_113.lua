@@ -1,46 +1,41 @@
-ÜáXXÃ¾ouqs+
-
- MLI_A]oupr6]?_
-V	Srtt
-
-E+>
-	
-V[+
-
-BNB@LD	0BMBBMB@FOC?LNBZVCprv
-C)
-<
-T]5?NMJABNB?NMJA]UBouu	B,	;
-	W\	@ID@LD
-:?NKB	4BNBZVCprv
-C)
-<
-T]-
-@LDBNBAMA]UBouu	B,	;
-	W\
-9ALKLC[SDqssrttOR^6
-	\Oqss^
-	L_A]
-
-E;
-(7
-UZZVCpr_^]\_^]\NC9*
-	T]31
-
-]R]Z?NMJAALA]UBou^]OR^^
-		rtt
-
-
-^	
+ï»¿
 
-BouSqsou)
-8_A]
-T		R
-Vqss]
-
-E,8.		0WU?L_
-qssvu	_\HKNK[A_qss
-rttsv
-\]\BouuqsQ\rtpr.0^@\	_V	\S^
-Vqss	]Z^MJZDqsQ\_qsouqs5	8\B^	]T		^Q\Tou^]_rtt_prv]	ouut]?_MELvutOR^–Áğ•ÓğšÙç—õÍprvu\B^ELv^]sRQ]“øí”êÎ™ØæšôÌouu	_7.		7+	
-W		RRSrtR]ou^]ou
+Quest_113 = 
+{
+Initialize = function(quest)
+	quest:SetAttrs("prevQuest=0;abandon=0;acceptLevel=1;level=1;exp=60;money=30;");
+	quest:SetAttrs("nameId=113;talk=0;desc=113;");
+	quest:SetAttrs("type=3;reuse=0;hardDegree=13;achieveId=0;");
+	quest:SetAttrs("nextQuest=0;achievement=0;timeperiod=0;");
+	quest:SetAttrs("battleField=113;");
+	
+	-- Group 0
+	local group0 = quest:CreateTargetGroup("and");
+        group0:CreateTarget("KillMonster", "npc=113;count=1;");
+  -- end groups
+	return true;
+end,
+
+UseGift = function(quest,player)
+	if quest:RemainDailyQuestNum()>0 then
+			return "5113"; 
+	else
+			return "";
+	end
+end, 
+
+QName = function (quest , player)
+	return "daily mission13";
+end,  
+
+
+GiftDesc = function (quest , player)
+  local exp
+	local money
+	local itemlist
+		exp = 180			-- ç»éªŒå¥–åŠ±
+		money = 80	  	-- é‡‘é’±å¥–åŠ±
+	return GetQuestGiftStr(itemlist,exp,money)
+end, 
+  
+}

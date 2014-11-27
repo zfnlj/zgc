@@ -106,9 +106,11 @@ public:
 	int  RndVal();
 	void GenerateHero(UINT64 playerId,int heroId);
 	void GenerateItem(UINT64 playerId,int itemId,int num);
+	void GenerateCurHeroClip(UINT64 playerId,int count);
 public:
 	BeginDefLuaClass(KUseItem)
 		DefMemberFunc(SetFlag);
+		DefMemberFunc(GenerateCurHeroClip);
 		DefMemberFunc(ClearFlag);
 		DefMemberFunc(HasFlag);
 		DefMemberFunc(SetAttrs);

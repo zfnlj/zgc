@@ -23,3 +23,13 @@
 
 
 
+2014-11-27 16:31:51 [5952] no class at first argument. (forgot ':' expression ?)
+	 at =[C]
+	GenerateItem(C) at =[C]
+	 at ? line:22
+
+2014-11-27 16:55:51 [916] no class at first argument. (forgot ':' expression ?)
+	 at =[C]
+	GenerateItem(C) at =[C]
+	 at ? line:22
+

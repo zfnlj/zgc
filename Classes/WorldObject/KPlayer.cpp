@@ -269,5 +269,12 @@ namespace KWorldObjAbout
 	{
 		return KTowerAssist::_isShow(&m_playerRecord);
 	}
+
+	int KPlayer::GetCurHeroId()
+	{
+		KHeroDef hero;
+		m_cardDepot.PickCurHero(hero);
+		return hero._cardId;
+	}
 }
 

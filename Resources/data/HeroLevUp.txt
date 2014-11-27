@@ -1,1 +1,6 @@
-‹·XX3u8qsKvMMouLtIOqsIvIMouJtDOqsGvMGLrt
+Level	Exp
+1	4
+2	30
+3	50
+4	80
+5	160

@@ -1,75 +1,69 @@
-‹·XXrt<3*
-_Aouuts*) KJLOE]?_
-V
-QPVqssvuts^^@\<.-N>5<	
-E=	2
-)+
-UPSKJLOEMPFEQJVqssvuts]T
-?BV^	prvutsvu	_\[ouutsvuprvutsvu\	\B^LNJ^P\<.-N>5<	
-E;=	;'VQILNMCORQTouutsvut_	
-_A]C5
-+4WU]NQ^VRX^ON_rttsvuts	]	prvutsvrttsvSqssvuprvut'*LNMKN^@\	WRQSrttsvut_	_A]9/.O;6=
-		B>
-/	&(VQPLNMKNNTouutsvu_VA@T\rttsvuts	]Z]qssvuts
-rttsvuts^
-^@\
-B8	*3VT\QP]UUW]NQ^Louutsvut
-
-
-^
-qssvutsouutsPrttsvqssvu(	+IMNLK ^@\	WRQSrttsvutV:,/P<3>
-
-C96/VQLV@@JV^	prvutsvu	_N]NQ^VRX^ON_;-,Q=4;	D:7	0W	
-RMSrttsvutouutsvut
-
-
-^[ZrttsvutprvutQouutsrttsv97	MNMGL^@\	WRQSrttsvut_N^@\<.-N>5<	
-E;8
-
-,	&UPOUP9/.O;6=
-		B<9)
-'VQKVqssvuts^L]?_;-,Q=4;	D:5*(W	
-RLS_Q]KOCprvutsv
-\WN^P\	JUNODV@]LDqssvuRprvutouuts:	8
-JONJF_A]
-TS	
-RTouutsvuW;-,Q=4;	D6;
--
-T
-SMT>KU]ouutsvut
-
-
-^Arttsvutprvutsv]L\B^:,/P<3>
-
-C96*(W	
-RMSR;-,Q=4;	D:7	+)T
-SMTouutsvu	_VM]OMPISANBouutsPrttsvqssvuprvut7
-
-9KLOID\B^	U	P
-S
-Uprvutsv]L\B^:,/P<3>
-
-C96/VQLVQ:,/P<3>
-
-C96/VQKVqssvuts	]L\AA]LrttsvSqssvuprvut)<KLONF\B^	U	P
-S
-R	Uprvutsv]prvutsv\W^C5
-<VT\C^HS_
-qssvuts_^^@\<.-N>5<	
-E<	=	(VQP	PMRLSrttsvut\_\W	BAU]ouutsvuts
-\B^:,/P<3>
-
-C:	;
-*
-	T
-S
-R	RC5
-5WUPKSNTouutsvutprvutsv	qssvutsv	_A]9/.O;6=
-		B=
->
-	)W	
-RQ
-QCFRMSrttsvutprvutsvqssvuts]T
-?BV^	prvutsvu	_Nprvutsv	qssvutsv
-\
-B8	*3VTouutsvuqssvuRprqs
+
+AIUtil ={
+			UseSkill_33009 = function(self,ctrl,card)
+					local des = CPP.AIAssist:AbilityMostValuableTarget(ctrl,card,330090,99,2)
+					if (des==nil) then
+						return ""
+					else
+						local val = 1.5 - CPP.AIAssist:CalcAbilityDoVal(ctrl,330090,card,des)
+						local str = des:GetRealId() .. '*' .. val
+						return str
+					end
+			end,
+			
+			UseSkill_30011 = function(self,ctrl,card)
+					local des = CPP.AIAssist:AbilityMostValuableTarget(ctrl,card,300110)
+					if (des==nil) then
+						return ""
+					else
+						local str = des:GetRealId() .. '*' .. 1
+						return str
+					end
+			end,
+			
+			UseSkill_32011_ = function(self,ctrl,card)
+					if(CPP.AIAssist:CalcFighterNum(ctrl,0)>=2) then
+						return 0 .. '*' .. CPP.AIAssist:CalcFighterNum(ctrl,0)
+					else
+						return ""
+					end
+			end,
+			
+			EnterFight_20053 = function(self,ctrl,card)
+					local val1 = CPP.AIAssist:CalcFighterSetVal(ctrl,0)-CPP.AIAssist:CalcFighterSetVal(ctrl,1)
+					local val2 = CPP.AIAssist:CalcHandSetVal(ctrl,1) - 10;
+					return (val1 - val2*0.8)> 0;
+			end,
+			
+			EnterFight_20036 = function(self,ctrl,card)
+					if(CPP.AIAssist:GetCurRes(ctrl,1)>4) then
+						return false;
+					end
+					local val1 = CPP.AIAssist:CalcFighterSetVal(ctrl,0)-CPP.AIAssist:CalcFighterSetVal(ctrl,1)
+					return (val1 -2.4)>0;
+			end,
+			
+			
+			EnterFight_20059 = function(self,ctrl,card)
+					local val1 = CPP.AIAssist:CalcFighterNum(ctrl,0)-CPP.AIAssist:CalcFighterNum(ctrl,1)
+					return val1 >= 0
+			end,
+			
+			SoldierAtk_20007 = function(self,ctrl,card,lst)
+					local des
+					if ( card:GetAtk() < 5) then
+					  des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,2,1)
+					  if (des==nil) then
+							des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,card:GetHp()-1,0)
+						end
+					else
+						des = CPP.AIAssist:BestAttackTarget(ctrl,card,lst,99,0)
+					end
+					
+					if (des==nil) then
+						return 0
+					else
+						return des:GetRealId()
+					end
+			end,
+}

@@ -101,7 +101,7 @@ namespace KWorldObjAbout
 		KQuestHolderBase m_questOperation;
 		KPlayerCardDepot m_cardDepot;
 		KPlayerTmpBag* GetResultBag(){ return &m_resultBag;}
-		
+		int GetCurHeroId();
 		int GetDailyStageLev();
 		bool IsShowTower();
 private:
@@ -119,6 +119,7 @@ private:
 	public:
 		BeginDefLuaClass(KPlayer)
 			InheritFrom(KCharacter);
+			DefMemberFunc(GetCurHeroId);
 		//DefMemberFunc(IsToting);
 		//DefMemberFunc(GetTribeID);
 		//DefMemberFunc(GetTribeGroupID);

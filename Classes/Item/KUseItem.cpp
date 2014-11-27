@@ -343,6 +343,15 @@ void KUseItem::GenerateHero(UINT64 playerId,int heroId)
 	pPlayer->GetResultBag()->Add(1,id,1);
 }
 
+void KUseItem::GenerateCurHeroClip(UINT64 playerId,int count)
+{
+	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);
+	if(!pPlayer) return;
+	int itemId = pPlayer->GetCurHeroId()*10;
+	KPlayerBagAssist::AddItem(pPlayer,itemId,count);
+	pPlayer->GetResultBag()->Add(0,itemId,count);
+}
+
 void KUseItem::GenerateItem(UINT64 playerId,int itemId,int count)
 {
 	KWorldObjAbout::KPlayer* pPlayer = KDynamicWorld::getSingleton().GetPlayer(playerId);

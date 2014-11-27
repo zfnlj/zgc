@@ -130,6 +130,7 @@ namespace KWorldObjAbout
 			DefMemberFunc(SetData);
 			DefMemberFunc(GetData);
 			DefMemberFunc(GetAttrValue);
+			DefMemberFunc(GetID);
 		EndDef
 	};
 }

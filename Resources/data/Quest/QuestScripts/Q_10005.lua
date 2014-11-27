@@ -1,28 +1,32 @@
-‹·XXê√æOR^*_
-_-
-]KONMK_òÏƒöƒËîˇ˚ïÕÍqsOR^"(?OC@LD*AMA	BNB(?OCK?O!pr.		LLONH\B^prqs3	^@\	W
-Touu	B,	;
-	W\
-,	?NNMLKCAMA
-1	?NC	?NCAKGD@KOC[SDqss		D*=	UZ6@KONMKOC	@LD	ALLONLKD8?NIMLJMLA]UBouu	B,	;
-	W\	@KD@LD
-:?NC5?OC
-?OC[SDqss		D*=	UZ.		ALLONGA	?OC	BNBZVCprv
-C)
-<
-T]6BIBZVCprvqssRQ]5_Nprv]O^@\		D:
-	+
-6
-	T]]UBou^]\_^]\_
-MB<)W\20	\Q\]BMMLOIB	BMBZVCpr_^PO__
-
-ouu	_
-CprPrtpr.0^@\	_V	\S^
-Vqss	]Z
-^LOJ\BouS^]\rtpr8;
-_A]
-\W
-]P_Srt]\^qss^ouu\
-
-rtts\B^KGvutOR^ñ¡ï”öŸÁóıÕprvu\B^LLv^]sRQ]ì¯ÌîÍŒôÿÊöÙÃouu	_7.		7+	
-W		RRSrtR]ou^]ou
+Ôªø-- Script for Quest 10001 Êë∏Â∫ïËÄÉËØï
+-- [doneTalk=0;cate=0;failTalk=0;note=0;viewTalk=0;hard2=0]
+Quest_10005 = 
+{
+Initialize = function(quest)
+	quest:SetAttrs("prevQuest=10004;abandon=0;acceptLevel=1;level=1;exp=25;money=10;");
+	quest:SetAttrs("nameId=100010;talk=0;desc=100011;finishDesc=1500511;");
+	quest:SetAttrs("type=1;reuse=0;hardDegree=1;achieveId=0;share=0;");
+	quest:SetAttrs("nextQuest=10006;achievement=0;timeperiod=0;");
+	quest:SetAttrs("battleField=5;");
+	
+	-- Group 0
+	local group0 = quest:CreateTargetGroup("and");
+        group0:CreateTarget("KillMonster", "npc=10005;count=1;");
+  -- end groups
+	return true;
+end,
+
+QName = function (quest , player)
+	return "stage 1-5";
+end,   
+
+GiftDesc = function (quest , player)
+  local exp
+	local money
+	local itemlist
+		exp = 25			-- ÁªèÈ™åÂ•ñÂä±
+		money = 10	  	-- ÈáëÈí±Â•ñÂä±
+	return GetQuestGiftStr(itemlist,exp,money)
+end, 
+  
+}
