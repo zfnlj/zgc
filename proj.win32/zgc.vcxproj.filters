@@ -486,6 +486,9 @@
     <ClCompile Include="..\Classes\common\KPlayerGCAssist.cpp">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\KGameSettingPanel.cpp">
+      <Filter>UI\Panel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -1018,6 +1021,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\common\KPlayerGCAssist.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\KGameSettingPanel.h">
+      <Filter>UI\Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

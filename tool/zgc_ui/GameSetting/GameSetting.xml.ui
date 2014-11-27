@@ -10,7 +10,9 @@
   <JsonList>
     <string>GameSetting_1.json</string>
   </JsonList>
-  <imageFileList />
+  <imageFileList>
+    <string>ui_elem.plist</string>
+  </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>GameSetting_1.json</CurrentUIJson>
   <CanvasSize>
