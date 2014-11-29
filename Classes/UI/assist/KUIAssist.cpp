@@ -26,6 +26,7 @@
 #include "../StageSelectScene.h"
 #include "../HeroBrowseScene.h"
 #include "SimpleAudioEngine.h"
+#include "../../StaticTable/StaticData.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -804,12 +805,24 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 
 void KUIAssist::PlaySound(const char* name)
 {
+	int soundOn = STATIC_DATA_INT("Sound On");
+	if(soundOn==0) return;
+	float soundVol = (float)STATIC_DATA_INT("Sound Vol");
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(soundVol*0.01f);
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(name);
 }
 
 void KUIAssist::PlayBGM()
 {
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mid");
+	int musicOn = STATIC_DATA_INT("Music On");
+	if(musicOn==0){
+		CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
+		return;
+	}
+	float musicVol = (float)STATIC_DATA_INT("Music Vol");
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(musicVol*0.01f);
+	if(CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) return;
+	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
 }
 
 void KUIAssist::PlayDrawCardSound(int n)

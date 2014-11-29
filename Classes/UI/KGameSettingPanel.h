@@ -16,6 +16,14 @@ public:
 
 	void init(cocos2d::extension::UILayer* layer);
 	void DoClickClose(CCObject* sender);
+	void ShowPanel();
+
+	void DoClickSoundCheck(CCObject* sender);
+	void DoClickSoundVol(CCObject *pSender, SliderEventType type);
+	void DoClickMusicCheck(CCObject* sender);
+	void DoClickMusicVol(CCObject *pSender, SliderEventType type);
+	bool IsShow();
+	void UpdatePanel();
 private:
 	cocos2d::extension::UILayer* m_layer;
 	cocos2d::extension::UIWidget* m_Panel;

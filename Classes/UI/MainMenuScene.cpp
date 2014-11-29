@@ -48,6 +48,7 @@ CCScene* MainMenuScene::scene()
 
 void MainMenuScene::update(float dt)
 {
+	KUIAssist::PlayBGM();
 }
 
 void MainMenuScene::runAutoTest(float dt)
@@ -110,7 +111,8 @@ bool MainMenuScene::init()
 	UpdateLockStatus();
 	//ShowCollectInfo();
 	IOSFunc_Bridge::_CheckGCAvailability();
-	KUIAssist::PlayBGM();
+	
+	m_SettingPanel.init(GetUILayer());
     return true;
 }
 
@@ -159,18 +161,24 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut = m_ui->getWidgetByName("but_gc");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickGameCenter));
 
+		pBut = m_ui->getWidgetByName("option_but");
+		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickGameSetting));
+
+		
 	}
 	return m_ui;
 }
 
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
+	if(m_SettingPanel.IsShow()) return;
 	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2CardGroupScene();
 }
 
 void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
+	if(m_SettingPanel.IsShow()) return;
 	KUIAssist::PlayClickButSound();
 	KUIAssist::_switch2StageSelectScene();
 }
@@ -265,6 +273,11 @@ void MainMenuScene::onQuestUpdate()
 
 void MainMenuScene::onQuestFinished(int qId)
 {
+}
+
+void MainMenuScene::DoClickGameSetting(CCObject* sender)
+{
+	m_SettingPanel.ShowPanel();
 }
 
 void MainMenuScene::DoClickGameCenter(CCObject* sender)

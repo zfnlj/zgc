@@ -13,6 +13,7 @@
 #include "../Item/KItemCreate.h"
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
+#include "../StaticTable/StaticData.h"
 
 
 using namespace cocos2d::extension;
@@ -31,32 +32,48 @@ void KGameSettingPanel::init(cocos2d::extension::UILayer* layer)
 {
 	UIWidget* pBut;
 	if(!m_Panel){
-		m_Panel =KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/GameResult.json");
+		m_Panel =KJsonDictMgr::getSingleton().widgetFromJsonFile("GUI/GameSetting.json");
 		CC_SAFE_RETAIN(m_Panel);
-		pBut = UIHelper::seekWidgetByName(m_Panel, "bk");
+		pBut = UIHelper::seekWidgetByName(m_Panel, "but_close");
 		pBut->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickClose));
 
-		pBut = UIHelper::seekWidgetByName(m_Panel, "but_exit");
-		pBut->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickClose));
 
-		pBut = UIHelper::seekWidgetByName(m_Panel, "but_continue");
-		pBut->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickContinue));
+		pBut = UIHelper::seekWidgetByName(m_Panel, "sound_check");
+		pBut->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickSoundCheck));
 
-		for(int i=0; i<3; i++)
-		{
-			UIImageView* pSlot = (UIImageView*)KUIAssist::GetIndexWidget(m_Panel,"slot",i);
-			pSlot->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickSlot));
-			pSlot->setTag(i);
-		}
+		pBut = UIHelper::seekWidgetByName(m_Panel, "music_check");
+		pBut->addPushDownEvent(this, coco_pushselector(KGameSettingPanel::DoClickMusicCheck));
 
+
+		UISlider* pSlider = (UISlider*)UIHelper::seekWidgetByName(m_Panel, "sound_slider");
+		pSlider->addEventListenerSlider(this, sliderpercentchangedselector(KGameSettingPanel::DoClickSoundVol));
+
+		pSlider = (UISlider*)UIHelper::seekWidgetByName(m_Panel, "music_slider");
+		pSlider->addEventListenerSlider(this, sliderpercentchangedselector(KGameSettingPanel::DoClickMusicVol));
 	}
 	m_layer = layer;
-	//m_layer->addWidget(m_Panel);
 	m_Panel->setZOrder(999);
-	m_bSelectGift = false;
-	m_expBar.init(NULL,0,0,0.0f);
+	UpdatePanel();
+}
 
-	updatePanel();
+void KGameSettingPanel::UpdatePanel()
+{
+	int soundOn = STATIC_DATA_INT("Sound On");
+	int musicOn = STATIC_DATA_INT("Music On");
+	int soundVol = STATIC_DATA_INT("Sound Vol");
+	int musicVol = STATIC_DATA_INT("Music Vol");
+
+	UICheckBox* pCheckSound = (UICheckBox*)UIHelper::seekWidgetByName(m_Panel,"sound_check");
+	if(pCheckSound) pCheckSound->setSelectedState(soundOn>0);
+
+	UICheckBox* pCheckMusic = (UICheckBox*)UIHelper::seekWidgetByName(m_Panel,"music_check");
+	if(pCheckMusic) pCheckMusic->setSelectedState(musicOn>0);
+
+	UISlider* pSoundSlider = (UISlider*)UIHelper::seekWidgetByName(m_Panel,"sound_slider");
+	if(pSoundSlider) pSoundSlider->setPercent(soundVol);
+
+	UISlider* pMusicSlider = (UISlider*)UIHelper::seekWidgetByName(m_Panel,"music_slider");
+	if(pMusicSlider) pMusicSlider->setPercent(soundVol);
 }
 
 void KGameSettingPanel::ShowPanel()
@@ -67,13 +84,74 @@ void KGameSettingPanel::ShowPanel()
 	CCActionInterval*  actionBy = CCScaleTo::create(0.3f, 1, 1);
 	m_Panel->runAction(actionBy);
 	m_Panel->setPosition(KUIAssist::_getScreenCenter());
-	updatePanel();
 }
 
 
 void KGameSettingPanel::DoClickClose(CCObject* sender)
 {
 	m_Panel->removeFromParent();
-	
-	KUIAssist::_switch2MainMenu();
+}
+
+
+void KGameSettingPanel::DoClickSoundCheck(CCObject* sender)
+{
+	UICheckBox* pCheckSound = (UICheckBox*)UIHelper::seekWidgetByName(m_Panel,"sound_check");
+	if(pCheckSound) {
+		STATIC_DATA_SET("Sound On",!pCheckSound->getSelectedState());
+		KUIAssist::PlayClickButSound();
+	}
+}
+
+void KGameSettingPanel::DoClickMusicCheck(CCObject* sender)
+{
+	UICheckBox* pCheckMusic = (UICheckBox*)UIHelper::seekWidgetByName(m_Panel,"music_check");
+	if(pCheckMusic){
+		pCheckMusic->getSelectedState();
+		STATIC_DATA_SET("Music On",!pCheckMusic->getSelectedState());
+		KUIAssist::PlayBGM();
+	}
+}
+
+void KGameSettingPanel::DoClickSoundVol(CCObject *pSender, SliderEventType type)
+{
+	switch (type)
+    {
+        case cocos2d::extension::SLIDER_PERCENTCHANGED:
+			{
+				UISlider* pSoundSlider = dynamic_cast<UISlider*>(pSender);
+				if(pSoundSlider){
+					int val = pSoundSlider->getPercent();
+					STATIC_DATA_SET("Sound Vol",val);
+					KUIAssist::PlayClickButSound();
+				}
+			}
+			break;
+		default:
+            break;
+    }
+
+}
+
+void KGameSettingPanel::DoClickMusicVol(CCObject *pSender, SliderEventType type)
+{
+    switch (type)
+    {
+        case cocos2d::extension::SLIDER_PERCENTCHANGED:
+			{
+				UISlider* pMusicSlider = dynamic_cast<UISlider*>(pSender);
+				if(pMusicSlider){
+					int val = pMusicSlider->getPercent();
+					STATIC_DATA_SET("Music Vol",val);
+				}
+				KUIAssist::PlayBGM();
+			}
+			break;
+		 default:
+			break;
+    }
+}
+
+bool KGameSettingPanel::IsShow()
+{
+	return (m_Panel->getParent()!=NULL);
 }

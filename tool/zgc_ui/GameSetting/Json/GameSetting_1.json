@@ -49,7 +49,7 @@
           "sizePercentY": 0.125,
           "sizeType": 0,
           "tag": 2,
-          "touchAble": false,
+          "touchAble": true,
           "useMergedTexture": false,
           "visible": true,
           "width": 26,
@@ -121,7 +121,7 @@
           "sizePercentY": 0.175,
           "sizeType": 0,
           "tag": 3,
-          "touchAble": false,
+          "touchAble": true,
           "useMergedTexture": false,
           "visible": true,
           "width": 160,
@@ -241,7 +241,7 @@
           "sizePercentY": 0.025,
           "sizeType": 0,
           "tag": 5,
-          "touchAble": false,
+          "touchAble": true,
           "useMergedTexture": false,
           "visible": true,
           "width": 200,
@@ -255,13 +255,13 @@
           },
           "ballNormal": null,
           "ballNormalData": {
-            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/slider_bar_button.png",
+            "path": "slider_bar_button.png",
             "plistFile": null,
-            "resourceType": 2
+            "resourceType": 0
           },
           "ballPressed": null,
           "ballPressedData": {
-            "path": null,
+            "path": "slider_bar_button.png",
             "plistFile": null,
             "resourceType": 0
           },
@@ -271,9 +271,9 @@
           "barCapInsetsY": 0,
           "barFileName": null,
           "barFileNameData": {
-            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/slider_bar.png",
+            "path": "slider_bar.png",
             "plistFile": null,
-            "resourceType": 2
+            "resourceType": 0
           },
           "capInsetsHeight": 0,
           "capInsetsWidth": 0,
@@ -379,7 +379,7 @@
           "sizePercentY": 0.175,
           "sizeType": 0,
           "tag": 7,
-          "touchAble": false,
+          "touchAble": true,
           "useMergedTexture": false,
           "visible": true,
           "width": 160,
@@ -440,8 +440,8 @@
           "ignoreSize": false,
           "layoutParameter": null,
           "opacity": 255,
-          "positionPercentX": 0.6770833,
-          "positionPercentY": 0.446875,
+          "positionPercentX": 0.68125,
+          "positionPercentY": 0.453125,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -450,12 +450,12 @@
           "sizePercentY": 0.025,
           "sizeType": 0,
           "tag": 8,
-          "touchAble": false,
+          "touchAble": true,
           "useMergedTexture": false,
           "visible": true,
           "width": 200,
-          "x": 325,
-          "y": 143,
+          "x": 327,
+          "y": 145,
           "ballDisabled": null,
           "ballDisabledData": {
             "path": null,
@@ -464,13 +464,13 @@
           },
           "ballNormal": null,
           "ballNormalData": {
-            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/slider_bar_button.png",
+            "path": "slider_bar_button.png",
             "plistFile": null,
-            "resourceType": 2
+            "resourceType": 0
           },
           "ballPressed": null,
           "ballPressedData": {
-            "path": null,
+            "path": "slider_bar_button.png",
             "plistFile": null,
             "resourceType": 0
           },
@@ -480,9 +480,9 @@
           "barCapInsetsY": 0,
           "barFileName": null,
           "barFileNameData": {
-            "path": "C:\\Program Files (x86)\\CocoStudio\\EditorDefaultRes\\GUI/slider_bar.png",
+            "path": "slider_bar.png",
             "plistFile": null,
-            "resourceType": 2
+            "resourceType": 0
           },
           "capInsetsHeight": 0,
           "capInsetsWidth": 0,
@@ -517,9 +517,9 @@
       "anchorPointX": 0,
       "anchorPointY": 0,
       "classType": null,
-      "colorB": 255,
-      "colorG": 255,
-      "colorR": 255,
+      "colorB": 82,
+      "colorG": 230,
+      "colorR": 20,
       "flipX": false,
       "flipY": false,
       "height": 320,
@@ -536,7 +536,7 @@
       "sizePercentY": 1,
       "sizeType": 0,
       "tag": 1,
-      "touchAble": false,
+      "touchAble": true,
       "useMergedTexture": false,
       "visible": true,
       "width": 480,
@@ -549,10 +549,10 @@
         "resourceType": 0
       },
       "backGroundScale9Enable": false,
-      "bgColorB": 255,
-      "bgColorG": 200,
-      "bgColorOpacity": 0,
-      "bgColorR": 150,
+      "bgColorB": 15,
+      "bgColorG": 60,
+      "bgColorOpacity": 100,
+      "bgColorR": 201,
       "bgEndColorB": 255,
       "bgEndColorG": 200,
       "bgEndColorR": 150,

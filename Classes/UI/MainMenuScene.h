@@ -7,6 +7,8 @@
 #include "KGenCardPanel.h"
 #include "KGameResultPanel.h"
 #include "../PlayerCard/KPlayerCardDepot.h"
+#include "KGameSettingPanel.h"
+
 USING_NS_CC;
 class KCardInst;
 class KCardInst;
@@ -44,6 +46,8 @@ public:
 	void DoClickTiebar(CCObject* sender);
 	void DoClickGameCenter(CCObject* sender);
 	void SetRaceCollectInfo(KItemUnitList& tmpList,KCardStatic::CardRace race);
+
+	void DoClickGameSetting(CCObject* sender);
 private:
 	CCLabelTTF* m_InfoLabel;
 
@@ -51,6 +55,8 @@ private:
 	void InitTest();
 	void UpdateLockStatus(const char* key,const char* butName,const char* lockImage);
 	void runAutoTest(float dt);
+
+	KGameSettingPanel m_SettingPanel;
 };
 
 #endif // __MainMenuScene_SCENE_H__
