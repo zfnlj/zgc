@@ -40,3 +40,5 @@ armature/dist_ability.json
 armature/click_down.json
 armature/doDamage.json
 armature/addRes.json
+armature/yourTurn.json
+armature/myTurn.json

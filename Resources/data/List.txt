@@ -20,6 +20,7 @@ armature/dragon_move.png	armature/dragon_move.plist	0	0	0
 armature/anim_elem.png	armature/anim_elem.plist	0	0	0
 armature/buf_icon_elem.png	armature/buf_icon_elem.plist	0	0	0
 armature/anim_elem2.png	armature/anim_elem2.plist	0	0	0
+armature/drama.png	armature/drama.plist	0	0	0
 GUI/photo_soldier.jpg	GUI/photo_soldier.plist	0	0	0
 GUI/photo_soldier2.jpg	GUI/photo_soldier2.plist	0	0	0
 GUI/photo_skill.jpg	GUI/photo_skill.plist	0	0	0
