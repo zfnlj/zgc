@@ -245,3 +245,9 @@
 /tool/zgc_ui/GameSetting/Backup
 /tool/zgc_ui/GameSetting/Export
 /tool/zgc_ui/GameSetting/Resources/ui_elem_PList.Dir
+
+/tool/zgc_ui/myTurn/Backup
+
+/tool/zgc_ui/myTurn/Export
+
+/tool/zgc_ui/myTurn/Resources/drama_PList.Dir
