@@ -4,7 +4,7 @@
     {
       "strVersion": "1.2.0.1",
       "version": 1.201,
-      "name": "myTurn",
+      "name": "yourTurn",
       "bone_data": [
         {
           "name": "Layer2",
@@ -101,7 +101,7 @@
   ],
   "animation_data": [
     {
-      "name": "myTurn",
+      "name": "yourTurn",
       "mov_data": [
         {
           "name": "Animation1",
