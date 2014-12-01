@@ -6,7 +6,7 @@
 	 at =[C]
 	AddMoney(C) at =[C]
 	 at ? line:4
-
+q
 2014-10-15 14:53:34 [7196] no class at first argument. (forgot ':' expression ?)
 	 at =[C]
 	AddMoney(C) at =[C]
