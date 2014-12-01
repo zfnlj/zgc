@@ -18,10 +18,17 @@ void KAudioAssist::playSound(const char* name)
 void KAudioAssist::PlayBGM(AudioScene def,float elapsed)
 {
 	int musicOn = STATIC_DATA_INT("Music On");
-	if(musicOn==0){
+	if(musicOn==0 || def==audio_null){
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 		return;
 	}
+	static float needTimes = 0.0f;
+	static AudioScene lastDef = audio_null;
+	if(needTimes>0){
+		needTimes -= elapsed;
+		return;
+	}
+
 	float musicVol = (float)STATIC_DATA_INT("Music Vol");
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(musicVol*0.01f);
 	if(CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) return;
