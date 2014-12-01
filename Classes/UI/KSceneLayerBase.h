@@ -11,6 +11,15 @@ USING_NS_CC;
 class KSceneLayerBase :public cocos2d::extension::UILayer
 {
 public:
+	enum Scene_Def{
+		scene_null,
+		scene_battle,
+		scene_cardGroup,
+		scene_heroBrowse,
+		scene_shop,
+		scene_mainMenu,
+		scene_stageSelect,
+	};
 	KSceneLayerBase(){}
 	~KSceneLayerBase();
 	
@@ -28,6 +37,7 @@ protected:
 	cocos2d::extension::UIWidget* m_ui;
 	KActor m_actor;
 	KGameRecordPanel m_gameRecPanel;
+	Scene_Def m_sceneDef;
 };
 
 #endif // __BattleFieldScene_SCENE_H__

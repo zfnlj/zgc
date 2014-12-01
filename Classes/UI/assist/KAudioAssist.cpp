@@ -15,7 +15,7 @@ void KAudioAssist::playSound(const char* name)
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(name);
 }
 
-void KAudioAssist::PlayBGM()
+void KAudioAssist::PlayBGM(AudioScene def,float elapsed)
 {
 	int musicOn = STATIC_DATA_INT("Music On");
 	if(musicOn==0){

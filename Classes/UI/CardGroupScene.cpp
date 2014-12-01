@@ -47,6 +47,7 @@ CCScene* CardGroupScene::scene()
 
 void CardGroupScene::update(float dt)
 {
+	KAudioAssist::PlayBGM(KAudioAssist::audio_cardGroup,dt);
 	KSceneLayerBase::update(dt);
 }
 

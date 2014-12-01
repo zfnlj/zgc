@@ -49,7 +49,7 @@ CCScene* MainMenuScene::scene()
 
 void MainMenuScene::update(float dt)
 {
-	KAudioAssist::PlayBGM();
+	KAudioAssist::PlayBGM(KAudioAssist::audio_mainMenu,dt);
 }
 
 void MainMenuScene::runAutoTest(float dt)

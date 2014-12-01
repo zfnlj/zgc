@@ -108,7 +108,7 @@ void KGameSettingPanel::DoClickMusicCheck(CCObject* sender)
 	if(pCheckMusic){
 		pCheckMusic->getSelectedState();
 		STATIC_DATA_SET("Music On",!pCheckMusic->getSelectedState());
-		KAudioAssist::PlayBGM();
+		KAudioAssist::PlayBGM(KAudioAssist::audio_mainMenu,0.1f);
 	}
 }
 
@@ -143,7 +143,7 @@ void KGameSettingPanel::DoClickMusicVol(CCObject *pSender, SliderEventType type)
 					int val = pMusicSlider->getPercent();
 					STATIC_DATA_SET("Music Vol",val);
 				}
-				KAudioAssist::PlayBGM();
+				KAudioAssist::PlayBGM(KAudioAssist::audio_mainMenu,0.1f);
 			}
 			break;
 		 default:

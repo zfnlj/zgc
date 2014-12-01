@@ -46,6 +46,7 @@ CCScene* HeroBrowseScene::scene()
 
 void HeroBrowseScene::update(float dt)
 {
+	KAudioAssist::PlayBGM(KAudioAssist::audio_heroBrowse,dt);
 	KSceneLayerBase::update(dt);
 	m_heroLevUpPanel.update(dt);
 }

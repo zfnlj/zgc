@@ -29,6 +29,7 @@ CCScene* StageSelectScene::scene()
 
 void StageSelectScene::update(float dt)
 {
+	KAudioAssist::PlayBGM(KAudioAssist::audio_stageSelect,dt);
 }
 
 // on "init" you need to initialize your instance

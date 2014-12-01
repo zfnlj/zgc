@@ -52,6 +52,7 @@ KShopScene::~KShopScene()
 
 void KShopScene::update(float dt)
 {
+	KAudioAssist::PlayBGM(KAudioAssist::audio_shop,dt);
 	KSceneLayerBase::update(dt);
 }
 
