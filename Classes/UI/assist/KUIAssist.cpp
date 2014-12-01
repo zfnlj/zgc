@@ -27,6 +27,7 @@
 #include "../HeroBrowseScene.h"
 #include "SimpleAudioEngine.h"
 #include "../../StaticTable/StaticData.h"
+#include "KAudioAssist.h"
 
 #define SHOW_CARD_OFFSET 10
 #define MAX_BUF_SLOT_NUM 5
@@ -236,7 +237,7 @@ void KUIAssist::_switch2HeroBrowseScene()
 
 void KUIAssist::_switch2BattleScene()
 {
-	PlaySound("audio/battle/battle_vs.wav");
+	KAudioAssist::playSound("audio/battle/battle_vs.wav");
 	CCScene* scene = CCTransitionSplitRows::create(0.8f, BattleFieldScene::scene());
 	CCDirector::sharedDirector()->replaceScene(scene);
 }
@@ -801,40 +802,4 @@ UIWidget* KUIAssist::_createBagItemWidget(KPlayerTmpBag::ItemDef item)
 		break;
 	}
 	return widget;
-}
-
-void KUIAssist::PlaySound(const char* name)
-{
-	int soundOn = STATIC_DATA_INT("Sound On");
-	if(soundOn==0) return;
-	float soundVol = (float)STATIC_DATA_INT("Sound Vol");
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(soundVol*0.01f);
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(name);
-}
-
-void KUIAssist::PlayBGM()
-{
-	int musicOn = STATIC_DATA_INT("Music On");
-	if(musicOn==0){
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
-		return;
-	}
-	float musicVol = (float)STATIC_DATA_INT("Music Vol");
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(musicVol*0.01f);
-	if(CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) return;
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
-}
-
-void KUIAssist::PlayDrawCardSound(int n)
-{
-	if(KClientBattleCtrl::getInstance()->GetBattleState()==KBattleCtrlBase::battle_select_handcard) return;
-	if(n>3) n=3;
-	char sz[128];
-	sprintf(sz,"audio/battle/card_shuffle%d.wav",n);
-	PlaySound(sz);
-}
-
-void KUIAssist::PlayClickButSound()
-{
-	PlaySound("audio/ui/but_click.wav");
 }

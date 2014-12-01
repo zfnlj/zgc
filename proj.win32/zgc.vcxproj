@@ -243,6 +243,7 @@
     <ClCompile Include="..\Classes\StaticTable\StaticData.cpp" />
     <ClCompile Include="..\Classes\Store\KStoreCreate.cpp" />
     <ClCompile Include="..\Classes\Store\KStoreManager.cpp" />
+    <ClCompile Include="..\Classes\UI\assist\KAudioAssist.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KCardGroupAssist.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KJsonDictMgr.cpp" />
     <ClCompile Include="..\Classes\UI\assist\KLoadingBar.cpp" />
@@ -425,6 +426,7 @@
     <ClInclude Include="..\Classes\StaticTable\StaticData.h" />
     <ClInclude Include="..\Classes\Store\KStoreCreate.h" />
     <ClInclude Include="..\Classes\Store\KStoreManager.h" />
+    <ClInclude Include="..\Classes\UI\assist\KAudioAssist.h" />
     <ClInclude Include="..\Classes\UI\assist\KCardGroupAssist.h" />
     <ClInclude Include="..\Classes\UI\assist\KJsonDictMgr.h" />
     <ClInclude Include="..\Classes\UI\assist\KLoadingBar.h" />

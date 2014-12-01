@@ -489,6 +489,9 @@
     <ClCompile Include="..\Classes\UI\KGameSettingPanel.cpp">
       <Filter>UI\Panel</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\assist\KAudioAssist.cpp">
+      <Filter>UI\assist</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -1024,6 +1027,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\KGameSettingPanel.h">
       <Filter>UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\assist\KAudioAssist.h">
+      <Filter>UI\assist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

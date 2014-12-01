@@ -19,6 +19,7 @@
 #include "../common/KUIMsgDef.h"
 #include "../PlayerCard/KHeroCardAssist.h"
 #include "../common/KPlayerRecordAssist.h"
+#include "assist/KAudioAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -289,6 +290,6 @@ void KHeroLevUpPanel::CreateExitBut()
 
 void KHeroLevUpPanel::menuExitCallback(CCObject* pSender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }

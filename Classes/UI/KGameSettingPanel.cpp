@@ -14,7 +14,7 @@
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
 #include "../StaticTable/StaticData.h"
-
+#include "assist/KAudioAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -98,7 +98,7 @@ void KGameSettingPanel::DoClickSoundCheck(CCObject* sender)
 	UICheckBox* pCheckSound = (UICheckBox*)UIHelper::seekWidgetByName(m_Panel,"sound_check");
 	if(pCheckSound) {
 		STATIC_DATA_SET("Sound On",!pCheckSound->getSelectedState());
-		KUIAssist::PlayClickButSound();
+		KAudioAssist::PlayClickButSound();
 	}
 }
 
@@ -108,7 +108,7 @@ void KGameSettingPanel::DoClickMusicCheck(CCObject* sender)
 	if(pCheckMusic){
 		pCheckMusic->getSelectedState();
 		STATIC_DATA_SET("Music On",!pCheckMusic->getSelectedState());
-		KUIAssist::PlayBGM();
+		KAudioAssist::PlayBGM();
 	}
 }
 
@@ -122,7 +122,7 @@ void KGameSettingPanel::DoClickSoundVol(CCObject *pSender, SliderEventType type)
 				if(pSoundSlider){
 					int val = pSoundSlider->getPercent();
 					STATIC_DATA_SET("Sound Vol",val);
-					KUIAssist::PlayClickButSound();
+					KAudioAssist::PlayClickButSound();
 				}
 			}
 			break;
@@ -143,7 +143,7 @@ void KGameSettingPanel::DoClickMusicVol(CCObject *pSender, SliderEventType type)
 					int val = pMusicSlider->getPercent();
 					STATIC_DATA_SET("Music Vol",val);
 				}
-				KUIAssist::PlayBGM();
+				KAudioAssist::PlayBGM();
 			}
 			break;
 		 default:

@@ -2,6 +2,7 @@
 #include "ccMacros.h"
 #include "assist/KUIAssist.h"
 #include "assist/KJsonDictMgr.h"
+#include "assist/KAudioAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -105,7 +106,7 @@ void KSceneSlidePicture::CreateCloseBut()
 
 void KSceneSlidePicture::menuCloseCallback(CCObject* pSender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }
 

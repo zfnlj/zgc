@@ -21,6 +21,7 @@
 #include "../Quest/KQuestManager.h"
 #include "../GameRecord/KGameRecordMgr.h"
 #include "assist/KQuestFacade.h"
+#include "assist/KAudioAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -88,7 +89,7 @@ bool BattleFieldScene::init()
 
 void BattleFieldScene::onCloseCallback(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KClientBattleCtrl::getInstance()->ForceExit();
 	KUIAssist::_switch2MainMenu();
 }
@@ -211,7 +212,7 @@ void BattleFieldScene::onHandCardReady()
 void BattleFieldScene::DoEndTurn(CCObject* sender)
 {
 
-	KUIAssist::PlaySound("audio/ui/turn_end_click.wav");
+	KAudioAssist::playSound("audio/ui/turn_end_click.wav");
 
 	if(!KGameRecordMgr::getSingleton().IsClickButValidate(sender)) return;
 	if(!KClientBattleCtrl::getInstance()->IsMyTurn()) return;
@@ -341,7 +342,7 @@ void BattleFieldScene::onDrawCard(KCardInstList* cardList,bool bInit)
 		KCardActor* actor = (KCardActor*)(*it)->getActor();
 		actor->GetActionMgr().PlayAction("delay_resortHand");
 	}
-	KUIAssist::PlayDrawCardSound(cardList->size());
+	KAudioAssist::PlayDrawCardSound(cardList->size());
 }
 
 void BattleFieldScene::ActiveMyFightArea()

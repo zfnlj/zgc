@@ -6,6 +6,7 @@
 #include "../WorldObject/KMainPlayer.h"
 #include "../WorldObject/KPlayer.h"
 #include "../PlayerCard/KTowerAssist.h"
+#include "assist/KAudioAssist.h"
 
 #define MAX_PAGE_STAGE_NUM 20
 
@@ -114,6 +115,6 @@ void StageSelectScene::onCloseCallback(CCObject* sender)
 {
 	UIWidget* pBut = this->getWidgetByName("bk");
 	pBut->setTouchEnable(false);
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }

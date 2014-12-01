@@ -27,6 +27,7 @@
 #include "StageWaitScene.h"
 #include "platform/IOSFunc_Bridge.h"
 #include "../common/KPlayerRecordAssist.h"
+#include "assist/KAudioAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -48,7 +49,7 @@ CCScene* MainMenuScene::scene()
 
 void MainMenuScene::update(float dt)
 {
-	KUIAssist::PlayBGM();
+	KAudioAssist::PlayBGM();
 }
 
 void MainMenuScene::runAutoTest(float dt)
@@ -172,14 +173,14 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 void MainMenuScene::DoClickStoreBut(CCObject* sender)
 {
 	if(m_SettingPanel.IsShow()) return;
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2CardGroupScene();
 }
 
 void MainMenuScene::DoClickAdventureBut(CCObject* sender)
 {
 	if(m_SettingPanel.IsShow()) return;
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2StageSelectScene();
 }
 
@@ -191,13 +192,13 @@ void MainMenuScene::DoClickTiebar(CCObject* sender)
 
 void MainMenuScene::DoClickHeroBrowse(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2HeroBrowseScene();
 }
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	StageWaitScene::SetSceneVal(scene_battle);
 
 	if(STATIC_DATA_INT("first_help")==0){
@@ -251,7 +252,7 @@ void MainMenuScene::UpdateLockStatus()
 
 void MainMenuScene::DoClickShopBut(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2ShopScene();
 }
 

@@ -10,6 +10,8 @@
 #include "assist/KJsonDictMgr.h"
 #include "KSceneLayerBase.h"
 #include "../GameLogic/assist/KBattleCtrlAssist.h"
+#include "assist/KAudioAssist.h"
+
 //#include "KAction/ParticleBase.h"
 
 USING_NS_CC;
@@ -388,7 +390,7 @@ void KActor::AtkMove(int des,float val,CCActionDef& actionDef)
 
 void KActor::callbackHitSound(CCNode* pSender)
 {
-	KUIAssist::PlaySound("audio/battle/hit_heavy.wav");
+	KAudioAssist::playSound("audio/battle/hit_heavy.wav");
 }
 
 void KActor::RemoveDictObj(CCNode* node,const char* obj)

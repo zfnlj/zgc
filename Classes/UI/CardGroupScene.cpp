@@ -26,6 +26,7 @@
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"
 #include "assist/KUICardAssist.h"
+#include "assist/KAudioAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -768,7 +769,7 @@ bool CardGroupScene::ccTouchBegan(CCTouch * touch,CCEvent * pevent)
 
 void CardGroupScene::onCloseCallback(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	if(KGameRecordMgr::getSingleton().IsPlaying()) return;
 	KUIAssist::_switch2MainMenu();
 }

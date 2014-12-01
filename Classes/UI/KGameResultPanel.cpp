@@ -13,7 +13,7 @@
 #include "../Item/KItemCreate.h"
 #include "../WorldObject/KPlayer.h"
 #include "assist/KJsonDictMgr.h"
-
+#include "assist/KAudioAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KItemAbout;
@@ -78,10 +78,10 @@ void KGameResultPanel::onGameEnd(unsigned long long Param1)
 	memcpy(&m_result,result,sizeof(strGameResult));
 	if(result->_winner==GameRoot::getSingleton().BattleCtrl()->GetMainPlayer()){
 		m_resultType = result_win;
-		KUIAssist::PlaySound("audio/battle/game_win.mp3");
+		KAudioAssist::playSound("audio/battle/game_win.mp3");
 	}else if(result->_winner){
 		m_resultType = result_lost;
-		KUIAssist::PlaySound("audio/battle/game_lose.mp3");
+		KAudioAssist::playSound("audio/battle/game_lose.mp3");
 	}else{
 		m_resultType = result_equal;
 	}

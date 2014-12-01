@@ -20,6 +20,7 @@
 #include "platform/KIOSiAP_Bridge.h"
 #include "assist/KJsonDictMgr.h"
 #include "../Item/KUseItemManager.h"
+#include "assist/KAudioAssist.h"
 
 using namespace cocos2d::extension;
 using namespace KStoreAbout;
@@ -313,7 +314,7 @@ void TestIAP()
 
 void KShopScene::onCloseCallback(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	KUIAssist::_switch2MainMenu();
 }
 

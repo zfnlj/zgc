@@ -26,7 +26,7 @@
 #include "../StaticTable/StaticData.h"
 #include "../WorldObject/KPlayer.h"
 #include "assist/KUICardAssist.h"
-
+#include "assist/KAudioAssist.h"
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -126,7 +126,7 @@ void HeroBrowseScene::onClickCost(CCObject* sender)
 
 void HeroBrowseScene::onCloseCallback(CCObject* sender)
 {
-	KUIAssist::PlayClickButSound();
+	KAudioAssist::PlayClickButSound();
 	m_curPage = 0;
 	KUIAssist::_switch2MainMenu();
 }
