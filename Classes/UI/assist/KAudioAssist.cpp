@@ -15,24 +15,49 @@ void KAudioAssist::playSound(const char* name)
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect(name);
 }
 
-void KAudioAssist::PlayBGM(AudioScene def,float elapsed)
+void KAudioAssist::PlaySceneBGM(AudioScene def)
 {
+	switch(def){
+		case audio_battle:
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
+			break;
+		default:
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_2.mp3");
+			break;
+	}
+
+}
+
+void KAudioAssist::PlayBGM(AudioScene def,float dt)
+{
+	static AudioScene lastDef = audio_null;
 	int musicOn = STATIC_DATA_INT("Music On");
 	if(musicOn==0 || def==audio_null){
+		lastDef = audio_null;
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 		return;
 	}
-	static float needTimes = 0.0f;
-	static AudioScene lastDef = audio_null;
-	if(needTimes>0){
-		needTimes -= elapsed;
-		return;
-	}
-
 	float musicVol = (float)STATIC_DATA_INT("Music Vol");
 	CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(musicVol*0.01f);
-	if(CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) return;
-	CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
+
+	static float needTimes = 0.0f;
+	
+	if(lastDef == def){
+		if(!CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()){
+			needTimes -= dt;
+			if(needTimes<0.0f){
+				PlaySceneBGM(def);
+				needTimes = 10.0f;
+			}
+		}
+	}else{
+		PlaySceneBGM(def);
+		needTimes = 10.0f;
+	}
+
+	//if(CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying()) return;
+	//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
+	lastDef = def;
 }
 
 void KAudioAssist::PlayDrawCardSound(int n)

@@ -18,6 +18,7 @@ public:
 	static void PlayDrawCardSound(int n);
 	static void PlayClickButSound();
 	static void PlayBGM(AudioScene def,float elapsed);
+	static void PlaySceneBGM(AudioScene def);
 	static void playSound(const char* name);
 };
 
