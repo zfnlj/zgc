@@ -78,3 +78,19 @@ void KAudioAssist::PlayClickButSound()
 {
 	playSound("audio/ui/but_click.wav");
 }
+
+static unsigned int timeOutSndId = 0;
+
+void KAudioAssist::PlayTimeOutSound()
+{
+	if(timeOutSndId==0){
+		timeOutSndId = CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("audio/battle/zz.wav",true);
+	}else{
+		CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeEffect(timeOutSndId);
+	}
+}
+
+void KAudioAssist::StopTimeOutSound()
+{
+	if(timeOutSndId!=0) CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseEffect(timeOutSndId);
+}

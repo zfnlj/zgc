@@ -13,6 +13,7 @@
 #include "../GameLogic/assist/KSkillAssist.h"
 #include "assist/KJsonDictMgr.h"
 #include "../GameLogic/assist/KBattleCtrlAssist.h"
+#include "assist/KAudioAssist.h"
 
 using namespace cocos2d::extension;
 
@@ -67,6 +68,12 @@ void KIndicatePanel::Update(float dt)
 		return;
 	}
 	UpdateTimeOutEff();
+	CCPoint pt = m_timeoutEff->getPosition();
+	if(pt.y>0){
+		KAudioAssist::PlayTimeOutSound();
+	}else{
+		KAudioAssist::StopTimeOutSound();
+	}
 
 	KBattleCtrlBase::BattleState state = KClientBattleCtrl::getInstance()->GetBattleState();
 	FBattleGuy* pMainPlayer = KClientBattleCtrl::getInstance()->GetMainPlayer();
