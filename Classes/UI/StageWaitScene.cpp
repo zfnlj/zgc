@@ -25,6 +25,7 @@
 #include "../StaticTable/KHelpStringStatic.h"
 #include "../WorldObject/KPlayer.h"
 #include "../PlayerCard/KTowerAssist.h"
+#include "assist/KAudioAssist.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
@@ -51,6 +52,7 @@ void StageWaitScene::update(float dt)
 	if(m_delayCloseTime<0) {
 		DoClickClose(NULL);
 	}
+	//KAudioAssist::PlaySceneBGM(KAudioAssist::audio_stageWait);
 }
 
 // on "init" you need to initialize your instance

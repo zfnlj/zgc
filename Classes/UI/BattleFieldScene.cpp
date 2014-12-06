@@ -43,6 +43,7 @@ CCScene* BattleFieldScene::scene()
 
 void BattleFieldScene::update(float dt)
 {
+	KAudioAssist::PlayBGM(KAudioAssist::audio_null,dt);
 	KSceneLayerBase::update(dt);
 
 	if(this==KUIAssist::_activeSceneLayer()){

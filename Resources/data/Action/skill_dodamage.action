@@ -13,6 +13,8 @@
 <action name="skill_dodamage_show" class="null">
   <affect_body>
   		<affector class="anim" slot="card_center" obj="blood" createtime="0.0" fVal="0.8" iVal="90"  life="1.4" />
+		<affector class="sound" obj="audio/battle/blast.wav" createtime="0.0" life="0.2" />
+
   </affect_body>
 </action>
 </ag>

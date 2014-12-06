@@ -13,6 +13,7 @@ public:
 		audio_cardGroup,
 		audio_heroBrowse,
 		audio_stageSelect,
+		audio_stageWait,
 	};
 	//sound
 	static void PlayDrawCardSound(int n);
