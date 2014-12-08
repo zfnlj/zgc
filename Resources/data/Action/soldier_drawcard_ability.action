@@ -3,6 +3,7 @@
 <action  slot="5" class="null">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="catch_card" life="1.5" />
+		<affector class="sound" obj="audio/battle/quest.wav" createtime="0.8" life="0.5" />
     	<affector class="updateBuf" createtime="1.6"  life="0.001" />  
   </affect_body>
 </action>

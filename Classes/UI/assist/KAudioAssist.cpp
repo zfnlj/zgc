@@ -18,11 +18,15 @@ void KAudioAssist::playSound(const char* name)
 void KAudioAssist::PlaySceneBGM(AudioScene def)
 {
 	switch(def){
-		case audio_battle:
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_1.mp3");
+		case audio_stageWait:
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/battle_wait.mp3");
+			break;
+		case audio_mainMenu:
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_3.mp3");
 			break;
 		default:
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_2.mp3");
+			//CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("audio/bgm/bgm_2.mp3");
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->stopBackgroundMusic();
 			break;
 	}
 
@@ -30,6 +34,7 @@ void KAudioAssist::PlaySceneBGM(AudioScene def)
 
 void KAudioAssist::PlayBGM(AudioScene def,float dt)
 {
+	return;
 	static AudioScene lastDef = audio_null;
 	int musicOn = STATIC_DATA_INT("Music On");
 	if(musicOn==0 || def==audio_null){

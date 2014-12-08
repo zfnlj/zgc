@@ -12,6 +12,7 @@
 <action name="kingKong_word_show" class="null">
   <affect_body>
   		<affector class="armature"  slot="card_center" createtime="0" fVal="1.0" obj="kingkong_word" life="1.3" />
+		<affector class="sound" obj="audio/battle/good_buf.wav" createtime="0.0" life="0.5" />
     	<affector class="updateAttr" createtime="1.4"  life="0.001" />  
   </affect_body>
 </action>
