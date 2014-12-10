@@ -251,3 +251,7 @@
 /tool/zgc_ui/myTurn/Export
 
 /tool/zgc_ui/myTurn/Resources/drama_PList.Dir
+/tool/zgc_ui/tipPanel/Backup
+/tool/zgc_ui/tipPanel/Export
+/tool/zgc_ui/tipPanel/Resources/popMsg_PList.Dir
+/tool/zgc_ui/tipPanel/Resources/shop_PList.Dir

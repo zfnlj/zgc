@@ -2,7 +2,7 @@
 <ag>
 <action class="click">
   <affect_body>
-  	<affector class="armature"  slot="my_fight_slot" createtime="0" fVal="0.8" fVal2="30" obj="click_down" life="0" />
+  	<affector class="armature"  slot="my_fight_slot" createtime="0" fVal="1.2" fVal2="30" obj="click_down" life="0" />
   </affect_body>
 </action>
 </ag>
