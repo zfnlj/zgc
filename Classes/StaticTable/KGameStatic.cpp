@@ -54,6 +54,7 @@ void KGameStaticMgr::LoadStaticData()
 	InitHelpString("StringManager/HelpStr.txt");
 	InitTipString("StringManager/TipStr.txt");
 	InitStoryString("StringManager/StoryStr.txt");
+	InitLessonTip("StringManager/LessonTip.txt");
 	InitDeckDef("data/DeckDef.txt");
 	InitLevUp("data/SkillLevUp.txt",m_skillLevUpMgr);
 	InitLevUp("data/HeroLevUp.txt",m_heroLevUpMgr);
@@ -417,6 +418,11 @@ void KGameStaticMgr::FilterCards(KIntegerList& lst,KCardStatic::CardDef def,KCar
 		}
 	}
 	*/
+}
+
+bool KGameStaticMgr::InitLessonTip(const char* m_FileName)
+{
+	LOAD_TAB_TO_MAPOBJ(KHelpStringStatic,m_FileName,m_lessonTipMap);
 }
 
 bool KGameStaticMgr::InitTipString(const char* m_FileName)

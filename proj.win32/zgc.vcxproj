@@ -262,6 +262,7 @@
     <ClCompile Include="..\Classes\UI\KGameRecordPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGameResultPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGameSettingPanel.cpp" />
+    <ClCompile Include="..\Classes\UI\KGameTipPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KGenCardPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KHeroLevUpPanel.cpp" />
     <ClCompile Include="..\Classes\UI\KHeroLevUpResultPanel.cpp" />
@@ -446,6 +447,7 @@
     <ClInclude Include="..\Classes\UI\KGameRecordPanel.h" />
     <ClInclude Include="..\Classes\UI\KGameResultPanel.h" />
     <ClInclude Include="..\Classes\UI\KGameSettingPanel.h" />
+    <ClInclude Include="..\Classes\UI\KGameTipPanel.h" />
     <ClInclude Include="..\Classes\UI\KGenCardPanel.h" />
     <ClInclude Include="..\Classes\UI\KHeroLevUpPanel.h" />
     <ClInclude Include="..\Classes\UI\KHeroLevUpResultPanel.h" />

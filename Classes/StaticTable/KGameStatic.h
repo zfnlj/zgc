@@ -38,6 +38,7 @@ public:
 	bool InitStoryString(const char* m_FileName);
 	bool InitTowerAward(const char* m_FileName);
 	bool InitLevUp(const char* m_FileName,KLevUpStaticMap& mgr);
+	bool InitLessonTip(const char* m_FileName);
 
 	int  PlayerExpToLevel(int exp);
 	float GetLevRate(int exp);
@@ -84,6 +85,7 @@ private:
 	KHelpStringMap m_helpStringMap;
 	KHelpStringMap m_tipStringMap;
 	KHelpStringMap m_storyStringMap;
+	KHelpStringMap m_lessonTipMap;
 	KRankStaticDataManager m_playerExpMgr;
 
 	KLevUpStaticMap m_skillLevUpMgr;
