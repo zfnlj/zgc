@@ -8,11 +8,11 @@
 USING_NS_CC;
 using namespace cocos2d::extension;
 
-class KGametTipPanel :public CCObject
+class KGameTipPanel :public CCObject
 {
 public:
-	KGametTipPanel();
-	~KGametTipPanel();
+	KGameTipPanel();
+	~KGameTipPanel();
 
 	void init(cocos2d::extension::UILayer* layer);
 	void DoClickClose(CCObject* sender);

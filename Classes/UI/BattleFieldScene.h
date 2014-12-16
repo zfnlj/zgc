@@ -12,6 +12,7 @@
 #include "KGenCardPanel.h"
 #include "KGameResultPanel.h"
 #include "KGameRecordPanel.h"
+#include "KGameTipPanel.h"
 
 USING_NS_CC;
 class KCardInst;
@@ -77,6 +78,7 @@ private:
 	KIndicatePanel m_indicatePanel;
 	KFightAreaPanel m_myFightAreaPanel;
 	KGameResultPanel m_gameResultPanel;
+	KGameTipPanel m_gameTipPanel;
 
 };
 

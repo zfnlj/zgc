@@ -26,12 +26,14 @@
 #include "../WorldObject/KPlayer.h"
 #include "../PlayerCard/KTowerAssist.h"
 #include "assist/KAudioAssist.h"
+#include "../StaticTable/KGameStatic.h"
 
 USING_NS_CC;
 using namespace cocos2d::extension;
 
 Scene_type StageWaitScene::m_sceneType = scene_battle;
 int StageWaitScene::m_val = 0;
+int StageWaitScene::m_qId = 0;
 CCScene* StageWaitScene::scene()
 {
     // 'scene' is an autorelease object
@@ -156,14 +158,16 @@ void StageWaitScene::DoClickClose(CCObject* sender)
 	}
 	KUIAssist::_switch2BattleScene();
 	
-
-	if(m_sceneType==scene_battle){
-		KQuestFacade::_startBattle();
-	}else if(m_sceneType==scene_daily){
-		KQuestFacade::_startDaily(m_qId);
-	}else if(m_sceneType==scene_tower){
-		KQuestFacade::_startTower(m_qId);
+	if(!KGameStaticMgr::getSingleton().GetLessonTip(m_qId)){
+		if(m_sceneType==scene_battle){
+			KQuestFacade::_startBattle();
+		}else if(m_sceneType==scene_daily){
+			KQuestFacade::_startDaily(m_qId);
+		}else if(m_sceneType==scene_tower){
+			KQuestFacade::_startTower(m_qId);
+		}
 	}
+
 }
 
 void StageWaitScene::CreateExitBut()

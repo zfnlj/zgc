@@ -22,7 +22,8 @@
 #include "../GameRecord/KGameRecordMgr.h"
 #include "assist/KQuestFacade.h"
 #include "assist/KAudioAssist.h"
-
+#include "KGameTipPanel.h"
+#include "StageWaitScene.h"
 USING_NS_CC;
 using namespace cocos2d::extension;
 
@@ -79,12 +80,18 @@ bool BattleFieldScene::init()
 		m_indicatePanel.init(this);
 		m_myFightAreaPanel.init(this);
 		m_gameResultPanel.init(this);
+		m_gameTipPanel.init(this);
 		m_resPanel.init(this);
 		m_gameRecPanel.init(this);
 		this->getWidgetByName("turn_end")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::DoEndTurn));
 		this->getWidgetByName("bk")->addPushDownEvent(this, coco_pushselector(BattleFieldScene::onClickBackground));
 	}
 	m_actor.init(m_ui);
+
+	if(KGameStaticMgr::getSingleton().GetLessonTip(StageWaitScene::m_qId))
+	{
+		m_gameTipPanel.ShowPanel();
+	}
     return true;
 }
 

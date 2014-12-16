@@ -61,6 +61,7 @@ public:
 	KHeroSkillStatic* GetHeroSkill(int id);
 	void RndGetNormalCard(int rank,int count,KIntegerList& lst);
 	KHelpStringStatic* GetHelpString(int id);
+	KHelpStringStatic* GetLessonTip(int id);
 	KHelpStringStatic* GetRndTip();
 	KHelpStringStatic* GetRndStory();
 
