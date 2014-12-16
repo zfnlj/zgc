@@ -97,7 +97,7 @@
         "options": {
           "__type": "ComGUILabelSurrogate:#EditorCommon.JsonModel.Component.GUI",
           "classname": "Label",
-          "name": "Label_info",
+          "name": "Label_23",
           "ZOrder": 2,
           "actiontag": 23,
           "anchorPointX": 0.5,
