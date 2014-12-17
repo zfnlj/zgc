@@ -11,7 +11,6 @@
     <string>tipPanel_1.json</string>
   </JsonList>
   <imageFileList>
-    <string>shop.plist</string>
     <string>popMsg.plist</string>
   </imageFileList>
   <JsonSuffix>.json</JsonSuffix>
