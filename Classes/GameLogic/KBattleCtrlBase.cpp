@@ -700,6 +700,6 @@ void KBattleCtrlBase::ForceLost()
 void KBattleCtrlBase::ForceExit()
 {
 	KGameRecordMgr::getSingleton().Stop();
-	KDynamicWorld::getSingleton().onBattleFailed(m_pBattleQuest->GetID(),m_sceneType);
+	if(m_pBattleQuest) KDynamicWorld::getSingleton().onBattleFailed(m_pBattleQuest->GetID(),m_sceneType);
 	Clear();
 }

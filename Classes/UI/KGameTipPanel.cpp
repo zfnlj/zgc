@@ -49,6 +49,11 @@ void KGameTipPanel::ShowPanel()
 	KHelpStringStatic* pHelpString = KGameStaticMgr::getSingleton().GetLessonTip(StageWaitScene::m_qId);
 	if(pHelpString) pLabelTip->setText(pHelpString->GetString());
 	
+	char icon_name[256];
+	sprintf(icon_name,"icon//lesson_%d.jpg",StageWaitScene::m_qId);
+	UIImageView* widgetTitle = (UIImageView*)UIHelper::seekWidgetByName(m_Panel,"lesson_icon");
+	if(widgetTitle&& CCFileUtils::sharedFileUtils()->isFileExist(icon_name)) widgetTitle->loadTexture(icon_name);
+
 }
 
 
