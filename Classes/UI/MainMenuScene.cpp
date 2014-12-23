@@ -198,15 +198,21 @@ void MainMenuScene::DoClickHeroBrowse(CCObject* sender)
 
 void MainMenuScene::DoClickBattleBut(CCObject* sender)
 {
-	KAudioAssist::PlayClickButSound();
-	StageWaitScene::SetSceneVal(scene_battle);
-
-	if(STATIC_DATA_INT("first_help")==0){
-		STATIC_DATA_SET("first_help",1);
-		KUIAssist::_openMainHelpScene();
+	int openVal = STATIC_DATA_INT("open_adventure");
+	if(openVal>0){
+		DoClickAdventureBut(sender);
 	}else{
-		KUIAssist::_switch2StageWaitScene();
+		KAudioAssist::PlayClickButSound();
+		StageWaitScene::SetSceneVal(scene_battle);
+
+		if(STATIC_DATA_INT("first_help")==0){
+			STATIC_DATA_SET("first_help",1);
+			KUIAssist::_openMainHelpScene();
+		}else{
+			KUIAssist::_switch2StageWaitScene();
+		}
 	}
+	
 }
 
 void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const char* lockImage)
@@ -221,19 +227,14 @@ void MainMenuScene::UpdateLockStatus(const char* key,const char* butName,const c
 		pBut->setTouchEnable(false);
 		pLockWidget->setVisible(true);
 	}
-	pBut = m_ui->getWidgetByName("but_hero");
-	KUIAssist::ShowButton(pBut,KMainPlayer::RealPlayer()->GetCardDepot()->GetHeroNum()>0);
-
-
-	KUIAssist::ShowButton(m_ui->getWidgetByName("but_hero"),STATIC_DATA_INT("open_cardgroup")>0);
 }
 
 void MainMenuScene::UpdateLockStatus()
 {
-	UpdateLockStatus("open_adventure","but_quest","lock_quest");
+	UpdateLockStatus("open_adventure","but_hero","lock_hero");
 	UpdateLockStatus("open_cardgroup","but_cardgroup","lock_cardgroup");
 	UIWidget* pLockWidget = m_ui->getWidgetByName("lock_shop");
-	pLockWidget->setVisible(false);
+	if(pLockWidget) pLockWidget->setVisible(false);
 	//UpdateLockStatus("open_shop","but_shop","lock_shop");
 
 	UILabelBMFont* labelName = (UILabelBMFont*)m_ui->getWidgetByName("daily_num_txt");
