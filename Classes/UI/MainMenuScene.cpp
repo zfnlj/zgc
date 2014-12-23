@@ -146,8 +146,8 @@ cocos2d::extension::UILayer* MainMenuScene::GetUILayer()
 		pBut = m_ui->getWidgetByName("but_battle");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickBattleBut));
 
-		pBut = m_ui->getWidgetByName("but_quest");
-		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickAdventureBut));
+		pBut = m_ui->getWidgetByName("but_hero");
+		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickHeroBrowse));
 
 		pBut = m_ui->getWidgetByName("but_cardgroup");
 		pBut->addPushDownEvent(this, coco_pushselector(MainMenuScene::DoClickStoreBut));
