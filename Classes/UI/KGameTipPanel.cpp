@@ -46,13 +46,22 @@ void KGameTipPanel::ShowPanel()
 	m_Panel->setPosition(KUIAssist::_getScreenCenter());
 
 	UILabel* pLabelTip = (UILabel*)UIHelper::seekWidgetByName(m_Panel, "Label_info");
-	KHelpStringStatic* pHelpString = KGameStaticMgr::getSingleton().GetLessonTip(StageWaitScene::m_qId);
-	if(pHelpString) pLabelTip->setText(pHelpString->GetString());
+	pLabelTip->setVisible(false);
+	pLabelTip = (UILabel*)UIHelper::seekWidgetByName(m_Panel, "Label_info2");
+	pLabelTip->setVisible(false);
 	
 	char icon_name[256];
 	sprintf(icon_name,"icon//lesson_%d.jpg",StageWaitScene::m_qId);
 	UIImageView* widgetTitle = (UIImageView*)UIHelper::seekWidgetByName(m_Panel,"lesson_icon");
 	if(widgetTitle&& CCFileUtils::sharedFileUtils()->isFileExist(icon_name)) widgetTitle->loadTexture(icon_name);
+
+
+	pLabelTip = (UILabel*)UIHelper::seekWidgetByName(m_Panel, (CCFileUtils::sharedFileUtils()->isFileExist(icon_name))?"Label_info":"Label_info2");
+	KHelpStringStatic* pHelpString = KGameStaticMgr::getSingleton().GetLessonTip(StageWaitScene::m_qId);
+	if(pHelpString){
+		pLabelTip->setVisible(true);
+		pLabelTip->setText(pHelpString->GetString());
+	}
 
 }
 

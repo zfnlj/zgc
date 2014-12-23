@@ -2,8 +2,8 @@
 <ag>
 <action class="click">
   <affect_body>
-
+  	<affector class="armature"  slot="dest" createtime="0" fVal="1.2" fVal2="30" obj="click_down" life="0" />
   </affect_body>
 </action>
 </ag>
-		
+			
