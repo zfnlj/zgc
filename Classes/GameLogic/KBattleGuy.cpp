@@ -95,7 +95,9 @@ void KBattleGuy::onTurnBegin(KBattleCtrlBase* ctrl,bool bFirstTurn)
 {
 	
 	m_TurnPlayTime = 0;
-	m_attr.setMaxRes(m_attr.getMaxRes()+1);
+	int maxRes = m_attr.getMaxRes()+1;
+	if(maxRes>10) maxRes = 10;
+	m_attr.setMaxRes(maxRes);
 	m_attr.setCurRes(m_attr.getMaxRes());
 	m_Deck.onTurnBegin(ctrl,bFirstTurn);
 
